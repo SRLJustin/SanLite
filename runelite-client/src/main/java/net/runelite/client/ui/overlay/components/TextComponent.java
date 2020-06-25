@@ -68,15 +68,19 @@ public class TextComponent implements RenderableEntity
 					colColor = textSplitOnCol.substring(beginIndex + 1, endIndex);
 				}
 
-				// shadow
 				graphics.setColor(Color.BLACK);
-				graphics.drawString(textWithoutCol, x + 1, position.y + 1);
 
 				if (outline)
 				{
-					graphics.drawString(textWithoutCol, x - 1, position.y - 1);
-					graphics.drawString(textWithoutCol, x - 1, position.y + 1);
-					graphics.drawString(textWithoutCol, x + 1, position.y - 1);
+					graphics.drawString(textWithoutCol, x, position.y + 1);
+					graphics.drawString(textWithoutCol, x, position.y - 1);
+					graphics.drawString(textWithoutCol, x + 1, position.y);
+					graphics.drawString(textWithoutCol, x - 1, position.y);
+				}
+				else
+				{
+					// shadow
+					graphics.drawString(textWithoutCol, x + 1, position.y + 1);
 				}
 
 				// actual text
@@ -88,15 +92,19 @@ public class TextComponent implements RenderableEntity
 		}
 		else
 		{
-			// shadow
 			graphics.setColor(Color.BLACK);
-			graphics.drawString(text, position.x + 1, position.y + 1);
 
 			if (outline)
 			{
-				graphics.drawString(text, position.x - 1, position.y - 1);
-				graphics.drawString(text, position.x - 1, position.y + 1);
-				graphics.drawString(text, position.x + 1, position.y - 1);
+				graphics.drawString(text, position.x, position.y + 1);
+				graphics.drawString(text, position.x, position.y - 1);
+				graphics.drawString(text, position.x + 1, position.y);
+				graphics.drawString(text, position.x - 1, position.y);
+			}
+			else
+			{
+				// shadow
+				graphics.drawString(text, position.x + 1, position.y + 1);
 			}
 
 			// actual text

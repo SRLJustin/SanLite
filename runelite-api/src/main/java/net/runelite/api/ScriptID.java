@@ -170,12 +170,6 @@ public final class ScriptID
 	public static final int CAMERA_DO_ZOOM = 42;
 
 	/**
-	 * Rebuilds the Spellbook
-	 */
-	@ScriptArguments(integer = 10, string = 2)
-	public static final int MAGIC_SPELLBOOK_REDRAW = 2611;
-
-	/**
 	 * Does nothing
 	 *
 	 * This is used to eat events when you want a menu action attached to it
@@ -211,16 +205,6 @@ public final class ScriptID
 	public static final int FRIENDS_CHAT_SEND_KICK = 215;
 
 	/**
-	 * Join a clan chat channel
-	 */
-	public static final int CUSTOM_JOIN_CLAN = 10690;
-
-	/**
-	 * Send a public message
-	 */
-	public static final int PUBLIC_MSG = 13337;
-
-	/**
 	 * Builds the items kept on death widget
 	 */
 	@ScriptArguments(integer = 4, string = 2)
@@ -249,12 +233,6 @@ public final class ScriptID
 	 */
 	@ScriptArguments(integer = 3)
 	public static final int QUESTLIST_PROGRESS_LIST_SHOW = 1354;
-
-	/**
-	 * Procedure called when the toplevel interface is resized
-	 */
-	@ScriptArguments(integer = 2)
-	public static final int TOPLEVEL_RESIZE = 909;
 
 	/**
 	 * Called when the friends list is updated
@@ -306,7 +284,7 @@ public final class ScriptID
 	/**
 	 * Called to build the combat interface
 	 */
-	@ScriptArguments
+	@ScriptArguments()
 	public static final int COMBAT_INTERFACE_SETUP = 420;
 
 	/**
