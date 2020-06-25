@@ -496,7 +496,7 @@ public interface MenuEntrySwapperConfig extends Config
 
 	@ConfigItem(
 		keyName = "shopBuy",
-		name = "Shop Buy Shift-Click",
+		name = "Shop Buy",
 		description = "Swaps the Buy options with Value on items in shops.",
 		section = uiSection
 	)
@@ -507,7 +507,7 @@ public interface MenuEntrySwapperConfig extends Config
 
 	@ConfigItem(
 		keyName = "shopSell",
-		name = "Shop Sell Shift-Click",
+		name = "Shop Sell",
 		description = "Swaps the Sell options with Value on items in your inventory when selling to shops.",
 		section = uiSection
 	)

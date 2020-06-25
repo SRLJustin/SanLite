@@ -45,6 +45,7 @@ import static org.mockito.ArgumentMatchers.any;
 import org.mockito.Mock;
 import static org.mockito.Mockito.clearInvocations;
 import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -96,6 +97,8 @@ public class MenuEntrySwapperPluginTest
 			entries = (MenuEntry[]) argument;
 			return null;
 		}).when(client).setMenuEntries(any(MenuEntry[].class));
+
+		menuEntrySwapperPlugin.setupSwaps();
 	}
 
 	private static MenuEntry menu(String option, String target, MenuAction menuAction)
@@ -116,29 +119,28 @@ public class MenuEntrySwapperPluginTest
 	@Test
 	public void testSlayerMaster()
 	{
-		when(config.swapTrade()).thenReturn(true);
+		lenient().when(config.swapTrade()).thenReturn(true);
 		when(config.swapAssignment()).thenReturn(true);
 
 		entries = new MenuEntry[]{
-			menu("Cancel", "", MenuAction.CANCEL),
-			menu("Rewards", "Duradel", MenuAction.NPC_FIFTH_OPTION),
-			menu("Trade", "Duradel", MenuAction.NPC_FOURTH_OPTION),
-			menu("Assignment", "Duradel", MenuAction.NPC_THIRD_OPTION),
-			menu("Talk-to", "Duradel", MenuAction.NPC_FIRST_OPTION),
+				menu("Cancel", "", MenuAction.CANCEL),
+				menu("Rewards", "Duradel", MenuAction.NPC_FIFTH_OPTION),
+				menu("Trade", "Duradel", MenuAction.NPC_FOURTH_OPTION),
+				menu("Assignment", "Duradel", MenuAction.NPC_THIRD_OPTION),
+				menu("Talk-to", "Duradel", MenuAction.NPC_FIRST_OPTION),
 		};
 		menuEntrySwapperPlugin.onClientTick(new ClientTick());
 
 		ArgumentCaptor<MenuEntry[]> argumentCaptor = ArgumentCaptor.forClass(MenuEntry[].class);
-		// Once for assignment<->talk-to and once for trade<->talk-to
-		verify(client, times(2)).setMenuEntries(argumentCaptor.capture());
+		verify(client).setMenuEntries(argumentCaptor.capture());
 
-		MenuEntry[] value = argumentCaptor.getValue();
+		// check the assignment swap is hit first instead of trade
 		assertArrayEquals(new MenuEntry[]{
-			menu("Cancel", "", MenuAction.CANCEL),
-			menu("Rewards", "Duradel", MenuAction.NPC_FIFTH_OPTION),
-			menu("Talk-to", "Duradel", MenuAction.NPC_FIRST_OPTION),
-			menu("Trade", "Duradel", MenuAction.NPC_FOURTH_OPTION),
-			menu("Assignment", "Duradel", MenuAction.NPC_THIRD_OPTION),
+				menu("Cancel", "", MenuAction.CANCEL),
+				menu("Rewards", "Duradel", MenuAction.NPC_FIFTH_OPTION),
+				menu("Trade", "Duradel", MenuAction.NPC_FOURTH_OPTION),
+				menu("Talk-to", "Duradel", MenuAction.NPC_FIRST_OPTION),
+				menu("Assignment", "Duradel", MenuAction.NPC_THIRD_OPTION),
 		}, argumentCaptor.getValue());
 	}
 
@@ -148,20 +150,20 @@ public class MenuEntrySwapperPluginTest
 		when(config.swapBank()).thenReturn(true);
 
 		entries = new MenuEntry[]{
-			menu("Cancel", "", MenuAction.CANCEL),
-			menu("Examine", "Gnome banker", MenuAction.EXAMINE_NPC),
-			menu("Examine", "Gnome banker", MenuAction.EXAMINE_NPC),
-			menu("Walk here", "", MenuAction.WALK),
+				menu("Cancel", "", MenuAction.CANCEL),
+				menu("Examine", "Gnome banker", MenuAction.EXAMINE_NPC),
+				menu("Examine", "Gnome banker", MenuAction.EXAMINE_NPC),
+				menu("Walk here", "", MenuAction.WALK),
 
-			// Banker 2
-			menu("Collect", "Gnome banker", MenuAction.NPC_FOURTH_OPTION),
-			menu("Bank", "Gnome banker", MenuAction.NPC_THIRD_OPTION),
-			menu("Talk-to", "Gnome banker", MenuAction.NPC_FIRST_OPTION),
+				// Banker 2
+				menu("Collect", "Gnome banker", MenuAction.NPC_FOURTH_OPTION),
+				menu("Bank", "Gnome banker", MenuAction.NPC_THIRD_OPTION),
+				menu("Talk-to", "Gnome banker", MenuAction.NPC_FIRST_OPTION),
 
-			// Banker 1
-			menu("Collect", "Gnome banker", MenuAction.NPC_FOURTH_OPTION),
-			menu("Bank", "Gnome banker", MenuAction.NPC_THIRD_OPTION),
-			menu("Talk-to", "Gnome banker", MenuAction.NPC_FIRST_OPTION),
+				// Banker 1
+				menu("Collect", "Gnome banker", MenuAction.NPC_FOURTH_OPTION),
+				menu("Bank", "Gnome banker", MenuAction.NPC_THIRD_OPTION),
+				menu("Talk-to", "Gnome banker", MenuAction.NPC_FIRST_OPTION),
 		};
 
 		menuEntrySwapperPlugin.onClientTick(new ClientTick());
@@ -170,20 +172,20 @@ public class MenuEntrySwapperPluginTest
 		verify(client, times(2)).setMenuEntries(argumentCaptor.capture());
 
 		assertArrayEquals(new MenuEntry[]{
-			menu("Cancel", "", MenuAction.CANCEL),
-			menu("Examine", "Gnome banker", MenuAction.EXAMINE_NPC),
-			menu("Examine", "Gnome banker", MenuAction.EXAMINE_NPC),
-			menu("Walk here", "", MenuAction.WALK),
+				menu("Cancel", "", MenuAction.CANCEL),
+				menu("Examine", "Gnome banker", MenuAction.EXAMINE_NPC),
+				menu("Examine", "Gnome banker", MenuAction.EXAMINE_NPC),
+				menu("Walk here", "", MenuAction.WALK),
 
-			// Banker 2
-			menu("Collect", "Gnome banker", MenuAction.NPC_FOURTH_OPTION),
-			menu("Talk-to", "Gnome banker", MenuAction.NPC_FIRST_OPTION),
-			menu("Bank", "Gnome banker", MenuAction.NPC_THIRD_OPTION),
+				// Banker 2
+				menu("Collect", "Gnome banker", MenuAction.NPC_FOURTH_OPTION),
+				menu("Talk-to", "Gnome banker", MenuAction.NPC_FIRST_OPTION),
+				menu("Bank", "Gnome banker", MenuAction.NPC_THIRD_OPTION),
 
-			// Banker 1
-			menu("Collect", "Gnome banker", MenuAction.NPC_FOURTH_OPTION),
-			menu("Talk-to", "Gnome banker", MenuAction.NPC_FIRST_OPTION),
-			menu("Bank", "Gnome banker", MenuAction.NPC_THIRD_OPTION),
+				// Banker 1
+				menu("Collect", "Gnome banker", MenuAction.NPC_FOURTH_OPTION),
+				menu("Talk-to", "Gnome banker", MenuAction.NPC_FIRST_OPTION),
+				menu("Bank", "Gnome banker", MenuAction.NPC_THIRD_OPTION),
 		}, argumentCaptor.getValue());
 	}
 
@@ -193,13 +195,13 @@ public class MenuEntrySwapperPluginTest
 		when(config.swapPay()).thenReturn(true);
 
 		entries = new MenuEntry[]{
-			menu("Cancel", "", MenuAction.CANCEL),
-			menu("Examine", "Kragen", MenuAction.EXAMINE_NPC),
-			menu("Walk here", "", MenuAction.WALK),
+				menu("Cancel", "", MenuAction.CANCEL),
+				menu("Examine", "Kragen", MenuAction.EXAMINE_NPC),
+				menu("Walk here", "", MenuAction.WALK),
 
-			menu("Pay (south)", "Kragen", MenuAction.NPC_FOURTH_OPTION),
-			menu("Pay (north)", "Kragen", MenuAction.NPC_THIRD_OPTION),
-			menu("Talk-to", "Kragen", MenuAction.NPC_FIRST_OPTION),
+				menu("Pay (south)", "Kragen", MenuAction.NPC_FOURTH_OPTION),
+				menu("Pay (north)", "Kragen", MenuAction.NPC_THIRD_OPTION),
+				menu("Talk-to", "Kragen", MenuAction.NPC_FIRST_OPTION),
 		};
 
 		menuEntrySwapperPlugin.onClientTick(new ClientTick());
@@ -208,13 +210,13 @@ public class MenuEntrySwapperPluginTest
 		verify(client).setMenuEntries(argumentCaptor.capture());
 
 		assertArrayEquals(new MenuEntry[]{
-			menu("Cancel", "", MenuAction.CANCEL),
-			menu("Examine", "Kragen", MenuAction.EXAMINE_NPC),
-			menu("Walk here", "", MenuAction.WALK),
+				menu("Cancel", "", MenuAction.CANCEL),
+				menu("Examine", "Kragen", MenuAction.EXAMINE_NPC),
+				menu("Walk here", "", MenuAction.WALK),
 
-			menu("Pay (south)", "Kragen", MenuAction.NPC_FOURTH_OPTION),
-			menu("Talk-to", "Kragen", MenuAction.NPC_FIRST_OPTION),
-			menu("Pay (north)", "Kragen", MenuAction.NPC_THIRD_OPTION),
+				menu("Pay (south)", "Kragen", MenuAction.NPC_FOURTH_OPTION),
+				menu("Talk-to", "Kragen", MenuAction.NPC_FIRST_OPTION),
+				menu("Pay (north)", "Kragen", MenuAction.NPC_THIRD_OPTION),
 		}, argumentCaptor.getValue());
 	}
 
@@ -226,11 +228,11 @@ public class MenuEntrySwapperPluginTest
 
 		// Cast -> Grand Exchange
 		entries = new MenuEntry[]{
-			menu("Cancel", "", MenuAction.CANCEL),
+				menu("Cancel", "", MenuAction.CANCEL),
 
-			menu("Configure", "Varrock Teleport", MenuAction.WIDGET_THIRD_OPTION),
-			menu("Grand Exchange", "Varrock Teleport", MenuAction.WIDGET_SECOND_OPTION),
-			menu("Cast", "Varrock Teleport", MenuAction.WIDGET_FIRST_OPTION),
+				menu("Configure", "Varrock Teleport", MenuAction.WIDGET_THIRD_OPTION),
+				menu("Grand Exchange", "Varrock Teleport", MenuAction.WIDGET_SECOND_OPTION),
+				menu("Cast", "Varrock Teleport", MenuAction.WIDGET_FIRST_OPTION),
 		};
 
 		menuEntrySwapperPlugin.onClientTick(new ClientTick());
@@ -239,22 +241,22 @@ public class MenuEntrySwapperPluginTest
 		verify(client).setMenuEntries(argumentCaptor.capture());
 
 		assertArrayEquals(new MenuEntry[]{
-			menu("Cancel", "", MenuAction.CANCEL),
+				menu("Cancel", "", MenuAction.CANCEL),
 
-			menu("Configure", "Varrock Teleport", MenuAction.WIDGET_THIRD_OPTION),
-			menu("Cast", "Varrock Teleport", MenuAction.WIDGET_FIRST_OPTION),
-			menu("Grand Exchange", "Varrock Teleport", MenuAction.WIDGET_SECOND_OPTION),
+				menu("Configure", "Varrock Teleport", MenuAction.WIDGET_THIRD_OPTION),
+				menu("Cast", "Varrock Teleport", MenuAction.WIDGET_FIRST_OPTION),
+				menu("Grand Exchange", "Varrock Teleport", MenuAction.WIDGET_SECOND_OPTION),
 		}, argumentCaptor.getValue());
 
 		clearInvocations(client);
 
 		// Grand Exchange -> Cast
 		entries = new MenuEntry[]{
-			menu("Cancel", "", MenuAction.CANCEL),
+				menu("Cancel", "", MenuAction.CANCEL),
 
-			menu("Configure", "Varrock Teleport", MenuAction.WIDGET_THIRD_OPTION),
-			menu("Cast", "Varrock Teleport", MenuAction.WIDGET_SECOND_OPTION),
-			menu("Grand Exchange", "Varrock Teleport", MenuAction.WIDGET_FIRST_OPTION),
+				menu("Configure", "Varrock Teleport", MenuAction.WIDGET_THIRD_OPTION),
+				menu("Cast", "Varrock Teleport", MenuAction.WIDGET_SECOND_OPTION),
+				menu("Grand Exchange", "Varrock Teleport", MenuAction.WIDGET_FIRST_OPTION),
 		};
 
 		menuEntrySwapperPlugin.onClientTick(new ClientTick());
@@ -263,11 +265,11 @@ public class MenuEntrySwapperPluginTest
 		verify(client).setMenuEntries(argumentCaptor.capture());
 
 		assertArrayEquals(new MenuEntry[]{
-			menu("Cancel", "", MenuAction.CANCEL),
+				menu("Cancel", "", MenuAction.CANCEL),
 
-			menu("Configure", "Varrock Teleport", MenuAction.WIDGET_THIRD_OPTION),
-			menu("Grand Exchange", "Varrock Teleport", MenuAction.WIDGET_FIRST_OPTION),
-			menu("Cast", "Varrock Teleport", MenuAction.WIDGET_SECOND_OPTION),
+				menu("Configure", "Varrock Teleport", MenuAction.WIDGET_THIRD_OPTION),
+				menu("Grand Exchange", "Varrock Teleport", MenuAction.WIDGET_FIRST_OPTION),
+				menu("Cast", "Varrock Teleport", MenuAction.WIDGET_SECOND_OPTION),
 		}, argumentCaptor.getValue());
 	}
 
@@ -275,16 +277,15 @@ public class MenuEntrySwapperPluginTest
 	public void testTobDoor()
 	{
 		when(config.swapQuick()).thenReturn(true);
-		when(config.swapHomePortal()).thenReturn(HouseMode.HOME);
 
 		//Quick-enter, Enter
 		entries = new MenuEntry[]{
-			menu("Cancel", "", MenuAction.CANCEL),
-			menu("Examine", "Formidable Passage", MenuAction.EXAMINE_OBJECT),
-			menu("Walk here", "", MenuAction.WALK),
+				menu("Cancel", "", MenuAction.CANCEL),
+				menu("Examine", "Formidable Passage", MenuAction.EXAMINE_OBJECT),
+				menu("Walk here", "", MenuAction.WALK),
 
-			menu("Quick-Enter", "Formidable Passage", MenuAction.GAME_OBJECT_SECOND_OPTION),
-			menu("Enter", "Formidable Passage", MenuAction.GAME_OBJECT_FIRST_OPTION),
+				menu("Quick-Enter", "Formidable Passage", MenuAction.GAME_OBJECT_SECOND_OPTION),
+				menu("Enter", "Formidable Passage", MenuAction.GAME_OBJECT_FIRST_OPTION),
 		};
 
 		menuEntrySwapperPlugin.onClientTick(new ClientTick());
@@ -293,12 +294,12 @@ public class MenuEntrySwapperPluginTest
 		verify(client).setMenuEntries(argumentCaptor.capture());
 
 		assertArrayEquals(new MenuEntry[]{
-			menu("Cancel", "", MenuAction.CANCEL),
-			menu("Examine", "Formidable Passage", MenuAction.EXAMINE_OBJECT),
-			menu("Walk here", "", MenuAction.WALK),
+				menu("Cancel", "", MenuAction.CANCEL),
+				menu("Examine", "Formidable Passage", MenuAction.EXAMINE_OBJECT),
+				menu("Walk here", "", MenuAction.WALK),
 
-			menu("Enter", "Formidable Passage", MenuAction.GAME_OBJECT_FIRST_OPTION),
-			menu("Quick-Enter", "Formidable Passage", MenuAction.GAME_OBJECT_SECOND_OPTION),
+				menu("Enter", "Formidable Passage", MenuAction.GAME_OBJECT_FIRST_OPTION),
+				menu("Quick-Enter", "Formidable Passage", MenuAction.GAME_OBJECT_SECOND_OPTION),
 		}, argumentCaptor.getValue());
 	}
 
@@ -309,27 +310,27 @@ public class MenuEntrySwapperPluginTest
 		menuEntrySwapperPlugin.setShiftModifier(true);
 
 		entries = new MenuEntry[]{
-			menu("Cancel", "", MenuAction.CANCEL),
-			menu("Wield", "Abyssal whip", MenuAction.CC_OP_LOW_PRIORITY, 9),
-			menu("Deposit-1", "Abyssal whip", MenuAction.CC_OP, 2),
+				menu("Cancel", "", MenuAction.CANCEL),
+				menu("Wield", "Abyssal whip", MenuAction.CC_OP_LOW_PRIORITY, 9),
+				menu("Deposit-1", "Abyssal whip", MenuAction.CC_OP, 2),
 		};
 
 		menuEntrySwapperPlugin.onMenuEntryAdded(new MenuEntryAdded(
-			"Deposit-1",
-			"Abyssal whip",
-			MenuAction.CC_OP.getId(),
-			2,
-			-1,
-			-1
+				"Deposit-1",
+				"Abyssal whip",
+				MenuAction.CC_OP.getId(),
+				2,
+				-1,
+				-1
 		));
 
 		ArgumentCaptor<MenuEntry[]> argumentCaptor = ArgumentCaptor.forClass(MenuEntry[].class);
 		verify(client).setMenuEntries(argumentCaptor.capture());
 
 		assertArrayEquals(new MenuEntry[]{
-			menu("Cancel", "", MenuAction.CANCEL),
-			menu("Deposit-1", "Abyssal whip", MenuAction.CC_OP, 2),
-			menu("Wield", "Abyssal whip", MenuAction.CC_OP, 9),
+				menu("Cancel", "", MenuAction.CANCEL),
+				menu("Deposit-1", "Abyssal whip", MenuAction.CC_OP, 2),
+				menu("Wield", "Abyssal whip", MenuAction.CC_OP, 9),
 		}, argumentCaptor.getValue());
 	}
 
@@ -340,29 +341,29 @@ public class MenuEntrySwapperPluginTest
 		menuEntrySwapperPlugin.setShiftModifier(true);
 
 		entries = new MenuEntry[]{
-			menu("Cancel", "", MenuAction.CANCEL),
-			menu("Wield", "Rune arrow", MenuAction.CC_OP_LOW_PRIORITY, 9),
-			menu("Deposit-All", "Rune arrow", MenuAction.CC_OP_LOW_PRIORITY, 8),
-			menu("Deposit-1", "Rune arrow", MenuAction.CC_OP, 2),
+				menu("Cancel", "", MenuAction.CANCEL),
+				menu("Wield", "Rune arrow", MenuAction.CC_OP_LOW_PRIORITY, 9),
+				menu("Deposit-All", "Rune arrow", MenuAction.CC_OP_LOW_PRIORITY, 8),
+				menu("Deposit-1", "Rune arrow", MenuAction.CC_OP, 2),
 		};
 
 		menuEntrySwapperPlugin.onMenuEntryAdded(new MenuEntryAdded(
-			"Deposit-1",
-			"Rune arrow",
-			MenuAction.CC_OP.getId(),
-			2,
-			-1,
-			-1
+				"Deposit-1",
+				"Rune arrow",
+				MenuAction.CC_OP.getId(),
+				2,
+				-1,
+				-1
 		));
 
 		ArgumentCaptor<MenuEntry[]> argumentCaptor = ArgumentCaptor.forClass(MenuEntry[].class);
 		verify(client).setMenuEntries(argumentCaptor.capture());
 
 		assertArrayEquals(new MenuEntry[]{
-			menu("Cancel", "", MenuAction.CANCEL),
-			menu("Wield", "Rune arrow", MenuAction.CC_OP_LOW_PRIORITY, 9),
-			menu("Deposit-1", "Rune arrow", MenuAction.CC_OP, 2),
-			menu("Deposit-All", "Rune arrow", MenuAction.CC_OP, 8),
+				menu("Cancel", "", MenuAction.CANCEL),
+				menu("Wield", "Rune arrow", MenuAction.CC_OP_LOW_PRIORITY, 9),
+				menu("Deposit-1", "Rune arrow", MenuAction.CC_OP, 2),
+				menu("Deposit-All", "Rune arrow", MenuAction.CC_OP, 8),
 		}, argumentCaptor.getValue());
 	}
 }
