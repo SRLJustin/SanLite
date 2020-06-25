@@ -372,4 +372,15 @@ public interface GroundItemsConfig extends Config
 	{
 		return false;
 	}
+
+	@ConfigItem(
+			keyName = "textOutline",
+			name = "Text Outline",
+			description = "Use an outline around text instead of a text shadow",
+			position = 29
+	)
+	default boolean textOutline()
+	{
+		return false;
+	}
 }

@@ -43,6 +43,7 @@ public class TextComponent implements RenderableEntity
 	private String text;
 	private Point position = new Point();
 	private Color color = Color.WHITE;
+	private boolean outline;
 
 	@Override
 	public Dimension render(Graphics2D graphics)
@@ -71,6 +72,13 @@ public class TextComponent implements RenderableEntity
 				graphics.setColor(Color.BLACK);
 				graphics.drawString(textWithoutCol, x + 1, position.y + 1);
 
+				if (outline)
+				{
+					graphics.drawString(textWithoutCol, x - 1, position.y - 1);
+					graphics.drawString(textWithoutCol, x - 1, position.y + 1);
+					graphics.drawString(textWithoutCol, x + 1, position.y - 1);
+				}
+
 				// actual text
 				graphics.setColor(!colColor.isEmpty() ? Color.decode("#" + colColor) : color);
 				graphics.drawString(textWithoutCol, x, position.y);
@@ -83,6 +91,13 @@ public class TextComponent implements RenderableEntity
 			// shadow
 			graphics.setColor(Color.BLACK);
 			graphics.drawString(text, position.x + 1, position.y + 1);
+
+			if (outline)
+			{
+				graphics.drawString(text, position.x - 1, position.y - 1);
+				graphics.drawString(text, position.x - 1, position.y + 1);
+				graphics.drawString(text, position.x + 1, position.y - 1);
+			}
 
 			// actual text
 			graphics.setColor(color);

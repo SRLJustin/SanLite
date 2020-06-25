@@ -28,10 +28,18 @@ import java.awt.Color;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
+import net.runelite.client.config.ConfigSection;
 
 @ConfigGroup("npcindicators")
 public interface NpcIndicatorsConfig extends Config
 {
+	@ConfigSection(
+			name = "Render style",
+			description = "The render style of NPC highlighting",
+			position = 0
+	)
+	String renderStyleSection = "renderStyleSection";
+
 	@ConfigItem(
 		position = 0,
 		keyName = "highlightStyle",
