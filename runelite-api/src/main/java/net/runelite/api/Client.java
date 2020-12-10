@@ -1057,6 +1057,18 @@ public interface Client extends GameEngine
 	List<GraphicsObject> getGraphicsObjects();
 
 	/**
+	 * Gets the music volume
+	 * @return volume 0-255 inclusive
+	 */
+	int getMusicVolume();
+
+	/**
+	 * Sets the music volume
+	 * @param volume 0-255 inclusive
+	 */
+	void setMusicVolume(int volume);
+
+	/**
 	 * Play a sound effect at the player's current location. This is how UI,
 	 * and player-generated (e.g. mining, woodcutting) sound effects are
 	 * normally played.

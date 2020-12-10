@@ -89,10 +89,10 @@ public interface MusicConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = GRANULAR_SLIDERS,
-			name = "Granular volume sliders",
-			description = "Make the volume sliders allow better control of volume",
-			position = 5
+		keyName = GRANULAR_SLIDERS,
+		name = "Granular volume sliders",
+		description = "Make the volume sliders allow better control of volume",
+		position = 5
 	)
 	default boolean granularSliders()
 	{

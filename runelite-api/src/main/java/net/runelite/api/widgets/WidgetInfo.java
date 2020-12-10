@@ -552,7 +552,8 @@ public enum WidgetInfo
 
 	HEALTH_OVERLAY_BAR(WidgetID.HEALTH_OVERLAY_BAR_GROUP_ID, WidgetID.EncounterHealthBar.CONTAINER),
 
-	TRAILBLAZER_AREA_TELEPORT(WidgetID.TRAILBLAZER_AREAS_GROUP_ID, WidgetID.TrailblazerAreas.TELEPORT);
+	TRAILBLAZER_AREA_TELEPORT(WidgetID.TRAILBLAZER_AREAS_GROUP_ID, WidgetID.TrailblazerAreas.TELEPORT),
+	;
 
 	private final int groupId;
 	private final int childId;

@@ -27,7 +27,6 @@ package net.runelite.client.plugins.devtools;
 import javax.swing.tree.DefaultMutableTreeNode;
 import net.runelite.api.widgets.Widget;
 
-
 class WidgetTreeNode extends DefaultMutableTreeNode
 {
 	private final String type;

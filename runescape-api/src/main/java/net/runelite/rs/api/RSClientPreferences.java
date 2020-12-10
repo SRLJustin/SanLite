@@ -13,26 +13,21 @@ public interface RSClientPreferences extends Preferences
 	@Override
 	void setRememberedUsername(String username);
 
-	@Import("soundEffectsVolume")
-	@Override
-	int getSoundEffectsVolume();
-
-	@Import("soundEffectsVolume")
-	@Override
-	void setSoundEffectsVolume(int i);
-
-	@Import("areaSoundEffectsVolume")
-	@Override
-	int getAreaSoundEffectsVolume();
-
-	@Import("areaSoundEffectsVolume")
-	@Override
-	void setAreaSoundEffectsVolume(int i);
-
 	@Import("musicVolume")
-	@Override
 	int getMusicVolume();
 
 	@Import("musicVolume")
-	void setMusicVolume(int i);
+	void setMusicVolume(int volume);
+
+	@Import("soundEffectsVolume")
+	int getSoundEffectVolume();
+
+	@Import("soundEffectsVolume")
+	void setSoundEffectVolume(int i);
+
+	@Import("areaSoundEffectsVolume")
+	int getAreaSoundEffectVolume();
+
+	@Import("areaSoundEffectsVolume")
+	void setAreaSoundEffectVolume(int i);
 }

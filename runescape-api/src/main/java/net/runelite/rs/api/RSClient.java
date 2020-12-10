@@ -783,6 +783,12 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("runScript")
 	void runScript(RSScriptEvent ev, int ex);
 
+	@Import("Script_cached")
+	RSEvictingDualNodeHashTable getCachedScripts();
+
+	@Import("getScript")
+	RSScript getScript(int scriptId);
+
 	@Import("hintArrowType")
 	void setHintArrowTargetType(int value);
 

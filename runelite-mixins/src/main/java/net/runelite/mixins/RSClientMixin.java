@@ -35,6 +35,7 @@ import net.runelite.api.hooks.DrawCallbacks;
 import net.runelite.api.mixins.*;
 import net.runelite.api.vars.AccountType;
 import net.runelite.api.widgets.*;
+import net.runelite.mapping.Import;
 import net.runelite.rs.api.*;
 import org.slf4j.Logger;
 
@@ -1476,6 +1477,29 @@ public abstract class RSClientMixin implements RSClient
 		client.setMusicTrackVolume(volume);
 		client.setMusicTrackBoolean(musicTrackBoolean);
 		client.setPcmSampleLength(pcmSampleLength);
+	}
+
+	@Inject
+	@Override
+	public int getMusicVolume()
+	{
+		return getPreferences().getMusicVolume();
+	}
+
+	@Inject
+	public void setMusicVolume(int volume)
+	{
+		if (volume > 0 && client.getMusicVolume() <= 0 && client.getCurrentTrackGroupId() != -1)
+		{
+			playMusicTrack(client.getMusicTracks(), client.getCurrentTrackGroupId(), 0, volume, false, 1000);
+		}
+
+		getPreferences().setMusicVolume(volume);
+		client.setMusicTrackVolume(volume);
+		if (client.getMidiPcmStream() != null)
+		{
+			client.getMidiPcmStream().setPcmStreamVolume(volume);
+		}
 	}
 
 	@Copy("changeGameOptions")

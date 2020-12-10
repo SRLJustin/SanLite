@@ -24,15 +24,10 @@
  */
 package net.runelite.mixins;
 
-import net.runelite.api.Client;
 import net.runelite.api.events.ScriptCallbackEvent;
 import net.runelite.api.events.ScriptPostFired;
 import net.runelite.api.events.ScriptPreFired;
-import net.runelite.api.mixins.Copy;
-import net.runelite.api.mixins.Inject;
-import net.runelite.api.mixins.Mixin;
-import net.runelite.api.mixins.Replace;
-import net.runelite.api.mixins.Shadow;
+import net.runelite.api.mixins.*;
 import net.runelite.api.widgets.JavaScriptCallback;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSScript;
@@ -47,7 +42,7 @@ import static net.runelite.api.Opcodes.*;
 public abstract class ScriptVMMixin implements RSClient
 {
 	@Shadow("client")
-	private static Client client;
+	private static RSClient client;
 
 	@Inject
 	private static RSScript currentScript;
@@ -185,5 +180,44 @@ public abstract class ScriptVMMixin implements RSClient
 		RSScriptEvent scriptEvent = createScriptEvent();
 		scriptEvent.setArguments(args);
 		runScript(scriptEvent, 5000000);
+	}
+
+	@Inject
+	public void runScript(RSScriptEvent scriptEvent)
+	{
+		assert this.isClientThread() : "runScriptFromEvent must be called on client thread";
+		assert currentScript == null : "scripts are not reentrant";
+
+		runScript(scriptEvent, 5000000);
+		Object[] args = scriptEvent.getArguments();
+		assert args[0] instanceof Integer;
+
+		int scriptId = (Integer) args[0];
+		RSScript script = (RSScript) client.getCachedScripts().get(scriptId);
+		if (script != null)
+		{
+			int intArgumentCount = 0;
+			int stringArgumentCount = 0;
+			for (int i = 1; i < args.length; i++)
+			{
+				assert intArgumentCount != script.getIntArgumentCount() ||
+						stringArgumentCount != script.getStringArgumentCount() :
+						String.format("Script %s was called with the incorrect number of arguments; takes %s + %s, got %s + %s",
+								scriptId,
+								script.getIntArgumentCount(),
+								script.getStringArgumentCount(),
+								intArgumentCount,
+								stringArgumentCount);
+
+				if (args[i] instanceof Integer)
+				{
+					++intArgumentCount;
+				}
+				else
+				{
+					++stringArgumentCount;
+				}
+			}
+		}
 	}
 }
