@@ -26,10 +26,11 @@ package net.runelite.mixins;
 
 import java.awt.Shape;
 import net.runelite.api.AnimationID;
+import net.runelite.api.DecorativeObject;
 import net.runelite.api.NPCComposition;
 import net.runelite.api.Perspective;
 import net.runelite.api.coords.LocalPoint;
-import net.runelite.api.events.NpcCompositionChanged;
+import net.runelite.api.events.NpcChanged;
 import net.runelite.api.events.NpcDespawned;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
@@ -50,6 +51,9 @@ public abstract class RSNPCMixin implements RSNPC
 
 	@Inject
 	private int npcIndex;
+
+	@Inject
+	private NPCComposition previousNpcComposition;
 
 	@Inject
 	@Override
@@ -105,13 +109,16 @@ public abstract class RSNPCMixin implements RSNPC
 	@Inject
 	public void onCompositionChanged(RSNPCComposition composition)
 	{
+		NPCComposition previous = previousNpcComposition;
+		previousNpcComposition = composition;
+
 		if (composition == null)
 		{
 			client.getCallbacks().post(new NpcDespawned(this));
 		}
 		else if (this.getId() != -1)
 		{
-			client.getCallbacks().post(new NpcCompositionChanged(this));
+			client.getCallbacks().post(new NpcChanged(this, previous));
 		}
 	}
 
