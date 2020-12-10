@@ -23,11 +23,11 @@
    runelite_callback     
    sub                   
    istore                 1
-   iconst                 7602230
-   if_getwidth           
-   iconst                 7602231
-   if_getwidth           
-   sub                   
+   iconst                 7602235
+   if_getwidth
+   iconst                 7602236
+   if_getwidth
+   sub
    istore                 2
    iconst                 0
    istore                 3
@@ -46,38 +46,38 @@ LABEL27:
    get_varc_int           74
    iconst                 128
    sconst                 "outerZoomLimit"
-   runelite_callback     
-   sub                   
+   runelite_callback
+   sub
    iload                  0
    sconst                 "zoomExpToLin"
-   runelite_callback     
-   pop_int               
+   runelite_callback
+   pop_int
    iload                  2
-   multiply              
+   multiply
    iload                  0
-   div                   
+   div
    istore                 5
    jump                   LABEL44
 LABEL36:
    get_varc_int           73
    iconst                 128
    sconst                 "outerZoomLimit"
-   runelite_callback     
-   sub                   
+   runelite_callback
+   sub
    iload                  0
    sconst                 "zoomExpToLin"
-   runelite_callback     
-   pop_int               
+   runelite_callback
+   pop_int
    iload                  2
-   multiply              
+   multiply
    iload                  1
-   div                   
+   div
    istore                 5
 LABEL44:
    iload                  5
    iconst                 0
    iconst                 0
    iconst                 0
-   iconst                 7602231
+   iconst                 7602236
    if_setposition        
    return                

@@ -24,6 +24,7 @@
  */
 package net.runelite.api;
 
+import net.runelite.api.widgets.JavaScriptCallback;
 import net.runelite.api.widgets.Widget;
 
 public interface ScriptEvent
