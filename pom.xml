@@ -37,8 +37,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
-		<java.release>8</java.release>
+		<java.version>11</java.version>
+		<java.release>11</java.release>
 		<lombok.version>1.18.4</lombok.version>
 
 		<maven.javadoc.skip>true</maven.javadoc.skip>

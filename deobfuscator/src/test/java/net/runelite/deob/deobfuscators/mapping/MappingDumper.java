@@ -24,13 +24,13 @@
  */
 package net.runelite.deob.deobfuscators.mapping;
 
-import java.io.File;
-import java.io.IOException;
-import java.time.Instant;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import java.io.File;
+import java.io.IOException;
+import java.time.Instant;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
 import net.runelite.asm.Field;
@@ -57,7 +57,7 @@ public class MappingDumper
 	@Before
 	public void before() throws IOException
 	{
-		group = JarUtil.loadJar(new File(properties.getRsClient()));
+		group = JarUtil.load(new File(properties.getRsClient()));
 	}
 
 	@Test
@@ -70,7 +70,7 @@ public class MappingDumper
 	@Test
 	public void dump() throws IOException
 	{
-		ClassGroup group = JarUtil.loadJar(new File(properties.getRsClient()));
+		ClassGroup group = JarUtil.load(new File(properties.getRsClient()));
 
 		final String GAP = "%-40s";
 		int classes = 0, methods = 0, fields = 0;
@@ -81,8 +81,8 @@ public class MappingDumper
 
 		for (ClassFile cf : group.getClasses())
 		{
-			String implName = DeobAnnotations.getImplements(cf);
-			String className = DeobAnnotations.getObfuscatedName(cf.getAnnotations());
+			String implName = cf.getName();
+			String className = DeobAnnotations.getObfuscatedName(cf);
 
 			if (implName != null)
 			{
@@ -92,7 +92,7 @@ public class MappingDumper
 
 			for (Field f : cf.getFields())
 			{
-				String exportName = DeobAnnotations.getExportedName(f.getAnnotations());
+				String exportName = DeobAnnotations.getExportedName(f);
 
 				if (exportName == null)
 				{
@@ -101,11 +101,49 @@ public class MappingDumper
 
 				++fields;
 
-				String fieldName = DeobAnnotations.getObfuscatedName(f.getAnnotations());
+				String fieldName = DeobAnnotations.getObfuscatedName(f);
 				Type type = f.getType();
 				Number getter = DeobAnnotations.getObfuscatedGetter(f);
 
 				String fieldType = typeToString(type);
+				String var0 = fieldType.replace("[", "").replace("]", "");
+				if (var0.length() == 1 && !Character.isLowerCase(var0.codePointAt(0)))
+				{
+					// primitive array
+					String realType;
+					int arrayCount = (int) fieldType.codePoints().filter((i) -> i == '[').count();
+					switch (var0)
+					{
+						case "B":
+							realType = Byte.TYPE.getName();
+							break;
+						case "I":
+							realType = Integer.TYPE.getName();
+							break;
+						case "S":
+							realType = Short.TYPE.getName();
+							break;
+						case "J":
+							realType = Long.TYPE.getName();
+							break;
+						case "Z":
+							realType = Boolean.TYPE.getName();
+							break;
+						case "F":
+							realType = Float.TYPE.getName();
+							break;
+						case "D":
+							realType = Double.TYPE.getName();
+							break;
+						case "C":
+							realType = Character.TYPE.getName();
+							break;
+						default:
+							realType = Void.TYPE.getName();
+							break;
+					}
+					fieldType = realType + "[]".repeat(arrayCount);
+				}
 
 				if (f.isStatic())
 				{
@@ -117,14 +155,14 @@ public class MappingDumper
 					tmp = mBuilder;
 				}
 
-				tmp.append("\t").append(String.format(GAP, fieldType)).append(String.format(GAP, exportName))
-						.append(className).append(".").append(fieldName);
+				tmp.append("\t").append(String.format("%s ", fieldType))
+					.append(String.format("%s.%s=", implName, exportName))
+					.append(className).append(".").append(fieldName);
 
 				if (getter != null)
 				{
 					tmp.append(" * ").append(getter).append("\n");
 				}
-
 				else
 				{
 					tmp.append("\n");
@@ -133,7 +171,7 @@ public class MappingDumper
 
 			for (Method m : cf.getMethods())
 			{
-				String exportName = DeobAnnotations.getExportedName(m.getAnnotations());
+				String exportName = DeobAnnotations.getExportedName(m);
 
 				if (exportName == null)
 				{
@@ -142,9 +180,9 @@ public class MappingDumper
 
 				methods++;
 
-				String methodName = DeobAnnotations.getObfuscatedName(m.getAnnotations());
+				String methodName = DeobAnnotations.getObfuscatedName(m);
 				Signature signature = DeobAnnotations.getObfuscatedSignature(m);
-				String garbageValue = DeobAnnotations.getObfuscatedValue(m);
+				String garbageValue = DeobAnnotations.getDecoder(m);
 
 				if (signature == null)
 				{
@@ -152,6 +190,44 @@ public class MappingDumper
 				}
 
 				String returnType = typeToString(m.getDescriptor().getReturnValue());
+				String var0 = returnType.replace("[", "").replace("]", "");
+				if (var0.length() == 1 && !Character.isLowerCase(var0.codePointAt(0)))
+				{
+					// primitive array
+					String realType;
+					int arrayCount = (int) returnType.codePoints().filter((i) -> i == '[').count();
+					switch (var0)
+					{
+						case "B":
+							realType = Byte.TYPE.getName();
+							break;
+						case "I":
+							realType = Integer.TYPE.getName();
+							break;
+						case "S":
+							realType = Short.TYPE.getName();
+							break;
+						case "J":
+							realType = Long.TYPE.getName();
+							break;
+						case "Z":
+							realType = Boolean.TYPE.getName();
+							break;
+						case "F":
+							realType = Float.TYPE.getName();
+							break;
+						case "D":
+							realType = Double.TYPE.getName();
+							break;
+						case "C":
+							realType = Character.TYPE.getName();
+							break;
+						default:
+							realType = Void.TYPE.getName();
+							break;
+					}
+					returnType = realType + "[]".repeat(arrayCount);
+				}
 				String[] paramTypes = new String[signature.size()];
 				for (int i = 0; i < paramTypes.length; i++)
 				{
@@ -168,12 +244,51 @@ public class MappingDumper
 					tmp = mBuilder;
 				}
 
-				tmp.append("\t").append(String.format(GAP, returnType)).append(String.format(GAP, exportName))
-						.append(className).append(".").append(methodName);
+				tmp.append("\t").append(String.format("%s ", returnType))
+					.append(String.format("%s#%s=", implName, exportName))
+					.append(className).append(".").append(methodName);
 
 				tmp.append("(");
 				for (int i = 0; i < paramTypes.length; i++)
 				{
+					String var1 = paramTypes[i].replace("[", "").replace("]", "");
+					if (var1.length() == 1 && !Character.isLowerCase(var1.codePointAt(0)))
+					{
+						// primitive array
+						String realType;
+						int arrayCount = (int) paramTypes[i].codePoints().filter((i2) -> i2 == '[').count();
+						switch (var1)
+						{
+							case "B":
+								realType = Byte.TYPE.getName();
+								break;
+							case "I":
+								realType = Integer.TYPE.getName();
+								break;
+							case "S":
+								realType = Short.TYPE.getName();
+								break;
+							case "J":
+								realType = Long.TYPE.getName();
+								break;
+							case "Z":
+								realType = Boolean.TYPE.getName();
+								break;
+							case "F":
+								realType = Float.TYPE.getName();
+								break;
+							case "D":
+								realType = Double.TYPE.getName();
+								break;
+							case "C":
+								realType = Character.TYPE.getName();
+								break;
+							default:
+								realType = Void.TYPE.getName();
+								break;
+						}
+						paramTypes[i] = realType + "[]".repeat(arrayCount);
+					}
 					tmp.append(paramTypes[i]);
 
 					if (i == paramTypes.length - 1)
@@ -183,7 +298,6 @@ public class MappingDumper
 							tmp.append(" = ").append(garbageValue);
 						}
 					}
-
 					else
 					{
 						tmp.append(", ");
@@ -205,7 +319,7 @@ public class MappingDumper
 	@Test
 	public void dumpJson() throws IOException
 	{
-		ClassGroup group = JarUtil.loadJar(new File(properties.getRsClient()));
+		ClassGroup group = JarUtil.load(new File(properties.getRsClient()));
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		JsonObject jObject = new JsonObject();
@@ -215,18 +329,18 @@ public class MappingDumper
 		for (ClassFile cf : group.getClasses())
 		{
 			String implName = DeobAnnotations.getImplements(cf);
-			String className = DeobAnnotations.getObfuscatedName(cf.getAnnotations());
+			String className = DeobAnnotations.getObfuscatedName(cf);
 
 			for (Field f : cf.getFields())
 			{
-				String exportName = DeobAnnotations.getExportedName(f.getAnnotations());
+				String exportName = DeobAnnotations.getExportedName(f);
 
 				if (exportName == null)
 				{
 					continue;
 				}
 
-				String fieldName = DeobAnnotations.getObfuscatedName(f.getAnnotations());
+				String fieldName = DeobAnnotations.getObfuscatedName(f);
 				Type obfType = DeobAnnotations.getObfuscatedType(f);
 				Number getter = DeobAnnotations.getObfuscatedGetter(f);
 
@@ -237,7 +351,7 @@ public class MappingDumper
 				jField.addProperty("class", className);
 				jField.addProperty("field", fieldName);
 				jField.addProperty("obfSignature", (obfType != null ? obfType.toString() : ""));
-				jField.addProperty("signature", f.getType().toString());
+				jField.addProperty("descriptor", f.getType().toString());
 				jField.addProperty("multiplier", (getter != null ? getter : 0));
 				jField.addProperty("static", f.isStatic());
 
@@ -247,16 +361,16 @@ public class MappingDumper
 			for (Method m : cf.getMethods())
 			{
 
-				String exportName = DeobAnnotations.getExportedName(m.getAnnotations());
+				String exportName = DeobAnnotations.getExportedName(m);
 
 				if (exportName == null)
 				{
 					continue;
 				}
 
-				String methodName = DeobAnnotations.getObfuscatedName(m.getAnnotations());
+				String methodName = DeobAnnotations.getObfuscatedName(m);
 				Signature obfSignature = DeobAnnotations.getObfuscatedSignature(m);
-				String predicate = DeobAnnotations.getObfuscatedValue(m);
+				String predicate = DeobAnnotations.getDecoder(m);
 
 				JsonObject jMethod = new JsonObject();
 
@@ -265,7 +379,7 @@ public class MappingDumper
 				jMethod.addProperty("class", className);
 				jMethod.addProperty("field", methodName);
 				jMethod.addProperty("obfSignature", (obfSignature != null ? obfSignature.toString() : ""));
-				jMethod.addProperty("signature", m.getDescriptor().toString());
+				jMethod.addProperty("descriptor", m.getDescriptor().toString());
 				jMethod.addProperty("predicate", (predicate != null ? predicate : ""));
 				jMethod.addProperty("static", m.isStatic());
 

@@ -333,8 +333,8 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 		garbageValue = "8"
 	)
 	@Export("FillMode_values")
-	public static class333[] FillMode_values() {
-		return new class333[]{class333.field3897, class333.field3898, class333.SOLID};
+	public static WidgetFillMode[] FillMode_values() {
+		return new WidgetFillMode[]{WidgetFillMode.field3897, WidgetFillMode.field3898, WidgetFillMode.SOLID};
 	}
 
 	@ObfuscatedName("gh")

@@ -340,7 +340,7 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 				return 1;
 			} else if (var0 == ScriptOpcodes.CC_SETFILLMODE) {
 				var8 = Interpreter.Interpreter_intStack[--VarcInt.Interpreter_intStackSize];
-				class333 var6 = (class333)UrlRequester.findEnumerated(NetSocket.FillMode_values(), var8);
+				WidgetFillMode var6 = (WidgetFillMode)UrlRequester.findEnumerated(NetSocket.FillMode_values(), var8);
 				if (var6 != null) {
 					var3.fillMode = var6;
 					CollisionMap.invalidateWidget(var3);

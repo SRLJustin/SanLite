@@ -24,10 +24,7 @@
  */
 package net.runelite.injector;
 
-import net.runelite.asm.ClassFile;
-import net.runelite.asm.ClassGroup;
 import net.runelite.deob.clientver.ClientVersion;
-import net.runelite.deob.util.JarUtil;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -37,8 +34,9 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+
+import static net.runelite.deob.util.JarUtil.save;
 
 @Mojo(
 		name = "runelite-injector",
@@ -47,12 +45,21 @@ import java.io.IOException;
 public class InjectMojo extends AbstractMojo
 {
 	private final Log log = getLog();
+
 	@Parameter(defaultValue = "${project.build.outputDirectory}")
 	private File outputDirectory;
+
 	@Parameter(defaultValue = "./runescape-client/target/rs-client-${project.version}.jar", readonly = true, required = true)
 	private String rsClientPath;
+
 	@Parameter(defaultValue = "${net.runelite.rs:vanilla:jar}", readonly = true, required = true)
 	private String vanillaPath;
+
+	@Parameter(defaultValue = "./runescape-api/target/runescape-api-${project.version}.jar", readonly = true, required = true)
+	private String rsApiPath;
+
+	@Parameter(defaultValue = "./runelite-mixins/target/mixins-${project.version}.jar", readonly = true, required = true)
+	private String mixinsPath;
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException
@@ -70,84 +77,18 @@ public class InjectMojo extends AbstractMojo
 
 		log.info("Vanilla client version " + version);
 
-		ClassGroup rs;
-		ClassGroup vanilla;
-
+		Injector injector = new Injector(vanillaPath, rsClientPath, rsApiPath, mixinsPath);
 		try
 		{
-			rs = JarUtil.loadJar(new File(rsClientPath));
-			vanilla = JarUtil.loadJar(new File(vanillaPath));
+			injector.initToVanilla();
+			injector.injectVanilla();
 		}
-		catch (IOException ex)
-		{
-			throw new MojoExecutionException("Unable to load dependency jars", ex);
-		}
-
-		Injector injector = new Injector(rs, vanilla);
-		try
-		{
-			injector.inject();
-		}
-		catch (InjectionException ex)
+		catch (InjectException ex)
 		{
 			throw new MojoExecutionException("Error injecting client", ex);
 		}
 
-		InjectorValidator iv = new InjectorValidator(vanilla);
-		iv.validate();
-
-		if (iv.getError() > 0)
-		{
-			throw new MojoExecutionException("Error building injected jar");
-		}
-
-		if (iv.getMissing() > 0)
-		{
-			throw new MojoExecutionException("Unable to inject all methods");
-		}
-
-		try
-		{
-			writeClasses(vanilla, outputDirectory);
-		}
-		catch (IOException ex)
-		{
-			throw new MojoExecutionException("Unable to write classes", ex);
-		}
-
-		log.info("Injector wrote " + vanilla.getClasses().size() + " classes, " + iv.getOkay() + " injected methods");
+		save(injector.getVanilla(), outputDirectory);
+		log.info("Finished injection!");
 	}
-
-	private void writeClasses(ClassGroup group, File outputDirectory) throws IOException
-	{
-		for (ClassFile cf : group.getClasses())
-		{
-			File classFile = getClassFile(outputDirectory, cf);
-			byte[] classData = JarUtil.writeClass(group, cf);
-
-			try (FileOutputStream fileOutputStream = new FileOutputStream(classFile, false))
-			{
-				fileOutputStream.write(classData);
-			}
-		}
-	}
-
-	private File getClassFile(File base, ClassFile classFile)
-	{
-		File file = base;
-
-		String[] parts = classFile.getName().split("/");
-		for (int i = 0; i < parts.length - 1; ++i)
-		{
-			String part = parts[i];
-
-			file = new File(file, part);
-		}
-
-		file.mkdirs();
-		file = new File(file, parts[parts.length - 1] + ".class");
-
-		return file;
-	}
-
 }

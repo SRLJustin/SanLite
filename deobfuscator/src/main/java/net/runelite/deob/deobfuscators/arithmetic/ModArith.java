@@ -167,7 +167,7 @@ public class ModArith implements Deobfuscator
 
 				FieldInfo fieldInfo = getFieldInfo(fi.getMyField());
 
-				List<InstructionContext> l = getInsInExpr(ctx, new HashSet(), false);
+				@SuppressWarnings("unchecked") List<InstructionContext> l = getInsInExpr(ctx, new HashSet(), false);
 				boolean other = false; // check if this contains another field
 				boolean getter = false, setter = false;
 				for (InstructionContext i : l)
@@ -783,7 +783,7 @@ public class ModArith implements Deobfuscator
 				String ename = pair.getType() == Long.class
 					? "longValue"
 					: "intValue";
-				f.getAnnotations().addAnnotation(DeobAnnotations.OBFUSCATED_GETTER, ename, pair.getter);
+				f.addAnnotation(DeobAnnotations.OBFUSCATED_GETTER, ename, pair.getter);
 			}
 		}
 	}
