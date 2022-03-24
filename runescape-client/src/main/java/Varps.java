@@ -1,19 +1,35 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jg")
+@ObfuscatedName("kd")
 @Implements("Varps")
 public class Varps {
-	@ObfuscatedName("c")
+	@ObfuscatedName("ux")
+	@ObfuscatedGetter(
+		longValue = 7968788616048025071L
+	)
+	static long field3287;
+	@ObfuscatedName("qu")
+	@ObfuscatedSignature(
+		descriptor = "Lqv;"
+	)
+	@Export("privateChatMode")
+	static PrivateChatMode privateChatMode;
+	@ObfuscatedName("v")
 	@Export("Varps_masks")
 	static int[] Varps_masks;
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@Export("Varps_temp")
 	public static int[] Varps_temp;
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
 	@Export("Varps_main")
 	public static int[] Varps_main;
+	@ObfuscatedName("al")
+	@Export("hasFocus")
+	protected static boolean hasFocus;
 
 	static {
 		Varps_masks = new int[32];

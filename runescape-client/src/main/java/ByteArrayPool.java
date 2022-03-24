@@ -6,92 +6,95 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lj")
+@ObfuscatedName("me")
 @Implements("ByteArrayPool")
 public class ByteArrayPool {
-	@ObfuscatedName("t")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = 1756482419
+		intValue = -2135689981
 	)
 	@Export("ByteArrayPool_smallCount")
 	static int ByteArrayPool_smallCount;
-	@ObfuscatedName("s")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 379141881
+		intValue = 742427787
 	)
 	@Export("ByteArrayPool_mediumCount")
 	static int ByteArrayPool_mediumCount;
-	@ObfuscatedName("j")
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = 173834125
+		intValue = 557846703
 	)
 	@Export("ByteArrayPool_largeCount")
 	static int ByteArrayPool_largeCount;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -521742755
+		intValue = 257291791
 	)
-	static int field4026;
-	@ObfuscatedName("n")
+	static int field4169;
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -1862899705
+		intValue = -1915977333
 	)
-	static int field4023;
+	static int field4178;
 	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = 1634057369
+		intValue = -971009911
 	)
-	static int field4028;
-	@ObfuscatedName("o")
+	static int field4165;
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 1124968779
+		intValue = 507582471
 	)
-	static int field4021;
-	@ObfuscatedName("v")
+	static int field4172;
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = -1777784581
+		intValue = 1120130659
 	)
-	static int field4030;
-	@ObfuscatedName("d")
+	static int field4177;
+	@ObfuscatedName("c")
 	@Export("ByteArrayPool_small")
 	static byte[][] ByteArrayPool_small;
-	@ObfuscatedName("h")
+	@ObfuscatedName("j")
 	@Export("ByteArrayPool_medium")
 	static byte[][] ByteArrayPool_medium;
-	@ObfuscatedName("g")
+	@ObfuscatedName("p")
 	@Export("ByteArrayPool_large")
 	static byte[][] ByteArrayPool_large;
-	@ObfuscatedName("e")
-	static byte[][] field4034;
-	@ObfuscatedName("f")
-	public static ArrayList field4035;
+	@ObfuscatedName("s")
+	static byte[][] field4166;
+	@ObfuscatedName("b")
+	@Export("ByteArrayPool_alternativeSizes")
+	public static int[] ByteArrayPool_alternativeSizes;
+	@ObfuscatedName("m")
+	public static ArrayList field4173;
 
 	static {
 		ByteArrayPool_smallCount = 0;
 		ByteArrayPool_mediumCount = 0;
 		ByteArrayPool_largeCount = 0;
-		field4026 = 0;
-		field4023 = 1000;
-		field4028 = 250;
-		field4021 = 100;
-		field4030 = 50;
+		field4169 = 0;
+		field4178 = 1000;
+		field4165 = 250;
+		field4172 = 100;
+		field4177 = 50;
 		ByteArrayPool_small = new byte[1000][];
 		ByteArrayPool_medium = new byte[250][];
 		ByteArrayPool_large = new byte[100][];
-		field4034 = new byte[50][];
-		field4035 = new ArrayList();
-		field4035.clear();
-		field4035.add(100);
-		field4035.add(5000);
-		field4035.add(10000);
-		field4035.add(30000);
+		field4166 = new byte[50][];
+		field4173 = new ArrayList();
+		field4173.clear();
+		field4173.add(100);
+		field4173.add(5000);
+		field4173.add(10000);
+		field4173.add(30000);
 		new HashMap();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(IZS)[B",
-		garbageValue = "-3055"
+		descriptor = "(IZB)[B",
+		garbageValue = "68"
 	)
 	@Export("ByteArrayPool_getArrayBool")
 	static synchronized byte[] ByteArrayPool_getArrayBool(int var0, boolean var1) {
@@ -126,35 +129,25 @@ public class ByteArrayPool {
 		if (var0 != 30000) {
 			if (var0 < 30000) {
 			}
-		} else if (field4026 > 0) {
-			var4 = field4034[--field4026];
-			field4034[field4026] = null;
+		} else if (field4169 > 0) {
+			var4 = field4166[--field4169];
+			field4166[field4169] = null;
 			return var4;
 		}
 
-		if (World.ByteArrayPool_arrays != null) {
-			for (int var2 = 0; var2 < SoundCache.ByteArrayPool_alternativeSizes.length; ++var2) {
-				if (SoundCache.ByteArrayPool_alternativeSizes[var2] != var0) {
-					if (var0 < SoundCache.ByteArrayPool_alternativeSizes[var2]) {
+		if (ScriptEvent.ByteArrayPool_arrays != null) {
+			for (int var2 = 0; var2 < ByteArrayPool_alternativeSizes.length; ++var2) {
+				if (ByteArrayPool_alternativeSizes[var2] != var0) {
+					if (var0 < ByteArrayPool_alternativeSizes[var2]) {
 					}
-				} else if (ApproximateRouteStrategy.ByteArrayPool_altSizeArrayCounts[var2] > 0) {
-					byte[] var3 = World.ByteArrayPool_arrays[var2][--ApproximateRouteStrategy.ByteArrayPool_altSizeArrayCounts[var2]];
-					World.ByteArrayPool_arrays[var2][ApproximateRouteStrategy.ByteArrayPool_altSizeArrayCounts[var2]] = null;
+				} else if (GameObject.ByteArrayPool_altSizeArrayCounts[var2] > 0) {
+					byte[] var3 = ScriptEvent.ByteArrayPool_arrays[var2][--GameObject.ByteArrayPool_altSizeArrayCounts[var2]];
+					ScriptEvent.ByteArrayPool_arrays[var2][GameObject.ByteArrayPool_altSizeArrayCounts[var2]] = null;
 					return var3;
 				}
 			}
 		}
 
 		return new byte[var0];
-	}
-
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(IZB)Ljava/lang/String;",
-		garbageValue = "43"
-	)
-	@Export("intToString")
-	public static String intToString(int var0, boolean var1) {
-		return var1 && var0 >= 0 ? Skeleton.method3944(var0, 10, var1) : Integer.toString(var0);
 	}
 }

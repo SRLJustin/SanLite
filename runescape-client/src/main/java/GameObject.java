@@ -4,101 +4,92 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hl")
+@ObfuscatedName("hg")
 @Implements("GameObject")
 public final class GameObject {
-	@ObfuscatedName("fk")
+	@ObfuscatedName("w")
+	@Export("ByteArrayPool_altSizeArrayCounts")
+	public static int[] ByteArrayPool_altSizeArrayCounts;
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -1234198713
-	)
-	@Export("worldPort")
-	static int worldPort;
-	@ObfuscatedName("ma")
-	@ObfuscatedGetter(
-		intValue = -1786079239
-	)
-	@Export("menuWidth")
-	static int menuWidth;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = -1089622701
+		intValue = -847164107
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -465774691
+		intValue = -940265289
 	)
 	@Export("height")
 	int height;
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 1923590497
+		intValue = -198288323
 	)
 	@Export("centerX")
 	int centerX;
-	@ObfuscatedName("m")
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = 1996180969
-	)
-	@Export("orientation")
-	int orientation;
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		intValue = 1051509529
+		intValue = 240672507
 	)
 	@Export("centerY")
 	int centerY;
-	@ObfuscatedName("s")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lgh;"
 	)
 	@Export("renderable")
 	public Renderable renderable;
-	@ObfuscatedName("j")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 1723330507
+		intValue = -1154324973
+	)
+	@Export("orientation")
+	int orientation;
+	@ObfuscatedName("d")
+	@ObfuscatedGetter(
+		intValue = -2061335069
 	)
 	@Export("startX")
 	int startX;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -621074209
+		intValue = -1084984155
 	)
 	@Export("endX")
 	int endX;
-	@ObfuscatedName("n")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -178409117
+		intValue = -1316603005
 	)
 	@Export("startY")
 	int startY;
 	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = 144998379
+		intValue = -609115179
 	)
 	@Export("endY")
 	int endY;
-	@ObfuscatedName("o")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 1469340071
+		intValue = 1379225673
 	)
-	int field2548;
-	@ObfuscatedName("v")
+	int field2639;
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = 800381971
+		intValue = 508066469
 	)
 	@Export("lastDrawn")
 	int lastDrawn;
-	@ObfuscatedName("d")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		longValue = -3336818157473405963L
+		longValue = -5816453776814421193L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("h")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -1622989155
+		intValue = -1479412759
 	)
 	@Export("flags")
 	int flags;
@@ -108,38 +99,32 @@ public final class GameObject {
 		this.flags = 0;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("fv")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "210014678"
+		descriptor = "(I)V",
+		garbageValue = "1885717447"
 	)
-	static int method4341(int var0, Script var1, boolean var2) {
-		if (var0 != 6700 && var0 != 6702 && var0 != 6704 && var0 != 6706 && var0 != 6708) {
-			if (var0 != 6701 && var0 != 6703 && var0 != 6705 && var0 != 6707 && var0 != 6709) {
-				if (var0 == 6750) {
-					Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-					return 1;
-				} else if (var0 != 6751 && var0 != 6752 && var0 != 6753) {
-					if (var0 == 6754) {
-						int var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-						NPCComposition var4 = WorldMapLabelSize.getNpcDefinition(var3);
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
-						return 1;
-					} else {
-						return 2;
-					}
-				} else {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -1;
-					return 1;
-				}
-			} else {
-				--IsaacCipher.Interpreter_intStackSize;
-				return 1;
-			}
-		} else {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			--class13.Interpreter_stringStackSize;
-			return 1;
+	@Export("logOut")
+	static final void logOut() {
+		Client.packetWriter.close();
+		MouseHandler.method593();
+		FriendSystem.scene.clear();
+
+		for (int var0 = 0; var0 < 4; ++var0) {
+			Client.collisionMaps[var0].clear();
 		}
+
+		System.gc();
+		class273.musicPlayerStatus = 1;
+		class147.musicTrackArchive = null;
+		ArchiveLoader.musicTrackGroupId = -1;
+		class273.musicTrackFileId = -1;
+		DevicePcmPlayerProvider.musicTrackVolume = 0;
+		class260.musicTrackBoolean = false;
+		class273.pcmSampleLength = 2;
+		Client.currentTrackGroupId = -1;
+		Client.field731 = false;
+		Players.method2419();
+		InterfaceParent.updateGameState(10);
 	}
 }
