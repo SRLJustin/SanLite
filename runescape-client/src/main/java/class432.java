@@ -1,25 +1,40 @@
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("px")
-public class class432 {
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(
-		intValue = -1165212437
-	)
-	@Export("SpriteBuffer_spriteWidth")
-	public static int SpriteBuffer_spriteWidth;
+@ObfuscatedName("pl")
+final class class432 implements class427 {
 	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = 1642868971
+	@ObfuscatedSignature(
+		descriptor = "Lkn;"
 	)
-	@Export("SpriteBuffer_spriteHeight")
-	public static int SpriteBuffer_spriteHeight;
-	@ObfuscatedName("s")
-	@Export("SpriteBuffer_spriteWidths")
-	public static int[] SpriteBuffer_spriteWidths;
-	@ObfuscatedName("w")
-	@Export("SpriteBuffer_spritePalette")
-	public static int[] SpriteBuffer_spritePalette;
+	@Export("scriptDotWidget")
+	static Widget scriptDotWidget;
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;Lpd;B)V",
+		garbageValue = "25"
+	)
+	public void vmethod7681(Object var1, Buffer var2) {
+		this.method7682((String)var1, var2);
+	}
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(Lpd;I)Ljava/lang/Object;",
+		garbageValue = "1821026092"
+	)
+	public Object vmethod7683(Buffer var1) {
+		return var1.readStringCp1252NullTerminated();
+	}
+
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Lpd;I)V",
+		garbageValue = "-1807705187"
+	)
+	void method7682(String var1, Buffer var2) {
+		var2.writeStringCp1252NullTerminated(var1);
+	}
 }

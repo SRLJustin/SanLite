@@ -2,189 +2,194 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@ObfuscatedName("g")
+@ObfuscatedName("p")
 public class class14 {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = -691857245
+	@ObfuscatedName("ug")
+	@Export("foundItemIds")
+	static short[] foundItemIds;
+	@ObfuscatedName("iu")
+	@ObfuscatedSignature(
+		descriptor = "Lql;"
 	)
-	final int field80;
-	@ObfuscatedName("b")
-	final String field79;
-	@ObfuscatedName("p")
-	final ThreadFactory field81;
-	@ObfuscatedName("m")
-	final ThreadPoolExecutor field82;
+	@Export("compass")
+	static SpritePixels compass;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(
+		intValue = 659185471
+	)
+	final int field76;
+	@ObfuscatedName("o")
+	final String field74;
+	@ObfuscatedName("h")
+	final ThreadFactory field75;
+	@ObfuscatedName("g")
+	final ThreadPoolExecutor field73;
 
 	public class14(String var1, int var2, int var3) {
-		this.field79 = var1;
-		this.field80 = var2;
-		this.field81 = new class16(this);
-		this.field82 = this.method203(var3);
+		this.field74 = var1;
+		this.field76 = var2;
+		this.field75 = new class16(this);
+		this.field73 = this.method176(var3);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(II)Ljava/util/concurrent/ThreadPoolExecutor;",
-		garbageValue = "-1684515517"
+		garbageValue = "-2010668855"
 	)
-	final ThreadPoolExecutor method203(int var1) {
-		return new ThreadPoolExecutor(var1, var1, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue(this.field80), this.field81);
+	final ThreadPoolExecutor method176(int var1) {
+		return new ThreadPoolExecutor(var1, var1, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue(this.field76), this.field75);
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lo;I)Lf;",
-		garbageValue = "-977382928"
+		descriptor = "(Lk;I)Lm;",
+		garbageValue = "-964082167"
 	)
-	public class19 method213(class10 var1) {
-		if (this.field82.getQueue().remainingCapacity() <= 0) {
-			System.err.println("REST thread pool queue is empty\r\nThread pool size " + this.field82.getCorePoolSize() + " Queue capacity " + this.field80);
+	public class19 method180(class10 var1) {
+		if (this.field73.getQueue().remainingCapacity() <= 0) {
+			System.err.println("REST thread pool queue is empty\r\nThread pool size " + this.field73.getCorePoolSize() + " Queue capacity " + this.field76);
 			return new class19("Queue full");
 		} else {
-			class19 var2 = new class19(this.field82.submit(new class20(this, var1)));
+			class19 var2 = new class19(this.field73.submit(new class20(this, var1)));
 			return var2;
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1972637620"
+		garbageValue = "-302987445"
 	)
-	public final void method206() {
+	public final void method178() {
 		try {
-			this.field82.shutdown();
+			this.field73.shutdown();
 		} catch (Exception var2) {
 			System.err.println("Error shutting down RestRequestService\r\n" + var2);
 		}
 
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Ldn;FB)F",
-		garbageValue = "1"
+		descriptor = "(II)Z",
+		garbageValue = "-1120017674"
 	)
-	static float method210(class115 var0, float var1) {
-		if (var0 != null && var0.method2637() != 0) {
-			if (var1 < (float)var0.field1393[0].field1359) {
-				return var0.field1410 == class114.field1390 ? var0.field1393[0].field1349 : class213.method4354(var0, var1, true);
-			} else if (var1 > (float)var0.field1393[var0.method2637() - 1].field1359) {
-				return var0.field1396 == class114.field1390 ? var0.field1393[var0.method2637() - 1].field1349 : class213.method4354(var0, var1, false);
-			} else if (var0.field1408) {
-				return var0.field1393[0].field1349;
-			} else {
-				class111 var2 = var0.method2631(var1);
-				boolean var3 = false;
-				boolean var4 = false;
-				if (var2 == null) {
-					return 0.0F;
-				} else {
-					if (0.0D == (double)var2.field1352 && (double)var2.field1357 == 0.0D) {
-						var3 = true;
-					} else if (Float.MAX_VALUE == var2.field1352 && var2.field1357 == Float.MAX_VALUE) {
-						var4 = true;
-					} else if (var2.field1354 != null) {
-						if (var0.field1403) {
-							float[] var5 = new float[4];
-							float[] var6 = new float[4];
-							var5[0] = (float)var2.field1359;
-							var6[0] = var2.field1349;
-							var5[1] = var5[0] + var2.field1352 * 0.33333334F;
-							var6[1] = var6[0] + 0.33333334F * var2.field1357;
-							var5[3] = (float)var2.field1354.field1359;
-							var6[3] = var2.field1354.field1349;
-							var5[2] = var5[3] - var2.field1354.field1350 * 0.33333334F;
-							var6[2] = var6[3] - var2.field1354.field1351 * 0.33333334F;
-							if (var0.field1397) {
-								class13.method202(var0, var5, var6);
-							} else {
-								UserComparator4.method2504(var0, var5, var6);
-							}
+	public static boolean method175(int var0) {
+		return var0 >= WorldMapDecorationType.field3519.id && var0 <= WorldMapDecorationType.field3511.id || var0 == WorldMapDecorationType.field3514.id;
+	}
 
-							var0.field1403 = false;
-						}
-					} else {
-						var3 = true;
-					}
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(Lorg/json/JSONObject;Ljava/lang/String;B)[F",
+		garbageValue = "28"
+	)
+	static float[] method186(JSONObject var0, String var1) throws JSONException {
+		float[] var2 = new float[4];
 
-					if (var3) {
-						return var2.field1349;
-					} else if (var4) {
-						return (float)var2.field1359 != var1 && var2.field1354 != null ? var2.field1354.field1349 : var2.field1349;
-					} else {
-						float var11;
-						float var12;
-						if (var0.field1397) {
-							if (var0 == null) {
-								var12 = 0.0F;
-							} else {
-								if (var1 == var0.field1406) {
-									var11 = 0.0F;
-								} else if (var1 == var0.field1394) {
-									var11 = 1.0F;
-								} else {
-									var11 = (var1 - var0.field1406) / (var0.field1394 - var0.field1406);
-								}
+		try {
+			JSONArray var3 = var0.getJSONArray(var1);
+			var2[0] = (float)var3.optDouble(0, 0.0D);
+			var2[1] = (float)var3.optDouble(1, 0.0D);
+			var2[2] = (float)var3.optDouble(2, 1.0D);
+			var2[3] = (float)var3.optDouble(3, 1.0D);
+		} catch (JSONException var4) {
+			var2[0] = 0.0F;
+			var2[1] = 0.0F;
+			var2[2] = 1.0F;
+			var2[3] = 1.0F;
+		}
 
-								float var7;
-								if (var0.field1398) {
-									var7 = var11;
-								} else {
-									float[] var8 = new float[]{var0.field1401[0] - var11, var0.field1401[1], var0.field1401[2], var0.field1401[3]};
-									float[] var9 = new float[5];
-									int var10 = class144.method2971(var8, 3, 0.0F, true, 1.0F, true, var9);
-									if (var10 == 1) {
-										var7 = var9[0];
-									} else {
-										var7 = 0.0F;
-									}
-								}
+		return var2;
+	}
 
-								var12 = var0.field1402[0] + var7 * (var0.field1402[1] + var7 * (var0.field1402[2] + var7 * var0.field1402[3]));
-							}
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(ILbo;ZI)I",
+		garbageValue = "-1324190419"
+	)
+	static int method184(int var0, Script var1, boolean var2) {
+		int var3;
+		int var6;
+		int var9;
+		if (var0 == ScriptOpcodes.ENUM_STRING) {
+			class295.Interpreter_intStackSize -= 2;
+			var3 = Interpreter.Interpreter_intStack[class295.Interpreter_intStackSize];
+			var9 = Interpreter.Interpreter_intStack[class295.Interpreter_intStackSize + 1];
+			EnumComposition var10 = class268.getEnum(var3);
+			if (var10.outputType != 's') {
+			}
 
-							return var12;
-						} else {
-							if (var0 == null) {
-								var12 = 0.0F;
-							} else {
-								var11 = var1 - var0.field1406;
-								var12 = (var11 * (var11 * var0.field1401[0] + var0.field1401[1]) + var0.field1401[2]) * var11 + var0.field1401[3];
-							}
-
-							return var12;
-						}
-					}
+			for (var6 = 0; var6 < var10.outputCount; ++var6) {
+				if (var9 == var10.keys[var6]) {
+					Interpreter.Interpreter_stringStack[++ChatChannel.Interpreter_stringStackSize - 1] = var10.strVals[var6];
+					var10 = null;
+					break;
 				}
 			}
+
+			if (var10 != null) {
+				Interpreter.Interpreter_stringStack[++ChatChannel.Interpreter_stringStackSize - 1] = var10.defaultStr;
+			}
+
+			return 1;
+		} else if (var0 != ScriptOpcodes.ENUM) {
+			if (var0 == ScriptOpcodes.ENUM_GETOUTPUTCOUNT) {
+				var3 = Interpreter.Interpreter_intStack[--class295.Interpreter_intStackSize];
+				EnumComposition var4 = class268.getEnum(var3);
+				Interpreter.Interpreter_intStack[++class295.Interpreter_intStackSize - 1] = var4.size();
+				return 1;
+			} else {
+				return 2;
+			}
 		} else {
-			return 0.0F;
+			class295.Interpreter_intStackSize -= 4;
+			var3 = Interpreter.Interpreter_intStack[class295.Interpreter_intStackSize];
+			var9 = Interpreter.Interpreter_intStack[class295.Interpreter_intStackSize + 1];
+			int var5 = Interpreter.Interpreter_intStack[class295.Interpreter_intStackSize + 2];
+			var6 = Interpreter.Interpreter_intStack[class295.Interpreter_intStackSize + 3];
+			EnumComposition var7 = class268.getEnum(var5);
+			if (var3 == var7.inputType && var9 == var7.outputType) {
+				for (int var8 = 0; var8 < var7.outputCount; ++var8) {
+					if (var6 == var7.keys[var8]) {
+						if (var9 == 115) {
+							Interpreter.Interpreter_stringStack[++ChatChannel.Interpreter_stringStackSize - 1] = var7.strVals[var8];
+						} else {
+							Interpreter.Interpreter_intStack[++class295.Interpreter_intStackSize - 1] = var7.intVals[var8];
+						}
+
+						var7 = null;
+						break;
+					}
+				}
+
+				if (var7 != null) {
+					if (var9 == 115) {
+						Interpreter.Interpreter_stringStack[++ChatChannel.Interpreter_stringStackSize - 1] = var7.defaultStr;
+					} else {
+						Interpreter.Interpreter_intStack[++class295.Interpreter_intStackSize - 1] = var7.defaultInt;
+					}
+				}
+
+				return 1;
+			} else {
+				if (var9 == 115) {
+					Interpreter.Interpreter_stringStack[++ChatChannel.Interpreter_stringStackSize - 1] = "null";
+				} else {
+					Interpreter.Interpreter_intStack[++class295.Interpreter_intStackSize - 1] = 0;
+				}
+
+				return 1;
+			}
 		}
-	}
-
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "(ZZI)I",
-		garbageValue = "-1522814517"
-	)
-	public static int method214(boolean var0, boolean var1) {
-		byte var2 = 0;
-		int var3 = var2 + NetCache.NetCache_pendingPriorityResponsesCount + NetCache.NetCache_pendingPriorityWritesCount;
-		return var3;
-	}
-
-	@ObfuscatedName("id")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "724384814"
-	)
-	static final boolean method204() {
-		return Client.isMenuOpen;
 	}
 }

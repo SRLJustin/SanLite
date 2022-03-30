@@ -5,63 +5,67 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bu")
+@ObfuscatedName("bf")
 @Implements("Interpreter")
 public class Interpreter {
-	@ObfuscatedName("tb")
+	@ObfuscatedName("uu")
 	@ObfuscatedSignature(
-		descriptor = "Lnn;"
+		descriptor = "Lcv;"
 	)
-	@Export("platformInfo")
-	static PlatformInfo platformInfo;
-	@ObfuscatedName("w")
+	@Export("clientPreferences")
+	static ClientPreferences clientPreferences;
+	@ObfuscatedName("l")
+	@Export("Interpreter_stringLocals")
+	static String[] Interpreter_stringLocals;
+	@ObfuscatedName("n")
 	@Export("Interpreter_arrayLengths")
 	static int[] Interpreter_arrayLengths;
-	@ObfuscatedName("n")
+	@ObfuscatedName("d")
 	@Export("Interpreter_arrays")
 	static int[][] Interpreter_arrays;
-	@ObfuscatedName("r")
+	@ObfuscatedName("f")
 	@Export("Interpreter_intStack")
 	static int[] Interpreter_intStack;
-	@ObfuscatedName("v")
+	@ObfuscatedName("r")
 	@Export("Interpreter_stringStack")
 	static String[] Interpreter_stringStack;
-	@ObfuscatedName("h")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = -866718889
+		intValue = -1239743013
 	)
 	@Export("Interpreter_frameDepth")
 	static int Interpreter_frameDepth;
-	@ObfuscatedName("g")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "[Lbg;"
+		descriptor = "[Lbt;"
 	)
 	@Export("Interpreter_frames")
 	static ScriptFrame[] Interpreter_frames;
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(
-		intValue = 355212093
-	)
-	static int field812;
-	@ObfuscatedName("l")
+	@ObfuscatedName("a")
 	@Export("Interpreter_calendar")
 	static java.util.Calendar Interpreter_calendar;
-	@ObfuscatedName("q")
+	@ObfuscatedName("m")
 	@Export("Interpreter_MONTHS")
 	static final String[] Interpreter_MONTHS;
-	@ObfuscatedName("z")
-	static boolean field818;
-	@ObfuscatedName("i")
-	static boolean field816;
 	@ObfuscatedName("y")
-	static ArrayList field817;
-	@ObfuscatedName("ah")
+	static boolean field837;
+	@ObfuscatedName("z")
+	static boolean field838;
+	@ObfuscatedName("e")
+	static ArrayList field839;
+	@ObfuscatedName("t")
 	@ObfuscatedGetter(
-		intValue = -1880353715
+		intValue = -1884784675
 	)
-	static int field815;
-	@ObfuscatedName("ax")
-	static final double field814;
+	static int field827;
+	@ObfuscatedName("ay")
+	static final double field842;
+	@ObfuscatedName("cw")
+	@ObfuscatedSignature(
+		descriptor = "Lqx;"
+	)
+	@Export("worldSelectLeftSprite")
+	static IndexedSprite worldSelectLeftSprite;
 
 	static {
 		Interpreter_arrayLengths = new int[5];
@@ -72,30 +76,36 @@ public class Interpreter {
 		Interpreter_frames = new ScriptFrame[50];
 		Interpreter_calendar = java.util.Calendar.getInstance();
 		Interpreter_MONTHS = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-		field818 = false;
-		field816 = false;
-		field817 = new ArrayList();
-		field815 = 0;
-		field814 = Math.log(2.0D);
+		field837 = false;
+		field838 = false;
+		field839 = new ArrayList();
+		field827 = 0;
+		field842 = Math.log(2.0D);
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(CLlf;B)I",
-		garbageValue = "-56"
+		descriptor = "(IIB)V",
+		garbageValue = "8"
 	)
-	@Export("lowercaseChar")
-	static int lowercaseChar(char var0, Language var1) {
-		int var2 = var0 << 4;
-		if (Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
-			var0 = Character.toLowerCase(var0);
-			var2 = (var0 << 4) + 1;
+	@Export("changeWorldSelectSorting")
+	static void changeWorldSelectSorting(int var0, int var1) {
+		int[] var2 = new int[4];
+		int[] var3 = new int[4];
+		var2[0] = var0;
+		var3[0] = var1;
+		int var4 = 1;
+
+		for (int var5 = 0; var5 < 4; ++var5) {
+			if (World.World_sortOption1[var5] != var0) {
+				var2[var4] = World.World_sortOption1[var5];
+				var3[var4] = World.World_sortOption2[var5];
+				++var4;
+			}
 		}
 
-		if (var0 == 241 && var1 == Language.Language_ES) {
-			var2 = 1762;
-		}
-
-		return var2;
+		World.World_sortOption1 = var2;
+		World.World_sortOption2 = var3;
+		WorldMapDecorationType.sortWorlds(World.World_worlds, 0, World.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
 	}
 }

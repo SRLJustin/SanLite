@@ -9,43 +9,43 @@ public class WorldMapData_0 extends AbstractWorldMapData {
 	WorldMapData_0() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "-64"
+		descriptor = "(Lpd;I)V",
+		garbageValue = "1008832377"
 	)
 	@Export("init")
 	void init(Buffer var1) {
 		int var2 = var1.readUnsignedByte();
-		if (var2 != WorldMapID.field2739.value) {
+		if (var2 != WorldMapID.field2829.value) {
 			throw new IllegalStateException("");
 		} else {
 			super.minPlane = var1.readUnsignedByte();
 			super.planes = var1.readUnsignedByte();
-			super.regionXLow = var1.readUnsignedShort() * 64;
-			super.regionYLow = var1.readUnsignedShort() * 64;
+			super.regionXLow = var1.readUnsignedShort() * 4096;
+			super.regionYLow = var1.readUnsignedShort() * 4096;
 			super.regionX = var1.readUnsignedShort();
 			super.regionY = var1.readUnsignedShort();
-			super.groupId = var1.method7400();
-			super.fileId = var1.method7400();
+			super.groupId = var1.method7742();
+			super.fileId = var1.method7742();
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "28"
+		descriptor = "(Lpd;I)V",
+		garbageValue = "1809174469"
 	)
 	@Export("readGeography")
 	void readGeography(Buffer var1) {
 		super.planes = Math.min(super.planes, 4);
 		super.floorUnderlayIds = new short[1][64][64];
 		super.floorOverlayIds = new short[super.planes][64][64];
-		super.field2699 = new byte[super.planes][64][64];
-		super.field2706 = new byte[super.planes][64][64];
+		super.field2793 = new byte[super.planes][64][64];
+		super.field2792 = new byte[super.planes][64][64];
 		super.decorations = new WorldMapDecoration[super.planes][64][64][];
 		int var2 = var1.readUnsignedByte();
-		if (var2 != class231.field2736.value) {
+		if (var2 != class239.field2823.value) {
 			throw new IllegalStateException("");
 		} else {
 			int var3 = var1.readUnsignedByte();
@@ -72,25 +72,64 @@ public class WorldMapData_0 extends AbstractWorldMapData {
 			return false;
 		} else {
 			WorldMapData_0 var2 = (WorldMapData_0)var1;
-			return var2.regionX == super.regionX && super.regionY == var2.regionY;
+			return super.regionX == var2.regionX && super.regionY == var2.regionY;
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lpc;",
-		garbageValue = "-1557280299"
+		descriptor = "([Ljava/lang/String;[IIII)V",
+		garbageValue = "-352073584"
 	)
-	public static PrivateChatMode method4353(int var0) {
-		PrivateChatMode[] var1 = FloorUnderlayDefinition.method3381();
+	public static void method4518(String[] var0, int[] var1, int var2, int var3) {
+		if (var2 < var3) {
+			int var4 = (var3 + var2) / 2;
+			int var5 = var2;
+			String var6 = var0[var4];
+			var0[var4] = var0[var3];
+			var0[var3] = var6;
+			int var7 = var1[var4];
+			var1[var4] = var1[var3];
+			var1[var3] = var7;
 
-		for (int var2 = 0; var2 < var1.length; ++var2) {
-			PrivateChatMode var3 = var1[var2];
-			if (var0 == var3.field4597) {
-				return var3;
+			for (int var8 = var2; var8 < var3; ++var8) {
+				if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
+					String var9 = var0[var8];
+					var0[var8] = var0[var5];
+					var0[var5] = var9;
+					int var10 = var1[var8];
+					var1[var8] = var1[var5];
+					var1[var5++] = var10;
+				}
 			}
+
+			var0[var3] = var0[var5];
+			var0[var5] = var6;
+			var1[var3] = var1[var5];
+			var1[var5] = var7;
+			method4518(var0, var1, var2, var5 - 1);
+			method4518(var0, var1, var5 + 1, var3);
 		}
 
-		return null;
+	}
+
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(
+		descriptor = "(CLlp;I)I",
+		garbageValue = "-1970955164"
+	)
+	@Export("lowercaseChar")
+	static int lowercaseChar(char var0, Language var1) {
+		int var2 = var0 << 4;
+		if (Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
+			var0 = Character.toLowerCase(var0);
+			var2 = (var0 << 4) + 1;
+		}
+
+		if (var0 == 241 && var1 == Language.Language_ES) {
+			var2 = 1762;
+		}
+
+		return var2;
 	}
 }

@@ -6,23 +6,24 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ka")
+@ObfuscatedName("ll")
 @Implements("GrandExchangeEvents")
 public class GrandExchangeEvents {
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@Export("GrandExchangeEvents_ageComparator")
 	public static Comparator GrandExchangeEvents_ageComparator;
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
 	@Export("GrandExchangeEvents_priceComparator")
 	public static Comparator GrandExchangeEvents_priceComparator;
-	@ObfuscatedName("m")
+	@ObfuscatedName("g")
 	@Export("GrandExchangeEvents_nameComparator")
 	public static Comparator GrandExchangeEvents_nameComparator;
-	@ObfuscatedName("t")
+	@ObfuscatedName("l")
 	@Export("GrandExchangeEvents_quantityComparator")
 	public static Comparator GrandExchangeEvents_quantityComparator;
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@Export("events")
 	public final List events;
 
@@ -35,7 +36,7 @@ public class GrandExchangeEvents {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;Z)V",
+		descriptor = "(Lpd;Z)V",
 		garbageValue = "1"
 	)
 	public GrandExchangeEvents(Buffer var1, boolean var2) {
@@ -57,10 +58,10 @@ public class GrandExchangeEvents {
 
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Comparator;ZB)V",
-		garbageValue = "39"
+		descriptor = "(Ljava/util/Comparator;ZI)V",
+		garbageValue = "1259206127"
 	)
 	@Export("sort")
 	public void sort(Comparator var1, boolean var2) {
@@ -74,14 +75,58 @@ public class GrandExchangeEvents {
 
 	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "40"
+		descriptor = "(ILbo;ZI)I",
+		garbageValue = "1624825414"
 	)
-	public static void method5716() {
-		if (KeyHandler.KeyHandler_instance != null) {
-			synchronized(KeyHandler.KeyHandler_instance) {
-				KeyHandler.KeyHandler_instance = null;
+	static int method5993(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? class432.scriptDotWidget : class341.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETINVOBJECT) {
+			Interpreter.Interpreter_intStack[++class295.Interpreter_intStackSize - 1] = var3.itemId;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETINVCOUNT) {
+			if (var3.itemId != -1) {
+				Interpreter.Interpreter_intStack[++class295.Interpreter_intStackSize - 1] = var3.itemQuantity;
+			} else {
+				Interpreter.Interpreter_intStack[++class295.Interpreter_intStackSize - 1] = 0;
 			}
+
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETID) {
+			Interpreter.Interpreter_intStack[++class295.Interpreter_intStackSize - 1] = var3.childIndex;
+			return 1;
+		} else if (var0 == 1707) {
+			Interpreter.Interpreter_intStack[++class295.Interpreter_intStackSize - 1] = var3.method5642() ? 1 : 0;
+			return 1;
+		} else if (var0 == 1708) {
+			return class302.method5773(var3);
+		} else {
+			return var0 == 1708 ? WorldMapSectionType.method4952(var3) : 2;
+		}
+	}
+
+	@ObfuscatedName("jd")
+	@ObfuscatedSignature(
+		descriptor = "([Lkn;Lkn;ZI)V",
+		garbageValue = "-1924378319"
+	)
+	@Export("revalidateWidgetScroll")
+	static void revalidateWidgetScroll(Widget[] var0, Widget var1, boolean var2) {
+		int var3 = var1.scrollWidth != 0 ? var1.scrollWidth : var1.width;
+		int var4 = var1.scrollHeight != 0 ? var1.scrollHeight : var1.height;
+		class65.resizeInterface(var0, var1.id, var3, var4, var2);
+		if (var1.children != null) {
+			class65.resizeInterface(var1.children, var1.id, var3, var4, var2);
+		}
+
+		InterfaceParent var5 = (InterfaceParent)Client.interfaceParents.get((long)var1.id);
+		if (var5 != null) {
+			int var6 = var5.group;
+			if (MusicPatchNode2.loadInterface(var6)) {
+				class65.resizeInterface(EnumComposition.Widget_interfaceComponents[var6], -1, var3, var4, var2);
+			}
+		}
+
+		if (var1.contentType == 1337) {
 		}
 
 	}

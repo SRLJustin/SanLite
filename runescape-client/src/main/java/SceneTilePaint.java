@@ -2,46 +2,47 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gk")
+@ObfuscatedName("hj")
 @Implements("SceneTilePaint")
 public final class SceneTilePaint {
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -1849890093
+		intValue = -187868113
 	)
 	@Export("swColor")
 	int swColor;
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = 325904735
+		intValue = -1925508175
 	)
 	@Export("seColor")
 	int seColor;
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -79551477
+		intValue = 221101905
 	)
 	@Export("neColor")
 	int neColor;
-	@ObfuscatedName("m")
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = -378888485
+		intValue = 794090973
 	)
 	@Export("nwColor")
 	int nwColor;
-	@ObfuscatedName("t")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = 1880581479
+		intValue = 1756727001
 	)
 	@Export("texture")
 	int texture;
-	@ObfuscatedName("s")
+	@ObfuscatedName("n")
 	@Export("isFlat")
 	boolean isFlat;
-	@ObfuscatedName("j")
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = 1789996375
+		intValue = 587137313
 	)
 	@Export("rgb")
 	int rgb;
@@ -55,5 +56,51 @@ public final class SceneTilePaint {
 		this.texture = var5;
 		this.rgb = var6;
 		this.isFlat = var7;
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(III)I",
+		garbageValue = "-691234429"
+	)
+	static int method4500(int var0, int var1) {
+		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var2 == null) {
+			return -1;
+		} else {
+			return var1 >= 0 && var1 < var2.ids.length ? var2.ids[var1] : -1;
+		}
+	}
+
+	@ObfuscatedName("kd")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "79"
+	)
+	static void method4499() {
+		for (InterfaceParent var0 = (InterfaceParent)Client.interfaceParents.first(); var0 != null; var0 = (InterfaceParent)Client.interfaceParents.next()) {
+			int var1 = var0.group;
+			if (MusicPatchNode2.loadInterface(var1)) {
+				boolean var2 = true;
+				Widget[] var3 = EnumComposition.Widget_interfaceComponents[var1];
+
+				int var4;
+				for (var4 = 0; var4 < var3.length; ++var4) {
+					if (var3[var4] != null) {
+						var2 = var3[var4].isIf3;
+						break;
+					}
+				}
+
+				if (!var2) {
+					var4 = (int)var0.key;
+					Widget var5 = HorizontalAlignment.getWidget(var4);
+					if (var5 != null) {
+						class290.invalidateWidget(var5);
+					}
+				}
+			}
+		}
+
 	}
 }

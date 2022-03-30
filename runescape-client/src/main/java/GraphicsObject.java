@@ -1,69 +1,64 @@
+import java.util.Date;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bs")
+@ObfuscatedName("by")
 @Implements("GraphicsObject")
 public class GraphicsObject extends Renderable {
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "Lku;"
-	)
-	@Export("Widget_spritesArchive")
-	static AbstractArchive Widget_spritesArchive;
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -1199566727
+		intValue = 1439234169
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -1643038475
+		intValue = 1478236205
 	)
 	@Export("cycleStart")
 	int cycleStart;
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 575956663
+		intValue = -242268233
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("m")
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = -1504982005
+		intValue = 857822113
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("t")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = -1721998219
+		intValue = 998647145
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("s")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 826937289
+		intValue = 1200688575
 	)
 	@Export("height")
 	int height;
-	@ObfuscatedName("j")
+	@ObfuscatedName("d")
 	@ObfuscatedSignature(
-		descriptor = "Lgn;"
+		descriptor = "Lgg;"
 	)
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -991958815
+		intValue = -250349479
 	)
 	@Export("frame")
 	int frame;
-	@ObfuscatedName("n")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 126754465
+		intValue = -1301659841
 	)
 	@Export("frameCycle")
 	int frameCycle;
@@ -81,26 +76,26 @@ public class GraphicsObject extends Renderable {
 		this.y = var4;
 		this.height = var5;
 		this.cycleStart = var7 + var6;
-		int var8 = AccessFile.SpotAnimationDefinition_get(this.id).sequence;
+		int var8 = class6.SpotAnimationDefinition_get(this.id).sequence;
 		if (var8 != -1) {
 			this.isFinished = false;
-			this.sequenceDefinition = UserComparator5.SequenceDefinition_get(var8);
+			this.sequenceDefinition = ItemContainer.SequenceDefinition_get(var8);
 		} else {
 			this.isFinished = true;
 		}
 
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "-41"
+		descriptor = "(IS)V",
+		garbageValue = "18366"
 	)
 	@Export("advance")
 	final void advance(int var1) {
 		if (!this.isFinished) {
 			this.frameCycle += var1;
-			if (!this.sequenceDefinition.method3690()) {
+			if (!this.sequenceDefinition.method3799()) {
 				while (this.frameCycle > this.sequenceDefinition.frameLengths[this.frame]) {
 					this.frameCycle -= this.sequenceDefinition.frameLengths[this.frame];
 					++this.frame;
@@ -111,7 +106,7 @@ public class GraphicsObject extends Renderable {
 				}
 			} else {
 				this.frame += var1;
-				if (this.frame >= this.sequenceDefinition.method3647()) {
+				if (this.frame >= this.sequenceDefinition.method3827()) {
 					this.isFinished = true;
 				}
 			}
@@ -119,14 +114,14 @@ public class GraphicsObject extends Renderable {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lgo;",
-		garbageValue = "202861607"
+		descriptor = "(B)Lhx;",
+		garbageValue = "63"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		SpotAnimationDefinition var1 = AccessFile.SpotAnimationDefinition_get(this.id);
+		SpotAnimationDefinition var1 = class6.SpotAnimationDefinition_get(this.id);
 		Model var2;
 		if (!this.isFinished) {
 			var2 = var1.getModel(this.frame);
@@ -137,62 +132,53 @@ public class GraphicsObject extends Renderable {
 		return var2 == null ? null : var2;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "1965398967"
+		descriptor = "(B)[Lcp;",
+		garbageValue = "-18"
 	)
-	@Export("itemContainerSetItem")
-	static void itemContainerSetItem(int var0, int var1, int var2, int var3) {
-		ItemContainer var4 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var4 == null) {
-			var4 = new ItemContainer();
-			ItemContainer.itemContainers.put(var4, (long)var0);
-		}
-
-		if (var4.ids.length <= var1) {
-			int[] var5 = new int[var1 + 1];
-			int[] var6 = new int[var1 + 1];
-
-			int var7;
-			for (var7 = 0; var7 < var4.ids.length; ++var7) {
-				var5[var7] = var4.ids[var7];
-				var6[var7] = var4.quantities[var7];
-			}
-
-			for (var7 = var4.ids.length; var7 < var1; ++var7) {
-				var5[var7] = -1;
-				var6[var7] = 0;
-			}
-
-			var4.ids = var5;
-			var4.quantities = var6;
-		}
-
-		var4.ids[var1] = var2;
-		var4.quantities[var1] = var3;
+	static class83[] method1866() {
+		return new class83[]{class83.field1075, class83.field1078, class83.field1077, class83.field1074, class83.field1081, class83.field1076};
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-76"
+		descriptor = "(Ljava/util/Date;S)Z",
+		garbageValue = "4749"
 	)
-	public static void method1956() {
-		if (NetCache.NetCache_socket != null) {
-			NetCache.NetCache_socket.close();
-		}
-
+	static boolean method1864(Date var0) {
+		Date var1 = class250.method5137();
+		return var0.after(var1);
 	}
 
-	@ObfuscatedName("kl")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "54739776"
+		descriptor = "(II)I",
+		garbageValue = "-1790654907"
 	)
-	static final void method1955(int var0) {
-		if (class242.loadInterface(var0)) {
-			class328.drawModelComponents(MouseRecorder.Widget_interfaceComponents[var0], -1);
+	static int method1865(int var0) {
+		return (int)((Math.log((double)var0) / Interpreter.field842 - 7.0D) * 256.0D);
+	}
+
+	@ObfuscatedName("hs")
+	@ObfuscatedSignature(
+		descriptor = "(Lcw;IILgv;B)V",
+		garbageValue = "2"
+	)
+	static final void method1860(Player var0, int var1, int var2, class193 var3) {
+		int var4 = var0.pathX[0];
+		int var5 = var0.pathY[0];
+		int var6 = var0.transformedSize();
+		if (var4 >= var6 && var4 < 104 - var6 && var5 >= var6 && var5 < 104 - var6) {
+			if (var1 >= var6 && var1 < 104 - var6 && var2 >= var6 && var2 < 104 - var6) {
+				int var7 = ArchiveLoader.method2075(var4, var5, var0.transformedSize(), WorldMapSectionType.method4954(var1, var2), Client.collisionMaps[var0.plane], true, Client.field743, Client.field670);
+				if (var7 >= 1) {
+					for (int var8 = 0; var8 < var7 - 1; ++var8) {
+						var0.method2149(Client.field743[var8], Client.field670[var8], var3);
+					}
+
+				}
+			}
 		}
 	}
 
