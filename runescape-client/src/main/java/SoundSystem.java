@@ -3,15 +3,12 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("al")
+@ObfuscatedName("aq")
 @Implements("SoundSystem")
 public class SoundSystem implements Runnable {
-	@ObfuscatedName("qt")
-	@Export("FriendsChatManager_inFriendsChat")
-	static boolean FriendsChatManager_inFriendsChat;
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "[Lar;"
+		descriptor = "[Lao;"
 	)
 	@Export("players")
 	volatile PcmPlayer[] players;
@@ -29,8 +26,17 @@ public class SoundSystem implements Runnable {
 				}
 			}
 		} catch (Exception var4) {
-			AccessFile.RunException_sendStackTrace((String)null, var4);
+			class301.RunException_sendStackTrace((String)null, var4);
 		}
 
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Lcb;",
+		garbageValue = "2120193226"
+	)
+	static AttackOption[] method789() {
+		return new AttackOption[]{AttackOption.AttackOption_hidden, AttackOption.field1279, AttackOption.field1273, AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.AttackOption_alwaysRightClick};
 	}
 }

@@ -3,25 +3,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dm")
+@ObfuscatedName("dn")
 @Implements("UserComparator5")
 public class UserComparator5 extends AbstractUserComparator {
-	@ObfuscatedName("rk")
-	@ObfuscatedSignature(
-		descriptor = "Lei;"
-	)
-	@Export("guestClanChannel")
-	static ClanChannel guestClanChannel;
-	@ObfuscatedName("d")
-	@Export("Tiles_hueMultiplier")
-	static int[] Tiles_hueMultiplier;
-	@ObfuscatedName("ij")
-	@ObfuscatedSignature(
-		descriptor = "[Lpl;"
-	)
-	@Export("crossSprites")
-	static SpritePixels[] crossSprites;
-	@ObfuscatedName("c")
+	@ObfuscatedName("do")
+	@Export("mouseCam")
+	static boolean mouseCam;
+	@ObfuscatedName("v")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -29,10 +17,10 @@ public class UserComparator5 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lmp;Lmp;I)I",
-		garbageValue = "-1224894671"
+		descriptor = "(Lnl;Lnl;I)I",
+		garbageValue = "-1157970116"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -51,48 +39,72 @@ public class UserComparator5 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lgn;",
-		garbageValue = "354960359"
+		descriptor = "(I)Lfq;",
+		garbageValue = "-2066827638"
 	)
-	@Export("SequenceDefinition_get")
-	public static SequenceDefinition SequenceDefinition_get(int var0) {
-		SequenceDefinition var1 = (SequenceDefinition)SequenceDefinition.SequenceDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = Canvas.SequenceDefinition_archive.takeFile(12, var0);
-			var1 = new SequenceDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-
-			var1.postDecode();
-			SequenceDefinition.SequenceDefinition_cached.put(var1, (long)var0);
-			return var1;
+	public static Clock method2592() {
+		try {
+			return new NanoClock();
+		} catch (Throwable var1) {
+			return new MilliClock();
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Ljava/lang/String;",
-		garbageValue = "83"
+		descriptor = "(ILbo;ZI)I",
+		garbageValue = "-966652469"
 	)
-	@Export("colorStartTag")
-	static String colorStartTag(int var0) {
-		return "<col=" + Integer.toHexString(var0) + ">";
-	}
-
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1519607580"
-	)
-	public static void method2524() {
-		ObjectComposition.ObjectDefinition_cached.clear();
-		ObjectComposition.ObjectDefinition_cachedModelData.clear();
-		ObjectComposition.ObjectDefinition_cachedEntities.clear();
-		ObjectComposition.ObjectDefinition_cachedModels.clear();
+	static int method2595(int var0, Script var1, boolean var2) {
+		if (var0 != 7000 && var0 != 7005 && var0 != 7010 && var0 != 7015 && var0 != 7020 && var0 != 7025 && var0 != 7030 && var0 != 7035) {
+			if (var0 != 7001 && var0 != 7002 && var0 != 7011 && var0 != 7012 && var0 != 7021 && var0 != 7022) {
+				if (var0 != 7003 && var0 != 7013 && var0 != 7023) {
+					if (var0 != 7006 && var0 != 7007 && var0 != 7016 && var0 != 7017 && var0 != 7026 && var0 != 7027) {
+						if (var0 != 7008 && var0 != 7018 && var0 != 7028) {
+							if (var0 != 7031 && var0 != 7032) {
+								if (var0 == 7033) {
+									--ChatChannel.Interpreter_stringStackSize;
+									return 1;
+								} else if (var0 != 7036 && var0 != 7037) {
+									if (var0 == 7038) {
+										--class295.Interpreter_intStackSize;
+										return 1;
+									} else if (var0 != 7004 && var0 != 7009 && var0 != 7014 && var0 != 7019 && var0 != 7024 && var0 != 7029 && var0 != 7034 && var0 != 7039) {
+										return 2;
+									} else {
+										--class295.Interpreter_intStackSize;
+										return 1;
+									}
+								} else {
+									class295.Interpreter_intStackSize -= 2;
+									return 1;
+								}
+							} else {
+								--ChatChannel.Interpreter_stringStackSize;
+								--class295.Interpreter_intStackSize;
+								return 1;
+							}
+						} else {
+							--class295.Interpreter_intStackSize;
+							return 1;
+						}
+					} else {
+						class295.Interpreter_intStackSize -= 2;
+						return 1;
+					}
+				} else {
+					class295.Interpreter_intStackSize -= 2;
+					return 1;
+				}
+			} else {
+				class295.Interpreter_intStackSize -= 3;
+				return 1;
+			}
+		} else {
+			class295.Interpreter_intStackSize -= 5;
+			return 1;
+		}
 	}
 }
