@@ -4,10 +4,16 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pr")
+@ObfuscatedName("qa")
 @Implements("UserComparator2")
 public class UserComparator2 implements Comparator {
-	@ObfuscatedName("c")
+	@ObfuscatedName("uj")
+	@ObfuscatedSignature(
+		descriptor = "Lov;"
+	)
+	@Export("platformInfo")
+	static PlatformInfo platformInfo;
+	@ObfuscatedName("v")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -15,235 +21,124 @@ public class UserComparator2 implements Comparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;Lmv;B)I",
-		garbageValue = "-16"
+		descriptor = "(Lnc;Lnc;I)I",
+		garbageValue = "988233292"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(Nameable var1, Nameable var2) {
 		return this.reversed ? var1.getUsername().compareToTyped(var2.getUsername()) : var2.getUsername().compareToTyped(var1.getUsername());
 	}
 
-	public boolean equals(Object var1) {
-		return super.equals(var1);
-	}
-
 	public int compare(Object var1, Object var2) {
 		return this.compare_bridged((Nameable)var1, (Nameable)var2);
 	}
 
-	@ObfuscatedName("b")
+	public boolean equals(Object var1) {
+		return super.equals(var1);
+	}
+
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(IIILgv;Lgf;I)Z",
-		garbageValue = "-1521057603"
+		descriptor = "(ILbo;ZS)I",
+		garbageValue = "-23460"
 	)
-	public static final boolean method7617(int var0, int var1, int var2, RouteStrategy var3, CollisionMap var4) {
-		int var5 = var0;
-		int var6 = var1;
-		byte var7 = 64;
-		byte var8 = 64;
-		int var9 = var0 - var7;
-		int var10 = var1 - var8;
-		class186.directions[var7][var8] = 99;
-		class186.distances[var7][var8] = 0;
-		byte var11 = 0;
-		int var12 = 0;
-		class186.bufferX[var11] = var0;
-		int var20 = var11 + 1;
-		class186.bufferY[var11] = var1;
-		int[][] var13 = var4.flags;
-
-		while (true) {
-			label305:
-			while (true) {
-				int var14;
-				int var15;
-				int var16;
-				int var17;
-				int var18;
-				int var19;
-				do {
-					do {
-						do {
-							label282:
-							do {
-								if (var12 == var20) {
-									class186.field2129 = var5;
-									class186.field2130 = var6;
-									return false;
-								}
-
-								var5 = class186.bufferX[var12];
-								var6 = class186.bufferY[var12];
-								var12 = var12 + 1 & 4095;
-								var18 = var5 - var9;
-								var19 = var6 - var10;
-								var14 = var5 - var4.xInset;
-								var15 = var6 - var4.yInset;
-								if (var3.hasArrived(var2, var5, var6, var4)) {
-									class186.field2129 = var5;
-									class186.field2130 = var6;
-									return true;
-								}
-
-								var16 = class186.distances[var18][var19] + 1;
-								if (var18 > 0 && class186.directions[var18 - 1][var19] == 0 && (var13[var14 - 1][var15] & 19136782) == 0 && (var13[var14 - 1][var15 + var2 - 1] & 19136824) == 0) {
-									var17 = 1;
-
-									while (true) {
-										if (var17 >= var2 - 1) {
-											class186.bufferX[var20] = var5 - 1;
-											class186.bufferY[var20] = var6;
-											var20 = var20 + 1 & 4095;
-											class186.directions[var18 - 1][var19] = 2;
-											class186.distances[var18 - 1][var19] = var16;
-											break;
-										}
-
-										if ((var13[var14 - 1][var15 + var17] & 19136830) != 0) {
-											break;
-										}
-
-										++var17;
-									}
-								}
-
-								if (var18 < 128 - var2 && class186.directions[var18 + 1][var19] == 0 && (var13[var14 + var2][var15] & 19136899) == 0 && (var13[var14 + var2][var15 + var2 - 1] & 19136992) == 0) {
-									var17 = 1;
-
-									while (true) {
-										if (var17 >= var2 - 1) {
-											class186.bufferX[var20] = var5 + 1;
-											class186.bufferY[var20] = var6;
-											var20 = var20 + 1 & 4095;
-											class186.directions[var18 + 1][var19] = 8;
-											class186.distances[var18 + 1][var19] = var16;
-											break;
-										}
-
-										if ((var13[var14 + var2][var17 + var15] & 19136995) != 0) {
-											break;
-										}
-
-										++var17;
-									}
-								}
-
-								if (var19 > 0 && class186.directions[var18][var19 - 1] == 0 && (var13[var14][var15 - 1] & 19136782) == 0 && (var13[var14 + var2 - 1][var15 - 1] & 19136899) == 0) {
-									var17 = 1;
-
-									while (true) {
-										if (var17 >= var2 - 1) {
-											class186.bufferX[var20] = var5;
-											class186.bufferY[var20] = var6 - 1;
-											var20 = var20 + 1 & 4095;
-											class186.directions[var18][var19 - 1] = 1;
-											class186.distances[var18][var19 - 1] = var16;
-											break;
-										}
-
-										if ((var13[var14 + var17][var15 - 1] & 19136911) != 0) {
-											break;
-										}
-
-										++var17;
-									}
-								}
-
-								if (var19 < 128 - var2 && class186.directions[var18][var19 + 1] == 0 && (var13[var14][var15 + var2] & 19136824) == 0 && (var13[var14 + var2 - 1][var15 + var2] & 19136992) == 0) {
-									var17 = 1;
-
-									while (true) {
-										if (var17 >= var2 - 1) {
-											class186.bufferX[var20] = var5;
-											class186.bufferY[var20] = var6 + 1;
-											var20 = var20 + 1 & 4095;
-											class186.directions[var18][var19 + 1] = 4;
-											class186.distances[var18][var19 + 1] = var16;
-											break;
-										}
-
-										if ((var13[var14 + var17][var15 + var2] & 19137016) != 0) {
-											break;
-										}
-
-										++var17;
-									}
-								}
-
-								if (var18 > 0 && var19 > 0 && class186.directions[var18 - 1][var19 - 1] == 0 && (var13[var14 - 1][var15 - 1] & 19136782) == 0) {
-									var17 = 1;
-
-									while (true) {
-										if (var17 >= var2) {
-											class186.bufferX[var20] = var5 - 1;
-											class186.bufferY[var20] = var6 - 1;
-											var20 = var20 + 1 & 4095;
-											class186.directions[var18 - 1][var19 - 1] = 3;
-											class186.distances[var18 - 1][var19 - 1] = var16;
-											break;
-										}
-
-										if ((var13[var14 - 1][var17 + (var15 - 1)] & 19136830) != 0 || (var13[var17 + (var14 - 1)][var15 - 1] & 19136911) != 0) {
-											break;
-										}
-
-										++var17;
-									}
-								}
-
-								if (var18 < 128 - var2 && var19 > 0 && class186.directions[var18 + 1][var19 - 1] == 0 && (var13[var14 + var2][var15 - 1] & 19136899) == 0) {
-									var17 = 1;
-
-									while (true) {
-										if (var17 >= var2) {
-											class186.bufferX[var20] = var5 + 1;
-											class186.bufferY[var20] = var6 - 1;
-											var20 = var20 + 1 & 4095;
-											class186.directions[var18 + 1][var19 - 1] = 9;
-											class186.distances[var18 + 1][var19 - 1] = var16;
-											break;
-										}
-
-										if ((var13[var14 + var2][var17 + (var15 - 1)] & 19136995) != 0 || (var13[var17 + var14][var15 - 1] & 19136911) != 0) {
-											break;
-										}
-
-										++var17;
-									}
-								}
-
-								if (var18 > 0 && var19 < 128 - var2 && class186.directions[var18 - 1][var19 + 1] == 0 && (var13[var14 - 1][var15 + var2] & 19136824) == 0) {
-									for (var17 = 1; var17 < var2; ++var17) {
-										if ((var13[var14 - 1][var15 + var17] & 19136830) != 0 || (var13[var17 + (var14 - 1)][var15 + var2] & 19137016) != 0) {
-											continue label282;
-										}
-									}
-
-									class186.bufferX[var20] = var5 - 1;
-									class186.bufferY[var20] = var6 + 1;
-									var20 = var20 + 1 & 4095;
-									class186.directions[var18 - 1][var19 + 1] = 6;
-									class186.distances[var18 - 1][var19 + 1] = var16;
-								}
-							} while(var18 >= 128 - var2);
-						} while(var19 >= 128 - var2);
-					} while(class186.directions[var18 + 1][var19 + 1] != 0);
-				} while((var13[var14 + var2][var15 + var2] & 19136992) != 0);
-
-				for (var17 = 1; var17 < var2; ++var17) {
-					if ((var13[var17 + var14][var15 + var2] & 19137016) != 0 || (var13[var14 + var2][var17 + var15] & 19136995) != 0) {
-						continue label305;
-					}
-				}
-
-				class186.bufferX[var20] = var5 + 1;
-				class186.bufferY[var20] = var6 + 1;
-				var20 = var20 + 1 & 4095;
-				class186.directions[var18 + 1][var19 + 1] = 12;
-				class186.distances[var18 + 1][var19 + 1] = var16;
-			}
+	static int method8042(int var0, Script var1, boolean var2) {
+		if (var0 < 1000) {
+			return FontName.method7511(var0, var1, var2);
+		} else if (var0 < 1100) {
+			return class305.method5787(var0, var1, var2);
+		} else if (var0 < 1200) {
+			return class117.method2709(var0, var1, var2);
+		} else if (var0 < 1300) {
+			return WorldMapScaleHandler.method5134(var0, var1, var2);
+		} else if (var0 < 1400) {
+			return ItemLayer.method3896(var0, var1, var2);
+		} else if (var0 < 1500) {
+			return class193.method3879(var0, var1, var2);
+		} else if (var0 < 1600) {
+			return UserComparator10.method2614(var0, var1, var2);
+		} else if (var0 < 1700) {
+			return GameBuild.method5775(var0, var1, var2);
+		} else if (var0 < 1800) {
+			return GrandExchangeEvents.method5993(var0, var1, var2);
+		} else if (var0 < 1900) {
+			return class136.method2896(var0, var1, var2);
+		} else if (var0 < 2000) {
+			return SecureRandomCallable.method2064(var0, var1, var2);
+		} else if (var0 < 2100) {
+			return class305.method5787(var0, var1, var2);
+		} else if (var0 < 2200) {
+			return class117.method2709(var0, var1, var2);
+		} else if (var0 < 2300) {
+			return WorldMapScaleHandler.method5134(var0, var1, var2);
+		} else if (var0 < 2400) {
+			return ItemLayer.method3896(var0, var1, var2);
+		} else if (var0 < 2500) {
+			return class193.method3879(var0, var1, var2);
+		} else if (var0 < 2600) {
+			return SoundCache.method803(var0, var1, var2);
+		} else if (var0 < 2700) {
+			return Client.method1606(var0, var1, var2);
+		} else if (var0 < 2800) {
+			return class115.method2681(var0, var1, var2);
+		} else if (var0 < 2900) {
+			return class305.method5786(var0, var1, var2);
+		} else if (var0 < 3000) {
+			return SecureRandomCallable.method2064(var0, var1, var2);
+		} else if (var0 < 3200) {
+			return class17.method259(var0, var1, var2);
+		} else if (var0 < 3300) {
+			return DirectByteArrayCopier.method5540(var0, var1, var2);
+		} else if (var0 < 3400) {
+			return class119.method2741(var0, var1, var2);
+		} else if (var0 < 3500) {
+			return class14.method184(var0, var1, var2);
+		} else if (var0 < 3600) {
+			return FloorOverlayDefinition.method3773(var0, var1, var2);
+		} else if (var0 < 3700) {
+			return class271.method5256(var0, var1, var2);
+		} else if (var0 < 3800) {
+			return class132.method2861(var0, var1, var2);
+		} else if (var0 < 3900) {
+			return MusicPatchPcmStream.method5485(var0, var1, var2);
+		} else if (var0 < 4000) {
+			return Language.method6125(var0, var1, var2);
+		} else if (var0 < 4100) {
+			return class17.method280(var0, var1, var2);
+		} else if (var0 < 4200) {
+			return class19.method314(var0, var1, var2);
+		} else if (var0 < 4300) {
+			return UserComparator8.method2569(var0, var1, var2);
+		} else if (var0 < 5100) {
+			return DevicePcmPlayerProvider.method384(var0, var1, var2);
+		} else if (var0 < 5400) {
+			return ClanChannel.method3078(var0, var1, var2);
+		} else if (var0 < 5600) {
+			return WorldMapIcon_1.method4559(var0, var1, var2);
+		} else if (var0 < 5700) {
+			return JagexCache.method3227(var0, var1, var2);
+		} else if (var0 < 6300) {
+			return UserComparator4.method2567(var0, var1, var2);
+		} else if (var0 < 6600) {
+			return HitSplatDefinition.method3642(var0, var1, var2);
+		} else if (var0 < 6700) {
+			return class149.method3081(var0, var1, var2);
+		} else if (var0 < 6800) {
+			return Language.method6121(var0, var1, var2);
+		} else if (var0 < 6900) {
+			return MilliClock.method3293(var0, var1, var2);
+		} else if (var0 < 7000) {
+			return Language.method6132(var0, var1, var2);
+		} else if (var0 < 7100) {
+			return UserComparator5.method2595(var0, var1, var2);
+		} else if (var0 < 7200) {
+			return class239.method4999(var0, var1, var2);
+		} else if (var0 < 7300) {
+			return PcmPlayer.method770(var0, var1, var2);
+		} else {
+			return var0 < 7500 ? ModeWhere.method6144(var0, var1, var2) : 2;
 		}
 	}
 }

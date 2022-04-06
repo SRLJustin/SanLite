@@ -1,121 +1,75 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cj")
+@ObfuscatedName("cg")
 public class class92 {
-	@ObfuscatedName("c")
+	@ObfuscatedName("nl")
 	@ObfuscatedGetter(
-		intValue = -1964830275
+		intValue = -26736591
 	)
-	int field1228;
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(
-		intValue = -519602209
-	)
-	int field1226;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = 768953131
-	)
-	int field1227;
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(
-		intValue = -1613900699
-	)
-	int field1225;
+	@Export("selectedSpellWidget")
+	static int selectedSpellWidget;
 
-	class92(int var1, int var2, int var3, int var4) {
-		this.field1228 = var1;
-		this.field1226 = var2;
-		this.field1227 = var3;
-		this.field1225 = var4;
-	}
+	@ObfuscatedName("v")
+	public static final int method2373(double var0, double var2, double var4) {
+		double var6 = var4;
+		double var8 = var4;
+		double var10 = var4;
+		if (0.0D != var2) {
+			double var12;
+			if (var4 < 0.5D) {
+				var12 = var4 * (var2 + 1.0D);
+			} else {
+				var12 = var4 + var2 - var4 * var2;
+			}
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1997278841"
-	)
-	int method2340() {
-		return this.field1228;
-	}
+			double var14 = 2.0D * var4 - var12;
+			double var16 = 0.3333333333333333D + var0;
+			if (var16 > 1.0D) {
+				--var16;
+			}
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "953113161"
-	)
-	int method2339() {
-		return this.field1226;
-	}
+			double var20 = var0 - 0.3333333333333333D;
+			if (var20 < 0.0D) {
+				++var20;
+			}
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "100"
-	)
-	int method2341() {
-		return this.field1227;
-	}
+			if (6.0D * var16 < 1.0D) {
+				var6 = var14 + var16 * (var12 - var14) * 6.0D;
+			} else if (var16 * 2.0D < 1.0D) {
+				var6 = var12;
+			} else if (var16 * 3.0D < 2.0D) {
+				var6 = var14 + (0.6666666666666666D - var16) * (var12 - var14) * 6.0D;
+			} else {
+				var6 = var14;
+			}
 
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-97"
-	)
-	int method2348() {
-		return this.field1225;
-	}
+			if (6.0D * var0 < 1.0D) {
+				var8 = var14 + 6.0D * (var12 - var14) * var0;
+			} else if (2.0D * var0 < 1.0D) {
+				var8 = var12;
+			} else if (var0 * 3.0D < 2.0D) {
+				var8 = var14 + (var12 - var14) * (0.6666666666666666D - var0) * 6.0D;
+			} else {
+				var8 = var14;
+			}
 
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;I)Ljava/lang/String;",
-		garbageValue = "-1922947006"
-	)
-	public static String method2353(CharSequence var0) {
-		String var1 = GraphicsDefaults.base37DecodeLong(ChatChannel.method2054(var0));
-		if (var1 == null) {
-			var1 = "";
-		}
-
-		return var1;
-	}
-
-	@ObfuscatedName("jx")
-	@ObfuscatedSignature(
-		descriptor = "([Ljm;IIIZI)V",
-		garbageValue = "1500038171"
-	)
-	@Export("resizeInterface")
-	static void resizeInterface(Widget[] var0, int var1, int var2, int var3, boolean var4) {
-		for (int var5 = 0; var5 < var0.length; ++var5) {
-			Widget var6 = var0[var5];
-			if (var6 != null && var6.parentId == var1) {
-				class29.alignWidgetSize(var6, var2, var3, var4);
-				MouseHandler.alignWidgetPosition(var6, var2, var3);
-				if (var6.scrollX > var6.scrollWidth - var6.width) {
-					var6.scrollX = var6.scrollWidth - var6.width;
-				}
-
-				if (var6.scrollX < 0) {
-					var6.scrollX = 0;
-				}
-
-				if (var6.scrollY > var6.scrollHeight - var6.height) {
-					var6.scrollY = var6.scrollHeight - var6.height;
-				}
-
-				if (var6.scrollY < 0) {
-					var6.scrollY = 0;
-				}
-
-				if (var6.type == 0) {
-					class115.revalidateWidgetScroll(var0, var6, var4);
-				}
+			if (6.0D * var20 < 1.0D) {
+				var10 = var14 + var20 * (var12 - var14) * 6.0D;
+			} else if (2.0D * var20 < 1.0D) {
+				var10 = var12;
+			} else if (3.0D * var20 < 2.0D) {
+				var10 = (var12 - var14) * (0.6666666666666666D - var20) * 6.0D + var14;
+			} else {
+				var10 = var14;
 			}
 		}
 
+		int var22 = (int)(256.0D * var6);
+		int var13 = (int)(256.0D * var8);
+		int var23 = (int)(var10 * 256.0D);
+		int var15 = var23 + (var13 << 8) + (var22 << 16);
+		return var15;
 	}
 }
