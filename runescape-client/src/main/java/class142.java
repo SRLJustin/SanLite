@@ -1,38 +1,64 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ee")
-public abstract class class142 extends Node {
-	@ObfuscatedName("sp")
+@ObfuscatedName("eo")
+public class class142 extends class128 {
+	@ObfuscatedName("fr")
 	@ObfuscatedGetter(
-		intValue = -843354001
+		intValue = -1385057085
 	)
-	static int field1615;
+	static int field1634;
+	@ObfuscatedName("ic")
+	@ObfuscatedSignature(
+		descriptor = "[Lql;"
+	)
+	@Export("mapDotSprites")
+	static SpritePixels[] mapDotSprites;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(
+		intValue = 397410515
+	)
+	int field1630;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lee;"
+	)
+	final class131 this$0;
 
-	class142() {
+	@ObfuscatedSignature(
+		descriptor = "(Lee;)V"
+	)
+	class142(class131 var1) {
+		this.this$0 = var1;
+		this.field1630 = -1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "4"
+		descriptor = "(Lpd;B)V",
+		garbageValue = "-73"
 	)
-	abstract void vmethod3022(Buffer var1);
+	void vmethod3107(Buffer var1) {
+		this.field1630 = var1.readUnsignedShort();
+	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lei;B)V",
-		garbageValue = "40"
+		descriptor = "(Leh;I)V",
+		garbageValue = "-1228032820"
 	)
-	abstract void vmethod3021(ClanChannel var1);
+	void vmethod3104(ClanSettings var1) {
+		var1.method2922(this.field1630);
+	}
 
-	@ObfuscatedName("fu")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-1686144009"
+		descriptor = "(IIB)Z",
+		garbageValue = "1"
 	)
-	static int method2958(int var0) {
-		return var0 * 3 + 600;
+	public static boolean method3004(int var0, int var1) {
+		return (var0 >> var1 + 1 & 1) != 0;
 	}
 }

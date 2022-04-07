@@ -1,228 +1,241 @@
 import java.applet.Applet;
+import java.awt.image.BufferedImage;
+import java.awt.image.PixelGrabber;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("an")
+@ObfuscatedName("au")
 public class class29 {
-	@ObfuscatedName("rs")
+	@ObfuscatedName("v")
+	public static Applet field168;
+	@ObfuscatedName("o")
+	public static String field169;
+	@ObfuscatedName("cn")
 	@ObfuscatedSignature(
-		descriptor = "Lpl;"
+		descriptor = "[Lqx;"
 	)
-	@Export("sceneMinimapSprite")
-	static SpritePixels sceneMinimapSprite;
-	@ObfuscatedName("c")
-	public static Applet field172;
-	@ObfuscatedName("b")
-	public static String field177;
+	@Export("worldSelectStars")
+	static IndexedSprite[] worldSelectStars;
+	@ObfuscatedName("ee")
+	@ObfuscatedGetter(
+		longValue = -3391706969016340745L
+	)
+	static long field165;
 
 	static {
-		field172 = null;
-		field177 = "";
+		field168 = null;
+		field169 = "";
 	}
 
-	@ObfuscatedName("fd")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "534236872"
+		descriptor = "([BS)Lql;",
+		garbageValue = "-13194"
 	)
-	@Export("getLoginError")
-	static void getLoginError(int var0) {
-		if (var0 == -3) {
-			class19.setLoginResponseString("Connection timed out.", "Please try using a different world.", "");
-		} else if (var0 == -2) {
-			class19.setLoginResponseString("Error connecting to server.", "Please try using a different world.", "");
-		} else if (var0 == -1) {
-			class19.setLoginResponseString("No response from server.", "Please try using a different world.", "");
-		} else if (var0 == 3) {
-			PlayerType.method5521(3);
-			Login.field872 = 1;
-		} else if (var0 == 4) {
-			PlayerType.method5521(14);
-			Login.field871 = 0;
-		} else if (var0 == 5) {
-			Login.field872 = 2;
-			class19.setLoginResponseString("Your account has not logged out from its last", "session or the server is too busy right now.", "Please try again in a few minutes.");
-		} else if (var0 == 68 || !Client.onMobile && var0 == 6) {
-			class19.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", "");
-		} else if (var0 == 7) {
-			class19.setLoginResponseString("This world is full.", "Please use a different world.", "");
-		} else if (var0 == 8) {
-			class19.setLoginResponseString("Unable to connect.", "Login server offline.", "");
-		} else if (var0 == 9) {
-			class19.setLoginResponseString("Login limit exceeded.", "Too many connections from your address.", "");
-		} else if (var0 == 10) {
-			class19.setLoginResponseString("Unable to connect.", "Bad session id.", "");
-		} else if (var0 == 11) {
-			class19.setLoginResponseString("We suspect someone knows your password.", "Press 'change your password' on front page.", "");
-		} else if (var0 == 12) {
-			class19.setLoginResponseString("You need a members account to login to this world.", "Please subscribe, or use a different world.", "");
-		} else if (var0 == 13) {
-			class19.setLoginResponseString("Could not complete login.", "Please try using a different world.", "");
-		} else if (var0 == 14) {
-			class19.setLoginResponseString("The server is being updated.", "Please wait 1 minute and try again.", "");
-		} else if (var0 == 16) {
-			class19.setLoginResponseString("Too many login attempts.", "Please wait a few minutes before trying again.", "");
-		} else if (var0 == 17) {
-			class19.setLoginResponseString("You are standing in a members-only area.", "To play on this world move to a free area first", "");
-		} else if (var0 == 18) {
-			PlayerType.method5521(14);
-			Login.field871 = 1;
-		} else if (var0 == 19) {
-			class19.setLoginResponseString("This world is running a closed Beta.", "Sorry invited players only.", "Please use a different world.");
-		} else if (var0 == 20) {
-			class19.setLoginResponseString("Invalid loginserver requested.", "Please try using a different world.", "");
-		} else if (var0 == 22) {
-			class19.setLoginResponseString("Malformed login packet.", "Please try again.", "");
-		} else if (var0 == 23) {
-			class19.setLoginResponseString("No reply from loginserver.", "Please wait 1 minute and try again.", "");
-		} else if (var0 == 24) {
-			class19.setLoginResponseString("Error loading your profile.", "Please contact customer support.", "");
-		} else if (var0 == 25) {
-			class19.setLoginResponseString("Unexpected loginserver response.", "Please try using a different world.", "");
-		} else if (var0 == 26) {
-			class19.setLoginResponseString("This computers address has been blocked", "as it was used to break our rules.", "");
-		} else if (var0 == 27) {
-			class19.setLoginResponseString("", "Service unavailable.", "");
-		} else if (var0 == 31) {
-			class19.setLoginResponseString("Your account must have a displayname set", "in order to play the game.  Please set it", "via the website, or the main game.");
-		} else if (var0 == 32) {
-			class19.setLoginResponseString("Your attempt to log into your account was", "unsuccessful.  Don't worry, you can sort", "this out by visiting the billing system.");
-		} else if (var0 == 37) {
-			class19.setLoginResponseString("Your account is currently inaccessible.", "Please try again in a few minutes.", "");
-		} else if (var0 == 38) {
-			class19.setLoginResponseString("You need to vote to play!", "Visit runescape.com and vote,", "and then come back here!");
-		} else if (var0 == 55) {
-			PlayerType.method5521(8);
-		} else {
-			if (var0 == 56) {
-				class19.setLoginResponseString("Enter the 6-digit code generated by your", "authenticator app.", "");
-				VertexNormal.updateGameState(11);
-				return;
+	public static final SpritePixels method433(byte[] var0) {
+		BufferedImage var1 = null;
+
+		try {
+			var1 = ImageIO.read(new ByteArrayInputStream(var0));
+			int var2 = var1.getWidth();
+			int var3 = var1.getHeight();
+			int[] var4 = new int[var3 * var2];
+			PixelGrabber var5 = new PixelGrabber(var1, 0, 0, var2, var3, var4, 0, var2);
+			var5.grabPixels();
+			return new SpritePixels(var4, var2, var3);
+		} catch (IOException var7) {
+		} catch (InterruptedException var8) {
+		}
+
+		return new SpritePixels(0, 0);
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;II)Ljava/io/File;",
+		garbageValue = "717512947"
+	)
+	public static File method431(String var0, String var1, int var2) {
+		String var3 = var2 == 0 ? "" : "" + var2;
+		AccessFile.JagexCache_locationFile = new File(class230.userHomeDirectory, "jagex_cl_" + var0 + "_" + var1 + var3 + ".dat");
+		String var4 = null;
+		String var5 = null;
+		boolean var6 = false;
+		File var22;
+		if (AccessFile.JagexCache_locationFile.exists()) {
+			try {
+				AccessFile var7 = new AccessFile(AccessFile.JagexCache_locationFile, "rw", 10000L);
+
+				Buffer var8;
+				int var9;
+				for (var8 = new Buffer((int)var7.length()); var8.offset < var8.array.length; var8.offset += var9) {
+					var9 = var7.read(var8.array, var8.offset, var8.array.length - var8.offset);
+					if (var9 == -1) {
+						throw new IOException();
+					}
+				}
+
+				var8.offset = 0;
+				var9 = var8.readUnsignedByte();
+				if (var9 < 1 || var9 > 3) {
+					throw new IOException("" + var9);
+				}
+
+				int var10 = 0;
+				if (var9 > 1) {
+					var10 = var8.readUnsignedByte();
+				}
+
+				if (var9 <= 2) {
+					var4 = var8.readStringCp1252NullCircumfixed();
+					if (var10 == 1) {
+						var5 = var8.readStringCp1252NullCircumfixed();
+					}
+				} else {
+					var4 = var8.readCESU8();
+					if (var10 == 1) {
+						var5 = var8.readCESU8();
+					}
+				}
+
+				var7.close();
+			} catch (IOException var20) {
+				var20.printStackTrace();
 			}
 
-			if (var0 == 57) {
-				class19.setLoginResponseString("The code you entered was incorrect.", "Please try again.", "");
-				VertexNormal.updateGameState(11);
-				return;
+			if (var4 != null) {
+				var22 = new File(var4);
+				if (!var22.exists()) {
+					var4 = null;
+				}
 			}
 
-			if (var0 == 61) {
-				PlayerType.method5521(7);
+			if (var4 != null) {
+				var22 = new File(var4, "test.dat");
+				if (!SecureRandomCallable.method2069(var22, true)) {
+					var4 = null;
+				}
+			}
+		}
+
+		if (var4 == null && var2 == 0) {
+			label125:
+			for (int var15 = 0; var15 < WorldMapSection1.cacheSubPaths.length; ++var15) {
+				for (int var16 = 0; var16 < PendingSpawn.cacheParentPaths.length; ++var16) {
+					File var17 = new File(PendingSpawn.cacheParentPaths[var16] + WorldMapSection1.cacheSubPaths[var15] + File.separatorChar + var0 + File.separatorChar);
+					if (var17.exists() && SecureRandomCallable.method2069(new File(var17, "test.dat"), true)) {
+						var4 = var17.toString();
+						var6 = true;
+						break label125;
+					}
+				}
+			}
+		}
+
+		if (var4 == null) {
+			var4 = class230.userHomeDirectory + File.separatorChar + "jagexcache" + var3 + File.separatorChar + var0 + File.separatorChar + var1 + File.separatorChar;
+			var6 = true;
+		}
+
+		if (var5 != null) {
+			File var21 = new File(var5);
+			var22 = new File(var4);
+
+			try {
+				File[] var23 = var21.listFiles();
+				File[] var18 = var23;
+
+				for (int var11 = 0; var11 < var18.length; ++var11) {
+					File var12 = var18[var11];
+					File var13 = new File(var22, var12.getName());
+					boolean var14 = var12.renameTo(var13);
+					if (!var14) {
+						throw new IOException();
+					}
+				}
+			} catch (Exception var19) {
+				var19.printStackTrace();
+			}
+
+			var6 = true;
+		}
+
+		if (var6) {
+			ViewportMouse.method4493(new File(var4), (File)null);
+		}
+
+		return new File(var4);
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "([BI)Ljava/lang/String;",
+		garbageValue = "2046831505"
+	)
+	public static String method425(byte[] var0) {
+		int var2 = var0.length;
+		StringBuilder var3 = new StringBuilder();
+
+		for (int var4 = 0; var4 < var2 + 0; var4 += 3) {
+			int var5 = var0[var4] & 255;
+			var3.append(class346.field4147[var5 >>> 2]);
+			if (var4 < var2 - 1) {
+				int var6 = var0[var4 + 1] & 255;
+				var3.append(class346.field4147[(var5 & 3) << 4 | var6 >>> 4]);
+				if (var4 < var2 - 2) {
+					int var7 = var0[var4 + 2] & 255;
+					var3.append(class346.field4147[(var6 & 15) << 2 | var7 >>> 6]).append(class346.field4147[var7 & 63]);
+				} else {
+					var3.append(class346.field4147[(var6 & 15) << 2]).append("=");
+				}
 			} else {
-				if (var0 == 62) {
-					VertexNormal.updateGameState(10);
-					PlayerType.method5521(9);
-					class19.setLoginResponseString("Login attempt timed out.", "Please try again.", "");
-					return;
-				}
-
-				if (var0 == 63) {
-					VertexNormal.updateGameState(10);
-					PlayerType.method5521(9);
-					class19.setLoginResponseString("You were signed out.", "Please sign in again.", "");
-					return;
-				}
-
-				if (var0 == 65 || var0 == 67) {
-					VertexNormal.updateGameState(10);
-					PlayerType.method5521(9);
-					class19.setLoginResponseString("Failed to login.", "Please try again.", "");
-					return;
-				}
-
-				class19.setLoginResponseString("Unexpected server response", "Please try using a different world.", "");
+				var3.append(class346.field4147[(var5 & 3) << 4]).append("==");
 			}
 		}
 
-		VertexNormal.updateGameState(10);
-		if (Client.field508.method7605()) {
-			PlayerType.method5521(9);
-		}
-
+		String var1 = var3.toString();
+		return var1;
 	}
 
-	@ObfuscatedName("jf")
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
-		descriptor = "(Ljm;IIZI)V",
-		garbageValue = "-1480983977"
+		descriptor = "(IIIII)V",
+		garbageValue = "1353852155"
 	)
-	@Export("alignWidgetSize")
-	static void alignWidgetSize(Widget var0, int var1, int var2, boolean var3) {
-		int var4 = var0.width;
-		int var5 = var0.height;
-		if (var0.widthAlignment == 0) {
-			var0.width = var0.rawWidth;
-		} else if (var0.widthAlignment == 1) {
-			var0.width = var1 - var0.rawWidth;
-		} else if (var0.widthAlignment == 2) {
-			var0.width = var0.rawWidth * var1 >> 14;
+	@Export("itemContainerSetItem")
+	static void itemContainerSetItem(int var0, int var1, int var2, int var3) {
+		ItemContainer var4 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var4 == null) {
+			var4 = new ItemContainer();
+			ItemContainer.itemContainers.put(var4, (long)var0);
 		}
 
-		if (var0.heightAlignment == 0) {
-			var0.height = var0.rawHeight;
-		} else if (var0.heightAlignment == 1) {
-			var0.height = var2 - var0.rawHeight;
-		} else if (var0.heightAlignment == 2) {
-			var0.height = var2 * var0.rawHeight >> 14;
-		}
+		if (var4.ids.length <= var1) {
+			int[] var5 = new int[var1 + 1];
+			int[] var6 = new int[var1 + 1];
 
-		if (var0.widthAlignment == 4) {
-			var0.width = var0.height * var0.field3242 / var0.field3243;
-		}
-
-		if (var0.heightAlignment == 4) {
-			var0.height = var0.field3243 * var0.width / var0.field3242;
-		}
-
-		if (var0.contentType == 1337) {
-			Client.viewportWidget = var0;
-		}
-
-		if (var3 && var0.onResize != null && (var4 != var0.width || var5 != var0.height)) {
-			ScriptEvent var6 = new ScriptEvent();
-			var6.widget = var0;
-			var6.args = var0.onResize;
-			Client.scriptEvents.addFirst(var6);
-		}
-
-	}
-
-	@ObfuscatedName("kt")
-	@ObfuscatedSignature(
-		descriptor = "(Ljm;III)V",
-		garbageValue = "83568708"
-	)
-	@Export("clickWidget")
-	static final void clickWidget(Widget var0, int var1, int var2) {
-		if (Client.clickedWidget == null && !Client.isMenuOpen) {
-			if (var0 != null) {
-				Widget var4 = SpotAnimationDefinition.method3340(var0);
-				if (var4 == null) {
-					var4 = var0.parent;
-				}
-
-				if (var4 != null) {
-					Client.clickedWidget = var0;
-					var4 = SpotAnimationDefinition.method3340(var0);
-					if (var4 == null) {
-						var4 = var0.parent;
-					}
-
-					Client.clickedWidgetParent = var4;
-					Client.widgetClickX = var1;
-					Client.widgetClickY = var2;
-					class87.widgetDragDuration = 0;
-					Client.isDraggingWidget = false;
-					int var6 = Client.menuOptionsCount - 1;
-					if (var6 != -1) {
-						class16.method239(var6);
-					}
-
-					return;
-				}
+			int var7;
+			for (var7 = 0; var7 < var4.ids.length; ++var7) {
+				var5[var7] = var4.ids[var7];
+				var6[var7] = var4.quantities[var7];
 			}
 
+			for (var7 = var4.ids.length; var7 < var1; ++var7) {
+				var5[var7] = -1;
+				var6[var7] = 0;
+			}
+
+			var4.ids = var5;
+			var4.quantities = var6;
 		}
+
+		var4.ids[var1] = var2;
+		var4.quantities[var1] = var3;
 	}
 }

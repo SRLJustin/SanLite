@@ -1,19 +1,36 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oc")
-public interface class397 extends Iterable {
-	@ObfuscatedName("c")
+@ObfuscatedName("om")
+public class class397 {
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "233631954"
+		descriptor = "Lom;"
 	)
-	int vmethod7128(int var1);
+	static final class397 field4381;
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "Lom;"
+	)
+	static final class397 field4380;
+	@ObfuscatedName("h")
+	String field4379;
 
-	@ObfuscatedName("b")
+	static {
+		field4381 = new class397("application/json");
+		field4380 = new class397("text/plain");
+	}
+
+	class397(String var1) {
+		this.field4379 = var1;
+	}
+
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/Object;I)V",
-		garbageValue = "3016419"
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-1563884040"
 	)
-	void vmethod7129(int var1, Object var2);
+	public String method7217() {
+		return this.field4379;
+	}
 }
