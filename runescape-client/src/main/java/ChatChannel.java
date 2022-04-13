@@ -4,35 +4,27 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("by")
+@ObfuscatedName("bj")
 @Implements("ChatChannel")
 public class ChatChannel {
-	@ObfuscatedName("sm")
+	@ObfuscatedName("v")
+	@Export("javaVendor")
+	public static String javaVendor;
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 1987554027
+		intValue = 1341087359
 	)
-	static int field956;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = -764291983
-	)
-	@Export("musicTrackVolume")
-	public static int musicTrackVolume;
-	@ObfuscatedName("en")
+	@Export("Interpreter_stringStackSize")
+	static int Interpreter_stringStackSize;
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive14")
-	static Archive archive14;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "[Lbr;"
+		descriptor = "[Lba;"
 	)
 	@Export("messages")
 	Message[] messages;
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 587145695
+		intValue = -631005359
 	)
 	@Export("count")
 	int count;
@@ -41,10 +33,10 @@ public class ChatChannel {
 		this.messages = new Message[100];
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lbr;",
-		garbageValue = "358093741"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lba;",
+		garbageValue = "9760210"
 	)
 	@Export("addMessage")
 	Message addMessage(int var1, String var2, String var3, String var4) {
@@ -72,102 +64,83 @@ public class ChatChannel {
 		return var5;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lbr;",
-		garbageValue = "-91"
+		descriptor = "(II)Lba;",
+		garbageValue = "-1854040749"
 	)
 	@Export("getMessage")
 	Message getMessage(int var1) {
 		return var1 >= 0 && var1 < this.count ? this.messages[var1] : null;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1262269232"
+		descriptor = "(S)I",
+		garbageValue = "1536"
 	)
 	@Export("size")
 	int size() {
 		return this.count;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;B)J",
-		garbageValue = "-84"
+		descriptor = "([Lls;II)Lls;",
+		garbageValue = "2081962789"
 	)
-	static long method2054(CharSequence var0) {
-		long var1 = 0L;
-		int var3 = var0.length();
+	@Export("findEnumerated")
+	public static MouseWheel findEnumerated(MouseWheel[] var0, int var1) {
+		MouseWheel[] var2 = var0;
 
-		for (int var4 = 0; var4 < var3; ++var4) {
-			var1 *= 37L;
-			char var5 = var0.charAt(var4);
-			if (var5 >= 'A' && var5 <= 'Z') {
-				var1 += (long)(var5 + 1 - 65);
-			} else if (var5 >= 'a' && var5 <= 'z') {
-				var1 += (long)(var5 + 1 - 97);
-			} else if (var5 >= '0' && var5 <= '9') {
-				var1 += (long)(var5 + 27 - 48);
-			}
-
-			if (var1 >= 177917621779460413L) {
-				break;
+		for (int var3 = 0; var3 < var2.length; ++var3) {
+			MouseWheel var4 = var2[var3];
+			if (var1 == var4.rsOrdinal()) {
+				return var4;
 			}
 		}
 
-		while (var1 % 37L == 0L && 0L != var1) {
-			var1 /= 37L;
-		}
-
-		return var1;
+		return null;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ljm;",
-		garbageValue = "1761147769"
+		descriptor = "(IB)Ljava/lang/String;",
+		garbageValue = "28"
 	)
-	@Export("getWidget")
-	public static Widget getWidget(int var0) {
-		int var1 = var0 >> 16;
-		int var2 = var0 & 65535;
-		if (MouseRecorder.Widget_interfaceComponents[var1] == null || MouseRecorder.Widget_interfaceComponents[var1][var2] == null) {
-			boolean var3 = class242.loadInterface(var1);
-			if (!var3) {
-				return null;
+	@Export("colorStartTag")
+	static String colorStartTag(int var0) {
+		return "<col=" + Integer.toHexString(var0) + ">";
+	}
+
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(
+		descriptor = "([BIIII[Lgf;B)V",
+		garbageValue = "16"
+	)
+	static final void method1991(byte[] var0, int var1, int var2, int var3, int var4, CollisionMap[] var5) {
+		int var7;
+		int var8;
+		for (int var6 = 0; var6 < 4; ++var6) {
+			for (var7 = 0; var7 < 64; ++var7) {
+				for (var8 = 0; var8 < 64; ++var8) {
+					if (var7 + var1 > 0 && var7 + var1 < 103 && var8 + var2 > 0 && var8 + var2 < 103) {
+						int[] var10000 = var5[var6].flags[var7 + var1];
+						var10000[var8 + var2] &= -16777217;
+					}
+				}
 			}
 		}
 
-		return MouseRecorder.Widget_interfaceComponents[var1][var2];
-	}
+		Buffer var10 = new Buffer(var0);
 
-	@ObfuscatedName("ka")
-	@ObfuscatedSignature(
-		descriptor = "(IIIB)Lcl;",
-		garbageValue = "3"
-	)
-	static final InterfaceParent method2058(int var0, int var1, int var2) {
-		InterfaceParent var3 = new InterfaceParent();
-		var3.group = var1;
-		var3.type = var2;
-		Client.interfaceParents.put(var3, (long)var0);
-		class140.Widget_resetModelFrames(var1);
-		Widget var4 = getWidget(var0);
-		SecureRandomCallable.invalidateWidget(var4);
-		if (Client.meslayerContinueWidget != null) {
-			SecureRandomCallable.invalidateWidget(Client.meslayerContinueWidget);
-			Client.meslayerContinueWidget = null;
+		for (var7 = 0; var7 < 4; ++var7) {
+			for (var8 = 0; var8 < 64; ++var8) {
+				for (int var9 = 0; var9 < 64; ++var9) {
+					class127.loadTerrain(var10, var7, var8 + var1, var9 + var2, var3, var4, 0);
+				}
+			}
 		}
 
-		FileSystem.decrementMenuEntries();
-		class115.revalidateWidgetScroll(MouseRecorder.Widget_interfaceComponents[var0 >> 16], var4, false);
-		class33.runWidgetOnLoadListener(var1);
-		if (Client.rootInterface != -1) {
-			Message.runIntfCloseListeners(Client.rootInterface, 1);
-		}
-
-		return var3;
 	}
 }

@@ -1,13 +1,11 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pm")
-public class class440 {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = -1766948611
+@ObfuscatedName("pn")
+public interface class440 {
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(Lpd;I)V"
 	)
-	@Export("SpriteBuffer_spriteCount")
-	public static int SpriteBuffer_spriteCount;
+	void method8012(Buffer var1);
 }
