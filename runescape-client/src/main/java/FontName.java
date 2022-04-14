@@ -2,53 +2,54 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ot")
+@ObfuscatedName("oa")
 @Implements("FontName")
 public class FontName {
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Loa;"
 	)
 	@Export("FontName_plain11")
 	public static final FontName FontName_plain11;
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Loa;"
 	)
 	@Export("FontName_plain12")
 	public static final FontName FontName_plain12;
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Loa;"
 	)
 	@Export("FontName_bold12")
 	public static final FontName FontName_bold12;
-	@ObfuscatedName("m")
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Loa;"
 	)
 	@Export("FontName_verdana11")
 	public static final FontName FontName_verdana11;
-	@ObfuscatedName("t")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Loa;"
 	)
 	@Export("FontName_verdana13")
 	public static final FontName FontName_verdana13;
-	@ObfuscatedName("s")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Loa;"
 	)
 	@Export("FontName_verdana15")
 	public static final FontName FontName_verdana15;
-	@ObfuscatedName("dw")
+	@ObfuscatedName("pv")
 	@ObfuscatedSignature(
-		descriptor = "Lmd;"
+		descriptor = "Lps;"
 	)
-	@Export("js5Socket")
-	static AbstractSocket js5Socket;
-	@ObfuscatedName("j")
+	@Export("Ignored_cached")
+	static class426 Ignored_cached;
+	@ObfuscatedName("d")
 	@Export("name")
 	String name;
 
@@ -65,27 +66,139 @@ public class FontName {
 		this.name = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lj;",
-		garbageValue = "-2104552307"
+		descriptor = "(B)V",
+		garbageValue = "8"
 	)
-	public static class6[] method7075() {
-		return new class6[]{class6.field15};
+	public static void method7509() {
+		VarpDefinition.VarpDefinition_cached.clear();
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "-4"
+		descriptor = "(ILbo;ZI)I",
+		garbageValue = "35948304"
 	)
-	public static int method7074(int var0, int var1) {
-		int var2;
-		for (var2 = 0; var1 > 0; --var1) {
-			var2 = var2 << 1 | var0 & 1;
-			var0 >>>= 1;
+	static int method7511(int var0, Script var1, boolean var2) {
+		int var4;
+		int var9;
+		if (var0 == ScriptOpcodes.CC_CREATE) {
+			class295.Interpreter_intStackSize -= 3;
+			var9 = Interpreter.Interpreter_intStack[class295.Interpreter_intStackSize];
+			var4 = Interpreter.Interpreter_intStack[class295.Interpreter_intStackSize + 1];
+			int var11 = Interpreter.Interpreter_intStack[class295.Interpreter_intStackSize + 2];
+			if (var4 == 0) {
+				throw new RuntimeException();
+			} else {
+				Widget var6 = HorizontalAlignment.getWidget(var9);
+				if (var6.children == null) {
+					var6.children = new Widget[var11 + 1];
+				}
+
+				if (var6.children.length <= var11) {
+					Widget[] var7 = new Widget[var11 + 1];
+
+					for (int var8 = 0; var8 < var6.children.length; ++var8) {
+						var7[var8] = var6.children[var8];
+					}
+
+					var6.children = var7;
+				}
+
+				if (var11 > 0 && var6.children[var11 - 1] == null) {
+					throw new RuntimeException("" + (var11 - 1));
+				} else {
+					Widget var12 = new Widget();
+					var12.type = var4;
+					var12.parentId = var12.id = var6.id;
+					var12.childIndex = var11;
+					var12.isIf3 = true;
+					var6.children[var11] = var12;
+					if (var2) {
+						class432.scriptDotWidget = var12;
+					} else {
+						class341.scriptActiveWidget = var12;
+					}
+
+					class290.invalidateWidget(var6);
+					return 1;
+				}
+			}
+		} else {
+			Widget var3;
+			if (var0 == ScriptOpcodes.CC_DELETE) {
+				var3 = var2 ? class432.scriptDotWidget : class341.scriptActiveWidget;
+				Widget var10 = HorizontalAlignment.getWidget(var3.id);
+				var10.children[var3.childIndex] = null;
+				class290.invalidateWidget(var10);
+				return 1;
+			} else if (var0 == ScriptOpcodes.CC_DELETEALL) {
+				var3 = HorizontalAlignment.getWidget(Interpreter.Interpreter_intStack[--class295.Interpreter_intStackSize]);
+				var3.children = null;
+				class290.invalidateWidget(var3);
+				return 1;
+			} else if (var0 == 103) {
+				class295.Interpreter_intStackSize -= 3;
+				return 1;
+			} else if (var0 == 104) {
+				--class295.Interpreter_intStackSize;
+				return 1;
+			} else if (var0 != ScriptOpcodes.CC_FIND) {
+				if (var0 == ScriptOpcodes.IF_FIND) {
+					var3 = HorizontalAlignment.getWidget(Interpreter.Interpreter_intStack[--class295.Interpreter_intStackSize]);
+					if (var3 != null) {
+						Interpreter.Interpreter_intStack[++class295.Interpreter_intStackSize - 1] = 1;
+						if (var2) {
+							class432.scriptDotWidget = var3;
+						} else {
+							class341.scriptActiveWidget = var3;
+						}
+					} else {
+						Interpreter.Interpreter_intStack[++class295.Interpreter_intStackSize - 1] = 0;
+					}
+
+					return 1;
+				} else if (var0 == 202) {
+					Interpreter.Interpreter_intStack[class295.Interpreter_intStackSize + 1] = 0;
+					return 1;
+				} else if (var0 == 203) {
+					Interpreter.Interpreter_intStack[--class295.Interpreter_intStackSize + 1] = 0;
+					return 1;
+				} else {
+					return 2;
+				}
+			} else {
+				class295.Interpreter_intStackSize -= 2;
+				var9 = Interpreter.Interpreter_intStack[class295.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[class295.Interpreter_intStackSize + 1];
+				Widget var5 = class143.getWidgetChild(var9, var4);
+				if (var5 != null && var4 != -1) {
+					Interpreter.Interpreter_intStack[++class295.Interpreter_intStackSize - 1] = 1;
+					if (var2) {
+						class432.scriptDotWidget = var5;
+					} else {
+						class341.scriptActiveWidget = var5;
+					}
+				} else {
+					Interpreter.Interpreter_intStack[++class295.Interpreter_intStackSize - 1] = 0;
+				}
+
+				return 1;
+			}
+		}
+	}
+
+	@ObfuscatedName("lb")
+	@ObfuscatedSignature(
+		descriptor = "([BII)V",
+		garbageValue = "-1923637215"
+	)
+	static void method7510(byte[] var0, int var1) {
+		if (Client.randomDatData == null) {
+			Client.randomDatData = new byte[24];
 		}
 
-		return var2;
+		class350.writeRandomDat(var0, var1, Client.randomDatData, 0, 24);
 	}
 }

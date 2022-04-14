@@ -4,31 +4,31 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hm")
+@ObfuscatedName("iw")
 @Implements("WorldMapLabel")
 public class WorldMapLabel {
-	@ObfuscatedName("f")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "Lpi;"
+		descriptor = "Llq;"
 	)
-	@Export("NetCache_reference")
-	static Buffer NetCache_reference;
-	@ObfuscatedName("c")
+	@Export("Widget_spritesArchive")
+	public static AbstractArchive Widget_spritesArchive;
+	@ObfuscatedName("v")
 	@Export("text")
 	String text;
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -353724483
+		intValue = -2139007223
 	)
 	@Export("width")
 	int width;
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 1345453381
+		intValue = 2127405993
 	)
 	@Export("height")
 	int height;
-	@ObfuscatedName("m")
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
 		descriptor = "Lhh;"
 	)
@@ -43,5 +43,14 @@ public class WorldMapLabel {
 		this.width = var2;
 		this.height = var3;
 		this.size = var4;
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(IB)J",
+		garbageValue = "-39"
+	)
+	public static long method4997(int var0) {
+		return ViewportMouse.ViewportMouse_entityTags[var0];
 	}
 }

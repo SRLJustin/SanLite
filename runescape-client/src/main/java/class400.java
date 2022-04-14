@@ -1,41 +1,58 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ol")
+@ObfuscatedName("op")
 public class class400 {
-	@ObfuscatedName("p")
-	static final char[] field4411;
-	@ObfuscatedName("m")
-	static final char[] field4410;
+	@ObfuscatedName("l")
+	static final int[] field4390;
+	@ObfuscatedName("n")
+	static final int[] field4389;
 
 	static {
-		field4411 = new char[]{' ', ' ', '_', '-', 'à', 'á', 'â', 'ä', 'ã', 'À', 'Á', 'Â', 'Ä', 'Ã', 'è', 'é', 'ê', 'ë', 'È', 'É', 'Ê', 'Ë', 'í', 'î', 'ï', 'Í', 'Î', 'Ï', 'ò', 'ó', 'ô', 'ö', 'õ', 'Ò', 'Ó', 'Ô', 'Ö', 'Õ', 'ù', 'ú', 'û', 'ü', 'Ù', 'Ú', 'Û', 'Ü', 'ç', 'Ç', 'ÿ', 'Ÿ', 'ñ', 'Ñ', 'ß'};
-		field4410 = new char[]{'[', ']', '#'};
+		field4390 = new int[16384];
+		field4389 = new int[16384];
+		double var0 = 3.834951969714103E-4D;
+
+		for (int var2 = 0; var2 < 16384; ++var2) {
+			field4390[var2] = (int)(16384.0D * Math.sin((double)var2 * var0));
+			field4389[var2] = (int)(16384.0D * Math.cos(var0 * (double)var2));
+		}
+
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "([BILjava/lang/CharSequence;I)I",
-		garbageValue = "980232052"
+		descriptor = "(Lkn;I[B[BI)V",
+		garbageValue = "-785240877"
 	)
-	public static int method7147(byte[] var0, int var1, CharSequence var2) {
-		int var3 = var2.length();
-		int var4 = var1;
+	@Export("Widget_setKey")
+	static final void Widget_setKey(Widget var0, int var1, byte[] var2, byte[] var3) {
+		if (var0.field3422 == null) {
+			if (var2 == null) {
+				return;
+			}
 
-		for (int var5 = 0; var5 < var3; ++var5) {
-			char var6 = var2.charAt(var5);
-			if (var6 <= 127) {
-				var0[var4++] = (byte)var6;
-			} else if (var6 <= 2047) {
-				var0[var4++] = (byte)(192 | var6 >> 6);
-				var0[var4++] = (byte)(128 | var6 & '?');
-			} else {
-				var0[var4++] = (byte)(224 | var6 >> '\f');
-				var0[var4++] = (byte)(128 | var6 >> 6 & 63);
-				var0[var4++] = (byte)(128 | var6 & '?');
+			var0.field3422 = new byte[11][];
+			var0.field3423 = new byte[11][];
+			var0.field3424 = new int[11];
+			var0.field3425 = new int[11];
+		}
+
+		var0.field3422[var1] = var2;
+		if (var2 != null) {
+			var0.field3432 = true;
+		} else {
+			var0.field3432 = false;
+
+			for (int var4 = 0; var4 < var0.field3422.length; ++var4) {
+				if (var0.field3422[var4] != null) {
+					var0.field3432 = true;
+					break;
+				}
 			}
 		}
 
-		return var4 - var1;
+		var0.field3423[var1] = var3;
 	}
 }

@@ -1,182 +1,114 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("jj")
+@ObfuscatedName("jv")
 public class class273 {
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Llq;"
+	)
+	@Export("musicPatchesArchive")
+	public static AbstractArchive musicPatchesArchive;
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "Llq;"
+	)
+	@Export("musicSamplesArchive")
+	public static AbstractArchive musicSamplesArchive;
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "Llq;"
+	)
+	@Export("soundEffectsArchive")
+	public static AbstractArchive soundEffectsArchive;
+	@ObfuscatedName("l")
+	@ObfuscatedGetter(
+		intValue = 1842086067
+	)
+	@Export("musicPlayerStatus")
+	public static int musicPlayerStatus;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = 1619549501
+	)
+	@Export("musicTrackFileId")
+	public static int musicTrackFileId;
+	@ObfuscatedName("r")
+	@ObfuscatedGetter(
+		intValue = 317324399
+	)
+	@Export("pcmSampleLength")
+	public static int pcmSampleLength;
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "Ljs;"
+	)
+	@Export("musicTrack")
+	static MusicTrack musicTrack;
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "-9"
+		descriptor = "Lan;"
 	)
-	@Export("getVarbit")
-	public static int getVarbit(int var0) {
-		VarbitComposition var2 = (VarbitComposition)VarbitComposition.VarbitDefinition_cached.get((long)var0);
-		VarbitComposition var1;
-		if (var2 != null) {
-			var1 = var2;
-		} else {
-			byte[] var3 = VarbitComposition.VarbitDefinition_archive.takeFile(14, var0);
-			var2 = new VarbitComposition();
-			if (var3 != null) {
-				var2.decode(new Buffer(var3));
-			}
+	@Export("soundCache")
+	static SoundCache soundCache;
 
-			VarbitComposition.VarbitDefinition_cached.put(var2, (long)var0);
-			var1 = var2;
-		}
-
-		int var7 = var1.baseVar;
-		int var4 = var1.startBit;
-		int var5 = var1.endBit;
-		int var6 = Varps.Varps_masks[var5 - var4];
-		return Varps.Varps_main[var7] >> var4 & var6;
+	static {
+		musicPlayerStatus = 0;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "-2100883024"
+		descriptor = "([Ljava/lang/CharSequence;III)Ljava/lang/String;",
+		garbageValue = "2006366579"
 	)
-	static int method5332(int var0, Script var1, boolean var2) {
-		int var4;
-		int var9;
-		if (var0 == ScriptOpcodes.CC_CREATE) {
-			IsaacCipher.Interpreter_intStackSize -= 3;
-			var9 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-			var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-			int var11 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 2];
-			if (var4 == 0) {
-				throw new RuntimeException();
-			} else {
-				Widget var6 = ChatChannel.getWidget(var9);
-				if (var6.children == null) {
-					var6.children = new Widget[var11 + 1];
-				}
-
-				if (var6.children.length <= var11) {
-					Widget[] var7 = new Widget[var11 + 1];
-
-					for (int var8 = 0; var8 < var6.children.length; ++var8) {
-						var7[var8] = var6.children[var8];
-					}
-
-					var6.children = var7;
-				}
-
-				if (var11 > 0 && var6.children[var11 - 1] == null) {
-					throw new RuntimeException("" + (var11 - 1));
-				} else {
-					Widget var12 = new Widget();
-					var12.type = var4;
-					var12.parentId = var12.id = var6.id;
-					var12.childIndex = var11;
-					var12.isIf3 = true;
-					var6.children[var11] = var12;
-					if (var2) {
-						WorldMapArea.scriptDotWidget = var12;
-					} else {
-						Messages.scriptActiveWidget = var12;
-					}
-
-					SecureRandomCallable.invalidateWidget(var6);
-					return 1;
-				}
-			}
+	public static String method5271(CharSequence[] var0, int var1, int var2) {
+		if (var2 == 0) {
+			return "";
+		} else if (var2 == 1) {
+			CharSequence var10 = var0[var1];
+			return var10 == null ? "null" : var10.toString();
 		} else {
-			Widget var3;
-			if (var0 == ScriptOpcodes.CC_DELETE) {
-				var3 = var2 ? WorldMapArea.scriptDotWidget : Messages.scriptActiveWidget;
-				Widget var10 = ChatChannel.getWidget(var3.id);
-				var10.children[var3.childIndex] = null;
-				SecureRandomCallable.invalidateWidget(var10);
-				return 1;
-			} else if (var0 == ScriptOpcodes.CC_DELETEALL) {
-				var3 = ChatChannel.getWidget(Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize]);
-				var3.children = null;
-				SecureRandomCallable.invalidateWidget(var3);
-				return 1;
-			} else if (var0 == 103) {
-				IsaacCipher.Interpreter_intStackSize -= 3;
-				return 1;
-			} else if (var0 == 104) {
-				--IsaacCipher.Interpreter_intStackSize;
-				return 1;
-			} else if (var0 != ScriptOpcodes.CC_FIND) {
-				if (var0 == ScriptOpcodes.IF_FIND) {
-					var3 = ChatChannel.getWidget(Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize]);
-					if (var3 != null) {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 1;
-						if (var2) {
-							WorldMapArea.scriptDotWidget = var3;
-						} else {
-							Messages.scriptActiveWidget = var3;
-						}
-					} else {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-					}
+			int var3 = var2 + var1;
+			int var4 = 0;
 
-					return 1;
-				} else if (var0 == 202) {
-					Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1] = 0;
-					return 1;
-				} else if (var0 == 203) {
-					Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize + 1] = 0;
-					return 1;
+			for (int var5 = var1; var5 < var3; ++var5) {
+				CharSequence var9 = var0[var5];
+				if (var9 == null) {
+					var4 += 4;
 				} else {
-					return 2;
+					var4 += var9.length();
 				}
-			} else {
-				IsaacCipher.Interpreter_intStackSize -= 2;
-				var9 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-				var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-				Widget var5 = class126.getWidgetChild(var9, var4);
-				if (var5 != null && var4 != -1) {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 1;
-					if (var2) {
-						WorldMapArea.scriptDotWidget = var5;
-					} else {
-						Messages.scriptActiveWidget = var5;
-					}
-				} else {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-				}
-
-				return 1;
 			}
+
+			StringBuilder var8 = new StringBuilder(var4);
+
+			for (int var6 = var1; var6 < var3; ++var6) {
+				CharSequence var7 = var0[var6];
+				if (var7 == null) {
+					var8.append("null");
+				} else {
+					var8.append(var7);
+				}
+			}
+
+			return var8.toString();
 		}
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("jp")
 	@ObfuscatedSignature(
-		descriptor = "(IS)V",
-		garbageValue = "-11359"
+		descriptor = "(II)Z",
+		garbageValue = "1687746978"
 	)
-	public static void method5333(int var0) {
-		if (var0 != -1) {
-			if (Widget.Widget_loadedInterfaces[var0]) {
-				CollisionMap.Widget_archive.clearFilesGroup(var0);
-				if (MouseRecorder.Widget_interfaceComponents[var0] != null) {
-					boolean var1 = true;
-
-					for (int var2 = 0; var2 < MouseRecorder.Widget_interfaceComponents[var0].length; ++var2) {
-						if (MouseRecorder.Widget_interfaceComponents[var0][var2] != null) {
-							if (MouseRecorder.Widget_interfaceComponents[var0][var2].type != 2) {
-								MouseRecorder.Widget_interfaceComponents[var0][var2] = null;
-							} else {
-								var1 = false;
-							}
-						}
-					}
-
-					if (var1) {
-						MouseRecorder.Widget_interfaceComponents[var0] = null;
-					}
-
-					Widget.Widget_loadedInterfaces[var0] = false;
-				}
+	static boolean method5267(int var0) {
+		for (int var1 = 0; var1 < Client.field713; ++var1) {
+			if (Client.field568[var1] == var0) {
+				return true;
 			}
 		}
+
+		return false;
 	}
 }

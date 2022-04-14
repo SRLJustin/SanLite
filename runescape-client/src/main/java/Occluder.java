@@ -2,143 +2,115 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gl")
+@ObfuscatedName("hd")
 @Implements("Occluder")
 public final class Occluder {
-	@ObfuscatedName("c")
+	@ObfuscatedName("hc")
+	@Export("regionMapArchives")
+	static byte[][] regionMapArchives;
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1159040081
+		intValue = 2118219045
 	)
 	@Export("minTileX")
 	int minTileX;
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -342962923
+		intValue = -1278987595
 	)
 	@Export("maxTileX")
 	int maxTileX;
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 1018728031
+		intValue = -1725451551
 	)
 	@Export("minTileY")
 	int minTileY;
-	@ObfuscatedName("m")
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = -303087101
+		intValue = 1053658137
 	)
 	@Export("maxTileY")
 	int maxTileY;
-	@ObfuscatedName("t")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = -1878203499
+		intValue = -552645515
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("s")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 1169287087
+		intValue = 1118377853
 	)
 	@Export("minX")
 	int minX;
-	@ObfuscatedName("j")
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = -1004767669
+		intValue = 1442245953
 	)
 	@Export("maxX")
 	int maxX;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -596343551
+		intValue = -1253210515
 	)
 	@Export("minZ")
 	int minZ;
-	@ObfuscatedName("n")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -1032991231
+		intValue = 141469663
 	)
 	@Export("maxZ")
 	int maxZ;
 	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = 973854413
+		intValue = 928393647
 	)
 	@Export("minY")
 	int minY;
-	@ObfuscatedName("o")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 613174517
+		intValue = -1686310297
 	)
 	@Export("maxY")
 	int maxY;
-	@ObfuscatedName("v")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = 2116164351
+		intValue = -1392704329
 	)
-	int field2378;
-	@ObfuscatedName("d")
+	int field2453;
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -824345461
+		intValue = 163437119
 	)
-	int field2369;
-	@ObfuscatedName("h")
+	int field2454;
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -1750638079
+		intValue = -465176021
 	)
-	int field2380;
-	@ObfuscatedName("g")
+	int field2455;
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = 72228107
+		intValue = -821512955
 	)
-	int field2381;
-	@ObfuscatedName("e")
+	int field2456;
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -1522475315
+		intValue = -1125361357
 	)
-	int field2368;
-	@ObfuscatedName("a")
+	int field2460;
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = -1800993445
+		intValue = 1349803663
 	)
-	int field2383;
-	@ObfuscatedName("u")
+	int field2458;
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 269877121
+		intValue = -1964398833
 	)
-	int field2367;
+	int field2459;
 
 	Occluder() {
-	}
-
-	@ObfuscatedName("gt")
-	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "-69"
-	)
-	@Export("setWindowedMode")
-	static void setWindowedMode(int var0) {
-		Client.field514 = 0L;
-		if (var0 >= 2) {
-			Client.isResizable = true;
-		} else {
-			Client.isResizable = false;
-		}
-
-		if (class143.getWindowedMode() == 1) {
-			class295.client.setMaxCanvasSize(765, 503);
-		} else {
-			class295.client.setMaxCanvasSize(7680, 2160);
-		}
-
-		if (Client.gameState >= 25) {
-			PacketBufferNode var1 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2824, Client.packetWriter.isaacCipher);
-			var1.packetBuffer.writeByte(class143.getWindowedMode());
-			var1.packetBuffer.writeShort(class186.canvasWidth);
-			var1.packetBuffer.writeShort(WallObject.canvasHeight);
-			Client.packetWriter.addNode(var1);
-		}
-
 	}
 }

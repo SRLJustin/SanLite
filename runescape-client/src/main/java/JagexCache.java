@@ -1,44 +1,60 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ey")
+@ObfuscatedName("fl")
 @Implements("JagexCache")
 public class JagexCache {
-	@ObfuscatedName("rd")
-	@ObfuscatedSignature(
-		descriptor = "Lar;"
+	@ObfuscatedName("sw")
+	@ObfuscatedGetter(
+		intValue = -1318999061
 	)
-	@Export("pcmPlayer0")
-	static PcmPlayer pcmPlayer0;
+	static int field1737;
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lof;"
+		descriptor = "Llq;"
+	)
+	@Export("EnumDefinition_archive")
+	public static AbstractArchive EnumDefinition_archive;
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = 728211147
+	)
+	@Export("idxCount")
+	public static int idxCount;
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "Lpz;"
 	)
 	@Export("JagexCache_randomDat")
 	public static BufferedFile JagexCache_randomDat;
-	@ObfuscatedName("d")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lof;"
+		descriptor = "Lpz;"
 	)
 	@Export("JagexCache_dat2File")
 	public static BufferedFile JagexCache_dat2File;
-	@ObfuscatedName("h")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "Lof;"
+		descriptor = "Lpz;"
 	)
 	@Export("JagexCache_idx255File")
 	public static BufferedFile JagexCache_idx255File;
-	@ObfuscatedName("g")
+	@ObfuscatedName("es")
 	@ObfuscatedSignature(
-		descriptor = "[Lof;"
+		descriptor = "Llu;"
 	)
-	@Export("JagexCache_idxFiles")
-	public static BufferedFile[] JagexCache_idxFiles;
-	@ObfuscatedName("l")
-	@Export("formattedOperatingSystemName")
-	public static String formattedOperatingSystemName;
+	@Export("archive18")
+	static Archive archive18;
+	@ObfuscatedName("pl")
+	@ObfuscatedSignature(
+		descriptor = "Lcm;"
+	)
+	@Export("varcs")
+	static Varcs varcs;
 
 	static {
 		JagexCache_randomDat = null;
@@ -46,22 +62,66 @@ public class JagexCache {
 		JagexCache_idx255File = null;
 	}
 
-	@ObfuscatedName("g")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ldb;",
-		garbageValue = "2123818799"
+		descriptor = "(IIB)I",
+		garbageValue = "-95"
 	)
-	static class120 method3064(int var0) {
-		class120 var1 = (class120)SequenceDefinition.SequenceDefinition_cachedModel.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			var1 = class112.method2571(SequenceDefinition.SequenceDefinition_animationsArchive, class118.SequenceDefinition_skeletonsArchive, var0, false);
-			if (var1 != null) {
-				SequenceDefinition.SequenceDefinition_cachedModel.put(var1, (long)var0);
+	public static int method3206(int var0, int var1) {
+		int var2;
+		for (var2 = 1; var1 > 1; var1 >>= 1) {
+			if ((var1 & 1) != 0) {
+				var2 = var0 * var2;
 			}
 
-			return var1;
+			var0 *= var0;
+		}
+
+		if (var1 == 1) {
+			return var0 * var2;
+		} else {
+			return var2;
+		}
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(B)[Ld;",
+		garbageValue = "3"
+	)
+	public static class6[] method3224() {
+		return new class6[]{class6.field22};
+	}
+
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "(IZI)Ljava/lang/String;",
+		garbageValue = "-49864634"
+	)
+	@Export("intToString")
+	public static String intToString(int var0, boolean var1) {
+		return var1 && var0 >= 0 ? class345.method6478(var0, 10, var1) : Integer.toString(var0);
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(ILbo;ZI)I",
+		garbageValue = "-1964989648"
+	)
+	static int method3227(int var0, Script var1, boolean var2) {
+		if (var0 == ScriptOpcodes.LOGOUT) {
+			Client.logoutTimer = 250;
+			return 1;
+		} else if (var0 != 5631 && var0 != 5633) {
+			if (var0 == 5632) {
+				Interpreter.Interpreter_intStack[++class295.Interpreter_intStackSize - 1] = 26;
+				return 1;
+			} else {
+				return 2;
+			}
+		} else {
+			ChatChannel.Interpreter_stringStackSize -= 2;
+			return 1;
 		}
 	}
 }

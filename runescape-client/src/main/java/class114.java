@@ -1,82 +1,45 @@
-import java.awt.FontMetrics;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dh")
-public enum class114 implements MouseWheel {
-	@ObfuscatedName("c")
+@ObfuscatedName("dm")
+public class class114 {
+	@ObfuscatedName("g")
+	public static final float field1396;
+	@ObfuscatedName("l")
+	public static final float field1394;
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "Ldh;"
+		descriptor = "[Lqx;"
 	)
-	field1390(0, 0),
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1383(1, 1),
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1384(2, 2),
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1391(3, 3),
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1386(4, 4);
+	@Export("title_muteSprite")
+	static IndexedSprite[] title_muteSprite;
 
-	@ObfuscatedName("r")
-	public static short[][] field1382;
-	@ObfuscatedName("ax")
-	@Export("loginScreenFontMetrics")
-	static FontMetrics loginScreenFontMetrics;
-	@ObfuscatedName("gl")
-	@ObfuscatedSignature(
-		descriptor = "Llx;"
-	)
-	@Export("fontPlain12")
-	static Font fontPlain12;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -401638189
-	)
-	final int field1387;
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(
-		intValue = 733610371
-	)
-	final int field1388;
-
-	class114(int var3, int var4) {
-		this.field1387 = var3;
-		this.field1388 = var4;
+	static {
+		field1396 = Math.ulp(1.0F);
+		field1394 = 2.0F * field1396;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "48"
+		descriptor = "(II)Lgk;",
+		garbageValue = "725728757"
 	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field1388;
-	}
+	@Export("StructDefinition_getStructDefinition")
+	public static StructComposition StructDefinition_getStructDefinition(int var0) {
+		StructComposition var1 = (StructComposition)StructComposition.StructDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = StructComposition.StructDefinition_archive.takeFile(34, var0);
+			var1 = new StructComposition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1912506868"
-	)
-	public static int method2629(int var0) {
-		long var2 = ViewportMouse.ViewportMouse_entityTags[var0];
-		int var1 = (int)(var2 >>> 14 & 3L);
-		return var1;
+			var1.postDecode();
+			StructComposition.StructDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
 	}
 }

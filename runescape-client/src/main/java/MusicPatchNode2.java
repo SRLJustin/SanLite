@@ -1,94 +1,116 @@
-import java.io.File;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("il")
+@ObfuscatedName("jf")
 @Implements("MusicPatchNode2")
 public class MusicPatchNode2 {
-	@ObfuscatedName("c")
-	byte[] field3056;
-	@ObfuscatedName("b")
-	byte[] field3054;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = 1373142443
+	@ObfuscatedName("rs")
+	@ObfuscatedSignature(
+		descriptor = "Lql;"
 	)
-	int field3052;
-	@ObfuscatedName("m")
+	@Export("sceneMinimapSprite")
+	static SpritePixels sceneMinimapSprite;
+	@ObfuscatedName("jl")
 	@ObfuscatedGetter(
-		intValue = 354734067
+		intValue = -631116799
 	)
-	int field3055;
-	@ObfuscatedName("t")
+	@Export("cameraYaw")
+	static int cameraYaw;
+	@ObfuscatedName("v")
+	byte[] field3165;
+	@ObfuscatedName("o")
+	byte[] field3162;
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -488769373
+		intValue = 1461465763
 	)
-	int field3053;
-	@ObfuscatedName("s")
+	int field3164;
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = -1877607089
+		intValue = -1955861837
 	)
-	int field3057;
-	@ObfuscatedName("j")
+	int field3168;
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = 843760969
+		intValue = 45595669
 	)
-	int field3058;
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = 1302289953
-	)
-	int field3059;
+	int field3163;
 	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -579671659
+		intValue = 1235565489
 	)
-	int field3060;
+	int field3173;
+	@ObfuscatedName("d")
+	@ObfuscatedGetter(
+		intValue = -1278953517
+	)
+	int field3171;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = 1566400781
+	)
+	int field3169;
+	@ObfuscatedName("u")
+	@ObfuscatedGetter(
+		intValue = 798353979
+	)
+	int field3170;
 
 	MusicPatchNode2() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/io/File;B)V",
-		garbageValue = "-1"
+		descriptor = "(IS)Z",
+		garbageValue = "-26373"
 	)
-	public static void method5048(File var0) {
-		class125.FileSystem_cacheDir = var0;
-		if (!class125.FileSystem_cacheDir.exists()) {
-			throw new RuntimeException("");
-		} else {
-			FileSystem.FileSystem_hasPermissions = true;
-		}
+	@Export("isWorldMapEvent")
+	public static boolean isWorldMapEvent(int var0) {
+		return var0 == 10 || var0 == 11 || var0 == 12 || var0 == 13 || var0 == 14 || var0 == 15 || var0 == 16 || var0 == 17;
 	}
 
-	@ObfuscatedName("g")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(IIIS)I",
-		garbageValue = "3121"
+		descriptor = "(IS)Z",
+		garbageValue = "5194"
 	)
-	@Export("hslToRgb")
-	static final int hslToRgb(int var0, int var1, int var2) {
-		if (var2 > 179) {
-			var1 /= 2;
-		}
+	@Export("loadInterface")
+	public static boolean loadInterface(int var0) {
+		if (Frames.Widget_loadedInterfaces[var0]) {
+			return true;
+		} else if (!class122.Widget_archive.tryLoadGroup(var0)) {
+			return false;
+		} else {
+			int var1 = class122.Widget_archive.getGroupFileCount(var0);
+			if (var1 == 0) {
+				Frames.Widget_loadedInterfaces[var0] = true;
+				return true;
+			} else {
+				if (EnumComposition.Widget_interfaceComponents[var0] == null) {
+					EnumComposition.Widget_interfaceComponents[var0] = new Widget[var1];
+				}
 
-		if (var2 > 192) {
-			var1 /= 2;
-		}
+				for (int var2 = 0; var2 < var1; ++var2) {
+					if (EnumComposition.Widget_interfaceComponents[var0][var2] == null) {
+						byte[] var3 = class122.Widget_archive.takeFile(var0, var2);
+						if (var3 != null) {
+							EnumComposition.Widget_interfaceComponents[var0][var2] = new Widget();
+							EnumComposition.Widget_interfaceComponents[var0][var2].id = var2 + (var0 << 16);
+							if (var3[0] == -1) {
+								EnumComposition.Widget_interfaceComponents[var0][var2].decode(new Buffer(var3));
+							} else {
+								EnumComposition.Widget_interfaceComponents[var0][var2].decodeLegacy(new Buffer(var3));
+							}
+						}
+					}
+				}
 
-		if (var2 > 217) {
-			var1 /= 2;
+				Frames.Widget_loadedInterfaces[var0] = true;
+				return true;
+			}
 		}
-
-		if (var2 > 243) {
-			var1 /= 2;
-		}
-
-		int var3 = (var1 / 32 << 7) + (var0 / 4 << 10) + var2 / 2;
-		return var3;
 	}
 }
