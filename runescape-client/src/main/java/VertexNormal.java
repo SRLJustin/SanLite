@@ -1,39 +1,37 @@
+import java.io.File;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ga")
+@ObfuscatedName("hf")
 @Implements("VertexNormal")
 public class VertexNormal {
-	@ObfuscatedName("ei")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive18")
-	static Archive archive18;
-	@ObfuscatedName("b")
+	@ObfuscatedName("l")
+	@Export("cacheDir")
+	public static File cacheDir;
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 571778343
+		intValue = -359767671
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("p")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -1513329049
+		intValue = 396508261
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("m")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -73747775
+		intValue = -194088213
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("t")
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = 89505295
+		intValue = -1595742309
 	)
 	@Export("magnitude")
 	int magnitude;
@@ -42,7 +40,7 @@ public class VertexNormal {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lga;)V"
+		descriptor = "(Lhf;)V"
 	)
 	VertexNormal(VertexNormal var1) {
 		this.x = var1.x;
@@ -51,72 +49,81 @@ public class VertexNormal {
 		this.magnitude = var1.magnitude;
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "339374654"
+		descriptor = "(I)[Ljx;",
+		garbageValue = "-37714344"
 	)
-	@Export("Messages_getLastChatID")
-	static int Messages_getLastChatID(int var0) {
-		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
-		if (var1 == null) {
-			return -1;
-		} else {
-			return var1.previousDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.previousDual).count;
-		}
+	static LoginPacket[] method4495() {
+		return new LoginPacket[]{LoginPacket.field3133, LoginPacket.field3134, LoginPacket.field3135, LoginPacket.field3137, LoginPacket.field3132, LoginPacket.field3136};
 	}
 
-	@ObfuscatedName("ew")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-2020888732"
+		descriptor = "(Ljp;I)V",
+		garbageValue = "-338837319"
 	)
-	@Export("updateGameState")
-	static void updateGameState(int var0) {
-		if (var0 != Client.gameState) {
-			if (Client.gameState == 0) {
-				class295.client.method498();
-			}
+	public static void method4496(Huffman var0) {
+		class282.huffman = var0;
+	}
 
-			if (var0 == 20 || var0 == 40 || var0 == 45) {
-				PacketBufferNode.method5016(0);
-				Client.field545 = 0;
-				Client.field541 = 0;
-				Client.timer.method6232(var0);
-				if (var0 != 20) {
-					FriendSystem.method1791(false);
-				}
-			}
-
-			if (var0 != 20 && var0 != 40 && Coord.field3186 != null) {
-				Coord.field3186.close();
-				Coord.field3186 = null;
-			}
-
-			if (Client.gameState == 25) {
-				Client.field602 = 0;
-				Client.field529 = 0;
-				Client.field530 = 1;
-				Client.field617 = 0;
-				Client.field532 = 1;
-			}
-
-			int var1;
-			if (var0 != 5 && var0 != 10) {
-				if (var0 == 20) {
-					var1 = Client.gameState == 11 ? 4 : 0;
-					DefaultsGroup.method6568(class257.archive10, UserComparator6.archive8, true, var1);
-				} else if (var0 == 11) {
-					DefaultsGroup.method6568(class257.archive10, UserComparator6.archive8, false, 4);
-				} else {
-					SoundCache.method823();
-				}
-			} else {
-				var1 = AttackOption.method2356() ? 0 : 12;
-				DefaultsGroup.method6568(class257.archive10, UserComparator6.archive8, true, var1);
-			}
-
-			Client.gameState = var0;
+	@ObfuscatedName("gr")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "77"
+	)
+	static void method4498() {
+		if (Client.renderSelf) {
+			class166.addPlayerToScene(class19.localPlayer, false);
 		}
+
+	}
+
+	@ObfuscatedName("ik")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/String;B)V",
+		garbageValue = "11"
+	)
+	static void method4497(int var0, String var1) {
+		int var2 = Players.Players_count;
+		int[] var3 = Players.Players_indices;
+		boolean var4 = false;
+		Username var5 = new Username(var1, class83.loginType);
+
+		for (int var6 = 0; var6 < var2; ++var6) {
+			Player var7 = Client.players[var3[var6]];
+			if (var7 != null && var7 != class19.localPlayer && var7.username != null && var7.username.equals(var5)) {
+				PacketBufferNode var8;
+				if (var0 == 1) {
+					var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2913, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7795(var3[var6]);
+					var8.packetBuffer.method7786(0);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 4) {
+					var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2904, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7787(0);
+					var8.packetBuffer.writeShort(var3[var6]);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 6) {
+					var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2903, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7791(var3[var6]);
+					var8.packetBuffer.writeByte(0);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 7) {
+					var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2898, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeShort(var3[var6]);
+					var8.packetBuffer.method7786(0);
+					Client.packetWriter.addNode(var8);
+				}
+
+				var4 = true;
+				break;
+			}
+		}
+
+		if (!var4) {
+			Login.addGameMessage(4, "", "Unable to find " + var1);
+		}
+
 	}
 }

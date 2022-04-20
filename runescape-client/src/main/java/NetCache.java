@@ -1,3 +1,6 @@
+import java.lang.management.GarbageCollectorMXBean;
+import java.lang.management.ManagementFactory;
+import java.util.Iterator;
 import java.util.zip.CRC32;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
@@ -5,106 +8,117 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kg")
+@ObfuscatedName("lx")
 @Implements("NetCache")
 public class NetCache {
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lmd;"
+		descriptor = "Lnj;"
 	)
 	@Export("NetCache_socket")
 	public static AbstractSocket NetCache_socket;
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -1178341403
+		intValue = -218484267
 	)
 	@Export("NetCache_loadTime")
 	public static int NetCache_loadTime;
-	@ObfuscatedName("m")
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(
+		longValue = 2715459608811227853L
+	)
+	public static long field3976;
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
-		descriptor = "Lon;"
+		descriptor = "Lpo;"
 	)
 	@Export("NetCache_pendingPriorityWrites")
 	public static NodeHashTable NetCache_pendingPriorityWrites;
-	@ObfuscatedName("t")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = 636484149
+		intValue = -1619207221
 	)
 	@Export("NetCache_pendingPriorityWritesCount")
 	public static int NetCache_pendingPriorityWritesCount;
-	@ObfuscatedName("s")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lon;"
+		descriptor = "Lpo;"
 	)
 	@Export("NetCache_pendingPriorityResponses")
 	public static NodeHashTable NetCache_pendingPriorityResponses;
-	@ObfuscatedName("j")
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = -2078228991
+		intValue = -447894711
 	)
 	@Export("NetCache_pendingPriorityResponsesCount")
 	public static int NetCache_pendingPriorityResponsesCount;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lla;"
+		descriptor = "Llv;"
 	)
 	@Export("NetCache_pendingWritesQueue")
 	public static DualNodeDeque NetCache_pendingWritesQueue;
-	@ObfuscatedName("n")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Lon;"
+		descriptor = "Lpo;"
 	)
 	@Export("NetCache_pendingWrites")
 	public static NodeHashTable NetCache_pendingWrites;
 	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = 763623423
+		intValue = 494273937
 	)
 	@Export("NetCache_pendingWritesCount")
 	public static int NetCache_pendingWritesCount;
-	@ObfuscatedName("o")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "Lon;"
+		descriptor = "Lpo;"
 	)
 	@Export("NetCache_pendingResponses")
 	public static NodeHashTable NetCache_pendingResponses;
-	@ObfuscatedName("v")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = -253277095
+		intValue = 988805017
 	)
 	@Export("NetCache_pendingResponsesCount")
 	public static int NetCache_pendingResponsesCount;
-	@ObfuscatedName("g")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "Lpi;"
+		descriptor = "Llf;"
+	)
+	@Export("NetCache_currentResponse")
+	public static NetFileRequest NetCache_currentResponse;
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "Lpd;"
 	)
 	@Export("NetCache_responseHeaderBuffer")
 	public static Buffer NetCache_responseHeaderBuffer;
-	@ObfuscatedName("a")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = 1635877227
+		intValue = -315371955
 	)
-	public static int field3863;
-	@ObfuscatedName("k")
+	public static int field3990;
+	@ObfuscatedName("a")
 	@Export("NetCache_crc")
 	static CRC32 NetCache_crc;
-	@ObfuscatedName("l")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "[Lkz;"
+		descriptor = "[Llu;"
 	)
 	@Export("NetCache_archives")
 	static Archive[] NetCache_archives;
-	@ObfuscatedName("q")
-	public static byte field3866;
-	@ObfuscatedName("x")
+	@ObfuscatedName("y")
+	public static byte field3999;
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = -1421644025
+		intValue = 1125875511
 	)
 	@Export("NetCache_crcMismatches")
 	public static int NetCache_crcMismatches;
-	@ObfuscatedName("z")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = -2029504039
+		intValue = -1768770895
 	)
 	@Export("NetCache_ioExceptions")
 	public static int NetCache_ioExceptions;
@@ -121,11 +135,65 @@ public class NetCache {
 		NetCache_pendingResponses = new NodeHashTable(4096);
 		NetCache_pendingResponsesCount = 0;
 		NetCache_responseHeaderBuffer = new Buffer(8);
-		field3863 = 0;
+		field3990 = 0;
 		NetCache_crc = new CRC32();
 		NetCache_archives = new Archive[256];
-		field3866 = 0;
+		field3999 = 0;
 		NetCache_crcMismatches = 0;
 		NetCache_ioExceptions = 0;
+	}
+
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "77"
+	)
+	static void method5988() {
+		Messages.Messages_channels.clear();
+		Messages.Messages_hashTable.clear();
+		Messages.Messages_queue.clear();
+		Messages.Messages_count = 0;
+	}
+
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "27"
+	)
+	@Export("getGcDuration")
+	protected static int getGcDuration() {
+		int var0 = 0;
+		if (PendingSpawn.garbageCollector == null || !PendingSpawn.garbageCollector.isValid()) {
+			try {
+				Iterator var1 = ManagementFactory.getGarbageCollectorMXBeans().iterator();
+
+				while (var1.hasNext()) {
+					GarbageCollectorMXBean var2 = (GarbageCollectorMXBean)var1.next();
+					if (var2.isValid()) {
+						PendingSpawn.garbageCollector = var2;
+						GameEngine.garbageCollectorLastCheckTimeMs = -1L;
+						GameEngine.garbageCollectorLastCollectionTime = -1L;
+					}
+				}
+			} catch (Throwable var11) {
+			}
+		}
+
+		if (PendingSpawn.garbageCollector != null) {
+			long var9 = WorldMapSprite.method4989();
+			long var3 = PendingSpawn.garbageCollector.getCollectionTime();
+			if (GameEngine.garbageCollectorLastCollectionTime != -1L) {
+				long var5 = var3 - GameEngine.garbageCollectorLastCollectionTime;
+				long var7 = var9 - GameEngine.garbageCollectorLastCheckTimeMs;
+				if (var7 != 0L) {
+					var0 = (int)(100L * var5 / var7);
+				}
+			}
+
+			GameEngine.garbageCollectorLastCollectionTime = var3;
+			GameEngine.garbageCollectorLastCheckTimeMs = var9;
+		}
+
+		return var0;
 	}
 }

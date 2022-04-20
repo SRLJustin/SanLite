@@ -4,129 +4,129 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gb")
+@ObfuscatedName("gy")
 @Implements("Tile")
 public final class Tile extends Node {
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -1781341961
+		intValue = -673782605
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = 263119953
+		intValue = 1121637331
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 865601687
+		intValue = 672656763
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("m")
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = -440521021
+		intValue = 2008517881
 	)
 	@Export("originalPlane")
 	int originalPlane;
-	@ObfuscatedName("t")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "Lgk;"
+		descriptor = "Lhj;"
 	)
 	@Export("paint")
 	SceneTilePaint paint;
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Lgc;"
-	)
-	@Export("model")
-	SceneTileModel model;
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "Lhg;"
-	)
-	@Export("wallObject")
-	WallObject wallObject;
-	@ObfuscatedName("w")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
 		descriptor = "Lhp;"
 	)
+	@Export("model")
+	SceneTileModel model;
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(
+		descriptor = "Lhu;"
+	)
+	@Export("wallObject")
+	WallObject wallObject;
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Lhr;"
+	)
 	@Export("decorativeObject")
 	DecorativeObject decorativeObject;
-	@ObfuscatedName("n")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Lgx;"
+		descriptor = "Lgb;"
 	)
 	@Export("groundObject")
 	GroundObject groundObject;
 	@ObfuscatedName("r")
 	@ObfuscatedSignature(
-		descriptor = "Lgw;"
+		descriptor = "Lgm;"
 	)
 	@Export("itemLayer")
 	ItemLayer itemLayer;
-	@ObfuscatedName("o")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 90618831
+		intValue = 1077324961
 	)
 	@Export("gameObjectsCount")
 	int gameObjectsCount;
-	@ObfuscatedName("v")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "[Lhl;"
+		descriptor = "[Lhg;"
 	)
 	@Export("gameObjects")
 	GameObject[] gameObjects;
-	@ObfuscatedName("d")
+	@ObfuscatedName("c")
 	@Export("gameObjectEdgeMasks")
 	int[] gameObjectEdgeMasks;
-	@ObfuscatedName("h")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -1586130785
+		intValue = -399382975
 	)
 	@Export("gameObjectsEdgeMask")
 	int gameObjectsEdgeMask;
-	@ObfuscatedName("g")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -540503095
+		intValue = 465941461
 	)
 	@Export("minPlane")
 	int minPlane;
-	@ObfuscatedName("e")
+	@ObfuscatedName("s")
 	@Export("drawPrimary")
 	boolean drawPrimary;
-	@ObfuscatedName("a")
+	@ObfuscatedName("b")
 	@Export("drawSecondary")
 	boolean drawSecondary;
-	@ObfuscatedName("u")
+	@ObfuscatedName("w")
 	@Export("drawGameObjects")
 	boolean drawGameObjects;
-	@ObfuscatedName("k")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = 600140409
+		intValue = -1139331751
 	)
 	@Export("drawGameObjectEdges")
 	int drawGameObjectEdges;
-	@ObfuscatedName("f")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -163800571
+		intValue = -412230155
 	)
-	int field2246;
-	@ObfuscatedName("l")
-	@ObfuscatedGetter(
-		intValue = 248569123
-	)
-	int field2247;
+	int field2300;
 	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 1179396961
+		intValue = -852311983
 	)
-	int field2236;
-	@ObfuscatedName("x")
+	int field2305;
+	@ObfuscatedName("y")
+	@ObfuscatedGetter(
+		intValue = 167595445
+	)
+	int field2318;
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
-		descriptor = "Lgb;"
+		descriptor = "Lgy;"
 	)
 	@Export("linkedBelowTile")
 	Tile linkedBelowTile;
@@ -140,61 +140,94 @@ public final class Tile extends Node {
 		this.y = var3;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "-68"
+		descriptor = "(I)V",
+		garbageValue = "-768783923"
 	)
-	public static void method3843(int var0, int var1) {
-		VarbitComposition var3 = (VarbitComposition)VarbitComposition.VarbitDefinition_cached.get((long)var0);
-		VarbitComposition var2;
-		if (var3 != null) {
-			var2 = var3;
-		} else {
-			byte[] var4 = VarbitComposition.VarbitDefinition_archive.takeFile(14, var0);
-			var3 = new VarbitComposition();
-			if (var4 != null) {
-				var3.decode(new Buffer(var4));
-			}
-
-			VarbitComposition.VarbitDefinition_cached.put(var3, (long)var0);
-			var2 = var3;
-		}
-
-		int var8 = var2.baseVar;
-		int var5 = var2.startBit;
-		int var6 = var2.endBit;
-		int var7 = Varps.Varps_masks[var6 - var5];
-		if (var1 < 0 || var1 > var7) {
-			var1 = 0;
-		}
-
-		var7 <<= var5;
-		Varps.Varps_main[var8] = Varps.Varps_main[var8] & ~var7 | var1 << var5 & var7;
+	static void method3992() {
+		Tiles.Tiles_minPlane = 99;
+		Tiles.Tiles_underlays = new byte[4][104][104];
+		Tiles.Tiles_overlays = new byte[4][104][104];
+		Tiles.Tiles_shapes = new byte[4][104][104];
+		RunException.field4754 = new byte[4][104][104];
+		DirectByteArrayCopier.field3277 = new int[4][105][105];
+		GrandExchangeOfferNameComparator.field4010 = new byte[4][105][105];
+		Widget.field3495 = new int[105][105];
+		class4.Tiles_hue = new int[104];
+		Login.Tiles_saturation = new int[104];
+		WorldMapSectionType.Tiles_lightness = new int[104];
+		class300.Tiles_hueMultiplier = new int[104];
+		Tiles.field986 = new int[104];
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("hn")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Float;Ljava/lang/Float;B)V",
-		garbageValue = "-1"
+		descriptor = "(II)V",
+		garbageValue = "1788183956"
 	)
-	static void method3844(Float var0, Float var1) {
-		var1 = 1.0F - var1;
-		if (var0 < 0.0F) {
-			var0 = 0.0F;
+	static final void method3991(int var0) {
+		int[] var1 = MusicPatchNode2.sceneMinimapSprite.pixels;
+		int var2 = var1.length;
+
+		int var3;
+		for (var3 = 0; var3 < var2; ++var3) {
+			var1[var3] = 0;
 		}
 
-		if (var1 < 0.0F) {
-			var1 = 0.0F;
-		}
+		int var4;
+		int var5;
+		for (var3 = 1; var3 < 103; ++var3) {
+			var4 = (103 - var3) * 2048 + 24628;
 
-		if (var0 > 1.0F || var1 > 1.0F) {
-			float var2 = (float)((double)(var0 * (var0 - 2.0F + var1)) + (double)var1 * ((double)var1 - 2.0D) + 1.0D);
-			if (class112.field1361 + var2 > 0.0F) {
-				HorizontalAlignment.method3294(var0, var1);
+			for (var5 = 1; var5 < 103; ++var5) {
+				if ((Tiles.Tiles_renderFlags[var0][var5][var3] & 24) == 0) {
+					FriendSystem.scene.drawTileMinimap(var1, var4, 512, var0, var5, var3);
+				}
+
+				if (var0 < 3 && (Tiles.Tiles_renderFlags[var0 + 1][var5][var3] & 8) != 0) {
+					FriendSystem.scene.drawTileMinimap(var1, var4, 512, var0 + 1, var5, var3);
+				}
+
+				var4 += 4;
 			}
 		}
 
-		var1 = 1.0F - var1;
+		var3 = (238 + (int)(Math.random() * 20.0D) - 10 << 16) + (238 + (int)(Math.random() * 20.0D) - 10 << 8) + (238 + (int)(Math.random() * 20.0D) - 10);
+		var4 = 238 + (int)(Math.random() * 20.0D) - 10 << 16;
+		MusicPatchNode2.sceneMinimapSprite.setRaster();
+
+		int var6;
+		for (var5 = 1; var5 < 103; ++var5) {
+			for (var6 = 1; var6 < 103; ++var6) {
+				if ((Tiles.Tiles_renderFlags[var0][var6][var5] & 24) == 0) {
+					class11.drawObject(var0, var6, var5, var3, var4);
+				}
+
+				if (var0 < 3 && (Tiles.Tiles_renderFlags[var0 + 1][var6][var5] & 8) != 0) {
+					class11.drawObject(var0 + 1, var6, var5, var3, var4);
+				}
+			}
+		}
+
+		Client.mapIconCount = 0;
+
+		for (var5 = 0; var5 < 104; ++var5) {
+			for (var6 = 0; var6 < 104; ++var6) {
+				long var7 = FriendSystem.scene.getGroundObjectTag(class160.Client_plane, var5, var6);
+				if (0L != var7) {
+					int var9 = class121.Entity_unpackID(var7);
+					int var10 = class116.getObjectDefinition(var9).mapIconId;
+					if (var10 >= 0 && class19.WorldMapElement_get(var10).field1836) {
+						Client.mapIcons[Client.mapIconCount] = class19.WorldMapElement_get(var10).getSpriteBool(false);
+						Client.mapIconXs[Client.mapIconCount] = var5;
+						Client.mapIconYs[Client.mapIconCount] = var6;
+						++Client.mapIconCount;
+					}
+				}
+			}
+		}
+
+		SpotAnimationDefinition.rasterProvider.apply();
 	}
 }

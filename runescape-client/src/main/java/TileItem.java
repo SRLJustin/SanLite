@@ -4,27 +4,26 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cz")
+@ObfuscatedName("cq")
 @Implements("TileItem")
 public final class TileItem extends Renderable {
-	@ObfuscatedName("gk")
-	@ObfuscatedGetter(
-		intValue = -1033887581
+	@ObfuscatedName("u")
+	public static short[] field1281;
+	@ObfuscatedName("em")
+	@ObfuscatedSignature(
+		descriptor = "Llu;"
 	)
-	@Export("baseY")
-	static int baseY;
-	@ObfuscatedName("hw")
-	@Export("regionLandArchives")
-	static byte[][] regionLandArchives;
-	@ObfuscatedName("c")
+	@Export("archive0")
+	static Archive archive0;
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -1624584431
+		intValue = 914537933
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -763742907
+		intValue = -1079489497
 	)
 	@Export("quantity")
 	int quantity;
@@ -32,23 +31,30 @@ public final class TileItem extends Renderable {
 	TileItem() {
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lgo;",
-		garbageValue = "202861607"
+		descriptor = "(B)Lhx;",
+		garbageValue = "63"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		return UserComparator6.ItemDefinition_get(this.id).getModel(this.quantity);
+		return class67.ItemDefinition_get(this.id).getModel(this.quantity);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;Lku;B)V",
-		garbageValue = "37"
+		descriptor = "(II)V",
+		garbageValue = "-902066173"
 	)
-	public static void method2368(AbstractArchive var0, AbstractArchive var1) {
-		SpotAnimationDefinition.SpotAnimationDefinition_archive = var0;
-		SpotAnimationDefinition.SpotAnimationDefinition_modelArchive = var1;
+	@Export("clearItemContainer")
+	static void clearItemContainer(int var0) {
+		ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var1 != null) {
+			for (int var2 = 0; var2 < var1.ids.length; ++var2) {
+				var1.ids[var2] = -1;
+				var1.quantities[var2] = 0;
+			}
+
+		}
 	}
 }
