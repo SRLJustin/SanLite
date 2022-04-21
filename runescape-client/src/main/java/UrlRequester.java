@@ -1,40 +1,106 @@
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.LinkedList;
 import java.util.Queue;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("cq")
+@ObfuscatedName("ci")
 @Implements("UrlRequester")
-public class UrlRequester implements Runnable {
-	@ObfuscatedName("c")
+public abstract class UrlRequester implements Runnable {
+	@ObfuscatedName("mn")
+	@ObfuscatedGetter(
+		intValue = -1967298029
+	)
+	@Export("menuHeight")
+	static int menuHeight;
+	@ObfuscatedName("v")
 	@Export("thread")
 	final Thread thread;
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@Export("isClosed")
 	volatile boolean isClosed;
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
 	@Export("requests")
 	Queue requests;
 
-	public UrlRequester() {
+	UrlRequester() {
 		this.requests = new LinkedList();
 		this.thread = new Thread(this);
 		this.thread.setPriority(1);
 		this.thread.start();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URL;I)Lcf;",
-		garbageValue = "-1357643641"
+		descriptor = "(Lct;I)V",
+		garbageValue = "-1783154457"
+	)
+	abstract void vmethod2538(UrlRequest var1) throws IOException;
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/net/URLConnection;B)V",
+		garbageValue = "4"
+	)
+	void method2524(URLConnection var1) {
+		var1.setConnectTimeout(5000);
+		var1.setReadTimeout(5000);
+		var1.setUseCaches(false);
+		var1.setRequestProperty("Connection", "close");
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/net/URLConnection;Lct;I)V",
+		garbageValue = "328398044"
+	)
+	void method2515(URLConnection var1, UrlRequest var2) {
+		DataInputStream var3 = null;
+
+		try {
+			int var5 = var1.getContentLength();
+			var3 = new DataInputStream(var1.getInputStream());
+			byte[] var4;
+			if (var5 >= 0) {
+				var4 = new byte[var5];
+				var3.readFully(var4);
+			} else {
+				var4 = new byte[0];
+				byte[] var6 = class355.ByteArrayPool_getArray(5000);
+
+				byte[] var8;
+				for (int var7 = var3.read(var6, 0, var6.length); var7 > -1; var4 = var8) {
+					var8 = new byte[var4.length + var7];
+					System.arraycopy(var4, 0, var8, 0, var4.length);
+					System.arraycopy(var6, 0, var8, var4.length, var7);
+				}
+
+				ServerPacket.ByteArrayPool_release(var6);
+			}
+
+			var2.response0 = var4;
+		} catch (IOException var10) {
+		}
+
+		if (var3 != null) {
+			try {
+				var3.close();
+			} catch (IOException var9) {
+			}
+		}
+
+	}
+
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/net/URL;I)Lct;",
+		garbageValue = "1891707218"
 	)
 	@Export("request")
 	public UrlRequest request(URL var1) {
@@ -46,10 +112,10 @@ public class UrlRequester implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "397818236"
+		descriptor = "(B)V",
+		garbageValue = "28"
 	)
 	@Export("close")
 	public void close() {
@@ -75,106 +141,45 @@ public class UrlRequester implements Runnable {
 					if (var1 == null) {
 						try {
 							this.wait();
-						} catch (InterruptedException var13) {
+						} catch (InterruptedException var5) {
 						}
 						continue;
 					}
 				}
 
-				DataInputStream var2 = null;
-				URLConnection var3 = null;
-
-				try {
-					var3 = var1.url.openConnection();
-					var3.setConnectTimeout(5000);
-					var3.setReadTimeout(5000);
-					var3.setUseCaches(false);
-					var3.setRequestProperty("Connection", "close");
-					int var7 = var3.getContentLength();
-					if (var7 >= 0) {
-						byte[] var5 = new byte[var7];
-						var2 = new DataInputStream(var3.getInputStream());
-						var2.readFully(var5);
-						var1.response0 = var5;
-					}
-
-					var1.isDone0 = true;
-				} catch (IOException var14) {
-					var1.isDone0 = true;
-				} finally {
-					if (var2 != null) {
-						var2.close();
-					}
-
-					if (var3 != null && var3 instanceof HttpURLConnection) {
-						((HttpURLConnection)var3).disconnect();
-					}
-
-				}
-			} catch (Exception var17) {
-				AccessFile.RunException_sendStackTrace((String)null, var17);
+				this.vmethod2538(var1);
+			} catch (Exception var7) {
+				class301.RunException_sendStackTrace((String)null, var7);
 			}
 		}
 
 	}
 
-	@ObfuscatedName("k")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "-33577073"
+		descriptor = "(Ljava/lang/CharSequence;B)I",
+		garbageValue = "-106"
 	)
-	static int method2486(int var0, Script var1, boolean var2) {
-		Widget var3 = ChatChannel.getWidget(Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize]);
-		if (var0 == ScriptOpcodes.IF_GETSCROLLX) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.scrollX;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETSCROLLY) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.scrollY;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETTEXT) {
-			Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var3.text;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETSCROLLWIDTH) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.scrollWidth;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETSCROLLHEIGHT) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.scrollHeight;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETMODELZOOM) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.modelZoom;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_X) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.modelAngleX;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Z) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.modelAngleZ;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Y) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.modelAngleY;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETTRANS) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.transparencyTop;
-			return 1;
-		} else if (var0 == 2610) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.transparencyBot;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETCOLOUR) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.color;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETFILLCOLOUR) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.color2;
-			return 1;
-		} else if (var0 == 2613) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.fillMode.rsOrdinal();
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETMODELTRANSPARENT) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.modelTransparency ? 1 : 0;
-			return 1;
-		} else if (var0 != 2615 && var0 != 2616) {
-			return 2;
-		} else {
-			++IsaacCipher.Interpreter_intStackSize;
-			return 1;
+	@Export("hashString")
+	public static int hashString(CharSequence var0) {
+		int var1 = var0.length();
+		int var2 = 0;
+
+		for (int var3 = 0; var3 < var1; ++var3) {
+			var2 = (var2 << 5) - var2 + class123.charToByteCp1252(var0.charAt(var3));
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("lt")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "-2085317549"
+	)
+	static void method2533(int var0) {
+		if (var0 != Client.loginState) {
+			Client.loginState = var0;
 		}
 	}
 }
