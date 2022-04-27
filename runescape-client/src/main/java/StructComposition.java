@@ -1,20 +1,38 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fp")
+@ObfuscatedName("gh")
 @Implements("StructComposition")
 public class StructComposition extends DualNode {
-	@ObfuscatedName("b")
+	@ObfuscatedName("sh")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lal;"
+	)
+	@Export("pcmStreamMixer")
+	static PcmStreamMixer pcmStreamMixer;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Lln;"
+	)
+	@Export("StructDefinition_archive")
+	public static AbstractArchive StructDefinition_archive;
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "Lig;"
 	)
 	@Export("StructDefinition_cached")
-	static EvictingDualNodeHashTable StructDefinition_cached;
-	@ObfuscatedName("p")
+	public static EvictingDualNodeHashTable StructDefinition_cached;
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = -200847333
+	)
+	public static int field1988;
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "Loz;"
+		descriptor = "Lpt;"
 	)
 	@Export("params")
 	IterableNodeHashTable params;
@@ -26,19 +44,19 @@ public class StructComposition extends DualNode {
 	StructComposition() {
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1697114474"
+		descriptor = "(B)V",
+		garbageValue = "9"
 	)
 	@Export("postDecode")
 	void postDecode() {
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
 		descriptor = "(Lpi;I)V",
-		garbageValue = "260928351"
+		garbageValue = "1284731224"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -52,102 +70,107 @@ public class StructComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;IB)V",
-		garbageValue = "76"
+		descriptor = "(Lpi;II)V",
+		garbageValue = "297360450"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 249) {
-			this.params = Canvas.readStringIntParameters(var1, this.params);
+			this.params = class214.readStringIntParameters(var1, this.params);
 		}
 
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
 		descriptor = "(III)I",
-		garbageValue = "-1808649424"
+		garbageValue = "-607891890"
 	)
 	@Export("getIntParam")
 	public int getIntParam(int var1, int var2) {
-		return class12.method158(this.params, var1, var2);
-	}
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;I)Ljava/lang/String;",
-		garbageValue = "-1725182955"
-	)
-	@Export("getStringParam")
-	public String getStringParam(int var1, String var2) {
-		return Skeleton.method3948(this.params, var1, var2);
-	}
-
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-64"
-	)
-	public static void method3444() {
-		class260.midiPcmStream.clear();
-		class260.musicPlayerStatus = 1;
-		class124.musicTrackArchive = null;
-	}
-
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "2"
-	)
-	public static boolean method3424(int var0) {
-		return var0 >= 0 && var0 < 112 ? KeyHandler.field132[var0] : false;
-	}
-
-	@ObfuscatedName("lv")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZI)V",
-		garbageValue = "488868822"
-	)
-	@Export("findItemDefinitions")
-	static void findItemDefinitions(String var0, boolean var1) {
-		var0 = var0.toLowerCase();
-		short[] var2 = new short[16];
-		int var3 = 0;
-
-		for (int var4 = 0; var4 < WorldMapLabelSize.ItemDefinition_fileCount; ++var4) {
-			ItemComposition var9 = UserComparator6.ItemDefinition_get(var4);
-			if ((!var1 || var9.isTradable) && var9.noteTemplate == -1 && var9.name.toLowerCase().indexOf(var0) != -1) {
-				if (var3 >= 250) {
-					GraphicsDefaults.foundItemIdCount = -1;
-					class113.foundItemIds = null;
-					return;
-				}
-
-				if (var3 >= var2.length) {
-					short[] var6 = new short[var2.length * 2];
-
-					for (int var7 = 0; var7 < var3; ++var7) {
-						var6[var7] = var2[var7];
-					}
-
-					var2 = var6;
-				}
-
-				var2[var3++] = (short)var4;
+		IterableNodeHashTable var4 = this.params;
+		int var3;
+		if (var4 == null) {
+			var3 = var2;
+		} else {
+			IntegerNode var5 = (IntegerNode)var4.get((long)var1);
+			if (var5 == null) {
+				var3 = var2;
+			} else {
+				var3 = var5.integer;
 			}
 		}
 
-		class113.foundItemIds = var2;
-		class336.foundItemIndex = 0;
-		GraphicsDefaults.foundItemIdCount = var3;
-		String[] var8 = new String[GraphicsDefaults.foundItemIdCount];
+		return var3;
+	}
 
-		for (int var5 = 0; var5 < GraphicsDefaults.foundItemIdCount; ++var5) {
-			var8[var5] = UserComparator6.ItemDefinition_get(var2[var5]).name;
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/String;I)Ljava/lang/String;",
+		garbageValue = "-1724611537"
+	)
+	@Export("getStringParam")
+	public String getStringParam(int var1, String var2) {
+		IterableNodeHashTable var4 = this.params;
+		String var3;
+		if (var4 == null) {
+			var3 = var2;
+		} else {
+			ObjectNode var5 = (ObjectNode)var4.get((long)var1);
+			if (var5 == null) {
+				var3 = var2;
+			} else {
+				var3 = (String)var5.obj;
+			}
 		}
 
-		KeyHandler.method390(var8, class113.foundItemIds);
+		return var3;
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-2141365595"
+	)
+	public static int method3618() {
+		return ViewportMouse.ViewportMouse_entityCount;
+	}
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIB)I",
+		garbageValue = "0"
+	)
+	public static int method3611(int var0, int var1, int var2, int var3, int var4, int var5) {
+		if ((var5 & 1) == 1) {
+			int var6 = var3;
+			var3 = var4;
+			var4 = var6;
+		}
+
+		var2 &= 3;
+		if (var2 == 0) {
+			return var0;
+		} else if (var2 == 1) {
+			return var1;
+		} else {
+			return var2 == 2 ? 7 - var0 - (var3 - 1) : 7 - var1 - (var4 - 1);
+		}
+	}
+
+	@ObfuscatedName("ld")
+	@ObfuscatedSignature(
+		descriptor = "(IIIZI)V",
+		garbageValue = "1317102167"
+	)
+	public static void method3619(int var0, int var1, int var2, boolean var3) {
+		PacketBufferNode var4 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2929, Client.packetWriter.isaacCipher);
+		var4.packetBuffer.writeShort(var0);
+		var4.packetBuffer.method7711(var1);
+		var4.packetBuffer.method7703(var2);
+		var4.packetBuffer.method7721(var3 ? Client.field586 : 0);
+		Client.packetWriter.addNode(var4);
 	}
 }

@@ -1,61 +1,61 @@
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fh")
+@ObfuscatedName("fq")
 @Implements("KitDefinition")
 public class KitDefinition extends DualNode {
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Lln;"
 	)
 	@Export("KitDefinition_archive")
-	static AbstractArchive KitDefinition_archive;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Lku;"
-	)
-	@Export("KitDefinition_modelsArchive")
-	static AbstractArchive KitDefinition_modelsArchive;
-	@ObfuscatedName("p")
+	public static AbstractArchive KitDefinition_archive;
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = 448904447
+		intValue = 1767972963
 	)
 	@Export("KitDefinition_fileCount")
 	public static int KitDefinition_fileCount;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lig;"
 	)
 	@Export("KitDefinition_cached")
 	static EvictingDualNodeHashTable KitDefinition_cached;
-	@ObfuscatedName("t")
+	@ObfuscatedName("hm")
 	@ObfuscatedGetter(
-		intValue = 1176017283
+		intValue = 1856258713
+	)
+	static int field1855;
+	@ObfuscatedName("b")
+	@ObfuscatedGetter(
+		intValue = 1991201937
 	)
 	@Export("bodypartID")
 	public int bodypartID;
-	@ObfuscatedName("s")
+	@ObfuscatedName("n")
 	@Export("models2")
 	int[] models2;
-	@ObfuscatedName("j")
+	@ObfuscatedName("s")
 	@Export("recolorFrom")
 	short[] recolorFrom;
-	@ObfuscatedName("w")
+	@ObfuscatedName("l")
 	@Export("recolorTo")
 	short[] recolorTo;
-	@ObfuscatedName("n")
+	@ObfuscatedName("q")
 	@Export("retextureFrom")
 	short[] retextureFrom;
-	@ObfuscatedName("r")
+	@ObfuscatedName("o")
 	@Export("retextureTo")
 	short[] retextureTo;
-	@ObfuscatedName("o")
+	@ObfuscatedName("r")
 	@Export("models")
 	int[] models;
-	@ObfuscatedName("v")
+	@ObfuscatedName("p")
 	@Export("nonSelectable")
 	public boolean nonSelectable;
 
@@ -69,10 +69,10 @@ public class KitDefinition extends DualNode {
 		this.nonSelectable = false;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "-70"
+		descriptor = "(Lpi;I)V",
+		garbageValue = "-322514028"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -86,10 +86,10 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;II)V",
-		garbageValue = "1440995166"
+		descriptor = "(Lpi;IB)V",
+		garbageValue = "14"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -132,10 +132,10 @@ public class KitDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-29"
+		descriptor = "(I)Z",
+		garbageValue = "579619376"
 	)
 	@Export("ready")
 	public boolean ready() {
@@ -145,7 +145,7 @@ public class KitDefinition extends DualNode {
 			boolean var1 = true;
 
 			for (int var2 = 0; var2 < this.models2.length; ++var2) {
-				if (!KitDefinition_modelsArchive.tryLoadFile(this.models2[var2], 0)) {
+				if (!class147.KitDefinition_modelsArchive.tryLoadFile(this.models2[var2], 0)) {
 					var1 = false;
 				}
 			}
@@ -154,10 +154,10 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lge;",
-		garbageValue = "1561860079"
+		descriptor = "(I)Lhc;",
+		garbageValue = "-1349429336"
 	)
 	@Export("getModelData")
 	public ModelData getModelData() {
@@ -167,7 +167,7 @@ public class KitDefinition extends DualNode {
 			ModelData[] var1 = new ModelData[this.models2.length];
 
 			for (int var2 = 0; var2 < this.models2.length; ++var2) {
-				var1[var2] = ModelData.ModelData_get(KitDefinition_modelsArchive, this.models2[var2], 0);
+				var1[var2] = ModelData.ModelData_get(class147.KitDefinition_modelsArchive, this.models2[var2], 0);
 			}
 
 			ModelData var4;
@@ -194,16 +194,16 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1736416150"
+		garbageValue = "293914398"
 	)
-	public boolean method3210() {
+	public boolean method3447() {
 		boolean var1 = true;
 
 		for (int var2 = 0; var2 < 5; ++var2) {
-			if (this.models[var2] != -1 && !KitDefinition_modelsArchive.tryLoadFile(this.models[var2], 0)) {
+			if (this.models[var2] != -1 && !class147.KitDefinition_modelsArchive.tryLoadFile(this.models[var2], 0)) {
 				var1 = false;
 			}
 		}
@@ -211,10 +211,10 @@ public class KitDefinition extends DualNode {
 		return var1;
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lge;",
-		garbageValue = "49"
+		descriptor = "(S)Lhc;",
+		garbageValue = "1402"
 	)
 	@Export("getKitDefinitionModels")
 	public ModelData getKitDefinitionModels() {
@@ -223,7 +223,7 @@ public class KitDefinition extends DualNode {
 
 		for (int var3 = 0; var3 < 5; ++var3) {
 			if (this.models[var3] != -1) {
-				var1[var2++] = ModelData.ModelData_get(KitDefinition_modelsArchive, this.models[var3], 0);
+				var1[var2++] = ModelData.ModelData_get(class147.KitDefinition_modelsArchive, this.models[var3], 0);
 			}
 		}
 
@@ -244,66 +244,41 @@ public class KitDefinition extends DualNode {
 		return var5;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lj;B)Lm;",
-		garbageValue = "-59"
+		descriptor = "(Lln;Lln;I)V",
+		garbageValue = "-1509322924"
 	)
-	public static class3 method3238(class6 var0) {
-		switch(var0.field16) {
-		case 0:
-			return new class0();
-		default:
-			throw new IllegalArgumentException();
-		}
+	public static void method3452(AbstractArchive var0, AbstractArchive var1) {
+		NPCComposition.NpcDefinition_archive = var0;
+		NPCComposition.NpcDefinition_modelArchive = var1;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("kq")
+	static final void method3453(double var0) {
+		Rasterizer3D.method4609(var0);
+		((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).setBrightness(var0);
+		ItemComposition.ItemDefinition_cachedSprites.clear();
+		class131.clientPreferences.method2239(var0);
+	}
+
+	@ObfuscatedName("lx")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "445518606"
+		descriptor = "(I)V",
+		garbageValue = "2073437950"
 	)
-	static int method3237(int var0, Script var1, boolean var2) {
-		if (var0 == 7400) {
-			--IsaacCipher.Interpreter_intStackSize;
-			--class13.Interpreter_stringStackSize;
-			return 1;
-		} else if (var0 == 7401) {
-			--IsaacCipher.Interpreter_intStackSize;
-			--class13.Interpreter_stringStackSize;
-			return 1;
-		} else if (var0 == 7402) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			--class13.Interpreter_stringStackSize;
-			return 1;
-		} else if (var0 == 7403) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			--class13.Interpreter_stringStackSize;
-			return 1;
-		} else if (var0 == 7404) {
-			--IsaacCipher.Interpreter_intStackSize;
-			--class13.Interpreter_stringStackSize;
-			return 1;
-		} else if (var0 == 7405) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			return 1;
-		} else if (var0 == 7406) {
-			--IsaacCipher.Interpreter_intStackSize;
-			Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-			return 1;
-		} else if (var0 == 7407) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-			return 1;
-		} else if (var0 == 7408) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			--class13.Interpreter_stringStackSize;
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-			return 1;
-		} else if (var0 == 7409) {
-			--IsaacCipher.Interpreter_intStackSize;
-			return 1;
-		} else {
-			return 2;
+	@Export("FriendSystem_invalidateIgnoreds")
+	static final void FriendSystem_invalidateIgnoreds() {
+		Iterator var0 = Messages.Messages_hashTable.iterator();
+
+		while (var0.hasNext()) {
+			Message var1 = (Message)var0.next();
+			var1.clearIsFromIgnored();
 		}
+
+		if (ClientPacket.friendsChatManager != null) {
+			ClientPacket.friendsChatManager.invalidateIgnoreds();
+		}
+
 	}
 }

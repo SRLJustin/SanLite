@@ -4,198 +4,226 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hh")
+@ObfuscatedName("gp")
 @Implements("WorldMapLabelSize")
 public class WorldMapLabelSize {
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lhh;"
+		descriptor = "Lgp;"
 	)
 	@Export("WorldMapLabelSize_small")
 	public static final WorldMapLabelSize WorldMapLabelSize_small;
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lhh;"
+		descriptor = "Lgp;"
 	)
 	@Export("WorldMapLabelSize_medium")
 	public static final WorldMapLabelSize WorldMapLabelSize_medium;
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "Lhh;"
+		descriptor = "Lgp;"
 	)
 	@Export("WorldMapLabelSize_large")
 	public static final WorldMapLabelSize WorldMapLabelSize_large;
-	@ObfuscatedName("j")
-	static byte[][][] field2580;
+	@ObfuscatedName("il")
+	@ObfuscatedSignature(
+		descriptor = "[Lqi;"
+	)
+	@Export("mapMarkerSprites")
+	static SpritePixels[] mapMarkerSprites;
+	@ObfuscatedName("if")
+	@ObfuscatedGetter(
+		intValue = -131170417
+	)
+	@Export("cameraX")
+	static int cameraX;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = 1256735251
+	)
+	final int field2208;
+	@ObfuscatedName("b")
+	@ObfuscatedGetter(
+		intValue = 624849635
+	)
+	final int field2215;
 	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -1838818577
+		intValue = -1061569375
 	)
-	@Export("ItemDefinition_fileCount")
-	public static int ItemDefinition_fileCount;
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(
-		intValue = -606313299
-	)
-	final int field2583;
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		intValue = -330742685
-	)
-	final int field2578;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -586299201
-	)
-	final int field2579;
+	final int field2210;
 
 	static {
-		WorldMapLabelSize_small = new WorldMapLabelSize(2, 0, 4);
-		WorldMapLabelSize_medium = new WorldMapLabelSize(1, 1, 2);
+		WorldMapLabelSize_small = new WorldMapLabelSize(1, 0, 4);
+		WorldMapLabelSize_medium = new WorldMapLabelSize(2, 1, 2);
 		WorldMapLabelSize_large = new WorldMapLabelSize(0, 2, 0);
 	}
 
 	WorldMapLabelSize(int var1, int var2, int var3) {
-		this.field2583 = var1;
-		this.field2578 = var2;
-		this.field2579 = var3;
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(FI)Z",
-		garbageValue = "714158034"
-	)
-	boolean method4370(float var1) {
-		return var1 >= (float)this.field2579;
+		this.field2208 = var1;
+		this.field2215 = var2;
+		this.field2210 = var3;
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lhh;",
-		garbageValue = "1279044140"
+		descriptor = "(FB)Z",
+		garbageValue = "89"
 	)
-	static WorldMapLabelSize[] method4357() {
-		return new WorldMapLabelSize[]{WorldMapLabelSize_large, WorldMapLabelSize_medium, WorldMapLabelSize_small};
+	boolean method3902(float var1) {
+		return var1 >= (float)this.field2210;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lfi;",
-		garbageValue = "-661734359"
+		descriptor = "(I)[Lgp;",
+		garbageValue = "10456859"
 	)
-	@Export("getNpcDefinition")
-	public static NPCComposition getNpcDefinition(int var0) {
-		NPCComposition var1 = (NPCComposition)NPCComposition.NpcDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = NPCComposition.NpcDefinition_archive.takeFile(9, var0);
-			var1 = new NPCComposition();
-			var1.id = var0;
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+	static WorldMapLabelSize[] method3901() {
+		return new WorldMapLabelSize[]{WorldMapLabelSize_small, WorldMapLabelSize_medium, WorldMapLabelSize_large};
+	}
+
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;I)I",
+		garbageValue = "-697751860"
+	)
+	@Export("hashString")
+	public static int hashString(CharSequence var0) {
+		int var1 = var0.length();
+		int var2 = 0;
+
+		for (int var3 = 0; var3 < var1; ++var3) {
+			var2 = (var2 << 5) - var2 + class327.charToByteCp1252(var0.charAt(var3));
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;II)V",
+		garbageValue = "-2017129698"
+	)
+	static final void method3903(String var0, int var1) {
+		PacketBufferNode var2 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2898, Client.packetWriter.isaacCipher);
+		var2.packetBuffer.writeByte(class425.stringCp1252NullTerminatedByteSize(var0) + 1);
+		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
+		var2.packetBuffer.method7804(var1);
+		Client.packetWriter.addNode(var2);
+	}
+
+	@ObfuscatedName("ii")
+	@ObfuscatedSignature(
+		descriptor = "(IIIILjava/lang/String;B)V",
+		garbageValue = "-40"
+	)
+	@Export("widgetDefaultMenuAction")
+	static void widgetDefaultMenuAction(int var0, int var1, int var2, int var3, String var4) {
+		Widget var5 = ItemComposition.getWidgetChild(var1, var2);
+		if (var5 != null) {
+			if (var5.onOp != null) {
+				ScriptEvent var6 = new ScriptEvent();
+				var6.widget = var5;
+				var6.opIndex = var0;
+				var6.targetName = var4;
+				var6.args = var5.onOp;
+				ClanSettings.runScriptEvent(var6);
 			}
 
-			var1.postDecode();
-			NPCComposition.NpcDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lhh;",
-		garbageValue = "-1103968142"
-	)
-	static WorldMapLabelSize method4362(int var0) {
-		WorldMapLabelSize[] var1 = method4357();
-
-		for (int var2 = 0; var2 < var1.length; ++var2) {
-			WorldMapLabelSize var3 = var1[var2];
-			if (var0 == var3.field2578) {
-				return var3;
+			boolean var11 = true;
+			if (var5.contentType > 0) {
+				var11 = ModeWhere.method6100(var5);
 			}
-		}
 
-		return null;
-	}
+			if (var11) {
+				int var8 = class326.getWidgetFlags(var5);
+				int var9 = var0 - 1;
+				boolean var7 = (var8 >> var9 + 1 & 1) != 0;
+				if (var7) {
+					PacketBufferNode var10;
+					if (var0 == 1) {
+						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2908, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
 
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZB)I",
-		garbageValue = "0"
-	)
-	static int method4359(int var0, Script var1, boolean var2) {
-		if (var0 == 7100) {
-			++IsaacCipher.Interpreter_intStackSize;
-			return 1;
-		} else if (var0 == 7101) {
-			class13.Interpreter_stringStackSize += 2;
-			return 1;
-		} else if (var0 != 7102 && var0 != 7103 && var0 != 7104 && var0 != 7105 && var0 != 7109) {
-			if (var0 == 7106) {
-				++IsaacCipher.Interpreter_intStackSize;
-				return 1;
-			} else if (var0 == 7107) {
-				++IsaacCipher.Interpreter_intStackSize;
-				return 1;
-			} else if (var0 == 7108) {
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = class14.method204() ? 1 : 0;
-				return 1;
-			} else if (var0 == 7110) {
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-				return 1;
-			} else if (var0 == 7120) {
-				--IsaacCipher.Interpreter_intStackSize;
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-				return 1;
-			} else if (var0 == 7121) {
-				IsaacCipher.Interpreter_intStackSize -= 2;
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -1;
-				return 1;
-			} else if (var0 == 7122) {
-				IsaacCipher.Interpreter_intStackSize -= 2;
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-				return 1;
-			} else {
-				return 2;
-			}
-		} else {
-			++IsaacCipher.Interpreter_intStackSize;
-			return 1;
-		}
-	}
+					if (var0 == 2) {
+						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2945, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
 
-	@ObfuscatedName("gq")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1715943871"
-	)
-	static void method4358() {
-		if (Varcs.worldMap != null) {
-			Varcs.worldMap.method6870(class20.Client_plane, class131.baseX * 64 + (class340.localPlayer.x >> 7), TileItem.baseY * 64 + (class340.localPlayer.y >> 7), false);
-			Varcs.worldMap.loadCache();
-		}
+					if (var0 == 3) {
+						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2941, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
 
-	}
+					if (var0 == 4) {
+						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2966, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
 
-	@ObfuscatedName("ln")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-62"
-	)
-	static void method4373() {
-		if (Messages.field1273 != null) {
-			Client.field559 = Client.cycle;
-			Messages.field1273.method5795();
+					if (var0 == 5) {
+						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2906, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
 
-			for (int var0 = 0; var0 < Client.players.length; ++var0) {
-				if (Client.players[var0] != null) {
-					Messages.field1273.method5806(class131.baseX * 64 + (Client.players[var0].x >> 7), TileItem.baseY * 64 + (Client.players[var0].y >> 7));
+					if (var0 == 6) {
+						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2944, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 7) {
+						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2982, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 8) {
+						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2960, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 9) {
+						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2943, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 10) {
+						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2917, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
 				}
 			}
 		}
-
 	}
 }

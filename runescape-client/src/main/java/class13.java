@@ -1,35 +1,29 @@
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-import java.io.File;
 import java.io.IOException;
-import java.util.Date;
 import java.util.Hashtable;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.DefaultTlsClient;
 import org.bouncycastle.crypto.tls.TlsAuthentication;
 
-@ObfuscatedName("h")
+@ObfuscatedName("k")
 class class13 extends DefaultTlsClient {
-	@ObfuscatedName("t")
-	@Export("cacheDir")
-	public static File cacheDir;
-	@ObfuscatedName("d")
-	@ObfuscatedGetter(
-		intValue = 1540402679
+	@ObfuscatedName("gk")
+	@ObfuscatedSignature(
+		descriptor = "Lmd;"
 	)
-	@Export("Interpreter_stringStackSize")
-	static int Interpreter_stringStackSize;
+	@Export("fontPlain12")
+	static Font fontPlain12;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Ld;"
+		descriptor = "Lw;"
 	)
 	final class12 this$1;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ld;)V"
+		descriptor = "(Lw;)V"
 	)
 	class13(class12 var1) {
 		this.this$1 = var1;
@@ -57,124 +51,70 @@ class class13 extends DefaultTlsClient {
 		return new class11(this);
 	}
 
-	@ObfuscatedName("c")
-	public static String method195(long var0) {
-		Calendar.Calendar_calendar.setTime(new Date(var0));
-		int var2 = Calendar.Calendar_calendar.get(7);
-		int var3 = Calendar.Calendar_calendar.get(5);
-		int var4 = Calendar.Calendar_calendar.get(2);
-		int var5 = Calendar.Calendar_calendar.get(1);
-		int var6 = Calendar.Calendar_calendar.get(11);
-		int var7 = Calendar.Calendar_calendar.get(12);
-		int var8 = Calendar.Calendar_calendar.get(13);
-		return Calendar.DAYS_OF_THE_WEEK[var2 - 1] + ", " + var3 / 10 + var3 % 10 + "-" + Calendar.MONTH_NAMES_ENGLISH_GERMAN[0][var4] + "-" + var5 + " " + var6 / 10 + var6 % 10 + ":" + var7 / 10 + var7 % 10 + ":" + var8 / 10 + var8 % 10 + " GMT";
-	}
-
-	@ObfuscatedName("p")
+	@ObfuscatedName("gs")
 	@ObfuscatedSignature(
-		descriptor = "(Ldn;[F[FI)V",
-		garbageValue = "1644015096"
+		descriptor = "(IIII)V",
+		garbageValue = "-547008186"
 	)
-	static void method202(class115 var0, float[] var1, float[] var2) {
-		if (var0 != null) {
-			float var3 = var1[3] - var1[0];
-			if ((double)var3 != 0.0D) {
-				float var4 = var1[1] - var1[0];
-				float var5 = var1[2] - var1[0];
-				Float var6 = var4 / var3;
-				Float var7 = var5 / var3;
-				var0.field1398 = var6 == 0.33333334F && var7 == 0.6666667F;
-				float var8 = var6;
-				float var9 = var7;
-				if ((double)var6 < 0.0D) {
-					var6 = 0.0F;
-				}
-
-				if ((double)var7 > 1.0D) {
-					var7 = 1.0F;
-				}
-
-				if ((double)var6 > 1.0D || var7 < -1.0F) {
-					Tile.method3844(var6, var7);
-				}
-
-				if (var6 != var8) {
-					var1[1] = var1[0] + var6 * var3;
-					if (0.0D != (double)var8) {
-						var2[1] = var2[0] + (var2[1] - var2[0]) * var6 / var8;
-					}
-				}
-
-				if (var7 != var9) {
-					var1[2] = var1[0] + var7 * var3;
-					if ((double)var9 != 1.0D) {
-						var2[2] = (float)((double)var2[3] - (double)(var2[3] - var2[2]) * (1.0D - (double)var7) / (1.0D - (double)var9));
-					}
-				}
-
-				var0.field1406 = var1[0];
-				var0.field1394 = var1[3];
-				float var10 = var6;
-				float var11 = var7;
-				float[] var12 = var0.field1401;
-				float var13 = var10 - 0.0F;
-				float var14 = var11 - var10;
-				float var15 = 1.0F - var11;
-				float var16 = var14 - var13;
-				var12[3] = var15 - var14 - var16;
-				var12[2] = var16 + var16 + var16;
-				var12[1] = var13 + var13 + var13;
-				var12[0] = 0.0F;
-				var13 = var2[0];
-				var14 = var2[1];
-				var15 = var2[2];
-				var16 = var2[3];
-				float[] var17 = var0.field1402;
-				float var18 = var14 - var13;
-				float var19 = var15 - var14;
-				float var20 = var16 - var15;
-				float var21 = var19 - var18;
-				var17[3] = var20 - var19 - var21;
-				var17[2] = var21 + var21 + var21;
-				var17[1] = var18 + var18 + var18;
-				var17[0] = var13;
+	static final void method163(int var0, int var1, int var2) {
+		if (WorldMapLabelSize.cameraX < var0) {
+			WorldMapLabelSize.cameraX = (var0 - WorldMapLabelSize.cameraX) * ArchiveDisk.field4309 / 1000 + WorldMapLabelSize.cameraX + Script.field955;
+			if (WorldMapLabelSize.cameraX > var0) {
+				WorldMapLabelSize.cameraX = var0;
 			}
 		}
+
+		if (WorldMapLabelSize.cameraX > var0) {
+			WorldMapLabelSize.cameraX -= (WorldMapLabelSize.cameraX - var0) * ArchiveDisk.field4309 / 1000 + Script.field955;
+			if (WorldMapLabelSize.cameraX < var0) {
+				WorldMapLabelSize.cameraX = var0;
+			}
+		}
+
+		if (ItemContainer.cameraY < var1) {
+			ItemContainer.cameraY = (var1 - ItemContainer.cameraY) * ArchiveDisk.field4309 / 1000 + ItemContainer.cameraY + Script.field955;
+			if (ItemContainer.cameraY > var1) {
+				ItemContainer.cameraY = var1;
+			}
+		}
+
+		if (ItemContainer.cameraY > var1) {
+			ItemContainer.cameraY -= (ItemContainer.cameraY - var1) * ArchiveDisk.field4309 / 1000 + Script.field955;
+			if (ItemContainer.cameraY < var1) {
+				ItemContainer.cameraY = var1;
+			}
+		}
+
+		if (class154.cameraZ < var2) {
+			class154.cameraZ = (var2 - class154.cameraZ) * ArchiveDisk.field4309 / 1000 + class154.cameraZ + Script.field955;
+			if (class154.cameraZ > var2) {
+				class154.cameraZ = var2;
+			}
+		}
+
+		if (class154.cameraZ > var2) {
+			class154.cameraZ -= (class154.cameraZ - var2) * ArchiveDisk.field4309 / 1000 + Script.field955;
+			if (class154.cameraZ < var2) {
+				class154.cameraZ = var2;
+			}
+		}
+
 	}
 
-	@ObfuscatedName("y")
+	@ObfuscatedName("hs")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZB)I",
-		garbageValue = "-18"
+		descriptor = "(IIB)I",
+		garbageValue = "109"
 	)
-	static int method201(int var0, Script var1, boolean var2) {
-		int var3;
-		if (var0 == 3500) {
-			var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = DevicePcmPlayerProvider.method398(var3) ? 1 : 0;
-			return 1;
-		} else if (var0 == 3501) {
-			var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = StructComposition.method3424(var3) ? 1 : 0;
-			return 1;
-		} else if (var0 == 3502) {
-			var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = class117.method2676(var3) ? 1 : 0;
-			return 1;
-		} else {
-			return 2;
+	static int method164(int var0, int var1) {
+		int var2 = var1 - 334;
+		if (var2 < 0) {
+			var2 = 0;
+		} else if (var2 > 100) {
+			var2 = 100;
 		}
-	}
 
-	@ObfuscatedName("jy")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIIIII)V",
-		garbageValue = "847874180"
-	)
-	@Export("updateRootInterface")
-	static final void updateRootInterface(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
-		if (class242.loadInterface(var0)) {
-			FriendSystem.updateInterface(MouseRecorder.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6);
-		}
+		int var3 = (Client.zoomWidth - Client.zoomHeight) * var2 / 100 + Client.zoomHeight;
+		return var0 * var3 / 256;
 	}
 }

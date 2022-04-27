@@ -1,71 +1,83 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("el")
-public class class140 extends class126 {
-	@ObfuscatedName("ef")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive5")
-	static Archive archive5;
+@ObfuscatedName("eq")
+public class class140 extends class144 {
+	@ObfuscatedName("v")
+	String field1613;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 471941729
+		intValue = 127019119
 	)
-	int field1603;
+	int field1615;
+	@ObfuscatedName("i")
+	byte field1612;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Ler;"
 	)
-	final class129 this$0;
+	final class145 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "(Ler;)V"
 	)
-	class140(class129 var1) {
+	class140(class145 var1) {
 		this.this$0 = var1;
-		this.field1603 = -1;
+		this.field1613 = null;
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(Lpi;B)V",
+		garbageValue = "23"
+	)
+	void vmethod3152(Buffer var1) {
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			var1.readLong();
+		}
+
+		this.field1613 = var1.readStringCp1252NullTerminatedOrNull();
+		this.field1615 = var1.readUnsignedShort();
+		this.field1612 = var1.readByte();
+		var1.readLong();
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lea;I)V",
+		garbageValue = "1764669808"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1603 = var1.readUnsignedShort();
+	void vmethod3153(ClanChannel var1) {
+		ClanChannelMember var2 = new ClanChannelMember();
+		var2.username = new Username(this.field1613);
+		var2.world = this.field1615;
+		var2.rank = this.field1612;
+		var1.addMember(var2);
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(I)[Ldi;",
+		garbageValue = "1379522153"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2854(this.field1603);
+	static class116[] method3045() {
+		return new class116[]{class116.field1403, class116.field1399, class116.field1400, class116.field1406, class116.field1401};
 	}
 
-	@ObfuscatedName("kn")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "4"
+		descriptor = "(CII)Ljava/lang/String;",
+		garbageValue = "1078157971"
 	)
-	@Export("Widget_resetModelFrames")
-	static final void Widget_resetModelFrames(int var0) {
-		if (class242.loadInterface(var0)) {
-			Widget[] var1 = MouseRecorder.Widget_interfaceComponents[var0];
+	public static String method3040(char var0, int var1) {
+		char[] var2 = new char[var1];
 
-			for (int var2 = 0; var2 < var1.length; ++var2) {
-				Widget var3 = var1[var2];
-				if (var3 != null) {
-					var3.modelFrame = 0;
-					var3.modelFrameCycle = 0;
-				}
-			}
-
+		for (int var3 = 0; var3 < var1; ++var3) {
+			var2[var3] = var0;
 		}
+
+		return new String(var2);
 	}
 }

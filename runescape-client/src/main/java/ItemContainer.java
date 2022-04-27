@@ -1,27 +1,36 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("be")
+@ObfuscatedName("bv")
 @Implements("ItemContainer")
 public class ItemContainer extends Node {
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lon;"
+		descriptor = "Lpo;"
 	)
 	@Export("itemContainers")
 	static NodeHashTable itemContainers;
-	@ObfuscatedName("kq")
-	@ObfuscatedSignature(
-		descriptor = "Lgr;"
+	@ObfuscatedName("u")
+	@Export("cacheParentPaths")
+	static String[] cacheParentPaths;
+	@ObfuscatedName("ig")
+	@ObfuscatedGetter(
+		intValue = -372452529
 	)
-	@Export("textureProvider")
-	static TextureProvider textureProvider;
-	@ObfuscatedName("b")
+	@Export("cameraY")
+	static int cameraY;
+	@ObfuscatedName("oo")
+	@ObfuscatedGetter(
+		intValue = -922467493
+	)
+	static int field1013;
+	@ObfuscatedName("c")
 	@Export("ids")
 	int[] ids;
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@Export("quantities")
 	int[] quantities;
 

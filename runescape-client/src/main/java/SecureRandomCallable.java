@@ -1,51 +1,94 @@
+import java.security.SecureRandom;
 import java.util.concurrent.Callable;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bo")
+@ObfuscatedName("bu")
 @Implements("SecureRandomCallable")
 public class SecureRandomCallable implements Callable {
 	SecureRandomCallable() {
 	}
 
 	public Object call() {
-		return DecorativeObject.method4340();
+		SecureRandom var2 = new SecureRandom();
+		var2.nextInt();
+		return var2;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lfb;",
-		garbageValue = "0"
+		descriptor = "(II)I",
+		garbageValue = "-2044012999"
 	)
-	@Export("VarpDefinition_get")
-	public static VarpDefinition VarpDefinition_get(int var0) {
-		VarpDefinition var1 = (VarpDefinition)VarpDefinition.VarpDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = VarpDefinition.VarpDefinition_archive.takeFile(16, var0);
-			var1 = new VarpDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+	@Export("getVarbit")
+	public static int getVarbit(int var0) {
+		VarbitComposition var1 = UserComparator6.method2643(var0);
+		int var2 = var1.baseVar;
+		int var3 = var1.startBit;
+		int var4 = var1.endBit;
+		int var5 = Varps.Varps_masks[var4 - var3];
+		return Varps.Varps_main[var2] >> var3 & var5;
+	}
+
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "(CLlo;I)I",
+		garbageValue = "522647287"
+	)
+	@Export("lowercaseChar")
+	static int lowercaseChar(char var0, Language var1) {
+		int var2 = var0 << 4;
+		if (Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
+			var0 = Character.toLowerCase(var0);
+			var2 = (var0 << 4) + 1;
+		}
+
+		if (var0 == 241 && var1 == Language.Language_ES) {
+			var2 = 1762;
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "-4"
+	)
+	@Export("isKeyDown")
+	public static final boolean isKeyDown() {
+		synchronized(KeyHandler.KeyHandler_instance) {
+			if (KeyHandler.field138 == KeyHandler.field141) {
+				return false;
+			} else {
+				GameEngine.field218 = KeyHandler.field136[KeyHandler.field141];
+				ItemComposition.field2121 = KeyHandler.field135[KeyHandler.field141];
+				KeyHandler.field141 = KeyHandler.field141 + 1 & 127;
+				return true;
 			}
-
-			VarpDefinition.VarpDefinition_cached.put(var1, (long)var0);
-			return var1;
 		}
 	}
 
-	@ObfuscatedName("ky")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "(Ljm;I)V",
-		garbageValue = "-1394977452"
+		descriptor = "(I)Lbb;",
+		garbageValue = "-771048331"
 	)
-	@Export("invalidateWidget")
-	static void invalidateWidget(Widget var0) {
-		if (var0.cycle == Client.field684) {
-			Client.field504[var0.rootIndex] = true;
-		}
+	@Export("worldListStart")
+	static World worldListStart() {
+		World.World_listCount = 0;
+		return class305.getNextWorldListWorld();
+	}
 
+	@ObfuscatedName("ln")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1734362021"
+	)
+	static final void method2050() {
+		Client.field702 = Client.cycleCntr;
+		Interpreter.FriendsChatManager_inFriendsChat = true;
 	}
 }

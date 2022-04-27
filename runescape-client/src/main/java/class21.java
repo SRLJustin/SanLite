@@ -8,40 +8,47 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("q")
+@ObfuscatedName("y")
 public class class21 {
-	@ObfuscatedName("v")
+	@ObfuscatedName("rp")
 	@ObfuscatedSignature(
-		descriptor = "Ljk;"
+		descriptor = "Lea;"
 	)
-	@Export("musicTrack")
-	public static MusicTrack musicTrack;
-	@ObfuscatedName("d")
-	static boolean field116;
-	@ObfuscatedName("bf")
-	@ObfuscatedSignature(
-		descriptor = "Lpa;"
-	)
-	static IndexedSprite field118;
-	@ObfuscatedName("c")
+	@Export("guestClanChannel")
+	static ClanChannel guestClanChannel;
+	@ObfuscatedName("ta")
 	@ObfuscatedGetter(
-		intValue = -1676321481
+		intValue = 1164104803
 	)
-	final int field115;
-	@ObfuscatedName("b")
-	final String field114;
+	static int field116;
+	@ObfuscatedName("hi")
+	@Export("regions")
+	static int[] regions;
+	@ObfuscatedName("jc")
+	@ObfuscatedGetter(
+		intValue = 98002171
+	)
+	@Export("cameraYaw")
+	static int cameraYaw;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(
+		intValue = -824857787
+	)
+	final int field111;
+	@ObfuscatedName("c")
+	final String field109;
 
 	class21(String var1) {
-		this.field115 = 400;
-		this.field114 = "";
+		this.field111 = 400;
+		this.field109 = "";
 	}
 
 	class21(HttpURLConnection var1) throws IOException {
-		this.field115 = var1.getResponseCode();
+		this.field111 = var1.getResponseCode();
 		var1.getResponseMessage();
 		var1.getHeaderFields();
 		StringBuilder var2 = new StringBuilder();
-		InputStream var3 = this.field115 >= 300 ? var1.getErrorStream() : var1.getInputStream();
+		InputStream var3 = this.field111 >= 300 ? var1.getErrorStream() : var1.getInputStream();
 		if (var3 != null) {
 			InputStreamReader var4 = new InputStreamReader(var3);
 			BufferedReader var5 = new BufferedReader(var4);
@@ -54,46 +61,53 @@ public class class21 {
 			var3.close();
 		}
 
-		this.field114 = var2.toString();
+		this.field109 = var2.toString();
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "716414120"
+	)
+	public int method299() {
+		return this.field111;
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1543760704"
+		descriptor = "(B)Ljava/lang/String;",
+		garbageValue = "11"
 	)
-	public int method338() {
-		return this.field115;
+	public String method297() {
+		return this.field109;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("en")
 	@ObfuscatedSignature(
-		descriptor = "(S)Ljava/lang/String;",
-		garbageValue = "128"
+		descriptor = "(I)Lov;",
+		garbageValue = "2110304027"
 	)
-	public String method339() {
-		return this.field114;
+	@Export("getWorldMap")
+	static WorldMap getWorldMap() {
+		return ScriptFrame.worldMap;
+	}
+
+	@ObfuscatedName("in")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1923971854"
+	)
+	static final boolean method303() {
+		return Client.isMenuOpen;
 	}
 
 	@ObfuscatedName("if")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIZI)V",
-		garbageValue = "1482446677"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIII)V",
+		garbageValue = "1636192715"
 	)
-	@Export("insertMenuItem")
-	static final void insertMenuItem(String var0, String var1, int var2, int var3, int var4, int var5, boolean var6) {
-		if (!Client.isMenuOpen) {
-			if (Client.menuOptionsCount < 500) {
-				Client.menuActions[Client.menuOptionsCount] = var0;
-				Client.menuTargets[Client.menuOptionsCount] = var1;
-				Client.menuOpcodes[Client.menuOptionsCount] = var2;
-				Client.menuIdentifiers[Client.menuOptionsCount] = var3;
-				Client.menuArguments1[Client.menuOptionsCount] = var4;
-				Client.menuArguments2[Client.menuOptionsCount] = var5;
-				Client.menuShiftClick[Client.menuOptionsCount] = var6;
-				++Client.menuOptionsCount;
-			}
-
-		}
+	@Export("insertMenuItemNoShift")
+	public static final void insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
+		class28.insertMenuItem(var0, var1, var2, var3, var4, var5, false);
 	}
 }

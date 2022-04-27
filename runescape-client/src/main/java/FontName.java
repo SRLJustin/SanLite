@@ -3,52 +3,52 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ot")
+@ObfuscatedName("ow")
 @Implements("FontName")
 public class FontName {
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Low;"
 	)
 	@Export("FontName_plain11")
 	public static final FontName FontName_plain11;
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Low;"
 	)
 	@Export("FontName_plain12")
 	public static final FontName FontName_plain12;
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Low;"
 	)
 	@Export("FontName_bold12")
 	public static final FontName FontName_bold12;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Low;"
 	)
 	@Export("FontName_verdana11")
 	public static final FontName FontName_verdana11;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Low;"
 	)
 	@Export("FontName_verdana13")
 	public static final FontName FontName_verdana13;
-	@ObfuscatedName("s")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Low;"
 	)
 	@Export("FontName_verdana15")
 	public static final FontName FontName_verdana15;
-	@ObfuscatedName("dw")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lmd;"
+		descriptor = "Lqu;"
 	)
-	@Export("js5Socket")
-	static AbstractSocket js5Socket;
-	@ObfuscatedName("j")
+	@Export("rasterProvider")
+	public static AbstractRasterProvider rasterProvider;
+	@ObfuscatedName("s")
 	@Export("name")
 	String name;
 
@@ -67,25 +67,42 @@ public class FontName {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lj;",
-		garbageValue = "-2104552307"
+		descriptor = "(IIII)I",
+		garbageValue = "-2021946113"
 	)
-	public static class6[] method7075() {
-		return new class6[]{class6.field15};
-	}
-
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "-4"
-	)
-	public static int method7074(int var0, int var1) {
-		int var2;
-		for (var2 = 0; var1 > 0; --var1) {
-			var2 = var2 << 1 | var0 & 1;
-			var0 >>>= 1;
+	static int method7415(int var0, int var1, int var2) {
+		if (var2 > 179) {
+			var1 /= 2;
 		}
 
-		return var2;
+		if (var2 > 192) {
+			var1 /= 2;
+		}
+
+		if (var2 > 217) {
+			var1 /= 2;
+		}
+
+		if (var2 > 243) {
+			var1 /= 2;
+		}
+
+		int var3 = (var1 / 32 << 7) + (var0 / 4 << 10) + var2 / 2;
+		return var3;
+	}
+
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(I)[I",
+		garbageValue = "-1556490427"
+	)
+	public static int[] method7414() {
+		int[] var0 = new int[KeyHandler.field118];
+
+		for (int var1 = 0; var1 < KeyHandler.field118; ++var1) {
+			var0[var1] = KeyHandler.field143[var1];
+		}
+
+		return var0;
 	}
 }

@@ -4,90 +4,90 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ha")
+@ObfuscatedName("gk")
 @Implements("WorldMapSection0")
 public class WorldMapSection0 implements WorldMapSection {
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -1379468797
+		intValue = -2145116039
 	)
 	@Export("oldZ")
 	int oldZ;
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1978034363
+		intValue = 1492900833
 	)
 	@Export("newZ")
 	int newZ;
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = -1418706877
+		intValue = -1446835647
 	)
 	@Export("oldX")
 	int oldX;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -455262703
+		intValue = -900342197
 	)
 	@Export("oldY")
 	int oldY;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = -1189566559
+		intValue = -1517609517
 	)
 	@Export("newX")
 	int newX;
-	@ObfuscatedName("s")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -1025005161
+		intValue = -643341675
 	)
 	@Export("newY")
 	int newY;
-	@ObfuscatedName("j")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -2060231737
+		intValue = 838630171
 	)
 	@Export("oldChunkXLow")
 	int oldChunkXLow;
-	@ObfuscatedName("w")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = -1972325381
+		intValue = -2088226529
 	)
 	@Export("oldChunkYLow")
 	int oldChunkYLow;
-	@ObfuscatedName("n")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -402429253
+		intValue = 1613017713
 	)
 	@Export("oldChunkXHigh")
 	int oldChunkXHigh;
-	@ObfuscatedName("r")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = 2143866963
+		intValue = 917626923
 	)
 	@Export("oldChunkYHigh")
 	int oldChunkYHigh;
-	@ObfuscatedName("o")
+	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = -1182995105
+		intValue = -492614719
 	)
 	@Export("newChunkXLow")
 	int newChunkXLow;
-	@ObfuscatedName("v")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -1073244035
+		intValue = 935129113
 	)
 	@Export("newChunkYLow")
 	int newChunkYLow;
-	@ObfuscatedName("d")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -1074307305
+		intValue = -2057232245
 	)
 	@Export("newChunkXHigh")
 	int newChunkXHigh;
-	@ObfuscatedName("h")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 726894699
+		intValue = 1809947597
 	)
 	@Export("newChunkYHigh")
 	int newChunkYHigh;
@@ -95,10 +95,10 @@ public class WorldMapSection0 implements WorldMapSection {
 	WorldMapSection0() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lhr;I)V",
-		garbageValue = "2069930856"
+		descriptor = "(Lgu;I)V",
+		garbageValue = "964088357"
 	)
 	@Export("expandBounds")
 	public void expandBounds(WorldMapArea var1) {
@@ -120,10 +120,10 @@ public class WorldMapSection0 implements WorldMapSection {
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(IIIB)Z",
-		garbageValue = "81"
+		descriptor = "(IIII)Z",
+		garbageValue = "-1337137401"
 	)
 	@Export("containsCoord")
 	public boolean containsCoord(int var1, int var2, int var3) {
@@ -134,20 +134,20 @@ public class WorldMapSection0 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
 		descriptor = "(III)Z",
-		garbageValue = "42159517"
+		garbageValue = "1769831605"
 	)
 	@Export("containsPosition")
 	public boolean containsPosition(int var1, int var2) {
 		return var1 >= (this.newX << 6) + (this.newChunkXLow << 3) && var1 <= (this.newX << 6) + (this.newChunkXHigh << 3) + 7 && var2 >= (this.newY << 6) + (this.newChunkYLow << 3) && var2 <= (this.newY << 6) + (this.newChunkYHigh << 3) + 7;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(IIII)[I",
-		garbageValue = "22240711"
+		garbageValue = "1941144122"
 	)
 	@Export("getBorderTileLengths")
 	public int[] getBorderTileLengths(int var1, int var2, int var3) {
@@ -159,10 +159,10 @@ public class WorldMapSection0 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "(IIS)Lju;",
-		garbageValue = "5000"
+		descriptor = "(III)Lks;",
+		garbageValue = "-670243838"
 	)
 	@Export("coord")
 	public Coord coord(int var1, int var2) {
@@ -175,10 +175,10 @@ public class WorldMapSection0 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;S)V",
-		garbageValue = "-15299"
+		descriptor = "(Lpi;I)V",
+		garbageValue = "-860121653"
 	)
 	@Export("read")
 	public void read(Buffer var1) {
@@ -199,84 +199,76 @@ public class WorldMapSection0 implements WorldMapSection {
 		this.postRead();
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-109463717"
+		garbageValue = "-1290063965"
 	)
 	@Export("postRead")
 	void postRead() {
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "([BI)V",
-		garbageValue = "-27466891"
+		descriptor = "(CI)Z",
+		garbageValue = "-1330681104"
 	)
-	@Export("SpriteBuffer_decode")
-	static void SpriteBuffer_decode(byte[] var0) {
-		Buffer var1 = new Buffer(var0);
-		var1.offset = var0.length - 2;
-		class440.SpriteBuffer_spriteCount = var1.readUnsignedShort();
-		class141.SpriteBuffer_xOffsets = new int[class440.SpriteBuffer_spriteCount];
-		RouteStrategy.SpriteBuffer_yOffsets = new int[class440.SpriteBuffer_spriteCount];
-		class432.SpriteBuffer_spriteWidths = new int[class440.SpriteBuffer_spriteCount];
-		class330.SpriteBuffer_spriteHeights = new int[class440.SpriteBuffer_spriteCount];
-		class369.SpriteBuffer_pixels = new byte[class440.SpriteBuffer_spriteCount][];
-		var1.offset = var0.length - 7 - class440.SpriteBuffer_spriteCount * 8;
-		class432.SpriteBuffer_spriteWidth = var1.readUnsignedShort();
-		class432.SpriteBuffer_spriteHeight = var1.readUnsignedShort();
-		int var2 = (var1.readUnsignedByte() & 255) + 1;
+	public static boolean method4303(char var0) {
+		if (var0 >= ' ' && var0 < 127 || var0 > 127 && var0 < 160 || var0 > 160 && var0 <= 255) {
+			return true;
+		} else {
+			if (var0 != 0) {
+				char[] var1 = class345.cp1252AsciiExtension;
 
-		int var3;
-		for (var3 = 0; var3 < class440.SpriteBuffer_spriteCount; ++var3) {
-			class141.SpriteBuffer_xOffsets[var3] = var1.readUnsignedShort();
-		}
-
-		for (var3 = 0; var3 < class440.SpriteBuffer_spriteCount; ++var3) {
-			RouteStrategy.SpriteBuffer_yOffsets[var3] = var1.readUnsignedShort();
-		}
-
-		for (var3 = 0; var3 < class440.SpriteBuffer_spriteCount; ++var3) {
-			class432.SpriteBuffer_spriteWidths[var3] = var1.readUnsignedShort();
-		}
-
-		for (var3 = 0; var3 < class440.SpriteBuffer_spriteCount; ++var3) {
-			class330.SpriteBuffer_spriteHeights[var3] = var1.readUnsignedShort();
-		}
-
-		var1.offset = var0.length - 7 - class440.SpriteBuffer_spriteCount * 8 - (var2 - 1) * 3;
-		class432.SpriteBuffer_spritePalette = new int[var2];
-
-		for (var3 = 1; var3 < var2; ++var3) {
-			class432.SpriteBuffer_spritePalette[var3] = var1.readMedium();
-			if (class432.SpriteBuffer_spritePalette[var3] == 0) {
-				class432.SpriteBuffer_spritePalette[var3] = 1;
-			}
-		}
-
-		var1.offset = 0;
-
-		for (var3 = 0; var3 < class440.SpriteBuffer_spriteCount; ++var3) {
-			int var4 = class432.SpriteBuffer_spriteWidths[var3];
-			int var5 = class330.SpriteBuffer_spriteHeights[var3];
-			int var6 = var5 * var4;
-			byte[] var7 = new byte[var6];
-			class369.SpriteBuffer_pixels[var3] = var7;
-			int var8 = var1.readUnsignedByte();
-			int var9;
-			if (var8 == 0) {
-				for (var9 = 0; var9 < var6; ++var9) {
-					var7[var9] = var1.readByte();
-				}
-			} else if (var8 == 1) {
-				for (var9 = 0; var9 < var4; ++var9) {
-					for (int var10 = 0; var10 < var5; ++var10) {
-						var7[var9 + var4 * var10] = var1.readByte();
+				for (int var2 = 0; var2 < var1.length; ++var2) {
+					char var3 = var1[var2];
+					if (var0 == var3) {
+						return true;
 					}
 				}
 			}
-		}
 
+			return false;
+		}
+	}
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "91"
+	)
+	static final void method4283() {
+		if (!ViewportMouse.ViewportMouse_false0) {
+			int var0 = Scene.Scene_cameraPitchSine;
+			int var1 = Scene.Scene_cameraPitchCosine;
+			int var2 = Scene.Scene_cameraYawSine;
+			int var3 = Scene.Scene_cameraYawCosine;
+			byte var4 = 50;
+			short var5 = 3500;
+			int var6 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.Rasterizer3D_clipMidX) * var4 / Rasterizer3D.Rasterizer3D_zoom;
+			int var7 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.Rasterizer3D_clipMidY) * var4 / Rasterizer3D.Rasterizer3D_zoom;
+			int var8 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.Rasterizer3D_clipMidX) * var5 / Rasterizer3D.Rasterizer3D_zoom;
+			int var9 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.Rasterizer3D_clipMidY) * var5 / Rasterizer3D.Rasterizer3D_zoom;
+			int var10 = Rasterizer3D.method4656(var7, var4, var1, var0);
+			int var11 = Rasterizer3D.method4630(var7, var4, var1, var0);
+			var7 = var10;
+			var10 = Rasterizer3D.method4656(var9, var5, var1, var0);
+			int var12 = Rasterizer3D.method4630(var9, var5, var1, var0);
+			var9 = var10;
+			var10 = Rasterizer3D.method4627(var6, var11, var3, var2);
+			var11 = Rasterizer3D.method4628(var6, var11, var3, var2);
+			var6 = var10;
+			var10 = Rasterizer3D.method4627(var8, var12, var3, var2);
+			var12 = Rasterizer3D.method4628(var8, var12, var3, var2);
+			FaceNormal.field2664 = (var10 + var6) / 2;
+			ItemComposition.field2076 = (var7 + var9) / 2;
+			ViewportMouse.field2802 = (var11 + var12) / 2;
+			ViewportMouse.field2805 = (var10 - var6) / 2;
+			ViewportMouse.field2804 = (var9 - var7) / 2;
+			class18.field95 = (var12 - var11) / 2;
+			class9.field35 = Math.abs(ViewportMouse.field2805);
+			ViewportMouse.field2808 = Math.abs(ViewportMouse.field2804);
+			class196.field2204 = Math.abs(class18.field95);
+		}
 	}
 }

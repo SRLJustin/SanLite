@@ -1,46 +1,56 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("aa")
+@ObfuscatedName("ac")
 @Implements("SoundCache")
 public class SoundCache {
-	@ObfuscatedName("s")
-	@Export("Interpreter_intLocals")
-	static int[] Interpreter_intLocals;
-	@ObfuscatedName("w")
-	static byte[][][] field321;
-	@ObfuscatedName("a")
-	@Export("ByteArrayPool_alternativeSizes")
-	public static int[] ByteArrayPool_alternativeSizes;
-	@ObfuscatedName("c")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Lln;"
+	)
+	@Export("ItemDefinition_archive")
+	static AbstractArchive ItemDefinition_archive;
+	@ObfuscatedName("u")
+	@ObfuscatedGetter(
+		intValue = -1560740679
+	)
+	static int field311;
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "Lln;"
+	)
+	@Export("Widget_spritesArchive")
+	static AbstractArchive Widget_spritesArchive;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Lln;"
 	)
 	@Export("soundEffectIndex")
 	AbstractArchive soundEffectIndex;
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Lln;"
 	)
 	@Export("musicSampleIndex")
 	AbstractArchive musicSampleIndex;
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "Lon;"
+		descriptor = "Lpo;"
 	)
 	@Export("musicSamples")
 	NodeHashTable musicSamples;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lon;"
+		descriptor = "Lpo;"
 	)
 	@Export("rawSounds")
 	NodeHashTable rawSounds;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lku;Lku;)V"
+		descriptor = "(Lln;Lln;)V"
 	)
 	public SoundCache(AbstractArchive var1, AbstractArchive var2) {
 		this.musicSamples = new NodeHashTable(256);
@@ -49,10 +59,10 @@ public class SoundCache {
 		this.musicSampleIndex = var2;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(II[IB)Laj;",
-		garbageValue = "-53"
+		descriptor = "(II[II)Lat;",
+		garbageValue = "-1555701815"
 	)
 	@Export("getSoundEffect0")
 	RawSound getSoundEffect0(int var1, int var2, int[] var3) {
@@ -80,10 +90,10 @@ public class SoundCache {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(II[II)Laj;",
-		garbageValue = "1434349687"
+		descriptor = "(II[II)Lat;",
+		garbageValue = "-1329492986"
 	)
 	@Export("getMusicSample0")
 	RawSound getMusicSample0(int var1, int var2, int[] var3) {
@@ -117,10 +127,10 @@ public class SoundCache {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "(I[II)Laj;",
-		garbageValue = "-806437525"
+		descriptor = "(I[II)Lat;",
+		garbageValue = "-1579364603"
 	)
 	@Export("getSoundEffect")
 	public RawSound getSoundEffect(int var1, int[] var2) {
@@ -133,10 +143,10 @@ public class SoundCache {
 		}
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I[II)Laj;",
-		garbageValue = "-1607899300"
+		descriptor = "(I[IB)Lat;",
+		garbageValue = "74"
 	)
 	@Export("getMusicSample")
 	public RawSound getMusicSample(int var1, int[] var2) {
@@ -149,174 +159,87 @@ public class SoundCache {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
 		descriptor = "(II)I",
-		garbageValue = "919700872"
+		garbageValue = "662567928"
 	)
-	public static int method833(int var0) {
-		return class378.field4233[var0 & 16383];
+	static int method779(int var0) {
+		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
+		if (var1 == null) {
+			return -1;
+		} else {
+			return var1.nextDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.nextDual).count;
+		}
 	}
 
 	@ObfuscatedName("m")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "2120721647"
+		garbageValue = "-1695145836"
 	)
-	static void method823() {
-		if (DirectByteArrayCopier.clearLoginScreen) {
-			AbstractByteArrayCopier.titleboxSprite = null;
-			class19.titlebuttonSprite = null;
-			Login.runesSprite = null;
-			WorldMapCacheName.leftTitleSprite = null;
-			NPC.rightTitleSprite = null;
-			Login.logoSprite = null;
-			Login.title_muteSprite = null;
-			KeyHandler.options_buttons_0Sprite = null;
-			LoginType.options_buttons_2Sprite = null;
-			class148.worldSelectBackSprites = null;
-			AbstractArchive.worldSelectFlagSprites = null;
-			UserComparator3.worldSelectArrows = null;
-			class112.worldSelectStars = null;
-			class21.field118 = null;
-			Client.loginScreenRunesAnimation.method2280();
-			class260.musicPlayerStatus = 1;
-			class124.musicTrackArchive = null;
-			VarcInt.musicTrackGroupId = -1;
-			class260.musicTrackFileId = -1;
-			ChatChannel.musicTrackVolume = 0;
-			DynamicObject.musicTrackBoolean = false;
-			class260.pcmSampleLength = 2;
-			ClientPreferences.method2297(true);
-			DirectByteArrayCopier.clearLoginScreen = false;
+	static void method768() {
+		if (TileItem.loadWorlds()) {
+			Login.worldSelectOpen = true;
+			Login.worldSelectPage = 0;
+			Login.worldSelectPagesCount = 0;
+		}
+
+	}
+
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "(III)I",
+		garbageValue = "-2116988411"
+	)
+	static final int method772(int var0, int var1) {
+		if (var0 == -1) {
+			return 12345678;
+		} else {
+			var1 = (var0 & 127) * var1 / 128;
+			if (var1 < 2) {
+				var1 = 2;
+			} else if (var1 > 126) {
+				var1 = 126;
+			}
+
+			return (var0 & 65408) + var1;
 		}
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("fh")
 	@ObfuscatedSignature(
-		descriptor = "(ILju;ZB)V",
-		garbageValue = "8"
+		descriptor = "(II)V",
+		garbageValue = "2105059803"
 	)
-	static void method831(int var0, Coord var1, boolean var2) {
-		WorldMapArea var3 = WorldMapRectangle.getWorldMap().getMapArea(var0);
-		int var4 = class340.localPlayer.plane;
-		int var5 = class131.baseX * 64 + (class340.localPlayer.x >> 7);
-		int var6 = TileItem.baseY * 64 + (class340.localPlayer.y >> 7);
-		Coord var7 = new Coord(var4, var5, var6);
-		WorldMapRectangle.getWorldMap().method6876(var3, var7, var1, var2);
+	@Export("playSong")
+	static void playSong(int var0) {
+		if (var0 == -1 && !Client.field746) {
+			class273.midiPcmStream.clear();
+			class273.musicPlayerStatus = 1;
+			class273.musicTrackArchive = null;
+		} else if (var0 != -1 && var0 != Client.currentTrackGroupId && class131.clientPreferences.method2321() != 0 && !Client.field746) {
+			NPCComposition.method3530(2, class16.archive6, var0, 0, class131.clientPreferences.method2321(), false);
+		}
+
+		Client.currentTrackGroupId = var0;
 	}
 
-	@ObfuscatedName("ie")
+	@ObfuscatedName("io")
 	@ObfuscatedSignature(
-		descriptor = "(IIIILjava/lang/String;I)V",
-		garbageValue = "-1022759307"
+		descriptor = "(II)Z",
+		garbageValue = "1445752455"
 	)
-	@Export("widgetDefaultMenuAction")
-	static void widgetDefaultMenuAction(int var0, int var1, int var2, int var3, String var4) {
-		Widget var5 = class126.getWidgetChild(var1, var2);
-		if (var5 != null) {
-			if (var5.onOp != null) {
-				ScriptEvent var6 = new ScriptEvent();
-				var6.widget = var5;
-				var6.opIndex = var0;
-				var6.targetName = var4;
-				var6.args = var5.onOp;
-				class285.runScriptEvent(var6);
+	static final boolean method781(int var0) {
+		if (var0 < 0) {
+			return false;
+		} else {
+			int var1 = Client.menuOpcodes[var0];
+			if (var1 >= 2000) {
+				var1 -= 2000;
 			}
 
-			boolean var11 = true;
-			if (var5.contentType > 0) {
-				var11 = class19.method329(var5);
-			}
-
-			if (var11) {
-				int var8 = class363.getWidgetFlags(var5);
-				int var9 = var0 - 1;
-				boolean var7 = (var8 >> var9 + 1 & 1) != 0;
-				if (var7) {
-					PacketBufferNode var10;
-					if (var0 == 1) {
-						var10 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2891, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 2) {
-						var10 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2880, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 3) {
-						var10 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2834, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 4) {
-						var10 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2821, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 5) {
-						var10 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2877, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 6) {
-						var10 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2866, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 7) {
-						var10 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2822, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 8) {
-						var10 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2884, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 9) {
-						var10 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2830, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-					if (var0 == 10) {
-						var10 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2853, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var10);
-					}
-
-				}
-			}
+			return var1 == 1007;
 		}
 	}
 }
