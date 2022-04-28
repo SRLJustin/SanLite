@@ -4,18 +4,12 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mi")
+@ObfuscatedName("ng")
 @Implements("Ignored")
 public class Ignored extends Nameable {
-	@ObfuscatedName("pz")
-	@ObfuscatedSignature(
-		descriptor = "Loo;"
-	)
-	@Export("Ignored_cached")
-	static class404 Ignored_cached;
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1285120553
+		intValue = -60193045
 	)
 	@Export("id")
 	int id;
@@ -23,20 +17,20 @@ public class Ignored extends Nameable {
 	Ignored() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lmi;B)I",
-		garbageValue = "109"
+		descriptor = "(Lng;B)I",
+		garbageValue = "-48"
 	)
 	@Export("compareTo_ignored")
 	int compareTo_ignored(Ignored var1) {
 		return this.id - var1.id;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;I)I",
-		garbageValue = "-1921032172"
+		descriptor = "(Lnn;I)I",
+		garbageValue = "842367957"
 	)
 	@Export("compareTo_user")
 	public int compareTo_user(Nameable var1) {
@@ -47,18 +41,14 @@ public class Ignored extends Nameable {
 		return this.compareTo_ignored((Ignored)var1);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(I)J",
-		garbageValue = "-376840192"
+		descriptor = "(IB)V",
+		garbageValue = "127"
 	)
-	public static final synchronized long method6459() {
-		long var0 = System.currentTimeMillis();
-		if (var0 < class415.field4466) {
-			class415.field4467 += class415.field4466 - var0;
+	static void method6828(int var0) {
+		if (var0 != Login.loginIndex) {
+			Login.loginIndex = var0;
 		}
-
-		class415.field4466 = var0;
-		return var0 + class415.field4467;
 	}
 }

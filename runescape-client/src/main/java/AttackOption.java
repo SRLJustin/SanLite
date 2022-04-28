@@ -4,41 +4,58 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ca")
+@ObfuscatedName("cn")
 @Implements("AttackOption")
 public enum AttackOption implements MouseWheel {
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lca;"
+		descriptor = "Lcn;"
 	)
 	@Export("AttackOption_dependsOnCombatLevels")
 	AttackOption_dependsOnCombatLevels(0),
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lca;"
+		descriptor = "Lcn;"
 	)
 	@Export("AttackOption_alwaysRightClick")
 	AttackOption_alwaysRightClick(1),
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "Lca;"
+		descriptor = "Lcn;"
 	)
-	field1232(2),
-	@ObfuscatedName("m")
+	field1257(2),
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lca;"
+		descriptor = "Lcn;"
 	)
 	@Export("AttackOption_hidden")
 	AttackOption_hidden(3),
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "Lca;"
+		descriptor = "Lcn;"
 	)
-	field1234(4);
+	field1263(4);
 
 	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "Lln;"
+	)
+	@Export("ItemDefinition_modelArchive")
+	static AbstractArchive ItemDefinition_modelArchive;
+	@ObfuscatedName("t")
 	@ObfuscatedGetter(
-		intValue = -268107797
+		intValue = -2042861585
+	)
+	static int field1255;
+	@ObfuscatedName("ct")
+	@ObfuscatedSignature(
+		descriptor = "Lqq;"
+	)
+	@Export("worldSelectRightSprite")
+	static IndexedSprite worldSelectRightSprite;
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = -887019937
 	)
 	@Export("id")
 	final int id;
@@ -47,22 +64,13 @@ public enum AttackOption implements MouseWheel {
 		this.id = var3;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "48"
+		garbageValue = "16"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
-	}
-
-	@ObfuscatedName("lg")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-379261507"
-	)
-	static boolean method2356() {
-		return SecureRandomFuture.clientPreferences.field1197 >= Client.field473;
 	}
 }

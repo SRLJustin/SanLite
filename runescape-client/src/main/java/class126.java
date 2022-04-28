@@ -3,55 +3,66 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dg")
-public abstract class class126 extends Node {
-	@ObfuscatedName("ea")
+@ObfuscatedName("db")
+public class class126 extends class128 {
+	@ObfuscatedName("cf")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
+		descriptor = "[Lqq;"
 	)
-	@Export("archive17")
-	static Archive archive17;
-	@ObfuscatedName("fj")
+	@Export("worldSelectArrows")
+	static IndexedSprite[] worldSelectArrows;
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -858901471
+		longValue = 5363365603419108439L
 	)
-	static int field1497;
-	@ObfuscatedName("gh")
+	long field1511;
+	@ObfuscatedName("c")
+	String field1508;
+	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Loh;"
+		descriptor = "Les;"
 	)
-	@Export("WorldMapElement_fonts")
-	static Fonts WorldMapElement_fonts;
+	final class131 this$0;
 
-	class126() {
+	@ObfuscatedSignature(
+		descriptor = "(Les;)V"
+	)
+	class126(class131 var1) {
+		this.this$0 = var1;
+		this.field1511 = -1L;
+		this.field1508 = null;
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(Lpi;I)V",
+		garbageValue = "-413979452"
+	)
+	void vmethod3168(Buffer var1) {
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			this.field1511 = var1.readLong();
+		}
+
+		this.field1508 = var1.readStringCp1252NullTerminatedOrNull();
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lex;S)V",
+		garbageValue = "-10316"
 	)
-	abstract void vmethod3029(Buffer var1);
+	void vmethod3162(ClanSettings var1) {
+		var1.method2959(this.field1511, this.field1508, 0);
+	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("ku")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(II)V",
+		garbageValue = "1206801353"
 	)
-	abstract void vmethod3028(ClanSettings var1);
-
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(III)Ljm;",
-		garbageValue = "-1928288772"
-	)
-	@Export("getWidgetChild")
-	public static Widget getWidgetChild(int var0, int var1) {
-		Widget var2 = ChatChannel.getWidget(var0);
-		if (var1 == -1) {
-			return var2;
-		} else {
-			return var2 != null && var2.children != null && var1 < var2.children.length ? var2.children[var1] : null;
-		}
+	static final void method2824(int var0) {
+		var0 = Math.min(Math.max(var0, 0), 127);
+		class131.clientPreferences.method2261(var0);
 	}
 }
