@@ -1,67 +1,87 @@
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("a")
+@ObfuscatedName("u")
 public class class16 implements ThreadFactory {
+	@ObfuscatedName("eo")
+	@ObfuscatedSignature(
+		descriptor = "Llx;"
+	)
+	@Export("archive6")
+	static Archive archive6;
+	@ObfuscatedName("v")
+	final ThreadGroup field77;
 	@ObfuscatedName("c")
-	final ThreadGroup field87;
-	@ObfuscatedName("b")
-	final AtomicInteger field86;
+	final AtomicInteger field78;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lg;"
+		descriptor = "Ld;"
 	)
 	final class14 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lg;)V"
+		descriptor = "(Ld;)V"
 	)
 	class16(class14 var1) {
 		this.this$0 = var1;
-		this.field86 = new AtomicInteger(1);
+		this.field78 = new AtomicInteger(1);
 		SecurityManager var2 = System.getSecurityManager();
-		this.field87 = var2 != null ? var2.getThreadGroup() : Thread.currentThread().getThreadGroup();
+		this.field77 = var2 != null ? var2.getThreadGroup() : Thread.currentThread().getThreadGroup();
 	}
 
 	public Thread newThread(Runnable var1) {
-		Thread var2 = new Thread(this.field87, var1, this.this$0.field79 + "-rest-request-" + this.field86.getAndIncrement(), 0L);
+		Thread var2 = new Thread(this.field77, var1, this.this$0.field69 + "-rest-request-" + this.field78.getAndIncrement(), 0L);
 		var2.setDaemon(true);
 		var2.setPriority(5);
 		return var2;
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "(Ljm;II)V",
-		garbageValue = "-158278735"
+		descriptor = "(Ljava/io/File;Ljava/io/File;I)V",
+		garbageValue = "2082256408"
 	)
-	@Export("Widget_setKeyIgnoreHeld")
-	static final void Widget_setKeyIgnoreHeld(Widget var0, int var1) {
-		if (var0.field3300 == null) {
-			throw new RuntimeException();
-		} else {
-			if (var0.field3368 == null) {
-				var0.field3368 = new int[var0.field3300.length];
+	static void method194(File var0, File var1) {
+		try {
+			AccessFile var2 = new AccessFile(class28.JagexCache_locationFile, "rw", 10000L);
+			Buffer var3 = new Buffer(500);
+			var3.writeByte(3);
+			var3.writeByte(var1 != null ? 1 : 0);
+			var3.writeCESU8(var0.getPath());
+			if (var1 != null) {
+				var3.writeCESU8("");
 			}
 
-			var0.field3368[var1] = Integer.MAX_VALUE;
+			var2.write(var3.array, 0, var3.offset);
+			var2.close();
+		} catch (IOException var4) {
+			var4.printStackTrace();
 		}
+
 	}
 
-	@ObfuscatedName("ko")
+	@ObfuscatedName("fb")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "74"
+		descriptor = "(II)V",
+		garbageValue = "1157813230"
 	)
-	static void method239(int var0) {
-		class87.tempMenuAction = new MenuAction();
-		class87.tempMenuAction.param0 = Client.menuArguments1[var0];
-		class87.tempMenuAction.param1 = Client.menuArguments2[var0];
-		class87.tempMenuAction.opcode = Client.menuOpcodes[var0];
-		class87.tempMenuAction.identifier = Client.menuIdentifiers[var0];
-		class87.tempMenuAction.action = Client.menuActions[var0];
+	@Export("forceDisconnect")
+	static final void forceDisconnect(int var0) {
+		ItemLayer.logOut();
+		switch(var0) {
+		case 1:
+			Ignored.method6828(24);
+			class4.setLoginResponseString("", "You were disconnected from the server.", "");
+			break;
+		case 2:
+			Ignored.method6828(24);
+			class4.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
+		}
+
 	}
 }

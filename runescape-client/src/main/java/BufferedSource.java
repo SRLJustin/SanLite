@@ -1,50 +1,43 @@
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mr")
+@ObfuscatedName("nx")
 @Implements("BufferedSource")
 public class BufferedSource implements Runnable {
-	@ObfuscatedName("u")
-	@Export("cacheSubPaths")
-	public static String[] cacheSubPaths;
-	@ObfuscatedName("bv")
-	@Export("otp")
-	static String otp;
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@Export("inputStream")
 	InputStream inputStream;
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = -1854638595
+		intValue = 1631784043
 	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@Export("buffer")
 	byte[] buffer;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = 1353886439
+		intValue = 1349825787
 	)
 	@Export("position")
 	int position;
-	@ObfuscatedName("s")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 980101141
+		intValue = 1219370145
 	)
 	@Export("limit")
 	int limit;
-	@ObfuscatedName("j")
+	@ObfuscatedName("s")
 	@Export("exception")
 	IOException exception;
 
@@ -59,10 +52,10 @@ public class BufferedSource implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "1211615101"
+		descriptor = "(IB)Z",
+		garbageValue = "0"
 	)
 	@Export("isAvailable")
 	boolean isAvailable(int var1) throws IOException {
@@ -93,10 +86,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-146970254"
+		garbageValue = "412570779"
 	)
 	@Export("available")
 	int available() throws IOException {
@@ -117,10 +110,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "52"
+		descriptor = "(I)I",
+		garbageValue = "-1010089751"
 	)
 	@Export("readUnsignedByte")
 	int readUnsignedByte() throws IOException {
@@ -140,10 +133,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "([BIIB)I",
-		garbageValue = "126"
+		descriptor = "([BIII)I",
+		garbageValue = "-2005340605"
 	)
 	@Export("read")
 	int read(byte[] var1, int var2, int var3) throws IOException {
@@ -181,10 +174,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1858620597"
+		garbageValue = "202162946"
 	)
 	@Export("close")
 	void close() {
@@ -251,13 +244,13 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Llf;II)Liw;",
-		garbageValue = "821161285"
+		descriptor = "(ILjava/lang/String;Llo;II)Ljd;",
+		garbageValue = "1218587295"
 	)
-	public static PacketBufferNode method6527(int var0, String var1, Language var2, int var3) {
-		PacketBufferNode var4 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2897, Client.packetWriter.isaacCipher);
+	public static PacketBufferNode method6908(int var0, String var1, Language var2, int var3) {
+		PacketBufferNode var4 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2918, Client.packetWriter.isaacCipher);
 		var4.packetBuffer.writeByte(0);
 		int var5 = var4.packetBuffer.offset;
 		var4.packetBuffer.writeByte(var0);
@@ -377,27 +370,184 @@ public class BufferedSource implements Runnable {
 
 		var4.packetBuffer.writeByte(var7);
 		var4.packetBuffer.writeByte(var8);
-		class370.method6755(var4.packetBuffer, var1);
-		if (var0 == class282.field3379.rsOrdinal()) {
+		class282.method5489(var4.packetBuffer, var1);
+		if (var0 == class296.field3492.rsOrdinal()) {
 			var4.packetBuffer.writeByte(var3);
 		}
 
-		var4.packetBuffer.method7357(var4.packetBuffer.offset - var5);
+		var4.packetBuffer.method7774(var4.packetBuffer.offset - var5);
 		return var4;
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("jb")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "843929154"
+		descriptor = "(Lky;II)I",
+		garbageValue = "-965040804"
 	)
-	static void method6516() {
-		Iterator var0 = Messages.Messages_hashTable.iterator();
+	static final int method6907(Widget var0, int var1) {
+		if (var0.cs1Instructions != null && var1 < var0.cs1Instructions.length) {
+			try {
+				int[] var2 = var0.cs1Instructions[var1];
+				int var3 = 0;
+				int var4 = 0;
+				byte var5 = 0;
 
-		while (var0.hasNext()) {
-			Message var1 = (Message)var0.next();
-			var1.clearIsFromIgnored();
+				while (true) {
+					int var6 = var2[var4++];
+					int var7 = 0;
+					byte var8 = 0;
+					if (var6 == 0) {
+						return var3;
+					}
+
+					if (var6 == 1) {
+						var7 = Client.currentLevels[var2[var4++]];
+					}
+
+					if (var6 == 2) {
+						var7 = Client.levels[var2[var4++]];
+					}
+
+					if (var6 == 3) {
+						var7 = Client.experience[var2[var4++]];
+					}
+
+					int var9;
+					Widget var10;
+					int var11;
+					int var12;
+					if (var6 == 4) {
+						var9 = var2[var4++] << 16;
+						var9 += var2[var4++];
+						var10 = class127.getWidget(var9);
+						var11 = var2[var4++];
+						if (var11 != -1 && (!class19.ItemDefinition_get(var11).isMembersOnly || Client.isMembersWorld)) {
+							for (var12 = 0; var12 < var10.itemIds.length; ++var12) {
+								if (var11 + 1 == var10.itemIds[var12]) {
+									var7 += var10.itemQuantities[var12];
+								}
+							}
+						}
+					}
+
+					if (var6 == 5) {
+						var7 = Varps.Varps_main[var2[var4++]];
+					}
+
+					if (var6 == 6) {
+						var7 = Skills.Skills_experienceTable[Client.levels[var2[var4++]] - 1];
+					}
+
+					if (var6 == 7) {
+						var7 = Varps.Varps_main[var2[var4++]] * 100 / 46875;
+					}
+
+					if (var6 == 8) {
+						var7 = GrandExchangeEvents.localPlayer.combatLevel;
+					}
+
+					if (var6 == 9) {
+						for (var9 = 0; var9 < 25; ++var9) {
+							if (Skills.Skills_enabled[var9]) {
+								var7 += Client.levels[var9];
+							}
+						}
+					}
+
+					if (var6 == 10) {
+						var9 = var2[var4++] << 16;
+						var9 += var2[var4++];
+						var10 = class127.getWidget(var9);
+						var11 = var2[var4++];
+						if (var11 != -1 && (!class19.ItemDefinition_get(var11).isMembersOnly || Client.isMembersWorld)) {
+							for (var12 = 0; var12 < var10.itemIds.length; ++var12) {
+								if (var11 + 1 == var10.itemIds[var12]) {
+									var7 = 999999999;
+									break;
+								}
+							}
+						}
+					}
+
+					if (var6 == 11) {
+						var7 = Client.runEnergy;
+					}
+
+					if (var6 == 12) {
+						var7 = Client.weight;
+					}
+
+					if (var6 == 13) {
+						var9 = Varps.Varps_main[var2[var4++]];
+						int var13 = var2[var4++];
+						var7 = (var9 & 1 << var13) != 0 ? 1 : 0;
+					}
+
+					if (var6 == 14) {
+						var9 = var2[var4++];
+						var7 = SecureRandomCallable.getVarbit(var9);
+					}
+
+					if (var6 == 15) {
+						var8 = 1;
+					}
+
+					if (var6 == 16) {
+						var8 = 2;
+					}
+
+					if (var6 == 17) {
+						var8 = 3;
+					}
+
+					if (var6 == 18) {
+						var7 = GrandExchangeOfferOwnWorldComparator.baseX * 64 + (GrandExchangeEvents.localPlayer.x >> 7);
+					}
+
+					if (var6 == 19) {
+						var7 = VarcInt.baseY * 64 + (GrandExchangeEvents.localPlayer.y >> 7);
+					}
+
+					if (var6 == 20) {
+						var7 = var2[var4++];
+					}
+
+					if (var8 == 0) {
+						if (var5 == 0) {
+							var3 += var7;
+						}
+
+						if (var5 == 1) {
+							var3 -= var7;
+						}
+
+						if (var5 == 2 && var7 != 0) {
+							var3 /= var7;
+						}
+
+						if (var5 == 3) {
+							var3 *= var7;
+						}
+
+						var5 = 0;
+					} else {
+						var5 = var8;
+					}
+				}
+			} catch (Exception var14) {
+				return -1;
+			}
+		} else {
+			return -2;
 		}
+	}
 
+	@ObfuscatedName("mn")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1931509382"
+	)
+	static boolean method6889() {
+		return class131.clientPreferences.method2249() >= Client.field617;
 	}
 }

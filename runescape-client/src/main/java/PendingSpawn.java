@@ -1,78 +1,84 @@
+import java.applet.Applet;
+import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import netscape.javascript.JSObject;
 
-@ObfuscatedName("cg")
+@ObfuscatedName("ct")
 @Implements("PendingSpawn")
 public final class PendingSpawn extends Node {
-	@ObfuscatedName("c")
+	@ObfuscatedName("ux")
+	@Export("foundItemIds")
+	static short[] foundItemIds;
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 747226221
+		intValue = 1984278839
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1980117299
+		intValue = -685471761
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = -554114639
+		intValue = -1470046835
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1191230763
+		intValue = 241546961
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = -748187349
+		intValue = 1849366507
 	)
 	@Export("objectId")
 	int objectId;
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = 1969851359
+	)
+	int field1104;
 	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 1874163139
+		intValue = -2130994383
 	)
-	int field1087;
-	@ObfuscatedName("j")
+	int field1105;
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = 474042509
-	)
-	int field1080;
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = -208489985
+		intValue = -406866951
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("n")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -104687109
+		intValue = 1916353905
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("r")
-	@ObfuscatedGetter(
-		intValue = 753624769
-	)
-	int field1075;
 	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -2017319267
+		intValue = 1901242165
+	)
+	int field1107;
+	@ObfuscatedName("r")
+	@ObfuscatedGetter(
+		intValue = 1886053549
 	)
 	@Export("delay")
 	int delay;
-	@ObfuscatedName("v")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -1649420319
+		intValue = -758552801
 	)
 	@Export("hitpoints")
 	int hitpoints;
@@ -82,101 +88,85 @@ public final class PendingSpawn extends Node {
 		this.hitpoints = -1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "([BIIB)Ljava/lang/String;",
-		garbageValue = "-94"
+		descriptor = "(Ljava/lang/String;ILjava/lang/String;I)Z",
+		garbageValue = "1938115950"
 	)
-	public static String method2224(byte[] var0, int var1, int var2) {
-		StringBuilder var3 = new StringBuilder();
-
-		for (int var4 = var1; var4 < var2 + var1; var4 += 3) {
-			int var5 = var0[var4] & 255;
-			var3.append(class329.field4005[var5 >>> 2]);
-			if (var4 < var2 - 1) {
-				int var6 = var0[var4 + 1] & 255;
-				var3.append(class329.field4005[(var5 & 3) << 4 | var6 >>> 4]);
-				if (var4 < var2 - 2) {
-					int var7 = var0[var4 + 2] & 255;
-					var3.append(class329.field4005[(var6 & 15) << 2 | var7 >>> 6]).append(class329.field4005[var7 & 63]);
+	static boolean method2165(String var0, int var1, String var2) {
+		if (var1 == 0) {
+			try {
+				if (!class29.field175.startsWith("win")) {
+					throw new Exception();
+				} else if (!var0.startsWith("http://") && !var0.startsWith("https://")) {
+					throw new Exception();
 				} else {
-					var3.append(class329.field4005[(var6 & 15) << 2]).append("=");
-				}
-			} else {
-				var3.append(class329.field4005[(var5 & 3) << 4]).append("==");
-			}
-		}
+					String var13 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?&=,.%+-_#:/*";
 
-		return var3.toString();
-	}
-
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-2136768167"
-	)
-	static void method2225(int var0, int var1) {
-		long var2 = (long)((var0 << 16) + var1);
-		NetFileRequest var4 = (NetFileRequest)NetCache.NetCache_pendingWrites.get(var2);
-		if (var4 != null) {
-			NetCache.NetCache_pendingWritesQueue.addLast(var4);
-		}
-	}
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "([BIII)Ljava/lang/String;",
-		garbageValue = "-373054385"
-	)
-	@Export("decodeStringCp1252")
-	public static String decodeStringCp1252(byte[] var0, int var1, int var2) {
-		char[] var3 = new char[var2];
-		int var4 = 0;
-
-		for (int var5 = 0; var5 < var2; ++var5) {
-			int var6 = var0[var5 + var1] & 255;
-			if (var6 != 0) {
-				if (var6 >= 128 && var6 < 160) {
-					char var7 = class328.cp1252AsciiExtension[var6 - 128];
-					if (var7 == 0) {
-						var7 = '?';
+					for (int var4 = 0; var4 < var0.length(); ++var4) {
+						if (var13.indexOf(var0.charAt(var4)) == -1) {
+							throw new Exception();
+						}
 					}
 
-					var6 = var7;
+					Runtime.getRuntime().exec("cmd /c start \"j\" \"" + var0 + "\"");
+					return true;
 				}
-
-				var3[var4++] = (char)var6;
+			} catch (Throwable var8) {
+				return false;
 			}
-		}
+		} else if (var1 == 1) {
+			try {
+				Applet var7 = class29.field176;
+				Object[] var5 = new Object[]{(new URL(class29.field176.getCodeBase(), var0)).toString()};
+				Object var3 = JSObject.getWindow(var7).call(var2, var5);
+				return var3 != null;
+			} catch (Throwable var9) {
+				return false;
+			}
+		} else if (var1 == 2) {
+			try {
+				class29.field176.getAppletContext().showDocument(new URL(class29.field176.getCodeBase(), var0), "_blank");
+				return true;
+			} catch (Exception var10) {
+				return false;
+			}
+		} else if (var1 == 3) {
+			try {
+				class27.method383(class29.field176, "loggedout");
+			} catch (Throwable var12) {
+			}
 
-		return new String(var3, 0, var4);
+			try {
+				class29.field176.getAppletContext().showDocument(new URL(class29.field176.getCodeBase(), var0), "_top");
+				return true;
+			} catch (Exception var11) {
+				return false;
+			}
+		} else {
+			throw new IllegalArgumentException();
+		}
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("fd")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "2133440883"
+		descriptor = "(I)Z",
+		garbageValue = "-617620981"
 	)
-	static final int method2223(int var0, int var1) {
-		if (var0 == -2) {
-			return 12345678;
-		} else if (var0 == -1) {
-			if (var1 < 2) {
-				var1 = 2;
-			} else if (var1 > 126) {
-				var1 = 126;
+	static boolean method2166() {
+		if (Client.archiveLoaders != null && Client.archiveLoadersDone < Client.archiveLoaders.size()) {
+			while (Client.archiveLoadersDone < Client.archiveLoaders.size()) {
+				ArchiveLoader var0 = (ArchiveLoader)Client.archiveLoaders.get(Client.archiveLoadersDone);
+				if (!var0.isLoaded()) {
+					return false;
+				}
+
+				++Client.archiveLoadersDone;
 			}
 
-			return var1;
+			return true;
 		} else {
-			var1 = (var0 & 127) * var1 / 128;
-			if (var1 < 2) {
-				var1 = 2;
-			} else if (var1 > 126) {
-				var1 = 126;
-			}
-
-			return (var0 & 65408) + var1;
+			return true;
 		}
 	}
 }

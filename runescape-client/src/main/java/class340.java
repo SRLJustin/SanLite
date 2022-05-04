@@ -1,13 +1,18 @@
-import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ma")
-public class class340 {
-	@ObfuscatedName("ll")
-	@ObfuscatedSignature(
-		descriptor = "Lck;"
+@ObfuscatedName("mk")
+public final class class340 {
+	@ObfuscatedName("v")
+	final Object field4096;
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		intValue = 1768359201
 	)
-	@Export("localPlayer")
-	static Player localPlayer;
+	int field4095;
+
+	class340(Object var1, int var2) {
+		this.field4096 = var1;
+		this.field4095 = var2;
+	}
 }

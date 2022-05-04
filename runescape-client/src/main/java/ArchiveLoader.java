@@ -1,36 +1,40 @@
+import java.util.Collections;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("bf")
+@ObfuscatedName("bz")
 @Implements("ArchiveLoader")
 public class ArchiveLoader {
-	@ObfuscatedName("fr")
-	static int[] field984;
-	@ObfuscatedName("b")
+	@ObfuscatedName("hg")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
+		descriptor = "Lhv;"
+	)
+	@Export("scene")
+	static Scene scene;
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "Llx;"
 	)
 	@Export("archive")
 	final Archive archive;
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = 421357321
+		intValue = 711415979
 	)
 	@Export("groupCount")
 	final int groupCount;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -53898693
+		intValue = -905507323
 	)
 	@Export("loadedCount")
 	int loadedCount;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lkz;Ljava/lang/String;)V"
+		descriptor = "(Llx;Ljava/lang/String;)V"
 	)
 	ArchiveLoader(Archive var1, String var2) {
 		this.loadedCount = 0;
@@ -38,17 +42,17 @@ public class ArchiveLoader {
 		this.groupCount = var1.getGroupCount();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1404548417"
+		descriptor = "(B)Z",
+		garbageValue = "0"
 	)
 	@Export("isLoaded")
 	boolean isLoaded() {
 		this.loadedCount = 0;
 
 		for (int var1 = 0; var1 < this.groupCount; ++var1) {
-			if (!this.archive.method5584(var1) || this.archive.method5570(var1)) {
+			if (!this.archive.method5824(var1) || this.archive.method5814(var1)) {
 				++this.loadedCount;
 			}
 		}
@@ -56,424 +60,111 @@ public class ArchiveLoader {
 		return this.loadedCount >= this.groupCount;
 	}
 
-	@ObfuscatedName("b")
-	static boolean method2123(long var0) {
-		int var2 = (int)(var0 >>> 14 & 3L);
-		return var2 == 2;
-	}
-
-	@ObfuscatedName("q")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "-1437384176"
+		descriptor = "([I[II)V",
+		garbageValue = "-1372726492"
 	)
-	static int method2122(int var0, Script var1, boolean var2) {
-		String var7;
-		if (var0 == ScriptOpcodes.MES) {
-			var7 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
-			class194.addGameMessage(0, "", var7);
-			return 1;
-		} else if (var0 == ScriptOpcodes.ANIM) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			class125.performPlayerAnimation(class340.localPlayer, Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize], Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1]);
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_CLOSE) {
-			if (!Interpreter.field816) {
-				Interpreter.field818 = true;
+	public static void method2061(int[] var0, int[] var1) {
+		if (var0 != null && var1 != null) {
+			FloorOverlayDefinition.ByteArrayPool_alternativeSizes = var0;
+			class128.ByteArrayPool_altSizeArrayCounts = new int[var0.length];
+			WallObject.ByteArrayPool_arrays = new byte[var0.length][][];
+
+			for (int var2 = 0; var2 < FloorOverlayDefinition.ByteArrayPool_alternativeSizes.length; ++var2) {
+				WallObject.ByteArrayPool_arrays[var2] = new byte[var1[var2]][];
+				ByteArrayPool.field4167.add(var0[var2]);
 			}
 
-			return 1;
+			Collections.sort(ByteArrayPool.field4167);
 		} else {
-			int var16;
-			if (var0 == ScriptOpcodes.RESUME_COUNTDIALOG) {
-				var7 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
-				var16 = 0;
-				if (ClanSettings.isNumber(var7)) {
-					var16 = ClanChannelMember.method2778(var7);
-				}
+			FloorOverlayDefinition.ByteArrayPool_alternativeSizes = null;
+			class128.ByteArrayPool_altSizeArrayCounts = null;
+			WallObject.ByteArrayPool_arrays = null;
+			Login.method1960();
+		}
+	}
 
-				PacketBufferNode var14 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2862, Client.packetWriter.isaacCipher);
-				var14.packetBuffer.writeInt(var16);
-				Client.packetWriter.addNode(var14);
-				return 1;
-			} else {
-				PacketBufferNode var12;
-				if (var0 == ScriptOpcodes.RESUME_NAMEDIALOG) {
-					var7 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
-					var12 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2845, Client.packetWriter.isaacCipher);
-					var12.packetBuffer.writeByte(var7.length() + 1);
-					var12.packetBuffer.writeStringCp1252NullTerminated(var7);
-					Client.packetWriter.addNode(var12);
-					return 1;
-				} else if (var0 == ScriptOpcodes.RESUME_STRINGDIALOG) {
-					var7 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
-					var12 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2893, Client.packetWriter.isaacCipher);
-					var12.packetBuffer.writeByte(var7.length() + 1);
-					var12.packetBuffer.writeStringCp1252NullTerminated(var7);
-					Client.packetWriter.addNode(var12);
-					return 1;
+	@ObfuscatedName("gr")
+	@ObfuscatedSignature(
+		descriptor = "(Lcz;ZI)V",
+		garbageValue = "784160741"
+	)
+	@Export("addPlayerToScene")
+	static void addPlayerToScene(Player var0, boolean var1) {
+		if (var0 != null && var0.isVisible() && !var0.isHidden) {
+			var0.isUnanimated = false;
+			if ((Client.isLowDetail && Players.Players_count > 50 || Players.Players_count > 200) && var1 && var0.movementSequence == var0.idleSequence) {
+				var0.isUnanimated = true;
+			}
+
+			int var2 = var0.x >> 7;
+			int var3 = var0.y >> 7;
+			if (var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
+				long var4 = GameObject.calculateTag(0, 0, 0, false, var0.index);
+				if (var0.model0 != null && Client.cycle >= var0.animationCycleStart && Client.cycle < var0.animationCycleEnd) {
+					var0.isUnanimated = false;
+					var0.tileHeight = WorldMapLabel.getTileHeight(var0.x, var0.y, class18.Client_plane);
+					var0.playerCycle = Client.cycle;
+					scene.addNullableObject(class18.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.minX, var0.minY, var0.maxX, var0.maxY);
 				} else {
-					String var4;
-					int var10;
-					if (var0 == ScriptOpcodes.OPPLAYER) {
-						var10 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-						var4 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
-						class136.method2840(var10, var4);
-						return 1;
-					} else if (var0 == ScriptOpcodes.IF_DRAGPICKUP) {
-						IsaacCipher.Interpreter_intStackSize -= 3;
-						var10 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-						var16 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-						int var9 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 2];
-						Widget var15 = ChatChannel.getWidget(var9);
-						class29.clickWidget(var15, var10, var16);
-						return 1;
-					} else if (var0 == ScriptOpcodes.CC_DRAGPICKUP) {
-						IsaacCipher.Interpreter_intStackSize -= 2;
-						var10 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-						var16 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-						Widget var13 = var2 ? WorldMapArea.scriptDotWidget : Messages.scriptActiveWidget;
-						class29.clickWidget(var13, var10, var16);
-						return 1;
-					} else if (var0 == ScriptOpcodes.MOUSECAM) {
-						class150.mouseCam = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-						return 1;
-					} else if (var0 == ScriptOpcodes.GETREMOVEROOFS) {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = SecureRandomFuture.clientPreferences.roofsHidden ? 1 : 0;
-						return 1;
-					} else if (var0 == ScriptOpcodes.SETREMOVEROOFS) {
-						SecureRandomFuture.clientPreferences.roofsHidden = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-						class127.savePreferences();
-						return 1;
-					} else if (var0 == ScriptOpcodes.OPENURL) {
-						var7 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
-						boolean var8 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-						WorldMapSprite.openURL(var7, var8, false);
-						return 1;
-					} else if (var0 == ScriptOpcodes.RESUME_OBJDIALOG) {
-						var10 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-						var12 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2808, Client.packetWriter.isaacCipher);
-						var12.packetBuffer.writeShort(var10);
-						Client.packetWriter.addNode(var12);
-						return 1;
-					} else if (var0 == ScriptOpcodes.BUG_REPORT) {
-						var10 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-						class13.Interpreter_stringStackSize -= 2;
-						var4 = Interpreter.Interpreter_stringStack[class13.Interpreter_stringStackSize];
-						String var5 = Interpreter.Interpreter_stringStack[class13.Interpreter_stringStackSize + 1];
-						if (var4.length() > 500) {
-							return 1;
-						} else if (var5.length() > 500) {
-							return 1;
-						} else {
-							PacketBufferNode var6 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2841, Client.packetWriter.isaacCipher);
-							var6.packetBuffer.writeShort(1 + class116.stringCp1252NullTerminatedByteSize(var4) + class116.stringCp1252NullTerminatedByteSize(var5));
-							var6.packetBuffer.writeStringCp1252NullTerminated(var4);
-							var6.packetBuffer.method7343(var10);
-							var6.packetBuffer.writeStringCp1252NullTerminated(var5);
-							Client.packetWriter.addNode(var6);
-							return 1;
-						}
-					} else if (var0 == ScriptOpcodes.SETSHIFTCLICKDROP) {
-						Client.shiftClickDrop = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-						return 1;
-					} else if (var0 == ScriptOpcodes.SETSHOWMOUSEOVERTEXT) {
-						Client.showMouseOverText = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-						return 1;
-					} else if (var0 == ScriptOpcodes.RENDERSELF) {
-						Client.renderSelf = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-						return 1;
-					} else if (var0 == 3120) {
-						if (Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1) {
-							Client.drawPlayerNames |= 1;
-						} else {
-							Client.drawPlayerNames &= -2;
+					if ((var0.x & 127) == 64 && (var0.y & 127) == 64) {
+						if (Client.tileLastDrawnActor[var2][var3] == Client.viewportDrawCount) {
+							return;
 						}
 
-						return 1;
-					} else if (var0 == 3121) {
-						if (Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1) {
-							Client.drawPlayerNames |= 2;
-						} else {
-							Client.drawPlayerNames &= -3;
-						}
-
-						return 1;
-					} else if (var0 == 3122) {
-						if (Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1) {
-							Client.drawPlayerNames |= 4;
-						} else {
-							Client.drawPlayerNames &= -5;
-						}
-
-						return 1;
-					} else if (var0 == 3123) {
-						if (Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1) {
-							Client.drawPlayerNames |= 8;
-						} else {
-							Client.drawPlayerNames &= -9;
-						}
-
-						return 1;
-					} else if (var0 == 3124) {
-						Client.drawPlayerNames = 0;
-						return 1;
-					} else if (var0 == ScriptOpcodes.SETSHOWMOUSECROSS) {
-						Client.showMouseCross = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-						return 1;
-					} else if (var0 == ScriptOpcodes.SETSHOWLOADINGMESSAGES) {
-						Client.showLoadingMessages = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-						return 1;
-					} else if (var0 == ScriptOpcodes.SETTAPTODROP) {
-						class12.setTapToDrop(Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1);
-						return 1;
-					} else if (var0 == ScriptOpcodes.GETTAPTODROP) {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Tiles.getTapToDrop() ? 1 : 0;
-						return 1;
-					} else if (var0 == 3129) {
-						IsaacCipher.Interpreter_intStackSize -= 2;
-						Client.oculusOrbNormalSpeed = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-						Client.oculusOrbSlowedSpeed = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-						return 1;
-					} else if (var0 == 3130) {
-						IsaacCipher.Interpreter_intStackSize -= 2;
-						return 1;
-					} else if (var0 == 3131) {
-						--IsaacCipher.Interpreter_intStackSize;
-						return 1;
-					} else if (var0 == ScriptOpcodes.GETCANVASSIZE) {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = class186.canvasWidth;
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = WallObject.canvasHeight;
-						return 1;
-					} else if (var0 == ScriptOpcodes.MOBILE_SETFPS) {
-						--IsaacCipher.Interpreter_intStackSize;
-						return 1;
-					} else if (var0 == ScriptOpcodes.MOBILE_OPENSTORE) {
-						return 1;
-					} else if (var0 == ScriptOpcodes.MOBILE_OPENSTORECATEGORY) {
-						IsaacCipher.Interpreter_intStackSize -= 2;
-						return 1;
-					} else if (var0 == 3136) {
-						Client.field638 = 3;
-						Client.field639 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-						return 1;
-					} else if (var0 == 3137) {
-						Client.field638 = 2;
-						Client.field639 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-						return 1;
-					} else if (var0 == 3138) {
-						Client.field638 = 0;
-						return 1;
-					} else if (var0 == 3139) {
-						Client.field638 = 1;
-						return 1;
-					} else if (var0 == 3140) {
-						Client.field638 = 3;
-						Client.field639 = var2 ? WorldMapArea.scriptDotWidget.id : Messages.scriptActiveWidget.id;
-						return 1;
-					} else {
-						boolean var11;
-						if (var0 == ScriptOpcodes.SETHIDEUSERNAME) {
-							var11 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							SecureRandomFuture.clientPreferences.hideUsername = var11;
-							class127.savePreferences();
-							return 1;
-						} else if (var0 == ScriptOpcodes.GETHIDEUSERNAME) {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = SecureRandomFuture.clientPreferences.hideUsername ? 1 : 0;
-							return 1;
-						} else if (var0 == ScriptOpcodes.SETREMEMBERUSERNAME) {
-							var11 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							Client.Login_isUsernameRemembered = var11;
-							if (!var11) {
-								SecureRandomFuture.clientPreferences.rememberedUsername = "";
-								class127.savePreferences();
-							}
-
-							return 1;
-						} else if (var0 == ScriptOpcodes.GETREMEMBERUSERNAME) {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.Login_isUsernameRemembered ? 1 : 0;
-							return 1;
-						} else if (var0 == ScriptOpcodes.SHOW_IOS_REVIEW) {
-							return 1;
-						} else if (var0 == 3146) {
-							var11 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							if (var11 == SecureRandomFuture.clientPreferences.titleMusicDisabled) {
-								SecureRandomFuture.clientPreferences.titleMusicDisabled = !var11;
-								class127.savePreferences();
-							}
-
-							return 1;
-						} else if (var0 == 3147) {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = SecureRandomFuture.clientPreferences.titleMusicDisabled ? 0 : 1;
-							return 1;
-						} else if (var0 == 3148) {
-							return 1;
-						} else if (var0 == 3149) {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else if (var0 == 3150) {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else if (var0 == 3151) {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else if (var0 == 3152) {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else if (var0 == 3153) {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Login.Login_loadingPercent;
-							return 1;
-						} else if (var0 == 3154) {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = AbstractRasterProvider.method7714();
-							return 1;
-						} else if (var0 == 3155) {
-							--class13.Interpreter_stringStackSize;
-							return 1;
-						} else if (var0 == 3156) {
-							return 1;
-						} else if (var0 == 3157) {
-							IsaacCipher.Interpreter_intStackSize -= 2;
-							return 1;
-						} else if (var0 == 3158) {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else if (var0 == 3159) {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else if (var0 == 3160) {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else if (var0 == 3161) {
-							--IsaacCipher.Interpreter_intStackSize;
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else if (var0 == 3162) {
-							--IsaacCipher.Interpreter_intStackSize;
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else if (var0 == 3163) {
-							--class13.Interpreter_stringStackSize;
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else if (var0 == 3164) {
-							--IsaacCipher.Interpreter_intStackSize;
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-							return 1;
-						} else if (var0 == 3165) {
-							--IsaacCipher.Interpreter_intStackSize;
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else if (var0 == 3166) {
-							IsaacCipher.Interpreter_intStackSize -= 2;
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else if (var0 == 3167) {
-							IsaacCipher.Interpreter_intStackSize -= 2;
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else if (var0 == 3168) {
-							IsaacCipher.Interpreter_intStackSize -= 2;
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-							return 1;
-						} else if (var0 == 3169) {
-							return 1;
-						} else if (var0 == 3170) {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else if (var0 == 3171) {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else if (var0 == 3172) {
-							--IsaacCipher.Interpreter_intStackSize;
-							return 1;
-						} else if (var0 == 3173) {
-							--IsaacCipher.Interpreter_intStackSize;
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else if (var0 == 3174) {
-							--IsaacCipher.Interpreter_intStackSize;
-							return 1;
-						} else if (var0 == 3175) {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-							return 1;
-						} else if (var0 == 3176) {
-							return 1;
-						} else if (var0 == 3177) {
-							return 1;
-						} else if (var0 == 3178) {
-							--class13.Interpreter_stringStackSize;
-							return 1;
-						} else if (var0 == 3179) {
-							return 1;
-						} else if (var0 == 3180) {
-							--class13.Interpreter_stringStackSize;
-							return 1;
-						} else if (var0 == 3181) {
-							var10 = 100 - Math.min(Math.max(Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize], 0), 100);
-							InterfaceParent.method2142((double)(0.5F + (float)var10 / 200.0F));
-							return 1;
-						} else if (var0 == 3182) {
-							float var3 = ((float)SecureRandomFuture.clientPreferences.brightness - 0.5F) * 200.0F;
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 100 - Math.round(var3);
-							return 1;
-						} else if (var0 != 3183 && var0 != 3184) {
-							return 2;
-						} else {
-							--IsaacCipher.Interpreter_intStackSize;
-							return 1;
-						}
+						Client.tileLastDrawnActor[var2][var3] = Client.viewportDrawCount;
 					}
+
+					var0.tileHeight = WorldMapLabel.getTileHeight(var0.x, var0.y, class18.Client_plane);
+					var0.playerCycle = Client.cycle;
+					scene.drawEntity(class18.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.isWalking);
 				}
 			}
 		}
-	}
 
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "1046590636"
-	)
-	static int method2120(int var0, Script var1, boolean var2) {
-		if (var0 >= 7200 && var0 < 7204) {
-			IsaacCipher.Interpreter_intStackSize -= 5;
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -1;
-			return 1;
-		} else if (var0 == 7204) {
-			IsaacCipher.Interpreter_intStackSize -= 6;
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -1;
-			return 1;
-		} else if (var0 >= 7205 && var0 < 7209) {
-			Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize - 1] = -1;
-			return 1;
-		} else if (var0 == 7209) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -1;
-			return 1;
-		} else if (var0 >= 7210 && var0 < 7214) {
-			--IsaacCipher.Interpreter_intStackSize;
-			return 1;
-		} else if (var0 == 7214) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			return 1;
-		} else {
-			return 2;
-		}
 	}
 
 	@ObfuscatedName("ja")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-47"
+		descriptor = "(II)Z",
+		garbageValue = "1332589491"
 	)
-	static boolean method2125() {
-		return Client.tapToDrop || KeyHandler.KeyHandler_pressedKeys[81];
+	static boolean method2062(int var0) {
+		for (int var1 = 0; var1 < Client.field731; ++var1) {
+			if (Client.field733[var1] == var0) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	@ObfuscatedName("ls")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;ZI)Ljava/lang/String;",
+		garbageValue = "-1401650476"
+	)
+	static String method2063(String var0, boolean var1) {
+		String var2 = var1 ? "https://" : "http://";
+		if (Client.gameBuild == 1) {
+			var0 = var0 + "-wtrc";
+		} else if (Client.gameBuild == 2) {
+			var0 = var0 + "-wtqa";
+		} else if (Client.gameBuild == 3) {
+			var0 = var0 + "-wtwip";
+		} else if (Client.gameBuild == 5) {
+			var0 = var0 + "-wti";
+		} else if (Client.gameBuild == 4) {
+			var0 = "local";
+		}
+
+		String var3 = "";
+		if (class65.field868 != null) {
+			var3 = "/p=" + class65.field868;
+		}
+
+		String var4 = "runescape.com";
+		return var2 + var0 + "." + var4 + "/l=" + Skills.clientLanguage + "/a=" + GrandExchangeOfferOwnWorldComparator.field483 + var3 + "/";
 	}
 }

@@ -1,44 +1,13 @@
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InvalidClassException;
-import java.io.ObjectInputStream;
-import java.io.OptionalDataException;
-import java.io.StreamCorruptedException;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.Reflection;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("dr")
+@ObfuscatedName("dg")
 @Implements("UserComparator3")
 public class UserComparator3 extends AbstractUserComparator {
-	@ObfuscatedName("e")
-	@ObfuscatedGetter(
-		intValue = -1268713199
-	)
-	@Export("cacheGamebuild")
-	public static int cacheGamebuild;
-	@ObfuscatedName("a")
-	@Export("cacheParentPaths")
-	public static String[] cacheParentPaths;
-	@ObfuscatedName("bk")
-	@ObfuscatedSignature(
-		descriptor = "[Lpa;"
-	)
-	@Export("worldSelectArrows")
-	static IndexedSprite[] worldSelectArrows;
-	@ObfuscatedName("mf")
-	@ObfuscatedGetter(
-		intValue = -1173193887
-	)
-	@Export("menuHeight")
-	static int menuHeight;
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -46,10 +15,10 @@ public class UserComparator3 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lmp;Lmp;I)I",
-		garbageValue = "1528597285"
+		descriptor = "(Lnf;Lnf;B)I",
+		garbageValue = "-94"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -66,156 +35,214 @@ public class UserComparator3 extends AbstractUserComparator {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpj;B)V",
-		garbageValue = "-38"
+		descriptor = "(IB)Lgs;",
+		garbageValue = "127"
 	)
-	@Export("performReflectionCheck")
-	public static void performReflectionCheck(PacketBuffer var0) {
-		ReflectionCheck var1 = (ReflectionCheck)class33.reflectionChecks.last();
+	public static HitSplatDefinition method2602(int var0) {
+		HitSplatDefinition var1 = (HitSplatDefinition)HitSplatDefinition.HitSplatDefinition_cached.get((long)var0);
 		if (var1 != null) {
-			int var2 = var0.offset;
-			var0.writeInt(var1.id);
+			return var1;
+		} else {
+			byte[] var2 = HitSplatDefinition.HitSplatDefinition_archive.takeFile(32, var0);
+			var1 = new HitSplatDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
 
-			for (int var3 = 0; var3 < var1.size; ++var3) {
-				if (var1.creationErrors[var3] != 0) {
-					var0.writeByte(var1.creationErrors[var3]);
-				} else {
-					try {
-						int var4 = var1.operations[var3];
-						Field var5;
-						int var6;
-						if (var4 == 0) {
-							var5 = var1.fields[var3];
-							var6 = Reflection.getInt(var5, (Object)null);
-							var0.writeByte(0);
-							var0.writeInt(var6);
-						} else if (var4 == 1) {
-							var5 = var1.fields[var3];
-							Reflection.setInt(var5, (Object)null, var1.intReplaceValues[var3]);
-							var0.writeByte(0);
-						} else if (var4 == 2) {
-							var5 = var1.fields[var3];
-							var6 = var5.getModifiers();
-							var0.writeByte(0);
-							var0.writeInt(var6);
-						}
+			HitSplatDefinition.HitSplatDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
 
-						Method var25;
-						if (var4 != 3) {
-							if (var4 == 4) {
-								var25 = var1.methods[var3];
-								var6 = var25.getModifiers();
-								var0.writeByte(0);
-								var0.writeInt(var6);
-							}
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(ILbd;ZB)I",
+		garbageValue = "105"
+	)
+	static int method2607(int var0, Script var1, boolean var2) {
+		boolean var3 = true;
+		Widget var4;
+		if (var0 >= 2000) {
+			var0 -= 1000;
+			var4 = class127.getWidget(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
+			var3 = false;
+		} else {
+			var4 = var2 ? WorldMapID.scriptDotWidget : Interpreter.scriptActiveWidget;
+		}
+
+		int var11;
+		if (var0 == ScriptOpcodes.CC_SETOP) {
+			var11 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] - 1;
+			if (var11 >= 0 && var11 <= 9) {
+				var4.setAction(var11, Interpreter.Interpreter_stringStack[--class122.Interpreter_stringStackSize]);
+				return 1;
+			} else {
+				--class122.Interpreter_stringStackSize;
+				return 1;
+			}
+		} else {
+			int var6;
+			if (var0 == ScriptOpcodes.CC_SETDRAGGABLE) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var11 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var6 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				var4.parent = ItemComposition.getWidgetChild(var11, var6);
+				return 1;
+			} else if (var0 == ScriptOpcodes.CC_SETDRAGGABLEBEHAVIOR) {
+				var4.isScrollBar = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
+				return 1;
+			} else if (var0 == ScriptOpcodes.CC_SETDRAGDEADZONE) {
+				var4.dragZoneSize = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+				return 1;
+			} else if (var0 == ScriptOpcodes.CC_SETDRAGDEADTIME) {
+				var4.dragThreshold = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+				return 1;
+			} else if (var0 == ScriptOpcodes.CC_SETOPBASE) {
+				var4.dataText = Interpreter.Interpreter_stringStack[--class122.Interpreter_stringStackSize];
+				return 1;
+			} else if (var0 == ScriptOpcodes.CC_SETTARGETVERB) {
+				var4.spellActionName = Interpreter.Interpreter_stringStack[--class122.Interpreter_stringStackSize];
+				return 1;
+			} else if (var0 == ScriptOpcodes.CC_CLEAROPS) {
+				var4.actions = null;
+				return 1;
+			} else if (var0 == 1308) {
+				var4.prioritizeMenuEntry = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] == 1;
+				return 1;
+			} else if (var0 == 1309) {
+				--Interpreter.Interpreter_intStackSize;
+				return 1;
+			} else {
+				int var7;
+				byte[] var8;
+				if (var0 != ScriptOpcodes.CC_SETOPKEY) {
+					byte var5;
+					if (var0 == ScriptOpcodes.CC_SETOPTKEY) {
+						Interpreter.Interpreter_intStackSize -= 2;
+						var5 = 10;
+						var8 = new byte[]{(byte)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize]};
+						byte[] var9 = new byte[]{(byte)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1]};
+						ArchiveDiskActionHandler.Widget_setKey(var4, var5, var8, var9);
+						return 1;
+					} else if (var0 == ScriptOpcodes.CC_SETOPKEYRATE) {
+						Interpreter.Interpreter_intStackSize -= 3;
+						var11 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize] - 1;
+						var6 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+						var7 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+						if (var11 >= 0 && var11 <= 9) {
+							EnumComposition.Widget_setKeyRate(var4, var11, var6, var7);
+							return 1;
 						} else {
-							var25 = var1.methods[var3];
-							byte[][] var10 = var1.arguments[var3];
-							Object[] var7 = new Object[var10.length];
+							throw new RuntimeException();
+						}
+					} else if (var0 == ScriptOpcodes.CC_SETOPTKEYRATE) {
+						var5 = 10;
+						var6 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+						var7 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+						EnumComposition.Widget_setKeyRate(var4, var5, var6, var7);
+						return 1;
+					} else if (var0 == ScriptOpcodes.CC_SETOPKEYIGNOREHELD) {
+						--Interpreter.Interpreter_intStackSize;
+						var11 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize] - 1;
+						if (var11 >= 0 && var11 <= 9) {
+							class67.Widget_setKeyIgnoreHeld(var4, var11);
+							return 1;
+						} else {
+							throw new RuntimeException();
+						}
+					} else if (var0 == ScriptOpcodes.CC_SETOPTKEYIGNOREHELD) {
+						var5 = 10;
+						class67.Widget_setKeyIgnoreHeld(var4, var5);
+						return 1;
+					} else {
+						return 2;
+					}
+				} else {
+					byte[] var10 = null;
+					var8 = null;
+					if (var3) {
+						Interpreter.Interpreter_intStackSize -= 10;
 
-							for (int var8 = 0; var8 < var10.length; ++var8) {
-								ObjectInputStream var9 = new ObjectInputStream(new ByteArrayInputStream(var10[var8]));
-								var7[var8] = var9.readObject();
-							}
+						for (var7 = 0; var7 < 10 && Interpreter.Interpreter_intStack[var7 + Interpreter.Interpreter_intStackSize] >= 0; var7 += 2) {
+						}
 
-							Object var11 = Reflection.invoke(var25, (Object)null, var7);
-							if (var11 == null) {
-								var0.writeByte(0);
-							} else if (var11 instanceof Number) {
-								var0.writeByte(1);
-								var0.writeLong(((Number)var11).longValue());
-							} else if (var11 instanceof String) {
-								var0.writeByte(2);
-								var0.writeStringCp1252NullTerminated((String)var11);
-							} else {
-								var0.writeByte(4);
+						if (var7 > 0) {
+							var10 = new byte[var7 / 2];
+							var8 = new byte[var7 / 2];
+
+							for (var7 -= 2; var7 >= 0; var7 -= 2) {
+								var10[var7 / 2] = (byte)Interpreter.Interpreter_intStack[var7 + Interpreter.Interpreter_intStackSize];
+								var8[var7 / 2] = (byte)Interpreter.Interpreter_intStack[var7 + Interpreter.Interpreter_intStackSize + 1];
 							}
 						}
-					} catch (ClassNotFoundException var13) {
-						var0.writeByte(-10);
-					} catch (InvalidClassException var14) {
-						var0.writeByte(-11);
-					} catch (StreamCorruptedException var15) {
-						var0.writeByte(-12);
-					} catch (OptionalDataException var16) {
-						var0.writeByte(-13);
-					} catch (IllegalAccessException var17) {
-						var0.writeByte(-14);
-					} catch (IllegalArgumentException var18) {
-						var0.writeByte(-15);
-					} catch (InvocationTargetException var19) {
-						var0.writeByte(-16);
-					} catch (SecurityException var20) {
-						var0.writeByte(-17);
-					} catch (IOException var21) {
-						var0.writeByte(-18);
-					} catch (NullPointerException var22) {
-						var0.writeByte(-19);
-					} catch (Exception var23) {
-						var0.writeByte(-20);
-					} catch (Throwable var24) {
-						var0.writeByte(-21);
+					} else {
+						Interpreter.Interpreter_intStackSize -= 2;
+						var10 = new byte[]{(byte)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize]};
+						var8 = new byte[]{(byte)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1]};
+					}
+
+					var7 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize] - 1;
+					if (var7 >= 0 && var7 <= 9) {
+						ArchiveDiskActionHandler.Widget_setKey(var4, var7, var10, var8);
+						return 1;
+					} else {
+						throw new RuntimeException();
 					}
 				}
 			}
-
-			var0.writeCrc(var2);
-			var1.remove();
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("hv")
 	@ObfuscatedSignature(
 		descriptor = "(III)V",
-		garbageValue = "-42355532"
+		garbageValue = "485258649"
 	)
-	@Export("changeWorldSelectSorting")
-	static void changeWorldSelectSorting(int var0, int var1) {
-		int[] var2 = new int[4];
-		int[] var3 = new int[4];
-		var2[0] = var0;
-		var3[0] = var1;
-		int var4 = 1;
-
-		for (int var5 = 0; var5 < 4; ++var5) {
-			if (World.World_sortOption1[var5] != var0) {
-				var2[var4] = World.World_sortOption1[var5];
-				var3[var4] = World.World_sortOption2[var5];
-				++var4;
-			}
-		}
-
-		World.World_sortOption1 = var2;
-		World.World_sortOption2 = var3;
-		UserComparator4.sortWorlds(class334.World_worlds, 0, class334.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
-	}
-
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "101"
-	)
-	public static void method2529() {
-		class141.SpriteBuffer_xOffsets = null;
-		RouteStrategy.SpriteBuffer_yOffsets = null;
-		class432.SpriteBuffer_spriteWidths = null;
-		class330.SpriteBuffer_spriteHeights = null;
-		class432.SpriteBuffer_spritePalette = null;
-		class369.SpriteBuffer_pixels = null;
-	}
-
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(
-		descriptor = "(Ljm;IIII)V",
-		garbageValue = "265387422"
-	)
-	@Export("Widget_setKeyRate")
-	static final void Widget_setKeyRate(Widget var0, int var1, int var2, int var3) {
-		if (var0.field3302 == null) {
-			throw new RuntimeException();
+	@Export("updateItemPile")
+	static final void updateItemPile(int var0, int var1) {
+		NodeDeque var2 = Client.groundItems[class18.Client_plane][var0][var1];
+		if (var2 == null) {
+			ArchiveLoader.scene.removeGroundItemPile(class18.Client_plane, var0, var1);
 		} else {
-			var0.field3302[var1] = var2;
-			var0.field3303[var1] = var3;
+			long var3 = -99999999L;
+			TileItem var5 = null;
+
+			TileItem var6;
+			for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) {
+				ItemComposition var7 = class19.ItemDefinition_get(var6.id);
+				long var11 = (long)var7.price;
+				if (var7.isStackable == 1) {
+					var11 *= (long)(var6.quantity + 1);
+				}
+
+				if (var11 > var3) {
+					var3 = var11;
+					var5 = var6;
+				}
+			}
+
+			if (var5 == null) {
+				ArchiveLoader.scene.removeGroundItemPile(class18.Client_plane, var0, var1);
+			} else {
+				var2.addLast(var5);
+				TileItem var13 = null;
+				TileItem var8 = null;
+
+				for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) {
+					if (var5.id != var6.id) {
+						if (var13 == null) {
+							var13 = var6;
+						}
+
+						if (var6.id != var13.id && var8 == null) {
+							var8 = var6;
+						}
+					}
+				}
+
+				long var9 = GameObject.calculateTag(var0, var1, 3, false, 0);
+				ArchiveLoader.scene.newGroundItemPile(class18.Client_plane, var0, var1, WorldMapLabel.getTileHeight(var0 * 128 + 64, var1 * 128 + 64, class18.Client_plane), var5, var9, var13, var8);
+			}
 		}
 	}
 }

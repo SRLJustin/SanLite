@@ -6,56 +6,59 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ci")
+@ObfuscatedName("ce")
 @Implements("Messages")
 public class Messages {
-	@ObfuscatedName("um")
-	@ObfuscatedSignature(
-		descriptor = "Llw;"
-	)
-	public static class312 field1273;
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@Export("Messages_channels")
 	static final Map Messages_channels;
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Loz;"
+		descriptor = "Lpt;"
 	)
 	@Export("Messages_hashTable")
 	static final IterableNodeHashTable Messages_hashTable;
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "Lls;"
+		descriptor = "Lmr;"
 	)
 	@Export("Messages_queue")
 	static final IterableDualNodeQueue Messages_queue;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1900201555
+		intValue = 1887673835
 	)
 	@Export("Messages_count")
 	static int Messages_count;
-	@ObfuscatedName("e")
+	@ObfuscatedName("bl")
 	@ObfuscatedSignature(
-		descriptor = "Ljm;"
+		descriptor = "Lkt;"
 	)
-	@Export("scriptActiveWidget")
-	static Widget scriptActiveWidget;
-	@ObfuscatedName("ge")
-	@ObfuscatedGetter(
-		longValue = -3704126848335008397L
-	)
-	static long field1272;
-	@ObfuscatedName("gd")
-	@ObfuscatedGetter(
-		intValue = -1932714305
-	)
-	static int field1277;
+	static StudioGame field1305;
 
 	static {
 		Messages_channels = new HashMap();
 		Messages_hashTable = new IterableNodeHashTable(1024);
 		Messages_queue = new IterableDualNodeQueue();
 		Messages_count = 0;
+	}
+
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "(ZI)V",
+		garbageValue = "-2020687752"
+	)
+	@Export("Login_promptCredentials")
+	static void Login_promptCredentials(boolean var0) {
+		Login.Login_response1 = "";
+		Login.Login_response2 = "Enter your username/email & password.";
+		Login.Login_response3 = "";
+		Ignored.method6828(2);
+		if (var0) {
+			Login.Login_password = "";
+		}
+
+		Players.method2421();
+		class12.method157();
 	}
 }

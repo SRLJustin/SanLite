@@ -4,24 +4,36 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fu")
+@ObfuscatedName("fl")
 @Implements("InvDefinition")
 public class InvDefinition extends DualNode {
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Lln;"
 	)
 	@Export("InvDefinition_archive")
-	public static AbstractArchive InvDefinition_archive;
-	@ObfuscatedName("b")
+	static AbstractArchive InvDefinition_archive;
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lig;"
 	)
 	@Export("InvDefinition_cached")
 	static EvictingDualNodeHashTable InvDefinition_cached;
-	@ObfuscatedName("p")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = -1155784087
+		intValue = -93299941
+	)
+	@Export("canvasWidth")
+	public static int canvasWidth;
+	@ObfuscatedName("in")
+	@ObfuscatedSignature(
+		descriptor = "[Lqi;"
+	)
+	@Export("headIconHintSprites")
+	static SpritePixels[] headIconHintSprites;
+	@ObfuscatedName("i")
+	@ObfuscatedGetter(
+		intValue = 852719865
 	)
 	@Export("size")
 	public int size;
@@ -34,10 +46,10 @@ public class InvDefinition extends DualNode {
 		this.size = 0;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
 		descriptor = "(Lpi;I)V",
-		garbageValue = "607571940"
+		garbageValue = "1907022215"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -51,10 +63,10 @@ public class InvDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;IB)V",
-		garbageValue = "1"
+		descriptor = "(Lpi;II)V",
+		garbageValue = "83857260"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -62,14 +74,5 @@ public class InvDefinition extends DualNode {
 			this.size = var1.readUnsignedShort();
 		}
 
-	}
-
-	@ObfuscatedName("ir")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "2"
-	)
-	static boolean method3157(int var0) {
-		return var0 == 57 || var0 == 58 || var0 == 1007 || var0 == 25 || var0 == 30;
 	}
 }

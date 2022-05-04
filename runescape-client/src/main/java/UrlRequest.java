@@ -4,22 +4,16 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cf")
+@ObfuscatedName("cw")
 @Implements("UrlRequest")
 public class UrlRequest {
-	@ObfuscatedName("ce")
-	@ObfuscatedSignature(
-		descriptor = "Lpa;"
-	)
-	@Export("worldSelectRightSprite")
-	static IndexedSprite worldSelectRightSprite;
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@Export("url")
 	final URL url;
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@Export("isDone0")
 	volatile boolean isDone0;
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@Export("response0")
 	volatile byte[] response0;
 
@@ -27,103 +21,80 @@ public class UrlRequest {
 		this.url = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-11682805"
+		descriptor = "(B)Z",
+		garbageValue = "16"
 	)
 	@Export("isDone")
 	public boolean isDone() {
 		return this.isDone0;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(I)[B",
-		garbageValue = "309471456"
+		garbageValue = "1979081265"
 	)
 	@Export("getResponse")
 	public byte[] getResponse() {
 		return this.response0;
 	}
 
-	@ObfuscatedName("fc")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1703812589"
+		descriptor = "(B)Ljava/lang/String;",
+		garbageValue = "1"
 	)
-	static final void method2496() {
-		class364.method6623();
-		FloorUnderlayDefinition.FloorUnderlayDefinition_cached.clear();
-		ScriptFrame.method1110();
-		UserComparator5.method2524();
-		NPCComposition.NpcDefinition_cached.clear();
-		NPCComposition.NpcDefinition_cachedModels.clear();
-		ItemComposition.ItemDefinition_cached.clear();
-		ItemComposition.ItemDefinition_cachedModels.clear();
-		ItemComposition.ItemDefinition_cachedSprites.clear();
-		SequenceDefinition.SequenceDefinition_cached.clear();
-		SequenceDefinition.SequenceDefinition_cachedFrames.clear();
-		SequenceDefinition.SequenceDefinition_cachedModel.clear();
-		InterfaceParent.method2143();
-		class1.method8();
-		VarpDefinition.VarpDefinition_cached.clear();
-		AbstractSocket.HitSplatDefinition_cachedSprites.method7216();
-		Ignored.Ignored_cached.method7216();
-		ObjectSound.method1796();
-		HealthBarDefinition.HealthBarDefinition_cached.clear();
-		HealthBarDefinition.HealthBarDefinition_cachedSprites.clear();
-		ObjectComposition.method3542();
-		ParamComposition.ParamComposition_cached.clear();
-		WorldMapElement.WorldMapElement_cachedSprites.clear();
-		PlayerComposition.PlayerComposition_cachedModels.clear();
-		WorldMapSection2.method4417();
-		((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).clear();
-		Script.Script_cached.clear();
-		class115.archive0.clearFiles();
-		class9.archive1.clearFiles();
-		class19.archive3.clearFiles();
-		KeyHandler.archive4.clearFiles();
-		class140.archive5.clearFiles();
-		WorldMapScaleHandler.archive6.clearFiles();
-		class115.archive7.clearFiles();
-		UserComparator6.archive8.clearFiles();
-		NetSocket.archive9.clearFiles();
-		class257.archive10.clearFiles();
-		Players.archive11.clearFiles();
-		TaskHandler.archive12.clearFiles();
+	public String method2554() {
+		return this.url.toString();
 	}
 
-	@ObfuscatedName("hk")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1546953811"
+		garbageValue = "-1489870449"
 	)
-	static void method2489() {
-		Client.menuOptionsCount = 0;
-		Client.isMenuOpen = false;
+	public static void method2564() {
+		class54.reflectionChecks = new IterableNodeDeque();
 	}
 
-	@ObfuscatedName("iz")
+	@ObfuscatedName("ks")
 	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "-101999626"
+		descriptor = "(III)V",
+		garbageValue = "232574947"
 	)
-	@Export("selectSpell")
-	static void selectSpell(int var0, int var1, int var2, int var3) {
-		Widget var4 = class126.getWidgetChild(var0, var1);
-		if (var4 != null && var4.onTargetEnter != null) {
-			ScriptEvent var5 = new ScriptEvent();
-			var5.widget = var4;
-			var5.args = var4.onTargetEnter;
-			class285.runScriptEvent(var5);
+	static void method2551(int var0, int var1) {
+		MenuAction var2 = Interpreter.tempMenuAction;
+		if (var2 != null) {
+			class9.menuAction(var2.param0, var2.param1, var2.opcode, var2.identifier, var2.action, var2.action, var0, var1);
 		}
 
-		Client.field633 = var3;
-		Client.isSpellSelected = true;
-		class20.selectedSpellWidget = var0;
-		Client.selectedSpellChildIndex = var1;
-		class91.selectedSpellFlags = var2;
-		SecureRandomCallable.invalidateWidget(var4);
+		Interpreter.tempMenuAction = null;
+	}
+
+	@ObfuscatedName("mr")
+	@ObfuscatedSignature(
+		descriptor = "(S)V",
+		garbageValue = "1100"
+	)
+	static void method2560() {
+		if (Client.field759 && GrandExchangeEvents.localPlayer != null) {
+			int var0 = GrandExchangeEvents.localPlayer.pathX[0];
+			int var1 = GrandExchangeEvents.localPlayer.pathY[0];
+			if (var0 < 0 || var1 < 0 || var0 >= 104 || var1 >= 104) {
+				return;
+			}
+
+			class10.oculusOrbFocalPointX = GrandExchangeEvents.localPlayer.x;
+			int var2 = WorldMapLabel.getTileHeight(GrandExchangeEvents.localPlayer.x, GrandExchangeEvents.localPlayer.y, class18.Client_plane) - Client.camFollowHeight;
+			if (var2 < Decimator.field397) {
+				Decimator.field397 = var2;
+			}
+
+			ClientPacket.oculusOrbFocalPointY = GrandExchangeEvents.localPlayer.y;
+			Client.field759 = false;
+		}
+
 	}
 }

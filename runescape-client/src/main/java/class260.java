@@ -1,112 +1,50 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jd")
+@ObfuscatedName("jc")
 public class class260 {
-	@ObfuscatedName("c")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Lnm;"
 	)
-	@Export("musicPatchesArchive")
-	public static AbstractArchive musicPatchesArchive;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lku;"
-	)
-	@Export("soundEffectsArchive")
-	public static AbstractArchive soundEffectsArchive;
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Ljp;"
-	)
-	@Export("midiPcmStream")
-	public static MidiPcmStream midiPcmStream;
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		intValue = -1837592887
-	)
-	@Export("musicPlayerStatus")
-	public static int musicPlayerStatus;
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = 1576356909
-	)
-	@Export("musicTrackFileId")
-	public static int musicTrackFileId;
-	@ObfuscatedName("r")
-	@ObfuscatedGetter(
-		intValue = 1257628969
-	)
-	@Export("pcmSampleLength")
-	public static int pcmSampleLength;
-	@ObfuscatedName("hk")
-	@ObfuscatedSignature(
-		descriptor = "[Lpl;"
-	)
-	@Export("headIconHintSprites")
-	static SpritePixels[] headIconHintSprites;
+	static Bounds field2892;
 
-	static {
-		musicPlayerStatus = 0;
-	}
-
-	@ObfuscatedName("c")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;B)Ljava/lang/String;",
-		garbageValue = "0"
+		descriptor = "(Lln;II)V",
+		garbageValue = "-921893463"
 	)
-	public static String method5070(CharSequence var0) {
-		int var1 = var0.length();
-		StringBuilder var2 = new StringBuilder(var1);
-
-		for (int var3 = 0; var3 < var1; ++var3) {
-			char var4 = var0.charAt(var3);
-			if ((var4 < 'a' || var4 > 'z') && (var4 < 'A' || var4 > 'Z') && (var4 < '0' || var4 > '9') && var4 != '.' && var4 != '-' && var4 != '*' && var4 != '_') {
-				if (var4 == ' ') {
-					var2.append('+');
-				} else {
-					byte var5 = class372.charToByteCp1252(var4);
-					var2.append('%');
-					int var6 = var5 >> 4 & 15;
-					if (var6 >= 10) {
-						var2.append((char)(var6 + 55));
-					} else {
-						var2.append((char)(var6 + 48));
-					}
-
-					var6 = var5 & 15;
-					if (var6 >= 10) {
-						var2.append((char)(var6 + 55));
-					} else {
-						var2.append((char)(var6 + 48));
-					}
-				}
-			} else {
-				var2.append(var4);
-			}
+	static void method5174(AbstractArchive var0, int var1) {
+		if ((var1 & 536870912) != 0) {
+			Decimator.logoSprite = AbstractSocket.SpriteBuffer_getIndexedSpriteByName(var0, "logo_deadman_mode", "");
+		} else if ((var1 & 1073741824) != 0) {
+			Decimator.logoSprite = AbstractSocket.SpriteBuffer_getIndexedSpriteByName(var0, "logo_seasonal_mode", "");
+		} else {
+			Decimator.logoSprite = AbstractSocket.SpriteBuffer_getIndexedSpriteByName(var0, "logo", "");
 		}
 
-		return var2.toString();
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("ht")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "-68634034"
+		descriptor = "(I)V",
+		garbageValue = "-1779965800"
 	)
-	static final int method5069(int var0, int var1, int var2) {
-		int var3 = var0 / var2;
-		int var4 = var0 & var2 - 1;
-		int var5 = var1 / var2;
-		int var6 = var1 & var2 - 1;
-		int var7 = class139.method2932(var3, var5);
-		int var8 = class139.method2932(var3 + 1, var5);
-		int var9 = class139.method2932(var3, var5 + 1);
-		int var10 = class139.method2932(var3 + 1, var5 + 1);
-		int var11 = class131.method2802(var7, var8, var4, var2);
-		int var12 = class131.method2802(var9, var10, var4, var2);
-		return class131.method2802(var11, var12, var6, var2);
+	static final void method5173() {
+		Client.field618 = 0;
+		int var0 = GrandExchangeOfferOwnWorldComparator.baseX * 64 + (GrandExchangeEvents.localPlayer.x >> 7);
+		int var1 = VarcInt.baseY * 64 + (GrandExchangeEvents.localPlayer.y >> 7);
+		if (var0 >= 3053 && var0 <= 3156 && var1 >= 3056 && var1 <= 3136) {
+			Client.field618 = 1;
+		}
+
+		if (var0 >= 3072 && var0 <= 3118 && var1 >= 9492 && var1 <= 9535) {
+			Client.field618 = 1;
+		}
+
+		if (Client.field618 == 1 && var0 >= 3139 && var0 <= 3199 && var1 >= 3008 && var1 <= 3062) {
+			Client.field618 = 0;
+		}
+
 	}
 }

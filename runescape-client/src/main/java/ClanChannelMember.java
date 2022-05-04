@@ -4,23 +4,21 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dz")
+@ObfuscatedName("ec")
 @Implements("ClanChannelMember")
 public class ClanChannelMember {
-	@ObfuscatedName("g")
-	static int[][][] field1504;
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@Export("rank")
 	public byte rank;
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1187334187
+		intValue = -113610011
 	)
 	@Export("world")
 	public int world;
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "Lpo;"
+		descriptor = "Lqb;"
 	)
 	@Export("username")
 	public Username username;
@@ -30,58 +28,51 @@ public class ClanChannelMember {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(ILpi;B)Lfe;",
-		garbageValue = "-47"
+		descriptor = "(IB)Lfv;",
+		garbageValue = "111"
 	)
-	public static class160 method2777(int var0, Buffer var1) {
-		int var2 = var1.readUnsignedByte();
-		boolean var3 = (var2 & 1) != 0;
-		boolean var4 = (var2 & 2) != 0;
-		class160 var5 = new class160(var0);
-		int var6;
-		int[] var7;
-		boolean var8;
-		int var9;
-		short var10;
-		if (var3) {
-			var6 = var1.readUnsignedByte();
-			var7 = new int[]{var6 & 15, var6 >> 4 & 15};
-			var8 = var5.field1732 != null && var7.length == var5.field1732.length;
-
-			for (var9 = 0; var9 < 2; ++var9) {
-				if (var7[var9] != 15) {
-					var10 = (short)var1.readUnsignedShort();
-					if (var8) {
-						var5.field1732[var7[var9]] = var10;
-					}
-				}
+	public static HealthBarDefinition method2870(int var0) {
+		HealthBarDefinition var1 = (HealthBarDefinition)HealthBarDefinition.HealthBarDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = HealthBarDefinition.HealthBarDefinition_archive.takeFile(33, var0);
+			var1 = new HealthBarDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
 			}
+
+			HealthBarDefinition.HealthBarDefinition_cached.put(var1, (long)var0);
+			return var1;
 		}
-
-		if (var4) {
-			var6 = var1.readUnsignedByte();
-			var7 = new int[]{var6 & 15, var6 >> 4 & 15};
-			var8 = var5.field1738 != null && var7.length == var5.field1738.length;
-
-			for (var9 = 0; var9 < 2; ++var9) {
-				if (var7[var9] != 15) {
-					var10 = (short)var1.readUnsignedShort();
-					if (var8) {
-						var5.field1738[var7[var9]] = var10;
-					}
-				}
-			}
-		}
-
-		return var5;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;I)I",
-		garbageValue = "1180078382"
+		descriptor = "(II)I",
+		garbageValue = "-704026744"
 	)
-	public static int method2778(CharSequence var0) {
-		return MusicPatchNode.method5293(var0, 10, true);
+	public static int method2869(int var0) {
+		if (var0 > 0) {
+			return 1;
+		} else {
+			return var0 < 0 ? -1 : 0;
+		}
+	}
+
+	@ObfuscatedName("fc")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "0"
+	)
+	static final void method2868() {
+		if (Client.logoutTimer > 0) {
+			ItemLayer.logOut();
+		} else {
+			Client.timer.method6562();
+			Decimator.updateGameState(40);
+			ModeWhere.field4073 = Client.packetWriter.getSocket();
+			Client.packetWriter.removeSocket();
+		}
 	}
 }

@@ -7,31 +7,31 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ei")
+@ObfuscatedName("ea")
 @Implements("ClanChannel")
 public class ClanChannel extends Node {
+	@ObfuscatedName("v")
+	boolean field1653;
 	@ObfuscatedName("c")
-	boolean field1637;
-	@ObfuscatedName("b")
-	boolean field1642;
-	@ObfuscatedName("p")
+	boolean field1658;
+	@ObfuscatedName("i")
 	@Export("members")
 	public List members;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@Export("sortedMembers")
 	int[] sortedMembers;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		longValue = -6629358270265648135L
+		longValue = -6213414464527549047L
 	)
-	long field1640;
-	@ObfuscatedName("s")
+	long field1656;
+	@ObfuscatedName("n")
 	@Export("name")
 	public String name;
-	@ObfuscatedName("j")
-	public byte field1636;
-	@ObfuscatedName("w")
-	public byte field1643;
+	@ObfuscatedName("s")
+	public byte field1654;
+	@ObfuscatedName("l")
+	public byte field1659;
 
 	static {
 		new BitSet(65536);
@@ -41,15 +41,15 @@ public class ClanChannel extends Node {
 		descriptor = "(Lpi;)V"
 	)
 	public ClanChannel(Buffer var1) {
-		this.field1642 = true;
+		this.field1658 = true;
 		this.name = null;
-		this.method2992(var1);
+		this.method3117(var1);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(I)[I",
-		garbageValue = "1790223696"
+		descriptor = "(B)[I",
+		garbageValue = "-75"
 	)
 	@Export("getSortedMembers")
 	public int[] getSortedMembers() {
@@ -58,20 +58,20 @@ public class ClanChannel extends Node {
 			this.sortedMembers = new int[this.members.size()];
 
 			for (int var2 = 0; var2 < this.members.size(); this.sortedMembers[var2] = var2++) {
-				var1[var2] = ((ClanChannelMember)this.members.get(var2)).username.method7914();
+				var1[var2] = ((ClanChannelMember)this.members.get(var2)).username.method8243();
 			}
 
 			int[] var3 = this.sortedMembers;
-			class292.method5504(var1, var3, 0, var1.length - 1);
+			class433.method7605(var1, var3, 0, var1.length - 1);
 		}
 
 		return this.sortedMembers;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Ldz;B)V",
-		garbageValue = "-47"
+		descriptor = "(Lec;B)V",
+		garbageValue = "6"
 	)
 	@Export("addMember")
 	void addMember(ClanChannelMember var1) {
@@ -79,10 +79,10 @@ public class ClanChannel extends Node {
 		this.sortedMembers = null;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "1232070979"
+		garbageValue = "-911825702"
 	)
 	@Export("removeMember")
 	void removeMember(int var1) {
@@ -90,22 +90,22 @@ public class ClanChannel extends Node {
 		this.sortedMembers = null;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "1"
+		descriptor = "(I)I",
+		garbageValue = "-251884744"
 	)
-	public int method2990() {
+	public int method3119() {
 		return this.members.size();
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)I",
-		garbageValue = "2014586653"
+		descriptor = "(Ljava/lang/String;B)I",
+		garbageValue = "75"
 	)
-	public int method2991(String var1) {
-		if (!this.field1642) {
+	public int method3116(String var1) {
+		if (!this.field1658) {
 			throw new RuntimeException("Displaynames not available");
 		} else {
 			for (int var2 = 0; var2 < this.members.size(); ++var2) {
@@ -118,19 +118,19 @@ public class ClanChannel extends Node {
 		}
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "-517363636"
+		descriptor = "(Lpi;S)V",
+		garbageValue = "-10005"
 	)
-	void method2992(Buffer var1) {
+	void method3117(Buffer var1) {
 		int var2 = var1.readUnsignedByte();
 		if ((var2 & 1) != 0) {
-			this.field1637 = true;
+			this.field1653 = true;
 		}
 
 		if ((var2 & 2) != 0) {
-			this.field1642 = true;
+			this.field1658 = true;
 		}
 
 		int var3 = 2;
@@ -139,22 +139,22 @@ public class ClanChannel extends Node {
 		}
 
 		super.key = var1.readLong();
-		this.field1640 = var1.readLong();
+		this.field1656 = var1.readLong();
 		this.name = var1.readStringCp1252NullTerminated();
 		var1.readBoolean();
-		this.field1643 = var1.readByte();
-		this.field1636 = var1.readByte();
+		this.field1659 = var1.readByte();
+		this.field1654 = var1.readByte();
 		int var4 = var1.readUnsignedShort();
 		if (var4 > 0) {
 			this.members = new ArrayList(var4);
 
 			for (int var5 = 0; var5 < var4; ++var5) {
 				ClanChannelMember var6 = new ClanChannelMember();
-				if (this.field1637) {
+				if (this.field1653) {
 					var1.readLong();
 				}
 
-				if (this.field1642) {
+				if (this.field1658) {
 					var6.username = new Username(var1.readStringCp1252NullTerminated());
 				}
 
@@ -170,391 +170,340 @@ public class ClanChannel extends Node {
 
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIILgy;Lgf;B)V",
-		garbageValue = "-30"
+		descriptor = "(IB)Lbd;",
+		garbageValue = "-23"
 	)
-	static final void method2996(int var0, int var1, int var2, int var3, int var4, int var5, Scene var6, CollisionMap var7) {
-		if (!Client.isLowDetail || (Tiles.Tiles_renderFlags[0][var1][var2] & 2) != 0 || (Tiles.Tiles_renderFlags[var0][var1][var2] & 16) == 0) {
-			if (var0 < Tiles.Tiles_minPlane) {
-				Tiles.Tiles_minPlane = var0;
-			}
-
-			ObjectComposition var8 = class148.getObjectDefinition(var3);
-			int var9;
-			int var10;
-			if (var4 != 1 && var4 != 3) {
-				var9 = var8.sizeX;
-				var10 = var8.sizeY;
+	@Export("getScript")
+	static Script getScript(int var0) {
+		Script var1 = (Script)Script.Script_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = class152.archive12.takeFile(var0, 0);
+			if (var2 == null) {
+				return null;
 			} else {
-				var9 = var8.sizeY;
-				var10 = var8.sizeX;
+				var1 = PcmPlayer.newScript(var2);
+				Script.Script_cached.put(var1, (long)var0);
+				return var1;
+			}
+		}
+	}
+
+	@ObfuscatedName("ha")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIII)V",
+		garbageValue = "-1683816578"
+	)
+	@Export("addPendingSpawnToScene")
+	static final void addPendingSpawnToScene(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+		if (var2 >= 1 && var3 >= 1 && var2 <= 102 && var3 <= 102) {
+			if (Client.isLowDetail && var0 != class18.Client_plane) {
+				return;
 			}
 
-			int var11;
+			long var7 = 0L;
+			boolean var9 = true;
+			boolean var10 = false;
+			boolean var11 = false;
+			if (var1 == 0) {
+				var7 = ArchiveLoader.scene.getWallObjectTag(var0, var2, var3);
+			}
+
+			if (var1 == 1) {
+				var7 = ArchiveLoader.scene.getDecorativeObjectTag(var0, var2, var3);
+			}
+
+			if (var1 == 2) {
+				var7 = ArchiveLoader.scene.getGameObjectTag(var0, var2, var3);
+			}
+
+			if (var1 == 3) {
+				var7 = ArchiveLoader.scene.getGroundObjectTag(var0, var2, var3);
+			}
+
 			int var12;
-			if (var9 + var1 <= 104) {
-				var11 = (var9 >> 1) + var1;
-				var12 = (var9 + 1 >> 1) + var1;
-			} else {
-				var11 = var1;
-				var12 = var1 + 1;
-			}
-
-			int var13;
-			int var14;
-			if (var10 + var2 <= 104) {
-				var13 = (var10 >> 1) + var2;
-				var14 = var2 + (var10 + 1 >> 1);
-			} else {
-				var13 = var2;
-				var14 = var2 + 1;
-			}
-
-			int[][] var15 = Tiles.Tiles_heights[var0];
-			int var16 = var15[var11][var13] + var15[var12][var13] + var15[var11][var14] + var15[var12][var14] >> 2;
-			int var17 = (var1 << 7) + (var9 << 6);
-			int var18 = (var2 << 7) + (var10 << 6);
-			long var19 = SecureRandomFuture.calculateTag(var1, var2, 2, var8.int1 == 0, var3);
-			int var21 = var5 + (var4 << 6);
-			if (var8.int3 == 1) {
-				var21 += 256;
-			}
-
-			int var23;
-			int var24;
-			if (var8.hasSound()) {
-				ObjectSound var22 = new ObjectSound();
-				var22.plane = var0;
-				var22.x = var1 * 128;
-				var22.y = var2 * 128;
-				var23 = var8.sizeX;
-				var24 = var8.sizeY;
-				if (var4 == 1 || var4 == 3) {
-					var23 = var8.sizeY;
-					var24 = var8.sizeX;
+			if (var7 != 0L) {
+				var12 = ArchiveLoader.scene.getObjectFlags(var0, var2, var3, var7);
+				int var38 = FileSystem.Entity_unpackID(var7);
+				int var39 = var12 & 31;
+				int var40 = var12 >> 6 & 3;
+				ObjectComposition var13;
+				if (var1 == 0) {
+					ArchiveLoader.scene.removeWallObject(var0, var2, var3);
+					var13 = class146.getObjectDefinition(var38);
+					if (var13.interactType != 0) {
+						Client.collisionMaps[var0].method3853(var2, var3, var39, var40, var13.boolean1);
+					}
 				}
 
-				var22.maxX = (var23 + var1) * 128;
-				var22.maxY = (var24 + var2) * 128;
-				var22.soundEffectId = var8.ambientSoundId;
-				var22.field793 = var8.int7 * 128;
-				var22.field796 = var8.int5;
-				var22.field797 = var8.int6;
-				var22.soundEffectIds = var8.soundEffectIds;
-				if (var8.transforms != null) {
-					var22.obj = var8;
-					var22.set();
+				if (var1 == 1) {
+					ArchiveLoader.scene.removeDecorativeObject(var0, var2, var3);
 				}
 
-				ObjectSound.objectSounds.addFirst(var22);
-				if (var22.soundEffectIds != null) {
-					var22.field789 = var22.field796 + (int)(Math.random() * (double)(var22.field797 - var22.field796));
+				if (var1 == 2) {
+					ArchiveLoader.scene.removeGameObject(var0, var2, var3);
+					var13 = class146.getObjectDefinition(var38);
+					if (var2 + var13.sizeX > 103 || var3 + var13.sizeX > 103 || var2 + var13.sizeY > 103 || var3 + var13.sizeY > 103) {
+						return;
+					}
+
+					if (var13.interactType != 0) {
+						Client.collisionMaps[var0].setFlagOffNonSquare(var2, var3, var13.sizeX, var13.sizeY, var40, var13.boolean1);
+					}
+				}
+
+				if (var1 == 3) {
+					ArchiveLoader.scene.removeGroundObject(var0, var2, var3);
+					var13 = class146.getObjectDefinition(var38);
+					if (var13.interactType == 1) {
+						Client.collisionMaps[var0].method3847(var2, var3);
+					}
 				}
 			}
 
-			Object var34;
-			if (var5 == 22) {
-				if (!Client.isLowDetail || var8.int1 != 0 || var8.interactType == 1 || var8.boolean2) {
-					if (var8.animationId == -1 && var8.transforms == null) {
-						var34 = var8.getEntity(22, var4, var15, var17, var16, var18);
-					} else {
-						var34 = new DynamicObject(var3, 22, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-					}
-
-					var6.newGroundObject(var0, var1, var2, var16, (Renderable)var34, var19, var21);
-					if (var8.interactType == 1 && var7 != null) {
-						var7.setBlockedByFloorDec(var1, var2);
-					}
-
+			if (var4 >= 0) {
+				var12 = var0;
+				if (var0 < 3 && (Tiles.Tiles_renderFlags[1][var2][var3] & 2) == 2) {
+					var12 = var0 + 1;
 				}
-			} else if (var5 != 10 && var5 != 11) {
-				int[] var10000;
-				if (var5 >= 12) {
-					if (var8.animationId == -1 && var8.transforms == null) {
-						var34 = var8.getEntity(var5, var4, var15, var17, var16, var18);
-					} else {
-						var34 = new DynamicObject(var3, var5, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-					}
 
-					var6.method3960(var0, var1, var2, var16, 1, 1, (Renderable)var34, 0, var19, var21);
-					if (var5 >= 12 && var5 <= 17 && var5 != 13 && var0 > 0) {
-						var10000 = ClanChannelMember.field1504[var0][var1];
-						var10000[var2] |= 2340;
-					}
-
-					if (var8.interactType != 0 && var7 != null) {
-						var7.addGameObject(var1, var2, var9, var10, var8.boolean1);
-					}
-
-				} else if (var5 == 0) {
-					if (var8.animationId == -1 && var8.transforms == null) {
-						var34 = var8.getEntity(0, var4, var15, var17, var16, var18);
-					} else {
-						var34 = new DynamicObject(var3, 0, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-					}
-
-					var6.newWallObject(var0, var1, var2, var16, (Renderable)var34, (Renderable)null, Tiles.field969[var4], 0, var19, var21);
-					if (var4 == 0) {
-						if (var8.clipped) {
-							SoundCache.field321[var0][var1][var2] = 50;
-							SoundCache.field321[var0][var1][var2 + 1] = 50;
-						}
-
-						if (var8.modelClipped) {
-							var10000 = ClanChannelMember.field1504[var0][var1];
-							var10000[var2] |= 585;
-						}
-					} else if (var4 == 1) {
-						if (var8.clipped) {
-							SoundCache.field321[var0][var1][var2 + 1] = 50;
-							SoundCache.field321[var0][var1 + 1][var2 + 1] = 50;
-						}
-
-						if (var8.modelClipped) {
-							var10000 = ClanChannelMember.field1504[var0][var1];
-							var10000[1 + var2] |= 1170;
-						}
-					} else if (var4 == 2) {
-						if (var8.clipped) {
-							SoundCache.field321[var0][var1 + 1][var2] = 50;
-							SoundCache.field321[var0][var1 + 1][var2 + 1] = 50;
-						}
-
-						if (var8.modelClipped) {
-							var10000 = ClanChannelMember.field1504[var0][var1 + 1];
-							var10000[var2] |= 585;
-						}
-					} else if (var4 == 3) {
-						if (var8.clipped) {
-							SoundCache.field321[var0][var1][var2] = 50;
-							SoundCache.field321[var0][var1 + 1][var2] = 50;
-						}
-
-						if (var8.modelClipped) {
-							var10000 = ClanChannelMember.field1504[var0][var1];
-							var10000[var2] |= 1170;
-						}
-					}
-
-					if (var8.interactType != 0 && var7 != null) {
-						var7.method3721(var1, var2, var5, var4, var8.boolean1);
-					}
-
-					if (var8.int2 != 16) {
-						var6.method3966(var0, var1, var2, var8.int2);
-					}
-
-				} else if (var5 == 1) {
-					if (var8.animationId == -1 && var8.transforms == null) {
-						var34 = var8.getEntity(1, var4, var15, var17, var16, var18);
-					} else {
-						var34 = new DynamicObject(var3, 1, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-					}
-
-					var6.newWallObject(var0, var1, var2, var16, (Renderable)var34, (Renderable)null, Tiles.field970[var4], 0, var19, var21);
-					if (var8.clipped) {
-						if (var4 == 0) {
-							SoundCache.field321[var0][var1][var2 + 1] = 50;
-						} else if (var4 == 1) {
-							SoundCache.field321[var0][var1 + 1][var2 + 1] = 50;
-						} else if (var4 == 2) {
-							SoundCache.field321[var0][var1 + 1][var2] = 50;
-						} else if (var4 == 3) {
-							SoundCache.field321[var0][var1][var2] = 50;
-						}
-					}
-
-					if (var8.interactType != 0 && var7 != null) {
-						var7.method3721(var1, var2, var5, var4, var8.boolean1);
-					}
-
+				Scene var41 = ArchiveLoader.scene;
+				CollisionMap var14 = Client.collisionMaps[var0];
+				ObjectComposition var15 = class146.getObjectDefinition(var4);
+				int var16;
+				int var17;
+				if (var5 != 1 && var5 != 3) {
+					var16 = var15.sizeX;
+					var17 = var15.sizeY;
 				} else {
-					int var28;
-					if (var5 == 2) {
-						var28 = var4 + 1 & 3;
-						Object var31;
-						Object var32;
-						if (var8.animationId == -1 && var8.transforms == null) {
-							var31 = var8.getEntity(2, var4 + 4, var15, var17, var16, var18);
-							var32 = var8.getEntity(2, var28, var15, var17, var16, var18);
-						} else {
-							var31 = new DynamicObject(var3, 2, var4 + 4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-							var32 = new DynamicObject(var3, 2, var28, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-						}
-
-						var6.newWallObject(var0, var1, var2, var16, (Renderable)var31, (Renderable)var32, Tiles.field969[var4], Tiles.field969[var28], var19, var21);
-						if (var8.modelClipped) {
-							if (var4 == 0) {
-								var10000 = ClanChannelMember.field1504[var0][var1];
-								var10000[var2] |= 585;
-								var10000 = ClanChannelMember.field1504[var0][var1];
-								var10000[var2 + 1] |= 1170;
-							} else if (var4 == 1) {
-								var10000 = ClanChannelMember.field1504[var0][var1];
-								var10000[var2 + 1] |= 1170;
-								var10000 = ClanChannelMember.field1504[var0][var1 + 1];
-								var10000[var2] |= 585;
-							} else if (var4 == 2) {
-								var10000 = ClanChannelMember.field1504[var0][var1 + 1];
-								var10000[var2] |= 585;
-								var10000 = ClanChannelMember.field1504[var0][var1];
-								var10000[var2] |= 1170;
-							} else if (var4 == 3) {
-								var10000 = ClanChannelMember.field1504[var0][var1];
-								var10000[var2] |= 1170;
-								var10000 = ClanChannelMember.field1504[var0][var1];
-								var10000[var2] |= 585;
-							}
-						}
-
-						if (var8.interactType != 0 && var7 != null) {
-							var7.method3721(var1, var2, var5, var4, var8.boolean1);
-						}
-
-						if (var8.int2 != 16) {
-							var6.method3966(var0, var1, var2, var8.int2);
-						}
-
-					} else if (var5 == 3) {
-						if (var8.animationId == -1 && var8.transforms == null) {
-							var34 = var8.getEntity(3, var4, var15, var17, var16, var18);
-						} else {
-							var34 = new DynamicObject(var3, 3, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-						}
-
-						var6.newWallObject(var0, var1, var2, var16, (Renderable)var34, (Renderable)null, Tiles.field970[var4], 0, var19, var21);
-						if (var8.clipped) {
-							if (var4 == 0) {
-								SoundCache.field321[var0][var1][var2 + 1] = 50;
-							} else if (var4 == 1) {
-								SoundCache.field321[var0][var1 + 1][var2 + 1] = 50;
-							} else if (var4 == 2) {
-								SoundCache.field321[var0][var1 + 1][var2] = 50;
-							} else if (var4 == 3) {
-								SoundCache.field321[var0][var1][var2] = 50;
-							}
-						}
-
-						if (var8.interactType != 0 && var7 != null) {
-							var7.method3721(var1, var2, var5, var4, var8.boolean1);
-						}
-
-					} else if (var5 == 9) {
-						if (var8.animationId == -1 && var8.transforms == null) {
-							var34 = var8.getEntity(var5, var4, var15, var17, var16, var18);
-						} else {
-							var34 = new DynamicObject(var3, var5, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-						}
-
-						var6.method3960(var0, var1, var2, var16, 1, 1, (Renderable)var34, 0, var19, var21);
-						if (var8.interactType != 0 && var7 != null) {
-							var7.addGameObject(var1, var2, var9, var10, var8.boolean1);
-						}
-
-						if (var8.int2 != 16) {
-							var6.method3966(var0, var1, var2, var8.int2);
-						}
-
-					} else if (var5 == 4) {
-						if (var8.animationId == -1 && var8.transforms == null) {
-							var34 = var8.getEntity(4, var4, var15, var17, var16, var18);
-						} else {
-							var34 = new DynamicObject(var3, 4, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-						}
-
-						var6.newDecorativeObject(var0, var1, var2, var16, (Renderable)var34, (Renderable)null, Tiles.field969[var4], 0, 0, 0, var19, var21);
-					} else {
-						Object var25;
-						long var29;
-						if (var5 == 5) {
-							var28 = 16;
-							var29 = var6.getWallObjectTag(var0, var1, var2);
-							if (0L != var29) {
-								var28 = class148.getObjectDefinition(PacketWriter.Entity_unpackID(var29)).int2;
-							}
-
-							if (var8.animationId == -1 && var8.transforms == null) {
-								var25 = var8.getEntity(4, var4, var15, var17, var16, var18);
-							} else {
-								var25 = new DynamicObject(var3, 4, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-							}
-
-							var6.newDecorativeObject(var0, var1, var2, var16, (Renderable)var25, (Renderable)null, Tiles.field969[var4], 0, var28 * Tiles.field976[var4], var28 * Tiles.field966[var4], var19, var21);
-						} else if (var5 == 6) {
-							var28 = 8;
-							var29 = var6.getWallObjectTag(var0, var1, var2);
-							if (0L != var29) {
-								var28 = class148.getObjectDefinition(PacketWriter.Entity_unpackID(var29)).int2 / 2;
-							}
-
-							if (var8.animationId == -1 && var8.transforms == null) {
-								var25 = var8.getEntity(4, var4 + 4, var15, var17, var16, var18);
-							} else {
-								var25 = new DynamicObject(var3, 4, var4 + 4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-							}
-
-							var6.newDecorativeObject(var0, var1, var2, var16, (Renderable)var25, (Renderable)null, 256, var4, var28 * Tiles.field973[var4], var28 * Tiles.field974[var4], var19, var21);
-						} else if (var5 == 7) {
-							var23 = var4 + 2 & 3;
-							if (var8.animationId == -1 && var8.transforms == null) {
-								var34 = var8.getEntity(4, var23 + 4, var15, var17, var16, var18);
-							} else {
-								var34 = new DynamicObject(var3, 4, var23 + 4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-							}
-
-							var6.newDecorativeObject(var0, var1, var2, var16, (Renderable)var34, (Renderable)null, 256, var23, 0, 0, var19, var21);
-						} else if (var5 == 8) {
-							var28 = 8;
-							var29 = var6.getWallObjectTag(var0, var1, var2);
-							if (var29 != 0L) {
-								var28 = class148.getObjectDefinition(PacketWriter.Entity_unpackID(var29)).int2 / 2;
-							}
-
-							int var27 = var4 + 2 & 3;
-							Object var26;
-							if (var8.animationId == -1 && var8.transforms == null) {
-								var25 = var8.getEntity(4, var4 + 4, var15, var17, var16, var18);
-								var26 = var8.getEntity(4, var27 + 4, var15, var17, var16, var18);
-							} else {
-								var25 = new DynamicObject(var3, 4, var4 + 4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-								var26 = new DynamicObject(var3, 4, var27 + 4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-							}
-
-							var6.newDecorativeObject(var0, var1, var2, var16, (Renderable)var25, (Renderable)var26, 256, var4, var28 * Tiles.field973[var4], var28 * Tiles.field974[var4], var19, var21);
-						}
-					}
+					var16 = var15.sizeY;
+					var17 = var15.sizeX;
 				}
-			} else {
-				if (var8.animationId == -1 && var8.transforms == null) {
-					var34 = var8.getEntity(10, var4, var15, var17, var16, var18);
+
+				int var18;
+				int var19;
+				if (var16 + var2 <= 104) {
+					var18 = (var16 >> 1) + var2;
+					var19 = var2 + (var16 + 1 >> 1);
 				} else {
-					var34 = new DynamicObject(var3, 10, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
+					var18 = var2;
+					var19 = var2 + 1;
 				}
 
-				if (var34 != null && var6.method3960(var0, var1, var2, var16, var9, var10, (Renderable)var34, var5 == 11 ? 256 : 0, var19, var21) && var8.clipped) {
-					var23 = 15;
-					if (var34 instanceof Model) {
-						var23 = ((Model)var34).method4222() / 4;
-						if (var23 > 30) {
-							var23 = 30;
-						}
+				int var20;
+				int var21;
+				if (var3 + var17 <= 104) {
+					var20 = var3 + (var17 >> 1);
+					var21 = var3 + (var17 + 1 >> 1);
+				} else {
+					var20 = var3;
+					var21 = var3 + 1;
+				}
+
+				int[][] var22 = Tiles.Tiles_heights[var12];
+				int var23 = var22[var19][var20] + var22[var18][var20] + var22[var18][var21] + var22[var19][var21] >> 2;
+				int var24 = (var2 << 7) + (var16 << 6);
+				int var25 = (var3 << 7) + (var17 << 6);
+				long var26 = GameObject.calculateTag(var2, var3, 2, var15.int1 == 0, var4);
+				int var28 = (var5 << 6) + var6;
+				if (var15.int3 == 1) {
+					var28 += 256;
+				}
+
+				Object var36;
+				if (var6 == 22) {
+					if (var15.animationId == -1 && var15.transforms == null) {
+						var36 = var15.getModel(22, var5, var22, var24, var23, var25);
+					} else {
+						var36 = new DynamicObject(var4, 22, var5, var12, var2, var3, var15.animationId, var15.boolean3, (Renderable)null);
 					}
 
-					for (var24 = 0; var24 <= var9; ++var24) {
-						for (int var33 = 0; var33 <= var10; ++var33) {
-							if (var23 > SoundCache.field321[var0][var24 + var1][var33 + var2]) {
-								SoundCache.field321[var0][var24 + var1][var33 + var2] = (byte)var23;
+					var41.newGroundObject(var0, var2, var3, var23, (Renderable)var36, var26, var28);
+					if (var15.interactType == 1) {
+						var14.setBlockedByFloorDec(var2, var3);
+					}
+				} else if (var6 != 10 && var6 != 11) {
+					if (var6 >= 12) {
+						if (var15.animationId == -1 && var15.transforms == null) {
+							var36 = var15.getModel(var6, var5, var22, var24, var23, var25);
+						} else {
+							var36 = new DynamicObject(var4, var6, var5, var12, var2, var3, var15.animationId, var15.boolean3, (Renderable)null);
+						}
+
+						var41.method4882(var0, var2, var3, var23, 1, 1, (Renderable)var36, 0, var26, var28);
+						if (var15.interactType != 0) {
+							var14.addGameObject(var2, var3, var16, var17, var15.boolean1);
+						}
+					} else if (var6 == 0) {
+						if (var15.animationId == -1 && var15.transforms == null) {
+							var36 = var15.getModel(0, var5, var22, var24, var23, var25);
+						} else {
+							var36 = new DynamicObject(var4, 0, var5, var12, var2, var3, var15.animationId, var15.boolean3, (Renderable)null);
+						}
+
+						var41.newWallObject(var0, var2, var3, var23, (Renderable)var36, (Renderable)null, Tiles.field990[var5], 0, var26, var28);
+						if (var15.interactType != 0) {
+							var14.method3872(var2, var3, var6, var5, var15.boolean1);
+						}
+					} else if (var6 == 1) {
+						if (var15.animationId == -1 && var15.transforms == null) {
+							var36 = var15.getModel(1, var5, var22, var24, var23, var25);
+						} else {
+							var36 = new DynamicObject(var4, 1, var5, var12, var2, var3, var15.animationId, var15.boolean3, (Renderable)null);
+						}
+
+						var41.newWallObject(var0, var2, var3, var23, (Renderable)var36, (Renderable)null, Tiles.field989[var5], 0, var26, var28);
+						if (var15.interactType != 0) {
+							var14.method3872(var2, var3, var6, var5, var15.boolean1);
+						}
+					} else {
+						int var29;
+						if (var6 == 2) {
+							var29 = var5 + 1 & 3;
+							Object var31;
+							Object var37;
+							if (var15.animationId == -1 && var15.transforms == null) {
+								var37 = var15.getModel(2, var5 + 4, var22, var24, var23, var25);
+								var31 = var15.getModel(2, var29, var22, var24, var23, var25);
+							} else {
+								var37 = new DynamicObject(var4, 2, var5 + 4, var12, var2, var3, var15.animationId, var15.boolean3, (Renderable)null);
+								var31 = new DynamicObject(var4, 2, var29, var12, var2, var3, var15.animationId, var15.boolean3, (Renderable)null);
+							}
+
+							var41.newWallObject(var0, var2, var3, var23, (Renderable)var37, (Renderable)var31, Tiles.field990[var5], Tiles.field990[var29], var26, var28);
+							if (var15.interactType != 0) {
+								var14.method3872(var2, var3, var6, var5, var15.boolean1);
+							}
+						} else if (var6 == 3) {
+							if (var15.animationId == -1 && var15.transforms == null) {
+								var36 = var15.getModel(3, var5, var22, var24, var23, var25);
+							} else {
+								var36 = new DynamicObject(var4, 3, var5, var12, var2, var3, var15.animationId, var15.boolean3, (Renderable)null);
+							}
+
+							var41.newWallObject(var0, var2, var3, var23, (Renderable)var36, (Renderable)null, Tiles.field989[var5], 0, var26, var28);
+							if (var15.interactType != 0) {
+								var14.method3872(var2, var3, var6, var5, var15.boolean1);
+							}
+						} else if (var6 == 9) {
+							if (var15.animationId == -1 && var15.transforms == null) {
+								var36 = var15.getModel(var6, var5, var22, var24, var23, var25);
+							} else {
+								var36 = new DynamicObject(var4, var6, var5, var12, var2, var3, var15.animationId, var15.boolean3, (Renderable)null);
+							}
+
+							var41.method4882(var0, var2, var3, var23, 1, 1, (Renderable)var36, 0, var26, var28);
+							if (var15.interactType != 0) {
+								var14.addGameObject(var2, var3, var16, var17, var15.boolean1);
+							}
+						} else if (var6 == 4) {
+							if (var15.animationId == -1 && var15.transforms == null) {
+								var36 = var15.getModel(4, var5, var22, var24, var23, var25);
+							} else {
+								var36 = new DynamicObject(var4, 4, var5, var12, var2, var3, var15.animationId, var15.boolean3, (Renderable)null);
+							}
+
+							var41.newDecorativeObject(var0, var2, var3, var23, (Renderable)var36, (Renderable)null, Tiles.field990[var5], 0, 0, 0, var26, var28);
+						} else {
+							long var30;
+							Object var32;
+							if (var6 == 5) {
+								var29 = 16;
+								var30 = var41.getWallObjectTag(var0, var2, var3);
+								if (0L != var30) {
+									var29 = class146.getObjectDefinition(FileSystem.Entity_unpackID(var30)).int2;
+								}
+
+								if (var15.animationId == -1 && var15.transforms == null) {
+									var32 = var15.getModel(4, var5, var22, var24, var23, var25);
+								} else {
+									var32 = new DynamicObject(var4, 4, var5, var12, var2, var3, var15.animationId, var15.boolean3, (Renderable)null);
+								}
+
+								var41.newDecorativeObject(var0, var2, var3, var23, (Renderable)var32, (Renderable)null, Tiles.field990[var5], 0, var29 * Tiles.field992[var5], var29 * Tiles.field993[var5], var26, var28);
+							} else if (var6 == 6) {
+								var29 = 8;
+								var30 = var41.getWallObjectTag(var0, var2, var3);
+								if (0L != var30) {
+									var29 = class146.getObjectDefinition(FileSystem.Entity_unpackID(var30)).int2 / 2;
+								}
+
+								if (var15.animationId == -1 && var15.transforms == null) {
+									var32 = var15.getModel(4, var5 + 4, var22, var24, var23, var25);
+								} else {
+									var32 = new DynamicObject(var4, 4, var5 + 4, var12, var2, var3, var15.animationId, var15.boolean3, (Renderable)null);
+								}
+
+								var41.newDecorativeObject(var0, var2, var3, var23, (Renderable)var32, (Renderable)null, 256, var5, var29 * Tiles.field997[var5], var29 * Tiles.field995[var5], var26, var28);
+							} else if (var6 == 7) {
+								int var35 = var5 + 2 & 3;
+								if (var15.animationId == -1 && var15.transforms == null) {
+									var36 = var15.getModel(4, var35 + 4, var22, var24, var23, var25);
+								} else {
+									var36 = new DynamicObject(var4, 4, var35 + 4, var12, var2, var3, var15.animationId, var15.boolean3, (Renderable)null);
+								}
+
+								var41.newDecorativeObject(var0, var2, var3, var23, (Renderable)var36, (Renderable)null, 256, var35, 0, 0, var26, var28);
+							} else if (var6 == 8) {
+								var29 = 8;
+								var30 = var41.getWallObjectTag(var0, var2, var3);
+								if (var30 != 0L) {
+									var29 = class146.getObjectDefinition(FileSystem.Entity_unpackID(var30)).int2 / 2;
+								}
+
+								int var34 = var5 + 2 & 3;
+								Object var33;
+								if (var15.animationId == -1 && var15.transforms == null) {
+									var32 = var15.getModel(4, var5 + 4, var22, var24, var23, var25);
+									var33 = var15.getModel(4, var34 + 4, var22, var24, var23, var25);
+								} else {
+									var32 = new DynamicObject(var4, 4, var5 + 4, var12, var2, var3, var15.animationId, var15.boolean3, (Renderable)null);
+									var33 = new DynamicObject(var4, 4, var34 + 4, var12, var2, var3, var15.animationId, var15.boolean3, (Renderable)null);
+								}
+
+								var41.newDecorativeObject(var0, var2, var3, var23, (Renderable)var32, (Renderable)var33, 256, var5, var29 * Tiles.field997[var5], var29 * Tiles.field995[var5], var26, var28);
 							}
 						}
 					}
-				}
+				} else {
+					if (var15.animationId == -1 && var15.transforms == null) {
+						var36 = var15.getModel(10, var5, var22, var24, var23, var25);
+					} else {
+						var36 = new DynamicObject(var4, 10, var5, var12, var2, var3, var15.animationId, var15.boolean3, (Renderable)null);
+					}
 
-				if (var8.interactType != 0 && var7 != null) {
-					var7.addGameObject(var1, var2, var9, var10, var8.boolean1);
-				}
+					if (var36 != null) {
+						var41.method4882(var0, var2, var3, var23, var16, var17, (Renderable)var36, var6 == 11 ? 256 : 0, var26, var28);
+					}
 
+					if (var15.interactType != 0) {
+						var14.addGameObject(var2, var3, var16, var17, var15.boolean1);
+					}
+				}
+			}
+		}
+
+	}
+
+	@ObfuscatedName("lp")
+	@ObfuscatedSignature(
+		descriptor = "(IIZB)V",
+		garbageValue = "61"
+	)
+	static final void method3137(int var0, int var1, boolean var2) {
+		if (Client.currentClanChannels[var0] != null) {
+			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3119()) {
+				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
+				PacketBufferNode var4 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2967, Client.packetWriter.isaacCipher);
+				var4.packetBuffer.writeByte(4 + class425.stringCp1252NullTerminatedByteSize(var3.username.getName()));
+				var4.packetBuffer.writeByte(var0);
+				var4.packetBuffer.writeShort(var1);
+				var4.packetBuffer.writeBoolean(var2);
+				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName());
+				Client.packetWriter.addNode(var4);
 			}
 		}
 	}

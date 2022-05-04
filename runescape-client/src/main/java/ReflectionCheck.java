@@ -5,210 +5,156 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("av")
+@ObfuscatedName("bo")
 @Implements("ReflectionCheck")
 public class ReflectionCheck extends Node {
-	@ObfuscatedName("c")
+	@ObfuscatedName("pl")
+	@ObfuscatedSignature(
+		descriptor = "Lpj;"
+	)
+	@Export("HitSplatDefinition_cachedSprites")
+	static class426 HitSplatDefinition_cachedSprites;
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 928910033
+		intValue = 1002546903
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -2055812563
+		intValue = -1236852851
 	)
 	@Export("size")
 	int size;
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@Export("operations")
 	int[] operations;
-	@ObfuscatedName("m")
-	@Export("arguments")
-	byte[][][] arguments;
-	@ObfuscatedName("t")
-	@Export("creationErrors")
-	int[] creationErrors;
-	@ObfuscatedName("s")
-	@Export("fields")
-	Field[] fields;
-	@ObfuscatedName("j")
+	@ObfuscatedName("f")
 	@Export("intReplaceValues")
 	int[] intReplaceValues;
-	@ObfuscatedName("w")
+	@ObfuscatedName("b")
+	@Export("creationErrors")
+	int[] creationErrors;
+	@ObfuscatedName("n")
+	@Export("fields")
+	Field[] fields;
+	@ObfuscatedName("s")
 	@Export("methods")
 	Method[] methods;
+	@ObfuscatedName("l")
+	@Export("arguments")
+	byte[][][] arguments;
 
 	ReflectionCheck() {
 	}
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "12877661"
-	)
-	@Export("ItemContainer_getCount")
-	static int ItemContainer_getCount(int var0, int var1) {
-		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var2 == null) {
-			return 0;
-		} else {
-			return var1 >= 0 && var1 < var2.quantities.length ? var2.quantities[var1] : 0;
-		}
-	}
-
 	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-1748869629"
+		descriptor = "(II)Z",
+		garbageValue = "950633701"
 	)
-	static void method662(int var0) {
-		ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var1 != null) {
-			var1.remove();
-		}
+	public static boolean method1079(int var0) {
+		return (var0 >> 29 & 1) != 0;
 	}
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(Lbw;Lbw;IZB)I",
-		garbageValue = "-31"
-	)
-	@Export("compareWorlds")
-	static int compareWorlds(World var0, World var1, int var2, boolean var3) {
-		if (var2 == 1) {
-			int var4 = var0.population;
-			int var5 = var1.population;
-			if (!var3) {
-				if (var4 == -1) {
-					var4 = 2001;
-				}
-
-				if (var5 == -1) {
-					var5 = 2001;
-				}
-			}
-
-			return var4 - var5;
-		} else if (var2 == 2) {
-			return var0.location - var1.location;
-		} else if (var2 == 3) {
-			if (var0.activity.equals("-")) {
-				if (var1.activity.equals("-")) {
-					return 0;
-				} else {
-					return var3 ? -1 : 1;
-				}
-			} else if (var1.activity.equals("-")) {
-				return var3 ? 1 : -1;
-			} else {
-				return var0.activity.compareTo(var1.activity);
-			}
-		} else if (var2 == 4) {
-			return var0.method1676() ? (var1.method1676() ? 0 : 1) : (var1.method1676() ? -1 : 0);
-		} else if (var2 == 5) {
-			return var0.method1696() ? (var1.method1696() ? 0 : 1) : (var1.method1696() ? -1 : 0);
-		} else if (var2 == 6) {
-			return var0.isPvp() ? (var1.isPvp() ? 0 : 1) : (var1.isPvp() ? -1 : 0);
-		} else if (var2 == 7) {
-			return var0.isMembersOnly() ? (var1.isMembersOnly() ? 0 : 1) : (var1.isMembersOnly() ? -1 : 0);
-		} else {
-			return var0.id - var1.id;
-		}
-	}
-
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "23177696"
-	)
-	static int method663(int var0, Script var1, boolean var2) {
-		int var3;
-		int var6;
-		int var9;
-		if (var0 == ScriptOpcodes.ENUM_STRING) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-			var9 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-			EnumComposition var10 = class119.getEnum(var3);
-			if (var10.outputType != 's') {
-			}
-
-			for (var6 = 0; var6 < var10.outputCount; ++var6) {
-				if (var9 == var10.keys[var6]) {
-					Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var10.strVals[var6];
-					var10 = null;
-					break;
-				}
-			}
-
-			if (var10 != null) {
-				Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var10.defaultStr;
-			}
-
-			return 1;
-		} else if (var0 != ScriptOpcodes.ENUM) {
-			if (var0 == ScriptOpcodes.ENUM_GETOUTPUTCOUNT) {
-				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				EnumComposition var4 = class119.getEnum(var3);
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var4.size();
-				return 1;
-			} else {
-				return 2;
-			}
-		} else {
-			IsaacCipher.Interpreter_intStackSize -= 4;
-			var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-			var9 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-			int var5 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 2];
-			var6 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 3];
-			EnumComposition var7 = class119.getEnum(var5);
-			if (var3 == var7.inputType && var9 == var7.outputType) {
-				for (int var8 = 0; var8 < var7.outputCount; ++var8) {
-					if (var6 == var7.keys[var8]) {
-						if (var9 == 115) {
-							Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var7.strVals[var8];
-						} else {
-							Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var7.intVals[var8];
-						}
-
-						var7 = null;
-						break;
-					}
-				}
-
-				if (var7 != null) {
-					if (var9 == 115) {
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var7.defaultStr;
-					} else {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var7.defaultInt;
-					}
-				}
-
-				return 1;
-			} else {
-				if (var9 == 115) {
-					Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "null";
-				} else {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-				}
-
-				return 1;
-			}
-		}
-	}
-
-	@ObfuscatedName("go")
+	@ObfuscatedName("fr")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "682246596"
+		garbageValue = "1315350901"
 	)
-	static void method664() {
-		if (class340.localPlayer.x >> 7 == Client.destinationX && class340.localPlayer.y >> 7 == Client.destinationY) {
-			Client.destinationX = 0;
+	static void method1080() {
+		Client.packetWriter.clearBuffer();
+		Client.packetWriter.packetBuffer.offset = 0;
+		Client.packetWriter.serverPacket = null;
+		Client.packetWriter.field1324 = null;
+		Client.packetWriter.field1325 = null;
+		Client.packetWriter.field1313 = null;
+		Client.packetWriter.serverPacketLength = 0;
+		Client.packetWriter.field1322 = 0;
+		Client.rebootTimer = 0;
+		Client.menuOptionsCount = 0;
+		Client.isMenuOpen = false;
+		Client.minimapState = 0;
+		Client.destinationX = 0;
+
+		int var0;
+		for (var0 = 0; var0 < 2048; ++var0) {
+			Client.players[var0] = null;
 		}
 
+		GrandExchangeEvents.localPlayer = null;
+
+		for (var0 = 0; var0 < Client.npcs.length; ++var0) {
+			NPC var1 = Client.npcs[var0];
+			if (var1 != null) {
+				var1.targetIndex = -1;
+				var1.false0 = false;
+			}
+		}
+
+		UserComparator10.method2622();
+		Decimator.updateGameState(30);
+
+		for (var0 = 0; var0 < 100; ++var0) {
+			Client.field715[var0] = true;
+		}
+
+		PacketBufferNode var2 = WorldMapSprite.getPacketBufferNode(ClientPacket.field3000, Client.packetWriter.isaacCipher);
+		var2.packetBuffer.writeByte(Client.getWindowedMode());
+		var2.packetBuffer.writeShort(InvDefinition.canvasWidth);
+		var2.packetBuffer.writeShort(class321.canvasHeight);
+		Client.packetWriter.addNode(var2);
+	}
+
+	@ObfuscatedName("ka")
+	@ObfuscatedSignature(
+		descriptor = "(IIIILqi;Lki;I)V",
+		garbageValue = "1940791589"
+	)
+	@Export("worldToMinimap")
+	static final void worldToMinimap(int var0, int var1, int var2, int var3, SpritePixels var4, SpriteMask var5) {
+		int var6 = var3 * var3 + var2 * var2;
+		if (var6 > 4225 && var6 < 90000) {
+			int var7 = Client.camAngleY & 2047;
+			int var8 = Rasterizer3D.Rasterizer3D_sine[var7];
+			int var9 = Rasterizer3D.Rasterizer3D_cosine[var7];
+			int var10 = var9 * var2 + var3 * var8 >> 16;
+			int var11 = var3 * var9 - var8 * var2 >> 16;
+			double var12 = Math.atan2((double)var10, (double)var11);
+			int var14 = var5.width / 2 - 25;
+			int var15 = (int)(Math.sin(var12) * (double)var14);
+			int var16 = (int)(Math.cos(var12) * (double)var14);
+			byte var17 = 20;
+			Canvas.redHintArrowSprite.method8105(var15 + (var0 + var5.width / 2 - var17 / 2), var5.height / 2 + var1 - var17 / 2 - var16 - 10, var17, var17, 15, 15, var12, 256);
+		} else {
+			drawSpriteOnMinimap(var0, var1, var2, var3, var4, var5);
+		}
+
+	}
+
+	@ObfuscatedName("kz")
+	@ObfuscatedSignature(
+		descriptor = "(IIIILqi;Lki;I)V",
+		garbageValue = "812723929"
+	)
+	@Export("drawSpriteOnMinimap")
+	static final void drawSpriteOnMinimap(int var0, int var1, int var2, int var3, SpritePixels var4, SpriteMask var5) {
+		if (var4 != null) {
+			int var6 = Client.camAngleY & 2047;
+			int var7 = var3 * var3 + var2 * var2;
+			if (var7 <= 6400) {
+				int var8 = Rasterizer3D.Rasterizer3D_sine[var6];
+				int var9 = Rasterizer3D.Rasterizer3D_cosine[var6];
+				int var10 = var3 * var8 + var9 * var2 >> 16;
+				int var11 = var3 * var9 - var8 * var2 >> 16;
+				if (var7 > 2500) {
+					var4.method8103(var10 + var5.width / 2 - var4.width / 2, var5.height / 2 - var11 - var4.height / 2, var0, var1, var5.width, var5.height, var5.xStarts, var5.xWidths);
+				} else {
+					var4.drawTransBgAt(var0 + var10 + var5.width / 2 - var4.width / 2, var5.height / 2 + var1 - var11 - var4.height / 2);
+				}
+
+			}
+		}
 	}
 }

@@ -4,30 +4,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("im")
+@ObfuscatedName("hh")
 @Implements("WorldMapEvent")
 public class WorldMapEvent {
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1564837313
+		intValue = 205058023
 	)
 	@Export("mapElement")
 	public int mapElement;
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lju;"
+		descriptor = "Lks;"
 	)
 	@Export("coord1")
 	public Coord coord1;
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "Lju;"
+		descriptor = "Lks;"
 	)
 	@Export("coord2")
 	public Coord coord2;
 
 	@ObfuscatedSignature(
-		descriptor = "(ILju;Lju;)V"
+		descriptor = "(ILks;Lks;)V"
 	)
 	public WorldMapEvent(int var1, Coord var2, Coord var3) {
 		this.mapElement = var1;
@@ -35,12 +35,21 @@ public class WorldMapEvent {
 		this.coord2 = var3;
 	}
 
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(Lln;I)V",
+		garbageValue = "-1383377565"
+	)
+	public static void method4506(AbstractArchive var0) {
+		InvDefinition.InvDefinition_archive = var0;
+	}
+
 	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "438167000"
+		descriptor = "(II)Z",
+		garbageValue = "-615981815"
 	)
-	public static int method4942(int var0) {
-		return class258.field3049[var0];
+	public static boolean method4505(int var0) {
+		return var0 == WorldMapDecorationType.field3519.id;
 	}
 }
