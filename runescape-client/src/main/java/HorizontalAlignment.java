@@ -3,42 +3,44 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@ObfuscatedName("fc")
+@ObfuscatedName("fw")
 @Implements("HorizontalAlignment")
 public enum HorizontalAlignment implements MouseWheel {
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Lfw;"
+	)
+	field1889(2, 0),
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lfc;"
-	)
-	field1829(0, 0),
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Lfc;"
+		descriptor = "Lfw;"
 	)
 	@Export("HorizontalAlignment_centered")
-	HorizontalAlignment_centered(2, 1),
-	@ObfuscatedName("p")
+	HorizontalAlignment_centered(1, 1),
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "Lfc;"
+		descriptor = "Lfw;"
 	)
-	field1826(1, 2);
+	field1890(0, 2);
 
-	@ObfuscatedName("r")
+	@ObfuscatedName("px")
 	@ObfuscatedSignature(
-		descriptor = "Lcf;"
+		descriptor = "Loa;"
 	)
-	@Export("World_request")
-	static UrlRequest World_request;
-	@ObfuscatedName("m")
+	static class391 field1885;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -947111311
+		intValue = 544424349
 	)
 	@Export("value")
 	public final int value;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = -968745241
+		intValue = -801699883
 	)
 	@Export("id")
 	final int id;
@@ -48,85 +50,56 @@ public enum HorizontalAlignment implements MouseWheel {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "48"
+		garbageValue = "16"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Lpj;B)V",
-		garbageValue = "13"
+		descriptor = "(I)Lqq;",
+		garbageValue = "2022945893"
 	)
-	@Export("updatePlayer")
-	static final void updatePlayer(PacketBuffer var0) {
-		var0.importIndex();
-		int var1 = Client.localPlayerIndex;
-		Player var2 = class340.localPlayer = Client.players[var1] = new Player();
-		var2.index = var1;
-		int var3 = var0.readBits(30);
-		byte var4 = (byte)(var3 >> 28);
-		int var5 = var3 >> 14 & 16383;
-		int var6 = var3 & 16383;
-		var2.pathX[0] = var5 - class131.baseX * 64;
-		var2.x = (var2.pathX[0] << 7) + (var2.transformedSize() << 6);
-		var2.pathY[0] = var6 - TileItem.baseY * 64;
-		var2.y = (var2.pathY[0] << 7) + (var2.transformedSize() << 6);
-		class20.Client_plane = var2.plane = var4;
-		if (Players.field1248[var1] != null) {
-			var2.read(Players.field1248[var1]);
-		}
-
-		Players.Players_count = 0;
-		Players.Players_indices[++Players.Players_count - 1] = var1;
-		Players.field1243[var1] = 0;
-		Players.Players_emptyIdxCount = 0;
-
-		for (int var7 = 1; var7 < 2048; ++var7) {
-			if (var1 != var7) {
-				int var8 = var0.readBits(18);
-				int var9 = var8 >> 16;
-				int var10 = var8 >> 8 & 597;
-				int var11 = var8 & 597;
-				Players.Players_regions[var7] = (var10 << 14) + var11 + (var9 << 28);
-				Players.Players_orientations[var7] = 0;
-				Players.Players_targetIndices[var7] = -1;
-				Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var7;
-				Players.field1243[var7] = 0;
-			}
-		}
-
-		var0.exportIndex();
+	public static IndexedSprite method3492() {
+		IndexedSprite var0 = new IndexedSprite();
+		var0.width = class451.SpriteBuffer_spriteWidth;
+		var0.height = class451.SpriteBuffer_spriteHeight;
+		var0.xOffset = class451.SpriteBuffer_xOffsets[0];
+		var0.yOffset = class271.SpriteBuffer_yOffsets[0];
+		var0.subWidth = class451.SpriteBuffer_spriteWidths[0];
+		var0.subHeight = class451.SpriteBuffer_spriteHeights[0];
+		var0.palette = NetFileRequest.SpriteBuffer_spritePalette;
+		var0.pixels = FriendLoginUpdate.SpriteBuffer_pixels[0];
+		ArchiveDiskActionHandler.method5813();
+		return var0;
 	}
 
 	@ObfuscatedName("t")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Float;Ljava/lang/Float;I)V",
-		garbageValue = "-2046579641"
+		descriptor = "(Lorg/json/JSONObject;Ljava/lang/String;B)[F",
+		garbageValue = "-127"
 	)
-	static void method3294(Float var0, Float var1) {
-		if (var0 + class112.field1361 < 1.3333334F) {
-			float var2 = var0 - 2.0F;
-			float var3 = var0 - 1.0F;
-			float var4 = (float)Math.sqrt((double)(var2 * var2 - 4.0F * var3 * var3));
-			float var5 = (var4 + -var2) * 0.5F;
-			if (var1 + class112.field1361 > var5) {
-				var1 = var5 - class112.field1361;
-			} else {
-				var5 = 0.5F * (-var2 - var4);
-				if (var1 < class112.field1361 + var5) {
-					var1 = class112.field1361 + var5;
-				}
-			}
-		} else {
-			var0 = 1.3333334F - class112.field1361;
-			var1 = 0.33333334F - class112.field1361;
+	static float[] method3495(JSONObject var0, String var1) throws JSONException {
+		float[] var2 = new float[4];
+
+		try {
+			JSONArray var3 = var0.getJSONArray(var1);
+			var2[0] = (float)var3.optDouble(0, 0.0D);
+			var2[1] = (float)var3.optDouble(1, 0.0D);
+			var2[2] = (float)var3.optDouble(2, 1.0D);
+			var2[3] = (float)var3.optDouble(3, 1.0D);
+		} catch (JSONException var4) {
+			var2[0] = 0.0F;
+			var2[1] = 0.0F;
+			var2[2] = 1.0F;
+			var2[3] = 1.0F;
 		}
 
+		return var2;
 	}
 }

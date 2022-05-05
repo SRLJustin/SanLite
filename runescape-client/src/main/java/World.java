@@ -1,75 +1,67 @@
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.net.URL;
+import java.net.URLConnection;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bw")
+@ObfuscatedName("bb")
 @Implements("World")
 public class World {
-	@ObfuscatedName("s")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 63855855
+		intValue = -99479259
 	)
 	@Export("World_count")
 	static int World_count;
-	@ObfuscatedName("j")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -951276337
+		intValue = 666094335
 	)
 	@Export("World_listCount")
 	static int World_listCount;
-	@ObfuscatedName("w")
+	@ObfuscatedName("l")
 	@Export("World_sortOption2")
 	static int[] World_sortOption2;
-	@ObfuscatedName("n")
+	@ObfuscatedName("q")
 	@Export("World_sortOption1")
 	static int[] World_sortOption1;
-	@ObfuscatedName("k")
-	@Export("ByteArrayPool_arrays")
-	public static byte[][][] ByteArrayPool_arrays;
-	@ObfuscatedName("ai")
-	@Export("hasFocus")
-	protected static boolean hasFocus;
-	@ObfuscatedName("ip")
-	@ObfuscatedSignature(
-		descriptor = "[Lpa;"
-	)
-	@Export("modIconSprites")
-	static IndexedSprite[] modIconSprites;
-	@ObfuscatedName("o")
+	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = 402163899
+		intValue = 2132870801
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("v")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = 967201023
+		intValue = -1264114231
 	)
 	@Export("properties")
 	int properties;
-	@ObfuscatedName("d")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 1525969609
+		intValue = 1643368369
 	)
 	@Export("population")
 	int population;
-	@ObfuscatedName("h")
+	@ObfuscatedName("k")
 	@Export("host")
 	String host;
-	@ObfuscatedName("g")
+	@ObfuscatedName("d")
 	@Export("activity")
 	String activity;
-	@ObfuscatedName("e")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -102724797
+		intValue = 786542067
 	)
 	@Export("location")
 	int location;
-	@ObfuscatedName("a")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 742286855
+		intValue = -154567813
 	)
 	@Export("index")
 	int index;
@@ -84,105 +76,137 @@ public class World {
 	World() {
 	}
 
-	@ObfuscatedName("r")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "16"
+		garbageValue = "1"
 	)
 	@Export("isMembersOnly")
 	boolean isMembersOnly() {
 		return (1 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("r")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-624791914"
+		garbageValue = "-1237619504"
 	)
-	boolean method1696() {
+	boolean method1637() {
 		return (2 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1709463484"
+		garbageValue = "1559605214"
 	)
 	@Export("isPvp")
 	boolean isPvp() {
 		return (4 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("d")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1754892594"
+		descriptor = "(B)Z",
+		garbageValue = "-3"
 	)
-	boolean method1676() {
+	boolean method1639() {
 		return (8 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-24"
+		descriptor = "(I)Z",
+		garbageValue = "-1091774244"
 	)
 	@Export("isDeadman")
 	boolean isDeadman() {
 		return (536870912 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("g")
+	@ObfuscatedName("d")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-126940607"
+		garbageValue = "-980357381"
 	)
 	@Export("isBeta")
 	boolean isBeta() {
 		return (33554432 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("e")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "-98"
+		garbageValue = "-67"
 	)
-	boolean method1679() {
+	boolean method1642() {
 		return (1073741824 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Ljm;I[B[BI)V",
-		garbageValue = "-1955457060"
+		descriptor = "(I)J",
+		garbageValue = "248587859"
 	)
-	@Export("Widget_setKey")
-	static final void Widget_setKey(Widget var0, int var1, byte[] var2, byte[] var3) {
-		if (var0.field3300 == null) {
-			if (var2 == null) {
-				return;
-			}
+	static long method1678() {
+		try {
+			URL var0 = new URL(ArchiveLoader.method2063("services", false) + "m=accountappeal/login.ws");
+			URLConnection var1 = var0.openConnection();
+			var1.setRequestProperty("connection", "close");
+			var1.setDoInput(true);
+			var1.setDoOutput(true);
+			var1.setConnectTimeout(5000);
+			OutputStreamWriter var2 = new OutputStreamWriter(var1.getOutputStream());
+			var2.write("data1=req");
+			var2.flush();
+			InputStream var3 = var1.getInputStream();
+			Buffer var4 = new Buffer(new byte[1000]);
 
-			var0.field3300 = new byte[11][];
-			var0.field3301 = new byte[11][];
-			var0.field3302 = new int[11];
-			var0.field3303 = new int[11];
-		}
-
-		var0.field3300[var1] = var2;
-		if (var2 != null) {
-			var0.field3299 = true;
-		} else {
-			var0.field3299 = false;
-
-			for (int var4 = 0; var4 < var0.field3300.length; ++var4) {
-				if (var0.field3300[var4] != null) {
-					var0.field3299 = true;
-					break;
+			do {
+				int var5 = var3.read(var4.array, var4.offset, 1000 - var4.offset);
+				if (var5 == -1) {
+					var4.offset = 0;
+					long var7 = var4.readLong();
+					return var7;
 				}
-			}
-		}
 
-		var0.field3301[var1] = var3;
+				var4.offset += var5;
+			} while(var4.offset < 1000);
+
+			return 0L;
+		} catch (Exception var9) {
+			return 0L;
+		}
+	}
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "-88"
+	)
+	public static int method1673(int var0) {
+		long var2 = ViewportMouse.ViewportMouse_entityTags[var0];
+		int var1 = (int)(var2 >>> 0 & 127L);
+		return var1;
+	}
+
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)I",
+		garbageValue = "2080667319"
+	)
+	public static int method1679(int var0, int var1, int var2) {
+		int var3 = class54.method1078(var2 - var1 + 1);
+		var3 <<= var1;
+		return var0 & ~var3;
+	}
+
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "1622392704"
+	)
+	public static int method1677() {
+		return ++MouseHandler.MouseHandler_idleCycles - 1;
 	}
 }

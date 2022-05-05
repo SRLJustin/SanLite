@@ -1,36 +1,12 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cm")
+@ObfuscatedName("dj")
 @Implements("UserComparator7")
 public class UserComparator7 extends AbstractUserComparator {
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		longValue = 1289611995135137433L
-	)
-	public static long field1319;
-	@ObfuscatedName("hx")
-	@ObfuscatedSignature(
-		descriptor = "[Lpl;"
-	)
-	@Export("mapMarkerSprites")
-	static SpritePixels[] mapMarkerSprites;
-	@ObfuscatedName("iq")
-	@ObfuscatedGetter(
-		intValue = -427505933
-	)
-	@Export("cameraX")
-	static int cameraX;
-	@ObfuscatedName("in")
-	@ObfuscatedGetter(
-		intValue = 1941000053
-	)
-	@Export("cameraPitch")
-	static int cameraPitch;
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -38,10 +14,10 @@ public class UserComparator7 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lmp;Lmp;I)I",
-		garbageValue = "742897399"
+		descriptor = "(Lnf;Lnf;I)I",
+		garbageValue = "1628043901"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -56,17 +32,24 @@ public class UserComparator7 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("hj")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1366394197"
+		descriptor = "(Lln;Lln;Lln;B)V",
+		garbageValue = "1"
 	)
-	static final int method2518() {
-		if (SecureRandomFuture.clientPreferences.roofsHidden) {
-			return class20.Client_plane;
-		} else {
-			int var0 = FaceNormal.getTileHeight(cameraX, UserComparator10.cameraZ, class20.Client_plane);
-			return var0 - AbstractByteArrayCopier.cameraY < 800 && (Tiles.Tiles_renderFlags[class20.Client_plane][cameraX >> 7][UserComparator10.cameraZ >> 7] & 4) != 0 ? class20.Client_plane : 3;
-		}
+	public static void method2590(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2) {
+		HitSplatDefinition.HitSplatDefinition_archive = var0;
+		class282.field3261 = var1;
+		class349.HitSplatDefinition_fontsArchive = var2;
+	}
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lfe;",
+		garbageValue = "-59"
+	)
+	@Export("WorldMapElement_get")
+	public static WorldMapElement WorldMapElement_get(int var0) {
+		return var0 >= 0 && var0 < WorldMapElement.WorldMapElement_cached.length && WorldMapElement.WorldMapElement_cached[var0] != null ? WorldMapElement.WorldMapElement_cached[var0] : new WorldMapElement(var0);
 	}
 }

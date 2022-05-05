@@ -1,55 +1,63 @@
+import java.io.File;
+import java.io.RandomAccessFile;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("br")
+@ObfuscatedName("be")
 @Implements("Message")
 public class Message extends DualNode {
-	@ObfuscatedName("c")
+	@ObfuscatedName("eb")
+	@ObfuscatedSignature(
+		descriptor = "Llx;"
+	)
+	@Export("archive11")
+	static Archive archive11;
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 20750645
+		intValue = 1496139277
 	)
 	@Export("count")
 	int count;
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1521210849
+		intValue = -1765114105
 	)
 	@Export("cycle")
 	int cycle;
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = 2033042895
+		intValue = -820996673
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@Export("sender")
 	String sender;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "Lpo;"
+		descriptor = "Lqb;"
 	)
 	@Export("senderUsername")
 	Username senderUsername;
-	@ObfuscatedName("s")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lmu;"
+		descriptor = "Lni;"
 	)
 	@Export("isFromFriend0")
 	TriBool isFromFriend0;
-	@ObfuscatedName("j")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lmu;"
+		descriptor = "Lni;"
 	)
 	@Export("isFromIgnored0")
 	TriBool isFromIgnored0;
-	@ObfuscatedName("w")
+	@ObfuscatedName("l")
 	@Export("prefix")
 	String prefix;
-	@ObfuscatedName("n")
+	@ObfuscatedName("q")
 	@Export("text")
 	String text;
 
@@ -59,10 +67,10 @@ public class Message extends DualNode {
 		this.set(var1, var2, var3, var4);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
-		garbageValue = "-707456994"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
+		garbageValue = "-56"
 	)
 	@Export("set")
 	void set(int var1, String var2, String var3, String var4) {
@@ -78,20 +86,20 @@ public class Message extends DualNode {
 		this.clearIsFromIgnored();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1704976906"
+		garbageValue = "1771611339"
 	)
 	@Export("clearIsFromFriend")
 	void clearIsFromFriend() {
 		this.isFromFriend0 = TriBool.TriBool_unknown;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "69"
+		garbageValue = "46"
 	)
 	@Export("isFromFriend")
 	final boolean isFromFriend() {
@@ -102,30 +110,30 @@ public class Message extends DualNode {
 		return this.isFromFriend0 == TriBool.TriBool_true;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "108"
+		descriptor = "(I)V",
+		garbageValue = "-799651703"
 	)
 	@Export("fillIsFromFriend")
 	void fillIsFromFriend() {
-		this.isFromFriend0 = GameEngine.friendSystem.friendsList.contains(this.senderUsername) ? TriBool.TriBool_true : TriBool.TriBool_false;
+		this.isFromFriend0 = Decimator.friendSystem.friendsList.contains(this.senderUsername) ? TriBool.TriBool_true : TriBool.TriBool_false;
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "15"
+		descriptor = "(I)V",
+		garbageValue = "-1801173346"
 	)
 	@Export("clearIsFromIgnored")
 	void clearIsFromIgnored() {
 		this.isFromIgnored0 = TriBool.TriBool_unknown;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1173025660"
+		garbageValue = "-1804603647"
 	)
 	@Export("isFromIgnored")
 	final boolean isFromIgnored() {
@@ -136,82 +144,83 @@ public class Message extends DualNode {
 		return this.isFromIgnored0 == TriBool.TriBool_true;
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-35"
+		descriptor = "(I)V",
+		garbageValue = "206265672"
 	)
 	@Export("fillIsFromIgnored")
 	void fillIsFromIgnored() {
-		this.isFromIgnored0 = GameEngine.friendSystem.ignoreList.contains(this.senderUsername) ? TriBool.TriBool_true : TriBool.TriBool_false;
+		this.isFromIgnored0 = Decimator.friendSystem.ignoreList.contains(this.senderUsername) ? TriBool.TriBool_true : TriBool.TriBool_false;
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "719777600"
+		garbageValue = "-1910614922"
 	)
 	@Export("fillSenderUsername")
 	final void fillSenderUsername() {
 		if (this.sender != null) {
-			this.senderUsername = new Username(AbstractWorldMapData.method4791(this.sender), class194.loginType);
+			this.senderUsername = new Username(class160.method3280(this.sender), class122.loginType);
 		} else {
 			this.senderUsername = null;
 		}
 
 	}
 
-	@ObfuscatedName("in")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1989735073"
+		descriptor = "(Ljava/lang/String;I)Ljava/io/File;",
+		garbageValue = "-717808877"
 	)
-	@Export("incrementMenuEntries")
-	static final void incrementMenuEntries() {
-		boolean var0 = false;
+	@Export("getFile")
+	static File getFile(String var0) {
+		if (!FileSystem.FileSystem_hasPermissions) {
+			throw new RuntimeException("");
+		} else {
+			File var1 = (File)FileSystem.FileSystem_cacheFiles.get(var0);
+			if (var1 != null) {
+				return var1;
+			} else {
+				File var2 = new File(class120.FileSystem_cacheDir, var0);
+				RandomAccessFile var3 = null;
 
-		while (!var0) {
-			var0 = true;
+				try {
+					File var4 = new File(var2.getParent());
+					if (!var4.exists()) {
+						throw new RuntimeException("");
+					} else {
+						var3 = new RandomAccessFile(var2, "rw");
+						int var5 = var3.read();
+						var3.seek(0L);
+						var3.write(var5);
+						var3.seek(0L);
+						var3.close();
+						FileSystem.FileSystem_cacheFiles.put(var0, var2);
+						return var2;
+					}
+				} catch (Exception var8) {
+					try {
+						if (var3 != null) {
+							var3.close();
+							var3 = null;
+						}
+					} catch (Exception var7) {
+					}
 
-			for (int var1 = 0; var1 < Client.menuOptionsCount - 1; ++var1) {
-				if (Client.menuOpcodes[var1] < 1000 && Client.menuOpcodes[var1 + 1] > 1000) {
-					String var2 = Client.menuTargets[var1];
-					Client.menuTargets[var1] = Client.menuTargets[var1 + 1];
-					Client.menuTargets[var1 + 1] = var2;
-					String var3 = Client.menuActions[var1];
-					Client.menuActions[var1] = Client.menuActions[var1 + 1];
-					Client.menuActions[var1 + 1] = var3;
-					int var4 = Client.menuOpcodes[var1];
-					Client.menuOpcodes[var1] = Client.menuOpcodes[var1 + 1];
-					Client.menuOpcodes[var1 + 1] = var4;
-					var4 = Client.menuArguments1[var1];
-					Client.menuArguments1[var1] = Client.menuArguments1[var1 + 1];
-					Client.menuArguments1[var1 + 1] = var4;
-					var4 = Client.menuArguments2[var1];
-					Client.menuArguments2[var1] = Client.menuArguments2[var1 + 1];
-					Client.menuArguments2[var1 + 1] = var4;
-					var4 = Client.menuIdentifiers[var1];
-					Client.menuIdentifiers[var1] = Client.menuIdentifiers[var1 + 1];
-					Client.menuIdentifiers[var1 + 1] = var4;
-					boolean var5 = Client.menuShiftClick[var1];
-					Client.menuShiftClick[var1] = Client.menuShiftClick[var1 + 1];
-					Client.menuShiftClick[var1 + 1] = var5;
-					var0 = false;
+					throw new RuntimeException();
 				}
 			}
 		}
-
 	}
 
-	@ObfuscatedName("kf")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "1320031067"
+		descriptor = "(I)[Lkt;",
+		garbageValue = "620716737"
 	)
-	@Export("runIntfCloseListeners")
-	static final void runIntfCloseListeners(int var0, int var1) {
-		if (class242.loadInterface(var0)) {
-			Canvas.runComponentCloseListeners(MouseRecorder.Widget_interfaceComponents[var0], var1);
-		}
+	public static StudioGame[] method1116() {
+		return new StudioGame[]{StudioGame.oldscape, StudioGame.game4, StudioGame.runescape, StudioGame.game3, StudioGame.game5, StudioGame.stellardawn};
 	}
 }

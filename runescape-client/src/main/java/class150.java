@@ -3,50 +3,79 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ec")
-public class class150 extends class126 {
-	@ObfuscatedName("dc")
-	@Export("mouseCam")
-	static boolean mouseCam;
+@ObfuscatedName("eg")
+public class class150 extends class128 {
+	@ObfuscatedName("ik")
+	@ObfuscatedSignature(
+		descriptor = "[Lqi;"
+	)
+	@Export("headIconPkSprites")
+	static SpritePixels[] headIconPkSprites;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(
+		longValue = -4465707830753509645L
+	)
+	long field1675;
 	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = 43726911
-	)
-	int field1666;
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(
-		longValue = -6413239553486837791L
-	)
-	long field1669;
+	String field1670;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Les;"
 	)
-	final class129 this$0;
+	final class131 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "(Les;)V"
 	)
-	class150(class129 var1) {
+	class150(class131 var1) {
 		this.this$0 = var1;
+		this.field1675 = -1L;
+		this.field1670 = null;
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(Lpi;I)V",
+		garbageValue = "-413979452"
+	)
+	void vmethod3168(Buffer var1) {
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			this.field1675 = var1.readLong();
+		}
+
+		this.field1670 = var1.readStringCp1252NullTerminatedOrNull();
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lex;S)V",
+		garbageValue = "-10316"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1666 = var1.readInt();
-		this.field1669 = var1.readLong();
+	void vmethod3162(ClanSettings var1) {
+		var1.method2996(this.field1675, this.field1670);
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(IB)I",
+		garbageValue = "-75"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2856(this.field1666, this.field1669);
+	public static int method3150(int var0) {
+		var0 = (var0 & 1431655765) + (var0 >>> 1 & 1431655765);
+		var0 = (var0 >>> 2 & 858993459) + (var0 & 858993459);
+		var0 = var0 + (var0 >>> 4) & 252645135;
+		var0 += var0 >>> 8;
+		var0 += var0 >>> 16;
+		return var0 & 255;
+	}
+
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Z",
+		garbageValue = "3"
+	)
+	public static boolean method3149(int var0) {
+		return (var0 >> 30 & 1) != 0;
 	}
 }

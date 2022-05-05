@@ -1,82 +1,24 @@
-import java.awt.FontMetrics;
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dh")
-public enum class114 implements MouseWheel {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1390(0, 0),
+@ObfuscatedName("dv")
+public class class114 {
+	@ObfuscatedName("f")
+	public static final float field1382;
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1383(1, 1),
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1384(2, 2),
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1391(3, 3),
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1386(4, 4);
+	public static final float field1380;
 
-	@ObfuscatedName("r")
-	public static short[][] field1382;
-	@ObfuscatedName("ax")
-	@Export("loginScreenFontMetrics")
-	static FontMetrics loginScreenFontMetrics;
-	@ObfuscatedName("gl")
-	@ObfuscatedSignature(
-		descriptor = "Llx;"
-	)
-	@Export("fontPlain12")
-	static Font fontPlain12;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -401638189
-	)
-	final int field1387;
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(
-		intValue = 733610371
-	)
-	final int field1388;
-
-	class114(int var3, int var4) {
-		this.field1387 = var3;
-		this.field1388 = var4;
+	static {
+		field1382 = Math.ulp(1.0F);
+		field1380 = 2.0F * field1382;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "48"
+		descriptor = "(I)[Ljp;",
+		garbageValue = "-1344733039"
 	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field1388;
-	}
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1912506868"
-	)
-	public static int method2629(int var0) {
-		long var2 = ViewportMouse.ViewportMouse_entityTags[var0];
-		int var1 = (int)(var2 >>> 14 & 3L);
-		return var1;
+	public static class263[] method2662() {
+		return new class263[]{class263.field3006, class263.field3005, class263.field3015, class263.field3007, class263.field3008, class263.field3009, class263.field3004, class263.field3011, class263.field3012, class263.field3013};
 	}
 }

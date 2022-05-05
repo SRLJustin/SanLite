@@ -1,102 +1,101 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("du")
-public class class123 extends class126 {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = -601293693
-	)
-	int field1481;
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(
-		intValue = -1319645239
-	)
-	int field1479;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = 6552211
-	)
-	int field1480;
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(
-		intValue = -223756011
-	)
-	int field1482;
-	// $FF: synthetic field
+@ObfuscatedName("dw")
+public enum class123 implements MouseWheel {
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Ldw;"
 	)
-	final class129 this$0;
-
-	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
-	)
-	class123(class129 var1) {
-		this.this$0 = var1;
-		this.field1481 = -1;
-	}
-
+	field1483(0, 0),
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "Ldw;"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1481 = var1.readUnsignedShort();
-		this.field1479 = var1.readInt();
-		this.field1480 = var1.readUnsignedByte();
-		this.field1482 = var1.readUnsignedByte();
-	}
-
+	field1492(1, 1),
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "Ldw;"
+	)
+	field1486(2, 2),
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Ldw;"
+	)
+	field1482(3, 3),
 	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "Ldw;"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2858(this.field1481, this.field1479, this.field1480, this.field1482);
-	}
-
-	@ObfuscatedName("b")
+	field1481(4, 4),
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "-84"
+		descriptor = "Ldw;"
 	)
-	public static int method2744(int var0, int var1) {
-		return (int)Math.round(Math.atan2((double)var0, (double)var1) * 2607.5945876176133D) & 16383;
-	}
-
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "-1895069117"
-	)
-	public static int method2737(int var0, int var1, int var2) {
-		int var3 = WorldMapEvent.method4942(var2 - var1 + 1);
-		var3 <<= var1;
-		return var0 & ~var3;
-	}
-
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "1"
-	)
-	public static void method2746(int var0) {
-		MouseHandler.MouseHandler_idleCycles = var0;
-	}
-
+	field1484(5, 5),
 	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1478303214"
+		descriptor = "Ldw;"
 	)
-	static void method2745() {
-		Messages.Messages_channels.clear();
-		Messages.Messages_hashTable.clear();
-		Messages.Messages_queue.clear();
-		Messages.Messages_count = 0;
+	field1487(6, 6),
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "Ldw;"
+	)
+	field1488(7, 7),
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "Ldw;"
+	)
+	field1489(8, 8);
+
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = 1942889575
+	)
+	final int field1490;
+	@ObfuscatedName("r")
+	@ObfuscatedGetter(
+		intValue = -315171815
+	)
+	final int field1491;
+
+	class123(int var3, int var4) {
+		this.field1490 = var3;
+		this.field1491 = var4;
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "16"
+	)
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field1491;
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lfk;",
+		garbageValue = "2122696884"
+	)
+	public static FloorUnderlayDefinition method2806(int var0) {
+		FloorUnderlayDefinition var1 = (FloorUnderlayDefinition)FloorUnderlayDefinition.FloorUnderlayDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = FloorUnderlayDefinition.FloorUnderlayDefinition_archive.takeFile(1, var0);
+			var1 = new FloorUnderlayDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2), var0);
+			}
+
+			var1.postDecode();
+			FloorUnderlayDefinition.FloorUnderlayDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
 	}
 }

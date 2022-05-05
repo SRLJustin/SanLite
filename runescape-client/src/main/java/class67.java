@@ -1,45 +1,80 @@
 import java.math.BigInteger;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bc")
+@ObfuscatedName("bk")
 public class class67 {
+	@ObfuscatedName("sk")
+	@ObfuscatedGetter(
+		intValue = 1853410688
+	)
+	static int field881;
+	@ObfuscatedName("v")
+	static final BigInteger field882;
 	@ObfuscatedName("c")
-	static final BigInteger field856;
-	@ObfuscatedName("b")
-	static final BigInteger field857;
+	static final BigInteger field880;
 
 	static {
-		field856 = new BigInteger("10001", 16);
-		field857 = new BigInteger("959194ea8a966b960e862427e497e246718ecc7e76f242845673d52b62df19f52fa6fb93c8d9c5129b95747f8ca61fb059fa44297c08c6f5cc6cca99e8d39fc8f0faa58e58d1ca99e861439d01158c14880260b09ace07d25862f6d14e2db785c3016567101e927e4b2513e0b8a0f275ccf60c6a689af387a64b2b82a313d8dd", 16);
+		field882 = new BigInteger("10001", 16);
+		field880 = new BigInteger("a297f6692a7a1d8b2786f93cf85ef1d85f2a702a6f04b4503c079d0c3970d7a7bda84292dd1c8249b1cd8d0eb0fe10e16ad2d42a7fbbb321f4f5603afec3f13a03d534b8e2233ba479c346208306d2d816ef9f8f1ee69896d2cd1f3dfcb7d8e5987ed6e9412f962811bfbfb59b689ce506438d4f3c8dfb5c95c1670ad4d2e767", 16);
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "1654088160"
+		descriptor = "(III)I",
+		garbageValue = "-309865537"
 	)
-	@Export("Login_promptCredentials")
-	static void Login_promptCredentials(boolean var0) {
-		Login.Login_response1 = "";
-		Login.Login_response2 = "Enter your username/email & password.";
-		Login.Login_response3 = "";
-		PlayerType.method5521(2);
-		if (var0) {
-			Login.Login_password = "";
+	static int method1910(int var0, int var1) {
+		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var2 == null) {
+			return 0;
+		} else if (var1 == -1) {
+			return 0;
+		} else {
+			int var3 = 0;
+
+			for (int var4 = 0; var4 < var2.quantities.length; ++var4) {
+				if (var2.ids[var4] == var1) {
+					var3 += var2.quantities[var4];
+				}
+			}
+
+			return var3;
 		}
-
-		HealthBar.method2311();
-		WorldMapID.method4805();
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "-67"
+		descriptor = "(II)I",
+		garbageValue = "822904825"
 	)
-	static int method1962(int var0) {
-		return (int)((Math.log((double)var0) / Interpreter.field814 - 7.0D) * 256.0D);
+	public static int method1909(int var0) {
+		--var0;
+		var0 |= var0 >>> 1;
+		var0 |= var0 >>> 2;
+		var0 |= var0 >>> 4;
+		var0 |= var0 >>> 8;
+		var0 |= var0 >>> 16;
+		return var0 + 1;
+	}
+
+	@ObfuscatedName("r")
+	@ObfuscatedSignature(
+		descriptor = "(Lky;II)V",
+		garbageValue = "1726042020"
+	)
+	@Export("Widget_setKeyIgnoreHeld")
+	static final void Widget_setKeyIgnoreHeld(Widget var0, int var1) {
+		if (var0.field3415 == null) {
+			throw new RuntimeException();
+		} else {
+			if (var0.field3484 == null) {
+				var0.field3484 = new int[var0.field3415.length];
+			}
+
+			var0.field3484[var1] = Integer.MAX_VALUE;
+		}
 	}
 }

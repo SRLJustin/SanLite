@@ -3,84 +3,47 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("id")
+@ObfuscatedName("hw")
 @Implements("WorldMapCacheName")
 public class WorldMapCacheName {
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Lhw;"
+	)
+	public static final WorldMapCacheName field2413;
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lid;"
+		descriptor = "Lhw;"
 	)
-	public static final WorldMapCacheName field2768;
+	public static final WorldMapCacheName field2414;
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "Lhw;"
+	)
+	public static final WorldMapCacheName field2418;
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Lhw;"
+	)
+	static final WorldMapCacheName field2419;
 	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "Lid;"
+		descriptor = "Lhw;"
 	)
-	public static final WorldMapCacheName field2763;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lid;"
-	)
-	public static final WorldMapCacheName field2764;
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Lid;"
-	)
-	static final WorldMapCacheName field2765;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Lid;"
-	)
-	public static final WorldMapCacheName field2766;
+	public static final WorldMapCacheName field2417;
 	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "Lpl;"
-	)
-	@Export("leftTitleSprite")
-	static SpritePixels leftTitleSprite;
-	@ObfuscatedName("s")
 	@Export("name")
 	public final String name;
 
 	static {
-		field2768 = new WorldMapCacheName("details");
-		field2763 = new WorldMapCacheName("compositemap");
-		field2764 = new WorldMapCacheName("compositetexture");
-		field2765 = new WorldMapCacheName("area");
-		field2766 = new WorldMapCacheName("labels");
+		field2413 = new WorldMapCacheName("details");
+		field2414 = new WorldMapCacheName("compositemap");
+		field2418 = new WorldMapCacheName("compositetexture");
+		field2419 = new WorldMapCacheName("area");
+		field2417 = new WorldMapCacheName("labels");
 	}
 
 	WorldMapCacheName(String var1) {
 		this.name = var1;
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-875853562"
-	)
-	public static int method4865(int var0, int var1) {
-		int var2;
-		if (var1 > var0) {
-			var2 = var0;
-			var0 = var1;
-			var1 = var2;
-		}
-
-		while (var1 != 0) {
-			var2 = var0 % var1;
-			var0 = var1;
-			var1 = var2;
-		}
-
-		return var0;
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(III)Z",
-		garbageValue = "985293867"
-	)
-	public static boolean method4864(int var0, int var1) {
-		return (var0 >> var1 + 1 & 1) != 0;
 	}
 }
