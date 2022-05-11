@@ -3,38 +3,39 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("fs")
+@ObfuscatedName("fk")
 @Implements("VerticalAlignment")
 public enum VerticalAlignment implements MouseWheel {
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Lfs;"
+		descriptor = "Lfk;"
 	)
-	field1870(2, 0),
-	@ObfuscatedName("b")
+	field2001(0, 0),
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lfs;"
+		descriptor = "Lfk;"
 	)
 	@Export("VerticalAlignment_centered")
 	VerticalAlignment_centered(1, 1),
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "Lfs;"
+		descriptor = "Lfk;"
 	)
-	field1869(0, 2);
+	field1994(2, 2);
 
-	@ObfuscatedName("h")
-	static int[] field1874;
-	@ObfuscatedName("m")
+	@ObfuscatedName("t")
+	static int[][][] field1993;
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -1994152567
+		intValue = -1914691403
 	)
 	@Export("value")
 	public final int value;
-	@ObfuscatedName("t")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = -927577259
+		intValue = -156992359
 	)
 	@Export("id")
 	final int id;
@@ -44,45 +45,70 @@ public enum VerticalAlignment implements MouseWheel {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "48"
+		garbageValue = "30"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lfr;",
-		garbageValue = "65"
+		descriptor = "(I)V",
+		garbageValue = "-1009266230"
 	)
-	@Export("getParamDefinition")
-	public static ParamComposition getParamDefinition(int var0) {
-		ParamComposition var1 = (ParamComposition)ParamComposition.ParamComposition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = ParamComposition.ParamDefinition_archive.takeFile(11, var0);
-			var1 = new ParamComposition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-
-			var1.postDecode();
-			ParamComposition.ParamComposition_cached.put(var1, (long)var0);
-			return var1;
-		}
+	public static void method3446() {
+		ItemComposition.ItemDefinition_cachedSprites.clear();
 	}
 
-	@ObfuscatedName("k")
+	@ObfuscatedName("d")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "21"
+		descriptor = "(ILbb;ZB)I",
+		garbageValue = "-27"
 	)
-	public static void method3338() {
-		ItemComposition.ItemDefinition_cachedSprites.clear();
+	static int method3447(int var0, Script var1, boolean var2) {
+		Widget var3;
+		if (var0 == ScriptOpcodes.IF_GETINVOBJECT) {
+			var3 = class92.getWidget(Interpreter.Interpreter_intStack[--class12.Interpreter_intStackSize]);
+			Interpreter.Interpreter_intStack[++class12.Interpreter_intStackSize - 1] = var3.itemId;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETINVCOUNT) {
+			var3 = class92.getWidget(Interpreter.Interpreter_intStack[--class12.Interpreter_intStackSize]);
+			if (var3.itemId != -1) {
+				Interpreter.Interpreter_intStack[++class12.Interpreter_intStackSize - 1] = var3.itemQuantity;
+			} else {
+				Interpreter.Interpreter_intStack[++class12.Interpreter_intStackSize - 1] = 0;
+			}
+
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_HASSUB) {
+			int var5 = Interpreter.Interpreter_intStack[--class12.Interpreter_intStackSize];
+			InterfaceParent var4 = (InterfaceParent)Client.interfaceParents.get((long)var5);
+			if (var4 != null) {
+				Interpreter.Interpreter_intStack[++class12.Interpreter_intStackSize - 1] = 1;
+			} else {
+				Interpreter.Interpreter_intStack[++class12.Interpreter_intStackSize - 1] = 0;
+			}
+
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETTOP) {
+			Interpreter.Interpreter_intStack[++class12.Interpreter_intStackSize - 1] = Client.rootInterface;
+			return 1;
+		} else if (var0 == 1707) {
+			var3 = class92.getWidget(Interpreter.Interpreter_intStack[--class12.Interpreter_intStackSize]);
+			Interpreter.Interpreter_intStack[++class12.Interpreter_intStackSize - 1] = var3.method5498() ? 1 : 0;
+			return 1;
+		} else if (var0 == 1708) {
+			var3 = class92.getWidget(Interpreter.Interpreter_intStack[--class12.Interpreter_intStackSize]);
+			return class293.method5430(var3);
+		} else if (var0 == 1708) {
+			var3 = class92.getWidget(Interpreter.Interpreter_intStack[--class12.Interpreter_intStackSize]);
+			return class20.method269(var3);
+		} else {
+			return 2;
+		}
 	}
 }
