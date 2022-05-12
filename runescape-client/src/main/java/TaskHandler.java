@@ -7,34 +7,31 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eb")
+@ObfuscatedName("fs")
 @Implements("TaskHandler")
 public class TaskHandler implements Runnable {
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@Export("javaVendor")
 	public static String javaVendor;
-	@ObfuscatedName("eo")
+	@ObfuscatedName("q")
+	@Export("javaVersion")
+	public static String javaVersion;
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive12")
-	static Archive archive12;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lfk;"
+		descriptor = "Lfl;"
 	)
 	@Export("current")
 	Task current;
-	@ObfuscatedName("m")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "Lfk;"
+		descriptor = "Lfl;"
 	)
 	@Export("task")
 	Task task;
-	@ObfuscatedName("t")
+	@ObfuscatedName("a")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("s")
+	@ObfuscatedName("m")
 	@Export("isClosed")
 	boolean isClosed;
 
@@ -43,11 +40,11 @@ public class TaskHandler implements Runnable {
 		this.task = null;
 		this.isClosed = false;
 		javaVendor = "Unknown";
-		NPC.javaVersion = "1.6";
+		javaVersion = "1.6";
 
 		try {
 			javaVendor = System.getProperty("java.vendor");
-			NPC.javaVersion = System.getProperty("java.version");
+			javaVersion = System.getProperty("java.version");
 		} catch (Exception var2) {
 		}
 
@@ -58,10 +55,10 @@ public class TaskHandler implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "-23939"
+		descriptor = "(I)V",
+		garbageValue = "1440718962"
 	)
 	@Export("close")
 	public final void close() {
@@ -77,10 +74,10 @@ public class TaskHandler implements Runnable {
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(IIILjava/lang/Object;I)Lfk;",
-		garbageValue = "838873650"
+		descriptor = "(IIILjava/lang/Object;I)Lfl;",
+		garbageValue = "1484642782"
 	)
 	@Export("newTask")
 	final Task newTask(int var1, int var2, int var3, Object var4) {
@@ -101,20 +98,20 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;II)Lfk;",
-		garbageValue = "1945864892"
+		descriptor = "(Ljava/lang/String;II)Lfl;",
+		garbageValue = "1024019511"
 	)
 	@Export("newSocketTask")
 	public final Task newSocketTask(String var1, int var2) {
 		return this.newTask(1, var2, 0, var1);
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Runnable;II)Lfk;",
-		garbageValue = "-1633812322"
+		descriptor = "(Ljava/lang/Runnable;II)Lfl;",
+		garbageValue = "1474796416"
 	)
 	@Export("newThreadTask")
 	public final Task newThreadTask(Runnable var1, int var2) {
@@ -169,15 +166,133 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "([BI)[B",
-		garbageValue = "-1643511224"
+		descriptor = "(I)Z",
+		garbageValue = "2007350025"
 	)
-	public static byte[] method3047(byte[] var0) {
-		int var1 = var0.length;
-		byte[] var2 = new byte[var1];
-		System.arraycopy(var0, 0, var2, 0, var1);
-		return var2;
+	@Export("isKeyDown")
+	public static final boolean isKeyDown() {
+		synchronized(KeyHandler.KeyHandler_instance) {
+			if (KeyHandler.field144 == KeyHandler.field142) {
+				return false;
+			} else {
+				class12.field61 = KeyHandler.field122[KeyHandler.field142];
+				InvDefinition.field1850 = KeyHandler.field136[KeyHandler.field142];
+				KeyHandler.field142 = KeyHandler.field142 + 1 & 127;
+				return true;
+			}
+		}
+	}
+
+	@ObfuscatedName("is")
+	@ObfuscatedSignature(
+		descriptor = "(IIIILjava/lang/String;I)V",
+		garbageValue = "87331600"
+	)
+	@Export("widgetDefaultMenuAction")
+	static void widgetDefaultMenuAction(int var0, int var1, int var2, int var3, String var4) {
+		Widget var5 = ApproximateRouteStrategy.getWidgetChild(var1, var2);
+		if (var5 != null) {
+			if (var5.onOp != null) {
+				ScriptEvent var6 = new ScriptEvent();
+				var6.widget = var5;
+				var6.opIndex = var0;
+				var6.targetName = var4;
+				var6.args = var5.onOp;
+				class144.runScriptEvent(var6);
+			}
+
+			boolean var8 = true;
+			if (var5.contentType > 0) {
+				var8 = ReflectionCheck.method599(var5);
+			}
+
+			if (var8) {
+				if (MenuAction.method1880(UrlRequester.getWidgetFlags(var5), var0 - 1)) {
+					PacketBufferNode var7;
+					if (var0 == 1) {
+						var7 = DecorativeObject.getPacketBufferNode(ClientPacket.field3006, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 2) {
+						var7 = DecorativeObject.getPacketBufferNode(ClientPacket.field3032, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 3) {
+						var7 = DecorativeObject.getPacketBufferNode(ClientPacket.field3011, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 4) {
+						var7 = DecorativeObject.getPacketBufferNode(ClientPacket.field2956, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 5) {
+						var7 = DecorativeObject.getPacketBufferNode(ClientPacket.field2960, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 6) {
+						var7 = DecorativeObject.getPacketBufferNode(ClientPacket.field2968, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 7) {
+						var7 = DecorativeObject.getPacketBufferNode(ClientPacket.field3002, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 8) {
+						var7 = DecorativeObject.getPacketBufferNode(ClientPacket.field2989, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 9) {
+						var7 = DecorativeObject.getPacketBufferNode(ClientPacket.field3015, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 10) {
+						var7 = DecorativeObject.getPacketBufferNode(ClientPacket.field3043, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+				}
+			}
+		}
 	}
 }

@@ -6,51 +6,31 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ci")
+@Deprecated
+@ObfuscatedName("ch")
 @Implements("Messages")
 public class Messages {
-	@ObfuscatedName("um")
-	@ObfuscatedSignature(
-		descriptor = "Llw;"
-	)
-	public static class312 field1273;
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@Export("Messages_channels")
 	static final Map Messages_channels;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Loz;"
+		descriptor = "Lpt;"
 	)
 	@Export("Messages_hashTable")
 	static final IterableNodeHashTable Messages_hashTable;
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "Lls;"
+		descriptor = "Lma;"
 	)
 	@Export("Messages_queue")
 	static final IterableDualNodeQueue Messages_queue;
-	@ObfuscatedName("m")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 1900201555
+		intValue = -501470971
 	)
 	@Export("Messages_count")
 	static int Messages_count;
-	@ObfuscatedName("e")
-	@ObfuscatedSignature(
-		descriptor = "Ljm;"
-	)
-	@Export("scriptActiveWidget")
-	static Widget scriptActiveWidget;
-	@ObfuscatedName("ge")
-	@ObfuscatedGetter(
-		longValue = -3704126848335008397L
-	)
-	static long field1272;
-	@ObfuscatedName("gd")
-	@ObfuscatedGetter(
-		intValue = -1932714305
-	)
-	static int field1277;
 
 	static {
 		Messages_channels = new HashMap();

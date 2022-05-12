@@ -3,36 +3,49 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @ObfuscatedName("by")
 @Implements("ChatChannel")
 public class ChatChannel {
-	@ObfuscatedName("sm")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1987554027
+		intValue = -2004549905
 	)
-	static int field956;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = -764291983
-	)
-	@Export("musicTrackVolume")
-	public static int musicTrackVolume;
-	@ObfuscatedName("en")
+	static int field973;
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
+		descriptor = "Lne;"
 	)
-	@Export("archive14")
-	static Archive archive14;
-	@ObfuscatedName("b")
+	static Bounds field976;
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "[Lbr;"
+		descriptor = "Lne;"
+	)
+	static Bounds field977;
+	@ObfuscatedName("hl")
+	@ObfuscatedSignature(
+		descriptor = "Lmx;"
+	)
+	@Export("fontBold12")
+	static Font fontBold12;
+	@ObfuscatedName("ii")
+	@ObfuscatedSignature(
+		descriptor = "[Lqr;"
+	)
+	@Export("headIconPrayerSprites")
+	static SpritePixels[] headIconPrayerSprites;
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "[Lbo;"
 	)
 	@Export("messages")
 	Message[] messages;
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = 587145695
+		intValue = -247324107
 	)
 	@Export("count")
 	int count;
@@ -41,10 +54,10 @@ public class ChatChannel {
 		this.messages = new Message[100];
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lbr;",
-		garbageValue = "358093741"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)Lbo;",
+		garbageValue = "54"
 	)
 	@Export("addMessage")
 	Message addMessage(int var1, String var2, String var3, String var4) {
@@ -72,102 +85,93 @@ public class ChatChannel {
 		return var5;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lbr;",
-		garbageValue = "-91"
+		descriptor = "(II)Lbo;",
+		garbageValue = "-345084723"
 	)
 	@Export("getMessage")
 	Message getMessage(int var1) {
 		return var1 >= 0 && var1 < this.count ? this.messages[var1] : null;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1262269232"
+		garbageValue = "-2082093822"
 	)
 	@Export("size")
 	int size() {
 		return this.count;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;B)J",
-		garbageValue = "-84"
+		descriptor = "(IB)Z",
+		garbageValue = "-17"
 	)
-	static long method2054(CharSequence var0) {
-		long var1 = 0L;
-		int var3 = var0.length();
-
-		for (int var4 = 0; var4 < var3; ++var4) {
-			var1 *= 37L;
-			char var5 = var0.charAt(var4);
-			if (var5 >= 'A' && var5 <= 'Z') {
-				var1 += (long)(var5 + 1 - 65);
-			} else if (var5 >= 'a' && var5 <= 'z') {
-				var1 += (long)(var5 + 1 - 97);
-			} else if (var5 >= '0' && var5 <= '9') {
-				var1 += (long)(var5 + 27 - 48);
-			}
-
-			if (var1 >= 177917621779460413L) {
-				break;
-			}
-		}
-
-		while (var1 % 37L == 0L && 0L != var1) {
-			var1 /= 37L;
-		}
-
-		return var1;
+	public static boolean method1968(int var0) {
+		return var0 >= WorldMapDecorationType.field3562.id && var0 <= WorldMapDecorationType.field3577.id;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ljm;",
-		garbageValue = "1761147769"
+		descriptor = "(Lorg/json/JSONObject;Ljava/lang/String;I)[F",
+		garbageValue = "-1029057430"
 	)
-	@Export("getWidget")
-	public static Widget getWidget(int var0) {
-		int var1 = var0 >> 16;
-		int var2 = var0 & 65535;
-		if (MouseRecorder.Widget_interfaceComponents[var1] == null || MouseRecorder.Widget_interfaceComponents[var1][var2] == null) {
-			boolean var3 = class242.loadInterface(var1);
-			if (!var3) {
-				return null;
-			}
+	static float[] method1965(JSONObject var0, String var1) throws JSONException {
+		float[] var2 = new float[4];
+
+		try {
+			JSONArray var3 = var0.getJSONArray(var1);
+			var2[0] = (float)var3.optDouble(0, 0.0D);
+			var2[1] = (float)var3.optDouble(1, 0.0D);
+			var2[2] = (float)var3.optDouble(2, 1.0D);
+			var2[3] = (float)var3.optDouble(3, 1.0D);
+		} catch (JSONException var4) {
+			var2[0] = 0.0F;
+			var2[1] = 0.0F;
+			var2[2] = 1.0F;
+			var2[3] = 1.0F;
 		}
 
-		return MouseRecorder.Widget_interfaceComponents[var1][var2];
+		return var2;
 	}
 
-	@ObfuscatedName("ka")
+	@ObfuscatedName("ju")
 	@ObfuscatedSignature(
-		descriptor = "(IIIB)Lcl;",
-		garbageValue = "3"
+		descriptor = "(Lki;III)V",
+		garbageValue = "-1619686813"
 	)
-	static final InterfaceParent method2058(int var0, int var1, int var2) {
-		InterfaceParent var3 = new InterfaceParent();
-		var3.group = var1;
-		var3.type = var2;
-		Client.interfaceParents.put(var3, (long)var0);
-		class140.Widget_resetModelFrames(var1);
-		Widget var4 = getWidget(var0);
-		SecureRandomCallable.invalidateWidget(var4);
-		if (Client.meslayerContinueWidget != null) {
-			SecureRandomCallable.invalidateWidget(Client.meslayerContinueWidget);
-			Client.meslayerContinueWidget = null;
+	@Export("alignWidgetPosition")
+	static void alignWidgetPosition(Widget var0, int var1, int var2) {
+		if (var0.xAlignment == 0) {
+			var0.x = var0.rawX;
+		} else if (var0.xAlignment == 1) {
+			var0.x = var0.rawX + (var1 - var0.width) / 2;
+		} else if (var0.xAlignment == 2) {
+			var0.x = var1 - var0.width - var0.rawX;
+		} else if (var0.xAlignment == 3) {
+			var0.x = var0.rawX * var1 >> 14;
+		} else if (var0.xAlignment == 4) {
+			var0.x = (var0.rawX * var1 >> 14) + (var1 - var0.width) / 2;
+		} else {
+			var0.x = var1 - var0.width - (var0.rawX * var1 >> 14);
 		}
 
-		FileSystem.decrementMenuEntries();
-		class115.revalidateWidgetScroll(MouseRecorder.Widget_interfaceComponents[var0 >> 16], var4, false);
-		class33.runWidgetOnLoadListener(var1);
-		if (Client.rootInterface != -1) {
-			Message.runIntfCloseListeners(Client.rootInterface, 1);
+		if (var0.yAlignment == 0) {
+			var0.y = var0.rawY;
+		} else if (var0.yAlignment == 1) {
+			var0.y = (var2 - var0.height) / 2 + var0.rawY;
+		} else if (var0.yAlignment == 2) {
+			var0.y = var2 - var0.height - var0.rawY;
+		} else if (var0.yAlignment == 3) {
+			var0.y = var2 * var0.rawY >> 14;
+		} else if (var0.yAlignment == 4) {
+			var0.y = (var2 - var0.height) / 2 + (var2 * var0.rawY >> 14);
+		} else {
+			var0.y = var2 - var0.height - (var2 * var0.rawY >> 14);
 		}
 
-		return var3;
 	}
 }
