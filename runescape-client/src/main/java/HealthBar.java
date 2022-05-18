@@ -1,42 +1,36 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cs")
+@ObfuscatedName("ct")
 @Implements("HealthBar")
 public class HealthBar extends Node {
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -1200843619
-	)
-	static int field1209;
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "Lfd;"
+		descriptor = "Lfr;"
 	)
 	@Export("definition")
 	HealthBarDefinition definition;
-	@ObfuscatedName("m")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Llo;"
 	)
 	@Export("updates")
 	IterableNodeDeque updates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfd;)V"
+		descriptor = "(Lfr;)V"
 	)
 	HealthBar(HealthBarDefinition var1) {
 		this.updates = new IterableNodeDeque();
 		this.definition = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "(IIIII)V",
-		garbageValue = "2125258753"
+		garbageValue = "-1281629783"
 	)
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
@@ -69,10 +63,10 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lcn;",
-		garbageValue = "849241629"
+		descriptor = "(IB)Lcn;",
+		garbageValue = "79"
 	)
 	@Export("get")
 	HealthBarUpdate get(int var1) {
@@ -83,7 +77,7 @@ public class HealthBar extends Node {
 				var2 = var3;
 			}
 
-			if (this.definition.int5 + var2.cycle + var2.cycleOffset > var1) {
+			if (this.definition.int5 + var2.cycleOffset + var2.cycle > var1) {
 				return var2;
 			} else {
 				var2.remove();
@@ -94,61 +88,60 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "80"
+		garbageValue = "127"
 	)
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method5915();
+		return this.updates.method5986();
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "2114195084"
+		descriptor = "(I)[Ldl;",
+		garbageValue = "-95794784"
 	)
-	static void method2311() {
-		if (Login.Login_username == null || Login.Login_username.length() <= 0) {
-			if (SecureRandomFuture.clientPreferences.rememberedUsername != null) {
-				Login.Login_username = SecureRandomFuture.clientPreferences.rememberedUsername;
-				Client.Login_isUsernameRemembered = true;
-			} else {
-				Client.Login_isUsernameRemembered = false;
+	static class118[] method2333() {
+		return new class118[]{class118.field1498, class118.field1491, class118.field1492, class118.field1499, class118.field1490, class118.field1495};
+	}
+
+	@ObfuscatedName("fv")
+	@ObfuscatedSignature(
+		descriptor = "(Lle;Ljava/lang/String;I)V",
+		garbageValue = "757631192"
+	)
+	static void method2335(Archive var0, String var1) {
+		ArchiveLoader var2 = new ArchiveLoader(var0, var1);
+		Client.archiveLoaders.add(var2);
+		Client.field770 += var2.groupCount;
+	}
+
+	@ObfuscatedName("gp")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "85"
+	)
+	static final void method2334() {
+		if (Tiles.field997) {
+			for (int var0 = 0; var0 < Players.Players_count; ++var0) {
+				Player var1 = Client.players[Players.Players_indices[var0]];
+				var1.method2114();
 			}
 
+			Tiles.field997 = false;
 		}
+
 	}
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(CI)C",
-		garbageValue = "2115145690"
-	)
-	static char method2313(char var0) {
-		return var0 != 181 && var0 != 402 ? Character.toTitleCase(var0) : var0;
-	}
-
-	@ObfuscatedName("iq")
+	@ObfuscatedName("ig")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "517043711"
+		garbageValue = "2108689548"
 	)
-	@Export("Widget_runOnTargetLeave")
-	static void Widget_runOnTargetLeave() {
-		if (Client.isSpellSelected) {
-			Widget var0 = class126.getWidgetChild(class20.selectedSpellWidget, Client.selectedSpellChildIndex);
-			if (var0 != null && var0.onTargetLeave != null) {
-				ScriptEvent var1 = new ScriptEvent();
-				var1.widget = var0;
-				var1.args = var0.onTargetLeave;
-				class285.runScriptEvent(var1);
-			}
-
-			Client.field633 = -1;
-			Client.isSpellSelected = false;
-			SecureRandomCallable.invalidateWidget(var0);
-		}
+	static void method2336() {
+		Client.menuOptionsCount = 0;
+		Client.isMenuOpen = false;
 	}
 }

@@ -4,38 +4,38 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ju")
+@ObfuscatedName("kd")
 @Implements("Coord")
 public class Coord {
-	@ObfuscatedName("q")
-	@Export("operatingSystemName")
-	public static String operatingSystemName;
-	@ObfuscatedName("gu")
-	@ObfuscatedSignature(
-		descriptor = "Lmd;"
-	)
-	static AbstractSocket field3186;
-	@ObfuscatedName("c")
+	@ObfuscatedName("ui")
 	@ObfuscatedGetter(
-		intValue = 2028633895
+		intValue = 98471251
+	)
+	@Export("foundItemIndex")
+	static int foundItemIndex;
+	@ObfuscatedName("r")
+	public static short[] field3352;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = 1023382847
 	)
 	@Export("plane")
 	public int plane;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -115571391
+		intValue = 1531148769
 	)
 	@Export("x")
 	public int x;
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = -193761027
+		intValue = -991712687
 	)
 	@Export("y")
 	public int y;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lju;)V"
+		descriptor = "(Lkd;)V"
 	)
 	public Coord(Coord var1) {
 		this.plane = var1.plane;
@@ -60,10 +60,10 @@ public class Coord {
 
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "844590476"
+		descriptor = "(B)I",
+		garbageValue = "60"
 	)
 	@Export("packed")
 	public int packed() {
@@ -74,10 +74,10 @@ public class Coord {
 		return var1;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(Lju;B)Z",
-		garbageValue = "-21"
+		descriptor = "(Lkd;I)Z",
+		garbageValue = "-95969340"
 	)
 	@Export("equalsCoord")
 	boolean equalsCoord(Coord var1) {
@@ -90,18 +90,14 @@ public class Coord {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
-		garbageValue = "1213799253"
+		garbageValue = "959391461"
 	)
 	@Export("toString")
 	String toString(String var1) {
 		return this.plane + var1 + (this.x >> 6) + var1 + (this.y >> 6) + var1 + (this.x & 63) + var1 + (this.y & 63);
-	}
-
-	public String toString() {
-		return this.toString(",");
 	}
 
 	public boolean equals(Object var1) {
@@ -112,7 +108,30 @@ public class Coord {
 		}
 	}
 
+	public String toString() {
+		return this.toString(",");
+	}
+
 	public int hashCode() {
 		return this.packed();
+	}
+
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "474672865"
+	)
+	public static boolean method5370() {
+		return class273.musicPlayerStatus != 0 ? true : class273.midiPcmStream.isReady();
+	}
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(CI)Z",
+		garbageValue = "1630457870"
+	)
+	@Export("isDigit")
+	public static boolean isDigit(char var0) {
+		return var0 >= '0' && var0 <= '9';
 	}
 }

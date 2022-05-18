@@ -1,77 +1,84 @@
-import java.security.SecureRandom;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hp")
+@ObfuscatedName("hf")
 @Implements("DecorativeObject")
-public final class DecorativeObject
-{
+public final class DecorativeObject {
 	@ObfuscatedName("c")
+	@Export("Tiles_lightness")
+	static int[] Tiles_lightness;
+	@ObfuscatedName("ia")
+	@ObfuscatedSignature(
+		descriptor = "[Lqr;"
+	)
+	@Export("mapDotSprites")
+	static SpritePixels[] mapDotSprites;
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -2023059781
+		intValue = 1133434607
 	)
 	@Export("tileHeight")
 	int tileHeight;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 2111603765
+		intValue = 1649410048
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = -1656810997
+		intValue = -1248756677
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("m")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -1965519891
+		intValue = 1886236557
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("t")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = 278377977
+		intValue = -665264033
 	)
 	@Export("orientation2")
 	int orientation2;
-	@ObfuscatedName("s")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = 1314236601
+		intValue = -884502203
 	)
 	@Export("xOffset")
 	int xOffset;
-	@ObfuscatedName("j")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -1594233985
+		intValue = -553687171
 	)
 	@Export("yOffset")
 	int yOffset;
-	@ObfuscatedName("w")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lgx;"
 	)
 	@Export("renderable1")
 	public Renderable renderable1;
-	@ObfuscatedName("n")
+	@ObfuscatedName("r")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lgx;"
 	)
 	@Export("renderable2")
 	public Renderable renderable2;
-	@ObfuscatedName("r")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		longValue = 6911018160892972427L
+		longValue = -451444878306106685L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("o")
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = 1066794937
+		intValue = 1120239
 	)
 	@Export("flags")
 	int flags;
@@ -81,14 +88,63 @@ public final class DecorativeObject
 		this.flags = 0;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/security/SecureRandom;",
-		garbageValue = "-121"
+		descriptor = "(Ljj;Lqh;B)Ljm;",
+		garbageValue = "-72"
 	)
-	static SecureRandom method4340() {
-		SecureRandom var0 = new SecureRandom();
-		var0.nextInt();
-		return var0;
+	@Export("getPacketBufferNode")
+	public static PacketBufferNode getPacketBufferNode(ClientPacket var0, IsaacCipher var1) {
+		PacketBufferNode var2 = FloorOverlayDefinition.method3700();
+		var2.clientPacket = var0;
+		var2.clientPacketLength = var0.length;
+		if (var2.clientPacketLength == -1) {
+			var2.packetBuffer = new PacketBuffer(260);
+		} else if (var2.clientPacketLength == -2) {
+			var2.packetBuffer = new PacketBuffer(10000);
+		} else if (var2.clientPacketLength <= 18) {
+			var2.packetBuffer = new PacketBuffer(20);
+		} else if (var2.clientPacketLength <= 98) {
+			var2.packetBuffer = new PacketBuffer(100);
+		} else {
+			var2.packetBuffer = new PacketBuffer(260);
+		}
+
+		var2.packetBuffer.setIsaacCipher(var1);
+		var2.packetBuffer.writeByteIsaac(var2.clientPacket.id);
+		var2.index = 0;
+		return var2;
+	}
+
+	@ObfuscatedName("t")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-811937066"
+	)
+	static final int method4391() {
+		return ViewportMouse.ViewportMouse_y;
+	}
+
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;II)V",
+		garbageValue = "1555036135"
+	)
+	static final void method4392(String var0, int var1) {
+		PacketBufferNode var2 = getPacketBufferNode(ClientPacket.field3026, Client.packetWriter.isaacCipher);
+		var2.packetBuffer.writeByte(class392.stringCp1252NullTerminatedByteSize(var0) + 1);
+		var2.packetBuffer.method7542(var1);
+		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
+		Client.packetWriter.addNode(var2);
+	}
+
+	@ObfuscatedName("jv")
+	@ObfuscatedSignature(
+		descriptor = "(S)Z",
+		garbageValue = "20695"
+	)
+	@Export("getTapToDrop")
+	static boolean getTapToDrop() {
+		return Client.tapToDrop;
 	}
 }
