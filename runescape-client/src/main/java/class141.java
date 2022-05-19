@@ -2,133 +2,118 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("eo")
-public class class141 extends class126 {
-	@ObfuscatedName("m")
-	@Export("SpriteBuffer_xOffsets")
-	public static int[] SpriteBuffer_xOffsets;
-	@ObfuscatedName("c")
+@ObfuscatedName("ew")
+public class class141 extends class144 {
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		longValue = 2275648101234972147L
+		intValue = -390226113
 	)
-	long field1610;
-	@ObfuscatedName("b")
-	String field1607;
-	@ObfuscatedName("p")
+	int field1670;
+	@ObfuscatedName("q")
+	byte field1668;
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = 65665449
+		intValue = 1954797197
 	)
-	int field1608;
+	int field1669;
+	@ObfuscatedName("k")
+	String field1671;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Lee;"
 	)
-	final class129 this$0;
+	final class145 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "(Lee;)V"
 	)
-	class141(class129 var1) {
+	class141(class145 var1) {
 		this.this$0 = var1;
-		this.field1610 = -1L;
-		this.field1607 = null;
-		this.field1608 = 0;
+		this.field1670 = -1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lpx;I)V",
+		garbageValue = "1212008489"
 	)
-	void vmethod3029(Buffer var1) {
-		if (var1.readUnsignedByte() != 255) {
-			--var1.offset;
-			this.field1610 = var1.readLong();
-		}
-
-		this.field1607 = var1.readStringCp1252NullTerminatedOrNull();
-		this.field1608 = var1.readUnsignedShort();
+	void vmethod3037(Buffer var1) {
+		var1.readUnsignedByte();
+		this.field1670 = var1.readUnsignedShort();
+		this.field1668 = var1.readByte();
+		this.field1669 = var1.readUnsignedShort();
+		var1.readLong();
+		this.field1671 = var1.readStringCp1252NullTerminated();
+		var1.readUnsignedByte();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(Let;I)V",
+		garbageValue = "1640110130"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2850(this.field1610, this.field1607, this.field1608);
+	void vmethod3032(ClanChannel var1) {
+		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1670);
+		var2.rank = this.field1668;
+		var2.world = this.field1669;
+		var2.username = new Username(this.field1671);
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-1452138237"
+		descriptor = "(B)[Lcm;",
+		garbageValue = "-33"
 	)
-	@Export("clearItemContainer")
-	static void clearItemContainer(int var0) {
-		ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+	static class83[] method2962() {
+		return new class83[]{class83.field1087, class83.field1088, class83.field1092, class83.field1084, class83.field1086, class83.field1083};
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lgt;",
+		garbageValue = "19"
+	)
+	@Export("getFrames")
+	static Frames getFrames(int var0) {
+		Frames var1 = (Frames)SequenceDefinition.SequenceDefinition_cachedFrames.get((long)var0);
 		if (var1 != null) {
-			for (int var2 = 0; var2 < var1.ids.length; ++var2) {
-				var1.ids[var2] = -1;
-				var1.quantities[var2] = 0;
-			}
-
-		}
-	}
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "-1880227128"
-	)
-	static int method2950(int var0, Script var1, boolean var2) {
-		int var3;
-		if (var0 == ScriptOpcodes.CAM_FORCEANGLE) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-			int var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-			if (!Client.isCameraLocked) {
-				Client.camAngleX = var3;
-				Client.camAngleY = var4;
-			}
-
-			return 1;
-		} else if (var0 == ScriptOpcodes.CAM_GETANGLE_XA) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.camAngleX;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CAM_GETANGLE_YA) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.camAngleY;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CAM_SETFOLLOWHEIGHT) {
-			var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-			if (var3 < 0) {
-				var3 = 0;
-			}
-
-			Client.camFollowHeight = var3;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CAM_GETFOLLOWHEIGHT) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.camFollowHeight;
-			return 1;
+			return var1;
 		} else {
-			return 2;
-		}
-	}
+			AbstractArchive var3 = SequenceDefinition.SequenceDefinition_animationsArchive;
+			AbstractArchive var4 = SequenceDefinition.SequenceDefinition_skeletonsArchive;
+			boolean var5 = true;
+			int[] var6 = var3.getGroupFileIds(var0);
 
-	@ObfuscatedName("lf")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "921441126"
-	)
-	@Export("Clan_joinChat")
-	static final void Clan_joinChat(String var0) {
-		if (!var0.equals("")) {
-			PacketBufferNode var1 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2857, Client.packetWriter.isaacCipher);
-			var1.packetBuffer.writeByte(class116.stringCp1252NullTerminatedByteSize(var0));
-			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-			Client.packetWriter.addNode(var1);
+			for (int var7 = 0; var7 < var6.length; ++var7) {
+				byte[] var8 = var3.getFile(var0, var6[var7]);
+				if (var8 == null) {
+					var5 = false;
+				} else {
+					int var9 = (var8[0] & 255) << 8 | var8[1] & 255;
+					byte[] var10 = var4.getFile(var9, 0);
+					if (var10 == null) {
+						var5 = false;
+					}
+				}
+			}
+
+			Frames var2;
+			if (!var5) {
+				var2 = null;
+			} else {
+				try {
+					var2 = new Frames(var3, var4, var0, false);
+				} catch (Exception var12) {
+					var2 = null;
+				}
+			}
+
+			if (var2 != null) {
+				SequenceDefinition.SequenceDefinition_cachedFrames.put(var2, (long)var0);
+			}
+
+			return var2;
 		}
 	}
 }

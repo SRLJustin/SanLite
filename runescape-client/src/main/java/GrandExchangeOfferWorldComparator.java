@@ -4,13 +4,20 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kv")
+@ObfuscatedName("lj")
 @Implements("GrandExchangeOfferWorldComparator")
 final class GrandExchangeOfferWorldComparator implements Comparator {
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lkj;Lkj;B)I",
-		garbageValue = "52"
+		descriptor = "Llp;"
+	)
+	@Export("WorldMapElement_archive")
+	static AbstractArchive WorldMapElement_archive;
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(Lln;Lln;I)I",
+		garbageValue = "1939073970"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
@@ -23,5 +30,16 @@ final class GrandExchangeOfferWorldComparator implements Comparator {
 
 	public boolean equals(Object var1) {
 		return super.equals(var1);
+	}
+
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(Llp;Llp;Ljava/lang/String;Ljava/lang/String;I)Lmx;",
+		garbageValue = "2088711199"
+	)
+	public static Font method5808(AbstractArchive var0, AbstractArchive var1, String var2, String var3) {
+		int var4 = var0.getGroupId(var2);
+		int var5 = var0.getFileId(var4, var3);
+		return class387.method6781(var0, var1, var4, var5);
 	}
 }

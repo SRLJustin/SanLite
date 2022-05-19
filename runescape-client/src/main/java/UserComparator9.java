@@ -4,20 +4,16 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ds")
+@ObfuscatedName("dh")
 @Implements("UserComparator9")
 public class UserComparator9 extends AbstractUserComparator {
-	@ObfuscatedName("sq")
+	@ObfuscatedName("uo")
 	@ObfuscatedGetter(
-		intValue = -1619133469
+		intValue = 1940467607
 	)
-	static int field1335;
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "Lpa;"
-	)
-	static IndexedSprite field1336;
-	@ObfuscatedName("c")
+	@Export("foundItemIdCount")
+	static int foundItemIdCount;
+	@ObfuscatedName("o")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -25,10 +21,10 @@ public class UserComparator9 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lmp;Lmp;I)I",
-		garbageValue = "-346257464"
+		descriptor = "(Lns;Lns;B)I",
+		garbageValue = "16"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -41,5 +37,14 @@ public class UserComparator9 extends AbstractUserComparator {
 
 	public int compare(Object var1, Object var2) {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
+	}
+
+	@ObfuscatedName("b")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-652974265"
+	)
+	static final void method2601() {
+		InterfaceParent.method2067("You can't add yourself to your own ignore list");
 	}
 }
