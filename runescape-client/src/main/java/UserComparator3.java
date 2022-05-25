@@ -1,4 +1,5 @@
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InvalidClassException;
 import java.io.ObjectInputStream;
@@ -9,36 +10,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.rs.Reflection;
 
-@ObfuscatedName("dr")
+@ObfuscatedName("dy")
 @Implements("UserComparator3")
 public class UserComparator3 extends AbstractUserComparator {
-	@ObfuscatedName("e")
-	@ObfuscatedGetter(
-		intValue = -1268713199
-	)
-	@Export("cacheGamebuild")
-	public static int cacheGamebuild;
-	@ObfuscatedName("a")
-	@Export("cacheParentPaths")
-	public static String[] cacheParentPaths;
-	@ObfuscatedName("bk")
-	@ObfuscatedSignature(
-		descriptor = "[Lpa;"
-	)
-	@Export("worldSelectArrows")
-	static IndexedSprite[] worldSelectArrows;
-	@ObfuscatedName("mf")
-	@ObfuscatedGetter(
-		intValue = -1173193887
-	)
-	@Export("menuHeight")
-	static int menuHeight;
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -46,10 +25,10 @@ public class UserComparator3 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lmp;Lmp;I)I",
-		garbageValue = "1528597285"
+		descriptor = "(Lns;Lns;B)I",
+		garbageValue = "1"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -64,10 +43,10 @@ public class UserComparator3 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lpj;B)V",
-		garbageValue = "-38"
+		descriptor = "(Lpc;I)V",
+		garbageValue = "1236779387"
 	)
 	@Export("performReflectionCheck")
 	public static void performReflectionCheck(PacketBuffer var0) {
@@ -164,58 +143,44 @@ public class UserComparator3 extends AbstractUserComparator {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-42355532"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;ZI)Lpu;",
+		garbageValue = "-1588971004"
 	)
-	@Export("changeWorldSelectSorting")
-	static void changeWorldSelectSorting(int var0, int var1) {
-		int[] var2 = new int[4];
-		int[] var3 = new int[4];
-		var2[0] = var0;
-		var3[0] = var1;
-		int var4 = 1;
-
-		for (int var5 = 0; var5 < 4; ++var5) {
-			if (World.World_sortOption1[var5] != var0) {
-				var2[var4] = World.World_sortOption1[var5];
-				var3[var4] = World.World_sortOption2[var5];
-				++var4;
+	@Export("getPreferencesFile")
+	public static AccessFile getPreferencesFile(String var0, String var1, boolean var2) {
+		File var3 = new File(JagexCache.cacheDir, "preferences" + var0 + ".dat");
+		if (var3.exists()) {
+			try {
+				AccessFile var10 = new AccessFile(var3, "rw", 10000L);
+				return var10;
+			} catch (IOException var9) {
 			}
 		}
 
-		World.World_sortOption1 = var2;
-		World.World_sortOption2 = var3;
-		UserComparator4.sortWorlds(class334.World_worlds, 0, class334.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
-	}
+		String var4 = "";
+		if (class11.cacheGamebuild == 33) {
+			var4 = "_rc";
+		} else if (class11.cacheGamebuild == 34) {
+			var4 = "_wip";
+		}
 
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "101"
-	)
-	public static void method2529() {
-		class141.SpriteBuffer_xOffsets = null;
-		RouteStrategy.SpriteBuffer_yOffsets = null;
-		class432.SpriteBuffer_spriteWidths = null;
-		class330.SpriteBuffer_spriteHeights = null;
-		class432.SpriteBuffer_spritePalette = null;
-		class369.SpriteBuffer_pixels = null;
-	}
+		File var5 = new File(BufferedSource.userHomeDirectory, "jagex_" + var1 + "_preferences" + var0 + var4 + ".dat");
+		AccessFile var6;
+		if (!var2 && var5.exists()) {
+			try {
+				var6 = new AccessFile(var5, "rw", 10000L);
+				return var6;
+			} catch (IOException var8) {
+			}
+		}
 
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(
-		descriptor = "(Ljm;IIII)V",
-		garbageValue = "265387422"
-	)
-	@Export("Widget_setKeyRate")
-	static final void Widget_setKeyRate(Widget var0, int var1, int var2, int var3) {
-		if (var0.field3302 == null) {
+		try {
+			var6 = new AccessFile(var3, "rw", 10000L);
+			return var6;
+		} catch (IOException var7) {
 			throw new RuntimeException();
-		} else {
-			var0.field3302[var1] = var2;
-			var0.field3303[var1] = var3;
 		}
 	}
 }

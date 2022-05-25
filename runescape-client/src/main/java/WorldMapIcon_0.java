@@ -4,42 +4,48 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hf")
+@ObfuscatedName("hs")
 @Implements("WorldMapIcon_0")
 public class WorldMapIcon_0 extends AbstractWorldMapIcon {
-	@ObfuscatedName("c")
+	@ObfuscatedName("b")
+	@ObfuscatedSignature(
+		descriptor = "Lli;"
+	)
+	@Export("NetCache_currentResponse")
+	public static NetFileRequest NetCache_currentResponse;
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -198838733
+		intValue = -956371221
 	)
 	@Export("element")
 	final int element;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lhm;"
+		descriptor = "Lip;"
 	)
 	@Export("label")
 	final WorldMapLabel label;
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = 1320837941
+		intValue = 2031981367
 	)
 	@Export("subWidth")
 	final int subWidth;
-	@ObfuscatedName("m")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 1830230057
+		intValue = -1919685021
 	)
 	@Export("subHeight")
 	final int subHeight;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lju;Lju;ILhm;)V"
+		descriptor = "(Lkd;Lkd;ILip;)V"
 	)
 	WorldMapIcon_0(Coord var1, Coord var2, int var3, WorldMapLabel var4) {
 		super(var1, var2);
 		this.element = var3;
 		this.label = var4;
-		WorldMapElement var5 = class78.WorldMapElement_get(this.getElement());
+		WorldMapElement var5 = class120.WorldMapElement_get(this.getElement());
 		SpritePixels var6 = var5.getSpriteBool(false);
 		if (var6 != null) {
 			this.subWidth = var6.subWidth;
@@ -51,53 +57,67 @@ public class WorldMapIcon_0 extends AbstractWorldMapIcon {
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1255702565"
+		descriptor = "(B)I",
+		garbageValue = "16"
 	)
 	@Export("getElement")
 	public int getElement() {
 		return this.element;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lhm;",
-		garbageValue = "-577826789"
+		descriptor = "(I)Lip;",
+		garbageValue = "1420245554"
 	)
 	@Export("getLabel")
 	WorldMapLabel getLabel() {
 		return this.label;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(S)I",
-		garbageValue = "-21504"
+		descriptor = "(B)I",
+		garbageValue = "102"
 	)
 	@Export("getSubWidth")
 	int getSubWidth() {
 		return this.subWidth;
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1225820190"
+		garbageValue = "-1663406998"
 	)
 	@Export("getSubHeight")
 	int getSubHeight() {
 		return this.subHeight;
 	}
 
-	@ObfuscatedName("r")
+	@ObfuscatedName("gj")
 	@ObfuscatedSignature(
-		descriptor = "(CB)Z",
-		garbageValue = "94"
+		descriptor = "(II)V",
+		garbageValue = "-1424752711"
 	)
-	@Export("isAlphaNumeric")
-	public static boolean isAlphaNumeric(char var0) {
-		return var0 >= '0' && var0 <= '9' || var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
+	@Export("playSong")
+	static void playSong(int var0) {
+		if (var0 == -1 && !Client.field734) {
+			ApproximateRouteStrategy.method1110();
+		} else if (var0 != -1 && var0 != Client.currentTrackGroupId && class12.clientPreferences.method2248() != 0 && !Client.field734) {
+			Archive var1 = AbstractUserComparator.archive6;
+			int var2 = class12.clientPreferences.method2248();
+			class273.musicPlayerStatus = 1;
+			ClanChannelMember.musicTrackArchive = var1;
+			StructComposition.musicTrackGroupId = var0;
+			FriendsList.musicTrackFileId = 0;
+			Clock.musicTrackVolume = var2;
+			VertexNormal.musicTrackBoolean = false;
+			GrandExchangeEvent.pcmSampleLength = 2;
+		}
+
+		Client.currentTrackGroupId = var0;
 	}
 }

@@ -1,148 +1,141 @@
 import java.util.Comparator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kc")
+@ObfuscatedName("lw")
 @Implements("GrandExchangeOfferAgeComparator")
 final class GrandExchangeOfferAgeComparator implements Comparator {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lku;"
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(
+		intValue = -569064403
 	)
-	@Export("HealthBarDefinition_archive")
-	static AbstractArchive HealthBarDefinition_archive;
-	@ObfuscatedName("ar")
-	protected static String field3882;
+	static int field4072;
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lkj;Lkj;B)I",
-		garbageValue = "75"
+		descriptor = "(Lln;Lln;I)I",
+		garbageValue = "1626653530"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
-		return var1.age < var2.age ? -1 : (var1.age == var2.age ? 0 : 1);
-	}
-
-	public int compare(Object var1, Object var2) {
-		return this.compare_bridged((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
+		return var1.age < var2.age ? -1 : (var2.age == var1.age ? 0 : 1);
 	}
 
 	public boolean equals(Object var1) {
 		return super.equals(var1);
 	}
 
-	@ObfuscatedName("ii")
+	public int compare(Object var1, Object var2) {
+		return this.compare_bridged((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
+	}
+
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lcr;IIII)V",
-		garbageValue = "1259918287"
+		descriptor = "([FIFZFZ[FI)I",
+		garbageValue = "-1890109041"
 	)
-	@Export("addNpcToMenu")
-	static final void addNpcToMenu(NPC var0, int var1, int var2, int var3) {
-		NPCComposition var4 = var0.definition;
-		if (Client.menuOptionsCount < 400) {
-			if (var4.transforms != null) {
-				var4 = var4.transform();
+	public static int method5798(float[] var0, int var1, float var2, boolean var3, float var4, boolean var5, float[] var6) {
+		float var7 = 0.0F;
+
+		for (int var8 = 0; var8 < var1 + 1; ++var8) {
+			var7 += Math.abs(var0[var8]);
+		}
+
+		float var24 = (Math.abs(var2) + Math.abs(var4)) * (float)(var1 + 1) * class114.field1435;
+		if (var7 <= var24) {
+			return -1;
+		} else {
+			float[] var9 = new float[var1 + 1];
+
+			int var10;
+			for (var10 = 0; var10 < var1 + 1; ++var10) {
+				var9[var10] = 1.0F / var7 * var0[var10];
 			}
 
-			if (var4 != null) {
-				if (var4.isInteractable) {
-					if (!var4.isFollower || Client.followerIndex == var1) {
-						String var5 = var4.name;
-						int var6;
-						if (var4.combatLevel != 0 && var0.field1119 != 0) {
-							var6 = var0.field1119 != -1 ? var0.field1119 : var4.combatLevel;
-							var5 = var5 + Tiles.method2108(var6, class340.localPlayer.combatLevel) + " " + " (" + "level-" + var6 + ")";
+			while (Math.abs(var9[var1]) < var24) {
+				--var1;
+			}
+
+			var10 = 0;
+			if (var1 == 0) {
+				return var10;
+			} else if (var1 == 1) {
+				var6[0] = -var9[0] / var9[1];
+				boolean var22 = var3 ? var2 < var24 + var6[0] : var2 < var6[0] - var24;
+				boolean var23 = var5 ? var4 > var6[0] - var24 : var4 > var6[0] + var24;
+				var10 = var22 && var23 ? 1 : 0;
+				if (var10 > 0) {
+					if (var3 && var6[0] < var2) {
+						var6[0] = var2;
+					} else if (var5 && var6[0] > var4) {
+						var6[0] = var4;
+					}
+				}
+
+				return var10;
+			} else {
+				class390 var11 = new class390(var9, var1);
+				float[] var12 = new float[var1 + 1];
+
+				for (int var13 = 1; var13 <= var1; ++var13) {
+					var12[var13 - 1] = (float)var13 * var9[var13];
+				}
+
+				float[] var21 = new float[var1 + 1];
+				int var14 = method5798(var12, var1 - 1, var2, false, var4, false, var21);
+				if (var14 == -1) {
+					return 0;
+				} else {
+					boolean var15 = false;
+					float var17 = 0.0F;
+					float var18 = 0.0F;
+					float var19 = 0.0F;
+
+					for (int var20 = 0; var20 <= var14; ++var20) {
+						if (var10 > var1) {
+							return var10;
 						}
 
-						if (var4.isFollower && Client.followerOpsLowPriority) {
-							class11.insertMenuItemNoShift("Examine", UserComparator5.colorStartTag(16776960) + var5, 1003, var1, var2, var3);
-						}
-
-						if (Client.isItemSelected == 1) {
-							class11.insertMenuItemNoShift("Use", Client.selectedItemName + " " + "->" + " " + UserComparator5.colorStartTag(16776960) + var5, 7, var1, var2, var3);
-						} else if (Client.isSpellSelected) {
-							if ((class91.selectedSpellFlags & 2) == 2) {
-								class11.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + UserComparator5.colorStartTag(16776960) + var5, 8, var1, var2, var3);
+						float var16;
+						if (var20 == 0) {
+							var16 = var2;
+							var18 = Ignored.method6616(var9, var1, var2);
+							if (Math.abs(var18) <= var24 && var3) {
+								var6[var10++] = var2;
 							}
 						} else {
-							var6 = var4.isFollower && Client.followerOpsLowPriority ? 2000 : 0;
-							String[] var7 = var4.actions;
-							int var8;
-							int var9;
-							if (var7 != null) {
-								for (var8 = 4; var8 >= 0; --var8) {
-									if (var7[var8] != null && !var7[var8].equalsIgnoreCase("Attack")) {
-										var9 = 0;
-										if (var8 == 0) {
-											var9 = var6 + 9;
-										}
-
-										if (var8 == 1) {
-											var9 = var6 + 10;
-										}
-
-										if (var8 == 2) {
-											var9 = var6 + 11;
-										}
-
-										if (var8 == 3) {
-											var9 = var6 + 12;
-										}
-
-										if (var8 == 4) {
-											var9 = var6 + 13;
-										}
-
-										class11.insertMenuItemNoShift(var7[var8], UserComparator5.colorStartTag(16776960) + var5, var9, var1, var2, var3);
-									}
-								}
-							}
-
-							if (var7 != null) {
-								for (var8 = 4; var8 >= 0; --var8) {
-									if (var7[var8] != null && var7[var8].equalsIgnoreCase("Attack")) {
-										short var10 = 0;
-										if (AttackOption.AttackOption_hidden != Client.npcAttackOption) {
-											if (AttackOption.AttackOption_alwaysRightClick == Client.npcAttackOption || Client.npcAttackOption == AttackOption.AttackOption_dependsOnCombatLevels && var4.combatLevel > class340.localPlayer.combatLevel) {
-												var10 = 2000;
-											}
-
-											var9 = 0;
-											if (var8 == 0) {
-												var9 = var10 + 9;
-											}
-
-											if (var8 == 1) {
-												var9 = var10 + 10;
-											}
-
-											if (var8 == 2) {
-												var9 = var10 + 11;
-											}
-
-											if (var8 == 3) {
-												var9 = var10 + 12;
-											}
-
-											if (var8 == 4) {
-												var9 = var10 + 13;
-											}
-
-											class11.insertMenuItemNoShift(var7[var8], UserComparator5.colorStartTag(16776960) + var5, var9, var1, var2, var3);
-										}
-									}
-								}
-							}
-
-							if (!var4.isFollower || !Client.followerOpsLowPriority) {
-								class11.insertMenuItemNoShift("Examine", UserComparator5.colorStartTag(16776960) + var5, 1003, var1, var2, var3);
-							}
+							var16 = var19;
+							var18 = var17;
 						}
 
+						if (var20 == var14) {
+							var19 = var4;
+							var15 = false;
+						} else {
+							var19 = var21[var20];
+						}
+
+						var17 = Ignored.method6616(var9, var1, var19);
+						if (var15) {
+							var15 = false;
+						} else if (Math.abs(var17) < var24) {
+							if (var20 != var14 || var5) {
+								var6[var10++] = var19;
+								var15 = true;
+							}
+						} else if (var18 < 0.0F && var17 > 0.0F || var18 > 0.0F && var17 < 0.0F) {
+							var6[var10++] = ReflectionCheck.method601(var11, var16, var19, 0.0F);
+							if (var10 > 1 && var6[var10 - 2] >= var6[var10 - 1] - var24) {
+								var6[var10 - 2] = (var6[var10 - 1] + var6[var10 - 2]) * 0.5F;
+								--var10;
+							}
+						}
 					}
+
+					return var10;
 				}
 			}
 		}

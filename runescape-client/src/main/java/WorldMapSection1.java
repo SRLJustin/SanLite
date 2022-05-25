@@ -1,51 +1,51 @@
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.Reflection;
 
-@ObfuscatedName("it")
+@ObfuscatedName("in")
 @Implements("WorldMapSection1")
 public class WorldMapSection1 implements WorldMapSection {
-	@ObfuscatedName("su")
+	@ObfuscatedName("sj")
 	@ObfuscatedGetter(
-		intValue = 635212315
+		intValue = 1030373785
 	)
-	static int field2755;
-	@ObfuscatedName("c")
+	static int field2898;
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = 703119
+		intValue = -1054024445
 	)
 	@Export("minPlane")
 	int minPlane;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 151084345
+		intValue = 268591679
 	)
 	@Export("planes")
 	int planes;
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = -1603380561
+		intValue = 1612610403
 	)
 	@Export("regionStartX")
 	int regionStartX;
-	@ObfuscatedName("m")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -945911483
+		intValue = -462292543
 	)
 	@Export("regionStartY")
 	int regionStartY;
-	@ObfuscatedName("t")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = -1790058655
+		intValue = -1693287799
 	)
 	@Export("regionEndX")
 	int regionEndX;
-	@ObfuscatedName("s")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = 1326239363
+		intValue = 1403534241
 	)
 	@Export("regionEndY")
 	int regionEndY;
@@ -53,10 +53,10 @@ public class WorldMapSection1 implements WorldMapSection {
 	WorldMapSection1() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lhr;I)V",
-		garbageValue = "2069930856"
+		descriptor = "(Lhm;I)V",
+		garbageValue = "-1792723155"
 	)
 	@Export("expandBounds")
 	public void expandBounds(WorldMapArea var1) {
@@ -78,34 +78,34 @@ public class WorldMapSection1 implements WorldMapSection {
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
 		descriptor = "(IIIB)Z",
-		garbageValue = "81"
+		garbageValue = "1"
 	)
 	@Export("containsCoord")
 	public boolean containsCoord(int var1, int var2, int var3) {
-		if (var1 >= this.minPlane && var1 < this.planes + this.minPlane) {
+		if (var1 >= this.minPlane && var1 < this.minPlane + this.planes) {
 			return var2 >> 6 == this.regionStartX && var3 >> 6 == this.regionStartY;
 		} else {
 			return false;
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "(III)Z",
-		garbageValue = "42159517"
+		descriptor = "(IIB)Z",
+		garbageValue = "2"
 	)
 	@Export("containsPosition")
 	public boolean containsPosition(int var1, int var2) {
 		return var1 >> 6 == this.regionEndX && var2 >> 6 == this.regionEndY;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
 		descriptor = "(IIII)[I",
-		garbageValue = "22240711"
+		garbageValue = "-41287528"
 	)
 	@Export("getBorderTileLengths")
 	public int[] getBorderTileLengths(int var1, int var2, int var3) {
@@ -117,10 +117,10 @@ public class WorldMapSection1 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(IIS)Lju;",
-		garbageValue = "5000"
+		descriptor = "(III)Lkd;",
+		garbageValue = "289851355"
 	)
 	@Export("coord")
 	public Coord coord(int var1, int var2) {
@@ -133,10 +133,10 @@ public class WorldMapSection1 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;S)V",
-		garbageValue = "-15299"
+		descriptor = "(Lpx;I)V",
+		garbageValue = "-113194936"
 	)
 	@Export("read")
 	public void read(Buffer var1) {
@@ -149,35 +149,70 @@ public class WorldMapSection1 implements WorldMapSection {
 		this.postRead();
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2072209821"
+		descriptor = "(B)V",
+		garbageValue = "38"
 	)
 	@Export("postRead")
 	void postRead() {
 	}
 
-	@ObfuscatedName("kb")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "349431240"
+		descriptor = "(II)I",
+		garbageValue = "1032077651"
 	)
-	static final void method4831() {
-		for (int var0 = 0; var0 < Players.Players_count; ++var0) {
-			Player var1 = Client.players[Players.Players_indices[var0]];
-			var1.clearIsFriend();
+	@Export("Widget_unpackTargetMask")
+	public static int Widget_unpackTargetMask(int var0) {
+		return var0 >> 11 & 63;
+	}
+
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;B)Ljava/lang/Class;",
+		garbageValue = "53"
+	)
+	@Export("loadClassFromDescriptor")
+	static Class loadClassFromDescriptor(String var0) throws ClassNotFoundException {
+		if (var0.equals("B")) {
+			return Byte.TYPE;
+		} else if (var0.equals("I")) {
+			return Integer.TYPE;
+		} else if (var0.equals("S")) {
+			return Short.TYPE;
+		} else if (var0.equals("J")) {
+			return Long.TYPE;
+		} else if (var0.equals("Z")) {
+			return Boolean.TYPE;
+		} else if (var0.equals("F")) {
+			return Float.TYPE;
+		} else if (var0.equals("D")) {
+			return Double.TYPE;
+		} else if (var0.equals("C")) {
+			return Character.TYPE;
+		} else {
+			return var0.equals("void") ? Void.TYPE : Reflection.findClass(var0);
 		}
+	}
 
-		Iterator var2 = Messages.Messages_hashTable.iterator();
+	@ObfuscatedName("gv")
+	@ObfuscatedSignature(
+		descriptor = "(S)V",
+		garbageValue = "20733"
+	)
+	static final void method4839() {
+		if (Decimator.FriendsChatManager_inFriendsChat) {
+			if (PcmPlayer.friendsChatManager != null) {
+				PcmPlayer.friendsChatManager.sort();
+			}
 
-		while (var2.hasNext()) {
-			Message var3 = (Message)var2.next();
-			var3.clearIsFromFriend();
-		}
+			for (int var0 = 0; var0 < Players.Players_count; ++var0) {
+				Player var1 = Client.players[Players.Players_indices[var0]];
+				var1.clearIsInFriendsChat();
+			}
 
-		if (Players.friendsChatManager != null) {
-			Players.friendsChatManager.clearFriends();
+			Decimator.FriendsChatManager_inFriendsChat = false;
 		}
 
 	}
