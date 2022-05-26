@@ -3,25 +3,32 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("gh")
+@ObfuscatedName("gg")
 @Implements("FaceNormal")
 public class FaceNormal {
-	@ObfuscatedName("c")
+	@ObfuscatedName("jg")
 	@ObfuscatedGetter(
-		intValue = -38617703
+		intValue = 1186041129
+	)
+	@Export("cameraZ")
+	static int cameraZ;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = 1839266109
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -1161789305
+		intValue = 475209611
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = 1924631327
+		intValue = 1225057041
 	)
 	@Export("z")
 	int z;
@@ -29,38 +36,59 @@ public class FaceNormal {
 	FaceNormal() {
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "37"
+		descriptor = "(ILbb;ZI)I",
+		garbageValue = "-1800924378"
 	)
-	public static int method4142(int var0, int var1) {
-		int var2 = var0 >>> 31;
-		return (var0 + var2) / var1 - var2;
-	}
-
-	@ObfuscatedName("hr")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "-2015271850"
-	)
-	@Export("getTileHeight")
-	static final int getTileHeight(int var0, int var1, int var2) {
-		int var3 = var0 >> 7;
-		int var4 = var1 >> 7;
-		if (var3 >= 0 && var4 >= 0 && var3 <= 103 && var4 <= 103) {
-			int var5 = var2;
-			if (var2 < 3 && (Tiles.Tiles_renderFlags[1][var3][var4] & 2) == 2) {
-				var5 = var2 + 1;
+	static int method4212(int var0, Script var1, boolean var2) {
+		Widget var7;
+		if (var0 != ScriptOpcodes.CC_CALLONRESIZE && var0 != ScriptOpcodes.IF_CALLONRESIZE) {
+			int var4;
+			if (var0 == ScriptOpcodes.CC_TRIGGEROP) {
+				var7 = var2 ? Interpreter.scriptDotWidget : KeyHandler.scriptActiveWidget;
+				var4 = Interpreter.Interpreter_intStack[--class12.Interpreter_intStackSize];
+				if (var4 >= 1 && var4 <= 10) {
+					class93 var8 = new class93(var4, var7.id, var7.childIndex, var7.itemId);
+					Interpreter.field821.add(var8);
+					return 1;
+				} else {
+					throw new RuntimeException();
+				}
+			} else if (var0 == ScriptOpcodes.IF_TRIGGEROP) {
+				class12.Interpreter_intStackSize -= 3;
+				int var3 = Interpreter.Interpreter_intStack[class12.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[class12.Interpreter_intStackSize + 1];
+				int var5 = Interpreter.Interpreter_intStack[class12.Interpreter_intStackSize + 2];
+				if (var5 >= 1 && var5 <= 10) {
+					class93 var6 = new class93(var5, var3, var4, class92.getWidget(var3).itemId);
+					Interpreter.field821.add(var6);
+					return 1;
+				} else {
+					throw new RuntimeException();
+				}
+			} else {
+				return 2;
+			}
+		} else if (Interpreter.field823 >= 10) {
+			throw new RuntimeException();
+		} else {
+			if (var0 >= 2000) {
+				var7 = class92.getWidget(Interpreter.Interpreter_intStack[--class12.Interpreter_intStackSize]);
+			} else {
+				var7 = var2 ? Interpreter.scriptDotWidget : KeyHandler.scriptActiveWidget;
 			}
 
-			int var6 = var0 & 127;
-			int var7 = var1 & 127;
-			int var8 = (128 - var6) * Tiles.Tiles_heights[var5][var3][var4] + var6 * Tiles.Tiles_heights[var5][var3 + 1][var4] >> 7;
-			int var9 = var6 * Tiles.Tiles_heights[var5][var3 + 1][var4 + 1] + Tiles.Tiles_heights[var5][var3][var4 + 1] * (128 - var6) >> 7;
-			return var8 * (128 - var7) + var9 * var7 >> 7;
-		} else {
-			return 0;
+			if (var7.onResize == null) {
+				return 0;
+			} else {
+				ScriptEvent var9 = new ScriptEvent();
+				var9.widget = var7;
+				var9.args = var7.onResize;
+				var9.field1054 = Interpreter.field823 + 1;
+				Client.scriptEvents.addFirst(var9);
+				return 1;
+			}
 		}
 	}
 }

@@ -1,41 +1,82 @@
+import java.io.UnsupportedEncodingException;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@ObfuscatedName("ol")
-public class class400 {
-	@ObfuscatedName("p")
-	static final char[] field4411;
-	@ObfuscatedName("m")
-	static final char[] field4410;
+@ObfuscatedName("oh")
+public class class400 implements class399 {
+	@ObfuscatedName("l")
+	JSONObject field4439;
 
-	static {
-		field4411 = new char[]{' ', ' ', '_', '-', 'à', 'á', 'â', 'ä', 'ã', 'À', 'Á', 'Â', 'Ä', 'Ã', 'è', 'é', 'ê', 'ë', 'È', 'É', 'Ê', 'Ë', 'í', 'î', 'ï', 'Í', 'Î', 'Ï', 'ò', 'ó', 'ô', 'ö', 'õ', 'Ò', 'Ó', 'Ô', 'Ö', 'Õ', 'ù', 'ú', 'û', 'ü', 'Ù', 'Ú', 'Û', 'Ü', 'ç', 'Ç', 'ÿ', 'Ÿ', 'ñ', 'Ñ', 'ß'};
-		field4410 = new char[]{'[', ']', '#'};
+	public class400(byte[] var1) throws UnsupportedEncodingException {
+		this.method6946(var1);
 	}
 
-	@ObfuscatedName("c")
+	public class400(String var1) throws UnsupportedEncodingException {
+		this.method6954(var1);
+	}
+
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "([BILjava/lang/CharSequence;I)I",
-		garbageValue = "980232052"
+		descriptor = "(I)[B",
+		garbageValue = "-2132228640"
 	)
-	public static int method7147(byte[] var0, int var1, CharSequence var2) {
-		int var3 = var2.length();
-		int var4 = var1;
+	public byte[] vmethod6962() throws UnsupportedEncodingException {
+		return this.field4439 == null ? new byte[0] : this.field4439.toString().getBytes("UTF-8");
+	}
 
-		for (int var5 = 0; var5 < var3; ++var5) {
-			char var6 = var2.charAt(var5);
-			if (var6 <= 127) {
-				var0[var4++] = (byte)var6;
-			} else if (var6 <= 2047) {
-				var0[var4++] = (byte)(192 | var6 >> 6);
-				var0[var4++] = (byte)(128 | var6 & '?');
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "([BI)V",
+		garbageValue = "1886855287"
+	)
+	void method6946(byte[] var1) throws UnsupportedEncodingException {
+		String var2 = new String(var1, "UTF-8");
+		this.method6954(var2);
+	}
+
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "3"
+	)
+	void method6954(String var1) throws UnsupportedEncodingException {
+		try {
+			if (var1.charAt(0) == '{') {
+				this.field4439 = new JSONObject(var1);
 			} else {
-				var0[var4++] = (byte)(224 | var6 >> '\f');
-				var0[var4++] = (byte)(128 | var6 >> 6 & 63);
-				var0[var4++] = (byte)(128 | var6 & '?');
-			}
-		}
+				if (var1.charAt(0) != '[') {
+					throw new UnsupportedEncodingException("Invalid JSON passed to the JSON content builder.");
+				}
 
-		return var4 - var1;
+				JSONArray var2 = new JSONArray(var1);
+				this.field4439 = new JSONObject();
+				this.field4439.put("arrayValues", var2);
+			}
+
+		} catch (JSONException var3) {
+			throw new UnsupportedEncodingException(var3.getMessage());
+		}
+	}
+
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lorg/json/JSONObject;",
+		garbageValue = "579331976"
+	)
+	public JSONObject method6947() {
+		return this.field4439;
+	}
+
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "50"
+	)
+	static void method6957(int var0) {
+		class126.method2799(14);
+		Login.field887 = var0;
 	}
 }

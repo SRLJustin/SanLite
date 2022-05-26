@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.HashMap;
 import java.util.Map;
 import net.runelite.mapping.Export;
@@ -5,142 +8,153 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("gn")
+@ObfuscatedName("gq")
 @Implements("SequenceDefinition")
 public class SequenceDefinition extends DualNode {
-	@ObfuscatedName("c")
-	static boolean field2084;
-	@ObfuscatedName("p")
+	@ObfuscatedName("o")
+	static boolean field2221;
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Llp;"
+	)
+	@Export("SequenceDefinition_archive")
+	public static AbstractArchive SequenceDefinition_archive;
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "Llp;"
 	)
 	@Export("SequenceDefinition_animationsArchive")
 	public static AbstractArchive SequenceDefinition_animationsArchive;
-	@ObfuscatedName("t")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Llp;"
+	)
+	@Export("SequenceDefinition_skeletonsArchive")
+	public static AbstractArchive SequenceDefinition_skeletonsArchive;
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "Lir;"
 	)
 	@Export("SequenceDefinition_cached")
 	public static EvictingDualNodeHashTable SequenceDefinition_cached;
-	@ObfuscatedName("s")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lir;"
 	)
 	@Export("SequenceDefinition_cachedFrames")
 	public static EvictingDualNodeHashTable SequenceDefinition_cachedFrames;
-	@ObfuscatedName("j")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lir;"
 	)
 	@Export("SequenceDefinition_cachedModel")
 	public static EvictingDualNodeHashTable SequenceDefinition_cachedModel;
-	@ObfuscatedName("w")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -2061102361
+		intValue = -451535761
 	)
-	int field2079;
-	@ObfuscatedName("n")
-	public Map field2075;
+	int field2226;
 	@ObfuscatedName("r")
-	@ObfuscatedGetter(
-		intValue = -1465456923
-	)
-	int field2082;
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(
-		intValue = 1046662309
-	)
-	int field2083;
+	public Map field2209;
 	@ObfuscatedName("v")
+	@ObfuscatedGetter(
+		intValue = -1088599689
+	)
+	int field2207;
+	@ObfuscatedName("y")
+	@ObfuscatedGetter(
+		intValue = 828887833
+	)
+	int field2202;
+	@ObfuscatedName("c")
 	@Export("frameIds")
 	public int[] frameIds;
-	@ObfuscatedName("d")
+	@ObfuscatedName("w")
 	@Export("chatFrameIds")
 	int[] chatFrameIds;
-	@ObfuscatedName("h")
+	@ObfuscatedName("b")
 	@Export("frameLengths")
 	public int[] frameLengths;
-	@ObfuscatedName("g")
+	@ObfuscatedName("t")
 	@Export("soundEffects")
 	public int[] soundEffects;
-	@ObfuscatedName("e")
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = -1755183367
+		intValue = -242259733
 	)
 	@Export("frameCount")
 	public int frameCount;
-	@ObfuscatedName("a")
-	int[] field2089;
-	@ObfuscatedName("u")
-	boolean[] field2081;
-	@ObfuscatedName("k")
-	public boolean field2091;
+	@ObfuscatedName("x")
+	int[] field2217;
+	@ObfuscatedName("n")
+	boolean[] field2218;
+	@ObfuscatedName("e")
+	public boolean field2201;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(
+		intValue = 1404138407
+	)
+	public int field2220;
 	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -68245833
-	)
-	public int field2092;
-	@ObfuscatedName("l")
-	@ObfuscatedGetter(
-		intValue = -1710656193
+		intValue = -681508511
 	)
 	@Export("shield")
 	public int shield;
-	@ObfuscatedName("q")
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = 1298879717
+		intValue = 1106803533
 	)
 	@Export("weapon")
 	public int weapon;
-	@ObfuscatedName("x")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -1981709083
+		intValue = -256717621
 	)
-	public int field2095;
+	public int field2223;
 	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = -2129353131
+		intValue = -1918601831
 	)
-	public int field2096;
+	public int field2224;
 	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = 2113674843
+		intValue = -1593140013
 	)
-	public int field2097;
-	@ObfuscatedName("y")
+	public int field2206;
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 1259669941
+		intValue = 1948704665
 	)
-	public int field2078;
+	public int field2208;
 
 	static {
-		field2084 = false;
+		field2221 = false;
 		SequenceDefinition_cached = new EvictingDualNodeHashTable(64);
 		SequenceDefinition_cachedFrames = new EvictingDualNodeHashTable(100);
 		SequenceDefinition_cachedModel = new EvictingDualNodeHashTable(100);
 	}
 
 	SequenceDefinition() {
-		this.field2079 = -1;
-		this.field2082 = 0;
-		this.field2083 = 0;
+		this.field2226 = -1;
+		this.field2207 = 0;
+		this.field2202 = 0;
 		this.frameCount = -1;
-		this.field2091 = false;
-		this.field2092 = 5;
+		this.field2201 = false;
+		this.field2220 = 5;
 		this.shield = -1;
 		this.weapon = -1;
-		this.field2095 = 99;
-		this.field2096 = -1;
-		this.field2097 = -1;
-		this.field2078 = 2;
+		this.field2223 = 99;
+		this.field2224 = -1;
+		this.field2206 = -1;
+		this.field2208 = 2;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "-31"
+		descriptor = "(Lpx;B)V",
+		garbageValue = "106"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -154,10 +168,10 @@ public class SequenceDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;IB)V",
-		garbageValue = "122"
+		descriptor = "(Lpx;II)V",
+		garbageValue = "696368219"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -184,29 +198,29 @@ public class SequenceDefinition extends DualNode {
 			this.frameCount = var1.readUnsignedShort();
 		} else if (var2 == 3) {
 			var3 = var1.readUnsignedByte();
-			this.field2089 = new int[var3 + 1];
+			this.field2217 = new int[var3 + 1];
 
 			for (var4 = 0; var4 < var3; ++var4) {
-				this.field2089[var4] = var1.readUnsignedByte();
+				this.field2217[var4] = var1.readUnsignedByte();
 			}
 
-			this.field2089[var3] = 9999999;
+			this.field2217[var3] = 9999999;
 		} else if (var2 == 4) {
-			this.field2091 = true;
+			this.field2201 = true;
 		} else if (var2 == 5) {
-			this.field2092 = var1.readUnsignedByte();
+			this.field2220 = var1.readUnsignedByte();
 		} else if (var2 == 6) {
 			this.shield = var1.readUnsignedShort();
 		} else if (var2 == 7) {
 			this.weapon = var1.readUnsignedShort();
 		} else if (var2 == 8) {
-			this.field2095 = var1.readUnsignedByte();
+			this.field2223 = var1.readUnsignedByte();
 		} else if (var2 == 9) {
-			this.field2096 = var1.readUnsignedByte();
+			this.field2224 = var1.readUnsignedByte();
 		} else if (var2 == 10) {
-			this.field2097 = var1.readUnsignedByte();
+			this.field2206 = var1.readUnsignedByte();
 		} else if (var2 == 11) {
-			this.field2078 = var1.readUnsignedByte();
+			this.field2208 = var1.readUnsignedByte();
 		} else if (var2 == 12) {
 			var3 = var1.readUnsignedByte();
 			this.chatFrameIds = new int[var3];
@@ -226,71 +240,71 @@ public class SequenceDefinition extends DualNode {
 				this.soundEffects[var4] = var1.readMedium();
 			}
 		} else if (var2 == 14) {
-			this.field2079 = var1.readInt();
+			this.field2226 = var1.readInt();
 		} else if (var2 == 15) {
 			var3 = var1.readUnsignedShort();
-			this.field2075 = new HashMap();
+			this.field2209 = new HashMap();
 
 			for (var4 = 0; var4 < var3; ++var4) {
 				int var5 = var1.readUnsignedShort();
 				int var6 = var1.readMedium();
-				this.field2075.put(var5, var6);
+				this.field2209.put(var5, var6);
 			}
 		} else if (var2 == 16) {
-			this.field2082 = var1.readUnsignedShort();
-			this.field2083 = var1.readUnsignedShort();
+			this.field2207 = var1.readUnsignedShort();
+			this.field2202 = var1.readUnsignedShort();
 		} else if (var2 == 17) {
-			this.field2081 = new boolean[256];
+			this.field2218 = new boolean[256];
 
-			for (var3 = 0; var3 < this.field2081.length; ++var3) {
-				this.field2081[var3] = false;
+			for (var3 = 0; var3 < this.field2218.length; ++var3) {
+				this.field2218[var3] = false;
 			}
 
 			var3 = var1.readUnsignedByte();
 
 			for (var4 = 0; var4 < var3; ++var4) {
-				this.field2081[var1.readUnsignedByte()] = true;
+				this.field2218[var1.readUnsignedByte()] = true;
 			}
 		}
 
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-68"
+		descriptor = "(I)V",
+		garbageValue = "-1790392441"
 	)
 	@Export("postDecode")
 	void postDecode() {
-		if (this.field2096 == -1) {
-			if (this.field2089 == null && this.field2081 == null) {
-				this.field2096 = 0;
+		if (this.field2224 == -1) {
+			if (this.field2217 == null && this.field2218 == null) {
+				this.field2224 = 0;
 			} else {
-				this.field2096 = 2;
+				this.field2224 = -1918601831 * 7506;
 			}
 		}
 
-		if (this.field2097 == -1) {
-			if (this.field2089 == null && this.field2081 == null) {
-				this.field2097 = 0;
+		if (this.field2206 == -1) {
+			if (this.field2217 == null && this.field2218 == null) {
+				this.field2206 = 0;
 			} else {
-				this.field2097 = 2;
+				this.field2206 = 2;
 			}
 		}
 
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(Lgo;IB)Lgo;",
-		garbageValue = "-89"
+		descriptor = "(Lhv;II)Lhv;",
+		garbageValue = "-1686484197"
 	)
 	@Export("transformActorModel")
 	public Model transformActorModel(Model var1, int var2) {
 		Model var4;
-		if (!this.method3690()) {
+		if (!this.method3712()) {
 			var2 = this.frameIds[var2];
-			Frames var5 = ItemComposition.getFrames(var2 >> 16);
+			Frames var5 = class141.getFrames(var2 >> 16);
 			var2 &= 65535;
 			if (var5 == null) {
 				return var1.toSharedSequenceModel(true);
@@ -300,28 +314,28 @@ public class SequenceDefinition extends DualNode {
 				return var4;
 			}
 		} else {
-			class120 var3 = JagexCache.method3064(this.field2079);
+			class122 var3 = class146.method2997(this.field2226);
 			if (var3 == null) {
 				return var1.toSharedSequenceModel(true);
 			} else {
-				var4 = var1.toSharedSequenceModel(!var3.method2695());
-				var4.method4271(var3, var2);
+				var4 = var1.toSharedSequenceModel(!var3.method2755());
+				var4.method4259(var3, var2);
 				return var4;
 			}
 		}
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "(Lgo;IIB)Lgo;",
-		garbageValue = "-127"
+		descriptor = "(Lhv;III)Lhv;",
+		garbageValue = "-680992651"
 	)
 	@Export("transformObjectModel")
 	Model transformObjectModel(Model var1, int var2, int var3) {
 		Model var5;
-		if (!this.method3690()) {
+		if (!this.method3712()) {
 			var2 = this.frameIds[var2];
-			Frames var6 = ItemComposition.getFrames(var2 >> 16);
+			Frames var6 = class141.getFrames(var2 >> 16);
 			var2 &= 65535;
 			if (var6 == null) {
 				return var1.toSharedSequenceModel(true);
@@ -348,11 +362,11 @@ public class SequenceDefinition extends DualNode {
 				return var5;
 			}
 		} else {
-			class120 var4 = JagexCache.method3064(this.field2079);
+			class122 var4 = class146.method2997(this.field2226);
 			if (var4 == null) {
 				return var1.toSharedSequenceModel(true);
 			} else {
-				var5 = var1.toSharedSequenceModel(!var4.method2695());
+				var5 = var1.toSharedSequenceModel(!var4.method2755());
 				var3 &= 3;
 				if (var3 == 1) {
 					var5.rotateY270Ccw();
@@ -362,7 +376,7 @@ public class SequenceDefinition extends DualNode {
 					var5.rotateY90Ccw();
 				}
 
-				var5.method4271(var4, var2);
+				var5.method4259(var4, var2);
 				if (var3 == 1) {
 					var5.rotateY90Ccw();
 				} else if (var3 == 2) {
@@ -376,17 +390,17 @@ public class SequenceDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Lgo;II)Lgo;",
-		garbageValue = "2108768382"
+		descriptor = "(Lhv;II)Lhv;",
+		garbageValue = "-1909373486"
 	)
 	@Export("transformSpotAnimationModel")
 	Model transformSpotAnimationModel(Model var1, int var2) {
 		Model var4;
-		if (!this.method3690()) {
+		if (!this.method3712()) {
 			var2 = this.frameIds[var2];
-			Frames var5 = ItemComposition.getFrames(var2 >> 16);
+			Frames var5 = class141.getFrames(var2 >> 16);
 			var2 &= 65535;
 			if (var5 == null) {
 				return var1.toSharedSpotAnimationModel(true);
@@ -396,79 +410,79 @@ public class SequenceDefinition extends DualNode {
 				return var4;
 			}
 		} else {
-			class120 var3 = JagexCache.method3064(this.field2079);
+			class122 var3 = class146.method2997(this.field2226);
 			if (var3 == null) {
 				return var1.toSharedSpotAnimationModel(true);
 			} else {
-				var4 = var1.toSharedSpotAnimationModel(!var3.method2695());
-				var4.method4271(var3, var2);
+				var4 = var1.toSharedSpotAnimationModel(!var3.method2755());
+				var4.method4259(var3, var2);
 				return var4;
 			}
 		}
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Lgo;ILgn;IB)Lgo;",
-		garbageValue = "8"
+		descriptor = "(Lhv;ILgq;IB)Lhv;",
+		garbageValue = "70"
 	)
 	@Export("applyTransformations")
 	public Model applyTransformations(Model var1, int var2, SequenceDefinition var3, int var4) {
-		if (field2084 && !this.method3690() && !var3.method3690()) {
-			return this.method3674(var1, var2, var3, var4);
+		if (field2221 && !this.method3712() && !var3.method3712()) {
+			return this.method3710(var1, var2, var3, var4);
 		} else {
 			Model var5 = var1.toSharedSequenceModel(false);
 			boolean var6 = false;
 			Frames var7 = null;
-			class120 var8;
-			if (this.method3690()) {
-				var8 = this.method3648();
-				if (var3.method3690() && this.field2081 == null) {
-					var5.method4271(var8, var2);
+			class122 var8;
+			if (this.method3712()) {
+				var8 = this.method3735();
+				if (var3.method3712() && this.field2218 == null) {
+					var5.method4259(var8, var2);
 					return var5;
 				}
 
-				var5.method4202(var8, var2, this.field2081, false);
+				var5.method4263(var8, var2, this.field2218, false);
 			} else {
 				var2 = this.frameIds[var2];
-				var7 = ItemComposition.getFrames(var2 >> 16);
+				var7 = class141.getFrames(var2 >> 16);
 				var2 &= 65535;
 				if (var7 == null) {
 					return var3.transformActorModel(var1, var4);
 				}
 
-				if (!var3.method3690() && (this.field2089 == null || var4 == -1)) {
+				if (!var3.method3712() && (this.field2217 == null || var4 == -1)) {
 					var5.animate(var7, var2);
 					return var5;
 				}
 
-				if (this.field2089 == null || var4 == -1) {
+				if (this.field2217 == null || var4 == -1) {
 					var5.animate(var7, var2);
 					return var5;
 				}
 
-				var6 = var3.method3690();
+				var6 = var3.method3712();
 				if (!var6) {
-					var5.method4203(var7, var2, this.field2089, false);
+					var5.method4264(var7, var2, this.field2217, false);
 				}
 			}
 
-			if (var3.method3690()) {
-				var8 = var3.method3648();
-				var5.method4202(var8, var4, this.field2081, true);
+			if (var3.method3712()) {
+				var8 = var3.method3735();
+				var5.method4263(var8, var4, this.field2218, true);
 			} else {
 				var4 = var3.frameIds[var4];
-				Frames var9 = ItemComposition.getFrames(var4 >> 16);
+				Frames var9 = class141.getFrames(var4 >> 16);
 				var4 &= 65535;
 				if (var9 == null) {
 					return this.transformActorModel(var1, var2);
 				}
 
-				var5.method4203(var9, var4, this.field2089, true);
+				var5.method4264(var9, var4, this.field2217, true);
 			}
 
 			if (var6 && var7 != null) {
-				var5.method4203(var7, var2, this.field2089, false);
+				var5.method4264(var7, var2, this.field2217, false);
 			}
 
 			var5.resetBounds();
@@ -476,20 +490,20 @@ public class SequenceDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("r")
 	@ObfuscatedSignature(
-		descriptor = "(Lgo;ILgn;II)Lgo;",
-		garbageValue = "-2136022860"
+		descriptor = "(Lhv;ILgq;IB)Lhv;",
+		garbageValue = "-110"
 	)
-	Model method3674(Model var1, int var2, SequenceDefinition var3, int var4) {
+	Model method3710(Model var1, int var2, SequenceDefinition var3, int var4) {
 		var2 = this.frameIds[var2];
-		Frames var5 = ItemComposition.getFrames(var2 >> 16);
+		Frames var5 = class141.getFrames(var2 >> 16);
 		var2 &= 65535;
 		if (var5 == null) {
 			return var3.transformActorModel(var1, var4);
 		} else {
 			var4 = var3.frameIds[var4];
-			Frames var6 = ItemComposition.getFrames(var4 >> 16);
+			Frames var6 = class141.getFrames(var4 >> 16);
 			var4 &= 65535;
 			Model var7;
 			if (var6 == null) {
@@ -498,22 +512,22 @@ public class SequenceDefinition extends DualNode {
 				return var7;
 			} else {
 				var7 = var1.toSharedSequenceModel(!var5.hasAlphaTransform(var2) & !var6.hasAlphaTransform(var4));
-				var7.animate2(var5, var2, var6, var4, this.field2089);
+				var7.animate2(var5, var2, var6, var4, this.field2217);
 				return var7;
 			}
 		}
 	}
 
-	@ObfuscatedName("r")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lgo;II)Lgo;",
-		garbageValue = "1131668881"
+		descriptor = "(Lhv;II)Lhv;",
+		garbageValue = "771999182"
 	)
 	@Export("transformWidgetModel")
 	public Model transformWidgetModel(Model var1, int var2) {
-		if (!this.method3690()) {
+		if (!this.method3712()) {
 			int var3 = this.frameIds[var2];
-			Frames var4 = ItemComposition.getFrames(var3 >> 16);
+			Frames var4 = class141.getFrames(var3 >> 16);
 			var3 &= 65535;
 			if (var4 == null) {
 				return var1.toSharedSequenceModel(true);
@@ -522,7 +536,7 @@ public class SequenceDefinition extends DualNode {
 				int var6 = 0;
 				if (this.chatFrameIds != null && var2 < this.chatFrameIds.length) {
 					var6 = this.chatFrameIds[var2];
-					var5 = ItemComposition.getFrames(var6 >> 16);
+					var5 = class141.getFrames(var6 >> 16);
 					var6 &= 65535;
 				}
 
@@ -543,415 +557,181 @@ public class SequenceDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("y")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-1401537933"
+		garbageValue = "1132270109"
 	)
-	public boolean method3690() {
-		return this.field2079 >= 0;
+	public boolean method3712() {
+		return this.field2226 >= 0;
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "2132950979"
-	)
-	public int method3647() {
-		return this.field2083 - this.field2082;
-	}
-
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(B)Ldb;",
+		descriptor = "(B)I",
 		garbageValue = "0"
 	)
-	public class120 method3648() {
-		return this.method3690() ? JagexCache.method3064(this.field2079) : null;
+	public int method3729() {
+		return this.field2202 - this.field2207;
 	}
 
 	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;S)Ljava/lang/String;",
-		garbageValue = "-18009"
+		descriptor = "(I)Lds;",
+		garbageValue = "2065274183"
 	)
-	public static String method3689(Buffer var0) {
-		String var1;
-		try {
-			int var2 = var0.readUShortSmart();
-			if (var2 > 32767) {
-				var2 = 32767;
-			}
-
-			byte[] var3 = new byte[var2];
-			var0.offset += class410.huffman.decompress(var0.array, var0.offset, var3, 0, var2);
-			String var4 = PendingSpawn.decodeStringCp1252(var3, 0, var2);
-			var1 = var4;
-		} catch (Exception var6) {
-			var1 = "Cabbage";
-		}
-
-		return var1;
+	public class122 method3735() {
+		return this.method3712() ? class146.method2997(this.field2226) : null;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "-942937629"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;II)Ljava/io/File;",
+		garbageValue = "-1646829162"
 	)
-	static int method3640(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.FRIEND_COUNT) {
-			if (GameEngine.friendSystem.field778 == 0) {
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -2;
-			} else if (GameEngine.friendSystem.field778 == 1) {
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -1;
-			} else {
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = GameEngine.friendSystem.friendsList.getSize();
+	static File method3717(String var0, String var1, int var2) {
+		String var3 = var2 == 0 ? "" : "" + var2;
+		JagexCache.JagexCache_locationFile = new File(BufferedSource.userHomeDirectory, "jagex_cl_" + var0 + "_" + var1 + var3 + ".dat");
+		String var4 = null;
+		String var5 = null;
+		boolean var6 = false;
+		int var11;
+		File var26;
+		if (JagexCache.JagexCache_locationFile.exists()) {
+			try {
+				AccessFile var7 = new AccessFile(JagexCache.JagexCache_locationFile, "rw", 10000L);
+
+				Buffer var8;
+				int var9;
+				for (var8 = new Buffer((int)var7.length()); var8.offset < var8.array.length; var8.offset += var9) {
+					var9 = var7.read(var8.array, var8.offset, var8.array.length - var8.offset);
+					if (var9 == -1) {
+						throw new IOException();
+					}
+				}
+
+				var8.offset = 0;
+				var9 = var8.readUnsignedByte();
+				if (var9 < 1 || var9 > 3) {
+					throw new IOException("" + var9);
+				}
+
+				int var10 = 0;
+				if (var9 > 1) {
+					var10 = var8.readUnsignedByte();
+				}
+
+				if (var9 <= 2) {
+					var4 = var8.readStringCp1252NullCircumfixed();
+					if (var10 == 1) {
+						var5 = var8.readStringCp1252NullCircumfixed();
+					}
+				} else {
+					var4 = var8.readCESU8();
+					if (var10 == 1) {
+						var5 = var8.readCESU8();
+					}
+				}
+
+				var7.close();
+			} catch (IOException var24) {
+				var24.printStackTrace();
 			}
 
-			return 1;
-		} else {
-			int var3;
-			if (var0 == ScriptOpcodes.FRIEND_GETNAME) {
-				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				if (GameEngine.friendSystem.method1728() && var3 >= 0 && var3 < GameEngine.friendSystem.friendsList.getSize()) {
-					Friend var8 = (Friend)GameEngine.friendSystem.friendsList.get(var3);
-					Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var8.getName();
-					Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var8.getPreviousName();
-				} else {
-					Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-					Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
+			if (var4 != null) {
+				var26 = new File(var4);
+				if (!var26.exists()) {
+					var4 = null;
+				}
+			}
+
+			if (var4 != null) {
+				var26 = new File(var4, "test.dat");
+
+				boolean var27;
+				try {
+					RandomAccessFile var15 = new RandomAccessFile(var26, "rw");
+					var11 = var15.read();
+					var15.seek(0L);
+					var15.write(var11);
+					var15.seek(0L);
+					var15.close();
+					var26.delete();
+					var27 = true;
+				} catch (Exception var22) {
+					var27 = false;
 				}
 
-				return 1;
-			} else if (var0 == ScriptOpcodes.FRIEND_GETWORLD) {
-				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				if (GameEngine.friendSystem.method1728() && var3 >= 0 && var3 < GameEngine.friendSystem.friendsList.getSize()) {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = ((Buddy)GameEngine.friendSystem.friendsList.get(var3)).world;
-				} else {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-				}
-
-				return 1;
-			} else if (var0 == ScriptOpcodes.FRIEND_GETRANK) {
-				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				if (GameEngine.friendSystem.method1728() && var3 >= 0 && var3 < GameEngine.friendSystem.friendsList.getSize()) {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = ((Buddy)GameEngine.friendSystem.friendsList.get(var3)).rank;
-				} else {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-				}
-
-				return 1;
-			} else {
-				String var5;
-				if (var0 == ScriptOpcodes.FRIEND_SETRANK) {
-					var5 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
-					int var6 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-					class113.method2618(var5, var6);
-					return 1;
-				} else if (var0 == ScriptOpcodes.FRIEND_ADD) {
-					var5 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
-					GameEngine.friendSystem.addFriend(var5);
-					return 1;
-				} else if (var0 == ScriptOpcodes.FRIEND_DEL) {
-					var5 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
-					GameEngine.friendSystem.removeFriend(var5);
-					return 1;
-				} else if (var0 == ScriptOpcodes.IGNORE_ADD) {
-					var5 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
-					GameEngine.friendSystem.addIgnore(var5);
-					return 1;
-				} else if (var0 == ScriptOpcodes.IGNORE_DEL) {
-					var5 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
-					GameEngine.friendSystem.removeIgnore(var5);
-					return 1;
-				} else if (var0 == ScriptOpcodes.FRIEND_TEST) {
-					var5 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
-					var5 = AbstractWorldMapData.method4791(var5);
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = GameEngine.friendSystem.isFriended(new Username(var5, class194.loginType), false) ? 1 : 0;
-					return 1;
-				} else if (var0 == ScriptOpcodes.CLAN_GETCHATDISPLAYNAME) {
-					if (Players.friendsChatManager != null) {
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = Players.friendsChatManager.name;
-					} else {
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-					}
-
-					return 1;
-				} else if (var0 == ScriptOpcodes.CLAN_GETCHATCOUNT) {
-					if (Players.friendsChatManager != null) {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Players.friendsChatManager.getSize();
-					} else {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-					}
-
-					return 1;
-				} else if (var0 == ScriptOpcodes.CLAN_GETCHATUSERNAME) {
-					var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-					if (Players.friendsChatManager != null && var3 < Players.friendsChatManager.getSize()) {
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = Players.friendsChatManager.get(var3).getUsername().getName();
-					} else {
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-					}
-
-					return 1;
-				} else if (var0 == ScriptOpcodes.CLAN_GETCHATUSERWORLD) {
-					var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-					if (Players.friendsChatManager != null && var3 < Players.friendsChatManager.getSize()) {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = ((Buddy)Players.friendsChatManager.get(var3)).getWorld();
-					} else {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-					}
-
-					return 1;
-				} else if (var0 == ScriptOpcodes.CLAN_GETCHATUSERRANK) {
-					var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-					if (Players.friendsChatManager != null && var3 < Players.friendsChatManager.getSize()) {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = ((Buddy)Players.friendsChatManager.get(var3)).rank;
-					} else {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-					}
-
-					return 1;
-				} else if (var0 == ScriptOpcodes.CLAN_GETCHATMINKICK) {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Players.friendsChatManager != null ? Players.friendsChatManager.minKick : 0;
-					return 1;
-				} else if (var0 == ScriptOpcodes.CLAN_KICKUSER) {
-					var5 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
-					class409.clanKickUser(var5);
-					return 1;
-				} else if (var0 == ScriptOpcodes.CLAN_GETCHATRANK) {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Players.friendsChatManager != null ? Players.friendsChatManager.rank : 0;
-					return 1;
-				} else if (var0 == ScriptOpcodes.CLAN_JOINCHAT) {
-					var5 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
-					class141.Clan_joinChat(var5);
-					return 1;
-				} else if (var0 == ScriptOpcodes.CLAN_LEAVECHAT) {
-					WorldMapIcon_1.Clan_leaveChat();
-					return 1;
-				} else if (var0 == ScriptOpcodes.IGNORE_COUNT) {
-					if (!GameEngine.friendSystem.method1728()) {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -1;
-					} else {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = GameEngine.friendSystem.ignoreList.getSize();
-					}
-
-					return 1;
-				} else if (var0 == ScriptOpcodes.IGNORE_GETNAME) {
-					var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-					if (GameEngine.friendSystem.method1728() && var3 >= 0 && var3 < GameEngine.friendSystem.ignoreList.getSize()) {
-						Ignored var4 = (Ignored)GameEngine.friendSystem.ignoreList.get(var3);
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var4.getName();
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var4.getPreviousName();
-					} else {
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-					}
-
-					return 1;
-				} else if (var0 == ScriptOpcodes.IGNORE_TEST) {
-					var5 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
-					var5 = AbstractWorldMapData.method4791(var5);
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = GameEngine.friendSystem.isIgnored(new Username(var5, class194.loginType)) ? 1 : 0;
-					return 1;
-				} else if (var0 == ScriptOpcodes.CLAN_ISSELF) {
-					var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-					if (Players.friendsChatManager != null && var3 < Players.friendsChatManager.getSize() && Players.friendsChatManager.get(var3).getUsername().equals(class340.localPlayer.username)) {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 1;
-					} else {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-					}
-
-					return 1;
-				} else if (var0 == ScriptOpcodes.CLAN_GETCHATOWNERNAME) {
-					if (Players.friendsChatManager != null && Players.friendsChatManager.owner != null) {
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = Players.friendsChatManager.owner;
-					} else {
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-					}
-
-					return 1;
-				} else if (var0 == ScriptOpcodes.CLAN_ISFRIEND) {
-					var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-					if (Players.friendsChatManager != null && var3 < Players.friendsChatManager.getSize() && ((FriendsChatMember)Players.friendsChatManager.get(var3)).isFriend()) {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 1;
-					} else {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-					}
-
-					return 1;
-				} else if (var0 != ScriptOpcodes.CLAN_ISIGNORE) {
-					if (var0 == 3628) {
-						GameEngine.friendSystem.friendsList.removeComparator();
-						return 1;
-					} else {
-						boolean var7;
-						if (var0 == 3629) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							GameEngine.friendSystem.friendsList.addComparator(new UserComparator1(var7));
-							return 1;
-						} else if (var0 == 3630) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							GameEngine.friendSystem.friendsList.addComparator(new UserComparator2(var7));
-							return 1;
-						} else if (var0 == 3631) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							GameEngine.friendSystem.friendsList.addComparator(new UserComparator3(var7));
-							return 1;
-						} else if (var0 == 3632) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							GameEngine.friendSystem.friendsList.addComparator(new UserComparator4(var7));
-							return 1;
-						} else if (var0 == 3633) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							GameEngine.friendSystem.friendsList.addComparator(new UserComparator5(var7));
-							return 1;
-						} else if (var0 == 3634) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							GameEngine.friendSystem.friendsList.addComparator(new UserComparator6(var7));
-							return 1;
-						} else if (var0 == 3635) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							GameEngine.friendSystem.friendsList.addComparator(new UserComparator7(var7));
-							return 1;
-						} else if (var0 == 3636) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							GameEngine.friendSystem.friendsList.addComparator(new UserComparator8(var7));
-							return 1;
-						} else if (var0 == 3637) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							GameEngine.friendSystem.friendsList.addComparator(new UserComparator9(var7));
-							return 1;
-						} else if (var0 == 3638) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							GameEngine.friendSystem.friendsList.addComparator(new UserComparator10(var7));
-							return 1;
-						} else if (var0 == 3639) {
-							GameEngine.friendSystem.friendsList.sort();
-							return 1;
-						} else if (var0 == 3640) {
-							GameEngine.friendSystem.ignoreList.removeComparator();
-							return 1;
-						} else if (var0 == 3641) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							GameEngine.friendSystem.ignoreList.addComparator(new UserComparator1(var7));
-							return 1;
-						} else if (var0 == 3642) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							GameEngine.friendSystem.ignoreList.addComparator(new UserComparator2(var7));
-							return 1;
-						} else if (var0 == 3643) {
-							GameEngine.friendSystem.ignoreList.sort();
-							return 1;
-						} else if (var0 == 3644) {
-							if (Players.friendsChatManager != null) {
-								Players.friendsChatManager.removeComparator();
-							}
-
-							return 1;
-						} else if (var0 == 3645) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							if (Players.friendsChatManager != null) {
-								Players.friendsChatManager.addComparator(new UserComparator1(var7));
-							}
-
-							return 1;
-						} else if (var0 == 3646) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							if (Players.friendsChatManager != null) {
-								Players.friendsChatManager.addComparator(new UserComparator2(var7));
-							}
-
-							return 1;
-						} else if (var0 == 3647) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							if (Players.friendsChatManager != null) {
-								Players.friendsChatManager.addComparator(new UserComparator3(var7));
-							}
-
-							return 1;
-						} else if (var0 == 3648) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							if (Players.friendsChatManager != null) {
-								Players.friendsChatManager.addComparator(new UserComparator4(var7));
-							}
-
-							return 1;
-						} else if (var0 == 3649) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							if (Players.friendsChatManager != null) {
-								Players.friendsChatManager.addComparator(new UserComparator5(var7));
-							}
-
-							return 1;
-						} else if (var0 == 3650) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							if (Players.friendsChatManager != null) {
-								Players.friendsChatManager.addComparator(new UserComparator6(var7));
-							}
-
-							return 1;
-						} else if (var0 == 3651) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							if (Players.friendsChatManager != null) {
-								Players.friendsChatManager.addComparator(new UserComparator7(var7));
-							}
-
-							return 1;
-						} else if (var0 == 3652) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							if (Players.friendsChatManager != null) {
-								Players.friendsChatManager.addComparator(new UserComparator8(var7));
-							}
-
-							return 1;
-						} else if (var0 == 3653) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							if (Players.friendsChatManager != null) {
-								Players.friendsChatManager.addComparator(new UserComparator9(var7));
-							}
-
-							return 1;
-						} else if (var0 == 3654) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							if (Players.friendsChatManager != null) {
-								Players.friendsChatManager.addComparator(new UserComparator10(var7));
-							}
-
-							return 1;
-						} else if (var0 == 3655) {
-							if (Players.friendsChatManager != null) {
-								Players.friendsChatManager.sort();
-							}
-
-							return 1;
-						} else if (var0 == 3656) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							GameEngine.friendSystem.friendsList.addComparator(new BuddyRankComparator(var7));
-							return 1;
-						} else if (var0 == 3657) {
-							var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize] == 1;
-							if (Players.friendsChatManager != null) {
-								Players.friendsChatManager.addComparator(new BuddyRankComparator(var7));
-							}
-
-							return 1;
-						} else {
-							return 2;
-						}
-					}
-				} else {
-					var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-					if (Players.friendsChatManager != null && var3 < Players.friendsChatManager.getSize() && ((FriendsChatMember)Players.friendsChatManager.get(var3)).isIgnored()) {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 1;
-					} else {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-					}
-
-					return 1;
+				if (!var27) {
+					var4 = null;
 				}
 			}
 		}
+
+		if (var4 == null && var2 == 0) {
+			label137:
+			for (int var16 = 0; var16 < class83.cacheSubPaths.length; ++var16) {
+				for (int var17 = 0; var17 < SecureRandomCallable.cacheParentPaths.length; ++var17) {
+					File var18 = new File(SecureRandomCallable.cacheParentPaths[var17] + class83.cacheSubPaths[var16] + File.separatorChar + var0 + File.separatorChar);
+					if (var18.exists()) {
+						File var19 = new File(var18, "test.dat");
+
+						boolean var28;
+						try {
+							RandomAccessFile var12 = new RandomAccessFile(var19, "rw");
+							int var13 = var12.read();
+							var12.seek(0L);
+							var12.write(var13);
+							var12.seek(0L);
+							var12.close();
+							var19.delete();
+							var28 = true;
+						} catch (Exception var21) {
+							var28 = false;
+						}
+
+						if (var28) {
+							var4 = var18.toString();
+							var6 = true;
+							break label137;
+						}
+					}
+				}
+			}
+		}
+
+		if (var4 == null) {
+			var4 = BufferedSource.userHomeDirectory + File.separatorChar + "jagexcache" + var3 + File.separatorChar + var0 + File.separatorChar + var1 + File.separatorChar;
+			var6 = true;
+		}
+
+		if (var5 != null) {
+			File var25 = new File(var5);
+			var26 = new File(var4);
+
+			try {
+				File[] var31 = var25.listFiles();
+				File[] var30 = var31;
+
+				for (var11 = 0; var11 < var30.length; ++var11) {
+					File var29 = var30[var11];
+					File var20 = new File(var26, var29.getName());
+					boolean var14 = var29.renameTo(var20);
+					if (!var14) {
+						throw new IOException();
+					}
+				}
+			} catch (Exception var23) {
+				var23.printStackTrace();
+			}
+
+			var6 = true;
+		}
+
+		if (var6) {
+			class268.method5030(new File(var4), (File)null);
+		}
+
+		return new File(var4);
 	}
 }
