@@ -3,37 +3,35 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ga")
+@ObfuscatedName("hq")
 @Implements("VertexNormal")
 public class VertexNormal {
-	@ObfuscatedName("ei")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive18")
-	static Archive archive18;
-	@ObfuscatedName("b")
+	@ObfuscatedName("y")
+	@Export("musicTrackBoolean")
+	public static boolean musicTrackBoolean;
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = 571778343
+		intValue = -1611890735
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -1513329049
+		intValue = -1317140331
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("m")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = -73747775
+		intValue = -1313814185
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("t")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 89505295
+		intValue = -140777267
 	)
 	@Export("magnitude")
 	int magnitude;
@@ -42,7 +40,7 @@ public class VertexNormal {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lga;)V"
+		descriptor = "(Lhq;)V"
 	)
 	VertexNormal(VertexNormal var1) {
 		this.x = var1.x;
@@ -51,72 +49,105 @@ public class VertexNormal {
 		this.magnitude = var1.magnitude;
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("r")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "339374654"
+		descriptor = "([BIILgm;[Lgh;I)V",
+		garbageValue = "1258473282"
 	)
-	@Export("Messages_getLastChatID")
-	static int Messages_getLastChatID(int var0) {
-		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
-		if (var1 == null) {
-			return -1;
-		} else {
-			return var1.previousDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.previousDual).count;
+	static final void method4376(byte[] var0, int var1, int var2, Scene var3, CollisionMap[] var4) {
+		Buffer var5 = new Buffer(var0);
+		int var6 = -1;
+
+		while (true) {
+			int var7 = var5.method7531();
+			if (var7 == 0) {
+				return;
+			}
+
+			var6 += var7;
+			int var8 = 0;
+
+			while (true) {
+				int var9 = var5.readUShortSmart();
+				if (var9 == 0) {
+					break;
+				}
+
+				var8 += var9 - 1;
+				int var10 = var8 & 63;
+				int var11 = var8 >> 6 & 63;
+				int var12 = var8 >> 12;
+				int var13 = var5.readUnsignedByte();
+				int var14 = var13 >> 2;
+				int var15 = var13 & 3;
+				int var16 = var11 + var1;
+				int var17 = var10 + var2;
+				if (var16 > 0 && var17 > 0 && var16 < 103 && var17 < 103) {
+					int var18 = var12;
+					if ((Tiles.Tiles_renderFlags[1][var16][var17] & 2) == 2) {
+						var18 = var12 - 1;
+					}
+
+					CollisionMap var19 = null;
+					if (var18 >= 0) {
+						var19 = var4[var18];
+					}
+
+					class19.method262(var12, var16, var17, var6, var15, var14, var3, var19);
+				}
+			}
 		}
 	}
 
-	@ObfuscatedName("ew")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-2020888732"
+		descriptor = "(ILbb;ZB)I",
+		garbageValue = "85"
 	)
-	@Export("updateGameState")
-	static void updateGameState(int var0) {
-		if (var0 != Client.gameState) {
-			if (Client.gameState == 0) {
-				class295.client.method498();
-			}
-
-			if (var0 == 20 || var0 == 40 || var0 == 45) {
-				PacketBufferNode.method5016(0);
-				Client.field545 = 0;
-				Client.field541 = 0;
-				Client.timer.method6232(var0);
-				if (var0 != 20) {
-					FriendSystem.method1791(false);
+	static int method4377(int var0, Script var1, boolean var2) {
+		if (var0 == ScriptOpcodes.GETWINDOWMODE) {
+			Interpreter.Interpreter_intStack[++class12.Interpreter_intStackSize - 1] = ClanChannelMember.getWindowedMode();
+			return 1;
+		} else {
+			int var3;
+			if (var0 == ScriptOpcodes.SETWINDOWMODE) {
+				var3 = Interpreter.Interpreter_intStack[--class12.Interpreter_intStackSize];
+				if (var3 == 1 || var3 == 2) {
+					Widget.setWindowedMode(var3);
 				}
-			}
 
-			if (var0 != 20 && var0 != 40 && Coord.field3186 != null) {
-				Coord.field3186.close();
-				Coord.field3186 = null;
-			}
-
-			if (Client.gameState == 25) {
-				Client.field602 = 0;
-				Client.field529 = 0;
-				Client.field530 = 1;
-				Client.field617 = 0;
-				Client.field532 = 1;
-			}
-
-			int var1;
-			if (var0 != 5 && var0 != 10) {
-				if (var0 == 20) {
-					var1 = Client.gameState == 11 ? 4 : 0;
-					DefaultsGroup.method6568(class257.archive10, UserComparator6.archive8, true, var1);
-				} else if (var0 == 11) {
-					DefaultsGroup.method6568(class257.archive10, UserComparator6.archive8, false, 4);
+				return 1;
+			} else if (var0 == ScriptOpcodes.GETDEFAULTWINDOWMODE) {
+				Interpreter.Interpreter_intStack[++class12.Interpreter_intStackSize - 1] = class12.clientPreferences.method2274();
+				return 1;
+			} else if (var0 != ScriptOpcodes.SETDEFAULTWINDOWMODE) {
+				if (var0 == 5310) {
+					--class12.Interpreter_intStackSize;
+					return 1;
+				} else if (var0 == 5311) {
+					class12.Interpreter_intStackSize -= 2;
+					return 1;
+				} else if (var0 == 5312) {
+					--class12.Interpreter_intStackSize;
+					return 1;
+				} else if (var0 == 5350) {
+					class9.Interpreter_stringStackSize -= 2;
+					--class12.Interpreter_intStackSize;
+					return 1;
+				} else if (var0 == 5351) {
+					--class9.Interpreter_stringStackSize;
+					return 1;
 				} else {
-					SoundCache.method823();
+					return 2;
 				}
 			} else {
-				var1 = AttackOption.method2356() ? 0 : 12;
-				DefaultsGroup.method6568(class257.archive10, UserComparator6.archive8, true, var1);
-			}
+				var3 = Interpreter.Interpreter_intStack[--class12.Interpreter_intStackSize];
+				if (var3 == 1 || var3 == 2) {
+					class12.clientPreferences.method2245(var3);
+				}
 
-			Client.gameState = var0;
+				return 1;
+			}
 		}
 	}
 }

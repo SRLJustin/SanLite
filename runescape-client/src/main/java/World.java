@@ -1,75 +1,78 @@
+import java.awt.Desktop;
+import java.awt.Desktop.Action;
+import java.net.URI;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bw")
+@ObfuscatedName("bx")
 @Implements("World")
 public class World {
-	@ObfuscatedName("s")
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "Llp;"
+	)
+	@Export("HealthBarDefinition_archive")
+	public static AbstractArchive HealthBarDefinition_archive;
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "[Lbx;"
+	)
+	@Export("World_worlds")
+	static World[] World_worlds;
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = 63855855
+		intValue = -49642273
 	)
 	@Export("World_count")
 	static int World_count;
-	@ObfuscatedName("j")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -951276337
+		intValue = 1914794519
 	)
 	@Export("World_listCount")
 	static int World_listCount;
-	@ObfuscatedName("w")
+	@ObfuscatedName("s")
 	@Export("World_sortOption2")
 	static int[] World_sortOption2;
-	@ObfuscatedName("n")
+	@ObfuscatedName("r")
 	@Export("World_sortOption1")
 	static int[] World_sortOption1;
-	@ObfuscatedName("k")
-	@Export("ByteArrayPool_arrays")
-	public static byte[][][] ByteArrayPool_arrays;
-	@ObfuscatedName("ai")
-	@Export("hasFocus")
-	protected static boolean hasFocus;
-	@ObfuscatedName("ip")
-	@ObfuscatedSignature(
-		descriptor = "[Lpa;"
-	)
-	@Export("modIconSprites")
-	static IndexedSprite[] modIconSprites;
-	@ObfuscatedName("o")
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = 402163899
+		intValue = -2104390663
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("v")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 967201023
+		intValue = -1147317399
 	)
 	@Export("properties")
 	int properties;
-	@ObfuscatedName("d")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 1525969609
+		intValue = -1040415463
 	)
 	@Export("population")
 	int population;
-	@ObfuscatedName("h")
+	@ObfuscatedName("b")
 	@Export("host")
 	String host;
-	@ObfuscatedName("g")
+	@ObfuscatedName("t")
 	@Export("activity")
 	String activity;
-	@ObfuscatedName("e")
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = -102724797
+		intValue = 1070673927
 	)
 	@Export("location")
 	int location;
-	@ObfuscatedName("a")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = 742286855
+		intValue = 1367786099
 	)
 	@Export("index")
 	int index;
@@ -86,103 +89,177 @@ public class World {
 
 	@ObfuscatedName("r")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "16"
+		descriptor = "(I)Z",
+		garbageValue = "1167895037"
 	)
 	@Export("isMembersOnly")
 	boolean isMembersOnly() {
 		return (1 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-624791914"
-	)
-	boolean method1696() {
-		return (2 & this.properties) != 0;
-	}
-
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1709463484"
+		garbageValue = "-1033703792"
+	)
+	boolean method1615() {
+		return (2 & this.properties) != 0;
+	}
+
+	@ObfuscatedName("y")
+	@ObfuscatedSignature(
+		descriptor = "(S)Z",
+		garbageValue = "20770"
 	)
 	@Export("isPvp")
 	boolean isPvp() {
 		return (4 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("d")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1754892594"
+		descriptor = "(B)Z",
+		garbageValue = "87"
 	)
-	boolean method1676() {
+	boolean method1644() {
 		return (8 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-24"
+		descriptor = "(I)Z",
+		garbageValue = "78921463"
 	)
 	@Export("isDeadman")
 	boolean isDeadman() {
 		return (536870912 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("g")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-126940607"
+		garbageValue = "-1500446551"
 	)
 	@Export("isBeta")
 	boolean isBeta() {
 		return (33554432 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("e")
+	@ObfuscatedName("t")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "-98"
+		garbageValue = "-97"
 	)
-	boolean method1679() {
+	boolean method1619() {
 		return (1073741824 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Ljm;I[B[BI)V",
-		garbageValue = "-1955457060"
+		descriptor = "(Llp;I)V",
+		garbageValue = "-1000029725"
 	)
-	@Export("Widget_setKey")
-	static final void Widget_setKey(Widget var0, int var1, byte[] var2, byte[] var3) {
-		if (var0.field3300 == null) {
-			if (var2 == null) {
+	public static void method1662(AbstractArchive var0) {
+		StructComposition.StructDefinition_archive = var0;
+	}
+
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;ZLjava/lang/String;ZB)V",
+		garbageValue = "59"
+	)
+	static void method1663(String var0, boolean var1, String var2, boolean var3) {
+		if (var1) {
+			if (!var3 && Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Action.BROWSE)) {
+				try {
+					Desktop.getDesktop().browse(new URI(var0));
+					return;
+				} catch (Exception var5) {
+				}
+			}
+
+			if (class29.field168.startsWith("win") && !var3) {
+				Skills.method5578(var0, 0, "openjs");
 				return;
 			}
 
-			var0.field3300 = new byte[11][];
-			var0.field3301 = new byte[11][];
-			var0.field3302 = new int[11];
-			var0.field3303 = new int[11];
+			if (class29.field168.startsWith("mac")) {
+				Skills.method5578(var0, 1, var2);
+				return;
+			}
+
+			Skills.method5578(var0, 2, "openjs");
+		} else {
+			Skills.method5578(var0, 3, "openjs");
 		}
 
-		var0.field3300[var1] = var2;
-		if (var2 != null) {
-			var0.field3299 = true;
-		} else {
-			var0.field3299 = false;
+	}
 
-			for (int var4 = 0; var4 < var0.field3300.length; ++var4) {
-				if (var0.field3300[var4] != null) {
-					var0.field3299 = true;
-					break;
-				}
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "(IIIB)V",
+		garbageValue = "-105"
+	)
+	static final void method1661(int var0, int var1, int var2) {
+		int var3;
+		for (var3 = 0; var3 < 8; ++var3) {
+			for (int var4 = 0; var4 < 8; ++var4) {
+				Tiles.Tiles_heights[var0][var3 + var1][var4 + var2] = 0;
 			}
 		}
 
-		var0.field3301[var1] = var3;
+		if (var1 > 0) {
+			for (var3 = 1; var3 < 8; ++var3) {
+				Tiles.Tiles_heights[var0][var1][var3 + var2] = Tiles.Tiles_heights[var0][var1 - 1][var3 + var2];
+			}
+		}
+
+		if (var2 > 0) {
+			for (var3 = 1; var3 < 8; ++var3) {
+				Tiles.Tiles_heights[var0][var3 + var1][var2] = Tiles.Tiles_heights[var0][var3 + var1][var2 - 1];
+			}
+		}
+
+		if (var1 > 0 && Tiles.Tiles_heights[var0][var1 - 1][var2] != 0) {
+			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1 - 1][var2];
+		} else if (var2 > 0 && Tiles.Tiles_heights[var0][var1][var2 - 1] != 0) {
+			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1][var2 - 1];
+		} else if (var1 > 0 && var2 > 0 && Tiles.Tiles_heights[var0][var1 - 1][var2 - 1] != 0) {
+			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1 - 1][var2 - 1];
+		}
+
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(Lao;B)V",
+		garbageValue = "1"
+	)
+	@Export("PcmStream_disable")
+	static final void PcmStream_disable(PcmStream var0) {
+		var0.active = false;
+		if (var0.sound != null) {
+			var0.sound.position = 0;
+		}
+
+		for (PcmStream var1 = var0.firstSubStream(); var1 != null; var1 = var0.nextSubStream()) {
+			PcmStream_disable(var1);
+		}
+
+	}
+
+	@ObfuscatedName("kk")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "64"
+	)
+	static final void method1664(int var0) {
+		var0 = Math.max(Math.min(var0, 100), 0);
+		var0 = 100 - var0;
+		float var1 = (float)var0 / 200.0F + 0.5F;
+		Rasterizer3D.Rasterizer3D_setBrightness((double)var1);
+		((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).setBrightness((double)var1);
+		VerticalAlignment.method3446();
+		class12.clientPreferences.method2232((double)var1);
 	}
 }

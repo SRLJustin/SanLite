@@ -1,73 +1,75 @@
+import java.text.ParseException;
+import java.util.Date;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bs")
+@ObfuscatedName("bf")
 @Implements("GraphicsObject")
 public class GraphicsObject extends Renderable {
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "Lku;"
-	)
-	@Export("Widget_spritesArchive")
-	static AbstractArchive Widget_spritesArchive;
-	@ObfuscatedName("c")
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = -1199566727
+		intValue = 772916355
+	)
+	@Export("canvasWidth")
+	public static int canvasWidth;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = -1248002899
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -1643038475
+		intValue = -1478722299
 	)
 	@Export("cycleStart")
 	int cycleStart;
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = 575956663
+		intValue = 118002909
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("m")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -1504982005
+		intValue = 800105373
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("t")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = -1721998219
+		intValue = -738623243
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("s")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = 826937289
+		intValue = 1237979949
 	)
 	@Export("height")
 	int height;
-	@ObfuscatedName("j")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lgn;"
+		descriptor = "Lgq;"
 	)
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
-	@ObfuscatedName("w")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -991958815
+		intValue = 657870691
 	)
 	@Export("frame")
 	int frame;
-	@ObfuscatedName("n")
+	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = 126754465
+		intValue = 1465530257
 	)
 	@Export("frameCycle")
 	int frameCycle;
-	@ObfuscatedName("r")
+	@ObfuscatedName("v")
 	@Export("isFinished")
 	boolean isFinished;
 
@@ -81,26 +83,26 @@ public class GraphicsObject extends Renderable {
 		this.y = var4;
 		this.height = var5;
 		this.cycleStart = var7 + var6;
-		int var8 = AccessFile.SpotAnimationDefinition_get(this.id).sequence;
+		int var8 = class136.SpotAnimationDefinition_get(this.id).sequence;
 		if (var8 != -1) {
 			this.isFinished = false;
-			this.sequenceDefinition = UserComparator5.SequenceDefinition_get(var8);
+			this.sequenceDefinition = class114.SequenceDefinition_get(var8);
 		} else {
 			this.isFinished = true;
 		}
 
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "(IB)V",
-		garbageValue = "-41"
+		garbageValue = "115"
 	)
 	@Export("advance")
 	final void advance(int var1) {
 		if (!this.isFinished) {
 			this.frameCycle += var1;
-			if (!this.sequenceDefinition.method3690()) {
+			if (!this.sequenceDefinition.method3712()) {
 				while (this.frameCycle > this.sequenceDefinition.frameLengths[this.frame]) {
 					this.frameCycle -= this.sequenceDefinition.frameLengths[this.frame];
 					++this.frame;
@@ -111,7 +113,7 @@ public class GraphicsObject extends Renderable {
 				}
 			} else {
 				this.frame += var1;
-				if (this.frame >= this.sequenceDefinition.method3647()) {
+				if (this.frame >= this.sequenceDefinition.method3729()) {
 					this.isFinished = true;
 				}
 			}
@@ -119,14 +121,14 @@ public class GraphicsObject extends Renderable {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lgo;",
-		garbageValue = "202861607"
+		descriptor = "(I)Lhv;",
+		garbageValue = "-238822980"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		SpotAnimationDefinition var1 = AccessFile.SpotAnimationDefinition_get(this.id);
+		SpotAnimationDefinition var1 = class136.SpotAnimationDefinition_get(this.id);
 		Model var2;
 		if (!this.isFinished) {
 			var2 = var1.getModel(this.frame);
@@ -137,63 +139,63 @@ public class GraphicsObject extends Renderable {
 		return var2 == null ? null : var2;
 	}
 
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(Ljx;B)V",
+		garbageValue = "-3"
+	)
+	public static void method1870(Huffman var0) {
+		class282.huffman = var0;
+	}
+
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-2116498850"
+	)
+	static boolean method1867() {
+		Date var0;
+		try {
+			var0 = class115.method2679();
+		} catch (ParseException var7) {
+			class126.method2799(7);
+			class345.setLoginResponseString("Date not valid.", "Please ensure date follows the format", "DD/MM/YYYY and is after 01/01/1900");
+			return false;
+		}
+
+		if (var0 == null) {
+			return false;
+		} else {
+			boolean var5 = class268.method5028(var0);
+			java.util.Calendar var4 = java.util.Calendar.getInstance();
+			var4.set(2, 0);
+			var4.set(5, 1);
+			var4.set(1, 1900);
+			Date var3 = var4.getTime();
+			boolean var2 = var0.after(var3);
+			if (!var2) {
+				class126.method2799(7);
+				class345.setLoginResponseString("Date not valid.", "Please ensure date follows the format", "DD/MM/YYYY and is after 01/01/1900");
+				return false;
+			} else {
+				if (!var5) {
+					class7.field26 = 8388607;
+				} else {
+					class7.field26 = (int)(var0.getTime() / 86400000L - 11745L);
+				}
+
+				return true;
+			}
+		}
+	}
+
 	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "1965398967"
+		descriptor = "(II)Z",
+		garbageValue = "19136992"
 	)
-	@Export("itemContainerSetItem")
-	static void itemContainerSetItem(int var0, int var1, int var2, int var3) {
-		ItemContainer var4 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var4 == null) {
-			var4 = new ItemContainer();
-			ItemContainer.itemContainers.put(var4, (long)var0);
-		}
-
-		if (var4.ids.length <= var1) {
-			int[] var5 = new int[var1 + 1];
-			int[] var6 = new int[var1 + 1];
-
-			int var7;
-			for (var7 = 0; var7 < var4.ids.length; ++var7) {
-				var5[var7] = var4.ids[var7];
-				var6[var7] = var4.quantities[var7];
-			}
-
-			for (var7 = var4.ids.length; var7 < var1; ++var7) {
-				var5[var7] = -1;
-				var6[var7] = 0;
-			}
-
-			var4.ids = var5;
-			var4.quantities = var6;
-		}
-
-		var4.ids[var1] = var2;
-		var4.quantities[var1] = var3;
-	}
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-76"
-	)
-	public static void method1956() {
-		if (NetCache.NetCache_socket != null) {
-			NetCache.NetCache_socket.close();
-		}
-
-	}
-
-	@ObfuscatedName("kl")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "54739776"
-	)
-	static final void method1955(int var0) {
-		if (class242.loadInterface(var0)) {
-			class328.drawModelComponents(MouseRecorder.Widget_interfaceComponents[var0], -1);
-		}
+	public static boolean method1868(int var0) {
+		return var0 == WorldMapDecorationType.field3578.id;
 	}
 
 	public GraphicsObject() {
