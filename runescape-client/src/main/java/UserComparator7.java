@@ -1,36 +1,18 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cm")
+@ObfuscatedName("dp")
 @Implements("UserComparator7")
 public class UserComparator7 extends AbstractUserComparator {
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		longValue = 1289611995135137433L
-	)
-	public static long field1319;
-	@ObfuscatedName("hx")
+	@ObfuscatedName("hv")
 	@ObfuscatedSignature(
-		descriptor = "[Lpl;"
+		descriptor = "Lce;"
 	)
-	@Export("mapMarkerSprites")
-	static SpritePixels[] mapMarkerSprites;
-	@ObfuscatedName("iq")
-	@ObfuscatedGetter(
-		intValue = -427505933
-	)
-	@Export("cameraX")
-	static int cameraX;
-	@ObfuscatedName("in")
-	@ObfuscatedGetter(
-		intValue = 1941000053
-	)
-	@Export("cameraPitch")
-	static int cameraPitch;
-	@ObfuscatedName("c")
+	@Export("urlRequester")
+	static UrlRequester urlRequester;
+	@ObfuscatedName("o")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -38,10 +20,10 @@ public class UserComparator7 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lmp;Lmp;I)I",
-		garbageValue = "742897399"
+		descriptor = "(Lns;Lns;B)I",
+		garbageValue = "-76"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -56,17 +38,22 @@ public class UserComparator7 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("hj")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1366394197"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;S)V",
+		garbageValue = "-27109"
 	)
-	static final int method2518() {
-		if (SecureRandomFuture.clientPreferences.roofsHidden) {
-			return class20.Client_plane;
-		} else {
-			int var0 = FaceNormal.getTileHeight(cameraX, UserComparator10.cameraZ, class20.Client_plane);
-			return var0 - AbstractByteArrayCopier.cameraY < 800 && (Tiles.Tiles_renderFlags[class20.Client_plane][cameraX >> 7][UserComparator10.cameraZ >> 7] & 4) != 0 ? class20.Client_plane : 3;
+	@Export("addChatMessage")
+	static void addChatMessage(int var0, String var1, String var2, String var3) {
+		ChatChannel var4 = (ChatChannel)Messages.Messages_channels.get(var0);
+		if (var4 == null) {
+			var4 = new ChatChannel();
+			Messages.Messages_channels.put(var0, var4);
 		}
+
+		Message var5 = var4.addMessage(var0, var1, var2, var3);
+		Messages.Messages_hashTable.put(var5, (long)var5.count);
+		Messages.Messages_queue.add(var5);
+		Client.chatCycle = Client.cycleCntr;
 	}
 }
