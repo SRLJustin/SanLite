@@ -9,32 +9,24 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("u")
+@ObfuscatedName("x")
 class class17 implements SSLSession {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lku;"
-	)
-	@Export("StructDefinition_archive")
-	static AbstractArchive StructDefinition_archive;
-	@ObfuscatedName("o")
+	@ObfuscatedName("x")
+	@Export("ByteArrayPool_altSizeArrayCounts")
+	public static int[] ByteArrayPool_altSizeArrayCounts;
+	@ObfuscatedName("bt")
 	@ObfuscatedGetter(
-		intValue = 1007360263
+		intValue = 1069442965
 	)
-	static int field93;
-	@ObfuscatedName("ha")
-	@ObfuscatedGetter(
-		intValue = -303525593
-	)
-	static int field90;
+	static int field99;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Ld;"
+		descriptor = "Lz;"
 	)
 	final class12 this$1;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ld;)V"
+		descriptor = "(Lz;)V"
 	)
 	class17(class12 var1) {
 		this.this$1 = var1;
@@ -44,12 +36,8 @@ class class17 implements SSLSession {
 		return 0;
 	}
 
-	public void invalidate() {
-		throw new UnsupportedOperationException();
-	}
-
-	public long getCreationTime() {
-		throw new UnsupportedOperationException();
+	public Principal getPeerPrincipal() throws SSLPeerUnverifiedException {
+		return null;
 	}
 
 	public byte[] getId() {
@@ -64,16 +52,16 @@ class class17 implements SSLSession {
 		throw new UnsupportedOperationException();
 	}
 
-	public void putValue(String var1, Object var2) {
-		throw new UnsupportedOperationException();
-	}
-
 	public int getPacketBufferSize() {
 		throw new UnsupportedOperationException();
 	}
 
 	public Certificate[] getPeerCertificates() throws SSLPeerUnverifiedException {
-		return this.this$1.field67;
+		return this.this$1.field63;
+	}
+
+	public String getPeerHost() {
+		throw new UnsupportedOperationException();
 	}
 
 	public int getPeerPort() {
@@ -84,19 +72,11 @@ class class17 implements SSLSession {
 		throw new UnsupportedOperationException();
 	}
 
-	public SSLSessionContext getSessionContext() {
-		throw new UnsupportedOperationException();
-	}
-
 	public Object getValue(String var1) {
 		throw new UnsupportedOperationException();
 	}
 
-	public String[] getValueNames() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Principal getLocalPrincipal() {
+	public void invalidate() {
 		throw new UnsupportedOperationException();
 	}
 
@@ -104,7 +84,7 @@ class class17 implements SSLSession {
 		throw new UnsupportedOperationException();
 	}
 
-	public String getPeerHost() {
+	public void putValue(String var1, Object var2) {
 		throw new UnsupportedOperationException();
 	}
 
@@ -112,52 +92,60 @@ class class17 implements SSLSession {
 		return null;
 	}
 
+	public SSLSessionContext getSessionContext() {
+		throw new UnsupportedOperationException();
+	}
+
+	public long getCreationTime() {
+		throw new UnsupportedOperationException();
+	}
+
 	public void removeValue(String var1) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Principal getPeerPrincipal() throws SSLPeerUnverifiedException {
-		return null;
+	public Principal getLocalPrincipal() {
+		throw new UnsupportedOperationException();
+	}
+
+	public String[] getValueNames() {
+		throw new UnsupportedOperationException();
 	}
 
 	public String getCipherSuite() {
 		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1239241420"
+		descriptor = "(IIII)I",
+		garbageValue = "1793849187"
 	)
-	protected static final void method292() {
-		class91.clock.mark();
-
-		int var0;
-		for (var0 = 0; var0 < 32; ++var0) {
-			GameEngine.graphicsTickTimes[var0] = 0L;
-		}
-
-		for (var0 = 0; var0 < 32; ++var0) {
-			GameEngine.clientTickTimes[var0] = 0L;
-		}
-
-		GameEngine.gameCyclesToDo = 0;
+	public static int method232(int var0, int var1, int var2) {
+		int var3 = VarpDefinition.method3374(var2 - var1 + 1);
+		var3 <<= var1;
+		var0 |= var3;
+		return var0;
 	}
 
-	@ObfuscatedName("ik")
+	@ObfuscatedName("kt")
 	@ObfuscatedSignature(
 		descriptor = "(IB)V",
-		garbageValue = "40"
+		garbageValue = "113"
 	)
-	static final void method291(int var0) {
-		if (var0 >= 0) {
-			int var1 = Client.menuArguments1[var0];
-			int var2 = Client.menuArguments2[var0];
-			int var3 = Client.menuOpcodes[var0];
-			int var4 = Client.menuIdentifiers[var0];
-			String var5 = Client.menuActions[var0];
-			String var6 = Client.menuTargets[var0];
-			Decimator.menuAction(var1, var2, var3, var4, var5, var6, MouseHandler.MouseHandler_lastPressedX, MouseHandler.MouseHandler_lastPressedY);
+	@Export("Widget_resetModelFrames")
+	static final void Widget_resetModelFrames(int var0) {
+		if (WorldMapSection2.loadInterface(var0)) {
+			Widget[] var1 = SoundCache.Widget_interfaceComponents[var0];
+
+			for (int var2 = 0; var2 < var1.length; ++var2) {
+				Widget var3 = var1[var2];
+				if (var3 != null) {
+					var3.modelFrame = 0;
+					var3.modelFrameCycle = 0;
+				}
+			}
+
 		}
 	}
 }

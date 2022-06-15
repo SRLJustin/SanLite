@@ -1,25 +1,22 @@
 import java.net.URL;
+import java.util.List;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cf")
+@ObfuscatedName("ct")
 @Implements("UrlRequest")
 public class UrlRequest {
-	@ObfuscatedName("ce")
-	@ObfuscatedSignature(
-		descriptor = "Lpa;"
-	)
-	@Export("worldSelectRightSprite")
-	static IndexedSprite worldSelectRightSprite;
+	@ObfuscatedName("us")
+	static List field1373;
 	@ObfuscatedName("c")
 	@Export("url")
 	final URL url;
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@Export("isDone0")
 	volatile boolean isDone0;
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@Export("response0")
 	volatile byte[] response0;
 
@@ -29,101 +26,41 @@ public class UrlRequest {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-11682805"
+		descriptor = "(B)Z",
+		garbageValue = "-60"
 	)
 	@Export("isDone")
 	public boolean isDone() {
 		return this.isDone0;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(I)[B",
-		garbageValue = "309471456"
+		garbageValue = "-1112773966"
 	)
 	@Export("getResponse")
 	public byte[] getResponse() {
 		return this.response0;
 	}
 
-	@ObfuscatedName("fc")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1703812589"
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-2136536725"
 	)
-	static final void method2496() {
-		class364.method6623();
-		FloorUnderlayDefinition.FloorUnderlayDefinition_cached.clear();
-		ScriptFrame.method1110();
-		UserComparator5.method2524();
-		NPCComposition.NpcDefinition_cached.clear();
-		NPCComposition.NpcDefinition_cachedModels.clear();
-		ItemComposition.ItemDefinition_cached.clear();
-		ItemComposition.ItemDefinition_cachedModels.clear();
-		ItemComposition.ItemDefinition_cachedSprites.clear();
-		SequenceDefinition.SequenceDefinition_cached.clear();
-		SequenceDefinition.SequenceDefinition_cachedFrames.clear();
-		SequenceDefinition.SequenceDefinition_cachedModel.clear();
-		InterfaceParent.method2143();
-		class1.method8();
-		VarpDefinition.VarpDefinition_cached.clear();
-		AbstractSocket.HitSplatDefinition_cachedSprites.method7216();
-		Ignored.Ignored_cached.method7216();
-		ObjectSound.method1796();
-		HealthBarDefinition.HealthBarDefinition_cached.clear();
-		HealthBarDefinition.HealthBarDefinition_cachedSprites.clear();
-		ObjectComposition.method3542();
-		ParamComposition.ParamComposition_cached.clear();
-		WorldMapElement.WorldMapElement_cachedSprites.clear();
-		PlayerComposition.PlayerComposition_cachedModels.clear();
-		WorldMapSection2.method4417();
-		((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).clear();
-		Script.Script_cached.clear();
-		class115.archive0.clearFiles();
-		class9.archive1.clearFiles();
-		class19.archive3.clearFiles();
-		KeyHandler.archive4.clearFiles();
-		class140.archive5.clearFiles();
-		WorldMapScaleHandler.archive6.clearFiles();
-		class115.archive7.clearFiles();
-		UserComparator6.archive8.clearFiles();
-		NetSocket.archive9.clearFiles();
-		class257.archive10.clearFiles();
-		Players.archive11.clearFiles();
-		TaskHandler.archive12.clearFiles();
+	public String method2553() {
+		return this.url.toString();
 	}
 
-	@ObfuscatedName("hk")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1546953811"
+		descriptor = "(ZZI)I",
+		garbageValue = "-1626715483"
 	)
-	static void method2489() {
-		Client.menuOptionsCount = 0;
-		Client.isMenuOpen = false;
-	}
-
-	@ObfuscatedName("iz")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "-101999626"
-	)
-	@Export("selectSpell")
-	static void selectSpell(int var0, int var1, int var2, int var3) {
-		Widget var4 = class126.getWidgetChild(var0, var1);
-		if (var4 != null && var4.onTargetEnter != null) {
-			ScriptEvent var5 = new ScriptEvent();
-			var5.widget = var4;
-			var5.args = var4.onTargetEnter;
-			class285.runScriptEvent(var5);
-		}
-
-		Client.field633 = var3;
-		Client.isSpellSelected = true;
-		class20.selectedSpellWidget = var0;
-		Client.selectedSpellChildIndex = var1;
-		class91.selectedSpellFlags = var2;
-		SecureRandomCallable.invalidateWidget(var4);
+	public static int method2557(boolean var0, boolean var1) {
+		byte var2 = 0;
+		int var3 = var2 + NetCache.NetCache_pendingPriorityWritesCount + NetCache.NetCache_pendingPriorityResponsesCount;
+		return var3;
 	}
 }

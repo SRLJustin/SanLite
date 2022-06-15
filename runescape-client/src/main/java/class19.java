@@ -1,174 +1,107 @@
-import java.security.SecureRandom;
 import java.util.concurrent.Future;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("f")
+@ObfuscatedName("a")
 public class class19 {
-	@ObfuscatedName("s")
+	@ObfuscatedName("up")
 	@ObfuscatedSignature(
-		descriptor = "Lpa;"
+		descriptor = "Lcv;"
 	)
-	@Export("titlebuttonSprite")
-	static IndexedSprite titlebuttonSprite;
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "Lpn;"
-	)
-	@Export("rasterProvider")
-	public static AbstractRasterProvider rasterProvider;
-	@ObfuscatedName("eg")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive3")
-	static Archive archive3;
-	@ObfuscatedName("fa")
-	@Export("secureRandom")
-	static SecureRandom secureRandom;
+	@Export("clientPreferences")
+	static ClientPreferences clientPreferences;
 	@ObfuscatedName("c")
-	Future field100;
-	@ObfuscatedName("b")
-	String field101;
+	Future field107;
+	@ObfuscatedName("v")
+	String field106;
 
 	class19(Future var1) {
-		this.field100 = var1;
+		this.field107 = var1;
 	}
 
 	class19(String var1) {
-		this.method306(var1);
+		this.method243(var1);
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "-1875205384"
+		garbageValue = "1161369831"
 	)
-	void method306(String var1) {
+	void method243(String var1) {
 		if (var1 == null) {
 			var1 = "";
 		}
 
-		this.field101 = var1;
-		if (this.field100 != null) {
-			this.field100.cancel(true);
-			this.field100 = null;
+		this.field106 = var1;
+		if (this.field107 != null) {
+			this.field107.cancel(true);
+			this.field107 = null;
 		}
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-1673495368"
+		garbageValue = "-688611992"
 	)
-	public final String method307() {
-		return this.field101;
+	public final String method244() {
+		return this.field106;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-274193431"
+		garbageValue = "731102059"
 	)
-	public boolean method331() {
-		return this.field101 != null || this.field100 == null;
+	public boolean method251() {
+		return this.field106 != null || this.field107 == null;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1434821214"
+		garbageValue = "1151479385"
 	)
-	public final boolean method309() {
-		return this.method331() ? true : this.field100.isDone();
+	public final boolean method246() {
+		return this.method251() ? true : this.field107.isDone();
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lq;",
-		garbageValue = "-45"
+		descriptor = "(S)Lb;",
+		garbageValue = "-5003"
 	)
-	public final class21 method310() {
-		if (this.method331()) {
-			return new class21(this.field101);
-		} else if (!this.method309()) {
+	public final class21 method249() {
+		if (this.method251()) {
+			return new class21(this.field106);
+		} else if (!this.method246()) {
 			return null;
 		} else {
 			try {
-				return (class21)this.field100.get();
+				return (class21)this.field107.get();
 			} catch (Exception var3) {
 				String var2 = "Error retrieving REST request reply";
 				System.err.println(var2 + "\r\n" + var3);
-				this.method306(var2);
+				this.method243(var2);
 				return new class21(var2);
 			}
 		}
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;I)V",
-		garbageValue = "1773955351"
+		descriptor = "(II)Ldt;",
+		garbageValue = "234177073"
 	)
-	public static void method330(AbstractArchive var0) {
-		FloorUnderlayDefinition.FloorUnderlayDefinition_archive = var0;
-	}
-
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
-		garbageValue = "1264521641"
-	)
-	@Export("setLoginResponseString")
-	static void setLoginResponseString(String var0, String var1, String var2) {
-		Login.Login_response1 = var0;
-		Login.Login_response2 = var1;
-		Login.Login_response3 = var2;
-	}
-
-	@ObfuscatedName("ki")
-	@ObfuscatedSignature(
-		descriptor = "(Ljm;I)Z",
-		garbageValue = "111761811"
-	)
-	static final boolean method329(Widget var0) {
-		int var1 = var0.contentType;
-		if (var1 == 205) {
-			Client.logoutTimer = 250;
-			return true;
-		} else {
-			int var2;
-			int var3;
-			if (var1 >= 300 && var1 <= 313) {
-				var2 = (var1 - 300) / 2;
-				var3 = var1 & 1;
-				Client.playerAppearance.changeAppearance(var2, var3 == 1);
-			}
-
-			if (var1 >= 314 && var1 <= 323) {
-				var2 = (var1 - 314) / 2;
-				var3 = var1 & 1;
-				Client.playerAppearance.method5391(var2, var3 == 1);
-			}
-
-			if (var1 == 324) {
-				Client.playerAppearance.changeSex(false);
-			}
-
-			if (var1 == 325) {
-				Client.playerAppearance.changeSex(true);
-			}
-
-			if (var1 == 326) {
-				PacketBufferNode var4 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2904, Client.packetWriter.isaacCipher);
-				Client.playerAppearance.write(var4.packetBuffer);
-				Client.packetWriter.addNode(var4);
-				return true;
-			} else {
-				return false;
-			}
+	static class119 method254(int var0) {
+		class119 var1 = (class119)Actor.findEnumerated(UserComparator9.method2599(), var0);
+		if (var1 == null) {
+			var1 = class119.field1497;
 		}
+
+		return var1;
 	}
 }
