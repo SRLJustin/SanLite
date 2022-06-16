@@ -4,61 +4,61 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mm")
+@ObfuscatedName("ng")
 @Implements("FriendsList")
 public class FriendsList extends NameableContainer {
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Low;"
+		descriptor = "Lpe;"
 	)
 	@Export("loginType")
 	final LoginType loginType;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -2043730647
+		intValue = -1848201845
 	)
-	int field4081;
-	@ObfuscatedName("t")
+	int field4286;
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "Llc;"
+		descriptor = "Lli;"
 	)
 	@Export("friendLoginUpdates")
 	public LinkDeque friendLoginUpdates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Low;)V"
+		descriptor = "(Lpe;)V"
 	)
 	public FriendsList(LoginType var1) {
 		super(400);
-		this.field4081 = 1;
+		this.field4286 = 1;
 		this.friendLoginUpdates = new LinkDeque();
 		this.loginType = var1;
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lmv;",
-		garbageValue = "2"
+		descriptor = "(S)Lne;",
+		garbageValue = "-7122"
 	)
 	@Export("newInstance")
 	Nameable newInstance() {
 		return new Friend();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Lmv;",
-		garbageValue = "-813912346"
+		descriptor = "(II)[Lne;",
+		garbageValue = "77510907"
 	)
 	@Export("newTypedArray")
 	Nameable[] newTypedArray(int var1) {
 		return new Friend[var1];
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;ZI)Z",
-		garbageValue = "-611613577"
+		descriptor = "(Lqa;ZB)Z",
+		garbageValue = "-49"
 	)
 	@Export("isFriended")
 	public boolean isFriended(Username var1, boolean var2) {
@@ -72,8 +72,8 @@ public class FriendsList extends NameableContainer {
 
 	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;II)V",
-		garbageValue = "2023217222"
+		descriptor = "(Lqt;IB)V",
+		garbageValue = "1"
 	)
 	@Export("read")
 	public void read(Buffer var1, int var2) {
@@ -98,7 +98,7 @@ public class FriendsList extends NameableContainer {
 					Friend var11 = (Friend)this.getByCurrentUsername(var4);
 					if (var3) {
 						Friend var12 = (Friend)this.getByCurrentUsername(var5);
-						if (var12 != null && var11 != var12) {
+						if (var12 != null && var12 != var11) {
 							if (var11 != null) {
 								this.remove(var12);
 							} else {
@@ -137,17 +137,17 @@ public class FriendsList extends NameableContainer {
 					}
 
 					if (var6 != var11.world) {
-						var11.int2 = ++this.field4081 - 1;
+						var11.int2 = ++this.field4286 - 1;
 						if (var11.world == -1 && var6 == 0) {
-							var11.int2 = -(var11.int2 * -818070345) * -79798009;
+							var11.int2 = -(var11.int2 * -1691529257) * 1716524007;
 						}
 
 						var11.world = var6;
 					}
 
 					var11.rank = var7;
-					var11.field4085 = var9;
-					var11.field4086 = var10;
+					var11.field4299 = var9;
+					var11.field4298 = var10;
 					continue;
 				}
 
@@ -157,5 +157,790 @@ public class FriendsList extends NameableContainer {
 			this.sort();
 			return;
 		}
+	}
+
+	@ObfuscatedName("iw")
+	@ObfuscatedSignature(
+		descriptor = "(IIIILjava/lang/String;Ljava/lang/String;IIB)V",
+		garbageValue = "1"
+	)
+	@Export("menuAction")
+	static final void menuAction(int var0, int var1, int var2, int var3, String var4, String var5, int var6, int var7) {
+		if (var2 >= 2000) {
+			var2 -= 2000;
+		}
+
+		PacketBufferNode var8;
+		if (var2 == 1) {
+			Client.mouseCrossX = var6;
+			Client.mouseCrossY = var7;
+			Client.mouseCrossColor = 2;
+			Client.mouseCrossState = 0;
+			Client.destinationX = var0;
+			Client.destinationY = var1;
+			var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2979, Client.packetWriter.isaacCipher);
+			var8.packetBuffer.method7863(EnumComposition.selectedItemSlot);
+			var8.packetBuffer.writeShort(WorldMapLabelSize.baseY * 64 + var1);
+			var8.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+			var8.packetBuffer.method7771(var3);
+			var8.packetBuffer.writeShort(WorldMapIcon_0.selectedItemId);
+			var8.packetBuffer.method7784(ModeWhere.selectedItemWidget);
+			var8.packetBuffer.writeShort(class28.baseX * 64 + var0);
+			Client.packetWriter.addNode(var8);
+		} else if (var2 == 2) {
+			Client.mouseCrossX = var6;
+			Client.mouseCrossY = var7;
+			Client.mouseCrossColor = 2;
+			Client.mouseCrossState = 0;
+			Client.destinationX = var0;
+			Client.destinationY = var1;
+			var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2992, Client.packetWriter.isaacCipher);
+			var8.packetBuffer.method7771(WorldMapLabelSize.baseY * 64 + var1);
+			var8.packetBuffer.writeShort(var3);
+			var8.packetBuffer.method7929(class28.baseX * 64 + var0);
+			var8.packetBuffer.method7771(Client.selectedSpellChildIndex);
+			var8.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+			var8.packetBuffer.method7784(NetCache.selectedSpellWidget);
+			var8.packetBuffer.method7863(Client.field651);
+			Client.packetWriter.addNode(var8);
+		} else if (var2 == 3) {
+			Client.mouseCrossX = var6;
+			Client.mouseCrossY = var7;
+			Client.mouseCrossColor = 2;
+			Client.mouseCrossState = 0;
+			Client.destinationX = var0;
+			Client.destinationY = var1;
+			var8 = EnumComposition.getPacketBufferNode(ClientPacket.field3005, Client.packetWriter.isaacCipher);
+			var8.packetBuffer.method7929(WorldMapLabelSize.baseY * 64 + var1);
+			var8.packetBuffer.method7929(class28.baseX * 64 + var0);
+			var8.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+			var8.packetBuffer.method7771(var3);
+			Client.packetWriter.addNode(var8);
+		} else if (var2 == 4) {
+			Client.mouseCrossX = var6;
+			Client.mouseCrossY = var7;
+			Client.mouseCrossColor = 2;
+			Client.mouseCrossState = 0;
+			Client.destinationX = var0;
+			Client.destinationY = var1;
+			var8 = EnumComposition.getPacketBufferNode(ClientPacket.field3003, Client.packetWriter.isaacCipher);
+			var8.packetBuffer.method7762(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+			var8.packetBuffer.writeShort(WorldMapLabelSize.baseY * 64 + var1);
+			var8.packetBuffer.writeShort(class28.baseX * 64 + var0);
+			var8.packetBuffer.method7929(var3);
+			Client.packetWriter.addNode(var8);
+		} else if (var2 == 5) {
+			Client.mouseCrossX = var6;
+			Client.mouseCrossY = var7;
+			Client.mouseCrossColor = 2;
+			Client.mouseCrossState = 0;
+			Client.destinationX = var0;
+			Client.destinationY = var1;
+			var8 = EnumComposition.getPacketBufferNode(ClientPacket.field3009, Client.packetWriter.isaacCipher);
+			var8.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+			var8.packetBuffer.method7863(class28.baseX * 64 + var0);
+			var8.packetBuffer.method7863(WorldMapLabelSize.baseY * 64 + var1);
+			var8.packetBuffer.writeShort(var3);
+			Client.packetWriter.addNode(var8);
+		} else if (var2 == 6) {
+			Client.mouseCrossX = var6;
+			Client.mouseCrossY = var7;
+			Client.mouseCrossColor = 2;
+			Client.mouseCrossState = 0;
+			Client.destinationX = var0;
+			Client.destinationY = var1;
+			var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2936, Client.packetWriter.isaacCipher);
+			var8.packetBuffer.method7929(WorldMapLabelSize.baseY * 64 + var1);
+			var8.packetBuffer.writeShort(class28.baseX * 64 + var0);
+			var8.packetBuffer.method7762(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+			var8.packetBuffer.method7863(var3);
+			Client.packetWriter.addNode(var8);
+		} else {
+			PacketBufferNode var9;
+			NPC var13;
+			if (var2 == 7) {
+				var13 = Client.npcs[var3];
+				if (var13 != null) {
+					Client.mouseCrossX = var6;
+					Client.mouseCrossY = var7;
+					Client.mouseCrossColor = 2;
+					Client.mouseCrossState = 0;
+					Client.destinationX = var0;
+					Client.destinationY = var1;
+					var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2910, Client.packetWriter.isaacCipher);
+					var9.packetBuffer.writeInt(ModeWhere.selectedItemWidget);
+					var9.packetBuffer.method7771(EnumComposition.selectedItemSlot);
+					var9.packetBuffer.method7929(var3);
+					var9.packetBuffer.method7771(WorldMapIcon_0.selectedItemId);
+					var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					Client.packetWriter.addNode(var9);
+				}
+			} else if (var2 == 8) {
+				var13 = Client.npcs[var3];
+				if (var13 != null) {
+					Client.mouseCrossX = var6;
+					Client.mouseCrossY = var7;
+					Client.mouseCrossColor = 2;
+					Client.mouseCrossState = 0;
+					Client.destinationX = var0;
+					Client.destinationY = var1;
+					var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2911, Client.packetWriter.isaacCipher);
+					var9.packetBuffer.writeIntME(NetCache.selectedSpellWidget);
+					var9.packetBuffer.writeShort(Client.selectedSpellChildIndex);
+					var9.packetBuffer.writeShort(Client.field651);
+					var9.packetBuffer.method7929(var3);
+					var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					Client.packetWriter.addNode(var9);
+				}
+			} else if (var2 == 9) {
+				var13 = Client.npcs[var3];
+				if (var13 != null) {
+					Client.mouseCrossX = var6;
+					Client.mouseCrossY = var7;
+					Client.mouseCrossColor = 2;
+					Client.mouseCrossState = 0;
+					Client.destinationX = var0;
+					Client.destinationY = var1;
+					var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2939, Client.packetWriter.isaacCipher);
+					var9.packetBuffer.method7863(var3);
+					var9.packetBuffer.method7764(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					Client.packetWriter.addNode(var9);
+				}
+			} else if (var2 == 10) {
+				var13 = Client.npcs[var3];
+				if (var13 != null) {
+					Client.mouseCrossX = var6;
+					Client.mouseCrossY = var7;
+					Client.mouseCrossColor = 2;
+					Client.mouseCrossState = 0;
+					Client.destinationX = var0;
+					Client.destinationY = var1;
+					var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2948, Client.packetWriter.isaacCipher);
+					var9.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					var9.packetBuffer.method7771(var3);
+					Client.packetWriter.addNode(var9);
+				}
+			} else if (var2 == 11) {
+				var13 = Client.npcs[var3];
+				if (var13 != null) {
+					Client.mouseCrossX = var6;
+					Client.mouseCrossY = var7;
+					Client.mouseCrossColor = 2;
+					Client.mouseCrossState = 0;
+					Client.destinationX = var0;
+					Client.destinationY = var1;
+					var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2984, Client.packetWriter.isaacCipher);
+					var9.packetBuffer.method7863(var3);
+					var9.packetBuffer.method7762(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					Client.packetWriter.addNode(var9);
+				}
+			} else if (var2 == 12) {
+				var13 = Client.npcs[var3];
+				if (var13 != null) {
+					Client.mouseCrossX = var6;
+					Client.mouseCrossY = var7;
+					Client.mouseCrossColor = 2;
+					Client.mouseCrossState = 0;
+					Client.destinationX = var0;
+					Client.destinationY = var1;
+					var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2940, Client.packetWriter.isaacCipher);
+					var9.packetBuffer.writeShort(var3);
+					var9.packetBuffer.method7764(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					Client.packetWriter.addNode(var9);
+				}
+			} else if (var2 == 13) {
+				var13 = Client.npcs[var3];
+				if (var13 != null) {
+					Client.mouseCrossX = var6;
+					Client.mouseCrossY = var7;
+					Client.mouseCrossColor = 2;
+					Client.mouseCrossState = 0;
+					Client.destinationX = var0;
+					Client.destinationY = var1;
+					var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2907, Client.packetWriter.isaacCipher);
+					var9.packetBuffer.method7929(var3);
+					var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					Client.packetWriter.addNode(var9);
+				}
+			} else {
+				Player var15;
+				if (var2 == 14) {
+					var15 = Client.players[var3];
+					if (var15 != null) {
+						Client.mouseCrossX = var6;
+						Client.mouseCrossY = var7;
+						Client.mouseCrossColor = 2;
+						Client.mouseCrossState = 0;
+						Client.destinationX = var0;
+						Client.destinationY = var1;
+						var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2908, Client.packetWriter.isaacCipher);
+						var9.packetBuffer.method7863(var3);
+						var9.packetBuffer.method7863(WorldMapIcon_0.selectedItemId);
+						var9.packetBuffer.method7764(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+						var9.packetBuffer.method7863(EnumComposition.selectedItemSlot);
+						var9.packetBuffer.writeInt(ModeWhere.selectedItemWidget);
+						Client.packetWriter.addNode(var9);
+					}
+				} else if (var2 == 15) {
+					var15 = Client.players[var3];
+					if (var15 != null) {
+						Client.mouseCrossX = var6;
+						Client.mouseCrossY = var7;
+						Client.mouseCrossColor = 2;
+						Client.mouseCrossState = 0;
+						Client.destinationX = var0;
+						Client.destinationY = var1;
+						var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2924, Client.packetWriter.isaacCipher);
+						var9.packetBuffer.writeShort(Client.selectedSpellChildIndex);
+						var9.packetBuffer.method7929(var3);
+						var9.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+						var9.packetBuffer.writeInt(NetCache.selectedSpellWidget);
+						var9.packetBuffer.method7771(Client.field651);
+						Client.packetWriter.addNode(var9);
+					}
+				} else if (var2 == 16) {
+					Client.mouseCrossX = var6;
+					Client.mouseCrossY = var7;
+					Client.mouseCrossColor = 2;
+					Client.mouseCrossState = 0;
+					Client.destinationX = var0;
+					Client.destinationY = var1;
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2997, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeShort(WorldMapLabelSize.baseY * 64 + var1);
+					var8.packetBuffer.writeInt(ModeWhere.selectedItemWidget);
+					var8.packetBuffer.method7929(EnumComposition.selectedItemSlot);
+					var8.packetBuffer.method7863(WorldMapIcon_0.selectedItemId);
+					var8.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					var8.packetBuffer.method7863(var3);
+					var8.packetBuffer.writeShort(class28.baseX * 64 + var0);
+					Client.packetWriter.addNode(var8);
+				} else if (var2 == 17) {
+					Client.mouseCrossX = var6;
+					Client.mouseCrossY = var7;
+					Client.mouseCrossColor = 2;
+					Client.mouseCrossState = 0;
+					Client.destinationX = var0;
+					Client.destinationY = var1;
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2980, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7771(var3);
+					var8.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					var8.packetBuffer.method7863(class28.baseX * 64 + var0);
+					var8.packetBuffer.method7929(Client.selectedSpellChildIndex);
+					var8.packetBuffer.method7771(Client.field651);
+					var8.packetBuffer.method7863(WorldMapLabelSize.baseY * 64 + var1);
+					var8.packetBuffer.writeIntME(NetCache.selectedSpellWidget);
+					Client.packetWriter.addNode(var8);
+				} else if (var2 == 18) {
+					Client.mouseCrossX = var6;
+					Client.mouseCrossY = var7;
+					Client.mouseCrossColor = 2;
+					Client.mouseCrossState = 0;
+					Client.destinationX = var0;
+					Client.destinationY = var1;
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2909, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7929(class28.baseX * 64 + var0);
+					var8.packetBuffer.method7863(var3);
+					var8.packetBuffer.writeShort(WorldMapLabelSize.baseY * 64 + var1);
+					var8.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					Client.packetWriter.addNode(var8);
+				} else if (var2 == 19) {
+					Client.mouseCrossX = var6;
+					Client.mouseCrossY = var7;
+					Client.mouseCrossColor = 2;
+					Client.mouseCrossState = 0;
+					Client.destinationX = var0;
+					Client.destinationY = var1;
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2919, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7929(WorldMapLabelSize.baseY * 64 + var1);
+					var8.packetBuffer.method7929(var3);
+					var8.packetBuffer.method7762(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					var8.packetBuffer.method7929(class28.baseX * 64 + var0);
+					Client.packetWriter.addNode(var8);
+				} else if (var2 == 20) {
+					Client.mouseCrossX = var6;
+					Client.mouseCrossY = var7;
+					Client.mouseCrossColor = 2;
+					Client.mouseCrossState = 0;
+					Client.destinationX = var0;
+					Client.destinationY = var1;
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2920, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeShort(WorldMapLabelSize.baseY * 64 + var1);
+					var8.packetBuffer.method7764(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					var8.packetBuffer.method7863(var3);
+					var8.packetBuffer.method7771(class28.baseX * 64 + var0);
+					Client.packetWriter.addNode(var8);
+				} else if (var2 == 21) {
+					Client.mouseCrossX = var6;
+					Client.mouseCrossY = var7;
+					Client.mouseCrossColor = 2;
+					Client.mouseCrossState = 0;
+					Client.destinationX = var0;
+					Client.destinationY = var1;
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2955, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7863(class28.baseX * 64 + var0);
+					var8.packetBuffer.method7929(var3);
+					var8.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					var8.packetBuffer.writeShort(WorldMapLabelSize.baseY * 64 + var1);
+					Client.packetWriter.addNode(var8);
+				} else if (var2 == 22) {
+					Client.mouseCrossX = var6;
+					Client.mouseCrossY = var7;
+					Client.mouseCrossColor = 2;
+					Client.mouseCrossState = 0;
+					Client.destinationX = var0;
+					Client.destinationY = var1;
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2961, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7863(class28.baseX * 64 + var0);
+					var8.packetBuffer.method7764(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					var8.packetBuffer.method7929(var3);
+					var8.packetBuffer.writeShort(WorldMapLabelSize.baseY * 64 + var1);
+					Client.packetWriter.addNode(var8);
+				} else if (var2 == 23) {
+					if (Client.isMenuOpen) {
+						class356.scene.setViewportWalking();
+					} else {
+						class356.scene.menuOpen(PacketWriter.Client_plane, var0, var1, true);
+					}
+				} else {
+					PacketBufferNode var12;
+					Widget var16;
+					if (var2 == 24) {
+						var16 = class140.getWidget(var1);
+						if (var16 != null) {
+							boolean var11 = true;
+							if (var16.contentType > 0) {
+								var11 = Message.method1065(var16);
+							}
+
+							if (var11) {
+								var12 = EnumComposition.getPacketBufferNode(ClientPacket.field2999, Client.packetWriter.isaacCipher);
+								var12.packetBuffer.writeInt(var1);
+								Client.packetWriter.addNode(var12);
+							}
+						}
+					} else {
+						if (var2 == 25) {
+							var16 = ScriptFrame.getWidgetChild(var1, var0);
+							if (var16 != null) {
+								WorldMapDecoration.Widget_runOnTargetLeave();
+								GrandExchangeOfferAgeComparator.selectSpell(var1, var0, WorldMapID.Widget_unpackTargetMask(class124.getWidgetFlags(var16)), var16.itemId);
+								Client.isItemSelected = 0;
+								Client.selectedSpellActionName = WorldMapIcon_0.Widget_getSpellActionName(var16);
+								if (Client.selectedSpellActionName == null) {
+									Client.selectedSpellActionName = "null";
+								}
+
+								if (var16.isIf3) {
+									Client.selectedSpellName = var16.dataText + class122.colorStartTag(16777215);
+								} else {
+									Client.selectedSpellName = class122.colorStartTag(65280) + var16.spellName + class122.colorStartTag(16777215);
+								}
+							}
+
+							return;
+						}
+
+						if (var2 == 26) {
+							Occluder.method4354();
+						} else {
+							int var10;
+							Widget var14;
+							if (var2 == 28) {
+								var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2999, Client.packetWriter.isaacCipher);
+								var8.packetBuffer.writeInt(var1);
+								Client.packetWriter.addNode(var8);
+								var14 = class140.getWidget(var1);
+								if (var14 != null && var14.cs1Instructions != null && var14.cs1Instructions[0][0] == 5) {
+									var10 = var14.cs1Instructions[0][1];
+									Varps.Varps_main[var10] = 1 - Varps.Varps_main[var10];
+									class306.changeGameOptions(var10);
+								}
+							} else if (var2 == 29) {
+								var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2999, Client.packetWriter.isaacCipher);
+								var8.packetBuffer.writeInt(var1);
+								Client.packetWriter.addNode(var8);
+								var14 = class140.getWidget(var1);
+								if (var14 != null && var14.cs1Instructions != null && var14.cs1Instructions[0][0] == 5) {
+									var10 = var14.cs1Instructions[0][1];
+									if (Varps.Varps_main[var10] != var14.cs1ComparisonValues[0]) {
+										Varps.Varps_main[var10] = var14.cs1ComparisonValues[0];
+										class306.changeGameOptions(var10);
+									}
+								}
+							} else if (var2 == 30) {
+								if (Client.meslayerContinueWidget == null) {
+									class362.resumePauseWidget(var1, var0);
+									Client.meslayerContinueWidget = ScriptFrame.getWidgetChild(var1, var0);
+									ChatChannel.method1994(Client.meslayerContinueWidget);
+								}
+							} else if (var2 == 31) {
+								var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2993, Client.packetWriter.isaacCipher);
+								var8.packetBuffer.method7929(EnumComposition.selectedItemSlot);
+								var8.packetBuffer.method7784(var1);
+								var8.packetBuffer.method7783(ModeWhere.selectedItemWidget);
+								var8.packetBuffer.method7929(var0);
+								var8.packetBuffer.method7863(WorldMapIcon_0.selectedItemId);
+								var8.packetBuffer.method7771(var3);
+								Client.packetWriter.addNode(var8);
+								Client.field599 = 0;
+								class1.field4 = class140.getWidget(var1);
+								Client.field600 = var0;
+							} else if (var2 == 32) {
+								var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2933, Client.packetWriter.isaacCipher);
+								var8.packetBuffer.writeInt(var1);
+								var8.packetBuffer.writeShort(var3);
+								var8.packetBuffer.method7771(Client.selectedSpellChildIndex);
+								var8.packetBuffer.writeIntME(NetCache.selectedSpellWidget);
+								var8.packetBuffer.method7929(var0);
+								Client.packetWriter.addNode(var8);
+								Client.field599 = 0;
+								class1.field4 = class140.getWidget(var1);
+								Client.field600 = var0;
+							} else if (var2 == 33) {
+								var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2988, Client.packetWriter.isaacCipher);
+								var8.packetBuffer.writeIntME(var1);
+								var8.packetBuffer.method7771(var0);
+								var8.packetBuffer.method7929(var3);
+								Client.packetWriter.addNode(var8);
+								Client.field599 = 0;
+								class1.field4 = class140.getWidget(var1);
+								Client.field600 = var0;
+							} else if (var2 == 34) {
+								var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2943, Client.packetWriter.isaacCipher);
+								var8.packetBuffer.method7929(var0);
+								var8.packetBuffer.method7784(var1);
+								var8.packetBuffer.method7863(var3);
+								Client.packetWriter.addNode(var8);
+								Client.field599 = 0;
+								class1.field4 = class140.getWidget(var1);
+								Client.field600 = var0;
+							} else if (var2 == 35) {
+								var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2998, Client.packetWriter.isaacCipher);
+								var8.packetBuffer.method7863(var3);
+								var8.packetBuffer.writeIntME(var1);
+								var8.packetBuffer.method7771(var0);
+								Client.packetWriter.addNode(var8);
+								Client.field599 = 0;
+								class1.field4 = class140.getWidget(var1);
+								Client.field600 = var0;
+							} else if (var2 == 36) {
+								var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2975, Client.packetWriter.isaacCipher);
+								var8.packetBuffer.writeShort(var3);
+								var8.packetBuffer.method7929(var0);
+								var8.packetBuffer.method7783(var1);
+								Client.packetWriter.addNode(var8);
+								Client.field599 = 0;
+								class1.field4 = class140.getWidget(var1);
+								Client.field600 = var0;
+							} else if (var2 == 37) {
+								var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2968, Client.packetWriter.isaacCipher);
+								var8.packetBuffer.writeInt(var1);
+								var8.packetBuffer.method7771(var0);
+								var8.packetBuffer.method7863(var3);
+								Client.packetWriter.addNode(var8);
+								Client.field599 = 0;
+								class1.field4 = class140.getWidget(var1);
+								Client.field600 = var0;
+							} else {
+								if (var2 == 38) {
+									WorldMapDecoration.Widget_runOnTargetLeave();
+									var16 = class140.getWidget(var1);
+									Client.isItemSelected = 1;
+									EnumComposition.selectedItemSlot = var0;
+									ModeWhere.selectedItemWidget = var1;
+									WorldMapIcon_0.selectedItemId = var3;
+									ChatChannel.method1994(var16);
+									Client.selectedItemName = class122.colorStartTag(16748608) + EnumComposition.ItemDefinition_get(var3).name + class122.colorStartTag(16777215);
+									if (Client.selectedItemName == null) {
+										Client.selectedItemName = "null";
+									}
+
+									return;
+								}
+
+								if (var2 == 39) {
+									var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2938, Client.packetWriter.isaacCipher);
+									var8.packetBuffer.writeIntME(var1);
+									var8.packetBuffer.method7929(var0);
+									var8.packetBuffer.writeShort(var3);
+									Client.packetWriter.addNode(var8);
+									Client.field599 = 0;
+									class1.field4 = class140.getWidget(var1);
+									Client.field600 = var0;
+								} else if (var2 == 40) {
+									var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2978, Client.packetWriter.isaacCipher);
+									var8.packetBuffer.method7783(var1);
+									var8.packetBuffer.method7863(var0);
+									var8.packetBuffer.method7771(var3);
+									Client.packetWriter.addNode(var8);
+									Client.field599 = 0;
+									class1.field4 = class140.getWidget(var1);
+									Client.field600 = var0;
+								} else if (var2 == 41) {
+									var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2967, Client.packetWriter.isaacCipher);
+									var8.packetBuffer.method7863(var3);
+									var8.packetBuffer.method7784(var1);
+									var8.packetBuffer.writeShort(var0);
+									Client.packetWriter.addNode(var8);
+									Client.field599 = 0;
+									class1.field4 = class140.getWidget(var1);
+									Client.field600 = var0;
+								} else if (var2 == 42) {
+									var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2977, Client.packetWriter.isaacCipher);
+									var8.packetBuffer.method7863(var0);
+									var8.packetBuffer.writeShort(var3);
+									var8.packetBuffer.method7783(var1);
+									Client.packetWriter.addNode(var8);
+									Client.field599 = 0;
+									class1.field4 = class140.getWidget(var1);
+									Client.field600 = var0;
+								} else if (var2 == 43) {
+									var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2935, Client.packetWriter.isaacCipher);
+									var8.packetBuffer.method7929(var0);
+									var8.packetBuffer.method7783(var1);
+									var8.packetBuffer.method7929(var3);
+									Client.packetWriter.addNode(var8);
+									Client.field599 = 0;
+									class1.field4 = class140.getWidget(var1);
+									Client.field600 = var0;
+								} else if (var2 == 44) {
+									var15 = Client.players[var3];
+									if (var15 != null) {
+										Client.mouseCrossX = var6;
+										Client.mouseCrossY = var7;
+										Client.mouseCrossColor = 2;
+										Client.mouseCrossState = 0;
+										Client.destinationX = var0;
+										Client.destinationY = var1;
+										var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2970, Client.packetWriter.isaacCipher);
+										var9.packetBuffer.writeShort(var3);
+										var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+										Client.packetWriter.addNode(var9);
+									}
+								} else if (var2 == 45) {
+									var15 = Client.players[var3];
+									if (var15 != null) {
+										Client.mouseCrossX = var6;
+										Client.mouseCrossY = var7;
+										Client.mouseCrossColor = 2;
+										Client.mouseCrossState = 0;
+										Client.destinationX = var0;
+										Client.destinationY = var1;
+										var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2994, Client.packetWriter.isaacCipher);
+										var9.packetBuffer.method7863(var3);
+										var9.packetBuffer.method7762(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+										Client.packetWriter.addNode(var9);
+									}
+								} else if (var2 == 46) {
+									var15 = Client.players[var3];
+									if (var15 != null) {
+										Client.mouseCrossX = var6;
+										Client.mouseCrossY = var7;
+										Client.mouseCrossColor = 2;
+										Client.mouseCrossState = 0;
+										Client.destinationX = var0;
+										Client.destinationY = var1;
+										var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2986, Client.packetWriter.isaacCipher);
+										var9.packetBuffer.method7929(var3);
+										var9.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+										Client.packetWriter.addNode(var9);
+									}
+								} else if (var2 == 47) {
+									var15 = Client.players[var3];
+									if (var15 != null) {
+										Client.mouseCrossX = var6;
+										Client.mouseCrossY = var7;
+										Client.mouseCrossColor = 2;
+										Client.mouseCrossState = 0;
+										Client.destinationX = var0;
+										Client.destinationY = var1;
+										var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2991, Client.packetWriter.isaacCipher);
+										var9.packetBuffer.method7762(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+										var9.packetBuffer.method7863(var3);
+										Client.packetWriter.addNode(var9);
+									}
+								} else if (var2 == 48) {
+									var15 = Client.players[var3];
+									if (var15 != null) {
+										Client.mouseCrossX = var6;
+										Client.mouseCrossY = var7;
+										Client.mouseCrossColor = 2;
+										Client.mouseCrossState = 0;
+										Client.destinationX = var0;
+										Client.destinationY = var1;
+										var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2953, Client.packetWriter.isaacCipher);
+										var9.packetBuffer.method7771(var3);
+										var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+										Client.packetWriter.addNode(var9);
+									}
+								} else if (var2 == 49) {
+									var15 = Client.players[var3];
+									if (var15 != null) {
+										Client.mouseCrossX = var6;
+										Client.mouseCrossY = var7;
+										Client.mouseCrossColor = 2;
+										Client.mouseCrossState = 0;
+										Client.destinationX = var0;
+										Client.destinationY = var1;
+										var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2965, Client.packetWriter.isaacCipher);
+										var9.packetBuffer.method7771(var3);
+										var9.packetBuffer.method7762(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+										Client.packetWriter.addNode(var9);
+									}
+								} else if (var2 == 50) {
+									var15 = Client.players[var3];
+									if (var15 != null) {
+										Client.mouseCrossX = var6;
+										Client.mouseCrossY = var7;
+										Client.mouseCrossColor = 2;
+										Client.mouseCrossState = 0;
+										Client.destinationX = var0;
+										Client.destinationY = var1;
+										var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2947, Client.packetWriter.isaacCipher);
+										var9.packetBuffer.writeShort(var3);
+										var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+										Client.packetWriter.addNode(var9);
+									}
+								} else if (var2 == 51) {
+									var15 = Client.players[var3];
+									if (var15 != null) {
+										Client.mouseCrossX = var6;
+										Client.mouseCrossY = var7;
+										Client.mouseCrossColor = 2;
+										Client.mouseCrossState = 0;
+										Client.destinationX = var0;
+										Client.destinationY = var1;
+										var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2959, Client.packetWriter.isaacCipher);
+										var9.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+										var9.packetBuffer.writeShort(var3);
+										Client.packetWriter.addNode(var9);
+									}
+								} else {
+									label654: {
+										if (var2 != 57) {
+											if (var2 == 58) {
+												var16 = ScriptFrame.getWidgetChild(var1, var0);
+												if (var16 != null) {
+													var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2925, Client.packetWriter.isaacCipher);
+													var9.packetBuffer.method7929(Client.field651);
+													var9.packetBuffer.method7863(Client.selectedSpellChildIndex);
+													var9.packetBuffer.writeIntME(NetCache.selectedSpellWidget);
+													var9.packetBuffer.method7929(var16.itemId);
+													var9.packetBuffer.writeShort(var0);
+													var9.packetBuffer.method7783(var1);
+													Client.packetWriter.addNode(var9);
+												}
+												break label654;
+											}
+
+											if (var2 == 1001) {
+												Client.mouseCrossX = var6;
+												Client.mouseCrossY = var7;
+												Client.mouseCrossColor = 2;
+												Client.mouseCrossState = 0;
+												Client.destinationX = var0;
+												Client.destinationY = var1;
+												var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2937, Client.packetWriter.isaacCipher);
+												var8.packetBuffer.method7929(class28.baseX * 64 + var0);
+												var8.packetBuffer.method7863(var3);
+												var8.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+												var8.packetBuffer.method7929(WorldMapLabelSize.baseY * 64 + var1);
+												Client.packetWriter.addNode(var8);
+												break label654;
+											}
+
+											if (var2 == 1002) {
+												Client.mouseCrossX = var6;
+												Client.mouseCrossY = var7;
+												Client.mouseCrossColor = 2;
+												Client.mouseCrossState = 0;
+												var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2976, Client.packetWriter.isaacCipher);
+												var8.packetBuffer.method7863(var3);
+												Client.packetWriter.addNode(var8);
+												break label654;
+											}
+
+											if (var2 == 1003) {
+												Client.mouseCrossX = var6;
+												Client.mouseCrossY = var7;
+												Client.mouseCrossColor = 2;
+												Client.mouseCrossState = 0;
+												var13 = Client.npcs[var3];
+												if (var13 != null) {
+													NPCComposition var17 = var13.definition;
+													if (var17.transforms != null) {
+														var17 = var17.transform();
+													}
+
+													if (var17 != null) {
+														var12 = EnumComposition.getPacketBufferNode(ClientPacket.field2941, Client.packetWriter.isaacCipher);
+														var12.packetBuffer.method7771(var17.id);
+														Client.packetWriter.addNode(var12);
+													}
+												}
+												break label654;
+											}
+
+											if (var2 == 1004) {
+												Client.mouseCrossX = var6;
+												Client.mouseCrossY = var7;
+												Client.mouseCrossColor = 2;
+												Client.mouseCrossState = 0;
+												var8 = EnumComposition.getPacketBufferNode(ClientPacket.field3004, Client.packetWriter.isaacCipher);
+												var8.packetBuffer.method7929(var3);
+												Client.packetWriter.addNode(var8);
+												break label654;
+											}
+
+											if (var2 == 1005) {
+												var16 = class140.getWidget(var1);
+												if (var16 != null && var16.itemQuantities[var0] >= 100000) {
+													class290.addGameMessage(27, "", var16.itemQuantities[var0] + " x " + EnumComposition.ItemDefinition_get(var3).name);
+												} else {
+													var9 = EnumComposition.getPacketBufferNode(ClientPacket.field3004, Client.packetWriter.isaacCipher);
+													var9.packetBuffer.method7929(var3);
+													Client.packetWriter.addNode(var9);
+												}
+
+												Client.field599 = 0;
+												class1.field4 = class140.getWidget(var1);
+												Client.field600 = var0;
+												break label654;
+											}
+
+											if (var2 != 1007) {
+												if (var2 == 1009 || var2 == 1010 || var2 == 1008 || var2 == 1011 || var2 == 1012) {
+													class121.worldMap.worldMapMenuAction(var2, var3, new Coord(var0), new Coord(var1));
+												}
+												break label654;
+											}
+										}
+
+										var16 = ScriptFrame.getWidgetChild(var1, var0);
+										if (var16 != null) {
+											TextureProvider.widgetDefaultMenuAction(var3, var1, var0, var16.itemId, var5);
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		if (Client.isItemSelected != 0) {
+			Client.isItemSelected = 0;
+			ChatChannel.method1994(class140.getWidget(ModeWhere.selectedItemWidget));
+		}
+
+		if (Client.isSpellSelected) {
+			WorldMapDecoration.Widget_runOnTargetLeave();
+		}
+
+		if (class1.field4 != null && Client.field599 == 0) {
+			ChatChannel.method1994(class1.field4);
+		}
+
 	}
 }

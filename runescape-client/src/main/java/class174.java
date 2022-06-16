@@ -1,42 +1,51 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fy")
-public class class174 extends DualNode {
-	static {
-		new EvictingDualNodeHashTable(64);
-	}
-
-	@ObfuscatedName("p")
+@ObfuscatedName("fu")
+public class class174 {
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1822723426"
+		descriptor = "Lct;"
 	)
-	static void method3383() {
-		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_lock) {
-			if (ArchiveDiskActionHandler.field3815 == 0) {
-				KeyHandler.ArchiveDiskActionHandler_thread = new Thread(new ArchiveDiskActionHandler());
-				KeyHandler.ArchiveDiskActionHandler_thread.setDaemon(true);
-				KeyHandler.ArchiveDiskActionHandler_thread.start();
-				KeyHandler.ArchiveDiskActionHandler_thread.setPriority(5);
+	@Export("World_request")
+	static UrlRequest World_request;
+	@ObfuscatedName("br")
+	@ObfuscatedGetter(
+		intValue = 1359206661
+	)
+	static int field1891;
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lgf;",
+		garbageValue = "-64"
+	)
+	@Export("getParamDefinition")
+	public static ParamComposition getParamDefinition(int var0) {
+		ParamComposition var1 = (ParamComposition)ParamComposition.ParamComposition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = ParamComposition.ParamDefinition_archive.takeFile(11, var0);
+			var1 = new ParamComposition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
 			}
 
-			ArchiveDiskActionHandler.field3815 = 600;
+			var1.postDecode();
+			ParamComposition.ParamComposition_cached.put(var1, (long)var0);
+			return var1;
 		}
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;IB)Z",
-		garbageValue = "97"
+		descriptor = "(B)Z",
+		garbageValue = "16"
 	)
-	static boolean method3382(AbstractArchive var0, int var1) {
-		byte[] var2 = var0.takeFileFlat(var1);
-		if (var2 == null) {
-			return false;
-		} else {
-			WorldMapSection0.SpriteBuffer_decode(var2);
-			return true;
-		}
+	static final boolean method3458() {
+		return ViewportMouse.ViewportMouse_isInViewport;
 	}
 }

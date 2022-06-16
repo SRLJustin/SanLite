@@ -1,82 +1,101 @@
-import java.awt.FontMetrics;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dh")
-public enum class114 implements MouseWheel {
+@ObfuscatedName("dl")
+public class class114 {
+	@ObfuscatedName("f")
+	public static final float field1429;
+	@ObfuscatedName("j")
+	public static final float field1432;
+
+	static {
+		field1429 = Math.ulp(1.0F);
+		field1432 = 2.0F * field1429;
+	}
+
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Ldh;"
+		descriptor = "(Llh;Llh;ZLmt;I)V",
+		garbageValue = "1005410507"
 	)
-	field1390(0, 0),
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1383(1, 1),
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1384(2, 2),
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1391(3, 3),
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1386(4, 4);
-
-	@ObfuscatedName("r")
-	public static short[][] field1382;
-	@ObfuscatedName("ax")
-	@Export("loginScreenFontMetrics")
-	static FontMetrics loginScreenFontMetrics;
-	@ObfuscatedName("gl")
-	@ObfuscatedSignature(
-		descriptor = "Llx;"
-	)
-	@Export("fontPlain12")
-	static Font fontPlain12;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -401638189
-	)
-	final int field1387;
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(
-		intValue = 733610371
-	)
-	final int field1388;
-
-	class114(int var3, int var4) {
-		this.field1387 = var3;
-		this.field1388 = var4;
+	public static void method2636(AbstractArchive var0, AbstractArchive var1, boolean var2, Font var3) {
+		UserComparator4.ItemDefinition_archive = var0;
+		ItemComposition.ItemDefinition_modelArchive = var1;
+		DevicePcmPlayerProvider.ItemDefinition_inMembersWorld = var2;
+		PacketBufferNode.ItemDefinition_fileCount = UserComparator4.ItemDefinition_archive.getGroupFileCount(10);
+		ItemComposition.ItemDefinition_fontPlain11 = var3;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "48"
+		descriptor = "(Ljava/lang/CharSequence;B)Z",
+		garbageValue = "-111"
 	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field1388;
-	}
+	@Export("isNumber")
+	public static boolean isNumber(CharSequence var0) {
+		boolean var2 = false;
+		boolean var3 = false;
+		int var4 = 0;
+		int var5 = var0.length();
+		int var6 = 0;
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1912506868"
-	)
-	public static int method2629(int var0) {
-		long var2 = ViewportMouse.ViewportMouse_entityTags[var0];
-		int var1 = (int)(var2 >>> 14 & 3L);
+		boolean var1;
+		while (true) {
+			if (var6 >= var5) {
+				var1 = var3;
+				break;
+			}
+
+			label84: {
+				char var7 = var0.charAt(var6);
+				if (var6 == 0) {
+					if (var7 == '-') {
+						var2 = true;
+						break label84;
+					}
+
+					if (var7 == '+') {
+						break label84;
+					}
+				}
+
+				int var9;
+				if (var7 >= '0' && var7 <= '9') {
+					var9 = var7 - '0';
+				} else if (var7 >= 'A' && var7 <= 'Z') {
+					var9 = var7 - '7';
+				} else {
+					if (var7 < 'a' || var7 > 'z') {
+						var1 = false;
+						break;
+					}
+
+					var9 = var7 - 'W';
+				}
+
+				if (var9 >= 10) {
+					var1 = false;
+					break;
+				}
+
+				if (var2) {
+					var9 = -var9;
+				}
+
+				int var8 = var4 * 10 + var9;
+				if (var4 != var8 / 10) {
+					var1 = false;
+					break;
+				}
+
+				var4 = var8;
+				var3 = true;
+			}
+
+			++var6;
+		}
+
 		return var1;
 	}
 }

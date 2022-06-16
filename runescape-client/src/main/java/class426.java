@@ -1,41 +1,43 @@
+import java.util.Iterator;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pz")
-public class class426 {
+@ObfuscatedName("ph")
+class class426 implements Iterator {
+	@ObfuscatedName("f")
+	@Export("SpriteBuffer_xOffsets")
+	public static int[] SpriteBuffer_xOffsets;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1177110261
+		intValue = 443476841
 	)
-	public final int field4539;
-	@ObfuscatedName("b")
-	public Object field4537;
+	int field4644;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lpr;"
+	)
+	final class427 this$0;
 
-	public class426(int var1) {
-		this.field4539 = var1;
+	@ObfuscatedSignature(
+		descriptor = "(Lpr;)V"
+	)
+	class426(class427 var1) {
+		this.this$0 = var1;
 	}
 
-	public class426(int var1, Object var2) {
-		this.field4539 = var1;
-		this.field4537 = var2;
+	public boolean hasNext() {
+		return this.field4644 < this.this$0.method7058();
 	}
 
-	public int hashCode() {
-		return super.hashCode();
+	public void remove() {
+		throw new UnsupportedOperationException();
 	}
 
-	public boolean equals(Object var1) {
-		if (!(var1 instanceof class426)) {
-			return false;
-		} else {
-			class426 var2 = (class426)var1;
-			if (var2.field4537 == null && this.field4537 != null) {
-				return false;
-			} else if (this.field4537 == null && var2.field4537 != null) {
-				return false;
-			} else {
-				return this.field4539 == var2.field4539 && var2.field4537.equals(this.field4537);
-			}
-		}
+	public Object next() {
+		int var1 = ++this.field4644 - 1;
+		class393 var2 = (class393)this.this$0.field4648.get((long)var1);
+		return var2 != null ? var2 : this.this$0.method7522(var1);
 	}
 }
