@@ -4,35 +4,64 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ml")
+@ObfuscatedName("nh")
 @Implements("FriendLoginUpdate")
 public class FriendLoginUpdate extends Link {
-	@ObfuscatedName("bu")
-	@ObfuscatedGetter(
-		intValue = -1607694617
-	)
-	static int field4096;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1414251107
+		intValue = 105823237
 	)
-	public int field4097;
-	@ObfuscatedName("b")
+	public int field4300;
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lpo;"
+		descriptor = "Lqa;"
 	)
 	@Export("username")
 	public Username username;
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@Export("world")
 	public short world;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;I)V"
+		descriptor = "(Lqa;I)V"
 	)
 	FriendLoginUpdate(Username var1, int var2) {
-		this.field4097 = (int)(Ignored.method6459() / 1000L);
+		this.field4300 = (int)(class115.method2692() / 1000L);
 		this.username = var1;
 		this.world = (short)var2;
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lpx;",
+		garbageValue = "-1096065009"
+	)
+	public static class437 method6631(int var0) {
+		class437 var1 = (class437)class437.Widget_cachedSprites.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = class437.field4675.takeFile(38, var0);
+			var1 = new class437();
+			if (var2 != null) {
+				var1.method7635(new Buffer(var2));
+			}
+
+			var1.method7636();
+			class437.Widget_cachedSprites.put(var1, (long)var0);
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("y")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "-1"
+	)
+	static final void method6632(String var0) {
+		StringBuilder var10000 = (new StringBuilder()).append(var0);
+		Object var10001 = null;
+		String var1 = var10000.append(" is already on your friend list").toString();
+		class290.addGameMessage(30, "", var1);
 	}
 }

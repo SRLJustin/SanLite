@@ -4,100 +4,103 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bb")
+@ObfuscatedName("bk")
 @Implements("MenuAction")
 public class MenuAction {
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 120335157
+		intValue = -513159761
 	)
 	@Export("param0")
 	int param0;
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 175747701
+		intValue = 312244153
 	)
 	@Export("param1")
 	int param1;
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 1628688501
+		intValue = 1134197845
 	)
 	@Export("opcode")
 	int opcode;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1421448927
+		intValue = 59405457
 	)
 	@Export("identifier")
 	int identifier;
-	@ObfuscatedName("t")
+	@ObfuscatedName("j")
 	@Export("action")
 	String action;
 
 	MenuAction() {
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1427914294"
+		descriptor = "(S)Lny;",
+		garbageValue = "24881"
 	)
-	public static void method1961() {
-		synchronized(MouseHandler.MouseHandler_instance) {
-			MouseHandler.MouseHandler_currentButton = MouseHandler.MouseHandler_currentButtonVolatile;
-			MouseHandler.MouseHandler_x = MouseHandler.MouseHandler_xVolatile;
-			MouseHandler.MouseHandler_y = MouseHandler.MouseHandler_yVolatile;
-			MouseHandler.MouseHandler_millis = MouseHandler.MouseHandler_lastMovedVolatile;
-			MouseHandler.MouseHandler_lastButton = MouseHandler.MouseHandler_lastButtonVolatile;
-			MouseHandler.MouseHandler_lastPressedX = MouseHandler.MouseHandler_lastPressedXVolatile;
-			MouseHandler.MouseHandler_lastPressedY = MouseHandler.MouseHandler_lastPressedYVolatile;
-			MouseHandler.MouseHandler_lastPressedTimeMillis = MouseHandler.MouseHandler_lastPressedTimeMillisVolatile;
-			MouseHandler.MouseHandler_lastButtonVolatile = 0;
+	public static class387 method1884() {
+		synchronized(class387.field4393) {
+			if (class387.field4395 == 0) {
+				return new class387();
+			} else {
+				class387.field4393[--class387.field4395].method6956();
+				return class387.field4393[class387.field4395];
+			}
 		}
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("gi")
 	@ObfuscatedSignature(
-		descriptor = "(IB)J",
-		garbageValue = "33"
+		descriptor = "(Lkb;IIS)V",
+		garbageValue = "4254"
 	)
-	public static long method1960(int var0) {
-		return ViewportMouse.ViewportMouse_entityTags[var0];
-	}
+	@Export("checkIfMinimapClicked")
+	static final void checkIfMinimapClicked(Widget var0, int var1, int var2) {
+		if (Client.minimapState == 0 || Client.minimapState == 3) {
+			if (!Client.isMenuOpen && (MouseHandler.MouseHandler_lastButton == 1 || !class122.mouseCam && MouseHandler.MouseHandler_lastButton == 4)) {
+				SpriteMask var3 = var0.getSpriteMask(true);
+				if (var3 == null) {
+					return;
+				}
 
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)V",
-		garbageValue = "-1808275608"
-	)
-	static final void method1959(int var0, int var1, int var2) {
-		int var3;
-		for (var3 = 0; var3 < 8; ++var3) {
-			for (int var4 = 0; var4 < 8; ++var4) {
-				Tiles.Tiles_heights[var0][var3 + var1][var4 + var2] = 0;
+				int var4 = MouseHandler.MouseHandler_lastPressedX - var1;
+				int var5 = MouseHandler.MouseHandler_lastPressedY - var2;
+				if (var3.contains(var4, var5)) {
+					var4 -= var3.width / 2;
+					var5 -= var3.height / 2;
+					int var6 = Client.camAngleY & 2047;
+					int var7 = Rasterizer3D.Rasterizer3D_sine[var6];
+					int var8 = Rasterizer3D.Rasterizer3D_cosine[var6];
+					int var9 = var8 * var4 + var5 * var7 >> 11;
+					int var10 = var5 * var8 - var4 * var7 >> 11;
+					int var11 = var9 + class101.localPlayer.x >> 7;
+					int var12 = class101.localPlayer.y - var10 >> 7;
+					PacketBufferNode var13 = EnumComposition.getPacketBufferNode(ClientPacket.field2913, Client.packetWriter.isaacCipher);
+					var13.packetBuffer.writeByte(18);
+					var13.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? (KeyHandler.KeyHandler_pressedKeys[81] ? 2 : 1) : 0);
+					var13.packetBuffer.writeShort(class28.baseX * 64 + var11);
+					var13.packetBuffer.method7771(WorldMapLabelSize.baseY * 64 + var12);
+					var13.packetBuffer.writeByte(var4);
+					var13.packetBuffer.writeByte(var5);
+					var13.packetBuffer.writeShort(Client.camAngleY);
+					var13.packetBuffer.writeByte(57);
+					var13.packetBuffer.writeByte(0);
+					var13.packetBuffer.writeByte(0);
+					var13.packetBuffer.writeByte(89);
+					var13.packetBuffer.writeShort(class101.localPlayer.x);
+					var13.packetBuffer.writeShort(class101.localPlayer.y);
+					var13.packetBuffer.writeByte(63);
+					Client.packetWriter.addNode(var13);
+					Client.destinationX = var11;
+					Client.destinationY = var12;
+				}
 			}
-		}
 
-		if (var1 > 0) {
-			for (var3 = 1; var3 < 8; ++var3) {
-				Tiles.Tiles_heights[var0][var1][var3 + var2] = Tiles.Tiles_heights[var0][var1 - 1][var3 + var2];
-			}
 		}
-
-		if (var2 > 0) {
-			for (var3 = 1; var3 < 8; ++var3) {
-				Tiles.Tiles_heights[var0][var3 + var1][var2] = Tiles.Tiles_heights[var0][var3 + var1][var2 - 1];
-			}
-		}
-
-		if (var1 > 0 && Tiles.Tiles_heights[var0][var1 - 1][var2] != 0) {
-			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1 - 1][var2];
-		} else if (var2 > 0 && Tiles.Tiles_heights[var0][var1][var2 - 1] != 0) {
-			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1][var2 - 1];
-		} else if (var1 > 0 && var2 > 0 && Tiles.Tiles_heights[var0][var1 - 1][var2 - 1] != 0) {
-			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1 - 1][var2 - 1];
-		}
-
 	}
 }

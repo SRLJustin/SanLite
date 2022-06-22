@@ -3,64 +3,81 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("er")
-public class class138 extends class142 {
-	@ObfuscatedName("x")
-	@ObfuscatedGetter(
-		intValue = -539577351
+@ObfuscatedName("eq")
+public class class138 extends class128 {
+	@ObfuscatedName("he")
+	@ObfuscatedSignature(
+		descriptor = "Lcd;"
 	)
-	@Export("loginBoxCenter")
-	static int loginBoxCenter;
+	@Export("urlRequester")
+	static UrlRequester urlRequester;
 	@ObfuscatedName("c")
-	String field1589;
-	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = -318281505
+		intValue = -1956537991
 	)
-	int field1588;
-	@ObfuscatedName("p")
-	byte field1590;
+	int field1623;
+	@ObfuscatedName("v")
+	String field1620;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Len;"
+		descriptor = "Lej;"
 	)
-	final class143 this$0;
+	final class131 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Len;)V"
+		descriptor = "(Lej;)V"
 	)
-	class138(class143 var1) {
+	class138(class131 var1) {
 		this.this$0 = var1;
-		this.field1589 = null;
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "4"
+		descriptor = "(Lqt;B)V",
+		garbageValue = "5"
 	)
-	void vmethod3022(Buffer var1) {
-		if (var1.readUnsignedByte() != 255) {
-			--var1.offset;
-			var1.readLong();
-		}
-
-		this.field1589 = var1.readStringCp1252NullTerminatedOrNull();
-		this.field1588 = var1.readUnsignedShort();
-		this.field1590 = var1.readByte();
-		var1.readLong();
+	void vmethod3150(Buffer var1) {
+		this.field1623 = var1.readInt();
+		this.field1620 = var1.readStringCp1252NullTerminated();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lei;B)V",
-		garbageValue = "40"
+		descriptor = "(Len;I)V",
+		garbageValue = "-1718344311"
 	)
-	void vmethod3021(ClanChannel var1) {
-		ClanChannelMember var2 = new ClanChannelMember();
-		var2.username = new Username(this.field1589);
-		var2.world = this.field1588;
-		var2.rank = this.field1590;
-		var1.addMember(var2);
+	void vmethod3149(ClanSettings var1) {
+		var1.method2968(this.field1623, this.field1620);
+	}
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(Llh;B)V",
+		garbageValue = "4"
+	)
+	public static void method2948(AbstractArchive var0) {
+		class435.field4666 = var0;
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(IZIZI)V",
+		garbageValue = "1195912675"
+	)
+	@Export("sortWorldList")
+	static void sortWorldList(int var0, boolean var1, int var2, boolean var3) {
+		if (class362.World_worlds != null) {
+			class131.doWorldSorting(0, class362.World_worlds.length - 1, var0, var1, var2, var3);
+		}
+
+	}
+
+	@ObfuscatedName("hj")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "1549613437"
+	)
+	static boolean method2944() {
+		return (Client.drawPlayerNames & 8) != 0;
 	}
 }

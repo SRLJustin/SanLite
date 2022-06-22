@@ -4,36 +4,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ga")
+@ObfuscatedName("hj")
 @Implements("VertexNormal")
 public class VertexNormal {
-	@ObfuscatedName("ei")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive18")
-	static Archive archive18;
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 571778343
+		intValue = 852204679
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -1513329049
+		intValue = -2028083131
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -73747775
+		intValue = 1173750943
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("t")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 89505295
+		intValue = -860468825
 	)
 	@Export("magnitude")
 	int magnitude;
@@ -42,7 +36,7 @@ public class VertexNormal {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lga;)V"
+		descriptor = "(Lhj;)V"
 	)
 	VertexNormal(VertexNormal var1) {
 		this.x = var1.x;
@@ -51,72 +45,62 @@ public class VertexNormal {
 		this.magnitude = var1.magnitude;
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "339374654"
+		descriptor = "(II)Z",
+		garbageValue = "886166360"
 	)
-	@Export("Messages_getLastChatID")
-	static int Messages_getLastChatID(int var0) {
-		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
-		if (var1 == null) {
-			return -1;
-		} else {
-			return var1.previousDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.previousDual).count;
-		}
+	public static boolean method4528(int var0) {
+		return var0 >= 0 && var0 < 112 ? KeyHandler.field136[var0] : false;
 	}
 
-	@ObfuscatedName("ew")
+	@ObfuscatedName("y")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-2020888732"
+		descriptor = "([BIILgg;[Lgv;I)V",
+		garbageValue = "-1413330538"
 	)
-	@Export("updateGameState")
-	static void updateGameState(int var0) {
-		if (var0 != Client.gameState) {
-			if (Client.gameState == 0) {
-				class295.client.method498();
+	static final void method4527(byte[] var0, int var1, int var2, Scene var3, CollisionMap[] var4) {
+		Buffer var5 = new Buffer(var0);
+		int var6 = -1;
+
+		while (true) {
+			int var7 = var5.method7770();
+			if (var7 == 0) {
+				return;
 			}
 
-			if (var0 == 20 || var0 == 40 || var0 == 45) {
-				PacketBufferNode.method5016(0);
-				Client.field545 = 0;
-				Client.field541 = 0;
-				Client.timer.method6232(var0);
-				if (var0 != 20) {
-					FriendSystem.method1791(false);
+			var6 += var7;
+			int var8 = 0;
+
+			while (true) {
+				int var9 = var5.readUShortSmart();
+				if (var9 == 0) {
+					break;
+				}
+
+				var8 += var9 - 1;
+				int var10 = var8 & 63;
+				int var11 = var8 >> 6 & 63;
+				int var12 = var8 >> 12;
+				int var13 = var5.readUnsignedByte();
+				int var14 = var13 >> 2;
+				int var15 = var13 & 3;
+				int var16 = var11 + var1;
+				int var17 = var10 + var2;
+				if (var16 > 0 && var17 > 0 && var16 < 103 && var17 < 103) {
+					int var18 = var12;
+					if ((Tiles.Tiles_renderFlags[1][var16][var17] & 2) == 2) {
+						var18 = var12 - 1;
+					}
+
+					CollisionMap var19 = null;
+					if (var18 >= 0) {
+						var19 = var4[var18];
+					}
+
+					class268.method5214(var12, var16, var17, var6, var15, var14, var3, var19);
 				}
 			}
-
-			if (var0 != 20 && var0 != 40 && Coord.field3186 != null) {
-				Coord.field3186.close();
-				Coord.field3186 = null;
-			}
-
-			if (Client.gameState == 25) {
-				Client.field602 = 0;
-				Client.field529 = 0;
-				Client.field530 = 1;
-				Client.field617 = 0;
-				Client.field532 = 1;
-			}
-
-			int var1;
-			if (var0 != 5 && var0 != 10) {
-				if (var0 == 20) {
-					var1 = Client.gameState == 11 ? 4 : 0;
-					DefaultsGroup.method6568(class257.archive10, UserComparator6.archive8, true, var1);
-				} else if (var0 == 11) {
-					DefaultsGroup.method6568(class257.archive10, UserComparator6.archive8, false, 4);
-				} else {
-					SoundCache.method823();
-				}
-			} else {
-				var1 = AttackOption.method2356() ? 0 : 12;
-				DefaultsGroup.method6568(class257.archive10, UserComparator6.archive8, true, var1);
-			}
-
-			Client.gameState = var0;
 		}
 	}
 }
