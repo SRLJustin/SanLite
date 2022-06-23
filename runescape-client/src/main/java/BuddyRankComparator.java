@@ -3,14 +3,18 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("do")
+@ObfuscatedName("ds")
 @Implements("BuddyRankComparator")
 public class BuddyRankComparator extends AbstractUserComparator {
-	@ObfuscatedName("pw")
+	@ObfuscatedName("e")
+	@Export("PcmPlayer_stereo")
+	protected static boolean PcmPlayer_stereo;
+	@ObfuscatedName("in")
 	@ObfuscatedSignature(
-		descriptor = "Lnq;"
+		descriptor = "[Lqe;"
 	)
-	static class370 field1342;
+	@Export("crossSprites")
+	static SpritePixels[] crossSprites;
 	@ObfuscatedName("c")
 	@Export("reversed")
 	final boolean reversed;
@@ -21,8 +25,8 @@ public class BuddyRankComparator extends AbstractUserComparator {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lmp;Lmp;I)I",
-		garbageValue = "-1364999182"
+		descriptor = "(Lnm;Lnm;B)I",
+		garbageValue = "114"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -37,17 +41,36 @@ public class BuddyRankComparator extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ld")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(IIIZI)V",
-		garbageValue = "1683360444"
+		descriptor = "(II)Lfj;",
+		garbageValue = "273043499"
 	)
-	public static void method2547(int var0, int var1, int var2, boolean var3) {
-		PacketBufferNode var4 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2819, Client.packetWriter.isaacCipher);
-		var4.packetBuffer.method7527(var3 ? Client.field607 : 0);
-		var4.packetBuffer.method7349(var0);
-		var4.packetBuffer.method7343(var2);
-		var4.packetBuffer.writeShort(var1);
-		Client.packetWriter.addNode(var4);
+	@Export("getNpcDefinition")
+	public static NPCComposition getNpcDefinition(int var0) {
+		NPCComposition var1 = (NPCComposition)NPCComposition.NpcDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = NPCComposition.NpcDefinition_archive.takeFile(9, var0);
+			var1 = new NPCComposition();
+			var1.id = var0;
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			var1.postDecode();
+			NPCComposition.NpcDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("br")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;B)I",
+		garbageValue = "-107"
+	)
+	public static int method2620(String var0) {
+		return var0.length() + 2;
 	}
 }

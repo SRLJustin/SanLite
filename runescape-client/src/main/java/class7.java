@@ -2,118 +2,135 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("w")
 public class class7 {
-	@ObfuscatedName("hu")
-	@ObfuscatedSignature(
-		descriptor = "Lgy;"
-	)
-	@Export("scene")
-	static Scene scene;
-	@ObfuscatedName("jl")
-	@ObfuscatedGetter(
-		intValue = -1574043841
-	)
-	@Export("oculusOrbFocalPointX")
-	static int oculusOrbFocalPointX;
 	@ObfuscatedName("c")
-	ExecutorService field30;
-	@ObfuscatedName("b")
-	Future field31;
-	@ObfuscatedName("p")
+	ExecutorService field25;
+	@ObfuscatedName("v")
+	Future field22;
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lpi;"
+		descriptor = "Lqt;"
 	)
-	final Buffer field25;
-	@ObfuscatedName("m")
+	final Buffer field21;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lm;"
+		descriptor = "Lf;"
 	)
-	final class3 field26;
+	final class3 field24;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;Lm;)V"
+		descriptor = "(Lqt;Lf;)V"
 	)
 	public class7(Buffer var1, class3 var2) {
-		this.field30 = Executors.newSingleThreadExecutor();
-		this.field25 = var1;
-		this.field26 = var2;
-		this.method62();
+		this.field25 = Executors.newSingleThreadExecutor();
+		this.field21 = var1;
+		this.field24 = var2;
+		this.method43();
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-1426679915"
+		garbageValue = "1259823289"
 	)
-	public boolean method61() {
-		return this.field31.isDone();
+	public boolean method46() {
+		return this.field22.isDone();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1411495708"
+		garbageValue = "-750933605"
 	)
-	public void method65() {
-		this.field30.shutdown();
-		this.field30 = null;
+	public void method41() {
+		this.field25.shutdown();
+		this.field25 = null;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lpi;",
-		garbageValue = "14"
+		descriptor = "(I)Lqt;",
+		garbageValue = "1646387788"
 	)
-	public Buffer method75() {
+	public Buffer method42() {
 		try {
-			return (Buffer)this.field31.get();
+			return (Buffer)this.field22.get();
 		} catch (Exception var2) {
 			return null;
 		}
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1868135636"
+		garbageValue = "422290407"
 	)
-	void method62() {
-		this.field31 = this.field30.submit(new class1(this, this.field25, this.field26));
+	void method43() {
+		this.field22 = this.field25.submit(new class1(this, this.field21, this.field24));
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Ldp;",
-		garbageValue = "1979711764"
+		descriptor = "(Llh;III)Lqe;",
+		garbageValue = "488582948"
 	)
-	static class117[] method74() {
-		return new class117[]{class117.field1425, class117.field1444, class117.field1430, class117.field1427, class117.field1428, class117.field1429, class117.field1442, class117.field1431, class117.field1432, class117.field1424, class117.field1434, class117.field1435, class117.field1436, class117.field1437, class117.field1438, class117.field1439, class117.field1440};
-	}
+	@Export("SpriteBuffer_getSprite")
+	public static SpritePixels SpriteBuffer_getSprite(AbstractArchive var0, int var1, int var2) {
+		if (!Ignored.SpriteBuffer_loadSpritesFromArchive(var0, var1, var2)) {
+			return null;
+		} else {
+			SpritePixels var4 = new SpritePixels();
+			var4.width = ModelData0.SpriteBuffer_spriteWidth;
+			var4.height = class456.SpriteBuffer_spriteHeight;
+			var4.xOffset = class426.SpriteBuffer_xOffsets[0];
+			var4.yOffset = class142.SpriteBuffer_yOffsets[0];
+			var4.subWidth = class359.SpriteBuffer_spriteWidths[0];
+			var4.subHeight = class456.SpriteBuffer_spriteHeights[0];
+			int var5 = var4.subWidth * var4.subHeight;
+			byte[] var6 = class421.SpriteBuffer_pixels[0];
+			var4.pixels = new int[var5];
 
-	@ObfuscatedName("jw")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljm;I)Ljava/lang/String;",
-		garbageValue = "1826034348"
-	)
-	static String method60(String var0, Widget var1) {
-		if (var0.indexOf("%") != -1) {
-			for (int var2 = 1; var2 <= 5; ++var2) {
-				while (true) {
-					int var3 = var0.indexOf("%" + var2);
-					if (var3 == -1) {
-						break;
-					}
-
-					var0 = var0.substring(0, var3) + class1.method11(class28.method442(var1, var2 - 1)) + var0.substring(var3 + 2);
-				}
+			for (int var7 = 0; var7 < var5; ++var7) {
+				var4.pixels[var7] = class13.SpriteBuffer_spritePalette[var6[var7] & 255];
 			}
-		}
 
-		return var0;
+			class426.SpriteBuffer_xOffsets = null;
+			class142.SpriteBuffer_yOffsets = null;
+			class359.SpriteBuffer_spriteWidths = null;
+			class456.SpriteBuffer_spriteHeights = null;
+			class13.SpriteBuffer_spritePalette = null;
+			class421.SpriteBuffer_pixels = null;
+			return var4;
+		}
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Lce;",
+		garbageValue = "-916941960"
+	)
+	static AttackOption[] method52() {
+		return new AttackOption[]{AttackOption.AttackOption_alwaysRightClick, AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.field1294, AttackOption.AttackOption_hidden, AttackOption.field1288};
+	}
+
+	@ObfuscatedName("e")
+	static int method51(long var0) {
+		return (int)(var0 >>> 14 & 3L);
+	}
+
+	@ObfuscatedName("jf")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "2121106568"
+	)
+	@Export("runIntfCloseListeners")
+	static final void runIntfCloseListeners(int var0, int var1) {
+		if (WorldMapSection2.loadInterface(var0)) {
+			TaskHandler.runComponentCloseListeners(SoundCache.Widget_interfaceComponents[var0], var1);
+		}
 	}
 }

@@ -7,34 +7,28 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eb")
+@ObfuscatedName("fr")
 @Implements("TaskHandler")
 public class TaskHandler implements Runnable {
-	@ObfuscatedName("c")
-	@Export("javaVendor")
-	public static String javaVendor;
-	@ObfuscatedName("eo")
+	@ObfuscatedName("v")
+	@Export("javaVersion")
+	public static String javaVersion;
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive12")
-	static Archive archive12;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lfk;"
+		descriptor = "Lfm;"
 	)
 	@Export("current")
 	Task current;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lfk;"
+		descriptor = "Lfm;"
 	)
 	@Export("task")
 	Task task;
-	@ObfuscatedName("t")
+	@ObfuscatedName("j")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("s")
+	@ObfuscatedName("e")
 	@Export("isClosed")
 	boolean isClosed;
 
@@ -42,12 +36,12 @@ public class TaskHandler implements Runnable {
 		this.current = null;
 		this.task = null;
 		this.isClosed = false;
-		javaVendor = "Unknown";
-		NPC.javaVersion = "1.6";
+		class360.javaVendor = "Unknown";
+		javaVersion = "1.6";
 
 		try {
-			javaVendor = System.getProperty("java.vendor");
-			NPC.javaVersion = System.getProperty("java.version");
+			class360.javaVendor = System.getProperty("java.vendor");
+			javaVersion = System.getProperty("java.version");
 		} catch (Exception var2) {
 		}
 
@@ -60,8 +54,8 @@ public class TaskHandler implements Runnable {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "-23939"
+		descriptor = "(B)V",
+		garbageValue = "64"
 	)
 	@Export("close")
 	public final void close() {
@@ -77,10 +71,10 @@ public class TaskHandler implements Runnable {
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(IIILjava/lang/Object;I)Lfk;",
-		garbageValue = "838873650"
+		descriptor = "(IIILjava/lang/Object;B)Lfm;",
+		garbageValue = "0"
 	)
 	@Export("newTask")
 	final Task newTask(int var1, int var2, int var3, Object var4) {
@@ -101,20 +95,20 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;II)Lfk;",
-		garbageValue = "1945864892"
+		descriptor = "(Ljava/lang/String;IB)Lfm;",
+		garbageValue = "-14"
 	)
 	@Export("newSocketTask")
 	public final Task newSocketTask(String var1, int var2) {
 		return this.newTask(1, var2, 0, var1);
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Runnable;II)Lfk;",
-		garbageValue = "-1633812322"
+		descriptor = "(Ljava/lang/Runnable;II)Lfm;",
+		garbageValue = "966743438"
 	)
 	@Export("newThreadTask")
 	public final Task newThreadTask(Runnable var1, int var2) {
@@ -169,15 +163,79 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "([BI)[B",
-		garbageValue = "-1643511224"
+		descriptor = "(Ljava/lang/CharSequence;I)Ljava/lang/String;",
+		garbageValue = "-443449853"
 	)
-	public static byte[] method3047(byte[] var0) {
-		int var1 = var0.length;
-		byte[] var2 = new byte[var1];
-		System.arraycopy(var0, 0, var2, 0, var1);
-		return var2;
+	public static String method3240(CharSequence var0) {
+		String var1 = class229.base37DecodeLong(class339.method6244(var0));
+		if (var1 == null) {
+			var1 = "";
+		}
+
+		return var1;
+	}
+
+	@ObfuscatedName("y")
+	@ObfuscatedSignature(
+		descriptor = "(IIIZII)J",
+		garbageValue = "608136618"
+	)
+	@Export("calculateTag")
+	public static long calculateTag(int var0, int var1, int var2, boolean var3, int var4) {
+		long var5 = (long)((var0 & 127) << 0 | (var1 & 127) << 7 | (var2 & 3) << 14) | ((long)var4 & 4294967295L) << 17;
+		if (var3) {
+			var5 |= 65536L;
+		}
+
+		return var5;
+	}
+
+	@ObfuscatedName("jr")
+	@ObfuscatedSignature(
+		descriptor = "([Lkb;IB)V",
+		garbageValue = "79"
+	)
+	@Export("runComponentCloseListeners")
+	static final void runComponentCloseListeners(Widget[] var0, int var1) {
+		for (int var2 = 0; var2 < var0.length; ++var2) {
+			Widget var3 = var0[var2];
+			if (var3 != null) {
+				if (var3.type == 0) {
+					if (var3.children != null) {
+						runComponentCloseListeners(var3.children, var1);
+					}
+
+					InterfaceParent var4 = (InterfaceParent)Client.interfaceParents.get((long)var3.id);
+					if (var4 != null) {
+						class7.runIntfCloseListeners(var4.group, var1);
+					}
+				}
+
+				ScriptEvent var5;
+				if (var1 == 0 && var3.onDialogAbort != null) {
+					var5 = new ScriptEvent();
+					var5.widget = var3;
+					var5.args = var3.onDialogAbort;
+					WallObject.runScriptEvent(var5);
+				}
+
+				if (var1 == 1 && var3.onSubChange != null) {
+					if (var3.childIndex >= 0) {
+						Widget var6 = class140.getWidget(var3.id);
+						if (var6 == null || var6.children == null || var3.childIndex >= var6.children.length || var3 != var6.children[var3.childIndex]) {
+							continue;
+						}
+					}
+
+					var5 = new ScriptEvent();
+					var5.widget = var3;
+					var5.args = var3.onSubChange;
+					WallObject.runScriptEvent(var5);
+				}
+			}
+		}
+
 	}
 }
