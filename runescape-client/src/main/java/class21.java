@@ -7,41 +7,43 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("q")
+@ObfuscatedName("b")
 public class class21 {
-	@ObfuscatedName("v")
+	@ObfuscatedName("sr")
 	@ObfuscatedSignature(
-		descriptor = "Ljk;"
+		descriptor = "Lam;"
 	)
-	@Export("musicTrack")
-	public static MusicTrack musicTrack;
-	@ObfuscatedName("d")
-	static boolean field116;
-	@ObfuscatedName("bf")
+	@Export("pcmStreamMixer")
+	static PcmStreamMixer pcmStreamMixer;
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lpa;"
+		descriptor = "Liy;"
 	)
-	static IndexedSprite field118;
+	@Export("worldMapEvent")
+	static WorldMapEvent worldMapEvent;
+	@ObfuscatedName("fa")
+	static String field122;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1676321481
+		intValue = -1937379027
 	)
-	final int field115;
-	@ObfuscatedName("b")
-	final String field114;
+	final int field117;
+	@ObfuscatedName("v")
+	final String field116;
 
 	class21(String var1) {
-		this.field115 = 400;
-		this.field114 = "";
+		this.field117 = 400;
+		this.field116 = "";
 	}
 
 	class21(HttpURLConnection var1) throws IOException {
-		this.field115 = var1.getResponseCode();
+		this.field117 = var1.getResponseCode();
 		var1.getResponseMessage();
 		var1.getHeaderFields();
 		StringBuilder var2 = new StringBuilder();
-		InputStream var3 = this.field115 >= 300 ? var1.getErrorStream() : var1.getInputStream();
+		InputStream var3 = this.field117 >= 300 ? var1.getErrorStream() : var1.getInputStream();
 		if (var3 != null) {
 			InputStreamReader var4 = new InputStreamReader(var3);
 			BufferedReader var5 = new BufferedReader(var4);
@@ -54,46 +56,72 @@ public class class21 {
 			var3.close();
 		}
 
-		this.field114 = var2.toString();
+		this.field116 = var2.toString();
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1543760704"
+		descriptor = "(B)I",
+		garbageValue = "115"
 	)
-	public int method338() {
-		return this.field115;
+	public int method258() {
+		return this.field117;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(S)Ljava/lang/String;",
-		garbageValue = "128"
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-1470500279"
 	)
-	public String method339() {
-		return this.field114;
+	public String method262() {
+		return this.field116;
 	}
 
-	@ObfuscatedName("if")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIZI)V",
-		garbageValue = "1482446677"
+		descriptor = "(IIII)I",
+		garbageValue = "2085250923"
 	)
-	@Export("insertMenuItem")
-	static final void insertMenuItem(String var0, String var1, int var2, int var3, int var4, int var5, boolean var6) {
-		if (!Client.isMenuOpen) {
-			if (Client.menuOptionsCount < 500) {
-				Client.menuActions[Client.menuOptionsCount] = var0;
-				Client.menuTargets[Client.menuOptionsCount] = var1;
-				Client.menuOpcodes[Client.menuOptionsCount] = var2;
-				Client.menuIdentifiers[Client.menuOptionsCount] = var3;
-				Client.menuArguments1[Client.menuOptionsCount] = var4;
-				Client.menuArguments2[Client.menuOptionsCount] = var5;
-				Client.menuShiftClick[Client.menuOptionsCount] = var6;
-				++Client.menuOptionsCount;
+	static final int method265(int var0, int var1, int var2) {
+		if (var2 > 179) {
+			var1 /= 2;
+		}
+
+		if (var2 > 192) {
+			var1 /= 2;
+		}
+
+		if (var2 > 217) {
+			var1 /= 2;
+		}
+
+		if (var2 > 243) {
+			var1 /= 2;
+		}
+
+		int var3 = (var1 / 32 << 7) + (var0 / 4 << 10) + var2 / 2;
+		return var3;
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZI)I",
+		garbageValue = "1464198346"
+	)
+	static int method264(int var0, Script var1, boolean var2) {
+		if (var0 == ScriptOpcodes.LOGOUT) {
+			Client.logoutTimer = 250;
+			return 1;
+		} else if (var0 != 5631 && var0 != 5633) {
+			if (var0 == 5632) {
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 26;
+				return 1;
+			} else {
+				return 2;
 			}
-
+		} else {
+			Interpreter.Interpreter_stringStackSize -= 2;
+			return 1;
 		}
 	}
 }

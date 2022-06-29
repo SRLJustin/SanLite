@@ -1,3 +1,4 @@
+import java.awt.FontMetrics;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.security.cert.CertificateException;
@@ -6,34 +7,27 @@ import java.util.LinkedList;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 import org.bouncycastle.crypto.tls.Certificate;
 import org.bouncycastle.crypto.tls.CertificateRequest;
 import org.bouncycastle.crypto.tls.TlsAuthentication;
 import org.bouncycastle.crypto.tls.TlsCredentials;
 
-@ObfuscatedName("v")
+@ObfuscatedName("t")
 class class11 implements TlsAuthentication {
-	@ObfuscatedName("d")
-	@ObfuscatedSignature(
-		descriptor = "Law;"
-	)
-	@Export("pcmPlayerProvider")
-	static class47 pcmPlayerProvider;
-	@ObfuscatedName("be")
-	@ObfuscatedSignature(
-		descriptor = "Lpa;"
-	)
-	@Export("worldSelectLeftSprite")
-	static IndexedSprite worldSelectLeftSprite;
+	@ObfuscatedName("s")
+	@Export("musicTrackBoolean")
+	public static boolean musicTrackBoolean;
+	@ObfuscatedName("ab")
+	@Export("loginScreenFontMetrics")
+	static FontMetrics loginScreenFontMetrics;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lh;"
+		descriptor = "Lr;"
 	)
 	final class13 this$2;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lh;)V"
+		descriptor = "(Lr;)V"
 	)
 	class11(class13 var1) {
 		this.this$2 = var1;
@@ -50,7 +44,7 @@ class class11 implements TlsAuthentication {
 				var3.add(var2.generateCertificate(new ByteArrayInputStream(var6.getEncoded())));
 			}
 
-			this.this$2.this$1.field67 = (java.security.cert.Certificate[])((java.security.cert.Certificate[])var3.toArray(new java.security.cert.Certificate[0]));
+			this.this$2.this$1.field63 = (java.security.cert.Certificate[])((java.security.cert.Certificate[])var3.toArray(new java.security.cert.Certificate[0]));
 		} catch (CertificateException var7) {
 			throw new IOException(var7);
 		}
@@ -60,48 +54,102 @@ class class11 implements TlsAuthentication {
 		return null;
 	}
 
-	@ObfuscatedName("l")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "-1179058549"
+		descriptor = "(IIIII)V",
+		garbageValue = "1603427189"
 	)
-	static int method125(int var0, Script var1, boolean var2) {
-		Widget var3 = ChatChannel.getWidget(Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize]);
-		if (var0 == ScriptOpcodes.IF_GETTARGETMASK) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = class404.Widget_unpackTargetMask(class363.getWidgetFlags(var3));
-			return 1;
-		} else if (var0 != ScriptOpcodes.IF_GETOP) {
-			if (var0 == ScriptOpcodes.IF_GETOPBASE) {
-				if (var3.dataText == null) {
-					Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-				} else {
-					Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var3.dataText;
-				}
+	static final void method98(int var0, int var1, int var2, int var3) {
+		for (int var4 = var1; var4 <= var3 + var1; ++var4) {
+			for (int var5 = var0; var5 <= var0 + var2; ++var5) {
+				if (var5 >= 0 && var5 < 104 && var4 >= 0 && var4 < 104) {
+					UserComparator6.field1415[0][var5][var4] = 127;
+					if (var0 == var5 && var5 > 0) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 - 1][var4];
+					}
 
+					if (var0 + var2 == var5 && var5 < 103) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 + 1][var4];
+					}
+
+					if (var4 == var1 && var4 > 0) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 - 1];
+					}
+
+					if (var3 + var1 == var4 && var4 < 103) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 + 1];
+					}
+				}
+			}
+		}
+
+	}
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(ILkb;IIIII[FI)Lkb;",
+		garbageValue = "1978245093"
+	)
+	static Widget method97(int var0, Widget var1, int var2, int var3, int var4, int var5, int var6, float[] var7) {
+		Widget var8 = new Widget();
+		var8.type = var0;
+		var8.parentId = var1.id;
+		var8.childIndex = var2;
+		var8.isIf3 = true;
+		var8.xAlignment = var3;
+		var8.yAlignment = var4;
+		var8.widthAlignment = var5;
+		var8.heightAlignment = var6;
+		var8.rawX = (int)(var7[0] * (float)var1.width);
+		var8.rawY = (int)((float)var1.height * var7[1]);
+		var8.rawWidth = (int)((float)var1.width * var7[2]);
+		var8.rawHeight = (int)(var7[3] * (float)var1.height);
+		return var8;
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZB)I",
+		garbageValue = "-27"
+	)
+	static int method96(int var0, Script var1, boolean var2) {
+		if (var0 == 7100) {
+			++class446.Interpreter_intStackSize;
+			return 1;
+		} else if (var0 == 7101) {
+			Interpreter.Interpreter_stringStackSize += 2;
+			return 1;
+		} else if (var0 != 7102 && var0 != 7103 && var0 != 7104 && var0 != 7105 && var0 != 7109) {
+			if (var0 == 7106) {
+				++class446.Interpreter_intStackSize;
+				return 1;
+			} else if (var0 == 7107) {
+				++class446.Interpreter_intStackSize;
+				return 1;
+			} else if (var0 == 7108) {
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = class18.method234() ? 1 : 0;
+				return 1;
+			} else if (var0 == 7110) {
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+				return 1;
+			} else if (var0 == 7120) {
+				--class446.Interpreter_intStackSize;
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+				return 1;
+			} else if (var0 == 7121) {
+				class446.Interpreter_intStackSize -= 2;
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+				return 1;
+			} else if (var0 == 7122) {
+				class446.Interpreter_intStackSize -= 2;
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
 				return 1;
 			} else {
 				return 2;
 			}
 		} else {
-			int var4 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-			--var4;
-			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
-				Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var3.actions[var4];
-			} else {
-				Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-			}
-
+			++class446.Interpreter_intStackSize;
 			return 1;
 		}
-	}
-
-	@ObfuscatedName("iu")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIII)V",
-		garbageValue = "-380667098"
-	)
-	@Export("insertMenuItemNoShift")
-	public static final void insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
-		class21.insertMenuItem(var0, var1, var2, var3, var4, var5, false);
 	}
 }

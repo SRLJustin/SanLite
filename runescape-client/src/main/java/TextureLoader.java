@@ -3,36 +3,36 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hj")
+@ObfuscatedName("hl")
 @Implements("TextureLoader")
 public interface TextureLoader {
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
 		descriptor = "(IB)[I",
-		garbageValue = "38"
+		garbageValue = "24"
 	)
 	@Export("getTexturePixels")
 	int[] getTexturePixels(int var1);
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-1608258076"
+		descriptor = "(IS)I",
+		garbageValue = "-3917"
 	)
 	@Export("getAverageTextureRGB")
 	int getAverageTextureRGB(int var1);
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-1579340371"
+		descriptor = "(IB)Z",
+		garbageValue = "-52"
 	)
-	boolean vmethod4324(int var1);
+	boolean vmethod4538(int var1);
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "-1722756795"
+		garbageValue = "-1596996574"
 	)
 	@Export("isLowDetail")
 	boolean isLowDetail(int var1);

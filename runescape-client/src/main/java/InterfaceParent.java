@@ -4,103 +4,86 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cl")
+@ObfuscatedName("cq")
 @Implements("InterfaceParent")
 public class InterfaceParent extends Node {
+	@ObfuscatedName("sm")
+	@ObfuscatedGetter(
+		intValue = -1985635931
+	)
+	static int field1043;
+	@ObfuscatedName("jy")
+	@ObfuscatedGetter(
+		intValue = -1949636447
+	)
+	@Export("oculusOrbFocalPointX")
+	static int oculusOrbFocalPointX;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1940404497
+		intValue = 315980607
 	)
 	@Export("group")
 	int group;
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -1832869839
+		intValue = 1762148949
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("p")
-	boolean field1014;
+	@ObfuscatedName("q")
+	boolean field1040;
 
 	InterfaceParent() {
-		this.field1014 = false;
+		this.field1040 = false;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;I)V",
-		garbageValue = "-1043204065"
+		descriptor = "(II)I",
+		garbageValue = "896944894"
 	)
-	public static void method2145(AbstractArchive var0) {
-		ParamComposition.ParamDefinition_archive = var0;
+	public static int method2095(int var0) {
+		long var2 = ViewportMouse.ViewportMouse_entityTags[var0];
+		int var1 = (int)(var2 >>> 7 & 127L);
+		return var1;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lfl;",
-		garbageValue = "-64"
+		descriptor = "(ILbi;ZI)I",
+		garbageValue = "1938605488"
 	)
-	public static FloorUnderlayDefinition method2144(int var0) {
-		FloorUnderlayDefinition var1 = (FloorUnderlayDefinition)FloorUnderlayDefinition.FloorUnderlayDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
+	static int method2097(int var0, Script var1, boolean var2) {
+		int var3;
+		if (var0 == 3500) {
+			var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = SoundCache.method764(var3) ? 1 : 0;
+			return 1;
+		} else if (var0 == 3501) {
+			var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = VertexNormal.method4528(var3) ? 1 : 0;
+			return 1;
+		} else if (var0 == 3502) {
+			var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = SoundCache.method753(var3) ? 1 : 0;
+			return 1;
 		} else {
-			byte[] var2 = FloorUnderlayDefinition.FloorUnderlayDefinition_archive.takeFile(1, var0);
-			var1 = new FloorUnderlayDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2), var0);
-			}
-
-			var1.postDecode();
-			FloorUnderlayDefinition.FloorUnderlayDefinition_cached.put(var1, (long)var0);
-			return var1;
+			return 2;
 		}
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("il")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1442239396"
+		descriptor = "(B)V",
+		garbageValue = "-62"
 	)
-	public static void method2143() {
-		SpotAnimationDefinition.SpotAnimationDefinition_cached.clear();
-		SpotAnimationDefinition.SpotAnimationDefinition_cachedModels.clear();
-	}
-
-	@ObfuscatedName("kw")
-	static final void method2142(double var0) {
-		Rasterizer3D.Rasterizer3D_setBrightness(var0);
-		((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).setBrightness(var0);
-		VerticalAlignment.method3338();
-		SecureRandomFuture.clientPreferences.brightness = var0;
-		class127.savePreferences();
-	}
-
-	@ObfuscatedName("lx")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZI)Ljava/lang/String;",
-		garbageValue = "-2059094026"
-	)
-	static String method2146(String var0, boolean var1) {
-		String var2 = var1 ? "https://" : "http://";
-		if (Client.gameBuild == 1) {
-			var0 = var0 + "-wtrc";
-		} else if (Client.gameBuild == 2) {
-			var0 = var0 + "-wtqa";
-		} else if (Client.gameBuild == 3) {
-			var0 = var0 + "-wtwip";
-		} else if (Client.gameBuild == 5) {
-			var0 = var0 + "-wti";
-		} else if (Client.gameBuild == 4) {
-			var0 = "local";
-		}
-
-		String var3 = "";
-		if (class1.field3 != null) {
-			var3 = "/p=" + class1.field3;
-		}
-
-		String var4 = "runescape.com";
-		return var2 + var0 + "." + var4 + "/l=" + ScriptFrame.clientLanguage + "/a=" + FriendLoginUpdate.field4096 + var3 + "/";
+	@Export("addCancelMenuEntry")
+	static void addCancelMenuEntry() {
+		class125.method2824();
+		Client.menuActions[0] = "Cancel";
+		Client.menuTargets[0] = "";
+		Client.menuOpcodes[0] = 1006;
+		Client.menuShiftClick[0] = false;
+		Client.menuOptionsCount = 1;
 	}
 }

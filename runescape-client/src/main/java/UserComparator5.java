@@ -1,26 +1,29 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dm")
+@ObfuscatedName("dz")
 @Implements("UserComparator5")
 public class UserComparator5 extends AbstractUserComparator {
-	@ObfuscatedName("rk")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lei;"
+		descriptor = "Lex;"
 	)
-	@Export("guestClanChannel")
-	static ClanChannel guestClanChannel;
-	@ObfuscatedName("d")
-	@Export("Tiles_hueMultiplier")
-	static int[] Tiles_hueMultiplier;
-	@ObfuscatedName("ij")
+	static ClanChannel field1386;
+	@ObfuscatedName("ci")
 	@ObfuscatedSignature(
-		descriptor = "[Lpl;"
+		descriptor = "Lqu;"
 	)
-	@Export("crossSprites")
-	static SpritePixels[] crossSprites;
+	static IndexedSprite field1385;
+	@ObfuscatedName("gx")
+	static String field1387;
+	@ObfuscatedName("pb")
+	@ObfuscatedGetter(
+		intValue = 1731263595
+	)
+	static int field1389;
 	@ObfuscatedName("c")
 	@Export("reversed")
 	final boolean reversed;
@@ -31,8 +34,8 @@ public class UserComparator5 extends AbstractUserComparator {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lmp;Lmp;I)I",
-		garbageValue = "-1224894671"
+		descriptor = "(Lnm;Lnm;B)I",
+		garbageValue = "-4"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -51,48 +54,121 @@ public class UserComparator5 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lgn;",
-		garbageValue = "354960359"
+		descriptor = "(Ljava/lang/CharSequence;Lpe;I)Ljava/lang/String;",
+		garbageValue = "-1070606136"
 	)
-	@Export("SequenceDefinition_get")
-	public static SequenceDefinition SequenceDefinition_get(int var0) {
-		SequenceDefinition var1 = (SequenceDefinition)SequenceDefinition.SequenceDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
+	public static String method2580(CharSequence var0, LoginType var1) {
+		if (var0 == null) {
+			return null;
 		} else {
-			byte[] var2 = Canvas.SequenceDefinition_archive.takeFile(12, var0);
-			var1 = new SequenceDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+			int var2 = 0;
+
+			int var3;
+			for (var3 = var0.length(); var2 < var3 && class154.method3163(var0.charAt(var2)); ++var2) {
 			}
 
-			var1.postDecode();
-			SequenceDefinition.SequenceDefinition_cached.put(var1, (long)var0);
-			return var1;
+			while (var3 > var2 && class154.method3163(var0.charAt(var3 - 1))) {
+				--var3;
+			}
+
+			int var4 = var3 - var2;
+			if (var4 >= 1) {
+				byte var6;
+				if (var1 == null) {
+					var6 = 12;
+				} else {
+					switch(var1.field4618) {
+					case 4:
+						var6 = 20;
+						break;
+					default:
+						var6 = 12;
+					}
+				}
+
+				if (var4 <= var6) {
+					StringBuilder var12 = new StringBuilder(var4);
+
+					for (int var14 = var2; var14 < var3; ++var14) {
+						char var7 = var0.charAt(var14);
+						boolean var8;
+						if (Character.isISOControl(var7)) {
+							var8 = false;
+						} else if (FloorOverlayDefinition.isAlphaNumeric(var7)) {
+							var8 = true;
+						} else {
+							char[] var9 = class423.field4622;
+							int var10 = 0;
+
+							label84:
+							while (true) {
+								char var11;
+								if (var10 >= var9.length) {
+									var9 = class423.field4625;
+
+									for (var10 = 0; var10 < var9.length; ++var10) {
+										var11 = var9[var10];
+										if (var11 == var7) {
+											var8 = true;
+											break label84;
+										}
+									}
+
+									var8 = false;
+									break;
+								}
+
+								var11 = var9[var10];
+								if (var7 == var11) {
+									var8 = true;
+									break;
+								}
+
+								++var10;
+							}
+						}
+
+						if (var8) {
+							char var13 = PacketBufferNode.method5203(var7);
+							if (var13 != 0) {
+								var12.append(var13);
+							}
+						}
+					}
+
+					if (var12.length() == 0) {
+						return null;
+					}
+
+					return var12.toString();
+				}
+			}
+
+			return null;
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("ks")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Ljava/lang/String;",
-		garbageValue = "83"
+		descriptor = "(B)V",
+		garbageValue = "24"
 	)
-	@Export("colorStartTag")
-	static String colorStartTag(int var0) {
-		return "<col=" + Integer.toHexString(var0) + ">";
+	static final void method2586() {
+		Client.field525 = Client.cycleCntr;
+		class326.field4082 = true;
 	}
 
-	@ObfuscatedName("g")
+	@ObfuscatedName("lh")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1519607580"
+		descriptor = "(S)V",
+		garbageValue = "7108"
 	)
-	public static void method2524() {
-		ObjectComposition.ObjectDefinition_cached.clear();
-		ObjectComposition.ObjectDefinition_cachedModelData.clear();
-		ObjectComposition.ObjectDefinition_cachedEntities.clear();
-		ObjectComposition.ObjectDefinition_cachedModels.clear();
+	@Export("Clan_leaveChat")
+	static final void Clan_leaveChat() {
+		PacketBufferNode var0 = EnumComposition.getPacketBufferNode(ClientPacket.field2942, Client.packetWriter.isaacCipher);
+		var0.packetBuffer.writeByte(0);
+		Client.packetWriter.addNode(var0);
 	}
 }
