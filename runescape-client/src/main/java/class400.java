@@ -1,41 +1,51 @@
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ol")
-public class class400 {
-	@ObfuscatedName("p")
-	static final char[] field4411;
-	@ObfuscatedName("m")
-	static final char[] field4410;
+@ObfuscatedName("op")
+public class class400 implements class398 {
+	@ObfuscatedName("v")
+	final Map field4437;
 
-	static {
-		field4411 = new char[]{' ', ' ', '_', '-', 'à', 'á', 'â', 'ä', 'ã', 'À', 'Á', 'Â', 'Ä', 'Ã', 'è', 'é', 'ê', 'ë', 'È', 'É', 'Ê', 'Ë', 'í', 'î', 'ï', 'Í', 'Î', 'Ï', 'ò', 'ó', 'ô', 'ö', 'õ', 'Ò', 'Ó', 'Ô', 'Ö', 'Õ', 'ù', 'ú', 'û', 'ü', 'Ù', 'Ú', 'Û', 'Ü', 'ç', 'Ç', 'ÿ', 'Ÿ', 'ñ', 'Ñ', 'ß'};
-		field4410 = new char[]{'[', ']', '#'};
+	public class400(Map var1) {
+		this.field4437 = var1;
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "([BILjava/lang/CharSequence;I)I",
-		garbageValue = "980232052"
+		descriptor = "(I)[B",
+		garbageValue = "793389020"
 	)
-	public static int method7147(byte[] var0, int var1, CharSequence var2) {
-		int var3 = var2.length();
-		int var4 = var1;
+	public byte[] vmethod7114() throws UnsupportedEncodingException {
+		return this.method7122().getBytes("UTF-8");
+	}
 
-		for (int var5 = 0; var5 < var3; ++var5) {
-			char var6 = var2.charAt(var5);
-			if (var6 <= 127) {
-				var0[var4++] = (byte)var6;
-			} else if (var6 <= 2047) {
-				var0[var4++] = (byte)(192 | var6 >> 6);
-				var0[var4++] = (byte)(128 | var6 & '?');
-			} else {
-				var0[var4++] = (byte)(224 | var6 >> '\f');
-				var0[var4++] = (byte)(128 | var6 >> 6 & 63);
-				var0[var4++] = (byte)(128 | var6 & '?');
-			}
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "1192893333"
+	)
+	public String method7122() throws UnsupportedEncodingException {
+		StringBuilder var1 = new StringBuilder();
+		Iterator var2 = this.field4437.entrySet().iterator();
+
+		while (var2.hasNext()) {
+			Entry var3 = (Entry)var2.next();
+			String var4 = URLEncoder.encode((String)var3.getKey(), "UTF-8");
+			String var5 = URLEncoder.encode((String)var3.getValue(), "UTF-8");
+			var1.append(var4).append("=").append(var5).append("&");
 		}
 
-		return var4 - var1;
+		if (var1.length() == 0) {
+			return "";
+		} else {
+			var1.deleteCharAt(var1.length() - 1);
+			var1.insert(0, "?");
+			return var1.toString();
+		}
 	}
 }
