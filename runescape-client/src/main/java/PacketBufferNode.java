@@ -1,65 +1,64 @@
-import java.lang.management.GarbageCollectorMXBean;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iw")
+@ObfuscatedName("jt")
 @Implements("PacketBufferNode")
 public class PacketBufferNode extends Node {
-	@ObfuscatedName("t")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "[Liw;"
+		descriptor = "[Ljt;"
 	)
 	@Export("PacketBufferNode_packetBufferNodes")
-	static PacketBufferNode[] PacketBufferNode_packetBufferNodes;
-	@ObfuscatedName("s")
+	public static PacketBufferNode[] PacketBufferNode_packetBufferNodes;
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = 1440510259
+		intValue = 24720885
 	)
 	@Export("PacketBufferNode_packetBufferNodeCount")
-	static int PacketBufferNode_packetBufferNodeCount;
-	@ObfuscatedName("aq")
-	@Export("garbageCollector")
-	static GarbageCollectorMXBean garbageCollector;
+	public static int PacketBufferNode_packetBufferNodeCount;
+	@ObfuscatedName("y")
+	@ObfuscatedGetter(
+		intValue = -1221486625
+	)
+	@Export("ItemDefinition_fileCount")
+	public static int ItemDefinition_fileCount;
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Liu;"
+		descriptor = "Lju;"
 	)
 	@Export("clientPacket")
-	ClientPacket clientPacket;
-	@ObfuscatedName("b")
+	public ClientPacket clientPacket;
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -2059632065
+		intValue = -668428043
 	)
 	@Export("clientPacketLength")
-	int clientPacketLength;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = -531807865
-	)
-	@Export("index")
-	public int index;
-	@ObfuscatedName("m")
+	public int clientPacketLength;
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lpj;"
+		descriptor = "Lpq;"
 	)
 	@Export("packetBuffer")
 	public PacketBuffer packetBuffer;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = -515140623
+	)
+	@Export("index")
+	public int index;
 
 	static {
 		PacketBufferNode_packetBufferNodes = new PacketBufferNode[300];
 		PacketBufferNode_packetBufferNodeCount = 0;
 	}
 
-	PacketBufferNode() {
-	}
-
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "817440472"
+		descriptor = "(B)V",
+		garbageValue = "-10"
 	)
 	@Export("release")
 	public void release() {
@@ -68,14 +67,143 @@ public class PacketBufferNode extends Node {
 		}
 	}
 
-	@ObfuscatedName("mk")
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1959147234"
+	)
+	public static void method5202() {
+		class33.reflectionChecks = new IterableNodeDeque();
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "-1179746293"
+	)
+	public static void method5200(int var0, int var1) {
+		VarbitComposition var2 = WorldMapCacheName.method5054(var0);
+		int var3 = var2.baseVar;
+		int var4 = var2.startBit;
+		int var5 = var2.endBit;
+		int var6 = Varps.Varps_masks[var5 - var4];
+		if (var1 < 0 || var1 > var6) {
+			var1 = 0;
+		}
+
+		var6 <<= var4;
+		Varps.Varps_main[var3] = Varps.Varps_main[var3] & ~var6 | var1 << var4 & var6;
+	}
+
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "(CI)C",
+		garbageValue = "-936573581"
+	)
+	static char method5203(char var0) {
+		switch(var0) {
+		case ' ':
+		case '-':
+		case '_':
+		case ' ':
+			return '_';
+		case '#':
+		case '[':
+		case ']':
+			return var0;
+		case 'À':
+		case 'Á':
+		case 'Â':
+		case 'Ã':
+		case 'Ä':
+		case 'à':
+		case 'á':
+		case 'â':
+		case 'ã':
+		case 'ä':
+			return 'a';
+		case 'Ç':
+		case 'ç':
+			return 'c';
+		case 'È':
+		case 'É':
+		case 'Ê':
+		case 'Ë':
+		case 'è':
+		case 'é':
+		case 'ê':
+		case 'ë':
+			return 'e';
+		case 'Í':
+		case 'Î':
+		case 'Ï':
+		case 'í':
+		case 'î':
+		case 'ï':
+			return 'i';
+		case 'Ñ':
+		case 'ñ':
+			return 'n';
+		case 'Ò':
+		case 'Ó':
+		case 'Ô':
+		case 'Õ':
+		case 'Ö':
+		case 'ò':
+		case 'ó':
+		case 'ô':
+		case 'õ':
+		case 'ö':
+			return 'o';
+		case 'Ù':
+		case 'Ú':
+		case 'Û':
+		case 'Ü':
+		case 'ù':
+		case 'ú':
+		case 'û':
+		case 'ü':
+			return 'u';
+		case 'ß':
+			return 'b';
+		case 'ÿ':
+		case 'Ÿ':
+			return 'y';
+		default:
+			return Character.toLowerCase(var0);
+		}
+	}
+
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-21851942"
+	)
+	public static void method5194() {
+		NPCComposition.NpcDefinition_cached.clear();
+		NPCComposition.NpcDefinition_cachedModels.clear();
+	}
+
+	@ObfuscatedName("kh")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "-1828413921"
+		garbageValue = "-1529183895"
 	)
-	static void method5016(int var0) {
-		if (var0 != Client.loginState) {
-			Client.loginState = var0;
+	static final void method5196(int var0) {
+		var0 = Math.min(Math.max(var0, 0), 255);
+		if (var0 != class19.clientPreferences.method2258()) {
+			if (class19.clientPreferences.method2258() == 0 && Client.currentTrackGroupId != -1) {
+				AttackOption.method2410(class121.field1515, Client.currentTrackGroupId, 0, var0, false);
+				Client.field734 = false;
+			} else if (var0 == 0) {
+				ReflectionCheck.method579();
+				Client.field734 = false;
+			} else {
+				Decimator.method1005(var0);
+			}
+
+			class19.clientPreferences.method2297(var0);
 		}
+
 	}
 }

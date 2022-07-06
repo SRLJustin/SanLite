@@ -6,35 +6,46 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("mo")
+@ObfuscatedName("nq")
 @Implements("NameableContainer")
 public abstract class NameableContainer {
-	@ObfuscatedName("n")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -1781747119
+		intValue = 909905761
+	)
+	static int field4319;
+	@ObfuscatedName("gj")
+	@ObfuscatedGetter(
+		longValue = 4805265675401059469L
+	)
+	static long field4320;
+	@ObfuscatedName("y")
+	@ObfuscatedGetter(
+		intValue = -7454885
 	)
 	@Export("capacity")
 	final int capacity;
-	@ObfuscatedName("r")
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = -1097399689
+		intValue = 790121473
 	)
 	@Export("size")
 	int size;
-	@ObfuscatedName("o")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "[Lmv;"
+		descriptor = "[Lne;"
 	)
 	@Export("array")
 	Nameable[] array;
-	@ObfuscatedName("v")
+	@ObfuscatedName("t")
 	@Export("usernamesMap")
 	HashMap usernamesMap;
-	@ObfuscatedName("d")
+	@ObfuscatedName("z")
 	@Export("previousUsernamesMap")
 	HashMap previousUsernamesMap;
-	@ObfuscatedName("h")
+	@ObfuscatedName("r")
 	@Export("comparator")
 	Comparator comparator;
 
@@ -49,24 +60,24 @@ public abstract class NameableContainer {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lmv;",
-		garbageValue = "2"
+		descriptor = "(S)Lne;",
+		garbageValue = "-7122"
 	)
 	@Export("newInstance")
 	abstract Nameable newInstance();
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Lmv;",
-		garbageValue = "-813912346"
+		descriptor = "(II)[Lne;",
+		garbageValue = "77510907"
 	)
 	@Export("newTypedArray")
 	abstract Nameable[] newTypedArray(int var1);
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "17075718"
+		garbageValue = "-1093942076"
 	)
 	@Export("clear")
 	public void clear() {
@@ -76,30 +87,30 @@ public abstract class NameableContainer {
 		this.previousUsernamesMap.clear();
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-3"
+		descriptor = "(I)I",
+		garbageValue = "1536599093"
 	)
 	@Export("getSize")
 	public int getSize() {
 		return this.size;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "2022472115"
+		descriptor = "(B)Z",
+		garbageValue = "-84"
 	)
 	@Export("isFull")
 	public boolean isFull() {
-		return this.size == this.capacity;
+		return this.capacity == this.size;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;I)Z",
-		garbageValue = "-1621761472"
+		descriptor = "(Lqa;I)Z",
+		garbageValue = "158740231"
 	)
 	@Export("contains")
 	public boolean contains(Username var1) {
@@ -110,10 +121,10 @@ public abstract class NameableContainer {
 		}
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;I)Lmv;",
-		garbageValue = "981419574"
+		descriptor = "(Lqa;I)Lne;",
+		garbageValue = "-1825895379"
 	)
 	@Export("getByUsername")
 	public Nameable getByUsername(Username var1) {
@@ -121,30 +132,30 @@ public abstract class NameableContainer {
 		return var2 != null ? var2 : this.getByPreviousUsername(var1);
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;I)Lmv;",
-		garbageValue = "-1608136690"
+		descriptor = "(Lqa;I)Lne;",
+		garbageValue = "-1911478952"
 	)
 	@Export("getByCurrentUsername")
 	Nameable getByCurrentUsername(Username var1) {
 		return !var1.hasCleanName() ? null : (Nameable)this.usernamesMap.get(var1);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;I)Lmv;",
-		garbageValue = "-2078394585"
+		descriptor = "(Lqa;I)Lne;",
+		garbageValue = "-1437986613"
 	)
 	@Export("getByPreviousUsername")
 	Nameable getByPreviousUsername(Username var1) {
 		return !var1.hasCleanName() ? null : (Nameable)this.previousUsernamesMap.get(var1);
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;I)Z",
-		garbageValue = "-1330621985"
+		descriptor = "(Lqa;I)Z",
+		garbageValue = "1135653093"
 	)
 	@Export("removeByUsername")
 	public final boolean removeByUsername(Username var1) {
@@ -157,10 +168,10 @@ public abstract class NameableContainer {
 		}
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;I)V",
-		garbageValue = "-230761700"
+		descriptor = "(Lne;B)V",
+		garbageValue = "6"
 	)
 	@Export("remove")
 	final void remove(Nameable var1) {
@@ -171,34 +182,38 @@ public abstract class NameableContainer {
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;B)Lmv;",
-		garbageValue = "-4"
+		descriptor = "(Lqa;I)Lne;",
+		garbageValue = "-54334639"
 	)
 	@Export("addLastNoPreviousUsername")
 	Nameable addLastNoPreviousUsername(Username var1) {
 		return this.addLast(var1, (Username)null);
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;Lpo;I)Lmv;",
-		garbageValue = "290354448"
+		descriptor = "(Lqa;Lqa;I)Lne;",
+		garbageValue = "1549647050"
 	)
 	@Export("addLast")
 	Nameable addLast(Username var1, Username var2) {
-		Nameable var3 = this.newInstance();
-		var3.set(var1, var2);
-		this.arrayAddLast(var3);
-		this.mapPut(var3);
-		return var3;
+		if (this.getByCurrentUsername(var1) != null) {
+			throw new IllegalStateException();
+		} else {
+			Nameable var3 = this.newInstance();
+			var3.set(var1, var2);
+			this.arrayAddLast(var3);
+			this.mapPut(var3);
+			return var3;
+		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lmv;",
-		garbageValue = "108"
+		descriptor = "(II)Lne;",
+		garbageValue = "487901750"
 	)
 	@Export("get")
 	public final Nameable get(int var1) {
@@ -209,10 +224,10 @@ public abstract class NameableContainer {
 		}
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "822595962"
+		garbageValue = "-1528140588"
 	)
 	@Export("sort")
 	public final void sort() {
@@ -224,10 +239,10 @@ public abstract class NameableContainer {
 
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;Lpo;Lpo;B)V",
-		garbageValue = "20"
+		descriptor = "(Lne;Lqa;Lqa;I)V",
+		garbageValue = "1207607045"
 	)
 	@Export("changeName")
 	final void changeName(Nameable var1, Username var2, Username var3) {
@@ -236,10 +251,10 @@ public abstract class NameableContainer {
 		this.mapPut(var1);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;I)I",
-		garbageValue = "1978039321"
+		descriptor = "(Lne;I)I",
+		garbageValue = "-125620587"
 	)
 	@Export("indexOf")
 	final int indexOf(Nameable var1) {
@@ -252,10 +267,10 @@ public abstract class NameableContainer {
 		return -1;
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;B)V",
-		garbageValue = "-50"
+		descriptor = "(Lne;S)V",
+		garbageValue = "-8938"
 	)
 	@Export("mapRemove")
 	final void mapRemove(Nameable var1) {
@@ -265,20 +280,20 @@ public abstract class NameableContainer {
 
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;I)V",
-		garbageValue = "2060796938"
+		descriptor = "(Lne;I)V",
+		garbageValue = "-133766134"
 	)
 	@Export("arrayAddLast")
 	final void arrayAddLast(Nameable var1) {
 		this.array[++this.size - 1] = var1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;B)V",
-		garbageValue = "67"
+		descriptor = "(Lne;I)V",
+		garbageValue = "-657827654"
 	)
 	@Export("mapPut")
 	final void mapPut(Nameable var1) {
@@ -292,10 +307,10 @@ public abstract class NameableContainer {
 
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "-2019912678"
+		garbageValue = "1804205416"
 	)
 	@Export("arrayRemove")
 	final void arrayRemove(int var1) {
@@ -306,20 +321,20 @@ public abstract class NameableContainer {
 
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("be")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "2074989504"
+		descriptor = "(B)V",
+		garbageValue = "8"
 	)
 	@Export("removeComparator")
 	public final void removeComparator() {
 		this.comparator = null;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("bz")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/Comparator;B)V",
-		garbageValue = "2"
+		garbageValue = "8"
 	)
 	@Export("addComparator")
 	public final void addComparator(Comparator var1) {
@@ -329,5 +344,362 @@ public abstract class NameableContainer {
 			((AbstractUserComparator)this.comparator).addComparator(var1);
 		}
 
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZI)I",
+		garbageValue = "-1639564322"
+	)
+	static int method6754(int var0, Script var1, boolean var2) {
+		int var3;
+		if (var0 == 6600) {
+			var3 = PacketWriter.Client_plane;
+			int var15 = class28.baseX * 64 + (class101.localPlayer.x >> 7);
+			int var8 = WorldMapLabelSize.baseY * 64 + (class101.localPlayer.y >> 7);
+			GrandExchangeOfferAgeComparator.getWorldMap().method7192(var3, var15, var8, true);
+			return 1;
+		} else {
+			WorldMapArea var9;
+			if (var0 == ScriptOpcodes.WORLDMAP_GETMAPNAME) {
+				var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+				String var16 = "";
+				var9 = GrandExchangeOfferAgeComparator.getWorldMap().getMapArea(var3);
+				if (var9 != null) {
+					var16 = var9.getExternalName();
+				}
+
+				Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var16;
+				return 1;
+			} else if (var0 == ScriptOpcodes.WORLDMAP_SETMAP) {
+				var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+				GrandExchangeOfferAgeComparator.getWorldMap().setCurrentMapAreaId(var3);
+				return 1;
+			} else if (var0 == ScriptOpcodes.WORLDMAP_GETZOOM) {
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = GrandExchangeOfferAgeComparator.getWorldMap().getZoomLevel();
+				return 1;
+			} else if (var0 == ScriptOpcodes.WORLDMAP_SETZOOM) {
+				var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+				GrandExchangeOfferAgeComparator.getWorldMap().setZoomPercentage(var3);
+				return 1;
+			} else if (var0 == ScriptOpcodes.WORLDMAP_ISLOADED) {
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = GrandExchangeOfferAgeComparator.getWorldMap().isCacheLoaded() ? 1 : 0;
+				return 1;
+			} else {
+				Coord var14;
+				if (var0 == ScriptOpcodes.WORLDMAP_JUMPTODISPLAYCOORD) {
+					var14 = new Coord(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
+					GrandExchangeOfferAgeComparator.getWorldMap().setWorldMapPositionTarget(var14.x, var14.y);
+					return 1;
+				} else if (var0 == ScriptOpcodes.WORLDMAP_JUMPTODISPLAYCOORD_INSTANT) {
+					var14 = new Coord(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
+					GrandExchangeOfferAgeComparator.getWorldMap().setWorldMapPositionTargetInstant(var14.x, var14.y);
+					return 1;
+				} else if (var0 == ScriptOpcodes.WORLDMAP_JUMPTOSOURCECOORD) {
+					var14 = new Coord(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
+					GrandExchangeOfferAgeComparator.getWorldMap().jumpToSourceCoord(var14.plane, var14.x, var14.y);
+					return 1;
+				} else if (var0 == ScriptOpcodes.WORLDMAP_JUMPTOSOURCECOORD_INSTANT) {
+					var14 = new Coord(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
+					GrandExchangeOfferAgeComparator.getWorldMap().jumpToSourceCoordInstant(var14.plane, var14.x, var14.y);
+					return 1;
+				} else if (var0 == ScriptOpcodes.WORLDMAP_GETDISPLAYPOSITION) {
+					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = GrandExchangeOfferAgeComparator.getWorldMap().getDisplayX();
+					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = GrandExchangeOfferAgeComparator.getWorldMap().getDisplayY();
+					return 1;
+				} else {
+					WorldMapArea var11;
+					if (var0 == ScriptOpcodes.WORLDMAP_GETCONFIGORIGIN) {
+						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+						var11 = GrandExchangeOfferAgeComparator.getWorldMap().getMapArea(var3);
+						if (var11 == null) {
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+						} else {
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var11.getOrigin().packed();
+						}
+
+						return 1;
+					} else if (var0 == ScriptOpcodes.WORLDMAP_GETCONFIGSIZE) {
+						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+						var11 = GrandExchangeOfferAgeComparator.getWorldMap().getMapArea(var3);
+						if (var11 == null) {
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+						} else {
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var11.getRegionHighX() - var11.getRegionLowX() + 1) * 64;
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var11.getRegionHighY() - var11.getRegionLowY() + 1) * 64;
+						}
+
+						return 1;
+					} else if (var0 == ScriptOpcodes.WORLDMAP_GETCONFIGBOUNDS) {
+						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+						var11 = GrandExchangeOfferAgeComparator.getWorldMap().getMapArea(var3);
+						if (var11 == null) {
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+						} else {
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var11.getRegionLowX() * 64;
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var11.getRegionLowY() * 64;
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var11.getRegionHighX() * 64 + 64 - 1;
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var11.getRegionHighY() * 64 + 64 - 1;
+						}
+
+						return 1;
+					} else if (var0 == ScriptOpcodes.WORLDMAP_GETCONFIGZOOM) {
+						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+						var11 = GrandExchangeOfferAgeComparator.getWorldMap().getMapArea(var3);
+						if (var11 == null) {
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+						} else {
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var11.getZoom();
+						}
+
+						return 1;
+					} else if (var0 == 6615) {
+						var14 = GrandExchangeOfferAgeComparator.getWorldMap().getDisplayCoord();
+						if (var14 == null) {
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+						} else {
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var14.x;
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var14.y;
+						}
+
+						return 1;
+					} else if (var0 == ScriptOpcodes.WORLDMAP_GETCURRENTMAP) {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = GrandExchangeOfferAgeComparator.getWorldMap().currentMapAreaId();
+						return 1;
+					} else if (var0 == ScriptOpcodes.WORLDMAP_GETDISPLAYCOORD) {
+						var14 = new Coord(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
+						var11 = GrandExchangeOfferAgeComparator.getWorldMap().getCurrentMapArea();
+						if (var11 == null) {
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+							return 1;
+						} else {
+							int[] var12 = var11.position(var14.plane, var14.x, var14.y);
+							if (var12 == null) {
+								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+							} else {
+								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var12[0];
+								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var12[1];
+							}
+
+							return 1;
+						}
+					} else {
+						Coord var5;
+						if (var0 == 6618) {
+							var14 = new Coord(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
+							var11 = GrandExchangeOfferAgeComparator.getWorldMap().getCurrentMapArea();
+							if (var11 == null) {
+								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+								return 1;
+							} else {
+								var5 = var11.coord(var14.x, var14.y);
+								if (var5 == null) {
+									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+								} else {
+									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var5.packed();
+								}
+
+								return 1;
+							}
+						} else {
+							Coord var10;
+							if (var0 == 6619) {
+								class446.Interpreter_intStackSize -= 2;
+								var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
+								var10 = new Coord(Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1]);
+								ServerPacket.method5210(var3, var10, false);
+								return 1;
+							} else if (var0 == 6620) {
+								class446.Interpreter_intStackSize -= 2;
+								var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
+								var10 = new Coord(Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1]);
+								ServerPacket.method5210(var3, var10, true);
+								return 1;
+							} else if (var0 == ScriptOpcodes.WORLDMAP_COORDINMAP) {
+								class446.Interpreter_intStackSize -= 2;
+								var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
+								var10 = new Coord(Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1]);
+								var9 = GrandExchangeOfferAgeComparator.getWorldMap().getMapArea(var3);
+								if (var9 == null) {
+									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+									return 1;
+								} else {
+									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var9.containsCoord(var10.plane, var10.x, var10.y) ? 1 : 0;
+									return 1;
+								}
+							} else if (var0 == ScriptOpcodes.WORLDMAP_GETSIZE) {
+								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = GrandExchangeOfferAgeComparator.getWorldMap().getDisplayWith();
+								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = GrandExchangeOfferAgeComparator.getWorldMap().getDisplayHeight();
+								return 1;
+							} else if (var0 == 6623) {
+								var14 = new Coord(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
+								var11 = GrandExchangeOfferAgeComparator.getWorldMap().mapAreaAtCoord(var14.plane, var14.x, var14.y);
+								if (var11 == null) {
+									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+								} else {
+									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var11.getId();
+								}
+
+								return 1;
+							} else if (var0 == 6624) {
+								GrandExchangeOfferAgeComparator.getWorldMap().setMaxFlashCount(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
+								return 1;
+							} else if (var0 == 6625) {
+								GrandExchangeOfferAgeComparator.getWorldMap().resetMaxFlashCount();
+								return 1;
+							} else if (var0 == 6626) {
+								GrandExchangeOfferAgeComparator.getWorldMap().setCyclesPerFlash(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
+								return 1;
+							} else if (var0 == 6627) {
+								GrandExchangeOfferAgeComparator.getWorldMap().resetCyclesPerFlash();
+								return 1;
+							} else {
+								boolean var13;
+								if (var0 == ScriptOpcodes.WORLDMAP_PERPETUALFLASH) {
+									var13 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize] == 1;
+									GrandExchangeOfferAgeComparator.getWorldMap().setPerpetualFlash(var13);
+									return 1;
+								} else if (var0 == ScriptOpcodes.WORLDMAP_FLASHELEMENT) {
+									var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+									GrandExchangeOfferAgeComparator.getWorldMap().flashElement(var3);
+									return 1;
+								} else if (var0 == ScriptOpcodes.WORLDMAP_FLASHELEMENTCATEGORY) {
+									var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+									GrandExchangeOfferAgeComparator.getWorldMap().flashCategory(var3);
+									return 1;
+								} else if (var0 == ScriptOpcodes.WORLDMAP_STOPCURRENTFLASHES) {
+									GrandExchangeOfferAgeComparator.getWorldMap().stopCurrentFlashes();
+									return 1;
+								} else if (var0 == ScriptOpcodes.WORLDMAP_DISABLEELEMENTS) {
+									var13 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize] == 1;
+									GrandExchangeOfferAgeComparator.getWorldMap().setElementsDisabled(var13);
+									return 1;
+								} else {
+									boolean var7;
+									if (var0 == ScriptOpcodes.WORLDMAP_DISABLEELEMENT) {
+										class446.Interpreter_intStackSize -= 2;
+										var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
+										var7 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1] == 1;
+										GrandExchangeOfferAgeComparator.getWorldMap().disableElement(var3, var7);
+										return 1;
+									} else if (var0 == ScriptOpcodes.WORLDMAP_DISABLEELEMENTCATEGORY) {
+										class446.Interpreter_intStackSize -= 2;
+										var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
+										var7 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1] == 1;
+										GrandExchangeOfferAgeComparator.getWorldMap().setCategoryDisabled(var3, var7);
+										return 1;
+									} else if (var0 == ScriptOpcodes.WORLDMAP_GETDISABLEELEMENTS) {
+										Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = GrandExchangeOfferAgeComparator.getWorldMap().getElementsDisabled() ? 1 : 0;
+										return 1;
+									} else if (var0 == ScriptOpcodes.WORLDMAP_GETDISABLEELEMENT) {
+										var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+										Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = GrandExchangeOfferAgeComparator.getWorldMap().isElementDisabled(var3) ? 1 : 0;
+										return 1;
+									} else if (var0 == ScriptOpcodes.WORLDMAP_GETDISABLEELEMENTCATEGORY) {
+										var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+										Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = GrandExchangeOfferAgeComparator.getWorldMap().isCategoryDisabled(var3) ? 1 : 0;
+										return 1;
+									} else if (var0 == 6638) {
+										class446.Interpreter_intStackSize -= 2;
+										var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
+										var10 = new Coord(Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1]);
+										var5 = GrandExchangeOfferAgeComparator.getWorldMap().method7235(var3, var10);
+										if (var5 == null) {
+											Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+										} else {
+											Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var5.packed();
+										}
+
+										return 1;
+									} else {
+										AbstractWorldMapIcon var6;
+										if (var0 == ScriptOpcodes.WORLDMAP_LISTELEMENT_START) {
+											var6 = GrandExchangeOfferAgeComparator.getWorldMap().iconStart();
+											if (var6 == null) {
+												Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+												Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+											} else {
+												Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var6.getElement();
+												Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var6.coord2.packed();
+											}
+
+											return 1;
+										} else if (var0 == ScriptOpcodes.WORLDMAP_LISTELEMENT_NEXT) {
+											var6 = GrandExchangeOfferAgeComparator.getWorldMap().iconNext();
+											if (var6 == null) {
+												Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+												Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+											} else {
+												Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var6.getElement();
+												Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var6.coord2.packed();
+											}
+
+											return 1;
+										} else {
+											WorldMapElement var4;
+											if (var0 == ScriptOpcodes.MEC_TEXT) {
+												var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+												var4 = class432.WorldMapElement_get(var3);
+												if (var4.name == null) {
+													Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
+												} else {
+													Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var4.name;
+												}
+
+												return 1;
+											} else if (var0 == ScriptOpcodes.MEC_TEXTSIZE) {
+												var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+												var4 = class432.WorldMapElement_get(var3);
+												Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4.textSize;
+												return 1;
+											} else if (var0 == ScriptOpcodes.MEC_CATEGORY) {
+												var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+												var4 = class432.WorldMapElement_get(var3);
+												if (var4 == null) {
+													Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+												} else {
+													Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4.category;
+												}
+
+												return 1;
+											} else if (var0 == ScriptOpcodes.MEC_SPRITE) {
+												var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+												var4 = class432.WorldMapElement_get(var3);
+												if (var4 == null) {
+													Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
+												} else {
+													Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4.sprite1;
+												}
+
+												return 1;
+											} else if (var0 == ScriptOpcodes.WORLDMAP_ELEMENT) {
+												Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = class21.worldMapEvent.mapElement;
+												return 1;
+											} else if (var0 == 6698) {
+												Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = class21.worldMapEvent.coord1.packed();
+												return 1;
+											} else if (var0 == ScriptOpcodes.WORLDMAP_ELEMENTCOORD) {
+												Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = class21.worldMapEvent.coord2.packed();
+												return 1;
+											} else {
+												return 2;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }

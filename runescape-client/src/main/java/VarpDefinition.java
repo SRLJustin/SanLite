@@ -4,32 +4,31 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fb")
+@ObfuscatedName("fp")
 @Implements("VarpDefinition")
 public class VarpDefinition extends DualNode {
-	@ObfuscatedName("sw")
-	@ObfuscatedGetter(
-		intValue = 2043894385
-	)
-	static int field1748;
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Llh;"
 	)
 	@Export("VarpDefinition_archive")
 	public static AbstractArchive VarpDefinition_archive;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(
+		intValue = 486330385
+	)
+	public static int field1822;
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lii;"
 	)
 	@Export("VarpDefinition_cached")
 	public static EvictingDualNodeHashTable VarpDefinition_cached;
-	@ObfuscatedName("he")
-	@Export("regionMapArchives")
-	static byte[][] regionMapArchives;
-	@ObfuscatedName("m")
+	@ObfuscatedName("ct")
+	static boolean field1821;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1559119131
+		intValue = -737478807
 	)
 	@Export("type")
 	public int type;
@@ -42,10 +41,10 @@ public class VarpDefinition extends DualNode {
 		this.type = 0;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "-1334778255"
+		descriptor = "(Lqt;I)V",
+		garbageValue = "-1095475514"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -59,10 +58,10 @@ public class VarpDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;II)V",
-		garbageValue = "-1795168464"
+		descriptor = "(Lqt;II)V",
+		garbageValue = "1370423223"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -72,21 +71,30 @@ public class VarpDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("ho")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lcy;II)V",
-		garbageValue = "827099258"
+		descriptor = "(II)I",
+		garbageValue = "1678307117"
 	)
-	static final void method3167(Actor var0, int var1) {
-		ModeWhere.worldToScreen(var0.x, var0.y, var1);
+	public static int method3374(int var0) {
+		return class270.field3179[var0];
 	}
 
-	@ObfuscatedName("le")
+	@ObfuscatedName("iy")
 	@ObfuscatedSignature(
-		descriptor = "(IS)V",
-		garbageValue = "13655"
+		descriptor = "(II)Z",
+		garbageValue = "1226531684"
 	)
-	static void method3168(int var0) {
-		Client.oculusOrbState = var0;
+	static final boolean method3373(int var0) {
+		if (var0 < 0) {
+			return false;
+		} else {
+			int var1 = Client.menuOpcodes[var0];
+			if (var1 >= 2000) {
+				var1 -= 2000;
+			}
+
+			return var1 == 1007;
+		}
 	}
 }
