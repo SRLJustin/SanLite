@@ -3,18 +3,18 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lc")
+@ObfuscatedName("li")
 @Implements("LinkDeque")
 public class LinkDeque {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lnz;"
+		descriptor = "Lou;"
 	)
 	@Export("sentinel")
 	Link sentinel;
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lnz;"
+		descriptor = "Lou;"
 	)
 	@Export("current")
 	Link current;
@@ -27,7 +27,7 @@ public class LinkDeque {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lnz;)V"
+		descriptor = "(Lou;)V"
 	)
 	@Export("addFirst")
 	public void addFirst(Link var1) {
@@ -41,9 +41,9 @@ public class LinkDeque {
 		var1.previous.next = var1;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "()Lnz;"
+		descriptor = "()Lou;"
 	)
 	@Export("last")
 	public Link last() {
@@ -57,9 +57,9 @@ public class LinkDeque {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "()Lnz;"
+		descriptor = "()Lou;"
 	)
 	@Export("previous")
 	public Link previous() {

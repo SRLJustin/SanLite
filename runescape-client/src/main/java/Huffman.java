@@ -1,28 +1,24 @@
-import java.io.File;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jv")
+@ObfuscatedName("ji")
 @Implements("Huffman")
 public class Huffman {
-	@ObfuscatedName("m")
-	@Export("JagexCache_locationFile")
-	public static File JagexCache_locationFile;
-	@ObfuscatedName("bl")
-	@ObfuscatedGetter(
-		intValue = 1568185021
+	@ObfuscatedName("ro")
+	@ObfuscatedSignature(
+		descriptor = "Lno;"
 	)
-	static int field3152;
+	@Export("friendsChatManager")
+	static FriendsChatManager friendsChatManager;
 	@ObfuscatedName("c")
 	@Export("masks")
 	int[] masks;
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@Export("bits")
 	byte[] bits;
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@Export("keys")
 	int[] keys;
 
@@ -111,8 +107,8 @@ public class Huffman {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "([BII[BII)I",
-		garbageValue = "1986002175"
+		descriptor = "([BII[BIB)I",
+		garbageValue = "-98"
 	)
 	@Export("compress")
 	int compress(byte[] var1, int var2, int var3, byte[] var4, int var5) {
@@ -130,7 +126,7 @@ public class Huffman {
 			int var11 = var7 >> 3;
 			int var12 = var7 & 7;
 			var6 &= -var12 >> 31;
-			int var13 = (var10 + var12 - 1 >> 3) + var11;
+			int var13 = (var12 + var10 - 1 >> 3) + var11;
 			var12 += 24;
 			var4[var11] = (byte)(var6 |= var9 >>> var12);
 			if (var11 < var13) {
@@ -160,10 +156,10 @@ public class Huffman {
 		return (var7 + 7 >> 3) - var5;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "([BI[BIIB)I",
-		garbageValue = "67"
+		descriptor = "([BI[BIII)I",
+		garbageValue = "669033826"
 	)
 	@Export("decompress")
 	int decompress(byte[] var1, int var2, byte[] var3, int var4, int var5) {
@@ -301,6 +297,52 @@ public class Huffman {
 			}
 
 			return var7 + 1 - var2;
+		}
+	}
+
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "(III)Lbi;",
+		garbageValue = "2027632889"
+	)
+	static Script method5480(int var0, int var1) {
+		Script var2 = (Script)Script.Script_cached.get((long)(var0 << 16));
+		if (var2 != null) {
+			return var2;
+		} else {
+			String var3 = String.valueOf(var0);
+			int var4 = class267.archive12.getGroupId(var3);
+			if (var4 == -1) {
+				return null;
+			} else {
+				byte[] var5 = class267.archive12.takeFileFlat(var4);
+				if (var5 != null) {
+					if (var5.length <= 1) {
+						return null;
+					}
+
+					var2 = class344.newScript(var5);
+					if (var2 != null) {
+						Script.Script_cached.put(var2, (long)(var0 << 16));
+						return var2;
+					}
+				}
+
+				return null;
+			}
+		}
+	}
+
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)I",
+		garbageValue = "-1058305132"
+	)
+	static int method5474(int var0, int var1, int var2) {
+		if ((Tiles.Tiles_renderFlags[var0][var1][var2] & 8) != 0) {
+			return 0;
+		} else {
+			return var0 > 0 && (Tiles.Tiles_renderFlags[1][var1][var2] & 2) != 0 ? var0 - 1 : var0;
 		}
 	}
 }
