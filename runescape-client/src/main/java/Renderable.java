@@ -4,17 +4,12 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gt")
+@ObfuscatedName("gj")
 @Implements("Renderable")
 public abstract class Renderable extends DualNode {
-	@ObfuscatedName("sy")
+	@ObfuscatedName("dr")
 	@ObfuscatedGetter(
-		intValue = -1303192777
-	)
-	static int field2358;
-	@ObfuscatedName("cf")
-	@ObfuscatedGetter(
-		intValue = -1198254481
+		intValue = 1004163911
 	)
 	@Export("height")
 	public int height;
@@ -23,17 +18,17 @@ public abstract class Renderable extends DualNode {
 		this.height = 1000;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lgo;",
-		garbageValue = "202861607"
+		descriptor = "(I)Lhy;",
+		garbageValue = "1081110576"
 	)
 	@Export("getModel")
 	protected Model getModel() {
 		return null;
 	}
 
-	@ObfuscatedName("cq")
+	@ObfuscatedName("cv")
 	@Export("draw")
 	void draw(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, long var9) {
 		Model var11 = this.getModel();
@@ -44,91 +39,77 @@ public abstract class Renderable extends DualNode {
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(CLlf;B)C",
-		garbageValue = "106"
+		descriptor = "(Llh;I)V",
+		garbageValue = "730571688"
 	)
-	@Export("standardizeChar")
-	static char standardizeChar(char var0, Language var1) {
-		if (var0 >= 192 && var0 <= 255) {
-			if (var0 >= 192 && var0 <= 198) {
-				return 'A';
-			}
+	public static void method4342(AbstractArchive var0) {
+	}
 
-			if (var0 == 199) {
-				return 'C';
-			}
-
-			if (var0 >= 200 && var0 <= 203) {
-				return 'E';
-			}
-
-			if (var0 >= 204 && var0 <= 207) {
-				return 'I';
-			}
-
-			if (var0 == 209 && var1 != Language.Language_ES) {
-				return 'N';
-			}
-
-			if (var0 >= 210 && var0 <= 214) {
-				return 'O';
-			}
-
-			if (var0 >= 217 && var0 <= 220) {
-				return 'U';
-			}
-
-			if (var0 == 221) {
-				return 'Y';
-			}
-
-			if (var0 == 223) {
-				return 's';
-			}
-
-			if (var0 >= 224 && var0 <= 230) {
-				return 'a';
-			}
-
-			if (var0 == 231) {
-				return 'c';
-			}
-
-			if (var0 >= 232 && var0 <= 235) {
-				return 'e';
-			}
-
-			if (var0 >= 236 && var0 <= 239) {
-				return 'i';
-			}
-
-			if (var0 == 241 && var1 != Language.Language_ES) {
-				return 'n';
-			}
-
-			if (var0 >= 242 && var0 <= 246) {
-				return 'o';
-			}
-
-			if (var0 >= 249 && var0 <= 252) {
-				return 'u';
-			}
-
-			if (var0 == 253 || var0 == 255) {
-				return 'y';
-			}
-		}
-
-		if (var0 == 338) {
-			return 'O';
-		} else if (var0 == 339) {
-			return 'o';
-		} else if (var0 == 376) {
-			return 'Y';
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZI)I",
+		garbageValue = "1526978313"
+	)
+	static int method4339(int var0, Script var1, boolean var2) {
+		if (var0 == 7400) {
+			--class446.Interpreter_intStackSize;
+			--Interpreter.Interpreter_stringStackSize;
+			return 1;
+		} else if (var0 == 7401) {
+			--class446.Interpreter_intStackSize;
+			--Interpreter.Interpreter_stringStackSize;
+			return 1;
+		} else if (var0 == 7402) {
+			class446.Interpreter_intStackSize -= 2;
+			--Interpreter.Interpreter_stringStackSize;
+			return 1;
+		} else if (var0 == 7403) {
+			class446.Interpreter_intStackSize -= 2;
+			--Interpreter.Interpreter_stringStackSize;
+			return 1;
+		} else if (var0 == 7404) {
+			--class446.Interpreter_intStackSize;
+			--Interpreter.Interpreter_stringStackSize;
+			return 1;
+		} else if (var0 == 7405) {
+			class446.Interpreter_intStackSize -= 2;
+			return 1;
+		} else if (var0 == 7406) {
+			--class446.Interpreter_intStackSize;
+			Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
+			return 1;
+		} else if (var0 == 7407) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+			return 1;
+		} else if (var0 == 7408) {
+			class446.Interpreter_intStackSize -= 2;
+			--Interpreter.Interpreter_stringStackSize;
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+			return 1;
+		} else if (var0 == 7409) {
+			--class446.Interpreter_intStackSize;
+			return 1;
 		} else {
-			return var0;
+			return 2;
 		}
+	}
+
+	@ObfuscatedName("fu")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "51"
+	)
+	@Export("playPcmPlayers")
+	static final void playPcmPlayers() {
+		if (class238.pcmPlayer1 != null) {
+			class238.pcmPlayer1.run();
+		}
+
+		if (AttackOption.pcmPlayer0 != null) {
+			AttackOption.pcmPlayer0.run();
+		}
+
 	}
 }

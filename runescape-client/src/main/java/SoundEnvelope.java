@@ -3,42 +3,42 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ag")
+@ObfuscatedName("at")
 @Implements("SoundEnvelope")
 public class SoundEnvelope {
 	@ObfuscatedName("c")
 	@Export("segments")
 	int segments;
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@Export("durations")
 	int[] durations;
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@Export("phases")
 	int[] phases;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@Export("start")
 	int start;
-	@ObfuscatedName("t")
+	@ObfuscatedName("j")
 	@Export("end")
 	int end;
-	@ObfuscatedName("s")
+	@ObfuscatedName("e")
 	@Export("form")
 	int form;
-	@ObfuscatedName("j")
+	@ObfuscatedName("g")
 	@Export("ticks")
 	int ticks;
 	@ObfuscatedName("w")
 	@Export("phaseIndex")
 	int phaseIndex;
-	@ObfuscatedName("n")
-	@Export("step")
-	int step;
-	@ObfuscatedName("r")
-	@Export("amplitude")
-	int amplitude;
-	@ObfuscatedName("o")
+	@ObfuscatedName("y")
 	@Export("max")
 	int max;
+	@ObfuscatedName("i")
+	@Export("step")
+	int step;
+	@ObfuscatedName("s")
+	@Export("amplitude")
+	int amplitude;
 
 	SoundEnvelope() {
 		this.segments = 2;
@@ -52,7 +52,7 @@ public class SoundEnvelope {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;)V"
+		descriptor = "(Lqt;)V"
 	)
 	@Export("decode")
 	final void decode(Buffer var1) {
@@ -62,9 +62,9 @@ public class SoundEnvelope {
 		this.decodeSegments(var1);
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;)V"
+		descriptor = "(Lqt;)V"
 	)
 	@Export("decodeSegments")
 	final void decodeSegments(Buffer var1) {
@@ -79,7 +79,7 @@ public class SoundEnvelope {
 
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@Export("reset")
 	final void reset() {
 		this.ticks = 0;
@@ -89,7 +89,7 @@ public class SoundEnvelope {
 		this.max = 0;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@Export("doStep")
 	final int doStep(int var1) {
 		if (this.max >= this.ticks) {

@@ -4,41 +4,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hu")
+@ObfuscatedName("ho")
 @Implements("WorldMapData_1")
 public class WorldMapData_1 extends AbstractWorldMapData {
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "Lme;"
-	)
-	static Bounds field2652;
-	@ObfuscatedName("gt")
-	@ObfuscatedSignature(
-		descriptor = "Lcq;"
-	)
-	@Export("urlRequester")
-	static UrlRequester urlRequester;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -2038326589
+		intValue = 944761331
 	)
 	@Export("chunkXLow")
 	int chunkXLow;
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 45783071
+		intValue = -2108946565
 	)
 	@Export("chunkYLow")
 	int chunkYLow;
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 1904366233
+		intValue = 1996140337
 	)
 	@Export("chunkX")
 	int chunkX;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -584157989
+		intValue = -427207979
 	)
 	@Export("chunkY")
 	int chunkY;
@@ -48,13 +37,13 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "4"
+		descriptor = "(Lqt;B)V",
+		garbageValue = "122"
 	)
 	@Export("init")
 	void init(Buffer var1) {
 		int var2 = var1.readUnsignedByte();
-		if (var2 != WorldMapID.field2741.value) {
+		if (var2 != WorldMapID.field2840.value) {
 			throw new IllegalStateException("");
 		} else {
 			super.minPlane = var1.readUnsignedByte();
@@ -67,26 +56,26 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 			super.regionY = var1.readUnsignedShort();
 			this.chunkX = var1.readUnsignedByte();
 			this.chunkY = var1.readUnsignedByte();
-			super.groupId = var1.method7400();
-			super.fileId = var1.method7400();
+			super.groupId = var1.method7752();
+			super.fileId = var1.method7752();
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "28"
+		descriptor = "(Lqt;I)V",
+		garbageValue = "-2593161"
 	)
 	@Export("readGeography")
 	void readGeography(Buffer var1) {
 		super.planes = Math.min(super.planes, 4);
 		super.floorUnderlayIds = new short[1][64][64];
 		super.floorOverlayIds = new short[super.planes][64][64];
-		super.field2699 = new byte[super.planes][64][64];
-		super.field2706 = new byte[super.planes][64][64];
+		super.field2796 = new byte[super.planes][64][64];
+		super.field2795 = new byte[super.planes][64][64];
 		super.decorations = new WorldMapDecoration[super.planes][64][64][];
 		int var2 = var1.readUnsignedByte();
-		if (var2 != class231.field2735.value) {
+		if (var2 != class238.field2836.value) {
 			throw new IllegalStateException("");
 		} else {
 			int var3 = var1.readUnsignedByte();
@@ -106,20 +95,20 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-298089645"
+		garbageValue = "906993418"
 	)
 	@Export("getChunkXLow")
 	int getChunkXLow() {
 		return this.chunkXLow;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "94"
+		descriptor = "(I)I",
+		garbageValue = "1946876923"
 	)
 	@Export("getChunkYLow")
 	int getChunkYLow() {
@@ -128,8 +117,8 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 
 	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-66"
+		descriptor = "(S)I",
+		garbageValue = "-14250"
 	)
 	@Export("getChunkX")
 	int getChunkX() {
@@ -138,8 +127,8 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 
 	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "737518377"
+		descriptor = "(B)I",
+		garbageValue = "-74"
 	)
 	@Export("getChunkY")
 	int getChunkY() {
@@ -152,7 +141,7 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 		} else {
 			WorldMapData_1 var2 = (WorldMapData_1)var1;
 			if (var2.regionX == super.regionX && super.regionY == var2.regionY) {
-				return var2.chunkX == this.chunkX && this.chunkY == var2.chunkY;
+				return this.chunkX == var2.chunkX && var2.chunkY == this.chunkY;
 			} else {
 				return false;
 			}
@@ -161,5 +150,69 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 
 	public int hashCode() {
 		return super.regionX | super.regionY << 8 | this.chunkX << 16 | this.chunkY << 24;
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Lcc;",
+		garbageValue = "-217216556"
+	)
+	static class82[] method4867() {
+		return new class82[]{class82.field1073, class82.field1067, class82.field1069, class82.field1066, class82.field1068};
+	}
+
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "-2054852963"
+	)
+	static void method4872(int var0) {
+		if (var0 != Login.loginIndex) {
+			Login.loginIndex = var0;
+		}
+	}
+
+	@ObfuscatedName("kq")
+	@ObfuscatedSignature(
+		descriptor = "(Lkb;I)V",
+		garbageValue = "-1987300687"
+	)
+	static final void method4874(Widget var0) {
+		int var1 = var0.contentType;
+		if (var1 == 324) {
+			if (Client.field535 == -1) {
+				Client.field535 = var0.spriteId2;
+				Client.field763 = var0.spriteId;
+			}
+
+			if (Client.playerAppearance.isFemale) {
+				var0.spriteId2 = Client.field535;
+			} else {
+				var0.spriteId2 = Client.field763;
+			}
+
+		} else if (var1 == 325) {
+			if (Client.field535 == -1) {
+				Client.field535 = var0.spriteId2;
+				Client.field763 = var0.spriteId;
+			}
+
+			if (Client.playerAppearance.isFemale) {
+				var0.spriteId2 = Client.field763;
+			} else {
+				var0.spriteId2 = Client.field535;
+			}
+
+		} else if (var1 == 327) {
+			var0.modelAngleX = 150;
+			var0.modelAngleY = (int)(Math.sin((double)Client.cycle / 40.0D) * 256.0D) & 2047;
+			var0.modelType = 5;
+			var0.modelId = 0;
+		} else if (var1 == 328) {
+			var0.modelAngleX = 150;
+			var0.modelAngleY = (int)(Math.sin((double)Client.cycle / 40.0D) * 256.0D) & 2047;
+			var0.modelType = 5;
+			var0.modelId = 1;
+		}
 	}
 }

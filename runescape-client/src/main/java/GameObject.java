@@ -1,104 +1,97 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("hl")
+@ObfuscatedName("hb")
 @Implements("GameObject")
 public final class GameObject {
-	@ObfuscatedName("fk")
-	@ObfuscatedGetter(
-		intValue = -1234198713
-	)
-	@Export("worldPort")
-	static int worldPort;
-	@ObfuscatedName("ma")
-	@ObfuscatedGetter(
-		intValue = -1786079239
-	)
-	@Export("menuWidth")
-	static int menuWidth;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1089622701
+		intValue = 555755513
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -465774691
+		intValue = 1199180827
 	)
 	@Export("height")
 	int height;
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 1923590497
+		intValue = 1171704683
 	)
 	@Export("centerX")
 	int centerX;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1996180969
-	)
-	@Export("orientation")
-	int orientation;
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		intValue = 1051509529
+		intValue = -1998426191
 	)
 	@Export("centerY")
 	int centerY;
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lgj;"
 	)
 	@Export("renderable")
 	public Renderable renderable;
-	@ObfuscatedName("j")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = 1723330507
+		intValue = 2060742587
+	)
+	@Export("orientation")
+	int orientation;
+	@ObfuscatedName("g")
+	@ObfuscatedGetter(
+		intValue = 780367115
 	)
 	@Export("startX")
 	int startX;
 	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -621074209
+		intValue = -16124731
 	)
 	@Export("endX")
 	int endX;
-	@ObfuscatedName("n")
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = -178409117
+		intValue = 1663298221
 	)
 	@Export("startY")
 	int startY;
-	@ObfuscatedName("r")
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = 144998379
+		intValue = -2083887369
 	)
 	@Export("endY")
 	int endY;
-	@ObfuscatedName("o")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 1469340071
+		intValue = -1662545459
 	)
-	int field2548;
-	@ObfuscatedName("v")
+	int field2655;
+	@ObfuscatedName("t")
 	@ObfuscatedGetter(
-		intValue = 800381971
+		intValue = 1055321127
 	)
 	@Export("lastDrawn")
 	int lastDrawn;
-	@ObfuscatedName("d")
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		longValue = -3336818157473405963L
+		longValue = -5445393225516942137L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("h")
+	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = -1622989155
+		intValue = -1409812671
 	)
 	@Export("flags")
 	int flags;
@@ -108,38 +101,59 @@ public final class GameObject {
 		this.flags = 0;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "210014678"
+		descriptor = "(S)Ljava/util/Date;",
+		garbageValue = "206"
 	)
-	static int method4341(int var0, Script var1, boolean var2) {
-		if (var0 != 6700 && var0 != 6702 && var0 != 6704 && var0 != 6706 && var0 != 6708) {
-			if (var0 != 6701 && var0 != 6703 && var0 != 6705 && var0 != 6707 && var0 != 6709) {
-				if (var0 == 6750) {
-					Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-					return 1;
-				} else if (var0 != 6751 && var0 != 6752 && var0 != 6753) {
-					if (var0 == 6754) {
-						int var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-						NPCComposition var4 = WorldMapLabelSize.getNpcDefinition(var3);
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
-						return 1;
-					} else {
-						return 2;
-					}
-				} else {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -1;
-					return 1;
-				}
-			} else {
-				--IsaacCipher.Interpreter_intStackSize;
-				return 1;
+	static Date method4552() throws ParseException {
+		SimpleDateFormat var0 = new SimpleDateFormat("ddMMyyyyHH", Locale.ENGLISH);
+		var0.setLenient(false);
+		StringBuilder var1 = new StringBuilder();
+		String[] var2 = Login.field911;
+
+		for (int var3 = 0; var3 < var2.length; ++var3) {
+			String var4 = var2[var3];
+			if (var4 == null) {
+				GraphicsObject.method1877("Date not valid.", "Please ensure all characters are populated.", "");
+				return null;
 			}
-		} else {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			--class13.Interpreter_stringStackSize;
+
+			var1.append(var4);
+		}
+
+		var1.append("12");
+		return var0.parse(var1.toString());
+	}
+
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZI)I",
+		garbageValue = "-1762087173"
+	)
+	static int method4553(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? class124.scriptDotWidget : GrandExchangeOfferOwnWorldComparator.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETINVOBJECT) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.itemId;
 			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETINVCOUNT) {
+			if (var3.itemId != -1) {
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.itemQuantity;
+			} else {
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
+			}
+
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETID) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.childIndex;
+			return 1;
+		} else if (var0 == 1707) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.method5680() ? 1 : 0;
+			return 1;
+		} else if (var0 == 1708) {
+			return class29.method363(var3);
+		} else {
+			return var0 == 1709 ? WorldMapSection0.method4947(var3) : 2;
 		}
 	}
 }

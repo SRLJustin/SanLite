@@ -2,19 +2,35 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("fp")
+@ObfuscatedName("gi")
 @Implements("StructComposition")
 public class StructComposition extends DualNode {
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Llh;"
+	)
+	@Export("StructDefinition_archive")
+	static AbstractArchive StructDefinition_archive;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Lii;"
 	)
 	@Export("StructDefinition_cached")
 	static EvictingDualNodeHashTable StructDefinition_cached;
-	@ObfuscatedName("p")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Loz;"
+		descriptor = "Llh;"
+	)
+	@Export("Widget_spritesArchive")
+	public static AbstractArchive Widget_spritesArchive;
+	@ObfuscatedName("fl")
+	@Export("worldHost")
+	static String worldHost;
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "Lpb;"
 	)
 	@Export("params")
 	IterableNodeHashTable params;
@@ -26,19 +42,19 @@ public class StructComposition extends DualNode {
 	StructComposition() {
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1697114474"
+		garbageValue = "749475992"
 	)
 	@Export("postDecode")
 	void postDecode() {
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "260928351"
+		descriptor = "(Lqt;B)V",
+		garbageValue = "56"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -52,102 +68,169 @@ public class StructComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;IB)V",
-		garbageValue = "76"
+		descriptor = "(Lqt;II)V",
+		garbageValue = "1584006933"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 249) {
-			this.params = Canvas.readStringIntParameters(var1, this.params);
+			this.params = LoginScreenAnimation.readStringIntParameters(var1, this.params);
 		}
 
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-1808649424"
+		descriptor = "(IIB)I",
+		garbageValue = "80"
 	)
 	@Export("getIntParam")
 	public int getIntParam(int var1, int var2) {
-		return class12.method158(this.params, var1, var2);
+		return class124.method2818(this.params, var1, var2);
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
 		descriptor = "(ILjava/lang/String;I)Ljava/lang/String;",
-		garbageValue = "-1725182955"
+		garbageValue = "-581400473"
 	)
 	@Export("getStringParam")
 	public String getStringParam(int var1, String var2) {
-		return Skeleton.method3948(this.params, var1, var2);
-	}
-
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-64"
-	)
-	public static void method3444() {
-		class260.midiPcmStream.clear();
-		class260.musicPlayerStatus = 1;
-		class124.musicTrackArchive = null;
-	}
-
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "2"
-	)
-	public static boolean method3424(int var0) {
-		return var0 >= 0 && var0 < 112 ? KeyHandler.field132[var0] : false;
-	}
-
-	@ObfuscatedName("lv")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZI)V",
-		garbageValue = "488868822"
-	)
-	@Export("findItemDefinitions")
-	static void findItemDefinitions(String var0, boolean var1) {
-		var0 = var0.toLowerCase();
-		short[] var2 = new short[16];
-		int var3 = 0;
-
-		for (int var4 = 0; var4 < WorldMapLabelSize.ItemDefinition_fileCount; ++var4) {
-			ItemComposition var9 = UserComparator6.ItemDefinition_get(var4);
-			if ((!var1 || var9.isTradable) && var9.noteTemplate == -1 && var9.name.toLowerCase().indexOf(var0) != -1) {
-				if (var3 >= 250) {
-					GraphicsDefaults.foundItemIdCount = -1;
-					class113.foundItemIds = null;
-					return;
-				}
-
-				if (var3 >= var2.length) {
-					short[] var6 = new short[var2.length * 2];
-
-					for (int var7 = 0; var7 < var3; ++var7) {
-						var6[var7] = var2[var7];
-					}
-
-					var2 = var6;
-				}
-
-				var2[var3++] = (short)var4;
+		IterableNodeHashTable var4 = this.params;
+		String var3;
+		if (var4 == null) {
+			var3 = var2;
+		} else {
+			ObjectNode var5 = (ObjectNode)var4.get((long)var1);
+			if (var5 == null) {
+				var3 = var2;
+			} else {
+				var3 = (String)var5.obj;
 			}
 		}
 
-		class113.foundItemIds = var2;
-		class336.foundItemIndex = 0;
-		GraphicsDefaults.foundItemIdCount = var3;
-		String[] var8 = new String[GraphicsDefaults.foundItemIdCount];
+		return var3;
+	}
 
-		for (int var5 = 0; var5 < GraphicsDefaults.foundItemIdCount; ++var5) {
-			var8[var5] = UserComparator6.ItemDefinition_get(var2[var5]).name;
+	@ObfuscatedName("c")
+	public static final int method3616(double var0, double var2, double var4) {
+		double var6 = var4;
+		double var8 = var4;
+		double var10 = var4;
+		if (0.0D != var2) {
+			double var12;
+			if (var4 < 0.5D) {
+				var12 = (1.0D + var2) * var4;
+			} else {
+				var12 = var4 + var2 - var2 * var4;
+			}
+
+			double var14 = 2.0D * var4 - var12;
+			double var16 = var0 + 0.3333333333333333D;
+			if (var16 > 1.0D) {
+				--var16;
+			}
+
+			double var20 = var0 - 0.3333333333333333D;
+			if (var20 < 0.0D) {
+				++var20;
+			}
+
+			if (var16 * 6.0D < 1.0D) {
+				var6 = var16 * (var12 - var14) * 6.0D + var14;
+			} else if (var16 * 2.0D < 1.0D) {
+				var6 = var12;
+			} else if (3.0D * var16 < 2.0D) {
+				var6 = (var12 - var14) * (0.6666666666666666D - var16) * 6.0D + var14;
+			} else {
+				var6 = var14;
+			}
+
+			if (var0 * 6.0D < 1.0D) {
+				var8 = var14 + var0 * (var12 - var14) * 6.0D;
+			} else if (2.0D * var0 < 1.0D) {
+				var8 = var12;
+			} else if (3.0D * var0 < 2.0D) {
+				var8 = 6.0D * (0.6666666666666666D - var0) * (var12 - var14) + var14;
+			} else {
+				var8 = var14;
+			}
+
+			if (6.0D * var20 < 1.0D) {
+				var10 = var14 + 6.0D * (var12 - var14) * var20;
+			} else if (var20 * 2.0D < 1.0D) {
+				var10 = var12;
+			} else if (var20 * 3.0D < 2.0D) {
+				var10 = 6.0D * (var12 - var14) * (0.6666666666666666D - var20) + var14;
+			} else {
+				var10 = var14;
+			}
 		}
 
-		KeyHandler.method390(var8, class113.foundItemIds);
+		int var22 = (int)(256.0D * var6);
+		int var13 = (int)(256.0D * var8);
+		int var23 = (int)(var10 * 256.0D);
+		int var15 = var23 + (var13 << 8) + (var22 << 16);
+		return var15;
+	}
+
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZS)I",
+		garbageValue = "-18766"
+	)
+	static int method3617(int var0, Script var1, boolean var2) {
+		Widget var3;
+		if (var0 >= 2000) {
+			var0 -= 1000;
+			var3 = class140.getWidget(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
+		} else {
+			var3 = var2 ? class124.scriptDotWidget : GrandExchangeOfferOwnWorldComparator.scriptActiveWidget;
+		}
+
+		ChatChannel.method1994(var3);
+		if (var0 != ScriptOpcodes.CC_SETOBJECT && var0 != ScriptOpcodes.CC_SETOBJECT_NONUM && var0 != ScriptOpcodes.CC_SETOBJECT_ALWAYS_NUM) {
+			if (var0 == ScriptOpcodes.CC_SETNPCHEAD) {
+				var3.modelType = 2;
+				var3.modelId = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+				return 1;
+			} else if (var0 == ScriptOpcodes.CC_SETPLAYERHEAD_SELF) {
+				var3.modelType = 3;
+				var3.modelId = class101.localPlayer.appearance.getChatHeadId();
+				return 1;
+			} else {
+				return 2;
+			}
+		} else {
+			class446.Interpreter_intStackSize -= 2;
+			int var4 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
+			int var5 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1];
+			var3.itemId = var4;
+			var3.itemQuantity = var5;
+			ItemComposition var6 = EnumComposition.ItemDefinition_get(var4);
+			var3.modelAngleX = var6.xan2d;
+			var3.modelAngleY = var6.yan2d;
+			var3.modelAngleZ = var6.zan2d;
+			var3.modelOffsetX = var6.offsetX2d;
+			var3.modelOffsetY = var6.offsetY2d;
+			var3.modelZoom = var6.zoom2d;
+			if (var0 == ScriptOpcodes.CC_SETOBJECT_NONUM) {
+				var3.itemQuantityMode = 0;
+			} else if (var0 == ScriptOpcodes.CC_SETOBJECT_ALWAYS_NUM | var6.isStackable == 1) {
+				var3.itemQuantityMode = 1;
+			} else {
+				var3.itemQuantityMode = 2;
+			}
+
+			if (var3.field3424 > 0) {
+				var3.modelZoom = var3.modelZoom * 32 / var3.field3424;
+			} else if (var3.rawWidth > 0) {
+				var3.modelZoom = var3.modelZoom * 32 / var3.rawWidth;
+			}
+
+			return 1;
+		}
 	}
 }

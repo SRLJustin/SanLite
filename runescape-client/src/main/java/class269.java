@@ -1,57 +1,64 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jh")
+@ObfuscatedName("jz")
 public class class269 {
-	@ObfuscatedName("hh")
-	@Export("regions")
-	static int[] regions;
-
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lkz;IIIBZI)V",
-		garbageValue = "1369454050"
+		descriptor = "(II)I",
+		garbageValue = "-2064845934"
 	)
-	@Export("requestNetFile")
-	static void requestNetFile(Archive var0, int var1, int var2, int var3, byte var4, boolean var5) {
-		long var6 = (long)((var1 << 16) + var2);
-		NetFileRequest var8 = (NetFileRequest)NetCache.NetCache_pendingPriorityWrites.get(var6);
-		if (var8 == null) {
-			var8 = (NetFileRequest)NetCache.NetCache_pendingPriorityResponses.get(var6);
-			if (var8 == null) {
-				var8 = (NetFileRequest)NetCache.NetCache_pendingWrites.get(var6);
-				if (var8 != null) {
-					if (var5) {
-						var8.removeDual();
-						NetCache.NetCache_pendingPriorityWrites.put(var8, var6);
-						--NetCache.NetCache_pendingWritesCount;
-						++NetCache.NetCache_pendingPriorityWritesCount;
-					}
+	public static int method5223(int var0) {
+		var0 = (var0 & 1431655765) + (var0 >>> 1 & 1431655765);
+		var0 = (var0 >>> 2 & 858993459) + (var0 & 858993459);
+		var0 = var0 + (var0 >>> 4) & 252645135;
+		var0 += var0 >>> 8;
+		var0 += var0 >>> 16;
+		return var0 & 255;
+	}
 
-				} else {
-					if (!var5) {
-						var8 = (NetFileRequest)NetCache.NetCache_pendingResponses.get(var6);
-						if (var8 != null) {
-							return;
-						}
-					}
+	@ObfuscatedName("jd")
+	@ObfuscatedSignature(
+		descriptor = "(Lkb;IIIIIII)V",
+		garbageValue = "-54726370"
+	)
+	static final void method5224(Widget var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+		if (Client.field560) {
+			Client.alternativeScrollbarWidth = 32;
+		} else {
+			Client.alternativeScrollbarWidth = 0;
+		}
 
-					var8 = new NetFileRequest();
-					var8.archive = var0;
-					var8.crc = var3;
-					var8.padding = var4;
-					if (var5) {
-						NetCache.NetCache_pendingPriorityWrites.put(var8, var6);
-						++NetCache.NetCache_pendingPriorityWritesCount;
-					} else {
-						NetCache.NetCache_pendingWritesQueue.addFirst(var8);
-						NetCache.NetCache_pendingWrites.put(var8, var6);
-						++NetCache.NetCache_pendingWritesCount;
-					}
-
+		Client.field560 = false;
+		int var7;
+		if (MouseHandler.MouseHandler_currentButton == 1 || !class122.mouseCam && MouseHandler.MouseHandler_currentButton == 4) {
+			if (var5 >= var1 && var5 < var1 + 16 && var6 >= var2 && var6 < var2 + 16) {
+				var0.scrollY -= 4;
+				ChatChannel.method1994(var0);
+			} else if (var5 >= var1 && var5 < var1 + 16 && var6 >= var3 + var2 - 16 && var6 < var3 + var2) {
+				var0.scrollY += 4;
+				ChatChannel.method1994(var0);
+			} else if (var5 >= var1 - Client.alternativeScrollbarWidth && var5 < Client.alternativeScrollbarWidth + var1 + 16 && var6 >= var2 + 16 && var6 < var3 + var2 - 16) {
+				var7 = var3 * (var3 - 32) / var4;
+				if (var7 < 8) {
+					var7 = 8;
 				}
+
+				int var8 = var6 - var2 - 16 - var7 / 2;
+				int var9 = var3 - 32 - var7;
+				var0.scrollY = var8 * (var4 - var3) / var9;
+				ChatChannel.method1994(var0);
+				Client.field560 = true;
 			}
 		}
+
+		if (Client.mouseWheelRotation != 0) {
+			var7 = var0.width;
+			if (var5 >= var1 - var7 && var6 >= var2 && var5 < var1 + 16 && var6 <= var3 + var2) {
+				var0.scrollY += Client.mouseWheelRotation * 45;
+				ChatChannel.method1994(var0);
+			}
+		}
+
 	}
 }
