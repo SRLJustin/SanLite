@@ -1,33 +1,27 @@
 import java.util.concurrent.Callable;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("b")
+@ObfuscatedName("v")
 public class class1 implements Callable {
-	@ObfuscatedName("k")
+	@ObfuscatedName("u")
+	static int[][][] field2;
+	@ObfuscatedName("ky")
 	@ObfuscatedSignature(
-		descriptor = "Lei;"
+		descriptor = "Lkb;"
 	)
-	static ClanChannel field0;
-	@ObfuscatedName("bz")
-	static String field3;
-	@ObfuscatedName("ee")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive13")
-	static Archive archive13;
+	static Widget field4;
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lpi;"
+		descriptor = "Lqt;"
 	)
-	final Buffer field2;
-	@ObfuscatedName("b")
+	final Buffer field1;
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lm;"
+		descriptor = "Lf;"
 	)
-	final class3 field1;
+	final class3 field3;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
 		descriptor = "Lw;"
@@ -35,83 +29,75 @@ public class class1 implements Callable {
 	final class7 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lw;Lpi;Lm;)V"
+		descriptor = "(Lw;Lqt;Lf;)V"
 	)
 	class1(class7 var1, Buffer var2, class3 var3) {
 		this.this$0 = var1;
-		this.field2 = var2;
-		this.field1 = var3;
+		this.field1 = var2;
+		this.field3 = var3;
 	}
 
 	public Object call() {
-		return this.field1.vmethod15(this.field2);
+		return this.field3.vmethod10(this.field1);
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("r")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "42"
+		descriptor = "(ILbi;ZS)I",
+		garbageValue = "-15642"
 	)
-	public static void method8() {
-		VarbitComposition.VarbitDefinition_cached.clear();
-	}
-
-	@ObfuscatedName("gw")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)V",
-		garbageValue = "2135260751"
-	)
-	static final void method12(int var0, int var1, int var2) {
-		if (UserComparator7.cameraX < var0) {
-			UserComparator7.cameraX = (var0 - UserComparator7.cameraX) * ItemComposition.field2012 / 1000 + UserComparator7.cameraX + Renderable.field2358;
-			if (UserComparator7.cameraX > var0) {
-				UserComparator7.cameraX = var0;
-			}
+	static int method7(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? class124.scriptDotWidget : GrandExchangeOfferOwnWorldComparator.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETSCROLLX) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.scrollX;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETSCROLLY) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.scrollY;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETTEXT) {
+			Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3.text;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETSCROLLWIDTH) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.scrollWidth;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETSCROLLHEIGHT) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.scrollHeight;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETMODELZOOM) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelZoom;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETMODELANGLE_X) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelAngleX;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETMODELANGLE_Z) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelAngleZ;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETMODELANGLE_Y) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelAngleY;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETTRANS) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.transparencyTop;
+			return 1;
+		} else if (var0 == 1610) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.transparencyBot;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETCOLOUR) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.color;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETFILLCOLOUR) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.color2;
+			return 1;
+		} else if (var0 == 1613) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.fillMode.rsOrdinal();
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETMODELTRANSPARENT) {
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelTransparency ? 1 : 0;
+			return 1;
+		} else if (var0 != 1615 && var0 != 1616) {
+			return 2;
+		} else {
+			++class446.Interpreter_intStackSize;
+			return 1;
 		}
-
-		if (UserComparator7.cameraX > var0) {
-			UserComparator7.cameraX -= (UserComparator7.cameraX - var0) * ItemComposition.field2012 / 1000 + Renderable.field2358;
-			if (UserComparator7.cameraX < var0) {
-				UserComparator7.cameraX = var0;
-			}
-		}
-
-		if (AbstractByteArrayCopier.cameraY < var1) {
-			AbstractByteArrayCopier.cameraY = (var1 - AbstractByteArrayCopier.cameraY) * ItemComposition.field2012 / 1000 + AbstractByteArrayCopier.cameraY + Renderable.field2358;
-			if (AbstractByteArrayCopier.cameraY > var1) {
-				AbstractByteArrayCopier.cameraY = var1;
-			}
-		}
-
-		if (AbstractByteArrayCopier.cameraY > var1) {
-			AbstractByteArrayCopier.cameraY -= (AbstractByteArrayCopier.cameraY - var1) * ItemComposition.field2012 / 1000 + Renderable.field2358;
-			if (AbstractByteArrayCopier.cameraY < var1) {
-				AbstractByteArrayCopier.cameraY = var1;
-			}
-		}
-
-		if (UserComparator10.cameraZ < var2) {
-			UserComparator10.cameraZ = (var2 - UserComparator10.cameraZ) * ItemComposition.field2012 / 1000 + UserComparator10.cameraZ + Renderable.field2358;
-			if (UserComparator10.cameraZ > var2) {
-				UserComparator10.cameraZ = var2;
-			}
-		}
-
-		if (UserComparator10.cameraZ > var2) {
-			UserComparator10.cameraZ -= (UserComparator10.cameraZ - var2) * ItemComposition.field2012 / 1000 + Renderable.field2358;
-			if (UserComparator10.cameraZ < var2) {
-				UserComparator10.cameraZ = var2;
-			}
-		}
-
-	}
-
-	@ObfuscatedName("jg")
-	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "-1424242195"
-	)
-	static final String method11(int var0) {
-		return var0 < 999999999 ? Integer.toString(var0) : "*";
 	}
 }

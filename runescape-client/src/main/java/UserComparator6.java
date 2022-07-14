@@ -2,16 +2,13 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("dt")
+@ObfuscatedName("dg")
 @Implements("UserComparator6")
 public class UserComparator6 extends AbstractUserComparator {
-	@ObfuscatedName("ej")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive8")
-	static Archive archive8;
+	@ObfuscatedName("w")
+	static byte[][][] field1415;
 	@ObfuscatedName("c")
 	@Export("reversed")
 	final boolean reversed;
@@ -22,8 +19,8 @@ public class UserComparator6 extends AbstractUserComparator {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lmp;Lmp;I)I",
-		garbageValue = "579656332"
+		descriptor = "(Lnm;Lnm;I)I",
+		garbageValue = "1280649324"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -38,152 +35,153 @@ public class UserComparator6 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lfx;",
-		garbageValue = "-2085388383"
+		descriptor = "(IB)Lpo;",
+		garbageValue = "20"
 	)
-	@Export("ItemDefinition_get")
-	public static ItemComposition ItemDefinition_get(int var0) {
-		ItemComposition var1 = (ItemComposition)ItemComposition.ItemDefinition_cached.get((long)var0);
+	public static class435 method2626(int var0) {
+		class435 var1 = (class435)class435.PlayerComposition_cachedModels.get((long)var0);
 		if (var1 != null) {
 			return var1;
 		} else {
-			byte[] var2 = ItemComposition.ItemDefinition_archive.takeFile(10, var0);
-			var1 = new ItemComposition();
-			var1.id = var0;
+			byte[] var2 = class435.field4666.takeFile(39, var0);
+			var1 = new class435();
 			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+				var1.method7592(new Buffer(var2));
 			}
 
-			var1.post();
-			if (var1.noteTemplate != -1) {
-				var1.genCert(ItemDefinition_get(var1.noteTemplate), ItemDefinition_get(var1.note));
-			}
+			var1.method7602();
+			class435.PlayerComposition_cachedModels.put(var1, (long)var0);
+			return var1;
+		}
+	}
 
-			if (var1.notedId != -1) {
-				var1.genBought(ItemDefinition_get(var1.notedId), ItemDefinition_get(var1.unnotedId));
-			}
-
-			if (var1.placeholderTemplate != -1) {
-				var1.genPlaceholder(ItemDefinition_get(var1.placeholderTemplate), ItemDefinition_get(var1.placeholder));
-			}
-
-			if (!ItemComposition.ItemDefinition_inMembersWorld && var1.isMembersOnly) {
-				var1.name = "Members object";
-				var1.isTradable = false;
-
-				int var3;
-				for (var3 = 0; var3 < var1.groundActions.length; ++var3) {
-					var1.groundActions[var3] = null;
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZI)I",
+		garbageValue = "2120403456"
+	)
+	static int method2628(int var0, Script var1, boolean var2) {
+		int var3;
+		if (var0 == ScriptOpcodes.OC_NAME) {
+			var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+			Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = EnumComposition.ItemDefinition_get(var3).name;
+			return 1;
+		} else {
+			int var4;
+			ItemComposition var5;
+			if (var0 == ScriptOpcodes.OC_OP) {
+				class446.Interpreter_intStackSize -= 2;
+				var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1];
+				var5 = EnumComposition.ItemDefinition_get(var3);
+				if (var4 >= 1 && var4 <= 5 && var5.groundActions[var4 - 1] != null) {
+					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var5.groundActions[var4 - 1];
+				} else {
+					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
 				}
 
-				for (var3 = 0; var3 < var1.inventoryActions.length; ++var3) {
-					if (var3 != 4) {
-						var1.inventoryActions[var3] = null;
+				return 1;
+			} else if (var0 == ScriptOpcodes.OC_IOP) {
+				class446.Interpreter_intStackSize -= 2;
+				var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1];
+				var5 = EnumComposition.ItemDefinition_get(var3);
+				if (var4 >= 1 && var4 <= 5 && var5.inventoryActions[var4 - 1] != null) {
+					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var5.inventoryActions[var4 - 1];
+				} else {
+					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
+				}
+
+				return 1;
+			} else if (var0 == ScriptOpcodes.OC_COST) {
+				var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = EnumComposition.ItemDefinition_get(var3).price;
+				return 1;
+			} else if (var0 == ScriptOpcodes.OC_STACKABLE) {
+				var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = EnumComposition.ItemDefinition_get(var3).isStackable == 1 ? 1 : 0;
+				return 1;
+			} else {
+				ItemComposition var7;
+				if (var0 == ScriptOpcodes.OC_CERT) {
+					var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+					var7 = EnumComposition.ItemDefinition_get(var3);
+					if (var7.noteTemplate == -1 && var7.note >= 0) {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.note;
+					} else {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3;
 					}
-				}
 
-				var1.shiftClickIndex = -2;
-				var1.team = 0;
-				if (var1.params != null) {
-					boolean var6 = false;
+					return 1;
+				} else if (var0 == ScriptOpcodes.OC_UNCERT) {
+					var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+					var7 = EnumComposition.ItemDefinition_get(var3);
+					if (var7.noteTemplate >= 0 && var7.note >= 0) {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.note;
+					} else {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3;
+					}
 
-					for (Node var4 = var1.params.first(); var4 != null; var4 = var1.params.next()) {
-						ParamComposition var5 = VerticalAlignment.getParamDefinition((int)var4.key);
-						if (var5.autoDisable) {
-							var4.remove();
+					return 1;
+				} else if (var0 == ScriptOpcodes.OC_MEMBERS) {
+					var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = EnumComposition.ItemDefinition_get(var3).isMembersOnly ? 1 : 0;
+					return 1;
+				} else if (var0 == ScriptOpcodes.OC_PLACEHOLDER) {
+					var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+					var7 = EnumComposition.ItemDefinition_get(var3);
+					if (var7.placeholderTemplate == -1 && var7.placeholder >= 0) {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.placeholder;
+					} else {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3;
+					}
+
+					return 1;
+				} else if (var0 == ScriptOpcodes.OC_UNPLACEHOLDER) {
+					var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+					var7 = EnumComposition.ItemDefinition_get(var3);
+					if (var7.placeholderTemplate >= 0 && var7.placeholder >= 0) {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.placeholder;
+					} else {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3;
+					}
+
+					return 1;
+				} else if (var0 == ScriptOpcodes.OC_FIND) {
+					String var6 = Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize];
+					var4 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+					DevicePcmPlayerProvider.findItemDefinitions(var6, var4 == 1);
+					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = HealthBarUpdate.foundItemIdCount;
+					return 1;
+				} else if (var0 != ScriptOpcodes.OC_FINDNEXT) {
+					if (var0 == ScriptOpcodes.OC_FINDRESET) {
+						TriBool.foundItemIndex = 0;
+						return 1;
+					} else if (var0 == 4213) {
+						var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
+						var4 = EnumComposition.ItemDefinition_get(var3).getShiftClickIndex();
+						if (var4 == -1) {
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4;
 						} else {
-							var6 = true;
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4 + 1;
 						}
+
+						return 1;
+					} else {
+						return 2;
+					}
+				} else {
+					if (class10.foundItemIds != null && TriBool.foundItemIndex < HealthBarUpdate.foundItemIdCount) {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = class10.foundItemIds[++TriBool.foundItemIndex - 1] & '\uffff';
+					} else {
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
 					}
 
-					if (!var6) {
-						var1.params = null;
-					}
-				}
-			}
-
-			ItemComposition.ItemDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Lfn;",
-		garbageValue = "81"
-	)
-	public static HitSplatDefinition method2554(int var0) {
-		HitSplatDefinition var1 = (HitSplatDefinition)HitSplatDefinition.HitSplatDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = HitSplatDefinition.HitSplatDefinition_archive.takeFile(32, var0);
-			var1 = new HitSplatDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-
-			HitSplatDefinition.HitSplatDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "(ZB)V",
-		garbageValue = "-77"
-	)
-	public static void method2552(boolean var0) {
-		if (var0 != ItemComposition.ItemDefinition_inMembersWorld) {
-			ItemComposition.ItemDefinition_cached.clear();
-			ItemComposition.ItemDefinition_cachedModels.clear();
-			ItemComposition.ItemDefinition_cachedSprites.clear();
-			ItemComposition.ItemDefinition_inMembersWorld = var0;
-		}
-
-	}
-
-	@ObfuscatedName("kp")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "88961888"
-	)
-	static void method2551() {
-		for (InterfaceParent var0 = (InterfaceParent)Client.interfaceParents.first(); var0 != null; var0 = (InterfaceParent)Client.interfaceParents.next()) {
-			int var1 = var0.group;
-			if (class242.loadInterface(var1)) {
-				boolean var2 = true;
-				Widget[] var3 = MouseRecorder.Widget_interfaceComponents[var1];
-
-				int var4;
-				for (var4 = 0; var4 < var3.length; ++var4) {
-					if (var3[var4] != null) {
-						var2 = var3[var4].isIf3;
-						break;
-					}
-				}
-
-				if (!var2) {
-					var4 = (int)var0.key;
-					Widget var5 = ChatChannel.getWidget(var4);
-					if (var5 != null) {
-						SecureRandomCallable.invalidateWidget(var5);
-					}
+					return 1;
 				}
 			}
 		}
-
-	}
-
-	@ObfuscatedName("ms")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1260552521"
-	)
-	static void method2549() {
-		SecureRandomFuture.clientPreferences.field1197 = Client.field473;
-		class127.savePreferences();
 	}
 }

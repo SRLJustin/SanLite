@@ -3,31 +3,31 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("on")
+@ObfuscatedName("pm")
 @Implements("NodeHashTable")
 public final class NodeHashTable {
 	@ObfuscatedName("c")
 	@Export("size")
 	int size;
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "[Lnw;"
+		descriptor = "[Loh;"
 	)
 	@Export("buckets")
 	Node[] buckets;
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lnw;"
+		descriptor = "Loh;"
 	)
 	@Export("currentGet")
 	Node currentGet;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lnw;"
+		descriptor = "Loh;"
 	)
 	@Export("current")
 	Node current;
-	@ObfuscatedName("t")
+	@ObfuscatedName("j")
 	@Export("index")
 	int index;
 
@@ -46,7 +46,7 @@ public final class NodeHashTable {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(J)Lnw;"
+		descriptor = "(J)Loh;"
 	)
 	@Export("get")
 	public Node get(long var1) {
@@ -64,9 +64,9 @@ public final class NodeHashTable {
 		return null;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lnw;J)V"
+		descriptor = "(Loh;J)V"
 	)
 	@Export("put")
 	public void put(Node var1, long var2) {
@@ -82,9 +82,9 @@ public final class NodeHashTable {
 		var1.key = var2;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "()Lnw;"
+		descriptor = "()Loh;"
 	)
 	@Export("first")
 	public Node first() {
@@ -92,9 +92,9 @@ public final class NodeHashTable {
 		return this.next();
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "()Lnw;"
+		descriptor = "()Loh;"
 	)
 	@Export("next")
 	public Node next() {

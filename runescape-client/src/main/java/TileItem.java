@@ -4,27 +4,28 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cz")
+@ObfuscatedName("cy")
 @Implements("TileItem")
 public final class TileItem extends Renderable {
-	@ObfuscatedName("gk")
-	@ObfuscatedGetter(
-		intValue = -1033887581
+	@ObfuscatedName("ar")
+	protected static String field1301;
+	@ObfuscatedName("aw")
+	static String field1299;
+	@ObfuscatedName("hi")
+	@ObfuscatedSignature(
+		descriptor = "Lmt;"
 	)
-	@Export("baseY")
-	static int baseY;
-	@ObfuscatedName("hw")
-	@Export("regionLandArchives")
-	static byte[][] regionLandArchives;
+	@Export("fontBold12")
+	static Font fontBold12;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1624584431
+		intValue = -1688540919
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -763742907
+		intValue = -895126303
 	)
 	@Export("quantity")
 	int quantity;
@@ -32,23 +33,22 @@ public final class TileItem extends Renderable {
 	TileItem() {
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lgo;",
-		garbageValue = "202861607"
+		descriptor = "(I)Lhy;",
+		garbageValue = "1081110576"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		return UserComparator6.ItemDefinition_get(this.id).getModel(this.quantity);
+		return EnumComposition.ItemDefinition_get(this.id).getModel(this.quantity);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;Lku;B)V",
-		garbageValue = "37"
+		descriptor = "(II)I",
+		garbageValue = "1179876648"
 	)
-	public static void method2368(AbstractArchive var0, AbstractArchive var1) {
-		SpotAnimationDefinition.SpotAnimationDefinition_archive = var0;
-		SpotAnimationDefinition.SpotAnimationDefinition_modelArchive = var1;
+	public static int method2414(int var0) {
+		return class7.method51(ViewportMouse.ViewportMouse_entityTags[var0]);
 	}
 }

@@ -4,182 +4,155 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lg")
+@ObfuscatedName("ms")
 @Implements("Timer")
 public class Timer {
+	@ObfuscatedName("pd")
+	@ObfuscatedGetter(
+		intValue = -18121781
+	)
+	@Export("widgetDragDuration")
+	static int widgetDragDuration;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		longValue = -887996437388493325L
+		longValue = -7534706657050485889L
 	)
-	long field4041;
-	@ObfuscatedName("b")
+	long field4229;
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		longValue = -5378491660972395407L
+		longValue = -5833618965012635637L
 	)
-	long field4048;
-	@ObfuscatedName("p")
-	public boolean field4043;
-	@ObfuscatedName("m")
+	long field4222;
+	@ObfuscatedName("q")
+	public boolean field4223;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		longValue = 462489706516465413L
+		longValue = 3038728060957111589L
 	)
-	long field4044;
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		longValue = 2942582294320251895L
-	)
-	long field4045;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		longValue = -7148108535853774599L
-	)
-	long field4050;
+	long field4225;
 	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 271135193
+		longValue = -6534297593738218343L
 	)
-	int field4046;
+	long field4224;
+	@ObfuscatedName("e")
+	@ObfuscatedGetter(
+		longValue = -6100054900427269931L
+	)
+	long field4226;
+	@ObfuscatedName("g")
+	@ObfuscatedGetter(
+		intValue = 1919878609
+	)
+	int field4230;
 	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -664442429
+		intValue = 804777017
 	)
-	int field4047;
-	@ObfuscatedName("n")
+	int field4228;
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = -615508399
+		intValue = 100565155
 	)
-	int field4049;
-	@ObfuscatedName("r")
+	int field4227;
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = 1914912277
+		intValue = -2082864779
 	)
-	int field4042;
+	int field4221;
 
 	public Timer() {
-		this.field4041 = -1L;
-		this.field4048 = -1L;
-		this.field4043 = false;
-		this.field4044 = 0L;
-		this.field4045 = 0L;
-		this.field4050 = 0L;
-		this.field4046 = 0;
-		this.field4047 = 0;
-		this.field4049 = 0;
-		this.field4042 = 0;
+		this.field4229 = -1L;
+		this.field4222 = -1L;
+		this.field4223 = false;
+		this.field4225 = 0L;
+		this.field4224 = 0L;
+		this.field4226 = 0L;
+		this.field4230 = 0;
+		this.field4228 = 0;
+		this.field4227 = 0;
+		this.field4221 = 0;
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "59649257"
+		garbageValue = "2014926456"
 	)
-	public void method6253() {
-		this.field4041 = Ignored.method6459();
+	public void method6509() {
+		this.field4229 = class115.method2692();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "511000597"
+		garbageValue = "-2107977295"
 	)
-	public void method6231() {
-		if (-1L != this.field4041) {
-			this.field4045 = Ignored.method6459() - this.field4041;
-			this.field4041 = -1L;
+	public void method6510() {
+		if (-1L != this.field4229) {
+			this.field4224 = class115.method2692() - this.field4229;
+			this.field4229 = -1L;
 		}
 
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1146982108"
+		descriptor = "(IB)V",
+		garbageValue = "1"
 	)
-	public void method6232(int var1) {
-		this.field4048 = Ignored.method6459();
-		this.field4046 = var1;
+	public void method6528(int var1) {
+		this.field4222 = class115.method2692();
+		this.field4230 = var1;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-14983826"
+		garbageValue = "-869956596"
 	)
-	public void method6234() {
-		if (this.field4048 != -1L) {
-			this.field4044 = Ignored.method6459() - this.field4048;
-			this.field4048 = -1L;
+	public void method6511() {
+		if (-1L != this.field4222) {
+			this.field4225 = class115.method2692() - this.field4222;
+			this.field4222 = -1L;
 		}
 
-		++this.field4049;
-		this.field4043 = true;
-	}
-
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1689549111"
-	)
-	public void method6238() {
-		this.field4043 = false;
-		this.field4047 = 0;
-	}
-
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "145143672"
-	)
-	public void method6244() {
-		this.method6234();
+		++this.field4227;
+		this.field4223 = true;
 	}
 
 	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "-405863584"
+		descriptor = "(I)V",
+		garbageValue = "665300300"
+	)
+	public void method6513() {
+		this.field4223 = false;
+		this.field4228 = 0;
+	}
+
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "29951237"
+	)
+	public void method6514() {
+		this.method6511();
+	}
+
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;I)V",
+		garbageValue = "-1160086305"
 	)
 	@Export("write")
 	public void write(Buffer var1) {
-		long var2 = this.field4045;
-		var2 /= 10L;
-		if (var2 < 0L) {
-			var2 = 0L;
-		} else if (var2 > 65535L) {
-			var2 = 65535L;
-		}
-
-		var1.writeShort((int)var2);
-		long var4 = this.field4044;
-		var4 /= 10L;
-		if (var4 < 0L) {
-			var4 = 0L;
-		} else if (var4 > 65535L) {
-			var4 = 65535L;
-		}
-
-		var1.writeShort((int)var4);
-		long var6 = this.field4050;
-		var6 /= 10L;
-		if (var6 < 0L) {
-			var6 = 0L;
-		} else if (var6 > 65535L) {
-			var6 = 65535L;
-		}
-
-		var1.writeShort((int)var6);
-		var1.writeShort(this.field4046);
-		var1.writeShort(this.field4047);
-		var1.writeShort(this.field4049);
-		var1.writeShort(this.field4042);
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Lif;",
-		garbageValue = "1360000717"
-	)
-	public static class253[] method6230() {
-		return new class253[]{class253.field2918, class253.field2911, class253.field2912, class253.field2913, class253.field2914, class253.field2915, class253.field2916, class253.field2917, class253.field2920, class253.field2919};
+		FloorOverlayDefinition.method3822(var1, this.field4224);
+		FloorOverlayDefinition.method3822(var1, this.field4225);
+		FloorOverlayDefinition.method3822(var1, this.field4226);
+		var1.writeShort(this.field4230);
+		var1.writeShort(this.field4228);
+		var1.writeShort(this.field4227);
+		var1.writeShort(this.field4221);
 	}
 }
