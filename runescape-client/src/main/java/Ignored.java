@@ -4,18 +4,12 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mi")
+@ObfuscatedName("nb")
 @Implements("Ignored")
 public class Ignored extends Nameable {
-	@ObfuscatedName("pz")
-	@ObfuscatedSignature(
-		descriptor = "Loo;"
-	)
-	@Export("Ignored_cached")
-	static class404 Ignored_cached;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1285120553
+		intValue = -1766830117
 	)
 	@Export("id")
 	int id;
@@ -25,18 +19,18 @@ public class Ignored extends Nameable {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lmi;B)I",
-		garbageValue = "109"
+		descriptor = "(Lnb;I)I",
+		garbageValue = "-1083429285"
 	)
 	@Export("compareTo_ignored")
 	int compareTo_ignored(Ignored var1) {
 		return this.id - var1.id;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;I)I",
-		garbageValue = "-1921032172"
+		descriptor = "(Lne;B)I",
+		garbageValue = "-81"
 	)
 	@Export("compareTo_user")
 	public int compareTo_user(Nameable var1) {
@@ -49,16 +43,36 @@ public class Ignored extends Nameable {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)J",
-		garbageValue = "-376840192"
+		descriptor = "(IB)Lqg;",
+		garbageValue = "-15"
 	)
-	public static final synchronized long method6459() {
-		long var0 = System.currentTimeMillis();
-		if (var0 < class415.field4466) {
-			class415.field4467 += class415.field4466 - var0;
+	public static PrivateChatMode method6780(int var0) {
+		PrivateChatMode[] var1 = new PrivateChatMode[]{PrivateChatMode.field4818, PrivateChatMode.field4817, PrivateChatMode.field4819};
+		PrivateChatMode[] var2 = var1;
+
+		for (int var3 = 0; var3 < var2.length; ++var3) {
+			PrivateChatMode var4 = var2[var3];
+			if (var0 == var4.field4820) {
+				return var4;
+			}
 		}
 
-		class415.field4466 = var0;
-		return var0 + class415.field4467;
+		return null;
+	}
+
+	@ObfuscatedName("y")
+	@ObfuscatedSignature(
+		descriptor = "(Llh;IIB)Z",
+		garbageValue = "-50"
+	)
+	@Export("SpriteBuffer_loadSpritesFromArchive")
+	public static boolean SpriteBuffer_loadSpritesFromArchive(AbstractArchive var0, int var1, int var2) {
+		byte[] var3 = var0.takeFile(var1, var2);
+		if (var3 == null) {
+			return false;
+		} else {
+			ChatChannel.SpriteBuffer_decode(var3);
+			return true;
+		}
 	}
 }

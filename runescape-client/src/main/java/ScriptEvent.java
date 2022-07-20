@@ -4,74 +4,67 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cp")
+@ObfuscatedName("cw")
 @Implements("ScriptEvent")
 public class ScriptEvent extends Node {
-	@ObfuscatedName("dl")
-	@ObfuscatedSignature(
-		descriptor = "Lfk;"
-	)
-	@Export("js5SocketTask")
-	static Task js5SocketTask;
 	@ObfuscatedName("c")
 	@Export("args")
 	Object[] args;
-	@ObfuscatedName("b")
-	@Export("isMouseInputEvent")
-	boolean isMouseInputEvent;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
+	boolean field1046;
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Ljm;"
+		descriptor = "Lkb;"
 	)
 	@Export("widget")
 	Widget widget;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -1316811587
+		intValue = 708016645
 	)
 	@Export("mouseX")
 	int mouseX;
-	@ObfuscatedName("t")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 429308499
+		intValue = -768277781
 	)
 	@Export("mouseY")
 	int mouseY;
-	@ObfuscatedName("s")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = 2143189111
+		intValue = -1223835253
 	)
 	@Export("opIndex")
 	int opIndex;
-	@ObfuscatedName("j")
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
-		descriptor = "Ljm;"
+		descriptor = "Lkb;"
 	)
 	@Export("dragTarget")
 	Widget dragTarget;
 	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 1992981497
+		intValue = 308775773
 	)
 	@Export("keyTyped")
 	int keyTyped;
-	@ObfuscatedName("n")
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = 1481039273
+		intValue = -1014377791
 	)
 	@Export("keyPressed")
 	int keyPressed;
-	@ObfuscatedName("r")
+	@ObfuscatedName("i")
 	@Export("targetName")
 	String targetName;
-	@ObfuscatedName("o")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 2063557447
+		intValue = 643045145
 	)
-	int field1018;
-	@ObfuscatedName("v")
+	int field1056;
+	@ObfuscatedName("t")
 	@ObfuscatedGetter(
-		intValue = -170521561
+		intValue = 1853302577
 	)
 	@Export("type")
 	int type;
@@ -82,91 +75,75 @@ public class ScriptEvent extends Node {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;B)V",
-		garbageValue = "1"
+		descriptor = "([Ljava/lang/Object;I)V",
+		garbageValue = "1631698731"
 	)
 	@Export("setArgs")
 	public void setArgs(Object[] var1) {
 		this.args = var1;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "-1783513885"
+		garbageValue = "-59182126"
 	)
 	@Export("setType")
 	public void setType(int var1) {
 		this.type = var1;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("bf")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ldh;",
-		garbageValue = "665811152"
+		descriptor = "(Ljava/lang/String;I)I",
+		garbageValue = "-2093180066"
 	)
-	static class114 method2154(int var0) {
-		class114 var1 = (class114)class130.findEnumerated(LoginScreenAnimation.method2251(), var0);
-		if (var1 == null) {
-			var1 = class114.field1390;
-		}
-
-		return var1;
+	@Export("stringCp1252NullTerminatedByteSize")
+	public static int stringCp1252NullTerminatedByteSize(String var0) {
+		return var0.length() + 1;
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("lf")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-37"
+		descriptor = "(I)V",
+		garbageValue = "-372949524"
 	)
-	static final void method2152() {
-		Object var10000 = null;
-		String var0 = "Your friend list is full. Max of 200 for free users, and 400 for members";
-		class194.addGameMessage(30, "", var0);
-	}
-
-	@ObfuscatedName("jt")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIIIB)V",
-		garbageValue = "95"
-	)
-	static final void method2147(int var0, int var1, int var2, int var3, int var4, int var5) {
-		int var6 = var2 - var0;
-		int var7 = var3 - var1;
-		int var8 = var6 >= 0 ? var6 : -var6;
-		int var9 = var7 >= 0 ? var7 : -var7;
-		int var10 = var8;
-		if (var8 < var9) {
-			var10 = var9;
-		}
-
-		if (var10 != 0) {
-			int var11 = (var6 << 16) / var10;
-			int var12 = (var7 << 16) / var10;
-			if (var12 <= var11) {
-				var11 = -var11;
-			} else {
-				var12 = -var12;
+	static void method2101() {
+		if (Client.field533 && class101.localPlayer != null) {
+			int var0 = class101.localPlayer.pathX[0];
+			int var1 = class101.localPlayer.pathY[0];
+			if (var0 < 0 || var1 < 0 || var0 >= 104 || var1 >= 104) {
+				return;
 			}
 
-			int var13 = var5 * var12 >> 17;
-			int var14 = var5 * var12 + 1 >> 17;
-			int var15 = var5 * var11 >> 17;
-			int var16 = var5 * var11 + 1 >> 17;
-			var0 -= Rasterizer2D.Rasterizer2D_xClipStart;
-			var1 -= Rasterizer2D.Rasterizer2D_yClipStart;
-			int var17 = var0 + var13;
-			int var18 = var0 - var14;
-			int var19 = var0 + var6 - var14;
-			int var20 = var0 + var6 + var13;
-			int var21 = var15 + var1;
-			int var22 = var1 - var16;
-			int var23 = var7 + var1 - var16;
-			int var24 = var7 + var15 + var1;
-			Rasterizer3D.method3853(var17, var18, var19);
-			Rasterizer3D.method3856(var21, var22, var23, var17, var18, var19, var4);
-			Rasterizer3D.method3853(var17, var19, var20);
-			Rasterizer3D.method3856(var21, var23, var24, var17, var19, var20, var4);
+			InterfaceParent.oculusOrbFocalPointX = class101.localPlayer.x;
+			int var2 = SceneTilePaint.getTileHeight(class101.localPlayer.x, class101.localPlayer.y, PacketWriter.Client_plane) - Client.camFollowHeight;
+			if (var2 < class181.field1992) {
+				class181.field1992 = var2;
+			}
+
+			class141.oculusOrbFocalPointY = class101.localPlayer.y;
+			Client.field533 = false;
 		}
+
+	}
+
+	@ObfuscatedName("lo")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-115976306"
+	)
+	static void method2106() {
+		if (UrlRequester.field1362 != null) {
+			Client.field770 = Client.cycle;
+			UrlRequester.field1362.method6035();
+
+			for (int var0 = 0; var0 < Client.players.length; ++var0) {
+				if (Client.players[var0] != null) {
+					UrlRequester.field1362.method6048(class28.baseX * 64 + (Client.players[var0].x >> 7), WorldMapLabelSize.baseY * 64 + (Client.players[var0].y >> 7));
+				}
+			}
+		}
+
 	}
 }

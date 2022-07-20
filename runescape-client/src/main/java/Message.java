@@ -7,49 +7,66 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("br")
 @Implements("Message")
 public class Message extends DualNode {
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "Lqn;"
+	)
+	@Export("rasterProvider")
+	public static AbstractRasterProvider rasterProvider;
+	@ObfuscatedName("gb")
+	@ObfuscatedSignature(
+		descriptor = "Lnl;"
+	)
+	static AbstractSocket field461;
+	@ObfuscatedName("if")
+	@ObfuscatedSignature(
+		descriptor = "[Lqe;"
+	)
+	@Export("headIconPkSprites")
+	static SpritePixels[] headIconPkSprites;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 20750645
+		intValue = 169965093
 	)
 	@Export("count")
 	int count;
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -1521210849
+		intValue = -1756063821
 	)
 	@Export("cycle")
 	int cycle;
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 2033042895
+		intValue = -163656379
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@Export("sender")
 	String sender;
-	@ObfuscatedName("t")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "Lpo;"
+		descriptor = "Lqa;"
 	)
 	@Export("senderUsername")
 	Username senderUsername;
-	@ObfuscatedName("s")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "Lmu;"
+		descriptor = "Lnt;"
 	)
 	@Export("isFromFriend0")
 	TriBool isFromFriend0;
-	@ObfuscatedName("j")
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
-		descriptor = "Lmu;"
+		descriptor = "Lnt;"
 	)
 	@Export("isFromIgnored0")
 	TriBool isFromIgnored0;
 	@ObfuscatedName("w")
 	@Export("prefix")
 	String prefix;
-	@ObfuscatedName("n")
+	@ObfuscatedName("y")
 	@Export("text")
 	String text;
 
@@ -61,8 +78,8 @@ public class Message extends DualNode {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
-		garbageValue = "-707456994"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;S)V",
+		garbageValue = "18718"
 	)
 	@Export("set")
 	void set(int var1, String var2, String var3, String var4) {
@@ -78,20 +95,20 @@ public class Message extends DualNode {
 		this.clearIsFromIgnored();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1704976906"
+		garbageValue = "2124874138"
 	)
 	@Export("clearIsFromFriend")
 	void clearIsFromFriend() {
 		this.isFromFriend0 = TriBool.TriBool_unknown;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "69"
+		descriptor = "(I)Z",
+		garbageValue = "1551662577"
 	)
 	@Export("isFromFriend")
 	final boolean isFromFriend() {
@@ -102,30 +119,30 @@ public class Message extends DualNode {
 		return this.isFromFriend0 == TriBool.TriBool_true;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "108"
+		descriptor = "(I)V",
+		garbageValue = "1419615044"
 	)
 	@Export("fillIsFromFriend")
 	void fillIsFromFriend() {
-		this.isFromFriend0 = GameEngine.friendSystem.friendsList.contains(this.senderUsername) ? TriBool.TriBool_true : TriBool.TriBool_false;
+		this.isFromFriend0 = Player.friendSystem.friendsList.contains(this.senderUsername) ? TriBool.TriBool_true : TriBool.TriBool_false;
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "15"
+		descriptor = "(I)V",
+		garbageValue = "2083952991"
 	)
 	@Export("clearIsFromIgnored")
 	void clearIsFromIgnored() {
 		this.isFromIgnored0 = TriBool.TriBool_unknown;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1173025660"
+		descriptor = "(B)Z",
+		garbageValue = "13"
 	)
 	@Export("isFromIgnored")
 	final boolean isFromIgnored() {
@@ -136,82 +153,72 @@ public class Message extends DualNode {
 		return this.isFromIgnored0 == TriBool.TriBool_true;
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-35"
+		descriptor = "(I)V",
+		garbageValue = "-1213016043"
 	)
 	@Export("fillIsFromIgnored")
 	void fillIsFromIgnored() {
-		this.isFromIgnored0 = GameEngine.friendSystem.ignoreList.contains(this.senderUsername) ? TriBool.TriBool_true : TriBool.TriBool_false;
+		this.isFromIgnored0 = Player.friendSystem.ignoreList.contains(this.senderUsername) ? TriBool.TriBool_true : TriBool.TriBool_false;
 	}
 
 	@ObfuscatedName("w")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "719777600"
+		garbageValue = "-470307536"
 	)
 	@Export("fillSenderUsername")
 	final void fillSenderUsername() {
 		if (this.sender != null) {
-			this.senderUsername = new Username(AbstractWorldMapData.method4791(this.sender), class194.loginType);
+			this.senderUsername = new Username(class92.method2388(this.sender), HealthBarDefinition.loginType);
 		} else {
 			this.senderUsername = null;
 		}
 
 	}
 
-	@ObfuscatedName("in")
+	@ObfuscatedName("kx")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1989735073"
+		descriptor = "(Lkb;I)Z",
+		garbageValue = "1375784000"
 	)
-	@Export("incrementMenuEntries")
-	static final void incrementMenuEntries() {
-		boolean var0 = false;
-
-		while (!var0) {
-			var0 = true;
-
-			for (int var1 = 0; var1 < Client.menuOptionsCount - 1; ++var1) {
-				if (Client.menuOpcodes[var1] < 1000 && Client.menuOpcodes[var1 + 1] > 1000) {
-					String var2 = Client.menuTargets[var1];
-					Client.menuTargets[var1] = Client.menuTargets[var1 + 1];
-					Client.menuTargets[var1 + 1] = var2;
-					String var3 = Client.menuActions[var1];
-					Client.menuActions[var1] = Client.menuActions[var1 + 1];
-					Client.menuActions[var1 + 1] = var3;
-					int var4 = Client.menuOpcodes[var1];
-					Client.menuOpcodes[var1] = Client.menuOpcodes[var1 + 1];
-					Client.menuOpcodes[var1 + 1] = var4;
-					var4 = Client.menuArguments1[var1];
-					Client.menuArguments1[var1] = Client.menuArguments1[var1 + 1];
-					Client.menuArguments1[var1 + 1] = var4;
-					var4 = Client.menuArguments2[var1];
-					Client.menuArguments2[var1] = Client.menuArguments2[var1 + 1];
-					Client.menuArguments2[var1 + 1] = var4;
-					var4 = Client.menuIdentifiers[var1];
-					Client.menuIdentifiers[var1] = Client.menuIdentifiers[var1 + 1];
-					Client.menuIdentifiers[var1 + 1] = var4;
-					boolean var5 = Client.menuShiftClick[var1];
-					Client.menuShiftClick[var1] = Client.menuShiftClick[var1 + 1];
-					Client.menuShiftClick[var1 + 1] = var5;
-					var0 = false;
-				}
+	static final boolean method1065(Widget var0) {
+		int var1 = var0.contentType;
+		if (var1 == 205) {
+			Client.logoutTimer = 250;
+			return true;
+		} else {
+			int var2;
+			int var3;
+			if (var1 >= 300 && var1 <= 313) {
+				var2 = (var1 - 300) / 2;
+				var3 = var1 & 1;
+				Client.playerAppearance.changeAppearance(var2, var3 == 1);
 			}
-		}
 
-	}
+			if (var1 >= 314 && var1 <= 323) {
+				var2 = (var1 - 314) / 2;
+				var3 = var1 & 1;
+				Client.playerAppearance.method5573(var2, var3 == 1);
+			}
 
-	@ObfuscatedName("kf")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "1320031067"
-	)
-	@Export("runIntfCloseListeners")
-	static final void runIntfCloseListeners(int var0, int var1) {
-		if (class242.loadInterface(var0)) {
-			Canvas.runComponentCloseListeners(MouseRecorder.Widget_interfaceComponents[var0], var1);
+			if (var1 == 324) {
+				Client.playerAppearance.changeSex(false);
+			}
+
+			if (var1 == 325) {
+				Client.playerAppearance.changeSex(true);
+			}
+
+			if (var1 == 326) {
+				PacketBufferNode var4 = EnumComposition.getPacketBufferNode(ClientPacket.field3010, Client.packetWriter.isaacCipher);
+				Client.playerAppearance.write(var4.packetBuffer);
+				Client.packetWriter.addNode(var4);
+				return true;
+			} else {
+				return false;
+			}
 		}
 	}
 }

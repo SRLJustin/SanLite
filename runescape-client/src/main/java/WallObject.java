@@ -1,78 +1,68 @@
-import java.io.File;
-import java.io.RandomAccessFile;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hg")
+@ObfuscatedName("hi")
 @Implements("WallObject")
-public final class WallObject
-{
-	@ObfuscatedName("sv")
-	@ObfuscatedSignature(
-		descriptor = "Lbp;"
-	)
-	@Export("decimator")
-	static Decimator decimator;
-	@ObfuscatedName("z")
+public final class WallObject {
+	@ObfuscatedName("tr")
 	@ObfuscatedGetter(
-		intValue = 1063429417
+		intValue = 274182681
 	)
-	@Export("canvasHeight")
-	public static int canvasHeight;
+	static int field2622;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1211283293
+		intValue = 1257114009
 	)
 	@Export("tileHeight")
 	int tileHeight;
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 392897309
+		intValue = -655721437
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 1130231369
+		intValue = -1527654875
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1078743455
+		intValue = 364149679
 	)
 	@Export("orientationA")
 	int orientationA;
-	@ObfuscatedName("t")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -1456059729
+		intValue = 1337588957
 	)
 	@Export("orientationB")
 	int orientationB;
-	@ObfuscatedName("s")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lgj;"
 	)
 	@Export("renderable1")
 	public Renderable renderable1;
-	@ObfuscatedName("j")
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lgj;"
 	)
 	@Export("renderable2")
 	public Renderable renderable2;
 	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		longValue = 7825076594130185971L
+		longValue = 5334859034127772709L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("n")
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = -1681276427
+		intValue = -256459155
 	)
 	@Export("flags")
 	int flags;
@@ -82,58 +72,100 @@ public final class WallObject
 		this.flags = 0;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/io/File;ZB)Z",
-		garbageValue = "15"
+		descriptor = "(Lcw;B)V",
+		garbageValue = "-14"
 	)
-	public static boolean method4321(File var0, boolean var1) {
-		try {
-			RandomAccessFile var2 = new RandomAccessFile(var0, "rw");
-			int var3 = var2.read();
-			var2.seek(0L);
-			var2.write(var3);
-			var2.seek(0L);
-			var2.close();
-			if (var1) {
-				var0.delete();
-			}
-
-			return true;
-		} catch (Exception var4) {
-			return false;
-		}
+	@Export("runScriptEvent")
+	public static void runScriptEvent(ScriptEvent var0) {
+		class135.runScript(var0, 500000, 475000);
 	}
 
-	@ObfuscatedName("d")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lbw;B)V",
-		garbageValue = "2"
+		descriptor = "(IIIIB)V",
+		garbageValue = "94"
 	)
-	@Export("changeWorld")
-	static void changeWorld(World var0) {
-		if (var0.isMembersOnly() != Client.isMembersWorld) {
-			Client.isMembersWorld = var0.isMembersOnly();
-			UserComparator6.method2552(var0.isMembersOnly());
-		}
+	static void method4534(int var0, int var1, int var2, int var3) {
+		for (ObjectSound var4 = (ObjectSound)ObjectSound.objectSounds.last(); var4 != null; var4 = (ObjectSound)ObjectSound.objectSounds.previous()) {
+			if (var4.soundEffectId != -1 || var4.soundEffectIds != null) {
+				int var5 = 0;
+				if (var1 > var4.maxX * 16384) {
+					var5 += var1 - var4.maxX * 16384;
+				} else if (var1 < var4.x * 16384) {
+					var5 += var4.x * 16384 - var1;
+				}
 
-		if (var0.properties != Client.worldProperties) {
-			Archive var1 = UserComparator6.archive8;
-			int var2 = var0.properties;
-			if ((var2 & 536870912) != 0) {
-				Login.logoSprite = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "logo_deadman_mode", "");
-			} else if ((var2 & 1073741824) != 0) {
-				Login.logoSprite = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "logo_seasonal_mode", "");
-			} else {
-				Login.logoSprite = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "logo", "");
+				if (var2 > var4.maxY * 128) {
+					var5 += var2 - var4.maxY * 128;
+				} else if (var2 < var4.y * 16384) {
+					var5 += var4.y * 16384 - var2;
+				}
+
+				if (var5 - 64 <= var4.field812 && class19.clientPreferences.method2262() != 0 && var0 == var4.plane) {
+					var5 -= 64;
+					if (var5 < 0) {
+						var5 = 0;
+					}
+
+					int var6 = (var4.field812 - var5) * class19.clientPreferences.method2262() / var4.field812;
+					if (var4.stream1 == null) {
+						if (var4.soundEffectId >= 0) {
+							SoundEffect var7 = SoundEffect.readSoundEffect(Client.archive4, var4.soundEffectId, 0);
+							if (var7 != null) {
+								RawSound var8 = var7.toRawSound().resample(WorldMapRegion.field2722);
+								RawPcmStream var9 = RawPcmStream.createRawPcmStream(var8, 100, var6);
+								var9.setNumLoops(-1);
+								class21.pcmStreamMixer.addSubStream(var9);
+								var4.stream1 = var9;
+							}
+						}
+					} else {
+						var4.stream1.method790(var6);
+					}
+
+					if (var4.stream2 == null) {
+						if (var4.soundEffectIds != null && (var4.field809 -= var3) <= 0) {
+							int var11 = (int)(Math.random() * (double)var4.soundEffectIds.length);
+							SoundEffect var12 = SoundEffect.readSoundEffect(Client.archive4, var4.soundEffectIds[var11], 0);
+							if (var12 != null) {
+								RawSound var13 = var12.toRawSound().resample(WorldMapRegion.field2722);
+								RawPcmStream var10 = RawPcmStream.createRawPcmStream(var13, 100, var6);
+								var10.setNumLoops(0);
+								class21.pcmStreamMixer.addSubStream(var10);
+								var4.stream2 = var10;
+								var4.field809 = var4.field819 + (int)(Math.random() * (double)(var4.field811 - var4.field819));
+							}
+						}
+					} else {
+						var4.stream2.method790(var6);
+						if (!var4.stream2.hasNext()) {
+							var4.stream2 = null;
+						}
+					}
+				} else {
+					if (var4.stream1 != null) {
+						class21.pcmStreamMixer.removeSubStream(var4.stream1);
+						var4.stream1 = null;
+					}
+
+					if (var4.stream2 != null) {
+						class21.pcmStreamMixer.removeSubStream(var4.stream2);
+						var4.stream2 = null;
+					}
+				}
 			}
 		}
 
-		class185.worldHost = var0.host;
-		Client.worldId = var0.id;
-		Client.worldProperties = var0.properties;
-		GameObject.worldPort = Client.gameBuild == 0 ? 43594 : var0.id + 40000;
-		class133.js5Port = Client.gameBuild == 0 ? 443 : var0.id + 50000;
-		class129.currentPort = GameObject.worldPort;
+	}
+
+	@ObfuscatedName("fp")
+	@ObfuscatedSignature(
+		descriptor = "(I)J",
+		garbageValue = "-2059501837"
+	)
+	static long method4536() {
+		return Client.field612;
 	}
 }

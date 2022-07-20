@@ -3,148 +3,77 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dx")
-public class class116 implements MouseWheel {
+@ObfuscatedName("dn")
+public enum class116 implements MouseWheel {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Ldx;"
+		descriptor = "Ldn;"
 	)
-	static final class116 field1421;
-	@ObfuscatedName("b")
+	field1455(0, 0),
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Ldx;"
+		descriptor = "Ldn;"
 	)
-	static final class116 field1415;
-	@ObfuscatedName("p")
+	field1451(1, 1),
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Ldx;"
+		descriptor = "Ldn;"
 	)
-	static final class116 field1416;
-	@ObfuscatedName("m")
+	field1450(2, 2),
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Ldx;"
+		descriptor = "Ldn;"
 	)
-	static final class116 field1423;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Ldx;"
-	)
-	static final class116 field1418;
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Ldx;"
-	)
-	static final class116 field1419;
+	field1453(3, 3),
 	@ObfuscatedName("j")
-	@ObfuscatedGetter(
-		intValue = -1981923463
+	@ObfuscatedSignature(
+		descriptor = "Ldn;"
 	)
-	final int field1420;
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = -135847907
-	)
-	final int field1417;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = 249405033
-	)
-	final int field1422;
+	field1454(4, 4);
 
-	static {
-		field1421 = new class116(0, 0, (String)null, 0);
-		field1415 = new class116(1, 1, (String)null, 9);
-		field1416 = new class116(2, 2, (String)null, 3);
-		field1423 = new class116(3, 3, (String)null, 6);
-		field1418 = new class116(4, 4, (String)null, 1);
-		field1419 = new class116(5, 5, (String)null, 3);
+	@ObfuscatedName("e")
+	@ObfuscatedGetter(
+		intValue = -121286099
+	)
+	final int field1452;
+	@ObfuscatedName("g")
+	@ObfuscatedGetter(
+		intValue = -1382484373
+	)
+	final int field1457;
+
+	class116(int var3, int var4) {
+		this.field1452 = var3;
+		this.field1457 = var4;
 	}
 
-	class116(int var1, int var2, String var3, int var4) {
-		this.field1420 = var1;
-		this.field1417 = var2;
-		this.field1422 = var4;
-	}
-
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "48"
+		garbageValue = "-100"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field1417;
+		return this.field1457;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "94"
+		descriptor = "(Llh;S)V",
+		garbageValue = "22259"
 	)
-	int method2669() {
-		return this.field1422;
+	public static void method2700(AbstractArchive var0) {
+		class437.field4675 = var0;
 	}
 
-	@ObfuscatedName("p")
-	public static boolean method2671(long var0) {
-		return 0L != var0 && !class12.method188(var0);
-	}
-
-	@ObfuscatedName("ai")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)I",
-		garbageValue = "-2039612371"
+		descriptor = "(Lqe;IIII)V",
+		garbageValue = "1518396143"
 	)
-	@Export("stringCp1252NullTerminatedByteSize")
-	public static int stringCp1252NullTerminatedByteSize(String var0) {
-		return var0.length() + 1;
-	}
-
-	@ObfuscatedName("fh")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "55"
-	)
-	static void method2662() {
-		Client.packetWriter.clearBuffer();
-		Client.packetWriter.packetBuffer.offset = 0;
-		Client.packetWriter.serverPacket = null;
-		Client.packetWriter.field1289 = null;
-		Client.packetWriter.field1290 = null;
-		Client.packetWriter.field1291 = null;
-		Client.packetWriter.serverPacketLength = 0;
-		Client.packetWriter.field1287 = 0;
-		Client.rebootTimer = 0;
-		UrlRequest.method2489();
-		Client.minimapState = 0;
-		Client.destinationX = 0;
-
-		int var0;
-		for (var0 = 0; var0 < 2048; ++var0) {
-			Client.players[var0] = null;
-		}
-
-		class340.localPlayer = null;
-
-		for (var0 = 0; var0 < Client.npcs.length; ++var0) {
-			NPC var1 = Client.npcs[var0];
-			if (var1 != null) {
-				var1.targetIndex = -1;
-				var1.false0 = false;
-			}
-		}
-
-		ItemContainer.itemContainers = new NodeHashTable(32);
-		VertexNormal.updateGameState(30);
-
-		for (var0 = 0; var0 < 100; ++var0) {
-			Client.field504[var0] = true;
-		}
-
-		PacketBufferNode var2 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2824, Client.packetWriter.isaacCipher);
-		var2.packetBuffer.writeByte(class143.getWindowedMode());
-		var2.packetBuffer.writeShort(class186.canvasWidth);
-		var2.packetBuffer.writeShort(WallObject.canvasHeight);
-		Client.packetWriter.addNode(var2);
+	static void method2699(SpritePixels var0, int var1, int var2, int var3) {
+		DemotingHashTable var4 = WorldMapRegion.WorldMapRegion_cachedSprites;
+		long var6 = (long)(var3 << 16 | var1 << 8 | var2);
+		var4.put(var0, var6, var0.pixels.length * 4);
 	}
 }
