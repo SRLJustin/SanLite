@@ -4,29 +4,38 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cs")
+@ObfuscatedName("cn")
 @Implements("HealthBar")
 public class HealthBar extends Node {
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -1200843619
-	)
-	static int field1209;
-	@ObfuscatedName("p")
+	@ObfuscatedName("ri")
 	@ObfuscatedSignature(
-		descriptor = "Lfd;"
+		descriptor = "Len;"
+	)
+	@Export("guestClanSettings")
+	static ClanSettings guestClanSettings;
+	@ObfuscatedName("cn")
+	public static char field1258;
+	@ObfuscatedName("nf")
+	@ObfuscatedGetter(
+		intValue = 1249602607
+	)
+	@Export("selectedSpellFlags")
+	static int selectedSpellFlags;
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "Lfe;"
 	)
 	@Export("definition")
 	HealthBarDefinition definition;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Llk;"
 	)
 	@Export("updates")
 	IterableNodeDeque updates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfd;)V"
+		descriptor = "(Lfe;)V"
 	)
 	HealthBar(HealthBarDefinition var1) {
 		this.updates = new IterableNodeDeque();
@@ -36,7 +45,7 @@ public class HealthBar extends Node {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(IIIII)V",
-		garbageValue = "2125258753"
+		garbageValue = "1392818075"
 	)
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
@@ -69,10 +78,10 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lcn;",
-		garbageValue = "849241629"
+		descriptor = "(IB)Lcp;",
+		garbageValue = "14"
 	)
 	@Export("get")
 	HealthBarUpdate get(int var1) {
@@ -83,7 +92,7 @@ public class HealthBar extends Node {
 				var2 = var3;
 			}
 
-			if (this.definition.int5 + var2.cycle + var2.cycleOffset > var1) {
+			if (this.definition.int5 + var2.cycleOffset + var2.cycle > var1) {
 				return var2;
 			} else {
 				var2.remove();
@@ -94,61 +103,119 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "80"
+		descriptor = "(I)Z",
+		garbageValue = "-1385237709"
 	)
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method5915();
+		return this.updates.method6147();
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "2114195084"
+		descriptor = "(Ldo;[F[FI)V",
+		garbageValue = "-1662385101"
 	)
-	static void method2311() {
-		if (Login.Login_username == null || Login.Login_username.length() <= 0) {
-			if (SecureRandomFuture.clientPreferences.rememberedUsername != null) {
-				Login.Login_username = SecureRandomFuture.clientPreferences.rememberedUsername;
-				Client.Login_isUsernameRemembered = true;
+	static void method2355(class117 var0, float[] var1, float[] var2) {
+		if (var0 != null) {
+			var0.field1464 = var1[0];
+			float var3 = var1[3] - var1[0];
+			float var4 = var2[3] - var2[0];
+			float var5 = var1[1] - var1[0];
+			float var6 = 0.0F;
+			float var7 = 0.0F;
+			if (0.0D != (double)var5) {
+				var6 = (var2[1] - var2[0]) / var5;
+			}
+
+			var5 = var1[3] - var1[2];
+			if ((double)var5 != 0.0D) {
+				var7 = (var2[3] - var2[2]) / var5;
+			}
+
+			float var8 = 1.0F / (var3 * var3);
+			float var9 = var3 * var6;
+			float var10 = var3 * var7;
+			var0.field1465[0] = (var10 + var9 - var4 - var4) * var8 / var3;
+			var0.field1465[1] = (var4 + var4 + var4 - var9 - var9 - var10) * var8;
+			var0.field1465[2] = var6;
+			var0.field1465[3] = var2[0];
+		}
+	}
+
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;IZB)I",
+		garbageValue = "9"
+	)
+	static int method2356(CharSequence var0, int var1, boolean var2) {
+		if (var1 >= 2 && var1 <= 36) {
+			boolean var3 = false;
+			boolean var4 = false;
+			int var5 = 0;
+			int var6 = var0.length();
+
+			for (int var7 = 0; var7 < var6; ++var7) {
+				char var8 = var0.charAt(var7);
+				if (var7 == 0) {
+					if (var8 == '-') {
+						var3 = true;
+						continue;
+					}
+
+					if (var8 == '+') {
+						continue;
+					}
+				}
+
+				int var10;
+				if (var8 >= '0' && var8 <= '9') {
+					var10 = var8 - '0';
+				} else if (var8 >= 'A' && var8 <= 'Z') {
+					var10 = var8 - '7';
+				} else {
+					if (var8 < 'a' || var8 > 'z') {
+						throw new NumberFormatException();
+					}
+
+					var10 = var8 - 'W';
+				}
+
+				if (var10 >= var1) {
+					throw new NumberFormatException();
+				}
+
+				if (var3) {
+					var10 = -var10;
+				}
+
+				int var9 = var10 + var5 * var1;
+				if (var9 / var1 != var5) {
+					throw new NumberFormatException();
+				}
+
+				var5 = var9;
+				var4 = true;
+			}
+
+			if (!var4) {
+				throw new NumberFormatException();
 			} else {
-				Client.Login_isUsernameRemembered = false;
+				return var5;
 			}
-
+		} else {
+			throw new IllegalArgumentException("" + var1);
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("hi")
 	@ObfuscatedSignature(
-		descriptor = "(CI)C",
-		garbageValue = "2115145690"
+		descriptor = "(IIIII)V",
+		garbageValue = "1947801286"
 	)
-	static char method2313(char var0) {
-		return var0 != 181 && var0 != 402 ? Character.toTitleCase(var0) : var0;
-	}
-
-	@ObfuscatedName("iq")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "517043711"
-	)
-	@Export("Widget_runOnTargetLeave")
-	static void Widget_runOnTargetLeave() {
-		if (Client.isSpellSelected) {
-			Widget var0 = class126.getWidgetChild(class20.selectedSpellWidget, Client.selectedSpellChildIndex);
-			if (var0 != null && var0.onTargetLeave != null) {
-				ScriptEvent var1 = new ScriptEvent();
-				var1.widget = var0;
-				var1.args = var0.onTargetLeave;
-				class285.runScriptEvent(var1);
-			}
-
-			Client.field633 = -1;
-			Client.isSpellSelected = false;
-			SecureRandomCallable.invalidateWidget(var0);
-		}
+	static final void method2349(int var0, int var1, int var2, int var3) {
+		WorldMap.method7376();
 	}
 }

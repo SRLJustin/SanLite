@@ -6,33 +6,33 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("my")
+@ObfuscatedName("nd")
 @Implements("ArchiveDisk")
 public final class ArchiveDisk {
 	@ObfuscatedName("c")
 	@Export("ArchiveDisk_buffer")
 	static byte[] ArchiveDisk_buffer;
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lof;"
+		descriptor = "Lpa;"
 	)
 	@Export("datFile")
 	BufferedFile datFile;
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lof;"
+		descriptor = "Lpa;"
 	)
 	@Export("idxFile")
 	BufferedFile idxFile;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1347947655
+		intValue = -132348199
 	)
 	@Export("archive")
 	int archive;
-	@ObfuscatedName("t")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 186388605
+		intValue = -1963549357
 	)
 	@Export("maxEntrySize")
 	int maxEntrySize;
@@ -42,7 +42,7 @@ public final class ArchiveDisk {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(ILof;Lof;I)V"
+		descriptor = "(ILpa;Lpa;I)V"
 	)
 	public ArchiveDisk(int var1, BufferedFile var2, BufferedFile var3, int var4) {
 		this.datFile = null;
@@ -56,8 +56,8 @@ public final class ArchiveDisk {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(II)[B",
-		garbageValue = "-676876689"
+		descriptor = "(IB)[B",
+		garbageValue = "-4"
 	)
 	@Export("read")
 	public byte[] read(int var1) {
@@ -81,9 +81,8 @@ public final class ArchiveDisk {
 					} else {
 						byte[] var5 = new byte[var3];
 						int var6 = 0;
-						int var7 = 0;
 
-						while (var6 < var3) {
+						for (int var7 = 0; var6 < var3; ++var7) {
 							if (var4 == 0) {
 								var10000 = null;
 								return (byte[])var10000;
@@ -102,7 +101,7 @@ public final class ArchiveDisk {
 								}
 
 								var13 = 10;
-								this.datFile.read(ArchiveDisk_buffer, 0, var8 + var13);
+								this.datFile.read(ArchiveDisk_buffer, 0, var13 + var8);
 								var9 = ((ArchiveDisk_buffer[1] & 255) << 16) + ((ArchiveDisk_buffer[0] & 255) << 24) + (ArchiveDisk_buffer[3] & 255) + ((ArchiveDisk_buffer[2] & 255) << 8);
 								var10 = (ArchiveDisk_buffer[5] & 255) + ((ArchiveDisk_buffer[4] & 255) << 8);
 								var11 = (ArchiveDisk_buffer[8] & 255) + ((ArchiveDisk_buffer[7] & 255) << 8) + ((ArchiveDisk_buffer[6] & 255) << 16);
@@ -113,32 +112,30 @@ public final class ArchiveDisk {
 								}
 
 								var13 = 8;
-								this.datFile.read(ArchiveDisk_buffer, 0, var8 + var13);
+								this.datFile.read(ArchiveDisk_buffer, 0, var13 + var8);
 								var9 = (ArchiveDisk_buffer[1] & 255) + ((ArchiveDisk_buffer[0] & 255) << 8);
 								var10 = (ArchiveDisk_buffer[3] & 255) + ((ArchiveDisk_buffer[2] & 255) << 8);
 								var11 = ((ArchiveDisk_buffer[5] & 255) << 8) + ((ArchiveDisk_buffer[4] & 255) << 16) + (ArchiveDisk_buffer[6] & 255);
 								var12 = ArchiveDisk_buffer[7] & 255;
 							}
 
-							if (var9 == var1 && var7 == var10 && var12 == this.archive) {
-								if (var11 >= 0 && (long)var11 <= this.datFile.length() / 520L) {
-									int var14 = var13 + var8;
-
-									for (int var15 = var13; var15 < var14; ++var15) {
-										var5[var6++] = ArchiveDisk_buffer[var15];
-									}
-
-									var4 = var11;
-									++var7;
-									continue;
-								}
-
+							if (var9 != var1 || var10 != var7 || var12 != this.archive) {
 								var10000 = null;
 								return (byte[])var10000;
 							}
 
-							var10000 = null;
-							return (byte[])var10000;
+							if (var11 < 0 || (long)var11 > this.datFile.length() / 520L) {
+								var10000 = null;
+								return (byte[])var10000;
+							}
+
+							int var14 = var13 + var8;
+
+							for (int var15 = var13; var15 < var14; ++var15) {
+								var5[var6++] = ArchiveDisk_buffer[var15];
+							}
+
+							var4 = var11;
 						}
 
 						byte[] var20 = var5;
@@ -151,10 +148,10 @@ public final class ArchiveDisk {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(I[BIB)Z",
-		garbageValue = "15"
+		descriptor = "(I[BII)Z",
+		garbageValue = "-425088453"
 	)
 	@Export("write")
 	public boolean write(int var1, byte[] var2, int var3) {
@@ -172,10 +169,10 @@ public final class ArchiveDisk {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(I[BIZI)Z",
-		garbageValue = "-506428520"
+		descriptor = "(I[BIZB)Z",
+		garbageValue = "-26"
 	)
 	@Export("write0")
 	boolean write0(int var1, byte[] var2, int var3, boolean var4) {
@@ -216,18 +213,18 @@ public final class ArchiveDisk {
 
 				while (true) {
 					if (var7 < var3) {
-						label171: {
+						label170: {
 							int var9 = 0;
 							int var10;
 							if (var4) {
-								this.datFile.seek((long)var6 * 520L);
+								this.datFile.seek(520L * (long)var6);
 								int var11;
 								int var12;
 								if (var1 > 65535) {
 									try {
 										this.datFile.read(ArchiveDisk_buffer, 0, 10);
 									} catch (EOFException var17) {
-										break label171;
+										break label170;
 									}
 
 									var10 = ((ArchiveDisk_buffer[1] & 255) << 16) + ((ArchiveDisk_buffer[0] & 255) << 24) + (ArchiveDisk_buffer[3] & 255) + ((ArchiveDisk_buffer[2] & 255) << 8);
@@ -238,7 +235,7 @@ public final class ArchiveDisk {
 									try {
 										this.datFile.read(ArchiveDisk_buffer, 0, 8);
 									} catch (EOFException var16) {
-										break label171;
+										break label170;
 									}
 
 									var10 = (ArchiveDisk_buffer[1] & 255) + ((ArchiveDisk_buffer[0] & 255) << 8);
@@ -247,7 +244,7 @@ public final class ArchiveDisk {
 									var12 = ArchiveDisk_buffer[7] & 255;
 								}
 
-								if (var10 != var1 || var11 != var8 || var12 != this.archive) {
+								if (var10 != var1 || var8 != var11 || var12 != this.archive) {
 									var10000 = false;
 									return var10000;
 								}
@@ -285,7 +282,7 @@ public final class ArchiveDisk {
 								ArchiveDisk_buffer[7] = (byte)(var9 >> 8);
 								ArchiveDisk_buffer[8] = (byte)var9;
 								ArchiveDisk_buffer[9] = (byte)this.archive;
-								this.datFile.seek((long)var6 * 520L);
+								this.datFile.seek(520L * (long)var6);
 								this.datFile.write(ArchiveDisk_buffer, 0, 10);
 								var10 = var3 - var7;
 								if (var10 > 510) {
@@ -335,52 +332,5 @@ public final class ArchiveDisk {
 
 	public String toString() {
 		return "" + this.archive;
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lfh;",
-		garbageValue = "-134790031"
-	)
-	@Export("KitDefinition_get")
-	public static KitDefinition KitDefinition_get(int var0) {
-		KitDefinition var1 = (KitDefinition)KitDefinition.KitDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = KitDefinition.KitDefinition_archive.takeFile(3, var0);
-			var1 = new KitDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-
-			KitDefinition.KitDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("kj")
-	@ObfuscatedSignature(
-		descriptor = "(IIIILpl;Ljr;I)V",
-		garbageValue = "1160102632"
-	)
-	@Export("drawSpriteOnMinimap")
-	static final void drawSpriteOnMinimap(int var0, int var1, int var2, int var3, SpritePixels var4, SpriteMask var5) {
-		if (var4 != null) {
-			int var6 = Client.camAngleY & 2047;
-			int var7 = var3 * var3 + var2 * var2;
-			if (var7 <= 6400) {
-				int var8 = Rasterizer3D.Rasterizer3D_sine[var6];
-				int var9 = Rasterizer3D.Rasterizer3D_cosine[var6];
-				int var10 = var9 * var2 + var3 * var8 >> 16;
-				int var11 = var3 * var9 - var8 * var2 >> 16;
-				if (var7 > 2500) {
-					var4.method7779(var10 + var5.width / 2 - var4.width / 2, var5.height / 2 - var11 - var4.height / 2, var0, var1, var5.width, var5.height, var5.xStarts, var5.xWidths);
-				} else {
-					var4.drawTransBgAt(var0 + var10 + var5.width / 2 - var4.width / 2, var5.height / 2 + var1 - var11 - var4.height / 2);
-				}
-
-			}
-		}
 	}
 }

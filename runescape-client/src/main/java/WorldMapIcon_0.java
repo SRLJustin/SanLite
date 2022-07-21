@@ -4,42 +4,48 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hf")
+@ObfuscatedName("hz")
 @Implements("WorldMapIcon_0")
 public class WorldMapIcon_0 extends AbstractWorldMapIcon {
+	@ObfuscatedName("iz")
+	@ObfuscatedGetter(
+		intValue = 2063269649
+	)
+	@Export("selectedItemId")
+	static int selectedItemId;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -198838733
+		intValue = -717867737
 	)
 	@Export("element")
 	final int element;
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lhm;"
+		descriptor = "Liz;"
 	)
 	@Export("label")
 	final WorldMapLabel label;
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 1320837941
+		intValue = -466218723
 	)
 	@Export("subWidth")
 	final int subWidth;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1830230057
+		intValue = 1083440853
 	)
 	@Export("subHeight")
 	final int subHeight;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lju;Lju;ILhm;)V"
+		descriptor = "(Lkd;Lkd;ILiz;)V"
 	)
 	WorldMapIcon_0(Coord var1, Coord var2, int var3, WorldMapLabel var4) {
 		super(var1, var2);
 		this.element = var3;
 		this.label = var4;
-		WorldMapElement var5 = class78.WorldMapElement_get(this.getElement());
+		WorldMapElement var5 = class432.WorldMapElement_get(this.getElement());
 		SpritePixels var6 = var5.getSpriteBool(false);
 		if (var6 != null) {
 			this.subWidth = var6.subWidth;
@@ -51,53 +57,57 @@ public class WorldMapIcon_0 extends AbstractWorldMapIcon {
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1255702565"
+		garbageValue = "781292504"
 	)
 	@Export("getElement")
 	public int getElement() {
 		return this.element;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lhm;",
-		garbageValue = "-577826789"
+		descriptor = "(I)Liz;",
+		garbageValue = "1473728"
 	)
 	@Export("getLabel")
 	WorldMapLabel getLabel() {
 		return this.label;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(S)I",
-		garbageValue = "-21504"
+		descriptor = "(I)I",
+		garbageValue = "-1263012412"
 	)
 	@Export("getSubWidth")
 	int getSubWidth() {
 		return this.subWidth;
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1225820190"
+		descriptor = "(B)I",
+		garbageValue = "-34"
 	)
 	@Export("getSubHeight")
 	int getSubHeight() {
 		return this.subHeight;
 	}
 
-	@ObfuscatedName("r")
+	@ObfuscatedName("lj")
 	@ObfuscatedSignature(
-		descriptor = "(CB)Z",
-		garbageValue = "94"
+		descriptor = "(Lkb;I)Ljava/lang/String;",
+		garbageValue = "-1970746569"
 	)
-	@Export("isAlphaNumeric")
-	public static boolean isAlphaNumeric(char var0) {
-		return var0 >= '0' && var0 <= '9' || var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
+	@Export("Widget_getSpellActionName")
+	static String Widget_getSpellActionName(Widget var0) {
+		if (WorldMapID.Widget_unpackTargetMask(class124.getWidgetFlags(var0)) == 0) {
+			return null;
+		} else {
+			return var0.spellActionName != null && var0.spellActionName.trim().length() != 0 ? var0.spellActionName : null;
+		}
 	}
 }

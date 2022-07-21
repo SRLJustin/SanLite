@@ -1,23 +1,26 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mv")
+@ObfuscatedName("ne")
 @Implements("Nameable")
 public class Nameable implements Comparable {
-	@ObfuscatedName("o")
-	@Export("Tiles_saturation")
-	static int[] Tiles_saturation;
-	@ObfuscatedName("p")
+	@ObfuscatedName("i")
+	@ObfuscatedGetter(
+		intValue = -13406753
+	)
+	static int field4308;
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lpo;"
+		descriptor = "Lqa;"
 	)
 	@Export("username")
 	Username username;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lpo;"
+		descriptor = "Lqa;"
 	)
 	@Export("previousUsername")
 	Username previousUsername;
@@ -25,50 +28,50 @@ public class Nameable implements Comparable {
 	Nameable() {
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;I)I",
-		garbageValue = "-1921032172"
+		descriptor = "(Lne;B)I",
+		garbageValue = "-81"
 	)
 	@Export("compareTo_user")
 	public int compareTo_user(Nameable var1) {
 		return this.username.compareToTyped(var1.username);
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lpo;",
-		garbageValue = "-1892150119"
+		descriptor = "(B)Lqa;",
+		garbageValue = "-97"
 	)
 	@Export("getUsername")
 	public Username getUsername() {
 		return this.username;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-1161917268"
+		descriptor = "(B)Ljava/lang/String;",
+		garbageValue = "119"
 	)
 	@Export("getName")
 	public String getName() {
 		return this.username == null ? "" : this.username.getName();
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "1892612192"
+		descriptor = "(B)Ljava/lang/String;",
+		garbageValue = "-24"
 	)
 	@Export("getPreviousName")
 	public String getPreviousName() {
 		return this.previousUsername == null ? "" : this.previousUsername.getName();
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;Lpo;I)V",
-		garbageValue = "-1829748918"
+		descriptor = "(Lqa;Lqa;I)V",
+		garbageValue = "-639642586"
 	)
 	@Export("set")
 	void set(Username var1, Username var2) {
@@ -84,21 +87,42 @@ public class Nameable implements Comparable {
 		return this.compareTo_user((Nameable)var1);
 	}
 
-	@ObfuscatedName("kq")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Ljm;IIIB)V",
-		garbageValue = "-87"
+		descriptor = "([Ljava/lang/CharSequence;III)Ljava/lang/String;",
+		garbageValue = "-1413737997"
 	)
-	@Export("drawCompass")
-	static final void drawCompass(Widget var0, int var1, int var2, int var3) {
-		SpriteMask var4 = var0.getSpriteMask(false);
-		if (var4 != null) {
-			if (Client.minimapState < 3) {
-				LoginScreenAnimation.compass.drawRotatedMaskedCenteredAround(var1, var2, var4.width, var4.height, 25, 25, Client.camAngleY, 256, var4.xStarts, var4.xWidths);
-			} else {
-				Rasterizer2D.Rasterizer2D_fillMaskedRectangle(var1, var2, 0, var4.xStarts, var4.xWidths);
+	public static String method6679(CharSequence[] var0, int var1, int var2) {
+		if (var2 == 0) {
+			return "";
+		} else if (var2 == 1) {
+			CharSequence var10 = var0[var1];
+			return var10 == null ? "null" : var10.toString();
+		} else {
+			int var3 = var2 + var1;
+			int var4 = 0;
+
+			for (int var5 = var1; var5 < var3; ++var5) {
+				CharSequence var9 = var0[var5];
+				if (var9 == null) {
+					var4 += 4;
+				} else {
+					var4 += var9.length();
+				}
 			}
 
+			StringBuilder var8 = new StringBuilder(var4);
+
+			for (int var6 = var1; var6 < var3; ++var6) {
+				CharSequence var7 = var0[var6];
+				if (var7 == null) {
+					var8.append("null");
+				} else {
+					var8.append(var7);
+				}
+			}
+
+			return var8.toString();
 		}
 	}
 }

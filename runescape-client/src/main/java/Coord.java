@@ -4,38 +4,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ju")
+@ObfuscatedName("kd")
 @Implements("Coord")
 public class Coord {
-	@ObfuscatedName("q")
-	@Export("operatingSystemName")
-	public static String operatingSystemName;
-	@ObfuscatedName("gu")
-	@ObfuscatedSignature(
-		descriptor = "Lmd;"
-	)
-	static AbstractSocket field3186;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 2028633895
+		intValue = 1382052049
 	)
 	@Export("plane")
 	public int plane;
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -115571391
+		intValue = 798305999
 	)
 	@Export("x")
 	public int x;
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -193761027
+		intValue = -1552762679
 	)
 	@Export("y")
 	public int y;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lju;)V"
+		descriptor = "(Lkd;)V"
 	)
 	public Coord(Coord var1) {
 		this.plane = var1.plane;
@@ -62,8 +54,8 @@ public class Coord {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "844590476"
+		descriptor = "(B)I",
+		garbageValue = "34"
 	)
 	@Export("packed")
 	public int packed() {
@@ -74,10 +66,10 @@ public class Coord {
 		return var1;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lju;B)Z",
-		garbageValue = "-21"
+		descriptor = "(Lkd;I)Z",
+		garbageValue = "-326273528"
 	)
 	@Export("equalsCoord")
 	boolean equalsCoord(Coord var1) {
@@ -90,18 +82,14 @@ public class Coord {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
-		garbageValue = "1213799253"
+		garbageValue = "65710498"
 	)
 	@Export("toString")
 	String toString(String var1) {
 		return this.plane + var1 + (this.x >> 6) + var1 + (this.y >> 6) + var1 + (this.x & 63) + var1 + (this.y & 63);
-	}
-
-	public String toString() {
-		return this.toString(",");
 	}
 
 	public boolean equals(Object var1) {
@@ -114,5 +102,57 @@ public class Coord {
 
 	public int hashCode() {
 		return this.packed();
+	}
+
+	public String toString() {
+		return this.toString(",");
+	}
+
+	@ObfuscatedName("in")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/String;I)V",
+		garbageValue = "1586830806"
+	)
+	static void method5549(int var0, String var1) {
+		int var2 = Players.Players_count;
+		int[] var3 = Players.Players_indices;
+		boolean var4 = false;
+		Username var5 = new Username(var1, HealthBarDefinition.loginType);
+
+		for (int var6 = 0; var6 < var2; ++var6) {
+			Player var7 = Client.players[var3[var6]];
+			if (var7 != null && var7 != class101.localPlayer && var7.username != null && var7.username.equals(var5)) {
+				PacketBufferNode var8;
+				if (var0 == 1) {
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2970, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeShort(var3[var6]);
+					var8.packetBuffer.writeByte(0);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 4) {
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2991, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7762(0);
+					var8.packetBuffer.method7863(var3[var6]);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 6) {
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2965, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7771(var3[var6]);
+					var8.packetBuffer.method7762(0);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 7) {
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2947, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeShort(var3[var6]);
+					var8.packetBuffer.writeByte(0);
+					Client.packetWriter.addNode(var8);
+				}
+
+				var4 = true;
+				break;
+			}
+		}
+
+		if (!var4) {
+			class290.addGameMessage(4, "", "Unable to find " + var1);
+		}
+
 	}
 }

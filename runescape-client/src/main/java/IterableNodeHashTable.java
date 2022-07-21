@@ -4,31 +4,31 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oz")
+@ObfuscatedName("pb")
 @Implements("IterableNodeHashTable")
 public final class IterableNodeHashTable implements Iterable {
 	@ObfuscatedName("c")
 	@Export("size")
 	int size;
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "[Lnw;"
+		descriptor = "[Loh;"
 	)
 	@Export("buckets")
 	Node[] buckets;
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lnw;"
+		descriptor = "Loh;"
 	)
 	@Export("currentGet")
 	Node currentGet;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lnw;"
+		descriptor = "Loh;"
 	)
 	@Export("current")
 	Node current;
-	@ObfuscatedName("t")
+	@ObfuscatedName("j")
 	@Export("index")
 	int index;
 
@@ -47,7 +47,7 @@ public final class IterableNodeHashTable implements Iterable {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(J)Lnw;"
+		descriptor = "(J)Loh;"
 	)
 	@Export("get")
 	public Node get(long var1) {
@@ -65,9 +65,9 @@ public final class IterableNodeHashTable implements Iterable {
 		return null;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lnw;J)V"
+		descriptor = "(Loh;J)V"
 	)
 	@Export("put")
 	public void put(Node var1, long var2) {
@@ -83,7 +83,7 @@ public final class IterableNodeHashTable implements Iterable {
 		var1.key = var2;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@Export("clear")
 	public void clear() {
 		for (int var1 = 0; var1 < this.size; ++var1) {
@@ -103,9 +103,9 @@ public final class IterableNodeHashTable implements Iterable {
 		this.current = null;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "()Lnw;"
+		descriptor = "()Loh;"
 	)
 	@Export("first")
 	public Node first() {
@@ -113,9 +113,9 @@ public final class IterableNodeHashTable implements Iterable {
 		return this.next();
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "()Lnw;"
+		descriptor = "()Loh;"
 	)
 	@Export("next")
 	public Node next() {

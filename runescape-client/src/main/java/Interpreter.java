@@ -5,63 +5,77 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bu")
+@ObfuscatedName("bt")
 @Implements("Interpreter")
 public class Interpreter {
-	@ObfuscatedName("tb")
-	@ObfuscatedSignature(
-		descriptor = "Lnn;"
+	@ObfuscatedName("tx")
+	@ObfuscatedGetter(
+		intValue = -1240555931
 	)
-	@Export("platformInfo")
-	static PlatformInfo platformInfo;
-	@ObfuscatedName("w")
+	static int field846;
+	@ObfuscatedName("f")
+	@Export("Interpreter_intLocals")
+	static int[] Interpreter_intLocals;
+	@ObfuscatedName("e")
 	@Export("Interpreter_arrayLengths")
 	static int[] Interpreter_arrayLengths;
-	@ObfuscatedName("n")
+	@ObfuscatedName("g")
 	@Export("Interpreter_arrays")
 	static int[][] Interpreter_arrays;
-	@ObfuscatedName("r")
+	@ObfuscatedName("w")
 	@Export("Interpreter_intStack")
 	static int[] Interpreter_intStack;
-	@ObfuscatedName("v")
+	@ObfuscatedName("i")
 	@Export("Interpreter_stringStack")
 	static String[] Interpreter_stringStack;
-	@ObfuscatedName("h")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -866718889
+		intValue = 183300013
+	)
+	@Export("Interpreter_stringStackSize")
+	static int Interpreter_stringStackSize;
+	@ObfuscatedName("t")
+	@ObfuscatedGetter(
+		intValue = -2041512145
 	)
 	@Export("Interpreter_frameDepth")
 	static int Interpreter_frameDepth;
-	@ObfuscatedName("g")
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
 		descriptor = "[Lbg;"
 	)
 	@Export("Interpreter_frames")
 	static ScriptFrame[] Interpreter_frames;
-	@ObfuscatedName("f")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = 355212093
+		intValue = 987199293
 	)
-	static int field812;
+	static int field838;
 	@ObfuscatedName("l")
 	@Export("Interpreter_calendar")
 	static java.util.Calendar Interpreter_calendar;
-	@ObfuscatedName("q")
+	@ObfuscatedName("a")
 	@Export("Interpreter_MONTHS")
 	static final String[] Interpreter_MONTHS;
-	@ObfuscatedName("z")
-	static boolean field818;
-	@ObfuscatedName("i")
-	static boolean field816;
-	@ObfuscatedName("y")
-	static ArrayList field817;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("b")
+	static boolean field829;
+	@ObfuscatedName("n")
+	static boolean field842;
+	@ObfuscatedName("o")
+	static ArrayList field843;
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -1880353715
+		intValue = -186588537
 	)
-	static int field815;
-	@ObfuscatedName("ax")
-	static final double field814;
+	static int field850;
+	@ObfuscatedName("al")
+	static final double field845;
+	@ObfuscatedName("lc")
+	@ObfuscatedSignature(
+		descriptor = "Lkb;"
+	)
+	@Export("dragInventoryWidget")
+	static Widget dragInventoryWidget;
 
 	static {
 		Interpreter_arrayLengths = new int[5];
@@ -72,30 +86,38 @@ public class Interpreter {
 		Interpreter_frames = new ScriptFrame[50];
 		Interpreter_calendar = java.util.Calendar.getInstance();
 		Interpreter_MONTHS = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-		field818 = false;
-		field816 = false;
-		field817 = new ArrayList();
-		field815 = 0;
-		field814 = Math.log(2.0D);
+		field829 = false;
+		field842 = false;
+		field843 = new ArrayList();
+		field850 = 0;
+		field845 = Math.log(2.0D);
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(CLlf;B)I",
-		garbageValue = "-56"
+		descriptor = "(I)[Ldf;",
+		garbageValue = "1105102872"
 	)
-	@Export("lowercaseChar")
-	static int lowercaseChar(char var0, Language var1) {
-		int var2 = var0 << 4;
-		if (Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
-			var0 = Character.toLowerCase(var0);
-			var2 = (var0 << 4) + 1;
-		}
+	static class123[] method1866() {
+		return new class123[]{class123.field1535, class123.field1529, class123.field1542, class123.field1531, class123.field1536, class123.field1533, class123.field1534, class123.field1532, class123.field1528};
+	}
 
-		if (var0 == 241 && var1 == Language.Language_ES) {
-			var2 = 1762;
-		}
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1772742726"
+	)
+	public static void method1868() {
+		StructComposition.StructDefinition_cached.clear();
+	}
 
-		return var2;
+	@ObfuscatedName("y")
+	@ObfuscatedSignature(
+		descriptor = "(B)Lbc;",
+		garbageValue = "1"
+	)
+	@Export("getNextWorldListWorld")
+	static World getNextWorldListWorld() {
+		return World.World_listCount < World.World_count ? class362.World_worlds[++World.World_listCount - 1] : null;
 	}
 }
