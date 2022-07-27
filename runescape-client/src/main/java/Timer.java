@@ -4,144 +4,144 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lg")
+@ObfuscatedName("mm")
 @Implements("Timer")
 public class Timer {
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		longValue = 7483888896686951309L
+	)
+	long field4248;
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(
+		longValue = 654854770925304923L
+	)
+	long field4245;
+	@ObfuscatedName("f")
+	public boolean field4246;
+	@ObfuscatedName("u")
+	@ObfuscatedGetter(
+		longValue = 4574239759121238911L
+	)
+	long field4247;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		longValue = -887996437388493325L
+		longValue = 1049156482329543443L
 	)
-	long field4041;
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(
-		longValue = -5378491660972395407L
-	)
-	long field4048;
-	@ObfuscatedName("p")
-	public boolean field4043;
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(
-		longValue = 462489706516465413L
-	)
-	long field4044;
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		longValue = 2942582294320251895L
-	)
-	long field4045;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		longValue = -7148108535853774599L
-	)
-	long field4050;
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(
-		intValue = 271135193
-	)
-	int field4046;
+	long field4254;
 	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -664442429
+		longValue = 8408979389457387291L
 	)
-	int field4047;
-	@ObfuscatedName("n")
+	long field4249;
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = -615508399
+		intValue = 710407707
 	)
-	int field4049;
-	@ObfuscatedName("r")
+	int field4252;
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 1914912277
+		intValue = 778328855
 	)
-	int field4042;
+	int field4251;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(
+		intValue = -48429605
+	)
+	int field4253;
+	@ObfuscatedName("a")
+	@ObfuscatedGetter(
+		intValue = 1168631239
+	)
+	int field4244;
 
 	public Timer() {
-		this.field4041 = -1L;
-		this.field4048 = -1L;
-		this.field4043 = false;
-		this.field4044 = 0L;
-		this.field4045 = 0L;
-		this.field4050 = 0L;
-		this.field4046 = 0;
-		this.field4047 = 0;
-		this.field4049 = 0;
-		this.field4042 = 0;
+		this.field4248 = -1L;
+		this.field4245 = -1L;
+		this.field4246 = false;
+		this.field4247 = 0L;
+		this.field4254 = 0L;
+		this.field4249 = 0L;
+		this.field4252 = 0;
+		this.field4251 = 0;
+		this.field4253 = 0;
+		this.field4244 = 0;
+	}
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "36"
+	)
+	public void method6552() {
+		this.field4248 = class131.method2916();
+	}
+
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-632440390"
+	)
+	public void method6553() {
+		if (-1L != this.field4248) {
+			this.field4254 = class131.method2916() - this.field4248;
+			this.field4248 = -1L;
+		}
+
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "1777899059"
+	)
+	public void method6554(int var1) {
+		this.field4245 = class131.method2916();
+		this.field4252 = var1;
+	}
+
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "-45"
+	)
+	public void method6555() {
+		if (-1L != this.field4245) {
+			this.field4247 = class131.method2916() - this.field4245;
+			this.field4245 = -1L;
+		}
+
+		++this.field4253;
+		this.field4246 = true;
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "59649257"
+		garbageValue = "840918639"
 	)
-	public void method6253() {
-		this.field4041 = Ignored.method6459();
+	public void method6574() {
+		this.field4246 = false;
+		this.field4251 = 0;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "511000597"
+		descriptor = "(B)V",
+		garbageValue = "-80"
 	)
-	public void method6231() {
-		if (-1L != this.field4041) {
-			this.field4045 = Ignored.method6459() - this.field4041;
-			this.field4041 = -1L;
-		}
-
+	public void method6557() {
+		this.method6555();
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1146982108"
-	)
-	public void method6232(int var1) {
-		this.field4048 = Ignored.method6459();
-		this.field4046 = var1;
-	}
-
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-14983826"
-	)
-	public void method6234() {
-		if (this.field4048 != -1L) {
-			this.field4044 = Ignored.method6459() - this.field4048;
-			this.field4048 = -1L;
-		}
-
-		++this.field4049;
-		this.field4043 = true;
-	}
-
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1689549111"
-	)
-	public void method6238() {
-		this.field4043 = false;
-		this.field4047 = 0;
-	}
-
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "145143672"
-	)
-	public void method6244() {
-		this.method6234();
-	}
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "-405863584"
+		descriptor = "(Lqw;B)V",
+		garbageValue = "33"
 	)
 	@Export("write")
 	public void write(Buffer var1) {
-		long var2 = this.field4045;
+		long var2 = this.field4254;
 		var2 /= 10L;
 		if (var2 < 0L) {
 			var2 = 0L;
@@ -150,7 +150,7 @@ public class Timer {
 		}
 
 		var1.writeShort((int)var2);
-		long var4 = this.field4044;
+		long var4 = this.field4247;
 		var4 /= 10L;
 		if (var4 < 0L) {
 			var4 = 0L;
@@ -159,7 +159,7 @@ public class Timer {
 		}
 
 		var1.writeShort((int)var4);
-		long var6 = this.field4050;
+		long var6 = this.field4249;
 		var6 /= 10L;
 		if (var6 < 0L) {
 			var6 = 0L;
@@ -168,18 +168,24 @@ public class Timer {
 		}
 
 		var1.writeShort((int)var6);
-		var1.writeShort(this.field4046);
-		var1.writeShort(this.field4047);
-		var1.writeShort(this.field4049);
-		var1.writeShort(this.field4042);
+		var1.writeShort(this.field4252);
+		var1.writeShort(this.field4251);
+		var1.writeShort(this.field4253);
+		var1.writeShort(this.field4244);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lif;",
-		garbageValue = "1360000717"
+		descriptor = "(B)[I",
+		garbageValue = "36"
 	)
-	public static class253[] method6230() {
-		return new class253[]{class253.field2918, class253.field2911, class253.field2912, class253.field2913, class253.field2914, class253.field2915, class253.field2916, class253.field2917, class253.field2920, class253.field2919};
+	public static int[] method6564() {
+		int[] var0 = new int[KeyHandler.field142];
+
+		for (int var1 = 0; var1 < KeyHandler.field142; ++var1) {
+			var0[var1] = KeyHandler.field135[var1];
+		}
+
+		return var0;
 	}
 }

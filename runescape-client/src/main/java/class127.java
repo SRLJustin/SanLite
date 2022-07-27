@@ -3,84 +3,83 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("di")
-public class class127 extends class126 {
-	@ObfuscatedName("sd")
+@ObfuscatedName("ds")
+public class class127 extends class128 {
+	@ObfuscatedName("vo")
 	@ObfuscatedGetter(
-		intValue = -1317167519
+		intValue = -1062963955
 	)
-	static int field1498;
-	@ObfuscatedName("c")
+	@Export("foundItemIdCount")
+	static int foundItemIdCount;
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -646146065
+		intValue = 1763358293
 	)
-	int field1503;
-	@ObfuscatedName("b")
-	boolean field1499;
+	int field1538;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Lec;"
 	)
-	final class129 this$0;
+	final class131 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "(Lec;)V"
 	)
-	class127(class129 var1) {
+	class127(class131 var1) {
 		this.this$0 = var1;
-		this.field1503 = -1;
+		this.field1538 = -1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lqw;I)V",
+		garbageValue = "-423569520"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1503 = var1.readUnsignedShort();
-		this.field1499 = var1.readUnsignedByte() == 1;
+	void vmethod3155(Buffer var1) {
+		this.field1538 = var1.readUnsignedShort();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(Lez;I)V",
+		garbageValue = "-1755436064"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2857(this.field1503, this.field1499);
+	void vmethod3154(ClanSettings var1) {
+		var1.method2979(this.field1538);
 	}
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-39935659"
-	)
-	static void method2770() {
-		WorldMapRegion.WorldMapRegion_cachedSprites.clear();
-	}
-
-	@ObfuscatedName("p")
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "506416860"
+		garbageValue = "-1709801867"
 	)
-	@Export("savePreferences")
-	static void savePreferences() {
-		AccessFile var0 = null;
+	static void method2888() {
+		ItemContainer.itemContainers = new NodeHashTable(32);
+	}
 
-		try {
-			var0 = class231.getPreferencesFile("", class338.field4054.name, true);
-			Buffer var1 = SecureRandomFuture.clientPreferences.toBuffer();
-			var0.write(var1.array, 0, var1.offset);
-		} catch (Exception var3) {
-		}
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "(B)Lbk;",
+		garbageValue = "118"
+	)
+	@Export("worldListStart")
+	static World worldListStart() {
+		World.World_listCount = 0;
+		return NPC.getNextWorldListWorld();
+	}
 
-		try {
-			if (var0 != null) {
-				var0.closeSync(true);
+	@ObfuscatedName("hs")
+	@ObfuscatedSignature(
+		descriptor = "(IIB)V",
+		garbageValue = "78"
+	)
+	static final void method2887(int var0, int var1) {
+		if (Client.hintArrowType == 2) {
+			GrandExchangeOfferOwnWorldComparator.worldToScreen(Client.field507 * 64 + (Client.hintArrowX - class300.baseX * 64 << 7), Client.field508 * 64 + (Client.hintArrowY - Message.baseY * 64 << 7), Client.field506 * 2);
+			if (Client.viewportTempX > -1 && Client.cycle % 20 < 10) {
+				class92.headIconHintSprites[0].drawTransBgAt(var0 + Client.viewportTempX - 12, Client.viewportTempY + var1 - 28);
 			}
-		} catch (Exception var2) {
-		}
 
+		}
 	}
 }

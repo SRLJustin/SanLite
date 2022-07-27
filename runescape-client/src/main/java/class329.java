@@ -1,109 +1,80 @@
+import java.util.HashMap;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lt")
+@ObfuscatedName("lq")
 public class class329 {
-	@ObfuscatedName("c")
-	static char[] field4005;
-	@ObfuscatedName("b")
-	static char[] field4003;
-	@ObfuscatedName("p")
-	static char[] field4002;
-	@ObfuscatedName("m")
-	static int[] field4004;
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Llc;"
+	)
+	@Export("soundEffectsArchive")
+	public static AbstractArchive soundEffectsArchive;
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(
+		descriptor = "Lql;"
+	)
+	static IndexedSprite field4111;
+	@ObfuscatedName("l")
+	@Export("cacheParentPaths")
+	public static String[] cacheParentPaths;
+	@ObfuscatedName("ad")
+	@Export("client")
+	@ObfuscatedSignature(
+		descriptor = "Lclient;"
+	)
+	static Client client;
 
 	static {
-		field4005 = new char[64];
-
-		int var0;
-		for (var0 = 0; var0 < 26; ++var0) {
-			field4005[var0] = (char)(var0 + 65);
-		}
-
-		for (var0 = 26; var0 < 52; ++var0) {
-			field4005[var0] = (char)(var0 + 97 - 26);
-		}
-
-		for (var0 = 52; var0 < 62; ++var0) {
-			field4005[var0] = (char)(var0 + 48 - 52);
-		}
-
-		field4005[62] = '+';
-		field4005[63] = '/';
-		field4003 = new char[64];
-
-		for (var0 = 0; var0 < 26; ++var0) {
-			field4003[var0] = (char)(var0 + 65);
-		}
-
-		for (var0 = 26; var0 < 52; ++var0) {
-			field4003[var0] = (char)(var0 + 97 - 26);
-		}
-
-		for (var0 = 52; var0 < 62; ++var0) {
-			field4003[var0] = (char)(var0 + 48 - 52);
-		}
-
-		field4003[62] = '*';
-		field4003[63] = '-';
-		field4002 = new char[64];
-
-		for (var0 = 0; var0 < 26; ++var0) {
-			field4002[var0] = (char)(var0 + 65);
-		}
-
-		for (var0 = 26; var0 < 52; ++var0) {
-			field4002[var0] = (char)(var0 + 97 - 26);
-		}
-
-		for (var0 = 52; var0 < 62; ++var0) {
-			field4002[var0] = (char)(var0 + 48 - 52);
-		}
-
-		field4002[62] = '-';
-		field4002[63] = '_';
-		field4004 = new int[128];
-
-		for (var0 = 0; var0 < field4004.length; ++var0) {
-			field4004[var0] = -1;
-		}
-
-		for (var0 = 65; var0 <= 90; ++var0) {
-			field4004[var0] = var0 - 65;
-		}
-
-		for (var0 = 97; var0 <= 122; ++var0) {
-			field4004[var0] = var0 - 97 + 26;
-		}
-
-		for (var0 = 48; var0 <= 57; ++var0) {
-			field4004[var0] = var0 - 48 + 52;
-		}
-
-		int[] var2 = field4004;
-		field4004[43] = 62;
-		var2[42] = 62;
-		int[] var1 = field4004;
-		field4004[47] = 63;
-		var1[45] = 63;
+		new HashMap();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(II)F",
-		garbageValue = "-119080424"
+		descriptor = "(Lbk;Lbk;IZI)I",
+		garbageValue = "-1110392385"
 	)
-	public static float method6135(int var0) {
-		var0 &= 16383;
-		return (float)(6.283185307179586D * (double)((float)var0 / 16384.0F));
-	}
+	@Export("compareWorlds")
+	static int compareWorlds(World var0, World var1, int var2, boolean var3) {
+		if (var2 == 1) {
+			int var4 = var0.population;
+			int var5 = var1.population;
+			if (!var3) {
+				if (var4 == -1) {
+					var4 = 2001;
+				}
 
-	@ObfuscatedName("hn")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "113"
-	)
-	static boolean method6133() {
-		return (Client.drawPlayerNames & 8) != 0;
+				if (var5 == -1) {
+					var5 = 2001;
+				}
+			}
+
+			return var4 - var5;
+		} else if (var2 == 2) {
+			return var0.location - var1.location;
+		} else if (var2 == 3) {
+			if (var0.activity.equals("-")) {
+				if (var1.activity.equals("-")) {
+					return 0;
+				} else {
+					return var3 ? -1 : 1;
+				}
+			} else if (var1.activity.equals("-")) {
+				return var3 ? 1 : -1;
+			} else {
+				return var0.activity.compareTo(var1.activity);
+			}
+		} else if (var2 == 4) {
+			return var0.method1644() ? (var1.method1644() ? 0 : 1) : (var1.method1644() ? -1 : 0);
+		} else if (var2 == 5) {
+			return var0.method1642() ? (var1.method1642() ? 0 : 1) : (var1.method1642() ? -1 : 0);
+		} else if (var2 == 6) {
+			return var0.isPvp() ? (var1.isPvp() ? 0 : 1) : (var1.isPvp() ? -1 : 0);
+		} else if (var2 == 7) {
+			return var0.isMembersOnly() ? (var1.isMembersOnly() ? 0 : 1) : (var1.isMembersOnly() ? -1 : 0);
+		} else {
+			return var0.id - var1.id;
+		}
 	}
 }
