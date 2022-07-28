@@ -4,27 +4,27 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oh")
+@ObfuscatedName("pb")
 @Implements("Fonts")
 public class Fonts {
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Llc;"
 	)
 	@Export("spritesArchive")
 	AbstractArchive spritesArchive;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Llc;"
 	)
 	@Export("fontsArchive")
 	AbstractArchive fontsArchive;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@Export("map")
 	HashMap map;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lku;Lku;)V"
+		descriptor = "(Llc;Llc;)V"
 	)
 	public Fonts(AbstractArchive var1, AbstractArchive var2) {
 		this.spritesArchive = var1;
@@ -32,10 +32,10 @@ public class Fonts {
 		this.map = new HashMap();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "([Lot;I)Ljava/util/HashMap;",
-		garbageValue = "700588236"
+		descriptor = "([Lpz;I)Ljava/util/HashMap;",
+		garbageValue = "1790173917"
 	)
 	@Export("createMap")
 	public HashMap createMap(FontName[] var1) {
@@ -52,21 +52,20 @@ public class Fonts {
 				String var9 = var5.name;
 				int var10 = var7.getGroupId(var9);
 				int var11 = var7.getFileId(var10, "");
+				byte[] var14 = var7.takeFile(var10, var11);
+				boolean var13;
+				if (var14 == null) {
+					var13 = false;
+				} else {
+					class83.SpriteBuffer_decode(var14);
+					var13 = true;
+				}
+
 				Font var12;
-				if (!class147.SpriteBuffer_loadSpritesFromArchive(var7, var10, var11)) {
+				if (!var13) {
 					var12 = null;
 				} else {
-					byte[] var14 = var8.takeFile(var10, var11);
-					Font var13;
-					if (var14 == null) {
-						var13 = null;
-					} else {
-						Font var15 = new Font(var14, class141.SpriteBuffer_xOffsets, RouteStrategy.SpriteBuffer_yOffsets, class432.SpriteBuffer_spriteWidths, class330.SpriteBuffer_spriteHeights, class432.SpriteBuffer_spritePalette, class369.SpriteBuffer_pixels);
-						UserComparator3.method2529();
-						var13 = var15;
-					}
-
-					var12 = var13;
+					var12 = class14.method182(var8.takeFile(var10, var11));
 				}
 
 				if (var12 != null) {

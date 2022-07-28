@@ -4,58 +4,63 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fh")
+@ObfuscatedName("fj")
 @Implements("KitDefinition")
 public class KitDefinition extends DualNode {
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Llc;"
 	)
 	@Export("KitDefinition_archive")
-	static AbstractArchive KitDefinition_archive;
-	@ObfuscatedName("b")
+	public static AbstractArchive KitDefinition_archive;
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Llc;"
 	)
 	@Export("KitDefinition_modelsArchive")
-	static AbstractArchive KitDefinition_modelsArchive;
-	@ObfuscatedName("p")
+	public static AbstractArchive KitDefinition_modelsArchive;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 448904447
+		intValue = 1716974829
 	)
 	@Export("KitDefinition_fileCount")
 	public static int KitDefinition_fileCount;
-	@ObfuscatedName("m")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lia;"
 	)
 	@Export("KitDefinition_cached")
-	static EvictingDualNodeHashTable KitDefinition_cached;
-	@ObfuscatedName("t")
+	public static EvictingDualNodeHashTable KitDefinition_cached;
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "Lnz;"
+	)
+	static Bounds field1860;
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1176017283
+		intValue = -198149691
 	)
 	@Export("bodypartID")
 	public int bodypartID;
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@Export("models2")
 	int[] models2;
-	@ObfuscatedName("j")
+	@ObfuscatedName("z")
 	@Export("recolorFrom")
 	short[] recolorFrom;
-	@ObfuscatedName("w")
+	@ObfuscatedName("j")
 	@Export("recolorTo")
 	short[] recolorTo;
-	@ObfuscatedName("n")
+	@ObfuscatedName("h")
 	@Export("retextureFrom")
 	short[] retextureFrom;
-	@ObfuscatedName("r")
+	@ObfuscatedName("a")
 	@Export("retextureTo")
 	short[] retextureTo;
-	@ObfuscatedName("o")
+	@ObfuscatedName("d")
 	@Export("models")
 	int[] models;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@Export("nonSelectable")
 	public boolean nonSelectable;
 
@@ -69,10 +74,10 @@ public class KitDefinition extends DualNode {
 		this.nonSelectable = false;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "-70"
+		descriptor = "(Lqw;I)V",
+		garbageValue = "-142028586"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -86,10 +91,10 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;II)V",
-		garbageValue = "1440995166"
+		descriptor = "(Lqw;II)V",
+		garbageValue = "-2119387594"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -132,10 +137,10 @@ public class KitDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-29"
+		descriptor = "(I)Z",
+		garbageValue = "417497565"
 	)
 	@Export("ready")
 	public boolean ready() {
@@ -154,10 +159,10 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lge;",
-		garbageValue = "1561860079"
+		descriptor = "(I)Lgw;",
+		garbageValue = "820896030"
 	)
 	@Export("getModelData")
 	public ModelData getModelData() {
@@ -194,12 +199,12 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1736416150"
+		garbageValue = "-1596959264"
 	)
-	public boolean method3210() {
+	public boolean method3399() {
 		boolean var1 = true;
 
 		for (int var2 = 0; var2 < 5; ++var2) {
@@ -211,10 +216,10 @@ public class KitDefinition extends DualNode {
 		return var1;
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lge;",
-		garbageValue = "49"
+		descriptor = "(B)Lgw;",
+		garbageValue = "-49"
 	)
 	@Export("getKitDefinitionModels")
 	public ModelData getKitDefinitionModels() {
@@ -244,66 +249,94 @@ public class KitDefinition extends DualNode {
 		return var5;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(Lj;B)Lm;",
-		garbageValue = "-59"
+		descriptor = "(Ldp;FZB)F",
+		garbageValue = "-34"
 	)
-	public static class3 method3238(class6 var0) {
-		switch(var0.field16) {
-		case 0:
-			return new class0();
-		default:
-			throw new IllegalArgumentException();
-		}
-	}
+	static float method3390(class117 var0, float var1, boolean var2) {
+		float var3 = 0.0F;
+		if (var0 != null && var0.method2785() != 0) {
+			float var4 = (float)var0.field1437[0].field1390;
+			float var5 = (float)var0.field1437[var0.method2785() - 1].field1390;
+			float var6 = var5 - var4;
+			if (0.0D == (double)var6) {
+				return var0.field1437[0].field1389;
+			} else {
+				float var7 = 0.0F;
+				if (var1 > var5) {
+					var7 = (var1 - var5) / var6;
+				} else {
+					var7 = (var1 - var4) / var6;
+				}
 
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "445518606"
-	)
-	static int method3237(int var0, Script var1, boolean var2) {
-		if (var0 == 7400) {
-			--IsaacCipher.Interpreter_intStackSize;
-			--class13.Interpreter_stringStackSize;
-			return 1;
-		} else if (var0 == 7401) {
-			--IsaacCipher.Interpreter_intStackSize;
-			--class13.Interpreter_stringStackSize;
-			return 1;
-		} else if (var0 == 7402) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			--class13.Interpreter_stringStackSize;
-			return 1;
-		} else if (var0 == 7403) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			--class13.Interpreter_stringStackSize;
-			return 1;
-		} else if (var0 == 7404) {
-			--IsaacCipher.Interpreter_intStackSize;
-			--class13.Interpreter_stringStackSize;
-			return 1;
-		} else if (var0 == 7405) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			return 1;
-		} else if (var0 == 7406) {
-			--IsaacCipher.Interpreter_intStackSize;
-			Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-			return 1;
-		} else if (var0 == 7407) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-			return 1;
-		} else if (var0 == 7408) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			--class13.Interpreter_stringStackSize;
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-			return 1;
-		} else if (var0 == 7409) {
-			--IsaacCipher.Interpreter_intStackSize;
-			return 1;
+				double var8 = (double)((int)var7);
+				float var10 = Math.abs((float)((double)var7 - var8));
+				float var11 = var10 * var6;
+				var8 = Math.abs(var8 + 1.0D);
+				double var12 = var8 / 2.0D;
+				double var14 = (double)((int)var12);
+				var10 = (float)(var12 - var14);
+				float var16;
+				float var17;
+				if (var2) {
+					if (var0.field1435 == class116.field1422) {
+						if ((double)var10 != 0.0D) {
+							var11 += var4;
+						} else {
+							var11 = var5 - var11;
+						}
+					} else if (var0.field1435 != class116.field1424 && var0.field1435 != class116.field1425) {
+						if (var0.field1435 == class116.field1423) {
+							var11 = var4 - var1;
+							var16 = var0.field1437[0].field1391;
+							var17 = var0.field1437[0].field1396;
+							var3 = var0.field1437[0].field1389;
+							if ((double)var16 != 0.0D) {
+								var3 -= var17 * var11 / var16;
+							}
+
+							return var3;
+						}
+					} else {
+						var11 = var5 - var11;
+					}
+				} else if (var0.field1436 == class116.field1422) {
+					if (0.0D != (double)var10) {
+						var11 = var5 - var11;
+					} else {
+						var11 += var4;
+					}
+				} else if (var0.field1436 != class116.field1424 && var0.field1436 != class116.field1425) {
+					if (var0.field1436 == class116.field1423) {
+						var11 = var1 - var5;
+						var16 = var0.field1437[var0.method2785() - 1].field1392;
+						var17 = var0.field1437[var0.method2785() - 1].field1393;
+						var3 = var0.field1437[var0.method2785() - 1].field1389;
+						if ((double)var16 != 0.0D) {
+							var3 += var11 * var17 / var16;
+						}
+
+						return var3;
+					}
+				} else {
+					var11 += var4;
+				}
+
+				var3 = MouseHandler.method600(var0, var11);
+				float var18;
+				if (var2 && var0.field1435 == class116.field1425) {
+					var18 = var0.field1437[var0.method2785() - 1].field1389 - var0.field1437[0].field1389;
+					var3 = (float)((double)var3 - (double)var18 * var8);
+				} else if (!var2 && var0.field1436 == class116.field1425) {
+					var18 = var0.field1437[var0.method2785() - 1].field1389 - var0.field1437[0].field1389;
+					var3 = (float)((double)var3 + (double)var18 * var8);
+				}
+
+				return var3;
+			}
 		} else {
-			return 2;
+			return var3;
 		}
 	}
 }

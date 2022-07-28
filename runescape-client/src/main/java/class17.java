@@ -5,55 +5,40 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSessionContext;
 import javax.security.cert.X509Certificate;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("u")
+@ObfuscatedName("y")
 class class17 implements SSLSession {
-	@ObfuscatedName("c")
+	@ObfuscatedName("rj")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Ley;"
 	)
-	@Export("StructDefinition_archive")
-	static AbstractArchive StructDefinition_archive;
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(
-		intValue = 1007360263
-	)
-	static int field93;
-	@ObfuscatedName("ha")
-	@ObfuscatedGetter(
-		intValue = -303525593
-	)
-	static int field90;
+	@Export("guestClanChannel")
+	static ClanChannel guestClanChannel;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Ld;"
+		descriptor = "Lx;"
 	)
 	final class12 this$1;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ld;)V"
+		descriptor = "(Lx;)V"
 	)
 	class17(class12 var1) {
 		this.this$1 = var1;
-	}
-
-	public int getApplicationBufferSize() {
-		return 0;
-	}
-
-	public void invalidate() {
-		throw new UnsupportedOperationException();
 	}
 
 	public long getCreationTime() {
 		throw new UnsupportedOperationException();
 	}
 
-	public byte[] getId() {
-		throw new UnsupportedOperationException();
+	public int getApplicationBufferSize() {
+		return 0;
+	}
+
+	public Principal getPeerPrincipal() throws SSLPeerUnverifiedException {
+		return null;
 	}
 
 	public long getLastAccessedTime() {
@@ -64,23 +49,31 @@ class class17 implements SSLSession {
 		throw new UnsupportedOperationException();
 	}
 
-	public void putValue(String var1, Object var2) {
-		throw new UnsupportedOperationException();
-	}
-
-	public int getPacketBufferSize() {
+	public Principal getLocalPrincipal() {
 		throw new UnsupportedOperationException();
 	}
 
 	public Certificate[] getPeerCertificates() throws SSLPeerUnverifiedException {
-		return this.this$1.field67;
+		return this.this$1.field64;
 	}
 
-	public int getPeerPort() {
-		return 0;
+	public X509Certificate[] getPeerCertificateChain() throws SSLPeerUnverifiedException {
+		return null;
+	}
+
+	public String getCipherSuite() {
+		throw new UnsupportedOperationException();
+	}
+
+	public String getPeerHost() {
+		throw new UnsupportedOperationException();
 	}
 
 	public String getProtocol() {
+		throw new UnsupportedOperationException();
+	}
+
+	public byte[] getId() {
 		throw new UnsupportedOperationException();
 	}
 
@@ -96,68 +89,109 @@ class class17 implements SSLSession {
 		throw new UnsupportedOperationException();
 	}
 
-	public Principal getLocalPrincipal() {
-		throw new UnsupportedOperationException();
-	}
-
 	public boolean isValid() {
 		throw new UnsupportedOperationException();
 	}
 
-	public String getPeerHost() {
+	public void putValue(String var1, Object var2) {
 		throw new UnsupportedOperationException();
-	}
-
-	public X509Certificate[] getPeerCertificateChain() throws SSLPeerUnverifiedException {
-		return null;
 	}
 
 	public void removeValue(String var1) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Principal getPeerPrincipal() throws SSLPeerUnverifiedException {
-		return null;
-	}
-
-	public String getCipherSuite() {
+	public int getPacketBufferSize() {
 		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("x")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1239241420"
-	)
-	protected static final void method292() {
-		class91.clock.mark();
-
-		int var0;
-		for (var0 = 0; var0 < 32; ++var0) {
-			GameEngine.graphicsTickTimes[var0] = 0L;
-		}
-
-		for (var0 = 0; var0 < 32; ++var0) {
-			GameEngine.clientTickTimes[var0] = 0L;
-		}
-
-		GameEngine.gameCyclesToDo = 0;
+	public void invalidate() {
+		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("ik")
+	public int getPeerPort() {
+		return 0;
+	}
+
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "40"
+		descriptor = "(Lci;I)V",
+		garbageValue = "193482070"
 	)
-	static final void method291(int var0) {
-		if (var0 >= 0) {
-			int var1 = Client.menuArguments1[var0];
-			int var2 = Client.menuArguments2[var0];
-			int var3 = Client.menuOpcodes[var0];
-			int var4 = Client.menuIdentifiers[var0];
-			String var5 = Client.menuActions[var0];
-			String var6 = Client.menuTargets[var0];
-			Decimator.menuAction(var1, var2, var3, var4, var5, var6, MouseHandler.MouseHandler_lastPressedX, MouseHandler.MouseHandler_lastPressedY);
+	@Export("runScriptEvent")
+	public static void runScriptEvent(ScriptEvent var0) {
+		class228.runScript(var0, 500000, 475000);
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(II)[B",
+		garbageValue = "-462685190"
+	)
+	@Export("ByteArrayPool_getArray")
+	public static synchronized byte[] ByteArrayPool_getArray(int var0) {
+		return ByteArrayPool.ByteArrayPool_getArrayBool(var0, false);
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-314282579"
+	)
+	static void method262() {
+		Messages.Messages_channels.clear();
+		Messages.Messages_hashTable.clear();
+		Messages.Messages_queue.clear();
+		Messages.Messages_count = 0;
+	}
+
+	@ObfuscatedName("w")
+	public static int method263(long var0) {
+		return (int)(var0 >>> 7 & 127L);
+	}
+
+	@ObfuscatedName("jf")
+	@ObfuscatedSignature(
+		descriptor = "(Lku;IIIIIII)V",
+		garbageValue = "-1374373276"
+	)
+	static final void method261(Widget var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+		if (Client.field562) {
+			Client.alternativeScrollbarWidth = 32;
+		} else {
+			Client.alternativeScrollbarWidth = 0;
 		}
+
+		Client.field562 = false;
+		int var7;
+		if (MouseHandler.MouseHandler_currentButton == 1 || !ObjectSound.mouseCam && MouseHandler.MouseHandler_currentButton == 4) {
+			if (var5 >= var1 && var5 < var1 + 16 && var6 >= var2 && var6 < var2 + 16) {
+				var0.scrollY -= 4;
+				class220.method4529(var0);
+			} else if (var5 >= var1 && var5 < var1 + 16 && var6 >= var3 + var2 - 16 && var6 < var3 + var2) {
+				var0.scrollY += 4;
+				class220.method4529(var0);
+			} else if (var5 >= var1 - Client.alternativeScrollbarWidth && var5 < Client.alternativeScrollbarWidth + var1 + 16 && var6 >= var2 + 16 && var6 < var3 + var2 - 16) {
+				var7 = var3 * (var3 - 32) / var4;
+				if (var7 < 8) {
+					var7 = 8;
+				}
+
+				int var8 = var6 - var2 - 16 - var7 / 2;
+				int var9 = var3 - 32 - var7;
+				var0.scrollY = var8 * (var4 - var3) / var9;
+				class220.method4529(var0);
+				Client.field562 = true;
+			}
+		}
+
+		if (Client.mouseWheelRotation != 0) {
+			var7 = var0.width;
+			if (var5 >= var1 - var7 && var6 >= var2 && var5 < var1 + 16 && var6 <= var3 + var2) {
+				var0.scrollY += Client.mouseWheelRotation * 45;
+				class220.method4529(var0);
+			}
+		}
+
 	}
 }

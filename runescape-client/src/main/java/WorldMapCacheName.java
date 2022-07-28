@@ -1,86 +1,69 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("id")
+@ObfuscatedName("ij")
 @Implements("WorldMapCacheName")
 public class WorldMapCacheName {
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "Lij;"
+	)
+	public static final WorldMapCacheName field2867;
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "Lij;"
+	)
+	public static final WorldMapCacheName field2861;
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Lij;"
+	)
+	public static final WorldMapCacheName field2863;
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(
+		descriptor = "Lij;"
+	)
+	static final WorldMapCacheName field2866;
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lid;"
+		descriptor = "Lij;"
 	)
-	public static final WorldMapCacheName field2768;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Lid;"
+	public static final WorldMapCacheName field2864;
+	@ObfuscatedName("by")
+	@ObfuscatedGetter(
+		intValue = 350469975
 	)
-	public static final WorldMapCacheName field2763;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lid;"
+	static int field2862;
+	@ObfuscatedName("hy")
+	@ObfuscatedGetter(
+		intValue = -1050242269
 	)
-	public static final WorldMapCacheName field2764;
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Lid;"
-	)
-	static final WorldMapCacheName field2765;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Lid;"
-	)
-	public static final WorldMapCacheName field2766;
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "Lpl;"
-	)
-	@Export("leftTitleSprite")
-	static SpritePixels leftTitleSprite;
-	@ObfuscatedName("s")
+	static int field2868;
+	@ObfuscatedName("w")
 	@Export("name")
 	public final String name;
 
 	static {
-		field2768 = new WorldMapCacheName("details");
-		field2763 = new WorldMapCacheName("compositemap");
-		field2764 = new WorldMapCacheName("compositetexture");
-		field2765 = new WorldMapCacheName("area");
-		field2766 = new WorldMapCacheName("labels");
+		field2867 = new WorldMapCacheName("details");
+		field2861 = new WorldMapCacheName("compositemap");
+		field2863 = new WorldMapCacheName("compositetexture");
+		field2866 = new WorldMapCacheName("area");
+		field2864 = new WorldMapCacheName("labels");
 	}
 
 	WorldMapCacheName(String var1) {
 		this.name = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-875853562"
+		descriptor = "(II)I",
+		garbageValue = "-849774060"
 	)
-	public static int method4865(int var0, int var1) {
-		int var2;
-		if (var1 > var0) {
-			var2 = var0;
-			var0 = var1;
-			var1 = var2;
-		}
-
-		while (var1 != 0) {
-			var2 = var0 % var1;
-			var0 = var1;
-			var1 = var2;
-		}
-
-		return var0;
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(III)Z",
-		garbageValue = "985293867"
-	)
-	public static boolean method4864(int var0, int var1) {
-		return (var0 >> var1 + 1 & 1) != 0;
+	static int method5048(int var0) {
+		return (int)((Math.log((double)var0) / Interpreter.field843 - 7.0D) * 256.0D);
 	}
 }
