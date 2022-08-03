@@ -4,74 +4,74 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cp")
+@ObfuscatedName("ci")
 @Implements("ScriptEvent")
 public class ScriptEvent extends Node {
-	@ObfuscatedName("dl")
-	@ObfuscatedSignature(
-		descriptor = "Lfk;"
+	@ObfuscatedName("th")
+	@ObfuscatedGetter(
+		intValue = -2039005153
 	)
-	@Export("js5SocketTask")
-	static Task js5SocketTask;
-	@ObfuscatedName("c")
+	static int field1052;
+	@ObfuscatedName("at")
+	protected static String field1045;
+	@ObfuscatedName("o")
 	@Export("args")
 	Object[] args;
-	@ObfuscatedName("b")
-	@Export("isMouseInputEvent")
-	boolean isMouseInputEvent;
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
+	boolean field1040;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Ljm;"
+		descriptor = "Lku;"
 	)
 	@Export("widget")
 	Widget widget;
-	@ObfuscatedName("m")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -1316811587
+		intValue = -1867407423
 	)
 	@Export("mouseX")
 	int mouseX;
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 429308499
+		intValue = 456579589
 	)
 	@Export("mouseY")
 	int mouseY;
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 2143189111
+		intValue = -1813921471
 	)
 	@Export("opIndex")
 	int opIndex;
-	@ObfuscatedName("j")
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
-		descriptor = "Ljm;"
+		descriptor = "Lku;"
 	)
 	@Export("dragTarget")
 	Widget dragTarget;
-	@ObfuscatedName("w")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 1992981497
+		intValue = 1264194041
 	)
 	@Export("keyTyped")
 	int keyTyped;
-	@ObfuscatedName("n")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 1481039273
+		intValue = 1513519959
 	)
 	@Export("keyPressed")
 	int keyPressed;
-	@ObfuscatedName("r")
+	@ObfuscatedName("a")
 	@Export("targetName")
 	String targetName;
-	@ObfuscatedName("o")
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = 2063557447
+		intValue = 1450692113
 	)
-	int field1018;
-	@ObfuscatedName("v")
+	int field1049;
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -170521561
+		intValue = 1211441165
 	)
 	@Export("type")
 	int type;
@@ -80,93 +80,63 @@ public class ScriptEvent extends Node {
 		this.type = 76;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "([Ljava/lang/Object;B)V",
-		garbageValue = "1"
+		garbageValue = "-107"
 	)
 	@Export("setArgs")
 	public void setArgs(Object[] var1) {
 		this.args = var1;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-1783513885"
+		descriptor = "(IB)V",
+		garbageValue = "92"
 	)
 	@Export("setType")
 	public void setType(int var1) {
 		this.type = var1;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ldh;",
-		garbageValue = "665811152"
+		descriptor = "(II)I",
+		garbageValue = "-322270617"
 	)
-	static class114 method2154(int var0) {
-		class114 var1 = (class114)class130.findEnumerated(LoginScreenAnimation.method2251(), var0);
-		if (var1 == null) {
-			var1 = class114.field1390;
-		}
-
-		return var1;
+	public static int method2168(int var0) {
+		return class271.field3179[var0];
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("ii")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-37"
+		descriptor = "(I)V",
+		garbageValue = "8074476"
 	)
-	static final void method2152() {
-		Object var10000 = null;
-		String var0 = "Your friend list is full. Max of 200 for free users, and 400 for members";
-		class194.addGameMessage(30, "", var0);
-	}
+	static final void method2169() {
+		int var0 = Language.menuX;
+		int var1 = UrlRequest.menuY;
+		int var2 = class402.menuWidth;
+		int var3 = class321.menuHeight;
+		int var4 = 6116423;
+		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var2, var3, var4);
+		Rasterizer2D.Rasterizer2D_fillRectangle(var0 + 1, var1 + 1, var2 - 2, 16, 0);
+		Rasterizer2D.Rasterizer2D_drawRectangle(var0 + 1, var1 + 18, var2 - 2, var3 - 19, 0);
+		class116.fontBold12.draw("Choose Option", var0 + 3, var1 + 14, var4, -1);
+		int var5 = MouseHandler.MouseHandler_x;
+		int var6 = MouseHandler.MouseHandler_y;
 
-	@ObfuscatedName("jt")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIIIB)V",
-		garbageValue = "95"
-	)
-	static final void method2147(int var0, int var1, int var2, int var3, int var4, int var5) {
-		int var6 = var2 - var0;
-		int var7 = var3 - var1;
-		int var8 = var6 >= 0 ? var6 : -var6;
-		int var9 = var7 >= 0 ? var7 : -var7;
-		int var10 = var8;
-		if (var8 < var9) {
-			var10 = var9;
-		}
-
-		if (var10 != 0) {
-			int var11 = (var6 << 16) / var10;
-			int var12 = (var7 << 16) / var10;
-			if (var12 <= var11) {
-				var11 = -var11;
-			} else {
-				var12 = -var12;
+		for (int var7 = 0; var7 < Client.menuOptionsCount; ++var7) {
+			int var8 = (Client.menuOptionsCount - 1 - var7) * 15 + var1 + 31;
+			int var9 = 16777215;
+			if (var5 > var0 && var5 < var2 + var0 && var6 > var8 - 13 && var6 < var8 + 3) {
+				var9 = 16776960;
 			}
 
-			int var13 = var5 * var12 >> 17;
-			int var14 = var5 * var12 + 1 >> 17;
-			int var15 = var5 * var11 >> 17;
-			int var16 = var5 * var11 + 1 >> 17;
-			var0 -= Rasterizer2D.Rasterizer2D_xClipStart;
-			var1 -= Rasterizer2D.Rasterizer2D_yClipStart;
-			int var17 = var0 + var13;
-			int var18 = var0 - var14;
-			int var19 = var0 + var6 - var14;
-			int var20 = var0 + var6 + var13;
-			int var21 = var15 + var1;
-			int var22 = var1 - var16;
-			int var23 = var7 + var1 - var16;
-			int var24 = var7 + var15 + var1;
-			Rasterizer3D.method3853(var17, var18, var19);
-			Rasterizer3D.method3856(var21, var22, var23, var17, var18, var19, var4);
-			Rasterizer3D.method3853(var17, var19, var20);
-			Rasterizer3D.method3856(var21, var23, var24, var17, var19, var20, var4);
+			class116.fontBold12.draw(ClanChannelMember.method2906(var7), var0 + 3, var8, var9, 0);
 		}
+
+		class28.method387(Language.menuX, UrlRequest.menuY, class402.menuWidth, class321.menuHeight);
 	}
 }

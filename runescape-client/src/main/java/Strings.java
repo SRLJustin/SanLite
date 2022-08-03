@@ -1,102 +1,122 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("kl")
+@ObfuscatedName("kn")
 @Implements("Strings")
 public class Strings {
-	@ObfuscatedName("bq")
-	public static String field3523;
-	@ObfuscatedName("cz")
-	public static String field3562;
-	@ObfuscatedName("jb")
-	public static String field3747;
-	@ObfuscatedName("jm")
-	public static String field3551;
-	@ObfuscatedName("je")
-	public static String field3749;
+	@ObfuscatedName("cl")
+	public static String field3728;
+	@ObfuscatedName("ec")
+	public static String field3725;
+	@ObfuscatedName("ku")
+	public static String field3913;
+	@ObfuscatedName("kv")
+	public static String field3887;
+	@ObfuscatedName("kg")
+	public static String field3863;
 
 	static {
-		field3523 = "Please visit the support page for assistance.";
-		field3562 = "Please visit the support page for assistance.";
-		field3747 = "";
-		field3551 = "Page has opened in a new window.";
-		field3749 = "(Please check your popup blocker.)";
+		field3728 = "Please visit the support page for assistance.";
+		field3725 = "Please visit the support page for assistance.";
+		field3913 = "";
+		field3887 = "Page has opened in a new window.";
+		field3863 = "(Please check your popup blocker.)";
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(B)[Lnt;",
-		garbageValue = "82"
+		descriptor = "(Ljava/lang/CharSequence;IZI)I",
+		garbageValue = "436171263"
 	)
-	static class369[] method5508() {
-		return new class369[]{class369.field4220, class369.field4216, class369.field4215, class369.field4214};
-	}
+	public static int method5775(CharSequence var0, int var1, boolean var2) {
+		if (var1 >= 2 && var1 <= 36) {
+			boolean var3 = false;
+			boolean var4 = false;
+			int var5 = 0;
+			int var6 = var0.length();
 
-	@ObfuscatedName("a")
-	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "504993723"
-	)
-	static int method5510(int var0, Script var1, boolean var2) {
-		Widget var7;
-		if (var0 != ScriptOpcodes.CC_CALLONRESIZE && var0 != ScriptOpcodes.IF_CALLONRESIZE) {
-			int var4;
-			if (var0 == ScriptOpcodes.CC_TRIGGEROP) {
-				var7 = var2 ? WorldMapArea.scriptDotWidget : Messages.scriptActiveWidget;
-				var4 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				if (var4 >= 1 && var4 <= 10) {
-					class92 var8 = new class92(var4, var7.id, var7.childIndex, var7.itemId);
-					Interpreter.field817.add(var8);
-					return 1;
-				} else {
-					throw new RuntimeException();
+			for (int var7 = 0; var7 < var6; ++var7) {
+				char var8 = var0.charAt(var7);
+				if (var7 == 0) {
+					if (var8 == '-') {
+						var3 = true;
+						continue;
+					}
+
+					if (var8 == '+') {
+						continue;
+					}
 				}
-			} else if (var0 == ScriptOpcodes.IF_TRIGGEROP) {
-				IsaacCipher.Interpreter_intStackSize -= 3;
-				int var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-				var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-				int var5 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 2];
-				if (var5 >= 1 && var5 <= 10) {
-					class92 var6 = new class92(var5, var3, var4, ChatChannel.getWidget(var3).itemId);
-					Interpreter.field817.add(var6);
-					return 1;
+
+				int var10;
+				if (var8 >= '0' && var8 <= '9') {
+					var10 = var8 - '0';
+				} else if (var8 >= 'A' && var8 <= 'Z') {
+					var10 = var8 - '7';
 				} else {
-					throw new RuntimeException();
+					if (var8 < 'a' || var8 > 'z') {
+						throw new NumberFormatException();
+					}
+
+					var10 = var8 - 'W';
 				}
-			} else {
-				return 2;
+
+				if (var10 >= var1) {
+					throw new NumberFormatException();
+				}
+
+				if (var3) {
+					var10 = -var10;
+				}
+
+				int var9 = var5 * var1 + var10;
+				if (var9 / var1 != var5) {
+					throw new NumberFormatException();
+				}
+
+				var5 = var9;
+				var4 = true;
 			}
-		} else if (Interpreter.field815 >= 10) {
-			throw new RuntimeException();
+
+			if (!var4) {
+				throw new NumberFormatException();
+			} else {
+				return var5;
+			}
 		} else {
-			if (var0 >= 2000) {
-				var7 = ChatChannel.getWidget(Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize]);
-			} else {
-				var7 = var2 ? WorldMapArea.scriptDotWidget : Messages.scriptActiveWidget;
-			}
-
-			if (var7.onResize == null) {
-				return 0;
-			} else {
-				ScriptEvent var9 = new ScriptEvent();
-				var9.widget = var7;
-				var9.args = var7.onResize;
-				var9.field1018 = Interpreter.field815 + 1;
-				Client.scriptEvents.addFirst(var9);
-				return 1;
-			}
+			throw new IllegalArgumentException("" + var1);
 		}
 	}
 
-	@ObfuscatedName("ll")
+	@ObfuscatedName("gt")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-151275200"
+		descriptor = "(Lcz;III)V",
+		garbageValue = "-1228075316"
 	)
-	static final void method5509() {
-		Client.field673 = Client.cycleCntr;
-		class121.field1470 = true;
+	@Export("performPlayerAnimation")
+	static void performPlayerAnimation(Player var0, int var1, int var2) {
+		if (var0.sequence == var1 && var1 != -1) {
+			int var3 = class14.SequenceDefinition_get(var1).field2175;
+			if (var3 == 1) {
+				var0.sequenceFrame = 0;
+				var0.sequenceFrameCycle = 0;
+				var0.sequenceDelay = var2;
+				var0.field1174 = 0;
+			}
+
+			if (var3 == 2) {
+				var0.field1174 = 0;
+			}
+		} else if (var1 == -1 || var0.sequence == -1 || class14.SequenceDefinition_get(var1).field2168 >= class14.SequenceDefinition_get(var0.sequence).field2168) {
+			var0.sequence = var1;
+			var0.sequenceFrame = 0;
+			var0.sequenceFrameCycle = 0;
+			var0.sequenceDelay = var2;
+			var0.field1174 = 0;
+			var0.field1203 = var0.pathLength;
+		}
+
 	}
 }

@@ -4,75 +4,81 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cg")
+@ObfuscatedName("ck")
 @Implements("PendingSpawn")
 public final class PendingSpawn extends Node {
-	@ObfuscatedName("c")
+	@ObfuscatedName("jj")
 	@ObfuscatedGetter(
-		intValue = 747226221
+		intValue = -1558478413
+	)
+	@Export("cameraYaw")
+	static int cameraYaw;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = -935095583
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -1980117299
+		intValue = 2082390373
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -554114639
+		intValue = 2034650821
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("m")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 1191230763
+		intValue = -749667645
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -748187349
+		intValue = 698731611
 	)
 	@Export("objectId")
 	int objectId;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = 1874163139
-	)
-	int field1087;
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(
-		intValue = 474042509
-	)
-	int field1080;
 	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -208489985
+		intValue = 1631594257
+	)
+	int field1122;
+	@ObfuscatedName("z")
+	@ObfuscatedGetter(
+		intValue = -1160898001
+	)
+	int field1120;
+	@ObfuscatedName("j")
+	@ObfuscatedGetter(
+		intValue = -681056131
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("n")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -104687109
+		intValue = 1754437145
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("r")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = 753624769
+		intValue = -1874228033
 	)
-	int field1075;
-	@ObfuscatedName("o")
+	int field1123;
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = -2017319267
+		intValue = 701132155
 	)
 	@Export("delay")
 	int delay;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -1649420319
+		intValue = -490880459
 	)
 	@Export("hitpoints")
 	int hitpoints;
@@ -82,101 +88,39 @@ public final class PendingSpawn extends Node {
 		this.hitpoints = -1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "([BIIB)Ljava/lang/String;",
-		garbageValue = "-94"
+		descriptor = "(Llc;Llc;B)Z",
+		garbageValue = "45"
 	)
-	public static String method2224(byte[] var0, int var1, int var2) {
-		StringBuilder var3 = new StringBuilder();
-
-		for (int var4 = var1; var4 < var2 + var1; var4 += 3) {
-			int var5 = var0[var4] & 255;
-			var3.append(class329.field4005[var5 >>> 2]);
-			if (var4 < var2 - 1) {
-				int var6 = var0[var4 + 1] & 255;
-				var3.append(class329.field4005[(var5 & 3) << 4 | var6 >>> 4]);
-				if (var4 < var2 - 2) {
-					int var7 = var0[var4 + 2] & 255;
-					var3.append(class329.field4005[(var6 & 15) << 2 | var7 >>> 6]).append(class329.field4005[var7 & 63]);
-				} else {
-					var3.append(class329.field4005[(var6 & 15) << 2]).append("=");
-				}
-			} else {
-				var3.append(class329.field4005[(var5 & 3) << 4]).append("==");
-			}
-		}
-
-		return var3.toString();
-	}
-
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-2136768167"
-	)
-	static void method2225(int var0, int var1) {
-		long var2 = (long)((var0 << 16) + var1);
-		NetFileRequest var4 = (NetFileRequest)NetCache.NetCache_pendingWrites.get(var2);
-		if (var4 != null) {
-			NetCache.NetCache_pendingWritesQueue.addLast(var4);
-		}
-	}
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "([BIII)Ljava/lang/String;",
-		garbageValue = "-373054385"
-	)
-	@Export("decodeStringCp1252")
-	public static String decodeStringCp1252(byte[] var0, int var1, int var2) {
-		char[] var3 = new char[var2];
-		int var4 = 0;
-
-		for (int var5 = 0; var5 < var2; ++var5) {
-			int var6 = var0[var5 + var1] & 255;
-			if (var6 != 0) {
-				if (var6 >= 128 && var6 < 160) {
-					char var7 = class328.cp1252AsciiExtension[var6 - 128];
-					if (var7 == 0) {
-						var7 = '?';
-					}
-
-					var6 = var7;
-				}
-
-				var3[var4++] = (char)var6;
-			}
-		}
-
-		return new String(var3, 0, var4);
-	}
-
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "2133440883"
-	)
-	static final int method2223(int var0, int var1) {
-		if (var0 == -2) {
-			return 12345678;
-		} else if (var0 == -1) {
-			if (var1 < 2) {
-				var1 = 2;
-			} else if (var1 > 126) {
-				var1 = 126;
-			}
-
-			return var1;
+	public static boolean method2250(AbstractArchive var0, AbstractArchive var1) {
+		WorldMapElement.WorldMapElement_archive = var1;
+		if (!var0.isFullyLoaded()) {
+			return false;
 		} else {
-			var1 = (var0 & 127) * var1 / 128;
-			if (var1 < 2) {
-				var1 = 2;
-			} else if (var1 > 126) {
-				var1 = 126;
+			class432.WorldMapElement_count = var0.getGroupFileCount(35);
+			WorldMapElement.WorldMapElement_cached = new WorldMapElement[class432.WorldMapElement_count];
+
+			for (int var2 = 0; var2 < class432.WorldMapElement_count; ++var2) {
+				byte[] var3 = var0.takeFile(35, var2);
+				WorldMapElement.WorldMapElement_cached[var2] = new WorldMapElement(var2);
+				if (var3 != null) {
+					WorldMapElement.WorldMapElement_cached[var2].decode(new Buffer(var3));
+					WorldMapElement.WorldMapElement_cached[var2].method3380();
+				}
 			}
 
-			return (var0 & 65408) + var1;
+			return true;
 		}
+	}
+
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
+		garbageValue = "-340952229"
+	)
+	static void method2249(String var0, String var1, String var2) {
+		UserComparator6.method2701(7);
+		HealthBarUpdate.setLoginResponseString(var0, var1, var2);
 	}
 }

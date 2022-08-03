@@ -4,24 +4,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fu")
+@ObfuscatedName("fw")
 @Implements("InvDefinition")
 public class InvDefinition extends DualNode {
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Llc;"
 	)
 	@Export("InvDefinition_archive")
-	public static AbstractArchive InvDefinition_archive;
-	@ObfuscatedName("b")
+	static AbstractArchive InvDefinition_archive;
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lia;"
 	)
 	@Export("InvDefinition_cached")
 	static EvictingDualNodeHashTable InvDefinition_cached;
-	@ObfuscatedName("p")
+	@ObfuscatedName("ep")
+	@ObfuscatedSignature(
+		descriptor = "Llu;"
+	)
+	@Export("archive14")
+	static Archive archive14;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -1155784087
+		intValue = -1151809051
 	)
 	@Export("size")
 	public int size;
@@ -34,10 +40,10 @@ public class InvDefinition extends DualNode {
 		this.size = 0;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "607571940"
+		descriptor = "(Lqw;B)V",
+		garbageValue = "98"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -51,10 +57,10 @@ public class InvDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;IB)V",
-		garbageValue = "1"
+		descriptor = "(Lqw;IB)V",
+		garbageValue = "91"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -64,12 +70,39 @@ public class InvDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("ir")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "2"
+		descriptor = "(III)Z",
+		garbageValue = "852275444"
 	)
-	static boolean method3157(int var0) {
-		return var0 == 57 || var0 == 58 || var0 == 1007 || var0 == 25 || var0 == 30;
+	static final boolean method3337(int var0, int var1) {
+		ObjectComposition var2 = WorldMapDecoration.getObjectDefinition(var0);
+		if (var1 == 11) {
+			var1 = 10;
+		}
+
+		if (var1 >= 5 && var1 <= 8) {
+			var1 = 4;
+		}
+
+		return var2.method3643(var1);
+	}
+
+	@ObfuscatedName("gi")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "24"
+	)
+	static final void method3336() {
+		int var0 = Players.Players_count;
+		int[] var1 = Players.Players_indices;
+
+		for (int var2 = 0; var2 < var0; ++var2) {
+			Player var3 = Client.players[var1[var2]];
+			if (var3 != null) {
+				AbstractByteArrayCopier.updateActorSequence(var3, 1);
+			}
+		}
+
 	}
 }

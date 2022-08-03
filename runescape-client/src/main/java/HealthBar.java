@@ -1,42 +1,39 @@
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cs")
+@ObfuscatedName("cw")
 @Implements("HealthBar")
 public class HealthBar extends Node {
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -1200843619
-	)
-	static int field1209;
-	@ObfuscatedName("p")
+	@ObfuscatedName("um")
+	static Iterator field1255;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lfd;"
+		descriptor = "Lfi;"
 	)
 	@Export("definition")
 	HealthBarDefinition definition;
-	@ObfuscatedName("m")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Lln;"
 	)
 	@Export("updates")
 	IterableNodeDeque updates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfd;)V"
+		descriptor = "(Lfi;)V"
 	)
 	HealthBar(HealthBarDefinition var1) {
 		this.updates = new IterableNodeDeque();
 		this.definition = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "(IIIII)V",
-		garbageValue = "2125258753"
+		garbageValue = "-548199087"
 	)
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
@@ -69,10 +66,10 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lcn;",
-		garbageValue = "849241629"
+		descriptor = "(IB)Lca;",
+		garbageValue = "3"
 	)
 	@Export("get")
 	HealthBarUpdate get(int var1) {
@@ -83,7 +80,7 @@ public class HealthBar extends Node {
 				var2 = var3;
 			}
 
-			if (this.definition.int5 + var2.cycle + var2.cycleOffset > var1) {
+			if (this.definition.int5 + var2.cycleOffset + var2.cycle > var1) {
 				return var2;
 			} else {
 				var2.remove();
@@ -94,61 +91,29 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "80"
+		garbageValue = "0"
 	)
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method5915();
+		return this.updates.method6165();
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "2114195084"
+		descriptor = "(Lku;I)I",
+		garbageValue = "410728992"
 	)
-	static void method2311() {
-		if (Login.Login_username == null || Login.Login_username.length() <= 0) {
-			if (SecureRandomFuture.clientPreferences.rememberedUsername != null) {
-				Login.Login_username = SecureRandomFuture.clientPreferences.rememberedUsername;
-				Client.Login_isUsernameRemembered = true;
-			} else {
-				Client.Login_isUsernameRemembered = false;
-			}
-
-		}
-	}
-
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(CI)C",
-		garbageValue = "2115145690"
-	)
-	static char method2313(char var0) {
-		return var0 != 181 && var0 != 402 ? Character.toTitleCase(var0) : var0;
-	}
-
-	@ObfuscatedName("iq")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "517043711"
-	)
-	@Export("Widget_runOnTargetLeave")
-	static void Widget_runOnTargetLeave() {
-		if (Client.isSpellSelected) {
-			Widget var0 = class126.getWidgetChild(class20.selectedSpellWidget, Client.selectedSpellChildIndex);
-			if (var0 != null && var0.onTargetLeave != null) {
-				ScriptEvent var1 = new ScriptEvent();
-				var1.widget = var0;
-				var1.args = var0.onTargetLeave;
-				class285.runScriptEvent(var1);
-			}
-
-			Client.field633 = -1;
-			Client.isSpellSelected = false;
-			SecureRandomCallable.invalidateWidget(var0);
+	static int method2410(Widget var0) {
+		if (var0.type != 11) {
+			Interpreter.Interpreter_stringStack[GrandExchangeOfferAgeComparator.Interpreter_stringStackSize - 1] = "";
+			return 1;
+		} else {
+			String var1 = Interpreter.Interpreter_stringStack[--GrandExchangeOfferAgeComparator.Interpreter_stringStackSize];
+			Interpreter.Interpreter_stringStack[++GrandExchangeOfferAgeComparator.Interpreter_stringStackSize - 1] = var0.method5642(var1);
+			return 1;
 		}
 	}
 }

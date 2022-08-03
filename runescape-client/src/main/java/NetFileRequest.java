@@ -1,70 +1,79 @@
+import java.io.File;
+import java.io.RandomAccessFile;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("kx")
+@ObfuscatedName("lz")
 @Implements("NetFileRequest")
 public class NetFileRequest extends DualNode {
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
+	@Export("Tiles_hue")
+	static int[] Tiles_hue;
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
+		descriptor = "Llu;"
 	)
 	@Export("archive")
-	Archive archive;
-	@ObfuscatedName("b")
+	public Archive archive;
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -341474055
+		intValue = -1369001765
 	)
 	@Export("crc")
-	int crc;
-	@ObfuscatedName("p")
+	public int crc;
+	@ObfuscatedName("f")
 	@Export("padding")
-	byte padding;
+	public byte padding;
 
 	NetFileRequest() {
 	}
 
-	@ObfuscatedName("d")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZB)I",
-		garbageValue = "-77"
+		descriptor = "(Ljava/lang/String;I)Ljava/io/File;",
+		garbageValue = "-681286598"
 	)
-	static int method5588(int var0, Script var1, boolean var2) {
-		Widget var3 = var2 ? WorldMapArea.scriptDotWidget : Messages.scriptActiveWidget;
-		if (var0 == ScriptOpcodes.CC_GETX) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.x;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETY) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.y;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETWIDTH) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.width;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETHEIGHT) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.height;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETHIDE) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.isHidden ? 1 : 0;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETLAYER) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.parentId;
-			return 1;
+	@Export("getFile")
+	public static File getFile(String var0) {
+		if (!FileSystem.FileSystem_hasPermissions) {
+			throw new RuntimeException("");
 		} else {
-			return 2;
-		}
-	}
+			File var1 = (File)FileSystem.FileSystem_cacheFiles.get(var0);
+			if (var1 != null) {
+				return var1;
+			} else {
+				File var2 = new File(FileSystem.FileSystem_cacheDir, var0);
+				RandomAccessFile var3 = null;
 
-	@ObfuscatedName("fv")
-	@ObfuscatedSignature(
-		descriptor = "(Lkz;Ljava/lang/String;I)V",
-		garbageValue = "-1653414496"
-	)
-	static void method5587(Archive var0, String var1) {
-		ArchiveLoader var2 = new ArchiveLoader(var0, var1);
-		Client.archiveLoaders.add(var2);
-		Client.field753 += var2.groupCount;
+				try {
+					File var4 = new File(var2.getParent());
+					if (!var4.exists()) {
+						throw new RuntimeException("");
+					} else {
+						var3 = new RandomAccessFile(var2, "rw");
+						int var5 = var3.read();
+						var3.seek(0L);
+						var3.write(var5);
+						var3.seek(0L);
+						var3.close();
+						FileSystem.FileSystem_cacheFiles.put(var0, var2);
+						return var2;
+					}
+				} catch (Exception var8) {
+					try {
+						if (var3 != null) {
+							var3.close();
+							var3 = null;
+						}
+					} catch (Exception var7) {
+					}
+
+					throw new RuntimeException();
+				}
+			}
+		}
 	}
 }

@@ -1,31 +1,38 @@
+import java.security.SecureRandom;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jr")
+@ObfuscatedName("kr")
 @Implements("SpriteMask")
 public class SpriteMask extends DualNode {
-	@ObfuscatedName("s")
-	@Export("PcmPlayer_stereo")
-	public static boolean PcmPlayer_stereo;
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "Lqj;"
+	)
+	@Export("leftTitleSprite")
+	static SpritePixels leftTitleSprite;
+	@ObfuscatedName("gr")
+	@Export("secureRandom")
+	static SecureRandom secureRandom;
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -1287182683
+		intValue = -2024477891
 	)
 	@Export("width")
 	public final int width;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 511314941
+		intValue = -1726190535
 	)
 	@Export("height")
 	public final int height;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@Export("xWidths")
 	public final int[] xWidths;
-	@ObfuscatedName("m")
+	@ObfuscatedName("u")
 	@Export("xStarts")
 	public final int[] xStarts;
 
@@ -36,10 +43,10 @@ public class SpriteMask extends DualNode {
 		this.xStarts = var4;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(III)Z",
-		garbageValue = "-520538241"
+		descriptor = "(IIB)Z",
+		garbageValue = "-40"
 	)
 	@Export("contains")
 	public boolean contains(int var1, int var2) {

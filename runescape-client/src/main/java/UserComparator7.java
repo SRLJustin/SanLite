@@ -1,36 +1,14 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cm")
+@ObfuscatedName("dc")
 @Implements("UserComparator7")
 public class UserComparator7 extends AbstractUserComparator {
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		longValue = 1289611995135137433L
-	)
-	public static long field1319;
-	@ObfuscatedName("hx")
-	@ObfuscatedSignature(
-		descriptor = "[Lpl;"
-	)
-	@Export("mapMarkerSprites")
-	static SpritePixels[] mapMarkerSprites;
-	@ObfuscatedName("iq")
-	@ObfuscatedGetter(
-		intValue = -427505933
-	)
-	@Export("cameraX")
-	static int cameraX;
-	@ObfuscatedName("in")
-	@ObfuscatedGetter(
-		intValue = 1941000053
-	)
-	@Export("cameraPitch")
-	static int cameraPitch;
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
+	static int[] field1366;
+	@ObfuscatedName("o")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -38,10 +16,10 @@ public class UserComparator7 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lmp;Lmp;I)I",
-		garbageValue = "742897399"
+		descriptor = "(Lnh;Lnh;B)I",
+		garbageValue = "1"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -56,17 +34,15 @@ public class UserComparator7 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("hj")
+	@ObfuscatedName("hk")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1366394197"
+		descriptor = "(B)V",
+		garbageValue = "25"
 	)
-	static final int method2518() {
-		if (SecureRandomFuture.clientPreferences.roofsHidden) {
-			return class20.Client_plane;
-		} else {
-			int var0 = FaceNormal.getTileHeight(cameraX, UserComparator10.cameraZ, class20.Client_plane);
-			return var0 - AbstractByteArrayCopier.cameraY < 800 && (Tiles.Tiles_renderFlags[class20.Client_plane][cameraX >> 7][UserComparator10.cameraZ >> 7] & 4) != 0 ? class20.Client_plane : 3;
+	static void method2670() {
+		if (Client.renderSelf) {
+			Tile.addPlayerToScene(class28.localPlayer, false);
 		}
+
 	}
 }

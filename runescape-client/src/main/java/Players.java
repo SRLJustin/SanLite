@@ -1,87 +1,75 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringReader;
+import java.io.StringWriter;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cw")
+@ObfuscatedName("cu")
 @Implements("Players")
 public class Players {
-	@ObfuscatedName("qa")
+	@ObfuscatedName("f")
+	static byte[] field1293;
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "[Lgl;"
 	)
-	@Export("friendsChatManager")
-	static FriendsChatManager friendsChatManager;
-	@ObfuscatedName("p")
-	static byte[] field1243;
-	@ObfuscatedName("m")
+	static class192[] field1294;
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "[Lgj;"
+		descriptor = "[Lqw;"
 	)
-	static class185[] field1246;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "[Lpi;"
-	)
-	static Buffer[] field1248;
-	@ObfuscatedName("s")
+	static Buffer[] field1295;
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 60233761
+		intValue = -568075581
 	)
 	@Export("Players_count")
 	static int Players_count;
-	@ObfuscatedName("j")
+	@ObfuscatedName("z")
 	@Export("Players_indices")
 	static int[] Players_indices;
-	@ObfuscatedName("w")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -1857354621
+		intValue = -1632866083
 	)
 	@Export("Players_emptyIdxCount")
 	static int Players_emptyIdxCount;
-	@ObfuscatedName("n")
+	@ObfuscatedName("h")
 	@Export("Players_emptyIndices")
 	static int[] Players_emptyIndices;
-	@ObfuscatedName("r")
+	@ObfuscatedName("a")
 	@Export("Players_regions")
 	static int[] Players_regions;
-	@ObfuscatedName("o")
+	@ObfuscatedName("d")
 	@Export("Players_orientations")
 	static int[] Players_orientations;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@Export("Players_targetIndices")
 	static int[] Players_targetIndices;
-	@ObfuscatedName("d")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = 1591161311
+		intValue = 999900845
 	)
 	@Export("Players_pendingUpdateCount")
 	static int Players_pendingUpdateCount;
-	@ObfuscatedName("h")
+	@ObfuscatedName("g")
 	@Export("Players_pendingUpdateIndices")
 	static int[] Players_pendingUpdateIndices;
-	@ObfuscatedName("g")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lpi;"
+		descriptor = "Lqw;"
 	)
-	static Buffer field1257;
-	@ObfuscatedName("cb")
-	@ObfuscatedGetter(
-		intValue = 1838137179
-	)
-	public static int field1247;
-	@ObfuscatedName("el")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive11")
-	static Archive archive11;
+	static Buffer field1300;
 
 	static {
-		field1243 = new byte[2048];
-		field1246 = new class185[2048];
-		field1248 = new Buffer[2048];
+		field1293 = new byte[2048];
+		field1294 = new class192[2048];
+		field1295 = new Buffer[2048];
 		Players_count = 0;
 		Players_indices = new int[2048];
 		Players_emptyIdxCount = 0;
@@ -91,28 +79,59 @@ public class Players {
 		Players_targetIndices = new int[2048];
 		Players_pendingUpdateCount = 0;
 		Players_pendingUpdateIndices = new int[2048];
-		field1257 = new Buffer(new byte[5000]);
+		field1300 = new Buffer(new byte[5000]);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;Ljava/lang/String;Ljava/lang/String;IZI)V",
-		garbageValue = "2062230724"
+		descriptor = "(Ljava/lang/Throwable;I)Ljava/lang/String;",
+		garbageValue = "-2131774965"
 	)
-	public static void method2382(AbstractArchive var0, String var1, String var2, int var3, boolean var4) {
-		int var5 = var0.getGroupId(var1);
-		int var6 = var0.getFileId(var5, var2);
-		NetSocket.method3118(var0, var5, var6, var3, var4);
-	}
+	static String method2497(Throwable var0) throws IOException {
+		String var1;
+		if (var0 instanceof RunException) {
+			RunException var2 = (RunException)var0;
+			var1 = var2.message + " | ";
+			var0 = var2.throwable;
+		} else {
+			var1 = "";
+		}
 
-	@ObfuscatedName("kz")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-733179789"
-	)
-	static final void method2383(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 127);
-		SecureRandomFuture.clientPreferences.areaSoundEffectsVolume = var0;
-		class127.savePreferences();
+		StringWriter var12 = new StringWriter();
+		PrintWriter var3 = new PrintWriter(var12);
+		var0.printStackTrace(var3);
+		var3.close();
+		String var4 = var12.toString();
+		BufferedReader var5 = new BufferedReader(new StringReader(var4));
+		String var6 = var5.readLine();
+
+		while (true) {
+			while (true) {
+				String var7 = var5.readLine();
+				if (var7 == null) {
+					var1 = var1 + "| " + var6;
+					return var1;
+				}
+
+				int var8 = var7.indexOf(40);
+				int var9 = var7.indexOf(41, var8 + 1);
+				if (var8 >= 0 && var9 >= 0) {
+					String var10 = var7.substring(var8 + 1, var9);
+					int var11 = var10.indexOf(".java:");
+					if (var11 >= 0) {
+						var10 = var10.substring(0, var11) + var10.substring(var11 + 5);
+						var1 = var1 + var10 + ' ';
+						continue;
+					}
+
+					var7 = var7.substring(0, var8);
+				}
+
+				var7 = var7.trim();
+				var7 = var7.substring(var7.lastIndexOf(32) + 1);
+				var7 = var7.substring(var7.lastIndexOf(9) + 1);
+				var1 = var1 + var7 + ' ';
+			}
+		}
 	}
 }
