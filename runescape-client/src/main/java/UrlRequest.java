@@ -1,25 +1,37 @@
 import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cf")
+@ObfuscatedName("cb")
 @Implements("UrlRequest")
 public class UrlRequest {
-	@ObfuscatedName("ce")
-	@ObfuscatedSignature(
-		descriptor = "Lpa;"
+	@ObfuscatedName("tz")
+	@ObfuscatedGetter(
+		intValue = 99769733
 	)
-	@Export("worldSelectRightSprite")
-	static IndexedSprite worldSelectRightSprite;
-	@ObfuscatedName("c")
+	static int field1350;
+	@ObfuscatedName("lb")
+	@ObfuscatedSignature(
+		descriptor = "Lhm;"
+	)
+	@Export("textureProvider")
+	static TextureProvider textureProvider;
+	@ObfuscatedName("mo")
+	@ObfuscatedGetter(
+		intValue = -1080470825
+	)
+	@Export("menuY")
+	static int menuY;
+	@ObfuscatedName("o")
 	@Export("url")
 	final URL url;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@Export("isDone0")
 	volatile boolean isDone0;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@Export("response0")
 	volatile byte[] response0;
 
@@ -27,103 +39,42 @@ public class UrlRequest {
 		this.url = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-11682805"
+		descriptor = "(B)Z",
+		garbageValue = "63"
 	)
 	@Export("isDone")
 	public boolean isDone() {
 		return this.isDone0;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
 		descriptor = "(I)[B",
-		garbageValue = "309471456"
+		garbageValue = "-1645564466"
 	)
 	@Export("getResponse")
 	public byte[] getResponse() {
 		return this.response0;
 	}
 
-	@ObfuscatedName("fc")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1703812589"
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-1459888208"
 	)
-	static final void method2496() {
-		class364.method6623();
-		FloorUnderlayDefinition.FloorUnderlayDefinition_cached.clear();
-		ScriptFrame.method1110();
-		UserComparator5.method2524();
-		NPCComposition.NpcDefinition_cached.clear();
-		NPCComposition.NpcDefinition_cachedModels.clear();
-		ItemComposition.ItemDefinition_cached.clear();
-		ItemComposition.ItemDefinition_cachedModels.clear();
-		ItemComposition.ItemDefinition_cachedSprites.clear();
-		SequenceDefinition.SequenceDefinition_cached.clear();
-		SequenceDefinition.SequenceDefinition_cachedFrames.clear();
-		SequenceDefinition.SequenceDefinition_cachedModel.clear();
-		InterfaceParent.method2143();
-		class1.method8();
-		VarpDefinition.VarpDefinition_cached.clear();
-		AbstractSocket.HitSplatDefinition_cachedSprites.method7216();
-		Ignored.Ignored_cached.method7216();
-		ObjectSound.method1796();
-		HealthBarDefinition.HealthBarDefinition_cached.clear();
-		HealthBarDefinition.HealthBarDefinition_cachedSprites.clear();
-		ObjectComposition.method3542();
-		ParamComposition.ParamComposition_cached.clear();
-		WorldMapElement.WorldMapElement_cachedSprites.clear();
-		PlayerComposition.PlayerComposition_cachedModels.clear();
-		WorldMapSection2.method4417();
-		((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).clear();
-		Script.Script_cached.clear();
-		class115.archive0.clearFiles();
-		class9.archive1.clearFiles();
-		class19.archive3.clearFiles();
-		KeyHandler.archive4.clearFiles();
-		class140.archive5.clearFiles();
-		WorldMapScaleHandler.archive6.clearFiles();
-		class115.archive7.clearFiles();
-		UserComparator6.archive8.clearFiles();
-		NetSocket.archive9.clearFiles();
-		class257.archive10.clearFiles();
-		Players.archive11.clearFiles();
-		TaskHandler.archive12.clearFiles();
+	public String method2638() {
+		return this.url.toString();
 	}
 
-	@ObfuscatedName("hk")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1546953811"
+		descriptor = "(CI)Z",
+		garbageValue = "-407109329"
 	)
-	static void method2489() {
-		Client.menuOptionsCount = 0;
-		Client.isMenuOpen = false;
-	}
-
-	@ObfuscatedName("iz")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "-101999626"
-	)
-	@Export("selectSpell")
-	static void selectSpell(int var0, int var1, int var2, int var3) {
-		Widget var4 = class126.getWidgetChild(var0, var1);
-		if (var4 != null && var4.onTargetEnter != null) {
-			ScriptEvent var5 = new ScriptEvent();
-			var5.widget = var4;
-			var5.args = var4.onTargetEnter;
-			class285.runScriptEvent(var5);
-		}
-
-		Client.field633 = var3;
-		Client.isSpellSelected = true;
-		class20.selectedSpellWidget = var0;
-		Client.selectedSpellChildIndex = var1;
-		class91.selectedSpellFlags = var2;
-		SecureRandomCallable.invalidateWidget(var4);
+	@Export("isAlphaNumeric")
+	public static boolean isAlphaNumeric(char var0) {
+		return var0 >= '0' && var0 <= '9' || var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
 	}
 }

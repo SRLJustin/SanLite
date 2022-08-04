@@ -3,33 +3,42 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("fb")
+@ObfuscatedName("fp")
 @Implements("VarpDefinition")
 public class VarpDefinition extends DualNode {
-	@ObfuscatedName("sw")
-	@ObfuscatedGetter(
-		intValue = 2043894385
-	)
-	static int field1748;
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Llc;"
 	)
 	@Export("VarpDefinition_archive")
-	public static AbstractArchive VarpDefinition_archive;
-	@ObfuscatedName("p")
+	static AbstractArchive VarpDefinition_archive;
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(
+		intValue = -774409533
+	)
+	public static int field1811;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lia;"
 	)
 	@Export("VarpDefinition_cached")
-	public static EvictingDualNodeHashTable VarpDefinition_cached;
-	@ObfuscatedName("he")
-	@Export("regionMapArchives")
-	static byte[][] regionMapArchives;
-	@ObfuscatedName("m")
+	static EvictingDualNodeHashTable VarpDefinition_cached;
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 1559119131
+		intValue = 894414077
+	)
+	static int field1813;
+	@ObfuscatedName("gg")
+	@ObfuscatedSignature(
+		descriptor = "Lfz;"
+	)
+	@Export("socketTask")
+	static Task socketTask;
+	@ObfuscatedName("u")
+	@ObfuscatedGetter(
+		intValue = 1739289855
 	)
 	@Export("type")
 	public int type;
@@ -42,10 +51,10 @@ public class VarpDefinition extends DualNode {
 		this.type = 0;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "-1334778255"
+		descriptor = "(Lqw;I)V",
+		garbageValue = "1033626215"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -59,10 +68,10 @@ public class VarpDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;II)V",
-		garbageValue = "-1795168464"
+		descriptor = "(Lqw;IB)V",
+		garbageValue = "-67"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -72,21 +81,42 @@ public class VarpDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("ho")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Lcy;II)V",
-		garbageValue = "827099258"
+		descriptor = "(I)V",
+		garbageValue = "1994115349"
 	)
-	static final void method3167(Actor var0, int var1) {
-		ModeWhere.worldToScreen(var0.x, var0.y, var1);
+	public static void method3352() {
+		FloorOverlayDefinition.FloorOverlayDefinition_cached.clear();
 	}
 
-	@ObfuscatedName("le")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(IS)V",
-		garbageValue = "13655"
+		descriptor = "(ILbc;ZI)I",
+		garbageValue = "1253760177"
 	)
-	static void method3168(int var0) {
-		Client.oculusOrbState = var0;
+	static int method3351(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? VertexNormal.scriptDotWidget : class321.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETX) {
+			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var3.x;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETY) {
+			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var3.y;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETWIDTH) {
+			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var3.width;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETHEIGHT) {
+			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var3.height;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETHIDE) {
+			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var3.isHidden ? 1 : 0;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETLAYER) {
+			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = var3.parentId;
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 }

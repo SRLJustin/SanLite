@@ -4,80 +4,80 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ij")
+@ObfuscatedName("ir")
 @Implements("AbstractWorldMapIcon")
 public abstract class AbstractWorldMapIcon {
-	@ObfuscatedName("bl")
-	static String field2761;
-	@ObfuscatedName("j")
+	@ObfuscatedName("d")
+	public static short[] field2859;
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
-		descriptor = "Lju;"
+		descriptor = "Lkp;"
 	)
 	@Export("coord2")
 	public final Coord coord2;
-	@ObfuscatedName("w")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "Lju;"
+		descriptor = "Lkp;"
 	)
 	@Export("coord1")
 	public final Coord coord1;
-	@ObfuscatedName("n")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 1375469525
+		intValue = 1984485843
 	)
 	@Export("screenX")
 	int screenX;
-	@ObfuscatedName("r")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = 973974995
+		intValue = -1274844871
 	)
 	@Export("screenY")
 	int screenY;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lju;Lju;)V"
+		descriptor = "(Lkp;Lkp;)V"
 	)
 	AbstractWorldMapIcon(Coord var1, Coord var2) {
 		this.coord1 = var1;
 		this.coord2 = var2;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1255702565"
+		garbageValue = "-2045439656"
 	)
 	@Export("getElement")
 	public abstract int getElement();
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lhm;",
-		garbageValue = "-577826789"
+		descriptor = "(B)Liy;",
+		garbageValue = "1"
 	)
 	@Export("getLabel")
 	abstract WorldMapLabel getLabel();
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(S)I",
-		garbageValue = "-21504"
+		descriptor = "(I)I",
+		garbageValue = "2147415720"
 	)
 	@Export("getSubWidth")
 	abstract int getSubWidth();
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1225820190"
+		garbageValue = "740963101"
 	)
 	@Export("getSubHeight")
 	abstract int getSubHeight();
 
-	@ObfuscatedName("e")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
 		descriptor = "(III)Z",
-		garbageValue = "-740062777"
+		garbageValue = "-1902929704"
 	)
 	@Export("fitsScreen")
 	boolean fitsScreen(int var1, int var2) {
@@ -88,60 +88,63 @@ public abstract class AbstractWorldMapIcon {
 		}
 	}
 
-	@ObfuscatedName("a")
+	@ObfuscatedName("y")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1808683977"
+		descriptor = "(B)Z",
+		garbageValue = "32"
 	)
 	@Export("hasValidElement")
 	boolean hasValidElement() {
 		return this.getElement() >= 0;
 	}
 
-	@ObfuscatedName("u")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(III)Z",
-		garbageValue = "1509429224"
+		descriptor = "(IIB)Z",
+		garbageValue = "-34"
 	)
 	@Export("elementFitsScreen")
 	boolean elementFitsScreen(int var1, int var2) {
 		if (!this.hasValidElement()) {
 			return false;
 		} else {
-			WorldMapElement var3 = class78.WorldMapElement_get(this.getElement());
+			WorldMapElement var3 = TileItem.WorldMapElement_get(this.getElement());
 			int var4 = this.getSubWidth();
 			int var5 = this.getSubHeight();
 			switch(var3.horizontalAlignment.value) {
 			case 0:
-				if (var1 > this.screenX - var4 && var1 <= this.screenX) {
+				if (var1 >= this.screenX && var1 < var4 + this.screenX) {
 					break;
 				}
 
 				return false;
 			case 1:
-				if (var1 < this.screenX || var1 >= var4 + this.screenX) {
-					return false;
+				if (var1 >= this.screenX - var4 / 2 && var1 <= var4 / 2 + this.screenX) {
+					break;
 				}
-				break;
+
+				return false;
 			case 2:
-				if (var1 < this.screenX - var4 / 2 || var1 > var4 / 2 + this.screenX) {
+				if (var1 <= this.screenX - var4 || var1 > this.screenX) {
 					return false;
 				}
 			}
 
 			switch(var3.verticalAlignment.value) {
 			case 0:
-				if (var2 < this.screenY || var2 >= var5 + this.screenY) {
-					return false;
+				if (var2 > this.screenY - var5 && var2 <= this.screenY) {
+					break;
 				}
-				break;
+
+				return false;
 			case 1:
-				if (var2 < this.screenY - var5 / 2 || var2 > var5 / 2 + this.screenY) {
-					return false;
+				if (var2 >= this.screenY - var5 / 2 && var2 <= var5 / 2 + this.screenY) {
+					break;
 				}
-				break;
+
+				return false;
 			case 2:
-				if (var2 <= this.screenY - var5 || var2 > this.screenY) {
+				if (var2 < this.screenY || var2 >= var5 + this.screenY) {
 					return false;
 				}
 			}
@@ -150,10 +153,10 @@ public abstract class AbstractWorldMapIcon {
 		}
 	}
 
-	@ObfuscatedName("k")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(III)Z",
-		garbageValue = "-1210187925"
+		garbageValue = "686248728"
 	)
 	@Export("labelFitsScreen")
 	boolean labelFitsScreen(int var1, int var2) {
@@ -167,145 +170,37 @@ public abstract class AbstractWorldMapIcon {
 		}
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "91"
+		descriptor = "(II)Lpy;",
+		garbageValue = "2052552812"
 	)
-	public static boolean method4863(int var0) {
-		return var0 >= WorldMapDecorationType.field3391.id && var0 <= WorldMapDecorationType.field3385.id || var0 == WorldMapDecorationType.field3406.id;
+	public static class433 method5044(int var0) {
+		int var1 = class431.field4660[var0];
+		if (var1 == 1) {
+			return class433.field4671;
+		} else if (var1 == 2) {
+			return class433.field4676;
+		} else {
+			return var1 == 3 ? class433.field4668 : null;
+		}
 	}
 
-	@ObfuscatedName("hg")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-356740041"
+		descriptor = "(I)V",
+		garbageValue = "1174105091"
 	)
-	static final int method4862() {
-		if (SecureRandomFuture.clientPreferences.roofsHidden) {
-			return class20.Client_plane;
-		} else {
-			int var0 = 3;
-			if (UserComparator7.cameraPitch < 310) {
-				label169: {
-					int var1;
-					int var2;
-					if (Client.oculusOrbState == 1) {
-						var1 = class7.oculusOrbFocalPointX >> 7;
-						var2 = Actor.oculusOrbFocalPointY >> 7;
-					} else {
-						var1 = class340.localPlayer.x >> 7;
-						var2 = class340.localPlayer.y >> 7;
-					}
+	static void method5045() {
+		WorldMapRegion.WorldMapRegion_cachedSprites.clear();
+	}
 
-					int var3 = UserComparator7.cameraX >> 7;
-					int var4 = UserComparator10.cameraZ >> 7;
-					if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
-						if (var1 >= 0 && var2 >= 0 && var1 < 104 && var2 < 104) {
-							if ((Tiles.Tiles_renderFlags[class20.Client_plane][var3][var4] & 4) != 0) {
-								var0 = class20.Client_plane;
-							}
-
-							int var5;
-							if (var1 > var3) {
-								var5 = var1 - var3;
-							} else {
-								var5 = var3 - var1;
-							}
-
-							int var6;
-							if (var2 > var4) {
-								var6 = var2 - var4;
-							} else {
-								var6 = var4 - var2;
-							}
-
-							int var7;
-							int var8;
-							if (var5 > var6) {
-								var7 = var6 * 65536 / var5;
-								var8 = 32768;
-
-								while (true) {
-									if (var3 == var1) {
-										break label169;
-									}
-
-									if (var3 < var1) {
-										++var3;
-									} else if (var3 > var1) {
-										--var3;
-									}
-
-									if ((Tiles.Tiles_renderFlags[class20.Client_plane][var3][var4] & 4) != 0) {
-										var0 = class20.Client_plane;
-									}
-
-									var8 += var7;
-									if (var8 >= 65536) {
-										var8 -= 65536;
-										if (var4 < var2) {
-											++var4;
-										} else if (var4 > var2) {
-											--var4;
-										}
-
-										if ((Tiles.Tiles_renderFlags[class20.Client_plane][var3][var4] & 4) != 0) {
-											var0 = class20.Client_plane;
-										}
-									}
-								}
-							} else {
-								if (var6 > 0) {
-									var7 = var5 * 65536 / var6;
-									var8 = 32768;
-
-									while (var4 != var2) {
-										if (var4 < var2) {
-											++var4;
-										} else if (var4 > var2) {
-											--var4;
-										}
-
-										if ((Tiles.Tiles_renderFlags[class20.Client_plane][var3][var4] & 4) != 0) {
-											var0 = class20.Client_plane;
-										}
-
-										var8 += var7;
-										if (var8 >= 65536) {
-											var8 -= 65536;
-											if (var3 < var1) {
-												++var3;
-											} else if (var3 > var1) {
-												--var3;
-											}
-
-											if ((Tiles.Tiles_renderFlags[class20.Client_plane][var3][var4] & 4) != 0) {
-												var0 = class20.Client_plane;
-											}
-										}
-									}
-								}
-								break label169;
-							}
-						}
-
-						return class20.Client_plane;
-					}
-
-					return class20.Client_plane;
-				}
-			}
-
-			if (class340.localPlayer.x >= 0 && class340.localPlayer.y >= 0 && class340.localPlayer.x < 13312 && class340.localPlayer.y < 13312) {
-				if ((Tiles.Tiles_renderFlags[class20.Client_plane][class340.localPlayer.x >> 7][class340.localPlayer.y >> 7] & 4) != 0) {
-					var0 = class20.Client_plane;
-				}
-
-				return var0;
-			} else {
-				return class20.Client_plane;
-			}
-		}
+	@ObfuscatedName("my")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "1057423277"
+	)
+	static boolean method5047() {
+		return class260.clientPreferences.method2333() >= Client.field504;
 	}
 }

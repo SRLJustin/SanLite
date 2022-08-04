@@ -1,37 +1,41 @@
+import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ke")
+@ObfuscatedName("le")
 @Implements("ArchiveDiskActionHandler")
 public class ArchiveDiskActionHandler implements Runnable {
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Llh;"
+		descriptor = "Llt;"
 	)
 	@Export("ArchiveDiskActionHandler_requestQueue")
-	public static NodeDeque ArchiveDiskActionHandler_requestQueue;
-	@ObfuscatedName("b")
+	static NodeDeque ArchiveDiskActionHandler_requestQueue;
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Llh;"
+		descriptor = "Llt;"
 	)
 	@Export("ArchiveDiskActionHandler_responseQueue")
-	public static NodeDeque ArchiveDiskActionHandler_responseQueue;
-	@ObfuscatedName("p")
+	static NodeDeque ArchiveDiskActionHandler_responseQueue;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 449251955
+		intValue = 1401449583
 	)
-	static int field3815;
-	@ObfuscatedName("m")
+	static int field3991;
+	@ObfuscatedName("u")
 	@Export("ArchiveDiskActionHandler_lock")
 	static Object ArchiveDiskActionHandler_lock;
+	@ObfuscatedName("c")
+	@Export("ArchiveDiskActionHandler_thread")
+	static Thread ArchiveDiskActionHandler_thread;
 
 	static {
 		ArchiveDiskActionHandler_requestQueue = new NodeDeque();
 		ArchiveDiskActionHandler_responseQueue = new NodeDeque();
-		field3815 = 0;
+		field3991 = 0;
 		ArchiveDiskActionHandler_lock = new Object();
 	}
 
@@ -60,64 +64,105 @@ public class ArchiveDiskActionHandler implements Runnable {
 					}
 
 					synchronized(ArchiveDiskActionHandler_lock) {
-						if (field3815 <= 1) {
-							field3815 = 0;
+						if (field3991 <= 1) {
+							field3991 = 0;
 							ArchiveDiskActionHandler_lock.notifyAll();
 							return;
 						}
 
-						field3815 = 600;
+						field3991 = 600;
 					}
 				} else {
-					Bounds.method6608(100L);
+					WorldMapDecoration.method4967(100L);
 					synchronized(ArchiveDiskActionHandler_lock) {
-						if (field3815 <= 1) {
-							field3815 = 0;
+						if (field3991 <= 1) {
+							field3991 = 0;
 							ArchiveDiskActionHandler_lock.notifyAll();
 							return;
 						}
 
-						--field3815;
+						--field3991;
 					}
 				}
 			}
 		} catch (Exception var13) {
-			AccessFile.RunException_sendStackTrace((String)null, var13);
+			class359.RunException_sendStackTrace((String)null, var13);
 		}
 	}
 
-	@ObfuscatedName("gl")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZB)V",
-		garbageValue = "-14"
+		descriptor = "(I)Z",
+		garbageValue = "37815092"
 	)
-	@Export("drawLoadingMessage")
-	static final void drawLoadingMessage(String var0, boolean var1) {
-		if (Client.showLoadingMessages) {
-			byte var2 = 4;
-			int var3 = var2 + 6;
-			int var4 = var2 + 6;
-			int var5 = class114.fontPlain12.lineWidth(var0, 250);
-			int var6 = class114.fontPlain12.lineCount(var0, 250) * 13;
-			Rasterizer2D.Rasterizer2D_fillRectangle(var3 - var2, var4 - var2, var2 + var2 + var5, var2 + var6 + var2, 0);
-			Rasterizer2D.Rasterizer2D_drawRectangle(var3 - var2, var4 - var2, var2 + var5 + var2, var2 + var2 + var6, 16777215);
-			class114.fontPlain12.drawLines(var0, var3, var4, var5, var6, 16777215, -1, 1, 1, 0);
-			class10.method124(var3 - var2, var4 - var2, var2 + var5 + var2, var6 + var2 + var2);
-			if (var1) {
-				class19.rasterProvider.drawFull(0, 0);
-			} else {
-				int var7 = var3;
-				int var8 = var4;
-				int var9 = var5;
-				int var10 = var6;
+	@Export("loadWorlds")
+	static boolean loadWorlds() {
+		try {
+			if (class144.World_request == null) {
+				class144.World_request = class152.urlRequester.request(new URL(GrandExchangeOfferOwnWorldComparator.field479));
+			} else if (class144.World_request.isDone()) {
+				byte[] var0 = class144.World_request.getResponse();
+				Buffer var1 = new Buffer(var0);
+				var1.readInt();
+				World.World_count = var1.readUnsignedShort();
+				class93.World_worlds = new World[World.World_count];
 
-				for (int var11 = 0; var11 < Client.rootWidgetCount; ++var11) {
-					if (Client.rootWidgetWidths[var11] + Client.rootWidgetXs[var11] > var7 && Client.rootWidgetXs[var11] < var9 + var7 && Client.rootWidgetHeights[var11] + Client.rootWidgetYs[var11] > var8 && Client.rootWidgetYs[var11] < var8 + var10) {
-						Client.field686[var11] = true;
-					}
+				World var3;
+				for (int var2 = 0; var2 < World.World_count; var3.index = var2++) {
+					var3 = class93.World_worlds[var2] = new World();
+					var3.id = var1.readUnsignedShort();
+					var3.properties = var1.readInt();
+					var3.host = var1.readStringCp1252NullTerminated();
+					var3.activity = var1.readStringCp1252NullTerminated();
+					var3.location = var1.readUnsignedByte();
+					var3.population = var1.readShort();
 				}
-			}
 
+				WallObject.sortWorlds(class93.World_worlds, 0, class93.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
+				class144.World_request = null;
+				return true;
+			}
+		} catch (Exception var4) {
+			var4.printStackTrace();
+			class144.World_request = null;
 		}
+
+		return false;
+	}
+
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;S)I",
+		garbageValue = "-5302"
+	)
+	@Export("hashString")
+	public static int hashString(CharSequence var0) {
+		int var1 = var0.length();
+		int var2 = 0;
+
+		for (int var3 = 0; var3 < var1; ++var3) {
+			var2 = (var2 << 5) - var2 + Calendar.charToByteCp1252(var0.charAt(var3));
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("fl")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "-632726805"
+	)
+	static void method5800(int var0, int var1) {
+		int[] var2 = new int[9];
+
+		for (int var3 = 0; var3 < var2.length; ++var3) {
+			int var4 = var3 * 32 + 15 + 128;
+			int var5 = class152.method3152(var4);
+			int var6 = Rasterizer3D.Rasterizer3D_sine[var4];
+			var5 = HitSplatDefinition.method3637(var5, var1);
+			var2[var3] = var6 * var5 >> 16;
+		}
+
+		Scene.Scene_buildVisiblityMap(var2, 500, 800, var0 * 334 / var1, 334);
 	}
 }

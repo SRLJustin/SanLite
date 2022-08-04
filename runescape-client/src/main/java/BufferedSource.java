@@ -1,50 +1,43 @@
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mr")
+@ObfuscatedName("nu")
 @Implements("BufferedSource")
 public class BufferedSource implements Runnable {
-	@ObfuscatedName("u")
-	@Export("cacheSubPaths")
-	public static String[] cacheSubPaths;
-	@ObfuscatedName("bv")
-	@Export("otp")
-	static String otp;
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@Export("inputStream")
 	InputStream inputStream;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -1854638595
+		intValue = 1701863313
 	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("m")
+	@ObfuscatedName("u")
 	@Export("buffer")
 	byte[] buffer;
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1353886439
+		intValue = -1343140521
 	)
 	@Export("position")
 	int position;
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 980101141
+		intValue = 1791585203
 	)
 	@Export("limit")
 	int limit;
-	@ObfuscatedName("j")
+	@ObfuscatedName("z")
 	@Export("exception")
 	IOException exception;
 
@@ -59,10 +52,10 @@ public class BufferedSource implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "1211615101"
+		descriptor = "(IS)Z",
+		garbageValue = "5939"
 	)
 	@Export("isAvailable")
 	boolean isAvailable(int var1) throws IOException {
@@ -93,10 +86,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-146970254"
+		garbageValue = "-2040018317"
 	)
 	@Export("available")
 	int available() throws IOException {
@@ -117,10 +110,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "52"
+		descriptor = "(I)I",
+		garbageValue = "1709355306"
 	)
 	@Export("readUnsignedByte")
 	int readUnsignedByte() throws IOException {
@@ -140,10 +133,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "([BIIB)I",
-		garbageValue = "126"
+		descriptor = "([BIII)I",
+		garbageValue = "-2087041896"
 	)
 	@Export("read")
 	int read(byte[] var1, int var2, int var3) throws IOException {
@@ -181,10 +174,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1858620597"
+		garbageValue = "1606613907"
 	)
 	@Export("close")
 	void close() {
@@ -249,155 +242,5 @@ public class BufferedSource implements Runnable {
 				this.limit = (var7 + this.limit) % this.capacity;
 			}
 		}
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Llf;II)Liw;",
-		garbageValue = "821161285"
-	)
-	public static PacketBufferNode method6527(int var0, String var1, Language var2, int var3) {
-		PacketBufferNode var4 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2897, Client.packetWriter.isaacCipher);
-		var4.packetBuffer.writeByte(0);
-		int var5 = var4.packetBuffer.offset;
-		var4.packetBuffer.writeByte(var0);
-		String var6 = var1.toLowerCase();
-		byte var7 = 0;
-		if (var6.startsWith("yellow:")) {
-			var7 = 0;
-			var1 = var1.substring("yellow:".length());
-		} else if (var6.startsWith("red:")) {
-			var7 = 1;
-			var1 = var1.substring("red:".length());
-		} else if (var6.startsWith("green:")) {
-			var7 = 2;
-			var1 = var1.substring("green:".length());
-		} else if (var6.startsWith("cyan:")) {
-			var7 = 3;
-			var1 = var1.substring("cyan:".length());
-		} else if (var6.startsWith("purple:")) {
-			var7 = 4;
-			var1 = var1.substring("purple:".length());
-		} else if (var6.startsWith("white:")) {
-			var7 = 5;
-			var1 = var1.substring("white:".length());
-		} else if (var6.startsWith("flash1:")) {
-			var7 = 6;
-			var1 = var1.substring("flash1:".length());
-		} else if (var6.startsWith("flash2:")) {
-			var7 = 7;
-			var1 = var1.substring("flash2:".length());
-		} else if (var6.startsWith("flash3:")) {
-			var7 = 8;
-			var1 = var1.substring("flash3:".length());
-		} else if (var6.startsWith("glow1:")) {
-			var7 = 9;
-			var1 = var1.substring("glow1:".length());
-		} else if (var6.startsWith("glow2:")) {
-			var7 = 10;
-			var1 = var1.substring("glow2:".length());
-		} else if (var6.startsWith("glow3:")) {
-			var7 = 11;
-			var1 = var1.substring("glow3:".length());
-		} else if (var2 != Language.Language_EN) {
-			if (var6.startsWith("yellow:")) {
-				var7 = 0;
-				var1 = var1.substring("yellow:".length());
-			} else if (var6.startsWith("red:")) {
-				var7 = 1;
-				var1 = var1.substring("red:".length());
-			} else if (var6.startsWith("green:")) {
-				var7 = 2;
-				var1 = var1.substring("green:".length());
-			} else if (var6.startsWith("cyan:")) {
-				var7 = 3;
-				var1 = var1.substring("cyan:".length());
-			} else if (var6.startsWith("purple:")) {
-				var7 = 4;
-				var1 = var1.substring("purple:".length());
-			} else if (var6.startsWith("white:")) {
-				var7 = 5;
-				var1 = var1.substring("white:".length());
-			} else if (var6.startsWith("flash1:")) {
-				var7 = 6;
-				var1 = var1.substring("flash1:".length());
-			} else if (var6.startsWith("flash2:")) {
-				var7 = 7;
-				var1 = var1.substring("flash2:".length());
-			} else if (var6.startsWith("flash3:")) {
-				var7 = 8;
-				var1 = var1.substring("flash3:".length());
-			} else if (var6.startsWith("glow1:")) {
-				var7 = 9;
-				var1 = var1.substring("glow1:".length());
-			} else if (var6.startsWith("glow2:")) {
-				var7 = 10;
-				var1 = var1.substring("glow2:".length());
-			} else if (var6.startsWith("glow3:")) {
-				var7 = 11;
-				var1 = var1.substring("glow3:".length());
-			}
-		}
-
-		var6 = var1.toLowerCase();
-		byte var8 = 0;
-		if (var6.startsWith("wave:")) {
-			var8 = 1;
-			var1 = var1.substring("wave:".length());
-		} else if (var6.startsWith("wave2:")) {
-			var8 = 2;
-			var1 = var1.substring("wave2:".length());
-		} else if (var6.startsWith("shake:")) {
-			var8 = 3;
-			var1 = var1.substring("shake:".length());
-		} else if (var6.startsWith("scroll:")) {
-			var8 = 4;
-			var1 = var1.substring("scroll:".length());
-		} else if (var6.startsWith("slide:")) {
-			var8 = 5;
-			var1 = var1.substring("slide:".length());
-		} else if (var2 != Language.Language_EN) {
-			if (var6.startsWith("wave:")) {
-				var8 = 1;
-				var1 = var1.substring("wave:".length());
-			} else if (var6.startsWith("wave2:")) {
-				var8 = 2;
-				var1 = var1.substring("wave2:".length());
-			} else if (var6.startsWith("shake:")) {
-				var8 = 3;
-				var1 = var1.substring("shake:".length());
-			} else if (var6.startsWith("scroll:")) {
-				var8 = 4;
-				var1 = var1.substring("scroll:".length());
-			} else if (var6.startsWith("slide:")) {
-				var8 = 5;
-				var1 = var1.substring("slide:".length());
-			}
-		}
-
-		var4.packetBuffer.writeByte(var7);
-		var4.packetBuffer.writeByte(var8);
-		class370.method6755(var4.packetBuffer, var1);
-		if (var0 == class282.field3379.rsOrdinal()) {
-			var4.packetBuffer.writeByte(var3);
-		}
-
-		var4.packetBuffer.method7357(var4.packetBuffer.offset - var5);
-		return var4;
-	}
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "843929154"
-	)
-	static void method6516() {
-		Iterator var0 = Messages.Messages_hashTable.iterator();
-
-		while (var0.hasNext()) {
-			Message var1 = (Message)var0.next();
-			var1.clearIsFromIgnored();
-		}
-
 	}
 }

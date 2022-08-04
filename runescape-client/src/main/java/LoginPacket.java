@@ -4,61 +4,67 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ir")
+@ObfuscatedName("jk")
 @Implements("LoginPacket")
-public class LoginPacket implements class251 {
+public class LoginPacket implements class261 {
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "Ljk;"
+	)
+	public static final LoginPacket field3149;
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "Ljk;"
+	)
+	static final LoginPacket field3145;
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Ljk;"
+	)
+	public static final LoginPacket field3146;
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(
+		descriptor = "Ljk;"
+	)
+	public static final LoginPacket field3150;
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lir;"
+		descriptor = "Ljk;"
 	)
-	public static final LoginPacket field3032;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Lir;"
-	)
-	static final LoginPacket field3031;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lir;"
-	)
-	public static final LoginPacket field3038;
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Lir;"
-	)
-	public static final LoginPacket field3037;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Lir;"
-	)
-	public static final LoginPacket field3034;
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Lir;"
-	)
-	static final LoginPacket field3035;
+	public static final LoginPacket field3153;
 	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "[Lir;"
+		descriptor = "Ljk;"
+	)
+	static final LoginPacket field3147;
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "[Ljk;"
 	)
 	@Export("LoginPacket_indexedValues")
 	static final LoginPacket[] LoginPacket_indexedValues;
-	@ObfuscatedName("j")
+	@ObfuscatedName("ij")
+	@ObfuscatedSignature(
+		descriptor = "Lqj;"
+	)
+	@Export("redHintArrowSprite")
+	static SpritePixels redHintArrowSprite;
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = -1815606843
+		intValue = 925150301
 	)
 	@Export("id")
 	public final int id;
 
 	static {
-		field3032 = new LoginPacket(14, 0);
-		field3031 = new LoginPacket(15, 4);
-		field3038 = new LoginPacket(16, -2);
-		field3037 = new LoginPacket(18, -2);
-		field3034 = new LoginPacket(19, -2);
-		field3035 = new LoginPacket(27, 0);
+		field3149 = new LoginPacket(14, 0);
+		field3145 = new LoginPacket(15, 4);
+		field3146 = new LoginPacket(16, -2);
+		field3150 = new LoginPacket(18, -2);
+		field3153 = new LoginPacket(19, -2);
+		field3147 = new LoginPacket(27, 0);
 		LoginPacket_indexedValues = new LoginPacket[32];
-		LoginPacket[] var0 = new LoginPacket[]{field3031, field3037, field3038, field3034, field3032, field3035};
+		LoginPacket[] var0 = new LoginPacket[]{field3147, field3149, field3150, field3145, field3153, field3146};
 		LoginPacket[] var1 = var0;
 
 		for (int var2 = 0; var2 < var1.length; ++var2) {
@@ -75,20 +81,14 @@ public class LoginPacket implements class251 {
 		this.id = var1;
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;B)Ljava/lang/String;",
-		garbageValue = "100"
+		descriptor = "(I)V",
+		garbageValue = "-1600768433"
 	)
-	public static String method5019(CharSequence var0) {
-		int var2 = var0.length();
-		char[] var3 = new char[var2];
-
-		for (int var4 = 0; var4 < var2; ++var4) {
-			var3[var4] = '*';
-		}
-
-		String var1 = new String(var3);
-		return var1;
+	public static void method5207() {
+		class273.midiPcmStream.clear();
+		class273.musicPlayerStatus = 1;
+		class149.musicTrackArchive = null;
 	}
 }

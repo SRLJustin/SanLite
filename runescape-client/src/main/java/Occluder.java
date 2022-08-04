@@ -4,141 +4,146 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gl")
+@ObfuscatedName("gm")
 @Implements("Occluder")
 public final class Occluder {
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = 1159040081
+		intValue = -1482716371
 	)
 	@Export("minTileX")
 	int minTileX;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -342962923
+		intValue = -1640695935
 	)
 	@Export("maxTileX")
 	int maxTileX;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1018728031
+		intValue = -396391183
 	)
 	@Export("minTileY")
 	int minTileY;
-	@ObfuscatedName("m")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -303087101
+		intValue = -1731725825
 	)
 	@Export("maxTileY")
 	int maxTileY;
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1878203499
+		intValue = -506320557
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 1169287087
+		intValue = -1764953573
 	)
 	@Export("minX")
 	int minX;
-	@ObfuscatedName("j")
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = -1004767669
+		intValue = -717807795
 	)
 	@Export("maxX")
 	int maxX;
-	@ObfuscatedName("w")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -596343551
+		intValue = -306942895
 	)
 	@Export("minZ")
 	int minZ;
-	@ObfuscatedName("n")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -1032991231
+		intValue = -321456317
 	)
 	@Export("maxZ")
 	int maxZ;
-	@ObfuscatedName("r")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = 973854413
+		intValue = -1078985107
 	)
 	@Export("minY")
 	int minY;
-	@ObfuscatedName("o")
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = 613174517
+		intValue = -1953201603
 	)
 	@Export("maxY")
 	int maxY;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 2116164351
+		intValue = 769542647
 	)
-	int field2378;
-	@ObfuscatedName("d")
+	int field2455;
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = -824345461
+		intValue = 1434456367
 	)
-	int field2369;
-	@ObfuscatedName("h")
-	@ObfuscatedGetter(
-		intValue = -1750638079
-	)
-	int field2380;
+	int field2461;
 	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = 72228107
+		intValue = -1684484343
 	)
-	int field2381;
-	@ObfuscatedName("e")
+	int field2462;
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -1522475315
+		intValue = 1169267657
 	)
-	int field2368;
-	@ObfuscatedName("a")
+	int field2463;
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = -1800993445
+		intValue = -862949583
 	)
-	int field2383;
-	@ObfuscatedName("u")
+	int field2464;
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = 269877121
+		intValue = -1968274797
 	)
-	int field2367;
+	int field2465;
+	@ObfuscatedName("y")
+	@ObfuscatedGetter(
+		intValue = 163698799
+	)
+	int field2449;
 
 	Occluder() {
 	}
 
-	@ObfuscatedName("gt")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "-69"
+		descriptor = "(ILbc;ZI)I",
+		garbageValue = "-1039001452"
 	)
-	@Export("setWindowedMode")
-	static void setWindowedMode(int var0) {
-		Client.field514 = 0L;
-		if (var0 >= 2) {
-			Client.isResizable = true;
+	static int method4311(int var0, Script var1, boolean var2) {
+		if (var0 != 6700 && var0 != 6702 && var0 != 6704 && var0 != 6706 && var0 != 6708) {
+			if (var0 != 6701 && var0 != 6703 && var0 != 6705 && var0 != 6707 && var0 != 6709) {
+				if (var0 == 6750) {
+					Interpreter.Interpreter_stringStack[++GrandExchangeOfferAgeComparator.Interpreter_stringStackSize - 1] = "";
+					return 1;
+				} else if (var0 != 6751 && var0 != 6752 && var0 != 6753) {
+					if (var0 == 6754) {
+						int var3 = Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize];
+						NPCComposition var4 = class125.getNpcDefinition(var3);
+						Interpreter.Interpreter_stringStack[++GrandExchangeOfferAgeComparator.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
+						return 1;
+					} else {
+						return 2;
+					}
+				} else {
+					Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = -1;
+					return 1;
+				}
+			} else {
+				--TaskHandler.Interpreter_intStackSize;
+				return 1;
+			}
 		} else {
-			Client.isResizable = false;
+			TaskHandler.Interpreter_intStackSize -= 2;
+			--GrandExchangeOfferAgeComparator.Interpreter_stringStackSize;
+			return 1;
 		}
-
-		if (class143.getWindowedMode() == 1) {
-			class295.client.setMaxCanvasSize(765, 503);
-		} else {
-			class295.client.setMaxCanvasSize(7680, 2160);
-		}
-
-		if (Client.gameState >= 25) {
-			PacketBufferNode var1 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2824, Client.packetWriter.isaacCipher);
-			var1.packetBuffer.writeByte(class143.getWindowedMode());
-			var1.packetBuffer.writeShort(class186.canvasWidth);
-			var1.packetBuffer.writeShort(WallObject.canvasHeight);
-			Client.packetWriter.addNode(var1);
-		}
-
 	}
 }
