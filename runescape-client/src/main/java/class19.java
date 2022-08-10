@@ -1,174 +1,198 @@
-import java.security.SecureRandom;
 import java.util.concurrent.Future;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("f")
+@ObfuscatedName("v")
 public class class19 {
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Lpa;"
-	)
-	@Export("titlebuttonSprite")
-	static IndexedSprite titlebuttonSprite;
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "Lpn;"
-	)
-	@Export("rasterProvider")
-	public static AbstractRasterProvider rasterProvider;
-	@ObfuscatedName("eg")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive3")
-	static Archive archive3;
-	@ObfuscatedName("fa")
-	@Export("secureRandom")
-	static SecureRandom secureRandom;
-	@ObfuscatedName("c")
-	Future field100;
-	@ObfuscatedName("b")
-	String field101;
+	@ObfuscatedName("he")
+	@Export("regionLandArchiveIds")
+	static int[] regionLandArchiveIds;
+	@ObfuscatedName("o")
+	Future field107;
+	@ObfuscatedName("q")
+	String field104;
 
 	class19(Future var1) {
-		this.field100 = var1;
+		this.field107 = var1;
 	}
 
 	class19(String var1) {
-		this.method306(var1);
+		this.method276(var1);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "-1875205384"
+		garbageValue = "1864207800"
 	)
-	void method306(String var1) {
+	void method276(String var1) {
 		if (var1 == null) {
 			var1 = "";
 		}
 
-		this.field101 = var1;
-		if (this.field100 != null) {
-			this.field100.cancel(true);
-			this.field100 = null;
+		this.field104 = var1;
+		if (this.field107 != null) {
+			this.field107.cancel(true);
+			this.field107 = null;
 		}
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-1673495368"
+		descriptor = "(B)Ljava/lang/String;",
+		garbageValue = "-100"
 	)
-	public final String method307() {
-		return this.field101;
+	public final String method280() {
+		return this.field104;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-274193431"
+		garbageValue = "-442726183"
 	)
-	public boolean method331() {
-		return this.field101 != null || this.field100 == null;
+	public boolean method277() {
+		return this.field104 != null || this.field107 == null;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1434821214"
+		garbageValue = "-1331105241"
 	)
-	public final boolean method309() {
-		return this.method331() ? true : this.field100.isDone();
+	public final boolean method278() {
+		return this.method277() ? true : this.field107.isDone();
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lq;",
-		garbageValue = "-45"
+		descriptor = "(B)Le;",
+		garbageValue = "62"
 	)
-	public final class21 method310() {
-		if (this.method331()) {
-			return new class21(this.field101);
-		} else if (!this.method309()) {
+	public final class21 method279() {
+		if (this.method277()) {
+			return new class21(this.field104);
+		} else if (!this.method278()) {
 			return null;
 		} else {
 			try {
-				return (class21)this.field100.get();
+				return (class21)this.field107.get();
 			} catch (Exception var3) {
 				String var2 = "Error retrieving REST request reply";
 				System.err.println(var2 + "\r\n" + var3);
-				this.method306(var2);
+				this.method276(var2);
 				return new class21(var2);
 			}
 		}
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;I)V",
-		garbageValue = "1773955351"
+		descriptor = "(II)Lkf;",
+		garbageValue = "-4614059"
 	)
-	public static void method330(AbstractArchive var0) {
-		FloorUnderlayDefinition.FloorUnderlayDefinition_archive = var0;
+	public static GameBuild method290(int var0) {
+		GameBuild[] var1 = class240.method4992();
+
+		for (int var2 = 0; var2 < var1.length; ++var2) {
+			GameBuild var3 = var1[var2];
+			if (var0 == var3.buildId) {
+				return var3;
+			}
+		}
+
+		return null;
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("ko")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
-		garbageValue = "1264521641"
+		descriptor = "(Lku;III)V",
+		garbageValue = "-1770061963"
 	)
-	@Export("setLoginResponseString")
-	static void setLoginResponseString(String var0, String var1, String var2) {
-		Login.Login_response1 = var0;
-		Login.Login_response2 = var1;
-		Login.Login_response3 = var2;
-	}
+	@Export("clickWidget")
+	static final void clickWidget(Widget var0, int var1, int var2) {
+		if (Client.clickedWidget == null && !Client.isMenuOpen) {
+			if (var0 != null) {
+				Widget var5 = var0;
+				int var7 = class67.getWidgetFlags(var0);
+				int var6 = var7 >> 17 & 7;
+				int var8 = var6;
+				Widget var4;
+				int var9;
+				if (var6 == 0) {
+					var4 = null;
+				} else {
+					var9 = 0;
 
-	@ObfuscatedName("ki")
-	@ObfuscatedSignature(
-		descriptor = "(Ljm;I)Z",
-		garbageValue = "111761811"
-	)
-	static final boolean method329(Widget var0) {
-		int var1 = var0.contentType;
-		if (var1 == 205) {
-			Client.logoutTimer = 250;
-			return true;
-		} else {
-			int var2;
-			int var3;
-			if (var1 >= 300 && var1 <= 313) {
-				var2 = (var1 - 300) / 2;
-				var3 = var1 & 1;
-				Client.playerAppearance.changeAppearance(var2, var3 == 1);
+					while (true) {
+						if (var9 >= var8) {
+							var4 = var5;
+							break;
+						}
+
+						var5 = FloorUnderlayDefinition.getWidget(var5.parentId);
+						if (var5 == null) {
+							var4 = null;
+							break;
+						}
+
+						++var9;
+					}
+				}
+
+				Widget var10 = var4;
+				if (var4 == null) {
+					var10 = var0.parent;
+				}
+
+				if (var10 != null) {
+					Client.clickedWidget = var0;
+					var5 = var0;
+					var7 = class67.getWidgetFlags(var0);
+					var6 = var7 >> 17 & 7;
+					var8 = var6;
+					if (var6 == 0) {
+						var4 = null;
+					} else {
+						var9 = 0;
+
+						while (true) {
+							if (var9 >= var8) {
+								var4 = var5;
+								break;
+							}
+
+							var5 = FloorUnderlayDefinition.getWidget(var5.parentId);
+							if (var5 == null) {
+								var4 = null;
+								break;
+							}
+
+							++var9;
+						}
+					}
+
+					var10 = var4;
+					if (var4 == null) {
+						var10 = var0.parent;
+					}
+
+					Client.field671 = var10;
+					Client.widgetClickX = var1;
+					Client.widgetClickY = var2;
+					LoginScreenAnimation.field1234 = 0;
+					Client.isDraggingWidget = false;
+					int var11 = Player.method2211();
+					if (var11 != -1) {
+						class113.method2713(var11);
+					}
+
+					return;
+				}
 			}
 
-			if (var1 >= 314 && var1 <= 323) {
-				var2 = (var1 - 314) / 2;
-				var3 = var1 & 1;
-				Client.playerAppearance.method5391(var2, var3 == 1);
-			}
-
-			if (var1 == 324) {
-				Client.playerAppearance.changeSex(false);
-			}
-
-			if (var1 == 325) {
-				Client.playerAppearance.changeSex(true);
-			}
-
-			if (var1 == 326) {
-				PacketBufferNode var4 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2904, Client.packetWriter.isaacCipher);
-				Client.playerAppearance.write(var4.packetBuffer);
-				Client.packetWriter.addNode(var4);
-				return true;
-			} else {
-				return false;
-			}
 		}
 	}
 }

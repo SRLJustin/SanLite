@@ -1,46 +1,45 @@
-import java.awt.Component;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kd")
+@ObfuscatedName("kf")
 @Implements("GameBuild")
 public class GameBuild {
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Lkf;"
 	)
 	@Export("LIVE")
-	public static final GameBuild LIVE;
-	@ObfuscatedName("b")
+	static final GameBuild LIVE;
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Lkf;"
 	)
 	@Export("BUILDLIVE")
-	public static final GameBuild BUILDLIVE;
-	@ObfuscatedName("p")
+	static final GameBuild BUILDLIVE;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Lkf;"
 	)
 	@Export("RC")
-	public static final GameBuild RC;
-	@ObfuscatedName("m")
+	static final GameBuild RC;
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Lkf;"
 	)
 	@Export("WIP")
-	public static final GameBuild WIP;
-	@ObfuscatedName("t")
+	static final GameBuild WIP;
+	@ObfuscatedName("c")
 	@Export("name")
 	public final String name;
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -794048651
+		intValue = 825558575
 	)
 	@Export("buildId")
-	public final int buildId;
+	final int buildId;
 
 	static {
 		LIVE = new GameBuild("LIVE", 0);
@@ -54,15 +53,14 @@ public class GameBuild {
 		this.buildId = var2;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("mk")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Component;I)V",
-		garbageValue = "727628854"
+		descriptor = "(II)V",
+		garbageValue = "-2142697491"
 	)
-	static void method5494(Component var0) {
-		var0.removeMouseListener(MouseHandler.MouseHandler_instance);
-		var0.removeMouseMotionListener(MouseHandler.MouseHandler_instance);
-		var0.removeFocusListener(MouseHandler.MouseHandler_instance);
-		MouseHandler.MouseHandler_currentButtonVolatile = 0;
+	static void method5758(int var0) {
+		if (var0 != Client.loginState) {
+			Client.loginState = var0;
+		}
 	}
 }

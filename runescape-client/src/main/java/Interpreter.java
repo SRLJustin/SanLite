@@ -5,63 +5,63 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bu")
+@ObfuscatedName("bt")
 @Implements("Interpreter")
 public class Interpreter {
-	@ObfuscatedName("tb")
-	@ObfuscatedSignature(
-		descriptor = "Lnn;"
-	)
-	@Export("platformInfo")
-	static PlatformInfo platformInfo;
+	@ObfuscatedName("u")
+	@Export("Interpreter_intLocals")
+	static int[] Interpreter_intLocals;
+	@ObfuscatedName("c")
+	@Export("Interpreter_stringLocals")
+	static String[] Interpreter_stringLocals;
 	@ObfuscatedName("w")
 	@Export("Interpreter_arrayLengths")
 	static int[] Interpreter_arrayLengths;
-	@ObfuscatedName("n")
+	@ObfuscatedName("z")
 	@Export("Interpreter_arrays")
 	static int[][] Interpreter_arrays;
-	@ObfuscatedName("r")
+	@ObfuscatedName("j")
 	@Export("Interpreter_intStack")
 	static int[] Interpreter_intStack;
-	@ObfuscatedName("v")
+	@ObfuscatedName("a")
 	@Export("Interpreter_stringStack")
 	static String[] Interpreter_stringStack;
-	@ObfuscatedName("h")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -866718889
+		intValue = 1952462401
 	)
 	@Export("Interpreter_frameDepth")
 	static int Interpreter_frameDepth;
-	@ObfuscatedName("g")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "[Lbg;"
+		descriptor = "[Lba;"
 	)
 	@Export("Interpreter_frames")
 	static ScriptFrame[] Interpreter_frames;
-	@ObfuscatedName("f")
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = 355212093
+		intValue = -473119647
 	)
-	static int field812;
-	@ObfuscatedName("l")
+	static int field836;
+	@ObfuscatedName("k")
 	@Export("Interpreter_calendar")
 	static java.util.Calendar Interpreter_calendar;
-	@ObfuscatedName("q")
+	@ObfuscatedName("v")
 	@Export("Interpreter_MONTHS")
 	static final String[] Interpreter_MONTHS;
-	@ObfuscatedName("z")
-	static boolean field818;
+	@ObfuscatedName("e")
+	static boolean field831;
+	@ObfuscatedName("s")
+	static boolean field840;
 	@ObfuscatedName("i")
-	static boolean field816;
-	@ObfuscatedName("y")
-	static ArrayList field817;
-	@ObfuscatedName("ah")
+	static ArrayList field841;
+	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = -1880353715
+		intValue = 192809765
 	)
-	static int field815;
-	@ObfuscatedName("ax")
-	static final double field814;
+	static int field844;
+	@ObfuscatedName("aj")
+	static final double field843;
 
 	static {
 		Interpreter_arrayLengths = new int[5];
@@ -72,30 +72,29 @@ public class Interpreter {
 		Interpreter_frames = new ScriptFrame[50];
 		Interpreter_calendar = java.util.Calendar.getInstance();
 		Interpreter_MONTHS = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-		field818 = false;
-		field816 = false;
-		field817 = new ArrayList();
-		field815 = 0;
-		field814 = Math.log(2.0D);
+		field831 = false;
+		field840 = false;
+		field841 = new ArrayList();
+		field844 = 0;
+		field843 = Math.log(2.0D);
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(CLlf;B)I",
-		garbageValue = "-56"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
+		garbageValue = "122"
 	)
-	@Export("lowercaseChar")
-	static int lowercaseChar(char var0, Language var1) {
-		int var2 = var0 << 4;
-		if (Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
-			var0 = Character.toLowerCase(var0);
-			var2 = (var0 << 4) + 1;
+	@Export("addChatMessage")
+	static void addChatMessage(int var0, String var1, String var2, String var3) {
+		ChatChannel var4 = (ChatChannel)Messages.Messages_channels.get(var0);
+		if (var4 == null) {
+			var4 = new ChatChannel();
+			Messages.Messages_channels.put(var0, var4);
 		}
 
-		if (var0 == 241 && var1 == Language.Language_ES) {
-			var2 = 1762;
-		}
-
-		return var2;
+		Message var5 = var4.addMessage(var0, var1, var2, var3);
+		Messages.Messages_hashTable.put(var5, (long)var5.count);
+		Messages.Messages_queue.add(var5);
+		Client.chatCycle = Client.cycleCntr;
 	}
 }

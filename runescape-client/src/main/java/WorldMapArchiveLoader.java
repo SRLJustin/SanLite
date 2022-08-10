@@ -4,30 +4,36 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ok")
+@ObfuscatedName("os")
 @Implements("WorldMapArchiveLoader")
 public class WorldMapArchiveLoader {
-	@ObfuscatedName("t")
+	@ObfuscatedName("eo")
+	@ObfuscatedSignature(
+		descriptor = "Llu;"
+	)
+	@Export("archive4")
+	static Archive archive4;
+	@ObfuscatedName("c")
 	@Export("cacheName")
 	String cacheName;
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Llc;"
 	)
 	@Export("archive")
 	AbstractArchive archive;
-	@ObfuscatedName("j")
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = 311026893
+		intValue = 40243639
 	)
 	@Export("percentLoaded")
 	int percentLoaded;
-	@ObfuscatedName("w")
+	@ObfuscatedName("j")
 	@Export("loaded")
 	boolean loaded;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lku;)V"
+		descriptor = "(Llc;)V"
 	)
 	WorldMapArchiveLoader(AbstractArchive var1) {
 		this.percentLoaded = 0;
@@ -35,10 +41,10 @@ public class WorldMapArchiveLoader {
 		this.archive = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "1540505166"
+		garbageValue = "-823191393"
 	)
 	@Export("reset")
 	void reset(String var1) {
@@ -52,15 +58,15 @@ public class WorldMapArchiveLoader {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1685563194"
+		garbageValue = "2069050115"
 	)
 	@Export("load")
 	int load() {
 		if (this.percentLoaded < 33) {
-			if (!this.archive.tryLoadFileByNames(WorldMapCacheName.field2763.name, this.cacheName)) {
+			if (!this.archive.tryLoadFileByNames(WorldMapCacheName.field2861.name, this.cacheName)) {
 				return this.percentLoaded;
 			}
 
@@ -68,7 +74,7 @@ public class WorldMapArchiveLoader {
 		}
 
 		if (this.percentLoaded == 33) {
-			if (this.archive.isValidFileName(WorldMapCacheName.field2764.name, this.cacheName) && !this.archive.tryLoadFileByNames(WorldMapCacheName.field2764.name, this.cacheName)) {
+			if (this.archive.isValidFileName(WorldMapCacheName.field2863.name, this.cacheName) && !this.archive.tryLoadFileByNames(WorldMapCacheName.field2863.name, this.cacheName)) {
 				return this.percentLoaded;
 			}
 
@@ -76,7 +82,7 @@ public class WorldMapArchiveLoader {
 		}
 
 		if (this.percentLoaded == 66) {
-			if (!this.archive.tryLoadFileByNames(this.cacheName, WorldMapCacheName.field2766.name)) {
+			if (!this.archive.tryLoadFileByNames(this.cacheName, WorldMapCacheName.field2864.name)) {
 				return this.percentLoaded;
 			}
 
@@ -87,23 +93,58 @@ public class WorldMapArchiveLoader {
 		return this.percentLoaded;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-118"
+		descriptor = "(I)Z",
+		garbageValue = "-1397935060"
 	)
 	@Export("isLoaded")
 	boolean isLoaded() {
 		return this.loaded;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "15"
+		descriptor = "(I)I",
+		garbageValue = "-810632026"
 	)
 	@Export("getPercentLoaded")
 	int getPercentLoaded() {
 		return this.percentLoaded;
+	}
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lpq;",
+		garbageValue = "-823191393"
+	)
+	public static class436 method7220(int var0) {
+		class436 var1 = (class436)class436.PlayerComposition_cachedModels.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = class436.field4682.takeFile(39, var0);
+			var1 = new class436();
+			if (var2 != null) {
+				var1.method7621(new Buffer(var2));
+			}
+
+			var1.method7626();
+			class436.PlayerComposition_cachedModels.put(var1, (long)var0);
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "-525080077"
+	)
+	public static int method7221(int var0) {
+		if (var0 > 0) {
+			return 1;
+		} else {
+			return var0 < 0 ? -1 : 0;
+		}
 	}
 }

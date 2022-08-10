@@ -4,38 +4,36 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ju")
+@ObfuscatedName("kp")
 @Implements("Coord")
 public class Coord {
-	@ObfuscatedName("q")
-	@Export("operatingSystemName")
-	public static String operatingSystemName;
-	@ObfuscatedName("gu")
-	@ObfuscatedSignature(
-		descriptor = "Lmd;"
-	)
-	static AbstractSocket field3186;
-	@ObfuscatedName("c")
+	@ObfuscatedName("ne")
 	@ObfuscatedGetter(
-		intValue = 2028633895
+		intValue = 1208888331
+	)
+	@Export("selectedSpellFlags")
+	static int selectedSpellFlags;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = 1220578687
 	)
 	@Export("plane")
 	public int plane;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -115571391
+		intValue = -1712596677
 	)
 	@Export("x")
 	public int x;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -193761027
+		intValue = -1113097037
 	)
 	@Export("y")
 	public int y;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lju;)V"
+		descriptor = "(Lkp;)V"
 	)
 	public Coord(Coord var1) {
 		this.plane = var1.plane;
@@ -60,10 +58,10 @@ public class Coord {
 
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "844590476"
+		garbageValue = "62533759"
 	)
 	@Export("packed")
 	public int packed() {
@@ -74,10 +72,10 @@ public class Coord {
 		return var1;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(Lju;B)Z",
-		garbageValue = "-21"
+		descriptor = "(Lkp;I)Z",
+		garbageValue = "1957084070"
 	)
 	@Export("equalsCoord")
 	boolean equalsCoord(Coord var1) {
@@ -90,10 +88,10 @@ public class Coord {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
-		garbageValue = "1213799253"
+		descriptor = "(Ljava/lang/String;B)Ljava/lang/String;",
+		garbageValue = "37"
 	)
 	@Export("toString")
 	String toString(String var1) {
@@ -114,5 +112,25 @@ public class Coord {
 
 	public int hashCode() {
 		return this.packed();
+	}
+
+	@ObfuscatedName("lf")
+	@ObfuscatedSignature(
+		descriptor = "(IIZB)V",
+		garbageValue = "-72"
+	)
+	static final void method5543(int var0, int var1, boolean var2) {
+		if (Client.currentClanChannels[var0] != null) {
+			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3117()) {
+				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
+				PacketBufferNode var4 = class433.getPacketBufferNode(ClientPacket.field3017, Client.packetWriter.isaacCipher);
+				var4.packetBuffer.writeByte(4 + class92.stringCp1252NullTerminatedByteSize(var3.username.getName()));
+				var4.packetBuffer.writeByte(var0);
+				var4.packetBuffer.writeShort(var1);
+				var4.packetBuffer.writeBoolean(var2);
+				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName());
+				Client.packetWriter.addNode(var4);
+			}
+		}
 	}
 }

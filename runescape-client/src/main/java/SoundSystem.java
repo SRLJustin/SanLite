@@ -1,17 +1,25 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("al")
+@ObfuscatedName("ax")
 @Implements("SoundSystem")
 public class SoundSystem implements Runnable {
-	@ObfuscatedName("qt")
-	@Export("FriendsChatManager_inFriendsChat")
-	static boolean FriendsChatManager_inFriendsChat;
-	@ObfuscatedName("c")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "[Lar;"
+		descriptor = "Lql;"
+	)
+	static IndexedSprite field321;
+	@ObfuscatedName("hu")
+	@ObfuscatedGetter(
+		intValue = -966158451
+	)
+	static int field319;
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "[Lat;"
 	)
 	@Export("players")
 	volatile PcmPlayer[] players;
@@ -29,8 +37,37 @@ public class SoundSystem implements Runnable {
 				}
 			}
 		} catch (Exception var4) {
-			AccessFile.RunException_sendStackTrace((String)null, var4);
+			class359.RunException_sendStackTrace((String)null, var4);
 		}
 
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(Llc;IIB)Lqj;",
+		garbageValue = "-16"
+	)
+	@Export("SpriteBuffer_getSprite")
+	public static SpritePixels SpriteBuffer_getSprite(AbstractArchive var0, int var1, int var2) {
+		byte[] var4 = var0.takeFile(var1, var2);
+		boolean var3;
+		if (var4 == null) {
+			var3 = false;
+		} else {
+			class83.SpriteBuffer_decode(var4);
+			var3 = true;
+		}
+
+		return !var3 ? null : class362.method6608();
+	}
+
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(S)V",
+		garbageValue = "255"
+	)
+	static void method768() {
+		UserComparator6.method2701(24);
+		HealthBarUpdate.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
 	}
 }

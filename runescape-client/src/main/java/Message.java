@@ -3,53 +3,60 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("br")
+@ObfuscatedName("bd")
 @Implements("Message")
 public class Message extends DualNode {
-	@ObfuscatedName("c")
+	@ObfuscatedName("hq")
 	@ObfuscatedGetter(
-		intValue = 20750645
+		intValue = -829304695
+	)
+	@Export("baseY")
+	static int baseY;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = -1158913703
 	)
 	@Export("count")
 	int count;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -1521210849
+		intValue = -1040379767
 	)
 	@Export("cycle")
 	int cycle;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 2033042895
+		intValue = 2053279727
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("m")
+	@ObfuscatedName("u")
 	@Export("sender")
 	String sender;
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lpo;"
+		descriptor = "Lqi;"
 	)
 	@Export("senderUsername")
 	Username senderUsername;
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Lmu;"
+		descriptor = "Lnm;"
 	)
 	@Export("isFromFriend0")
 	TriBool isFromFriend0;
-	@ObfuscatedName("j")
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
-		descriptor = "Lmu;"
+		descriptor = "Lnm;"
 	)
 	@Export("isFromIgnored0")
 	TriBool isFromIgnored0;
-	@ObfuscatedName("w")
+	@ObfuscatedName("j")
 	@Export("prefix")
 	String prefix;
-	@ObfuscatedName("n")
+	@ObfuscatedName("h")
 	@Export("text")
 	String text;
 
@@ -59,10 +66,10 @@ public class Message extends DualNode {
 		this.set(var1, var2, var3, var4);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
-		garbageValue = "-707456994"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
+		garbageValue = "32"
 	)
 	@Export("set")
 	void set(int var1, String var2, String var3, String var4) {
@@ -78,20 +85,20 @@ public class Message extends DualNode {
 		this.clearIsFromIgnored();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1704976906"
+		garbageValue = "-1504426889"
 	)
 	@Export("clearIsFromFriend")
 	void clearIsFromFriend() {
 		this.isFromFriend0 = TriBool.TriBool_unknown;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "69"
+		garbageValue = "-35"
 	)
 	@Export("isFromFriend")
 	final boolean isFromFriend() {
@@ -102,30 +109,30 @@ public class Message extends DualNode {
 		return this.isFromFriend0 == TriBool.TriBool_true;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "108"
+		descriptor = "(I)V",
+		garbageValue = "-1216553895"
 	)
 	@Export("fillIsFromFriend")
 	void fillIsFromFriend() {
-		this.isFromFriend0 = GameEngine.friendSystem.friendsList.contains(this.senderUsername) ? TriBool.TriBool_true : TriBool.TriBool_false;
+		this.isFromFriend0 = MusicPatchPcmStream.friendSystem.friendsList.contains(this.senderUsername) ? TriBool.TriBool_true : TriBool.TriBool_false;
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "15"
+		garbageValue = "12"
 	)
 	@Export("clearIsFromIgnored")
 	void clearIsFromIgnored() {
 		this.isFromIgnored0 = TriBool.TriBool_unknown;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1173025660"
+		garbageValue = "-282824402"
 	)
 	@Export("isFromIgnored")
 	final boolean isFromIgnored() {
@@ -136,82 +143,110 @@ public class Message extends DualNode {
 		return this.isFromIgnored0 == TriBool.TriBool_true;
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-35"
+		descriptor = "(I)V",
+		garbageValue = "1205982629"
 	)
 	@Export("fillIsFromIgnored")
 	void fillIsFromIgnored() {
-		this.isFromIgnored0 = GameEngine.friendSystem.ignoreList.contains(this.senderUsername) ? TriBool.TriBool_true : TriBool.TriBool_false;
+		this.isFromIgnored0 = MusicPatchPcmStream.friendSystem.ignoreList.contains(this.senderUsername) ? TriBool.TriBool_true : TriBool.TriBool_false;
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "719777600"
+		garbageValue = "-145006235"
 	)
 	@Export("fillSenderUsername")
 	final void fillSenderUsername() {
 		if (this.sender != null) {
-			this.senderUsername = new Username(AbstractWorldMapData.method4791(this.sender), class194.loginType);
+			this.senderUsername = new Username(class20.method293(this.sender), class162.loginType);
 		} else {
 			this.senderUsername = null;
 		}
 
 	}
 
-	@ObfuscatedName("in")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1989735073"
+		descriptor = "(II)Lbc;",
+		garbageValue = "92669484"
 	)
-	@Export("incrementMenuEntries")
-	static final void incrementMenuEntries() {
-		boolean var0 = false;
-
-		while (!var0) {
-			var0 = true;
-
-			for (int var1 = 0; var1 < Client.menuOptionsCount - 1; ++var1) {
-				if (Client.menuOpcodes[var1] < 1000 && Client.menuOpcodes[var1 + 1] > 1000) {
-					String var2 = Client.menuTargets[var1];
-					Client.menuTargets[var1] = Client.menuTargets[var1 + 1];
-					Client.menuTargets[var1 + 1] = var2;
-					String var3 = Client.menuActions[var1];
-					Client.menuActions[var1] = Client.menuActions[var1 + 1];
-					Client.menuActions[var1 + 1] = var3;
-					int var4 = Client.menuOpcodes[var1];
-					Client.menuOpcodes[var1] = Client.menuOpcodes[var1 + 1];
-					Client.menuOpcodes[var1 + 1] = var4;
-					var4 = Client.menuArguments1[var1];
-					Client.menuArguments1[var1] = Client.menuArguments1[var1 + 1];
-					Client.menuArguments1[var1 + 1] = var4;
-					var4 = Client.menuArguments2[var1];
-					Client.menuArguments2[var1] = Client.menuArguments2[var1 + 1];
-					Client.menuArguments2[var1 + 1] = var4;
-					var4 = Client.menuIdentifiers[var1];
-					Client.menuIdentifiers[var1] = Client.menuIdentifiers[var1 + 1];
-					Client.menuIdentifiers[var1 + 1] = var4;
-					boolean var5 = Client.menuShiftClick[var1];
-					Client.menuShiftClick[var1] = Client.menuShiftClick[var1 + 1];
-					Client.menuShiftClick[var1 + 1] = var5;
-					var0 = false;
-				}
+	@Export("getScript")
+	static Script getScript(int var0) {
+		Script var1 = (Script)Script.Script_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = class117.archive12.takeFile(var0, 0);
+			if (var2 == null) {
+				return null;
+			} else {
+				var1 = class282.newScript(var2);
+				Script.Script_cached.put(var1, (long)var0);
+				return var1;
 			}
 		}
-
 	}
 
-	@ObfuscatedName("kf")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "1320031067"
+		descriptor = "(I)V",
+		garbageValue = "1896338299"
 	)
-	@Export("runIntfCloseListeners")
-	static final void runIntfCloseListeners(int var0, int var1) {
-		if (class242.loadInterface(var0)) {
-			Canvas.runComponentCloseListeners(MouseRecorder.Widget_interfaceComponents[var0], var1);
+	public static void method1062() {
+		SequenceDefinition.SequenceDefinition_cached.clear();
+		SequenceDefinition.SequenceDefinition_cachedFrames.clear();
+		SequenceDefinition.SequenceDefinition_cachedModel.clear();
+	}
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(ILbc;ZI)I",
+		garbageValue = "-189073763"
+	)
+	static int method1084(int var0, Script var1, boolean var2) {
+		if (var0 == ScriptOpcodes.GETWINDOWMODE) {
+			Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = MouseRecorder.getWindowedMode();
+			return 1;
+		} else {
+			int var3;
+			if (var0 == ScriptOpcodes.SETWINDOWMODE) {
+				var3 = Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize];
+				if (var3 == 1 || var3 == 2) {
+					class67.setWindowedMode(var3);
+				}
+
+				return 1;
+			} else if (var0 == ScriptOpcodes.GETDEFAULTWINDOWMODE) {
+				Interpreter.Interpreter_intStack[++TaskHandler.Interpreter_intStackSize - 1] = class260.clientPreferences.method2387();
+				return 1;
+			} else if (var0 != ScriptOpcodes.SETDEFAULTWINDOWMODE) {
+				if (var0 == 5310) {
+					--TaskHandler.Interpreter_intStackSize;
+					return 1;
+				} else if (var0 == 5311) {
+					TaskHandler.Interpreter_intStackSize -= 2;
+					return 1;
+				} else if (var0 == 5312) {
+					--TaskHandler.Interpreter_intStackSize;
+					return 1;
+				} else if (var0 == 5350) {
+					GrandExchangeOfferAgeComparator.Interpreter_stringStackSize -= 2;
+					--TaskHandler.Interpreter_intStackSize;
+					return 1;
+				} else {
+					return var0 == 5351 ? 1 : 2;
+				}
+			} else {
+				var3 = Interpreter.Interpreter_intStack[--TaskHandler.Interpreter_intStackSize];
+				if (var3 == 1 || var3 == 2) {
+					class260.clientPreferences.method2334(var3);
+				}
+
+				return 1;
+			}
 		}
 	}
 }

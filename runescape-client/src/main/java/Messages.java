@@ -1,61 +1,67 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ScheduledExecutorService;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ci")
+@ObfuscatedName("cv")
 @Implements("Messages")
 public class Messages {
-	@ObfuscatedName("um")
-	@ObfuscatedSignature(
-		descriptor = "Llw;"
-	)
-	public static class312 field1273;
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@Export("Messages_channels")
 	static final Map Messages_channels;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Loz;"
+		descriptor = "Lpl;"
 	)
 	@Export("Messages_hashTable")
 	static final IterableNodeHashTable Messages_hashTable;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lls;"
+		descriptor = "Lme;"
 	)
 	@Export("Messages_queue")
 	static final IterableDualNodeQueue Messages_queue;
-	@ObfuscatedName("m")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 1900201555
+		intValue = -1010766709
 	)
 	@Export("Messages_count")
 	static int Messages_count;
-	@ObfuscatedName("e")
-	@ObfuscatedSignature(
-		descriptor = "Ljm;"
-	)
-	@Export("scriptActiveWidget")
-	static Widget scriptActiveWidget;
-	@ObfuscatedName("ge")
-	@ObfuscatedGetter(
-		longValue = -3704126848335008397L
-	)
-	static long field1272;
-	@ObfuscatedName("gd")
-	@ObfuscatedGetter(
-		intValue = -1932714305
-	)
-	static int field1277;
+	@ObfuscatedName("j")
+	@Export("soundSystemExecutor")
+	static ScheduledExecutorService soundSystemExecutor;
 
 	static {
 		Messages_channels = new HashMap();
 		Messages_hashTable = new IterableNodeHashTable(1024);
 		Messages_queue = new IterableDualNodeQueue();
 		Messages_count = 0;
+	}
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "([BI)Lic;",
+		garbageValue = "-202834895"
+	)
+	static WorldMapSprite method2574(byte[] var0) {
+		return var0 == null ? new WorldMapSprite() : new WorldMapSprite(class147.method3105(var0).pixels);
+	}
+
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "(Lpl;ILjava/lang/String;I)Ljava/lang/String;",
+		garbageValue = "-1561852450"
+	)
+	static String method2575(IterableNodeHashTable var0, int var1, String var2) {
+		if (var0 == null) {
+			return var2;
+		} else {
+			ObjectNode var3 = (ObjectNode)var0.get((long)var1);
+			return var3 == null ? var2 : (String)var3.obj;
+		}
 	}
 }
