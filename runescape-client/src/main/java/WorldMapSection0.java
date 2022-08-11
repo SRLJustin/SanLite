@@ -4,90 +4,90 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ha")
+@ObfuscatedName("hz")
 @Implements("WorldMapSection0")
 public class WorldMapSection0 implements WorldMapSection {
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -1379468797
+		intValue = 1559912723
 	)
 	@Export("oldZ")
 	int oldZ;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 1978034363
+		intValue = -905584681
 	)
 	@Export("newZ")
 	int newZ;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -1418706877
+		intValue = 1705774317
 	)
 	@Export("oldX")
 	int oldX;
-	@ObfuscatedName("m")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -455262703
+		intValue = -930417029
 	)
 	@Export("oldY")
 	int oldY;
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1189566559
+		intValue = 930056203
 	)
 	@Export("newX")
 	int newX;
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -1025005161
+		intValue = -972908557
 	)
 	@Export("newY")
 	int newY;
-	@ObfuscatedName("j")
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = -2060231737
+		intValue = -2061702557
 	)
 	@Export("oldChunkXLow")
 	int oldChunkXLow;
-	@ObfuscatedName("w")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -1972325381
+		intValue = 41773063
 	)
 	@Export("oldChunkYLow")
 	int oldChunkYLow;
-	@ObfuscatedName("n")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -402429253
+		intValue = -1451833721
 	)
 	@Export("oldChunkXHigh")
 	int oldChunkXHigh;
-	@ObfuscatedName("r")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = 2143866963
+		intValue = 868829807
 	)
 	@Export("oldChunkYHigh")
 	int oldChunkYHigh;
-	@ObfuscatedName("o")
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = -1182995105
+		intValue = 959882011
 	)
 	@Export("newChunkXLow")
 	int newChunkXLow;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -1073244035
+		intValue = 959698909
 	)
 	@Export("newChunkYLow")
 	int newChunkYLow;
-	@ObfuscatedName("d")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = -1074307305
+		intValue = -2022921505
 	)
 	@Export("newChunkXHigh")
 	int newChunkXHigh;
-	@ObfuscatedName("h")
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = 726894699
+		intValue = -722495117
 	)
 	@Export("newChunkYHigh")
 	int newChunkYHigh;
@@ -95,10 +95,10 @@ public class WorldMapSection0 implements WorldMapSection {
 	WorldMapSection0() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lhr;I)V",
-		garbageValue = "2069930856"
+		descriptor = "(Lhw;B)V",
+		garbageValue = "11"
 	)
 	@Export("expandBounds")
 	public void expandBounds(WorldMapArea var1) {
@@ -120,10 +120,10 @@ public class WorldMapSection0 implements WorldMapSection {
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(IIIB)Z",
-		garbageValue = "81"
+		descriptor = "(IIII)Z",
+		garbageValue = "-1974716574"
 	)
 	@Export("containsCoord")
 	public boolean containsCoord(int var1, int var2, int var3) {
@@ -134,20 +134,20 @@ public class WorldMapSection0 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(III)Z",
-		garbageValue = "42159517"
+		garbageValue = "819062651"
 	)
 	@Export("containsPosition")
 	public boolean containsPosition(int var1, int var2) {
 		return var1 >= (this.newX << 6) + (this.newChunkXLow << 3) && var1 <= (this.newX << 6) + (this.newChunkXHigh << 3) + 7 && var2 >= (this.newY << 6) + (this.newChunkYLow << 3) && var2 <= (this.newY << 6) + (this.newChunkYHigh << 3) + 7;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)[I",
-		garbageValue = "22240711"
+		descriptor = "(IIIB)[I",
+		garbageValue = "24"
 	)
 	@Export("getBorderTileLengths")
 	public int[] getBorderTileLengths(int var1, int var2, int var3) {
@@ -159,10 +159,10 @@ public class WorldMapSection0 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(IIS)Lju;",
-		garbageValue = "5000"
+		descriptor = "(III)Lkp;",
+		garbageValue = "-711503187"
 	)
 	@Export("coord")
 	public Coord coord(int var1, int var2) {
@@ -175,10 +175,10 @@ public class WorldMapSection0 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;S)V",
-		garbageValue = "-15299"
+		descriptor = "(Lqw;B)V",
+		garbageValue = "84"
 	)
 	@Export("read")
 	public void read(Buffer var1) {
@@ -199,84 +199,39 @@ public class WorldMapSection0 implements WorldMapSection {
 		this.postRead();
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-109463717"
+		garbageValue = "-1581062019"
 	)
 	@Export("postRead")
 	void postRead() {
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("jt")
 	@ObfuscatedSignature(
-		descriptor = "([BI)V",
-		garbageValue = "-27466891"
+		descriptor = "(IIIIIIIII)V",
+		garbageValue = "1372426617"
 	)
-	@Export("SpriteBuffer_decode")
-	static void SpriteBuffer_decode(byte[] var0) {
-		Buffer var1 = new Buffer(var0);
-		var1.offset = var0.length - 2;
-		class440.SpriteBuffer_spriteCount = var1.readUnsignedShort();
-		class141.SpriteBuffer_xOffsets = new int[class440.SpriteBuffer_spriteCount];
-		RouteStrategy.SpriteBuffer_yOffsets = new int[class440.SpriteBuffer_spriteCount];
-		class432.SpriteBuffer_spriteWidths = new int[class440.SpriteBuffer_spriteCount];
-		class330.SpriteBuffer_spriteHeights = new int[class440.SpriteBuffer_spriteCount];
-		class369.SpriteBuffer_pixels = new byte[class440.SpriteBuffer_spriteCount][];
-		var1.offset = var0.length - 7 - class440.SpriteBuffer_spriteCount * 8;
-		class432.SpriteBuffer_spriteWidth = var1.readUnsignedShort();
-		class432.SpriteBuffer_spriteHeight = var1.readUnsignedShort();
-		int var2 = (var1.readUnsignedByte() & 255) + 1;
-
-		int var3;
-		for (var3 = 0; var3 < class440.SpriteBuffer_spriteCount; ++var3) {
-			class141.SpriteBuffer_xOffsets[var3] = var1.readUnsignedShort();
-		}
-
-		for (var3 = 0; var3 < class440.SpriteBuffer_spriteCount; ++var3) {
-			RouteStrategy.SpriteBuffer_yOffsets[var3] = var1.readUnsignedShort();
-		}
-
-		for (var3 = 0; var3 < class440.SpriteBuffer_spriteCount; ++var3) {
-			class432.SpriteBuffer_spriteWidths[var3] = var1.readUnsignedShort();
-		}
-
-		for (var3 = 0; var3 < class440.SpriteBuffer_spriteCount; ++var3) {
-			class330.SpriteBuffer_spriteHeights[var3] = var1.readUnsignedShort();
-		}
-
-		var1.offset = var0.length - 7 - class440.SpriteBuffer_spriteCount * 8 - (var2 - 1) * 3;
-		class432.SpriteBuffer_spritePalette = new int[var2];
-
-		for (var3 = 1; var3 < var2; ++var3) {
-			class432.SpriteBuffer_spritePalette[var3] = var1.readMedium();
-			if (class432.SpriteBuffer_spritePalette[var3] == 0) {
-				class432.SpriteBuffer_spritePalette[var3] = 1;
+	@Export("drawWidgets")
+	static final void drawWidgets(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+		if (ReflectionCheck.loadInterface(var0)) {
+			class120.field1486 = null;
+			ApproximateRouteStrategy.drawInterface(Widget.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6, var7);
+			if (class120.field1486 != null) {
+				ApproximateRouteStrategy.drawInterface(class120.field1486, -1412584499, var1, var2, var3, var4, class124.field1525, WorldMapLabelSize.field2667, var7);
+				class120.field1486 = null;
 			}
-		}
 
-		var1.offset = 0;
-
-		for (var3 = 0; var3 < class440.SpriteBuffer_spriteCount; ++var3) {
-			int var4 = class432.SpriteBuffer_spriteWidths[var3];
-			int var5 = class330.SpriteBuffer_spriteHeights[var3];
-			int var6 = var5 * var4;
-			byte[] var7 = new byte[var6];
-			class369.SpriteBuffer_pixels[var3] = var7;
-			int var8 = var1.readUnsignedByte();
-			int var9;
-			if (var8 == 0) {
-				for (var9 = 0; var9 < var6; ++var9) {
-					var7[var9] = var1.readByte();
-				}
-			} else if (var8 == 1) {
-				for (var9 = 0; var9 < var4; ++var9) {
-					for (int var10 = 0; var10 < var5; ++var10) {
-						var7[var9 + var4 * var10] = var1.readByte();
-					}
+		} else {
+			if (var7 != -1) {
+				Client.field610[var7] = true;
+			} else {
+				for (int var8 = 0; var8 < 100; ++var8) {
+					Client.field610[var8] = true;
 				}
 			}
-		}
 
+		}
 	}
 }

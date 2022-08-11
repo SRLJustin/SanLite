@@ -1,81 +1,64 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pf")
-public class class422 implements MouseWheel {
-	@ObfuscatedName("c")
+@ObfuscatedName("px")
+public class class422 implements class421 {
+	@ObfuscatedName("o")
+	Map field4620;
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lpf;"
+		descriptor = "Lqm;"
 	)
-	public static final class422 field4523;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Lpf;"
-	)
-	public static final class422 field4524;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lpf;"
-	)
-	static final class422 field4528;
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Lpf;"
-	)
-	static final class422 field4526;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Lpf;"
-	)
-	static final class422 field4525;
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Lpf;"
-	)
-	static final class422 field4527;
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(
-		intValue = 2111165783
-	)
-	final int field4529;
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = -1059382247
-	)
-	final int field4530;
+	final class450 field4622;
 
-	static {
-		field4523 = new class422(5, 0);
-		field4524 = new class422(4, 2);
-		field4528 = new class422(0, 5);
-		field4526 = new class422(1, 6);
-		field4525 = new class422(2, 7);
-		field4527 = new class422(3, 8);
+	@ObfuscatedSignature(
+		descriptor = "(Lqm;)V"
+	)
+	public class422(class450 var1) {
+		this.field4622 = var1;
 	}
 
-	class422(int var1, int var2) {
-		this.field4529 = var1;
-		this.field4530 = var2;
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "-1114812568"
+	)
+	public int vmethod7480(int var1) {
+		if (this.field4620 != null) {
+			class451 var2 = (class451)this.field4620.get(var1);
+			if (var2 != null) {
+				return (Integer)var2.field4770;
+			}
+		}
+
+		return (Integer)this.field4622.vmethod8047(var1);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "3"
+		descriptor = "(ILjava/lang/Object;I)V",
+		garbageValue = "204450768"
 	)
-	public boolean method7605() {
-		return this == field4524;
+	public void vmethod7481(int var1, Object var2) {
+		if (this.field4620 == null) {
+			this.field4620 = new HashMap();
+			this.field4620.put(var1, new class451(var1, var2));
+		} else {
+			class451 var3 = (class451)this.field4620.get(var1);
+			if (var3 == null) {
+				this.field4620.put(var1, new class451(var1, var2));
+			} else {
+				var3.field4770 = var2;
+			}
+		}
+
 	}
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "48"
-	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field4530;
+	public Iterator iterator() {
+		return this.field4620 == null ? Collections.emptyList().iterator() : this.field4620.values().iterator();
 	}
 }

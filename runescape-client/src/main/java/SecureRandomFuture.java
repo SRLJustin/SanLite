@@ -10,16 +10,10 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("bh")
 @Implements("SecureRandomFuture")
 public class SecureRandomFuture {
-	@ObfuscatedName("ta")
-	@ObfuscatedSignature(
-		descriptor = "Lcc;"
-	)
-	@Export("clientPreferences")
-	static ClientPreferences clientPreferences;
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@Export("executor")
 	ExecutorService executor;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@Export("future")
 	Future future;
 
@@ -28,10 +22,10 @@ public class SecureRandomFuture {
 		this.future = this.executor.submit(new SecureRandomCallable());
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "392598921"
+		garbageValue = "-2030157363"
 	)
 	@Export("shutdown")
 	void shutdown() {
@@ -39,138 +33,119 @@ public class SecureRandomFuture {
 		this.executor = null;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-786037347"
+		garbageValue = "-1383304538"
 	)
 	@Export("isDone")
 	boolean isDone() {
 		return this.future.isDone();
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/security/SecureRandom;",
-		garbageValue = "-1927504024"
+		descriptor = "(B)Ljava/security/SecureRandom;",
+		garbageValue = "-26"
 	)
 	@Export("get")
 	SecureRandom get() {
 		try {
 			return (SecureRandom)this.future.get();
 		} catch (Exception var2) {
-			return DecorativeObject.method4340();
+			return LoginScreenAnimation.method2306();
 		}
 	}
 
-	@ObfuscatedName("r")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(IIIZII)J",
-		garbageValue = "205087229"
+		descriptor = "(I)[Lqb;",
+		garbageValue = "-1140507063"
 	)
-	@Export("calculateTag")
-	public static long calculateTag(int var0, int var1, int var2, boolean var3, int var4) {
-		long var5 = (long)((var0 & 127) << 0 | (var1 & 127) << 7 | (var2 & 3) << 14) | ((long)var4 & 4294967295L) << 17;
-		if (var3) {
-			var5 |= 65536L;
-		}
-
-		return var5;
+	static PrivateChatMode[] method2010() {
+		return new PrivateChatMode[]{PrivateChatMode.field4828, PrivateChatMode.field4825, PrivateChatMode.field4827};
 	}
 
-	@ObfuscatedName("fz")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-1413371821"
+		descriptor = "([BIII)Z",
+		garbageValue = "-1887656692"
 	)
-	@Export("forceDisconnect")
-	static final void forceDisconnect(int var0) {
-		LoginScreenAnimation.logOut();
-		switch(var0) {
-		case 1:
-			PlayerType.method5521(24);
-			class19.setLoginResponseString("", "You were disconnected from the server.", "");
-			break;
-		case 2:
-			PlayerType.method5521(24);
-			class19.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
-		}
+	static final boolean method2022(byte[] var0, int var1, int var2) {
+		boolean var3 = true;
+		Buffer var4 = new Buffer(var0);
+		int var5 = -1;
 
-	}
+		label66:
+		while (true) {
+			int var6 = var4.method7873();
+			if (var6 == 0) {
+				return var3;
+			}
 
-	@ObfuscatedName("ge")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-1736689537"
-	)
-	static final void method2025(int var0, int var1) {
-		if (var0 < 128) {
-			var0 = 128;
-		}
+			var5 += var6;
+			int var7 = 0;
+			boolean var8 = false;
 
-		if (var0 > 383) {
-			var0 = 383;
-		}
+			while (true) {
+				int var9;
+				while (!var8) {
+					var9 = var4.readUShortSmart();
+					if (var9 == 0) {
+						continue label66;
+					}
 
-		if (UserComparator7.cameraPitch < var0) {
-			UserComparator7.cameraPitch = (var0 - UserComparator7.cameraPitch) * ChatChannel.field956 / 1000 + UserComparator7.cameraPitch + WorldMapSection1.field2755;
-			if (UserComparator7.cameraPitch > var0) {
-				UserComparator7.cameraPitch = var0;
+					var7 += var9 - 1;
+					int var10 = var7 & 63;
+					int var11 = var7 >> 6 & 63;
+					int var12 = var4.readUnsignedByte() >> 2;
+					int var13 = var11 + var1;
+					int var14 = var10 + var2;
+					if (var13 > 0 && var14 > 0 && var13 < 103 && var14 < 103) {
+						ObjectComposition var15 = WorldMapDecoration.getObjectDefinition(var5);
+						if (var12 != 22 || !Client.isLowDetail || var15.int1 != 0 || var15.interactType == 1 || var15.boolean2) {
+							if (!var15.needsModelFiles()) {
+								++Client.field609;
+								var3 = false;
+							}
+
+							var8 = true;
+						}
+					}
+				}
+
+				var9 = var4.readUShortSmart();
+				if (var9 == 0) {
+					break;
+				}
+
+				var4.readUnsignedByte();
 			}
 		}
-
-		if (UserComparator7.cameraPitch > var0) {
-			UserComparator7.cameraPitch -= (UserComparator7.cameraPitch - var0) * ChatChannel.field956 / 1000 + WorldMapSection1.field2755;
-			if (UserComparator7.cameraPitch < var0) {
-				UserComparator7.cameraPitch = var0;
-			}
-		}
-
-		int var2 = var1 - class379.cameraYaw;
-		if (var2 > 1024) {
-			var2 -= 2048;
-		}
-
-		if (var2 < -1024) {
-			var2 += 2048;
-		}
-
-		if (var2 > 0) {
-			class379.cameraYaw = class379.cameraYaw + WorldMapSection1.field2755 + var2 * ChatChannel.field956 / 1000;
-			class379.cameraYaw &= 2047;
-		}
-
-		if (var2 < 0) {
-			class379.cameraYaw -= -var2 * ChatChannel.field956 / 1000 + WorldMapSection1.field2755;
-			class379.cameraYaw &= 2047;
-		}
-
-		int var3 = var1 - class379.cameraYaw;
-		if (var3 > 1024) {
-			var3 -= 2048;
-		}
-
-		if (var3 < -1024) {
-			var3 += 2048;
-		}
-
-		if (var3 < 0 && var2 > 0 || var3 > 0 && var2 < 0) {
-			class379.cameraYaw = var1;
-		}
-
 	}
 
-	@ObfuscatedName("ls")
+	@ObfuscatedName("hw")
 	@ObfuscatedSignature(
-		descriptor = "(Ljm;S)Ljava/lang/String;",
-		garbageValue = "13301"
+		descriptor = "(IIIB)I",
+		garbageValue = "-119"
 	)
-	@Export("Widget_getSpellActionName")
-	static String Widget_getSpellActionName(Widget var0) {
-		if (class404.Widget_unpackTargetMask(class363.getWidgetFlags(var0)) == 0) {
-			return null;
+	@Export("getTileHeight")
+	static final int getTileHeight(int var0, int var1, int var2) {
+		int var3 = var0 >> 7;
+		int var4 = var1 >> 7;
+		if (var3 >= 0 && var4 >= 0 && var3 <= 103 && var4 <= 103) {
+			int var5 = var2;
+			if (var2 < 3 && (Tiles.Tiles_renderFlags[1][var3][var4] & 2) == 2) {
+				var5 = var2 + 1;
+			}
+
+			int var6 = var0 & 127;
+			int var7 = var1 & 127;
+			int var8 = Tiles.Tiles_heights[var5][var3 + 1][var4] * var6 + (128 - var6) * Tiles.Tiles_heights[var5][var3][var4] >> 7;
+			int var9 = var6 * Tiles.Tiles_heights[var5][var3 + 1][var4 + 1] + Tiles.Tiles_heights[var5][var3][var4 + 1] * (128 - var6) >> 7;
+			return var9 * var7 + var8 * (128 - var7) >> 7;
 		} else {
-			return var0.spellActionName != null && var0.spellActionName.trim().length() != 0 ? var0.spellActionName : null;
+			return 0;
 		}
 	}
 }

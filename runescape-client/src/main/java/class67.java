@@ -1,45 +1,97 @@
 import java.math.BigInteger;
+import java.net.MalformedURLException;
+import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bc")
+@ObfuscatedName("bx")
 public class class67 {
-	@ObfuscatedName("c")
-	static final BigInteger field856;
-	@ObfuscatedName("b")
-	static final BigInteger field857;
+	@ObfuscatedName("o")
+	static final BigInteger field889;
+	@ObfuscatedName("q")
+	static final BigInteger field888;
 
 	static {
-		field856 = new BigInteger("10001", 16);
-		field857 = new BigInteger("959194ea8a966b960e862427e497e246718ecc7e76f242845673d52b62df19f52fa6fb93c8d9c5129b95747f8ca61fb059fa44297c08c6f5cc6cca99e8d39fc8f0faa58e58d1ca99e861439d01158c14880260b09ace07d25862f6d14e2db785c3016567101e927e4b2513e0b8a0f275ccf60c6a689af387a64b2b82a313d8dd", 16);
+		field889 = new BigInteger("10001", 16);
+		field888 = new BigInteger("824f2de2a0dd6d85b44b801f7518e6cef7eacec0a14284cbab75c2ac2cf34d2c942efb3604fea616fbf370136562a38ede7136a51e37889c49ab1883910b0296731625bb64164f6f0caf48dc72e22612513ad3576daae73c5c9a1b27d7cbffd7ad60f1de62d8526ce9d17a33ec709e3d620b704d37806701c88b1ddd5057dd5f", 16);
+	}
+
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)Z",
+		garbageValue = "490839558"
+	)
+	static boolean method1937(String var0) {
+		if (var0 == null) {
+			return false;
+		} else {
+			try {
+				new URL(var0);
+				return true;
+			} catch (MalformedURLException var2) {
+				return false;
+			}
+		}
 	}
 
 	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "1654088160"
+		descriptor = "(I)Lfl;",
+		garbageValue = "-2015643594"
 	)
-	@Export("Login_promptCredentials")
-	static void Login_promptCredentials(boolean var0) {
-		Login.Login_response1 = "";
-		Login.Login_response2 = "Enter your username/email & password.";
-		Login.Login_response3 = "";
-		PlayerType.method5521(2);
-		if (var0) {
-			Login.Login_password = "";
+	public static Clock method1934() {
+		try {
+			return new NanoClock();
+		} catch (Throwable var1) {
+			return new MilliClock();
 		}
-
-		HealthBar.method2311();
-		WorldMapID.method4805();
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("t")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "-67"
+		descriptor = "(II)V",
+		garbageValue = "2090684925"
 	)
-	static int method1962(int var0) {
-		return (int)((Math.log((double)var0) / Interpreter.field814 - 7.0D) * 256.0D);
+	static void method1935(int var0) {
+		UserComparator6.method2701(14);
+		Login.field906 = var0;
+	}
+
+	@ObfuscatedName("gj")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "-1350013121"
+	)
+	@Export("setWindowedMode")
+	static void setWindowedMode(int var0) {
+		Client.field714 = 0L;
+		if (var0 >= 2) {
+			Client.isResizable = true;
+		} else {
+			Client.isResizable = false;
+		}
+
+		if (MouseRecorder.getWindowedMode() == 1) {
+			class329.client.setMaxCanvasSize(765, 503);
+		} else {
+			class329.client.setMaxCanvasSize(7680, 2160);
+		}
+
+		if (Client.gameState >= 25) {
+			Calendar.method5510();
+		}
+
+	}
+
+	@ObfuscatedName("lr")
+	@ObfuscatedSignature(
+		descriptor = "(Lku;I)I",
+		garbageValue = "314063878"
+	)
+	@Export("getWidgetFlags")
+	static int getWidgetFlags(Widget var0) {
+		IntegerNode var1 = (IntegerNode)Client.widgetFlags.get(((long)var0.id << 32) + (long)var0.childIndex);
+		return var1 != null ? var1.integer : var0.flags;
 	}
 }
