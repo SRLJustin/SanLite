@@ -1,57 +1,42 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jh")
-public class class269 {
-	@ObfuscatedName("hh")
-	@Export("regions")
-	static int[] regions;
-
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(Lkz;IIIBZI)V",
-		garbageValue = "1369454050"
+@ObfuscatedName("jc")
+public final class class269 {
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		longValue = -19627555958654133L
 	)
-	@Export("requestNetFile")
-	static void requestNetFile(Archive var0, int var1, int var2, int var3, byte var4, boolean var5) {
-		long var6 = (long)((var1 << 16) + var2);
-		NetFileRequest var8 = (NetFileRequest)NetCache.NetCache_pendingPriorityWrites.get(var6);
-		if (var8 == null) {
-			var8 = (NetFileRequest)NetCache.NetCache_pendingPriorityResponses.get(var6);
-			if (var8 == null) {
-				var8 = (NetFileRequest)NetCache.NetCache_pendingWrites.get(var6);
-				if (var8 != null) {
-					if (var5) {
-						var8.removeDual();
-						NetCache.NetCache_pendingPriorityWrites.put(var8, var6);
-						--NetCache.NetCache_pendingWritesCount;
-						++NetCache.NetCache_pendingPriorityWritesCount;
+	static long field3174;
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "([BIII)Ljava/lang/String;",
+		garbageValue = "1902505622"
+	)
+	@Export("decodeStringCp1252")
+	public static String decodeStringCp1252(byte[] var0, int var1, int var2) {
+		char[] var3 = new char[var2];
+		int var4 = 0;
+
+		for (int var5 = 0; var5 < var2; ++var5) {
+			int var6 = var0[var5 + var1] & 255;
+			if (var6 != 0) {
+				if (var6 >= 128 && var6 < 160) {
+					char var7 = class341.cp1252AsciiExtension[var6 - 128];
+					if (var7 == 0) {
+						var7 = '?';
 					}
 
-				} else {
-					if (!var5) {
-						var8 = (NetFileRequest)NetCache.NetCache_pendingResponses.get(var6);
-						if (var8 != null) {
-							return;
-						}
-					}
-
-					var8 = new NetFileRequest();
-					var8.archive = var0;
-					var8.crc = var3;
-					var8.padding = var4;
-					if (var5) {
-						NetCache.NetCache_pendingPriorityWrites.put(var8, var6);
-						++NetCache.NetCache_pendingPriorityWritesCount;
-					} else {
-						NetCache.NetCache_pendingWritesQueue.addFirst(var8);
-						NetCache.NetCache_pendingWrites.put(var8, var6);
-						++NetCache.NetCache_pendingWritesCount;
-					}
-
+					var6 = var7;
 				}
+
+				var3[var4++] = (char)var6;
 			}
 		}
+
+		return new String(var3, 0, var4);
 	}
 }

@@ -8,40 +8,48 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("q")
+@ObfuscatedName("e")
 public class class21 {
-	@ObfuscatedName("v")
+	@ObfuscatedName("r")
+	@Export("BZip2Decompressor_block")
+	static int[] BZip2Decompressor_block;
+	@ObfuscatedName("bk")
 	@ObfuscatedSignature(
-		descriptor = "Ljk;"
+		descriptor = "Llj;"
 	)
-	@Export("musicTrack")
-	public static MusicTrack musicTrack;
-	@ObfuscatedName("d")
-	static boolean field116;
-	@ObfuscatedName("bf")
+	@Export("clientLanguage")
+	static Language clientLanguage;
+	@ObfuscatedName("ew")
 	@ObfuscatedSignature(
-		descriptor = "Lpa;"
+		descriptor = "Llu;"
 	)
-	static IndexedSprite field118;
-	@ObfuscatedName("c")
+	@Export("archive9")
+	static Archive archive9;
+	@ObfuscatedName("ir")
+	@ObfuscatedSignature(
+		descriptor = "Lqj;"
+	)
+	@Export("compass")
+	static SpritePixels compass;
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -1676321481
+		intValue = -981203113
 	)
-	final int field115;
-	@ObfuscatedName("b")
-	final String field114;
+	final int field118;
+	@ObfuscatedName("q")
+	final String field119;
 
 	class21(String var1) {
-		this.field115 = 400;
-		this.field114 = "";
+		this.field118 = 400;
+		this.field119 = "";
 	}
 
 	class21(HttpURLConnection var1) throws IOException {
-		this.field115 = var1.getResponseCode();
+		this.field118 = var1.getResponseCode();
 		var1.getResponseMessage();
 		var1.getHeaderFields();
 		StringBuilder var2 = new StringBuilder();
-		InputStream var3 = this.field115 >= 300 ? var1.getErrorStream() : var1.getInputStream();
+		InputStream var3 = this.field118 >= 300 ? var1.getErrorStream() : var1.getInputStream();
 		if (var3 != null) {
 			InputStreamReader var4 = new InputStreamReader(var3);
 			BufferedReader var5 = new BufferedReader(var4);
@@ -54,46 +62,70 @@ public class class21 {
 			var3.close();
 		}
 
-		this.field114 = var2.toString();
+		this.field119 = var2.toString();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1543760704"
+		garbageValue = "1834327023"
 	)
-	public int method338() {
-		return this.field115;
+	public int method298() {
+		return this.field118;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(S)Ljava/lang/String;",
-		garbageValue = "128"
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-539009770"
 	)
-	public String method339() {
-		return this.field114;
+	public String method299() {
+		return this.field119;
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "1347791250"
+	)
+	public static int method302(int var0) {
+		var0 = (var0 & 1431655765) + (var0 >>> 1 & 1431655765);
+		var0 = (var0 >>> 2 & 858993459) + (var0 & 858993459);
+		var0 = var0 + (var0 >>> 4) & 252645135;
+		var0 += var0 >>> 8;
+		var0 += var0 >>> 16;
+		return var0 & 255;
+	}
+
+	@ObfuscatedName("ib")
+	@ObfuscatedSignature(
+		descriptor = "(S)Z",
+		garbageValue = "238"
+	)
+	static final boolean method303() {
+		return Client.isMenuOpen;
 	}
 
 	@ObfuscatedName("if")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIZI)V",
-		garbageValue = "1482446677"
+		descriptor = "(IIIII)V",
+		garbageValue = "575130411"
 	)
-	@Export("insertMenuItem")
-	static final void insertMenuItem(String var0, String var1, int var2, int var3, int var4, int var5, boolean var6) {
-		if (!Client.isMenuOpen) {
-			if (Client.menuOptionsCount < 500) {
-				Client.menuActions[Client.menuOptionsCount] = var0;
-				Client.menuTargets[Client.menuOptionsCount] = var1;
-				Client.menuOpcodes[Client.menuOptionsCount] = var2;
-				Client.menuIdentifiers[Client.menuOptionsCount] = var3;
-				Client.menuArguments1[Client.menuOptionsCount] = var4;
-				Client.menuArguments2[Client.menuOptionsCount] = var5;
-				Client.menuShiftClick[Client.menuOptionsCount] = var6;
-				++Client.menuOptionsCount;
-			}
-
+	@Export("selectSpell")
+	static void selectSpell(int var0, int var1, int var2, int var3) {
+		Widget var4 = class293.getWidgetChild(var0, var1);
+		if (var4 != null && var4.onTargetEnter != null) {
+			ScriptEvent var5 = new ScriptEvent();
+			var5.widget = var4;
+			var5.args = var4.onTargetEnter;
+			class17.runScriptEvent(var5);
 		}
+
+		Client.field746 = var3;
+		Client.isSpellSelected = true;
+		class113.selectedSpellWidget = var0;
+		Client.selectedSpellChildIndex = var1;
+		Coord.selectedSpellFlags = var2;
+		class220.method4529(var4);
 	}
 }
