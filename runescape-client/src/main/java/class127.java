@@ -3,84 +3,89 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("di")
-public class class127 extends class126 {
-	@ObfuscatedName("sd")
+@ObfuscatedName("dl")
+public class class127 extends class128 {
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -1317167519
+		intValue = -1705057231
 	)
-	static int field1498;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = -646146065
-	)
-	int field1503;
-	@ObfuscatedName("b")
-	boolean field1499;
+	int field1535;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Lei;"
 	)
-	final class129 this$0;
+	final class131 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "(Lei;)V"
 	)
-	class127(class129 var1) {
+	class127(class131 var1) {
 		this.this$0 = var1;
-		this.field1503 = -1;
+		this.field1535 = -1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lqr;I)V",
+		garbageValue = "-885940784"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1503 = var1.readUnsignedShort();
-		this.field1499 = var1.readUnsignedByte() == 1;
+	void vmethod3087(Buffer var1) {
+		this.field1535 = var1.readUnsignedShort();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(Leh;B)V",
+		garbageValue = "0"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2857(this.field1503, this.field1499);
+	void vmethod3084(ClanSettings var1) {
+		var1.method2906(this.field1535);
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-39935659"
+		descriptor = "(Lls;I)V",
+		garbageValue = "848477537"
 	)
-	static void method2770() {
-		WorldMapRegion.WorldMapRegion_cachedSprites.clear();
+	public static void method2798(AbstractArchive var0) {
+		FloorOverlayDefinition.FloorOverlayDefinition_archive = var0;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "506416860"
+		descriptor = "(IIII)Lbz;",
+		garbageValue = "-1413111060"
 	)
-	@Export("savePreferences")
-	static void savePreferences() {
-		AccessFile var0 = null;
-
-		try {
-			var0 = class231.getPreferencesFile("", class338.field4054.name, true);
-			Buffer var1 = SecureRandomFuture.clientPreferences.toBuffer();
-			var0.write(var1.array, 0, var1.offset);
-		} catch (Exception var3) {
+	@Export("getWorldMapScript")
+	static Script getWorldMapScript(int var0, int var1, int var2) {
+		int var3 = FontName.method7323(var1, var0);
+		Script var4 = Varps.method5465(var3, var0);
+		if (var4 != null) {
+			return var4;
+		} else {
+			var3 = class286.method5455(var2, var0);
+			var4 = Varps.method5465(var3, var0);
+			return var4 != null ? var4 : null;
 		}
+	}
 
-		try {
-			if (var0 != null) {
-				var0.closeSync(true);
+	@ObfuscatedName("kj")
+	@ObfuscatedSignature(
+		descriptor = "(IIZS)V",
+		garbageValue = "-10523"
+	)
+	static final void method2792(int var0, int var1, boolean var2) {
+		if (Client.currentClanChannels[var0] != null) {
+			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3046()) {
+				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
+				PacketBufferNode var4 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2987, Client.packetWriter.isaacCipher);
+				var4.packetBuffer.writeByte(4 + class309.stringCp1252NullTerminatedByteSize(var3.username.getName()));
+				var4.packetBuffer.writeByte(var0);
+				var4.packetBuffer.writeShort(var1);
+				var4.packetBuffer.writeBoolean(var2);
+				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName());
+				Client.packetWriter.addNode(var4);
 			}
-		} catch (Exception var2) {
 		}
-
 	}
 }

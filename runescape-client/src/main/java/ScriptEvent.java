@@ -4,74 +4,79 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cp")
+@ObfuscatedName("co")
 @Implements("ScriptEvent")
 public class ScriptEvent extends Node {
-	@ObfuscatedName("dl")
+	@ObfuscatedName("sz")
 	@ObfuscatedSignature(
-		descriptor = "Lfk;"
+		descriptor = "Lbq;"
 	)
-	@Export("js5SocketTask")
-	static Task js5SocketTask;
-	@ObfuscatedName("c")
+	@Export("decimator")
+	static Decimator decimator;
+	@ObfuscatedName("vx")
+	@ObfuscatedGetter(
+		intValue = -1961432799
+	)
+	@Export("foundItemIdCount")
+	static int foundItemIdCount;
+	@ObfuscatedName("s")
 	@Export("args")
 	Object[] args;
-	@ObfuscatedName("b")
-	@Export("isMouseInputEvent")
-	boolean isMouseInputEvent;
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
+	boolean field1040;
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Ljm;"
+		descriptor = "Lkn;"
 	)
 	@Export("widget")
 	Widget widget;
-	@ObfuscatedName("m")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -1316811587
+		intValue = 1908546929
 	)
 	@Export("mouseX")
 	int mouseX;
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 429308499
+		intValue = 2078605609
 	)
 	@Export("mouseY")
 	int mouseY;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 2143189111
+		intValue = 292390885
 	)
 	@Export("opIndex")
 	int opIndex;
-	@ObfuscatedName("j")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "Ljm;"
+		descriptor = "Lkn;"
 	)
 	@Export("dragTarget")
 	Widget dragTarget;
-	@ObfuscatedName("w")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 1992981497
+		intValue = 358587025
 	)
 	@Export("keyTyped")
 	int keyTyped;
-	@ObfuscatedName("n")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = 1481039273
+		intValue = 474745929
 	)
 	@Export("keyPressed")
 	int keyPressed;
-	@ObfuscatedName("r")
+	@ObfuscatedName("n")
 	@Export("targetName")
 	String targetName;
-	@ObfuscatedName("o")
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = 2063557447
+		intValue = -327885641
 	)
-	int field1018;
-	@ObfuscatedName("v")
+	int field1039;
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = -170521561
+		intValue = 736580663
 	)
 	@Export("type")
 	int type;
@@ -80,93 +85,55 @@ public class ScriptEvent extends Node {
 		this.type = 76;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;B)V",
-		garbageValue = "1"
+		descriptor = "([Ljava/lang/Object;I)V",
+		garbageValue = "1390308076"
 	)
 	@Export("setArgs")
 	public void setArgs(Object[] var1) {
 		this.args = var1;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "-1783513885"
+		garbageValue = "-1431944361"
 	)
 	@Export("setType")
 	public void setType(int var1) {
 		this.type = var1;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ldh;",
-		garbageValue = "665811152"
+		descriptor = "(I)[Ljy;",
+		garbageValue = "331732172"
 	)
-	static class114 method2154(int var0) {
-		class114 var1 = (class114)class130.findEnumerated(LoginScreenAnimation.method2251(), var0);
-		if (var1 == null) {
-			var1 = class114.field1390;
-		}
-
-		return var1;
+	@Export("ServerPacket_values")
+	public static ServerPacket[] ServerPacket_values() {
+		return new ServerPacket[]{ServerPacket.field3046, ServerPacket.field3047, ServerPacket.field3048, ServerPacket.field3127, ServerPacket.field3071, ServerPacket.field3152, ServerPacket.field3057, ServerPacket.field3053, ServerPacket.field3063, ServerPacket.field3064, ServerPacket.field3056, ServerPacket.field3051, ServerPacket.field3058, ServerPacket.field3065, ServerPacket.field3060, ServerPacket.field3061, ServerPacket.field3062, ServerPacket.field3055, ServerPacket.field3101, ServerPacket.field3114, ServerPacket.field3103, ServerPacket.field3122, ServerPacket.field3068, ServerPacket.field3072, ServerPacket.field3070, ServerPacket.field3095, ServerPacket.field3092, ServerPacket.field3073, ServerPacket.field3067, ServerPacket.field3075, ServerPacket.field3076, ServerPacket.field3077, ServerPacket.field3099, ServerPacket.field3079, ServerPacket.field3080, ServerPacket.field3081, ServerPacket.field3082, ServerPacket.field3083, ServerPacket.field3084, ServerPacket.field3085, ServerPacket.field3086, ServerPacket.field3087, ServerPacket.field3088, ServerPacket.field3050, ServerPacket.field3090, ServerPacket.field3091, ServerPacket.field3128, ServerPacket.field3093, ServerPacket.field3094, ServerPacket.field3125, ServerPacket.field3096, ServerPacket.field3097, ServerPacket.field3105, ServerPacket.field3098, ServerPacket.field3100, ServerPacket.field3074, ServerPacket.field3066, ServerPacket.field3069, ServerPacket.field3104, ServerPacket.field3106, ServerPacket.field3052, ServerPacket.field3089, ServerPacket.field3108, ServerPacket.field3109, ServerPacket.field3110, ServerPacket.field3111, ServerPacket.field3112, ServerPacket.field3113, ServerPacket.field3151, ServerPacket.field3115, ServerPacket.field3116, ServerPacket.field3117, ServerPacket.field3118, ServerPacket.field3054, ServerPacket.field3120, ServerPacket.field3049, ServerPacket.field3102, ServerPacket.field3123, ServerPacket.field3138, ServerPacket.field3119, ServerPacket.field3126, ServerPacket.field3136, ServerPacket.field3132, ServerPacket.field3129, ServerPacket.field3130, ServerPacket.field3131, ServerPacket.field3124, ServerPacket.field3133, ServerPacket.field3134, ServerPacket.field3135, ServerPacket.field3059, ServerPacket.field3137, ServerPacket.field3107, ServerPacket.field3139, ServerPacket.field3140, ServerPacket.field3141, ServerPacket.field3142, ServerPacket.field3143, ServerPacket.field3144, ServerPacket.field3145, ServerPacket.field3146, ServerPacket.field3147, ServerPacket.field3148, ServerPacket.field3149, ServerPacket.field3150};
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-37"
+		descriptor = "([BI)Lii;",
+		garbageValue = "1858757744"
 	)
-	static final void method2152() {
-		Object var10000 = null;
-		String var0 = "Your friend list is full. Max of 200 for free users, and 400 for members";
-		class194.addGameMessage(30, "", var0);
+	static WorldMapSprite method2063(byte[] var0) {
+		return var0 == null ? new WorldMapSprite() : new WorldMapSprite(class155.method3172(var0).pixels);
 	}
 
-	@ObfuscatedName("jt")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIB)V",
-		garbageValue = "95"
+		descriptor = "(II)I",
+		garbageValue = "1186851078"
 	)
-	static final void method2147(int var0, int var1, int var2, int var3, int var4, int var5) {
-		int var6 = var2 - var0;
-		int var7 = var3 - var1;
-		int var8 = var6 >= 0 ? var6 : -var6;
-		int var9 = var7 >= 0 ? var7 : -var7;
-		int var10 = var8;
-		if (var8 < var9) {
-			var10 = var9;
-		}
-
-		if (var10 != 0) {
-			int var11 = (var6 << 16) / var10;
-			int var12 = (var7 << 16) / var10;
-			if (var12 <= var11) {
-				var11 = -var11;
-			} else {
-				var12 = -var12;
-			}
-
-			int var13 = var5 * var12 >> 17;
-			int var14 = var5 * var12 + 1 >> 17;
-			int var15 = var5 * var11 >> 17;
-			int var16 = var5 * var11 + 1 >> 17;
-			var0 -= Rasterizer2D.Rasterizer2D_xClipStart;
-			var1 -= Rasterizer2D.Rasterizer2D_yClipStart;
-			int var17 = var0 + var13;
-			int var18 = var0 - var14;
-			int var19 = var0 + var6 - var14;
-			int var20 = var0 + var6 + var13;
-			int var21 = var15 + var1;
-			int var22 = var1 - var16;
-			int var23 = var7 + var1 - var16;
-			int var24 = var7 + var15 + var1;
-			Rasterizer3D.method3853(var17, var18, var19);
-			Rasterizer3D.method3856(var21, var22, var23, var17, var18, var19, var4);
-			Rasterizer3D.method3853(var17, var19, var20);
-			Rasterizer3D.method3856(var21, var23, var24, var17, var19, var20, var4);
+	public static int method2064(int var0) {
+		if (var0 > 0) {
+			return 1;
+		} else {
+			return var0 < 0 ? -1 : 0;
 		}
 	}
 }

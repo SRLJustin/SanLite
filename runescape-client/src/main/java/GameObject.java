@@ -4,101 +4,89 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hl")
+@ObfuscatedName("he")
 @Implements("GameObject")
 public final class GameObject {
-	@ObfuscatedName("fk")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -1234198713
-	)
-	@Export("worldPort")
-	static int worldPort;
-	@ObfuscatedName("ma")
-	@ObfuscatedGetter(
-		intValue = -1786079239
-	)
-	@Export("menuWidth")
-	static int menuWidth;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = -1089622701
+		intValue = 271411639
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -465774691
+		intValue = 582497265
 	)
 	@Export("height")
 	int height;
-	@ObfuscatedName("p")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 1923590497
+		intValue = -9176165
 	)
 	@Export("centerX")
 	int centerX;
-	@ObfuscatedName("m")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1996180969
-	)
-	@Export("orientation")
-	int orientation;
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		intValue = 1051509529
+		intValue = 1556132625
 	)
 	@Export("centerY")
 	int centerY;
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lgq;"
 	)
 	@Export("renderable")
 	public Renderable renderable;
-	@ObfuscatedName("j")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 1723330507
+		intValue = -248114719
+	)
+	@Export("orientation")
+	int orientation;
+	@ObfuscatedName("i")
+	@ObfuscatedGetter(
+		intValue = 1113126289
 	)
 	@Export("startX")
 	int startX;
-	@ObfuscatedName("w")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -621074209
+		intValue = 1835931621
 	)
 	@Export("endX")
 	int endX;
-	@ObfuscatedName("n")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -178409117
+		intValue = -1093203169
 	)
 	@Export("startY")
 	int startY;
-	@ObfuscatedName("r")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 144998379
+		intValue = -764736559
 	)
 	@Export("endY")
 	int endY;
-	@ObfuscatedName("o")
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = 1469340071
+		intValue = 1931911743
 	)
-	int field2548;
-	@ObfuscatedName("v")
+	int field2658;
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = 800381971
+		intValue = 1034085493
 	)
 	@Export("lastDrawn")
 	int lastDrawn;
-	@ObfuscatedName("d")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		longValue = -3336818157473405963L
+		longValue = -3701413312264417241L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("h")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -1622989155
+		intValue = -1225853567
 	)
 	@Export("flags")
 	int flags;
@@ -106,40 +94,5 @@ public final class GameObject {
 	GameObject() {
 		this.tag = 0L;
 		this.flags = 0;
-	}
-
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "210014678"
-	)
-	static int method4341(int var0, Script var1, boolean var2) {
-		if (var0 != 6700 && var0 != 6702 && var0 != 6704 && var0 != 6706 && var0 != 6708) {
-			if (var0 != 6701 && var0 != 6703 && var0 != 6705 && var0 != 6707 && var0 != 6709) {
-				if (var0 == 6750) {
-					Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-					return 1;
-				} else if (var0 != 6751 && var0 != 6752 && var0 != 6753) {
-					if (var0 == 6754) {
-						int var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-						NPCComposition var4 = WorldMapLabelSize.getNpcDefinition(var3);
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
-						return 1;
-					} else {
-						return 2;
-					}
-				} else {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -1;
-					return 1;
-				}
-			} else {
-				--IsaacCipher.Interpreter_intStackSize;
-				return 1;
-			}
-		} else {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			--class13.Interpreter_stringStackSize;
-			return 1;
-		}
 	}
 }

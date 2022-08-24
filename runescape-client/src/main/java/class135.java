@@ -1,70 +1,238 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ev")
-public class class135 extends class126 {
+@ObfuscatedName("eb")
+public class class135 extends class128 {
+	@ObfuscatedName("o")
+	static int[][] field1587;
+	@ObfuscatedName("s")
+	boolean field1581;
+	@ObfuscatedName("h")
+	byte field1585;
+	@ObfuscatedName("w")
+	byte field1582;
+	@ObfuscatedName("v")
+	byte field1583;
 	@ObfuscatedName("c")
-	String field1555;
+	byte field1584;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Lei;"
 	)
-	final class129 this$0;
+	final class131 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "(Lei;)V"
 	)
-	class135(class129 var1) {
+	class135(class131 var1) {
 		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lqr;I)V",
+		garbageValue = "-885940784"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1555 = var1.readStringCp1252NullTerminated();
-		var1.readInt();
+	void vmethod3087(Buffer var1) {
+		this.field1581 = var1.readUnsignedByte() == 1;
+		this.field1585 = var1.readByte();
+		this.field1582 = var1.readByte();
+		this.field1583 = var1.readByte();
+		this.field1584 = var1.readByte();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(Leh;B)V",
+		garbageValue = "0"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.name = this.field1555;
+	void vmethod3084(ClanSettings var1) {
+		var1.allowGuests = this.field1581;
+		var1.field1606 = this.field1585;
+		var1.field1599 = this.field1582;
+		var1.field1615 = this.field1583;
+		var1.field1610 = this.field1584;
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-877203069"
+		descriptor = "(B)V",
+		garbageValue = "37"
 	)
-	public static final void method2832() {
-		ViewportMouse.ViewportMouse_isInViewport = false;
-		ViewportMouse.ViewportMouse_entityCount = 0;
+	public static void method2871() {
+		WorldMapRegion.WorldMapRegion_cachedSprites.demote(5);
 	}
 
-	@ObfuscatedName("lz")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "1487689727"
+		descriptor = "(ILbz;ZI)I",
+		garbageValue = "1851340095"
 	)
-	static final void method2831(int var0, int var1) {
-		ClanChannel var2 = var0 >= 0 ? Client.currentClanChannels[var0] : UserComparator5.guestClanChannel;
-		if (var2 != null && var1 >= 0 && var1 < var2.method2990()) {
-			ClanChannelMember var3 = (ClanChannelMember)var2.members.get(var1);
-			if (var3.rank == -1) {
-				String var4 = var3.username.getName();
-				PacketWriter var5 = Client.packetWriter;
-				PacketBufferNode var6 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2875, var5.isaacCipher);
-				var6.packetBuffer.writeByte(3 + class116.stringCp1252NullTerminatedByteSize(var4));
-				var6.packetBuffer.writeByte(var0);
-				var6.packetBuffer.writeShort(var1);
-				var6.packetBuffer.writeStringCp1252NullTerminated(var4);
-				var5.addNode(var6);
+	static int method2870(int var0, Script var1, boolean var2) {
+		if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_FIND_LISTENED) {
+			if (FontName.guestClanSettings != null) {
+				Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = 1;
+				Messages.field1326 = FontName.guestClanSettings;
+			} else {
+				Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = 0;
+			}
+
+			return 1;
+		} else {
+			int var3;
+			if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_FIND_AFFINED) {
+				var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+				if (Client.currentClanSettings[var3] != null) {
+					Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = 1;
+					Messages.field1326 = Client.currentClanSettings[var3];
+				} else {
+					Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = 0;
+				}
+
+				return 1;
+			} else if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETCLANNAME) {
+				Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = Messages.field1326.name;
+				return 1;
+			} else if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETALLOWUNAFFINED) {
+				Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Messages.field1326.allowGuests ? 1 : 0;
+				return 1;
+			} else if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETRANKTALK) {
+				Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Messages.field1326.field1606;
+				return 1;
+			} else if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETRANKKICK) {
+				Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Messages.field1326.field1599;
+				return 1;
+			} else if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETRANKLOOTSHARE) {
+				Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Messages.field1326.field1615;
+				return 1;
+			} else if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETCOINSHARE) {
+				Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Messages.field1326.field1610;
+				return 1;
+			} else if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETAFFINEDCOUNT) {
+				Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Messages.field1326.memberCount;
+				return 1;
+			} else if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETAFFINEDDISPLAYNAME) {
+				var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+				Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = Messages.field1326.memberNames[var3];
+				return 1;
+			} else if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETAFFINEDRANK) {
+				var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+				Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Messages.field1326.memberRanks[var3];
+				return 1;
+			} else if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETBANNEDCOUNT) {
+				Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Messages.field1326.bannedMemberCount;
+				return 1;
+			} else if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETBANNEDDISPLAYNAME) {
+				var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+				Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = Messages.field1326.bannedMemberNames[var3];
+				return 1;
+			} else {
+				int var5;
+				int var6;
+				if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETAFFINEDEXTRAINFO) {
+					Nameable.Interpreter_intStackSize -= 3;
+					var3 = Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize];
+					var6 = Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize + 1];
+					var5 = Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize + 2];
+					Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Messages.field1326.method2915(var3, var6, var5);
+					return 1;
+				} else if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETCURRENTOWNER_SLOT) {
+					Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Messages.field1326.currentOwner;
+					return 1;
+				} else if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETREPLACEMENTOWNER_SLOT) {
+					Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Messages.field1326.field1608;
+					return 1;
+				} else if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETAFFINEDSLOT) {
+					Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Messages.field1326.method2901(Interpreter.Interpreter_stringStack[--UserComparator8.Interpreter_stringStackSize]);
+					return 1;
+				} else if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETSORTEDAFFINEDSLOT) {
+					Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize - 1] = Messages.field1326.getSortedMembers()[Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize - 1]];
+					return 1;
+				} else if (var0 == ScriptOpcodes.AFFINEDCLANSETTINGS_ADDBANNED_FROMCHANNEL) {
+					Nameable.Interpreter_intStackSize -= 2;
+					var3 = Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize];
+					var6 = Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize + 1];
+					UserComparator8.method2554(var6, var3);
+					return 1;
+				} else if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETAFFINEDJOINRUNEDAY) {
+					var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+					Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Messages.field1326.field1616[var3];
+					return 1;
+				} else {
+					if (var0 == ScriptOpcodes.AFFINEDCLANSETTINGS_SETMUTED_FROMCHANNEL) {
+						Nameable.Interpreter_intStackSize -= 3;
+						var3 = Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize];
+						boolean var4 = Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize + 1] == 1;
+						var5 = Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize + 2];
+						class127.method2792(var5, var3, var4);
+					}
+
+					if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETAFFINEDMUTED) {
+						var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Messages.field1326.field1619[var3] ? 1 : 0;
+						return 1;
+					} else if (var0 == ScriptOpcodes.ACTIVECLANCHANNEL_FIND_LISTENED) {
+						if (NetCache.guestClanChannel != null) {
+							Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = 1;
+							Interpreter.field826 = NetCache.guestClanChannel;
+						} else {
+							Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = 0;
+						}
+
+						return 1;
+					} else if (var0 == ScriptOpcodes.ACTIVECLANCHANNEL_FIND_AFFINED) {
+						var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+						if (Client.currentClanChannels[var3] != null) {
+							Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = 1;
+							Interpreter.field826 = Client.currentClanChannels[var3];
+							class160.field1744 = var3;
+						} else {
+							Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = 0;
+						}
+
+						return 1;
+					} else if (var0 == ScriptOpcodes.ACTIVECLANCHANNEL_GETCLANNAME) {
+						Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = Interpreter.field826.name;
+						return 1;
+					} else if (var0 == ScriptOpcodes.ACTIVECLANCHANNEL_GETRANKKICK) {
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Interpreter.field826.field1669;
+						return 1;
+					} else if (var0 == ScriptOpcodes.ACTIVECLANCHANNEL_GETRANKTALK) {
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Interpreter.field826.field1666;
+						return 1;
+					} else if (var0 == ScriptOpcodes.ACTIVECLANCHANNEL_GETUSERCOUNT) {
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Interpreter.field826.method3046();
+						return 1;
+					} else if (var0 == ScriptOpcodes.ACTIVECLANCHANNEL_GETUSERDISPLAYNAME) {
+						var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+						Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = ((ClanChannelMember)Interpreter.field826.members.get(var3)).username.getName();
+						return 1;
+					} else if (var0 == ScriptOpcodes.ACTIVECLANCHANNEL_GETUSERRANK) {
+						var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = ((ClanChannelMember)Interpreter.field826.members.get(var3)).rank;
+						return 1;
+					} else if (var0 == ScriptOpcodes.ACTIVECLANCHANNEL_GETUSERWORLD) {
+						var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = ((ClanChannelMember)Interpreter.field826.members.get(var3)).world;
+						return 1;
+					} else if (var0 == ScriptOpcodes.ACTIVECLANCHANNEL_KICKUSER) {
+						var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+						DynamicObject.method1954(class160.field1744, var3);
+						return 1;
+					} else if (var0 == ScriptOpcodes.ACTIVECLANCHANNEL_GETUSERSLOT) {
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Interpreter.field826.method3056(Interpreter.Interpreter_stringStack[--UserComparator8.Interpreter_stringStackSize]);
+						return 1;
+					} else if (var0 == ScriptOpcodes.ACTIVECLANCHANNEL_GETSORTEDUSERSLOT) {
+						Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize - 1] = Interpreter.field826.getSortedMembers()[Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize - 1]];
+						return 1;
+					} else if (var0 == ScriptOpcodes.CLANPROFILE_FIND) {
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = Coord.field3318 != null ? 1 : 0;
+						return 1;
+					} else {
+						return 2;
+					}
+				}
 			}
 		}
 	}

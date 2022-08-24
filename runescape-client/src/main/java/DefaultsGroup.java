@@ -3,152 +3,212 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("mj")
+@ObfuscatedName("nm")
 @Implements("DefaultsGroup")
 public class DefaultsGroup {
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lmj;"
+		descriptor = "Lnm;"
 	)
-	static final DefaultsGroup field4160;
-	@ObfuscatedName("b")
+	static final DefaultsGroup field4365;
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 1835522207
+		intValue = -645648235
 	)
 	@Export("group")
 	final int group;
 
 	static {
-		field4160 = new DefaultsGroup(3);
+		field4365 = new DefaultsGroup(3);
 	}
 
 	DefaultsGroup(int var1) {
 		this.group = var1;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;Lku;ZIS)V",
-		garbageValue = "9766"
+		descriptor = "(Ljava/lang/CharSequence;I)I",
+		garbageValue = "-136151233"
 	)
-	static void method6568(AbstractArchive var0, AbstractArchive var1, boolean var2, int var3) {
-		if (DirectByteArrayCopier.clearLoginScreen) {
-			if (var3 == 4) {
-				PlayerType.method5521(4);
-			}
+	public static int method6839(CharSequence var0) {
+		int var1 = var0.length();
+		int var2 = 0;
 
+		for (int var3 = 0; var3 < var1; ++var3) {
+			char var4 = var0.charAt(var3);
+			if (var4 <= 127) {
+				++var2;
+			} else if (var4 <= 2047) {
+				var2 += 2;
+			} else {
+				var2 += 3;
+			}
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(Lls;III)[Lqe;",
+		garbageValue = "-1768448338"
+	)
+	public static IndexedSprite[] method6840(AbstractArchive var0, int var1, int var2) {
+		if (!Tile.SpriteBuffer_loadSpritesFromArchive(var0, var1, var2)) {
+			return null;
 		} else {
-			if (var3 == 0) {
-				class185.method3731(var2);
-			} else {
-				PlayerType.method5521(var3);
+			IndexedSprite[] var4 = new IndexedSprite[class457.SpriteBuffer_spriteCount];
+
+			for (int var5 = 0; var5 < class457.SpriteBuffer_spriteCount; ++var5) {
+				IndexedSprite var6 = var4[var5] = new IndexedSprite();
+				var6.width = class457.SpriteBuffer_spriteWidth;
+				var6.height = class457.SpriteBuffer_spriteHeight;
+				var6.xOffset = class457.SpriteBuffer_xOffsets[var5];
+				var6.yOffset = InterfaceParent.SpriteBuffer_yOffsets[var5];
+				var6.subWidth = class457.SpriteBuffer_spriteWidths[var5];
+				var6.subHeight = SoundCache.SpriteBuffer_spriteHeights[var5];
+				var6.palette = class457.SpriteBuffer_spritePalette;
+				var6.pixels = class181.SpriteBuffer_pixels[var5];
 			}
 
-			Rasterizer2D.Rasterizer2D_clear();
-			byte[] var4 = var0.takeFileByNames("title.jpg", "");
-			WorldMapCacheName.leftTitleSprite = MouseRecorder.method2161(var4);
-			NPC.rightTitleSprite = WorldMapCacheName.leftTitleSprite.mirrorHorizontally();
-			int var5 = Client.worldProperties;
-			if ((var5 & 536870912) != 0) {
-				Login.logoSprite = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "logo_deadman_mode", "");
-			} else if ((var5 & 1073741824) != 0) {
-				Login.logoSprite = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "logo_seasonal_mode", "");
-			} else {
-				Login.logoSprite = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "logo", "");
-			}
+			class457.SpriteBuffer_xOffsets = null;
+			InterfaceParent.SpriteBuffer_yOffsets = null;
+			class457.SpriteBuffer_spriteWidths = null;
+			SoundCache.SpriteBuffer_spriteHeights = null;
+			class457.SpriteBuffer_spritePalette = null;
+			class181.SpriteBuffer_pixels = null;
+			return var4;
+		}
+	}
 
-			AbstractByteArrayCopier.titleboxSprite = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "titlebox", "");
-			class19.titlebuttonSprite = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton", "");
-			Login.field894 = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton_large", "");
-			Login.field864 = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "play_now_text", "");
-			ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton_wide42,1", "");
-			int var7 = var1.getGroupId("runes");
-			int var8 = var1.getFileId(var7, "");
-			IndexedSprite[] var9;
-			if (!class147.SpriteBuffer_loadSpritesFromArchive(var1, var7, var8)) {
-				var9 = null;
-			} else {
-				IndexedSprite[] var11 = new IndexedSprite[class440.SpriteBuffer_spriteCount];
-
-				for (int var12 = 0; var12 < class440.SpriteBuffer_spriteCount; ++var12) {
-					IndexedSprite var13 = var11[var12] = new IndexedSprite();
-					var13.width = class432.SpriteBuffer_spriteWidth;
-					var13.height = class432.SpriteBuffer_spriteHeight;
-					var13.xOffset = class141.SpriteBuffer_xOffsets[var12];
-					var13.yOffset = RouteStrategy.SpriteBuffer_yOffsets[var12];
-					var13.subWidth = class432.SpriteBuffer_spriteWidths[var12];
-					var13.subHeight = class330.SpriteBuffer_spriteHeights[var12];
-					var13.palette = class432.SpriteBuffer_spritePalette;
-					var13.pixels = class369.SpriteBuffer_pixels[var12];
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(ILbz;ZB)I",
+		garbageValue = "-97"
+	)
+	static int method6838(int var0, Script var1, boolean var2) {
+		int var3;
+		if (var0 == ScriptOpcodes.OC_NAME) {
+			var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+			Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = AttackOption.ItemDefinition_get(var3).name;
+			return 1;
+		} else {
+			int var4;
+			ItemComposition var5;
+			if (var0 == ScriptOpcodes.OC_OP) {
+				Nameable.Interpreter_intStackSize -= 2;
+				var3 = Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize + 1];
+				var5 = AttackOption.ItemDefinition_get(var3);
+				if (var4 >= 1 && var4 <= 5 && var5.groundActions[var4 - 1] != null) {
+					Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = var5.groundActions[var4 - 1];
+				} else {
+					Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = "";
 				}
 
-				UserComparator3.method2529();
-				var9 = var11;
-			}
-
-			Login.runesSprite = var9;
-			var8 = var1.getGroupId("title_mute");
-			int var15 = var1.getFileId(var8, "");
-			IndexedSprite[] var10;
-			if (!class147.SpriteBuffer_loadSpritesFromArchive(var1, var8, var15)) {
-				var10 = null;
-			} else {
-				IndexedSprite[] var16 = new IndexedSprite[class440.SpriteBuffer_spriteCount];
-
-				for (int var17 = 0; var17 < class440.SpriteBuffer_spriteCount; ++var17) {
-					IndexedSprite var14 = var16[var17] = new IndexedSprite();
-					var14.width = class432.SpriteBuffer_spriteWidth;
-					var14.height = class432.SpriteBuffer_spriteHeight;
-					var14.xOffset = class141.SpriteBuffer_xOffsets[var17];
-					var14.yOffset = RouteStrategy.SpriteBuffer_yOffsets[var17];
-					var14.subWidth = class432.SpriteBuffer_spriteWidths[var17];
-					var14.subHeight = class330.SpriteBuffer_spriteHeights[var17];
-					var14.palette = class432.SpriteBuffer_spritePalette;
-					var14.pixels = class369.SpriteBuffer_pixels[var17];
+				return 1;
+			} else if (var0 == ScriptOpcodes.OC_IOP) {
+				Nameable.Interpreter_intStackSize -= 2;
+				var3 = Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize + 1];
+				var5 = AttackOption.ItemDefinition_get(var3);
+				if (var4 >= 1 && var4 <= 5 && var5.inventoryActions[var4 - 1] != null) {
+					Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = var5.inventoryActions[var4 - 1];
+				} else {
+					Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = "";
 				}
 
-				UserComparator3.method2529();
-				var10 = var16;
-			}
-
-			Login.title_muteSprite = var10;
-			KeyHandler.options_buttons_0Sprite = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,0", "");
-			UserComparator9.field1336 = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,4", "");
-			LoginType.options_buttons_2Sprite = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,2", "");
-			Login.field888 = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,6", "");
-			class315.field3918 = KeyHandler.options_buttons_0Sprite.subWidth;
-			Huffman.field3152 = KeyHandler.options_buttons_0Sprite.subHeight;
-			Client.loginScreenRunesAnimation = new LoginScreenAnimation(Login.runesSprite);
-			if (var2) {
-				Login.Login_username = "";
-				Login.Login_password = "";
-			}
-
-			class148.field1651 = 0;
-			BufferedSource.otp = "";
-			Login.field882 = true;
-			Login.worldSelectOpen = false;
-			if (!SecureRandomFuture.clientPreferences.titleMusicDisabled) {
-				Script.method2040(2, WorldMapScaleHandler.archive6, "scape main", "", 255, false);
+				return 1;
+			} else if (var0 == ScriptOpcodes.OC_COST) {
+				var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+				Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = AttackOption.ItemDefinition_get(var3).price;
+				return 1;
+			} else if (var0 == ScriptOpcodes.OC_STACKABLE) {
+				var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+				Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = AttackOption.ItemDefinition_get(var3).isStackable == 1 ? 1 : 0;
+				return 1;
 			} else {
-				class260.musicPlayerStatus = 1;
-				class124.musicTrackArchive = null;
-				VarcInt.musicTrackGroupId = -1;
-				class260.musicTrackFileId = -1;
-				ChatChannel.musicTrackVolume = 0;
-				DynamicObject.musicTrackBoolean = false;
-				class260.pcmSampleLength = 2;
-			}
+				ItemComposition var7;
+				if (var0 == ScriptOpcodes.OC_CERT) {
+					var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+					var7 = AttackOption.ItemDefinition_get(var3);
+					if (var7.noteTemplate == -1 && var7.note >= 0) {
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = var7.note;
+					} else {
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = var3;
+					}
 
-			ClientPreferences.method2297(false);
-			DirectByteArrayCopier.clearLoginScreen = true;
-			Login.xPadding = (class186.canvasWidth - 765) / 2;
-			Login.loginBoxX = Login.xPadding + 202;
-			class138.loginBoxCenter = Login.loginBoxX + 180;
-			WorldMapCacheName.leftTitleSprite.drawAt(Login.xPadding, 0);
-			NPC.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
-			Login.logoSprite.drawAt(Login.xPadding + 382 - Login.logoSprite.subWidth / 2, 18);
+					return 1;
+				} else if (var0 == ScriptOpcodes.OC_UNCERT) {
+					var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+					var7 = AttackOption.ItemDefinition_get(var3);
+					if (var7.noteTemplate >= 0 && var7.note >= 0) {
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = var7.note;
+					} else {
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = var3;
+					}
+
+					return 1;
+				} else if (var0 == ScriptOpcodes.OC_MEMBERS) {
+					var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+					Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = AttackOption.ItemDefinition_get(var3).isMembersOnly ? 1 : 0;
+					return 1;
+				} else if (var0 == ScriptOpcodes.OC_PLACEHOLDER) {
+					var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+					var7 = AttackOption.ItemDefinition_get(var3);
+					if (var7.placeholderTemplate == -1 && var7.placeholder >= 0) {
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = var7.placeholder;
+					} else {
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = var3;
+					}
+
+					return 1;
+				} else if (var0 == ScriptOpcodes.OC_UNPLACEHOLDER) {
+					var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+					var7 = AttackOption.ItemDefinition_get(var3);
+					if (var7.placeholderTemplate >= 0 && var7.placeholder >= 0) {
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = var7.placeholder;
+					} else {
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = var3;
+					}
+
+					return 1;
+				} else if (var0 == ScriptOpcodes.OC_FIND) {
+					String var6 = Interpreter.Interpreter_stringStack[--UserComparator8.Interpreter_stringStackSize];
+					var4 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+					class138.findItemDefinitions(var6, var4 == 1);
+					Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = ScriptEvent.foundItemIdCount;
+					return 1;
+				} else if (var0 != ScriptOpcodes.OC_FINDNEXT) {
+					if (var0 == ScriptOpcodes.OC_FINDRESET) {
+						class286.foundItemIndex = 0;
+						return 1;
+					} else if (var0 == 4213) {
+						var3 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+						var4 = AttackOption.ItemDefinition_get(var3).getShiftClickIndex();
+						if (var4 == -1) {
+							Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = var4;
+						} else {
+							Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = var4 + 1;
+						}
+
+						return 1;
+					} else {
+						return 2;
+					}
+				} else {
+					if (class271.foundItemIds != null && class286.foundItemIndex < ScriptEvent.foundItemIdCount) {
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = class271.foundItemIds[++class286.foundItemIndex - 1] & '\uffff';
+					} else {
+						Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = -1;
+					}
+
+					return 1;
+				}
+			}
 		}
 	}
 }

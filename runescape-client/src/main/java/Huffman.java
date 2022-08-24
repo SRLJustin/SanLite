@@ -1,28 +1,26 @@
-import java.io.File;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jv")
+@ObfuscatedName("jp")
 @Implements("Huffman")
 public class Huffman {
-	@ObfuscatedName("m")
-	@Export("JagexCache_locationFile")
-	public static File JagexCache_locationFile;
-	@ObfuscatedName("bl")
-	@ObfuscatedGetter(
-		intValue = 1568185021
-	)
-	static int field3152;
 	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		intValue = -409714973
+	)
+	public static int field3288;
+	@ObfuscatedName("bg")
+	static String field3291;
+	@ObfuscatedName("s")
 	@Export("masks")
 	int[] masks;
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@Export("bits")
 	byte[] bits;
-	@ObfuscatedName("p")
+	@ObfuscatedName("w")
 	@Export("keys")
 	int[] keys;
 
@@ -51,7 +49,7 @@ public class Huffman {
 
 					for (var10 = var6 - 1; var10 >= 1; --var10) {
 						var11 = var3[var10];
-						if (var8 != var11) {
+						if (var11 != var8) {
 							break;
 						}
 
@@ -109,10 +107,10 @@ public class Huffman {
 
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "([BII[BII)I",
-		garbageValue = "1986002175"
+		descriptor = "([BII[BIB)I",
+		garbageValue = "-11"
 	)
 	@Export("compress")
 	int compress(byte[] var1, int var2, int var3, byte[] var4, int var5) {
@@ -160,10 +158,10 @@ public class Huffman {
 		return (var7 + 7 >> 3) - var5;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
 		descriptor = "([BI[BIIB)I",
-		garbageValue = "67"
+		garbageValue = "2"
 	)
 	@Export("decompress")
 	int decompress(byte[] var1, int var2, byte[] var3, int var4, int var5) {
@@ -301,6 +299,41 @@ public class Huffman {
 			}
 
 			return var7 + 1 - var2;
+		}
+	}
+
+	@ObfuscatedName("s")
+	@Export("base37DecodeLong")
+	public static String base37DecodeLong(long var0) {
+		if (var0 > 0L && var0 < 6582952005840035281L) {
+			if (var0 % 37L == 0L) {
+				return null;
+			} else {
+				int var2 = 0;
+
+				for (long var3 = var0; 0L != var3; var3 /= 37L) {
+					++var2;
+				}
+
+				StringBuilder var5;
+				char var8;
+				for (var5 = new StringBuilder(var2); var0 != 0L; var5.append(var8)) {
+					long var6 = var0;
+					var0 /= 37L;
+					var8 = class345.base37Table[(int)(var6 - var0 * 37L)];
+					if (var8 == '_') {
+						int var9 = var5.length() - 1;
+						var5.setCharAt(var9, Character.toUpperCase(var5.charAt(var9)));
+						var8 = 160;
+					}
+				}
+
+				var5.reverse();
+				var5.setCharAt(0, Character.toUpperCase(var5.charAt(0)));
+				return var5.toString();
+			}
+		} else {
+			return null;
 		}
 	}
 }

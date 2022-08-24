@@ -4,141 +4,150 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gl")
+@ObfuscatedName("gt")
 @Implements("Occluder")
 public final class Occluder {
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 1159040081
+		intValue = 420323745
 	)
 	@Export("minTileX")
 	int minTileX;
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -342962923
+		intValue = 664232373
 	)
 	@Export("maxTileX")
 	int maxTileX;
-	@ObfuscatedName("p")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 1018728031
+		intValue = 1752935515
 	)
 	@Export("minTileY")
 	int minTileY;
-	@ObfuscatedName("m")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -303087101
+		intValue = -1056536929
 	)
 	@Export("maxTileY")
 	int maxTileY;
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1878203499
+		intValue = 571087511
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 1169287087
+		intValue = 406575443
 	)
 	@Export("minX")
 	int minX;
-	@ObfuscatedName("j")
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = -1004767669
+		intValue = 1576796185
 	)
 	@Export("maxX")
 	int maxX;
-	@ObfuscatedName("w")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -596343551
+		intValue = 1314559405
 	)
 	@Export("minZ")
 	int minZ;
-	@ObfuscatedName("n")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -1032991231
+		intValue = 2128416579
 	)
 	@Export("maxZ")
 	int maxZ;
-	@ObfuscatedName("r")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 973854413
+		intValue = 1717210177
 	)
 	@Export("minY")
 	int minY;
-	@ObfuscatedName("o")
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = 613174517
+		intValue = -492747543
 	)
 	@Export("maxY")
 	int maxY;
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(
-		intValue = 2116164351
-	)
-	int field2378;
-	@ObfuscatedName("d")
-	@ObfuscatedGetter(
-		intValue = -824345461
-	)
-	int field2369;
-	@ObfuscatedName("h")
-	@ObfuscatedGetter(
-		intValue = -1750638079
-	)
-	int field2380;
-	@ObfuscatedName("g")
-	@ObfuscatedGetter(
-		intValue = 72228107
-	)
-	int field2381;
-	@ObfuscatedName("e")
-	@ObfuscatedGetter(
-		intValue = -1522475315
-	)
-	int field2368;
 	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = -1800993445
+		intValue = -1212775709
 	)
-	int field2383;
+	int field2470;
+	@ObfuscatedName("m")
+	@ObfuscatedGetter(
+		intValue = 2080254021
+	)
+	int field2471;
 	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 269877121
+		intValue = 1185688463
 	)
-	int field2367;
+	int field2472;
+	@ObfuscatedName("l")
+	@ObfuscatedGetter(
+		intValue = -333239733
+	)
+	int field2473;
+	@ObfuscatedName("z")
+	@ObfuscatedGetter(
+		intValue = 1901247891
+	)
+	int field2474;
+	@ObfuscatedName("r")
+	@ObfuscatedGetter(
+		intValue = 1422842103
+	)
+	int field2477;
+	@ObfuscatedName("y")
+	@ObfuscatedGetter(
+		intValue = 205898589
+	)
+	int field2461;
 
 	Occluder() {
 	}
 
-	@ObfuscatedName("gt")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "-69"
+		descriptor = "(DDIB)[D",
+		garbageValue = "0"
 	)
-	@Export("setWindowedMode")
-	static void setWindowedMode(int var0) {
-		Client.field514 = 0L;
-		if (var0 >= 2) {
-			Client.isResizable = true;
-		} else {
-			Client.isResizable = false;
+	public static double[] method4235(double var0, double var2, int var4) {
+		int var5 = var4 * 2 + 1;
+		double[] var6 = new double[var5];
+		int var7 = -var4;
+
+		for (int var8 = 0; var7 <= var4; ++var8) {
+			double var15 = ((double)var7 - var0) / var2;
+			double var13 = Math.exp(-var15 * var15 / 2.0D) / Math.sqrt(6.283185307179586D);
+			double var11 = var13 / var2;
+			var6[var8] = var11;
+			++var7;
 		}
 
-		if (class143.getWindowedMode() == 1) {
-			class295.client.setMaxCanvasSize(765, 503);
-		} else {
-			class295.client.setMaxCanvasSize(7680, 2160);
-		}
+		return var6;
+	}
 
-		if (Client.gameState >= 25) {
-			PacketBufferNode var1 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2824, Client.packetWriter.isaacCipher);
-			var1.packetBuffer.writeByte(class143.getWindowedMode());
-			var1.packetBuffer.writeShort(class186.canvasWidth);
-			var1.packetBuffer.writeShort(WallObject.canvasHeight);
-			Client.packetWriter.addNode(var1);
-		}
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "1428269525"
+	)
+	public static int method4236(int var0) {
+		return FileSystem.method3214(ViewportMouse.ViewportMouse_entityTags[var0]);
+	}
 
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "-27"
+	)
+	public static void method4237() {
+		class436.PlayerComposition_cachedModels.clear();
 	}
 }

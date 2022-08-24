@@ -3,141 +3,88 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fv")
+@ObfuscatedName("fa")
 @Implements("Clock")
 public abstract class Clock {
 	Clock() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "18"
+		descriptor = "(I)V",
+		garbageValue = "1571265211"
 	)
 	@Export("mark")
 	public abstract void mark();
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "293215312"
+		descriptor = "(IIB)I",
+		garbageValue = "56"
 	)
 	@Export("wait")
 	public abstract int wait(int var1, int var2);
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(IILgv;Lgf;I)Z",
-		garbageValue = "-1365814358"
+		descriptor = "(Lls;I)V",
+		garbageValue = "-596131229"
 	)
-	public static final boolean method3132(int var0, int var1, RouteStrategy var2, CollisionMap var3) {
-		int var4 = var0;
-		int var5 = var1;
-		byte var6 = 64;
-		byte var7 = 64;
-		int var8 = var0 - var6;
-		int var9 = var1 - var7;
-		class186.directions[var6][var7] = 99;
-		class186.distances[var6][var7] = 0;
-		byte var10 = 0;
-		int var11 = 0;
-		class186.bufferX[var10] = var0;
-		byte var10001 = var10;
-		int var18 = var10 + 1;
-		class186.bufferY[var10001] = var1;
-		int[][] var12 = var3.flags;
-
-		while (var18 != var11) {
-			var4 = class186.bufferX[var11];
-			var5 = class186.bufferY[var11];
-			var11 = var11 + 1 & 4095;
-			int var16 = var4 - var8;
-			int var17 = var5 - var9;
-			int var13 = var4 - var3.xInset;
-			int var14 = var5 - var3.yInset;
-			if (var2.hasArrived(2, var4, var5, var3)) {
-				class186.field2129 = var4;
-				class186.field2130 = var5;
-				return true;
-			}
-
-			int var15 = class186.distances[var16][var17] + 1;
-			if (var16 > 0 && class186.directions[var16 - 1][var17] == 0 && (var12[var13 - 1][var14] & 19136782) == 0 && (var12[var13 - 1][var14 + 1] & 19136824) == 0) {
-				class186.bufferX[var18] = var4 - 1;
-				class186.bufferY[var18] = var5;
-				var18 = var18 + 1 & 4095;
-				class186.directions[var16 - 1][var17] = 2;
-				class186.distances[var16 - 1][var17] = var15;
-			}
-
-			if (var16 < 126 && class186.directions[var16 + 1][var17] == 0 && (var12[var13 + 2][var14] & 19136899) == 0 && (var12[var13 + 2][var14 + 1] & 19136992) == 0) {
-				class186.bufferX[var18] = var4 + 1;
-				class186.bufferY[var18] = var5;
-				var18 = var18 + 1 & 4095;
-				class186.directions[var16 + 1][var17] = 8;
-				class186.distances[var16 + 1][var17] = var15;
-			}
-
-			if (var17 > 0 && class186.directions[var16][var17 - 1] == 0 && (var12[var13][var14 - 1] & 19136782) == 0 && (var12[var13 + 1][var14 - 1] & 19136899) == 0) {
-				class186.bufferX[var18] = var4;
-				class186.bufferY[var18] = var5 - 1;
-				var18 = var18 + 1 & 4095;
-				class186.directions[var16][var17 - 1] = 1;
-				class186.distances[var16][var17 - 1] = var15;
-			}
-
-			if (var17 < 126 && class186.directions[var16][var17 + 1] == 0 && (var12[var13][var14 + 2] & 19136824) == 0 && (var12[var13 + 1][var14 + 2] & 19136992) == 0) {
-				class186.bufferX[var18] = var4;
-				class186.bufferY[var18] = var5 + 1;
-				var18 = var18 + 1 & 4095;
-				class186.directions[var16][var17 + 1] = 4;
-				class186.distances[var16][var17 + 1] = var15;
-			}
-
-			if (var16 > 0 && var17 > 0 && class186.directions[var16 - 1][var17 - 1] == 0 && (var12[var13 - 1][var14] & 19136830) == 0 && (var12[var13 - 1][var14 - 1] & 19136782) == 0 && (var12[var13][var14 - 1] & 19136911) == 0) {
-				class186.bufferX[var18] = var4 - 1;
-				class186.bufferY[var18] = var5 - 1;
-				var18 = var18 + 1 & 4095;
-				class186.directions[var16 - 1][var17 - 1] = 3;
-				class186.distances[var16 - 1][var17 - 1] = var15;
-			}
-
-			if (var16 < 126 && var17 > 0 && class186.directions[var16 + 1][var17 - 1] == 0 && (var12[var13 + 1][var14 - 1] & 19136911) == 0 && (var12[var13 + 2][var14 - 1] & 19136899) == 0 && (var12[var13 + 2][var14] & 19136995) == 0) {
-				class186.bufferX[var18] = var4 + 1;
-				class186.bufferY[var18] = var5 - 1;
-				var18 = var18 + 1 & 4095;
-				class186.directions[var16 + 1][var17 - 1] = 9;
-				class186.distances[var16 + 1][var17 - 1] = var15;
-			}
-
-			if (var16 > 0 && var17 < 126 && class186.directions[var16 - 1][var17 + 1] == 0 && (var12[var13 - 1][var14 + 1] & 19136830) == 0 && (var12[var13 - 1][var14 + 2] & 19136824) == 0 && (var12[var13][var14 + 2] & 19137016) == 0) {
-				class186.bufferX[var18] = var4 - 1;
-				class186.bufferY[var18] = var5 + 1;
-				var18 = var18 + 1 & 4095;
-				class186.directions[var16 - 1][var17 + 1] = 6;
-				class186.distances[var16 - 1][var17 + 1] = var15;
-			}
-
-			if (var16 < 126 && var17 < 126 && class186.directions[var16 + 1][var17 + 1] == 0 && (var12[var13 + 1][var14 + 2] & 19137016) == 0 && (var12[var13 + 2][var14 + 2] & 19136992) == 0 && (var12[var13 + 2][var14 + 1] & 19136995) == 0) {
-				class186.bufferX[var18] = var4 + 1;
-				class186.bufferY[var18] = var5 + 1;
-				var18 = var18 + 1 & 4095;
-				class186.directions[var16 + 1][var17 + 1] = 12;
-				class186.distances[var16 + 1][var17 + 1] = var15;
-			}
-		}
-
-		class186.field2129 = var4;
-		class186.field2130 = var5;
-		return false;
+	public static void method3265(AbstractArchive var0) {
+		VarcInt.VarcInt_archive = var0;
 	}
 
-	@ObfuscatedName("ib")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1758808964"
+		descriptor = "(Lls;III)Lqe;",
+		garbageValue = "325266913"
 	)
-	static void method3144() {
-		MouseHandler.method646(GameObject.menuWidth / 2 + ModeWhere.menuX, BufferedSink.menuY);
+	static IndexedSprite method3260(AbstractArchive var0, int var1, int var2) {
+		if (!Tile.SpriteBuffer_loadSpritesFromArchive(var0, var1, var2)) {
+			return null;
+		} else {
+			IndexedSprite var4 = new IndexedSprite();
+			var4.width = class457.SpriteBuffer_spriteWidth;
+			var4.height = class457.SpriteBuffer_spriteHeight;
+			var4.xOffset = class457.SpriteBuffer_xOffsets[0];
+			var4.yOffset = InterfaceParent.SpriteBuffer_yOffsets[0];
+			var4.subWidth = class457.SpriteBuffer_spriteWidths[0];
+			var4.subHeight = SoundCache.SpriteBuffer_spriteHeights[0];
+			var4.palette = class457.SpriteBuffer_spritePalette;
+			var4.pixels = class181.SpriteBuffer_pixels[0];
+			class457.SpriteBuffer_xOffsets = null;
+			InterfaceParent.SpriteBuffer_yOffsets = null;
+			class457.SpriteBuffer_spriteWidths = null;
+			SoundCache.SpriteBuffer_spriteHeights = null;
+			class457.SpriteBuffer_spritePalette = null;
+			class181.SpriteBuffer_pixels = null;
+			return var4;
+		}
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(II)Ljava/lang/String;",
+		garbageValue = "-332792055"
+	)
+	@Export("colorStartTag")
+	static String colorStartTag(int var0) {
+		return "<col=" + Integer.toHexString(var0) + ">";
+	}
+
+	@ObfuscatedName("eg")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "11"
+	)
+	static final void method3264() {
+		if (Client.logoutTimer > 0) {
+			UserComparator8.method2546();
+		} else {
+			Client.timer.method6468();
+			class4.updateGameState(40);
+			PacketBufferNode.field3045 = Client.packetWriter.getSocket();
+			Client.packetWriter.removeSocket();
+		}
 	}
 }

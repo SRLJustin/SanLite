@@ -3,64 +3,108 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("er")
-public class class138 extends class142 {
-	@ObfuscatedName("x")
+@ObfuscatedName("es")
+public class class138 extends class128 {
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -539577351
+		intValue = -35347907
 	)
-	@Export("loginBoxCenter")
-	static int loginBoxCenter;
-	@ObfuscatedName("c")
-	String field1589;
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(
-		intValue = -318281505
-	)
-	int field1588;
-	@ObfuscatedName("p")
-	byte field1590;
+	int field1598;
+	@ObfuscatedName("h")
+	String field1595;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Len;"
+		descriptor = "Lei;"
 	)
-	final class143 this$0;
+	final class131 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Len;)V"
+		descriptor = "(Lei;)V"
 	)
-	class138(class143 var1) {
+	class138(class131 var1) {
 		this.this$0 = var1;
-		this.field1589 = null;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "4"
+		descriptor = "(Lqr;I)V",
+		garbageValue = "-885940784"
 	)
-	void vmethod3022(Buffer var1) {
-		if (var1.readUnsignedByte() != 255) {
-			--var1.offset;
-			var1.readLong();
+	void vmethod3087(Buffer var1) {
+		this.field1598 = var1.readInt();
+		this.field1595 = var1.readStringCp1252NullTerminated();
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(Leh;B)V",
+		garbageValue = "0"
+	)
+	void vmethod3084(ClanSettings var1) {
+		var1.method2966(this.field1598, this.field1595);
+	}
+
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "(ILbz;ZB)I",
+		garbageValue = "5"
+	)
+	static int method2896(int var0, Script var1, boolean var2) {
+		if (var0 == 6900) {
+			Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = "";
+			return 1;
+		} else if (var0 == 6950) {
+			Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = -1;
+			return 1;
+		} else {
+			return 2;
+		}
+	}
+
+	@ObfuscatedName("kt")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;ZI)V",
+		garbageValue = "-1297035772"
+	)
+	@Export("findItemDefinitions")
+	static void findItemDefinitions(String var0, boolean var1) {
+		var0 = var0.toLowerCase();
+		short[] var2 = new short[16];
+		int var3 = 0;
+
+		for (int var4 = 0; var4 < class144.ItemDefinition_fileCount; ++var4) {
+			ItemComposition var9 = AttackOption.ItemDefinition_get(var4);
+			if ((!var1 || var9.isTradable) && var9.noteTemplate == -1 && var9.name.toLowerCase().indexOf(var0) != -1) {
+				if (var3 >= 250) {
+					ScriptEvent.foundItemIdCount = -1;
+					class271.foundItemIds = null;
+					return;
+				}
+
+				if (var3 >= var2.length) {
+					short[] var6 = new short[var2.length * 2];
+
+					for (int var7 = 0; var7 < var3; ++var7) {
+						var6[var7] = var2[var7];
+					}
+
+					var2 = var6;
+				}
+
+				var2[var3++] = (short)var4;
+			}
 		}
 
-		this.field1589 = var1.readStringCp1252NullTerminatedOrNull();
-		this.field1588 = var1.readUnsignedShort();
-		this.field1590 = var1.readByte();
-		var1.readLong();
-	}
+		class271.foundItemIds = var2;
+		class286.foundItemIndex = 0;
+		ScriptEvent.foundItemIdCount = var3;
+		String[] var8 = new String[ScriptEvent.foundItemIdCount];
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(Lei;B)V",
-		garbageValue = "40"
-	)
-	void vmethod3021(ClanChannel var1) {
-		ClanChannelMember var2 = new ClanChannelMember();
-		var2.username = new Username(this.field1589);
-		var2.world = this.field1588;
-		var2.rank = this.field1590;
-		var1.addMember(var2);
+		for (int var5 = 0; var5 < ScriptEvent.foundItemIdCount; ++var5) {
+			var8[var5] = AttackOption.ItemDefinition_get(var2[var5]).name;
+		}
+
+		short[] var10 = class271.foundItemIds;
+		class132.sortItemsByName(var8, var10, 0, var8.length - 1);
 	}
 }
