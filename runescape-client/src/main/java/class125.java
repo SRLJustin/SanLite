@@ -4,74 +4,105 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dw")
-public class class125 extends class126 {
-	@ObfuscatedName("b")
-	@Export("FileSystem_cacheDir")
-	static File FileSystem_cacheDir;
+@ObfuscatedName("de")
+public class class125 extends class128 {
 	@ObfuscatedName("c")
+	@Export("cacheDir")
+	static File cacheDir;
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -542500645
+		intValue = -987319237
 	)
-	int field1493;
+	int field1529;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(
+		intValue = 1623168443
+	)
+	int field1527;
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(
+		intValue = -638251523
+	)
+	int field1526;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(
+		intValue = 603420191
+	)
+	int field1528;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Lei;"
 	)
-	final class129 this$0;
+	final class131 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "(Lei;)V"
 	)
-	class125(class129 var1) {
+	class125(class131 var1) {
 		this.this$0 = var1;
-		this.field1493 = -1;
+		this.field1529 = -1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lqr;I)V",
+		garbageValue = "-885940784"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1493 = var1.readUnsignedShort();
+	void vmethod3087(Buffer var1) {
+		this.field1529 = var1.readUnsignedShort();
+		this.field1527 = var1.readInt();
+		this.field1526 = var1.readUnsignedByte();
+		this.field1528 = var1.readUnsignedByte();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(Leh;B)V",
+		garbageValue = "0"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2862(this.field1493);
+	void vmethod3084(ClanSettings var1) {
+		var1.method2937(this.field1529, this.field1527, this.field1526, this.field1528);
 	}
 
-	@ObfuscatedName("gi")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Lck;IIB)V",
-		garbageValue = "-63"
+		descriptor = "(IIIIB)V",
+		garbageValue = "-12"
 	)
-	@Export("performPlayerAnimation")
-	static void performPlayerAnimation(Player var0, int var1, int var2) {
-		if (var0.sequence == var1 && var1 != -1) {
-			int var3 = UserComparator5.SequenceDefinition_get(var1).field2078;
-			if (var3 == 1) {
-				var0.sequenceFrame = 0;
-				var0.sequenceFrameCycle = 0;
-				var0.sequenceDelay = var2;
-				var0.field1126 = 0;
+	static final void method2776(int var0, int var1, int var2, int var3) {
+		for (int var4 = var1; var4 <= var3 + var1; ++var4) {
+			for (int var5 = var0; var5 <= var0 + var2; ++var5) {
+				if (var5 >= 0 && var5 < 104 && var4 >= 0 && var4 < 104) {
+					Tiles.field975[0][var5][var4] = 127;
+					if (var0 == var5 && var5 > 0) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 - 1][var4];
+					}
+
+					if (var0 + var2 == var5 && var5 < 103) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 + 1][var4];
+					}
+
+					if (var4 == var1 && var4 > 0) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 - 1];
+					}
+
+					if (var3 + var1 == var4 && var4 < 103) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 + 1];
+					}
+				}
 			}
+		}
 
-			if (var3 == 2) {
-				var0.field1126 = 0;
-			}
-		} else if (var1 == -1 || var0.sequence == -1 || UserComparator5.SequenceDefinition_get(var1).field2092 >= UserComparator5.SequenceDefinition_get(var0.sequence).field2092) {
-			var0.sequence = var1;
-			var0.sequenceFrame = 0;
-			var0.sequenceFrameCycle = 0;
-			var0.sequenceDelay = var2;
-			var0.field1126 = 0;
-			var0.field1098 = var0.pathLength;
+	}
+
+	@ObfuscatedName("jq")
+	@ObfuscatedSignature(
+		descriptor = "(Lkn;B)V",
+		garbageValue = "-43"
+	)
+	static void method2770(Widget var0) {
+		if (var0 != null && var0.cycle == Client.field697) {
+			Client.field643[var0.rootIndex] = true;
 		}
 
 	}

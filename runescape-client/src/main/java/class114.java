@@ -1,82 +1,40 @@
-import java.awt.FontMetrics;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dh")
-public enum class114 implements MouseWheel {
+@ObfuscatedName("dx")
+public class class114 {
+	@ObfuscatedName("v")
+	public static final float field1410;
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1390(0, 0),
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1383(1, 1),
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1384(2, 2),
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1391(3, 3),
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Ldh;"
-	)
-	field1386(4, 4);
+	public static final float field1407;
 
-	@ObfuscatedName("r")
-	public static short[][] field1382;
-	@ObfuscatedName("ax")
-	@Export("loginScreenFontMetrics")
-	static FontMetrics loginScreenFontMetrics;
-	@ObfuscatedName("gl")
-	@ObfuscatedSignature(
-		descriptor = "Llx;"
-	)
-	@Export("fontPlain12")
-	static Font fontPlain12;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -401638189
-	)
-	final int field1387;
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(
-		intValue = 733610371
-	)
-	final int field1388;
-
-	class114(int var3, int var4) {
-		this.field1387 = var3;
-		this.field1388 = var4;
+	static {
+		field1410 = Math.ulp(1.0F);
+		field1407 = 2.0F * field1410;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "48"
+		descriptor = "(I)V",
+		garbageValue = "-1923556377"
 	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field1388;
+	public static void method2637() {
+		ObjectComposition.ObjectDefinition_cached.clear();
+		ObjectComposition.ObjectDefinition_cachedModelData.clear();
+		ObjectComposition.ObjectDefinition_cachedEntities.clear();
+		ObjectComposition.ObjectDefinition_cachedModels.clear();
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("kk")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1912506868"
+		descriptor = "(I)V",
+		garbageValue = "1368697061"
 	)
-	public static int method2629(int var0) {
-		long var2 = ViewportMouse.ViewportMouse_entityTags[var0];
-		int var1 = (int)(var2 >>> 14 & 3L);
-		return var1;
+	@Export("Clan_leaveChat")
+	static final void Clan_leaveChat() {
+		PacketBufferNode var0 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2989, Client.packetWriter.isaacCipher);
+		var0.packetBuffer.writeByte(0);
+		Client.packetWriter.addNode(var0);
 	}
 }

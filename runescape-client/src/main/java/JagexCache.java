@@ -1,44 +1,35 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ey")
+@ObfuscatedName("fk")
 @Implements("JagexCache")
 public class JagexCache {
-	@ObfuscatedName("rd")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "Lar;"
-	)
-	@Export("pcmPlayer0")
-	static PcmPlayer pcmPlayer0;
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "Lof;"
+		descriptor = "Lpf;"
 	)
 	@Export("JagexCache_randomDat")
 	public static BufferedFile JagexCache_randomDat;
-	@ObfuscatedName("d")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "Lof;"
+		descriptor = "Lpf;"
 	)
 	@Export("JagexCache_dat2File")
 	public static BufferedFile JagexCache_dat2File;
-	@ObfuscatedName("h")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Lof;"
+		descriptor = "Lpf;"
 	)
 	@Export("JagexCache_idx255File")
 	public static BufferedFile JagexCache_idx255File;
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(
-		descriptor = "[Lof;"
+	@ObfuscatedName("fa")
+	@ObfuscatedGetter(
+		intValue = 137253805
 	)
-	@Export("JagexCache_idxFiles")
-	public static BufferedFile[] JagexCache_idxFiles;
-	@ObfuscatedName("l")
-	@Export("formattedOperatingSystemName")
-	public static String formattedOperatingSystemName;
+	static int field1728;
 
 	static {
 		JagexCache_randomDat = null;
@@ -46,22 +37,29 @@ public class JagexCache {
 		JagexCache_idx255File = null;
 	}
 
-	@ObfuscatedName("g")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ldb;",
-		garbageValue = "2123818799"
+		descriptor = "(Ljava/lang/String;II)V",
+		garbageValue = "1451347763"
 	)
-	static class120 method3064(int var0) {
-		class120 var1 = (class120)SequenceDefinition.SequenceDefinition_cachedModel.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			var1 = class112.method2571(SequenceDefinition.SequenceDefinition_animationsArchive, class118.SequenceDefinition_skeletonsArchive, var0, false);
-			if (var1 != null) {
-				SequenceDefinition.SequenceDefinition_cachedModel.put(var1, (long)var0);
-			}
+	static final void method3205(String var0, int var1) {
+		PacketBufferNode var2 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2972, Client.packetWriter.isaacCipher);
+		var2.packetBuffer.writeByte(class309.stringCp1252NullTerminatedByteSize(var0) + 1);
+		var2.packetBuffer.method7878(var1);
+		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
+		Client.packetWriter.addNode(var2);
+	}
 
-			return var1;
+	@ObfuscatedName("eo")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "2130372893"
+	)
+	static void method3206(int var0, int var1) {
+		if (FriendsChatMember.clientPreferences.method2222() != 0 && var0 != -1) {
+			class118.method2713(class17.field89, var0, 0, FriendsChatMember.clientPreferences.method2222(), false);
+			Client.field729 = true;
 		}
+
 	}
 }

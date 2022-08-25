@@ -4,27 +4,27 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("km")
+@ObfuscatedName("ks")
 @Implements("ArchiveDiskAction")
 public class ArchiveDiskAction extends Node {
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 1029019227
+		intValue = -1360611527
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@Export("data")
 	public byte[] data;
-	@ObfuscatedName("p")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Lmy;"
+		descriptor = "Lnk;"
 	)
 	@Export("archiveDisk")
 	public ArchiveDisk archiveDisk;
-	@ObfuscatedName("m")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
+		descriptor = "Lln;"
 	)
 	@Export("archive")
 	public Archive archive;
@@ -32,29 +32,124 @@ public class ArchiveDiskAction extends Node {
 	ArchiveDiskAction() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Lpl;IIIB)V",
-		garbageValue = "1"
+		descriptor = "(B)[Lql;",
+		garbageValue = "90"
 	)
-	static void method5526(SpritePixels var0, int var1, int var2, int var3) {
-		DemotingHashTable var4 = WorldMapRegion.WorldMapRegion_cachedSprites;
-		long var6 = (long)(var3 << 16 | var1 << 8 | var2);
-		var4.put(var0, var6, var0.pixels.length * 4);
+	@Export("FillMode_values")
+	public static class454[] FillMode_values() {
+		return new class454[]{class454.SOLID, class454.field4781, class454.field4784};
 	}
 
-	@ObfuscatedName("hp")
+	@ObfuscatedName("hw")
 	@ObfuscatedSignature(
-		descriptor = "(IIS)V",
-		garbageValue = "128"
+		descriptor = "(IIIILjava/lang/String;I)V",
+		garbageValue = "-1771551760"
 	)
-	static final void method5527(int var0, int var1) {
-		if (Client.hintArrowType == 2) {
-			ModeWhere.worldToScreen(Client.hintArrowSubX * 64 + (Client.hintArrowX - class131.baseX * 64 << 7), Client.hintArrowSubY * 64 + (Client.hintArrowY - TileItem.baseY * 64 << 7), Client.hintArrowHeight * 2);
-			if (Client.viewportTempX > -1 && Client.cycle % 20 < 10) {
-				class260.headIconHintSprites[0].drawTransBgAt(var0 + Client.viewportTempX - 12, Client.viewportTempY + var1 - 28);
+	@Export("widgetDefaultMenuAction")
+	static void widgetDefaultMenuAction(int var0, int var1, int var2, int var3, String var4) {
+		Widget var5 = class128.getWidgetChild(var1, var2);
+		if (var5 != null) {
+			if (var5.onOp != null) {
+				ScriptEvent var6 = new ScriptEvent();
+				var6.widget = var5;
+				var6.opIndex = var0;
+				var6.targetName = var4;
+				var6.args = var5.onOp;
+				SceneTilePaint.runScriptEvent(var6);
 			}
 
+			boolean var8 = true;
+			if (var5.contentType > 0) {
+				var8 = class18.method263(var5);
+			}
+
+			if (var8) {
+				if (TaskHandler.method3189(class193.getWidgetFlags(var5), var0 - 1)) {
+					PacketBufferNode var7;
+					if (var0 == 1) {
+						var7 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field3003, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 2) {
+						var7 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2933, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 3) {
+						var7 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2993, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 4) {
+						var7 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2928, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 5) {
+						var7 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2935, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 6) {
+						var7 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2915, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 7) {
+						var7 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2940, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 8) {
+						var7 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field3004, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 9) {
+						var7 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2968, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 10) {
+						var7 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2973, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+				}
+			}
 		}
 	}
 }

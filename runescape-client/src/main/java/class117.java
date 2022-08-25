@@ -3,185 +3,308 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dp")
-public class class117 implements MouseWheel {
-	@ObfuscatedName("sx")
-	@ObfuscatedGetter(
-		intValue = -1106281963
-	)
-	static int field1433;
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Ldp;"
-	)
-	static final class117 field1425;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Ldp;"
-	)
-	static final class117 field1444;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Ldp;"
-	)
-	static final class117 field1430;
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Ldp;"
-	)
-	static final class117 field1427;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Ldp;"
-	)
-	static final class117 field1428;
+@ObfuscatedName("dj")
+public class class117 {
 	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Ldp;"
-	)
-	static final class117 field1429;
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "Ldp;"
-	)
-	static final class117 field1442;
+	boolean field1447;
+	@ObfuscatedName("h")
+	boolean field1438;
 	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Ldp;"
+		descriptor = "Ldg;"
 	)
-	static final class117 field1431;
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "Ldp;"
-	)
-	static final class117 field1432;
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(
-		descriptor = "Ldp;"
-	)
-	static final class117 field1424;
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "Ldp;"
-	)
-	static final class117 field1434;
+	class116 field1439;
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Ldp;"
+		descriptor = "Ldg;"
 	)
-	static final class117 field1435;
+	class116 field1449;
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "[Ldr;"
+	)
+	class113[] field1441;
+	@ObfuscatedName("q")
+	boolean field1442;
+	@ObfuscatedName("i")
+	float field1437;
+	@ObfuscatedName("k")
+	float field1444;
+	@ObfuscatedName("o")
+	float[] field1445;
+	@ObfuscatedName("n")
+	float[] field1440;
 	@ObfuscatedName("d")
-	@ObfuscatedSignature(
-		descriptor = "Ldp;"
-	)
-	static final class117 field1436;
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "Ldp;"
-	)
-	static final class117 field1437;
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(
-		descriptor = "Ldp;"
-	)
-	static final class117 field1438;
-	@ObfuscatedName("e")
-	@ObfuscatedSignature(
-		descriptor = "Ldp;"
-	)
-	static final class117 field1439;
+	boolean field1448;
 	@ObfuscatedName("a")
-	@ObfuscatedSignature(
-		descriptor = "Ldp;"
+	@ObfuscatedGetter(
+		intValue = -142194557
 	)
-	static final class117 field1440;
+	int field1446;
+	@ObfuscatedName("m")
+	float[] field1454;
 	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -1755047429
+		intValue = -1852010129
 	)
-	final int field1441;
-	@ObfuscatedName("k")
+	int field1450;
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = -438304939
+		intValue = -777934173
 	)
-	final int field1426;
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(
-		intValue = 614342417
-	)
-	final int field1443;
+	int field1451;
+	@ObfuscatedName("z")
+	float field1452;
+	@ObfuscatedName("r")
+	float field1443;
 
-	static {
-		field1425 = new class117(0, 0, (String)null, -1, -1);
-		field1444 = new class117(1, 1, (String)null, 0, 2);
-		field1430 = new class117(2, 2, (String)null, 1, 2);
-		field1427 = new class117(3, 3, (String)null, 2, 2);
-		field1428 = new class117(4, 4, (String)null, 3, 1);
-		field1429 = new class117(5, 5, (String)null, 4, 1);
-		field1442 = new class117(6, 6, (String)null, 5, 1);
-		field1431 = new class117(7, 7, (String)null, 6, 3);
-		field1432 = new class117(8, 8, (String)null, 7, 3);
-		field1424 = new class117(9, 9, (String)null, 8, 3);
-		field1434 = new class117(10, 10, (String)null, 0, 7);
-		field1435 = new class117(11, 11, (String)null, 1, 7);
-		field1436 = new class117(12, 12, (String)null, 2, 7);
-		field1437 = new class117(13, 13, (String)null, 3, 7);
-		field1438 = new class117(14, 14, (String)null, 4, 7);
-		field1439 = new class117(15, 15, (String)null, 5, 7);
-		field1440 = new class117(16, 16, (String)null, 0, 5);
+	class117() {
+		this.field1445 = new float[4];
+		this.field1440 = new float[4];
+		this.field1448 = true;
+		this.field1446 = 0;
 	}
 
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(IILjava/lang/String;II)V",
-		garbageValue = "-1"
+		descriptor = "(Lqr;II)I",
+		garbageValue = "1553569592"
 	)
-	class117(int var1, int var2, String var3, int var4, int var5) {
-		this.field1441 = var1;
-		this.field1426 = var2;
-		this.field1443 = var4;
-	}
+	int method2685(Buffer var1, int var2) {
+		int var3 = var1.readUnsignedShort();
+		int var4 = var1.readUnsignedByte();
+		class123[] var5 = new class123[]{class123.field1508, class123.field1515, class123.field1507, class123.field1512, class123.field1509, class123.field1518, class123.field1511, class123.field1510, class123.field1513};
+		class123 var6 = (class123)GameEngine.findEnumerated(var5, var4);
+		if (var6 == null) {
+			var6 = class123.field1513;
+		}
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "48"
-	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field1426;
-	}
+		int var12 = var1.readUnsignedByte();
+		class116[] var7 = new class116[]{class116.field1434, class116.field1431, class116.field1428, class116.field1433, class116.field1432};
+		class116 var8 = (class116)GameEngine.findEnumerated(var7, var12);
+		if (var8 == null) {
+			var8 = class116.field1434;
+		}
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-202233185"
-	)
-	int method2674() {
-		return this.field1443;
-	}
+		this.field1439 = var8;
+		int var13 = var1.readUnsignedByte();
+		class116[] var9 = new class116[]{class116.field1434, class116.field1431, class116.field1428, class116.field1433, class116.field1432};
+		class116 var10 = (class116)GameEngine.findEnumerated(var9, var13);
+		if (var10 == null) {
+			var10 = class116.field1434;
+		}
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "8"
-	)
-	public static boolean method2676(int var0) {
-		return var0 >= 0 && var0 < 112 ? KeyHandler.field130[var0] : false;
-	}
+		this.field1449 = var10;
+		this.field1447 = var1.readUnsignedByte() != 0;
+		this.field1441 = new class113[var3];
+		class113 var15 = null;
 
-	@ObfuscatedName("fw")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "0"
-	)
-	static final void method2682() {
-		if (class121.field1470) {
-			for (int var0 = 0; var0 < Players.Players_count; ++var0) {
-				Player var1 = Client.players[Players.Players_indices[var0]];
-				var1.method2186();
+		int var14;
+		for (var14 = 0; var14 < var3; ++var14) {
+			class113 var11 = new class113();
+			var11.method2621(var1, var2);
+			this.field1441[var14] = var11;
+			if (var15 != null) {
+				var15.field1404 = var11;
 			}
 
-			class121.field1470 = false;
+			var15 = var11;
+		}
+
+		this.field1450 = this.field1441[0].field1400;
+		this.field1451 = this.field1441[this.method2712() - 1].field1400;
+		this.field1454 = new float[this.method2686() + 1];
+
+		for (var14 = this.method2687(); var14 <= this.method2709(); ++var14) {
+			this.field1454[var14 - this.method2687()] = class10.method86(this, (float)var14);
+		}
+
+		this.field1441 = null;
+		this.field1452 = class10.method86(this, (float)(this.method2687() - 1));
+		this.field1443 = class10.method86(this, (float)(this.method2709() + 1));
+		return var3;
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(II)F",
+		garbageValue = "-313022235"
+	)
+	public float method2705(int var1) {
+		if (var1 < this.method2687()) {
+			return this.field1452;
+		} else {
+			return var1 > this.method2709() ? this.field1443 : this.field1454[var1 - this.method2687()];
+		}
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(S)I",
+		garbageValue = "512"
+	)
+	int method2687() {
+		return this.field1450;
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "428317719"
+	)
+	int method2709() {
+		return this.field1451;
+	}
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "-70"
+	)
+	int method2686() {
+		return this.method2709() - this.method2687();
+	}
+
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "(FI)I",
+		garbageValue = "1558860712"
+	)
+	int method2690(float var1) {
+		if (this.field1446 < 0 || (float)this.field1441[this.field1446].field1400 > var1 || this.field1441[this.field1446].field1404 != null && (float)this.field1441[this.field1446].field1404.field1400 <= var1) {
+			if (var1 >= (float)this.method2687() && var1 <= (float)this.method2709()) {
+				int var2 = this.method2712();
+				int var3 = this.field1446;
+				if (var2 > 0) {
+					int var4 = 0;
+					int var5 = var2 - 1;
+
+					do {
+						int var6 = var5 + var4 >> 1;
+						if (var1 < (float)this.field1441[var6].field1400) {
+							if (var1 > (float)this.field1441[var6 - 1].field1400) {
+								var3 = var6 - 1;
+								break;
+							}
+
+							var5 = var6 - 1;
+						} else {
+							if (var1 <= (float)this.field1441[var6].field1400) {
+								var3 = var6;
+								break;
+							}
+
+							if (var1 < (float)this.field1441[var6 + 1].field1400) {
+								var3 = var6;
+								break;
+							}
+
+							var4 = var6 + 1;
+						}
+					} while(var4 <= var5);
+				}
+
+				if (var3 != this.field1446) {
+					this.field1446 = var3;
+					this.field1448 = true;
+				}
+
+				return this.field1446;
+			} else {
+				return -1;
+			}
+		} else {
+			return this.field1446;
+		}
+	}
+
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "(FB)Ldr;",
+		garbageValue = "-25"
+	)
+	class113 method2691(float var1) {
+		int var2 = this.method2690(var1);
+		return var2 >= 0 && var2 < this.field1441.length ? this.field1441[var2] : null;
+	}
+
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "16711935"
+	)
+	int method2712() {
+		return this.field1441 == null ? 0 : this.field1441.length;
+	}
+
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "([BB)V",
+		garbageValue = "51"
+	)
+	@Export("SpriteBuffer_decode")
+	static void SpriteBuffer_decode(byte[] var0) {
+		Buffer var1 = new Buffer(var0);
+		var1.offset = var0.length - 2;
+		class457.SpriteBuffer_spriteCount = var1.readUnsignedShort();
+		class457.SpriteBuffer_xOffsets = new int[class457.SpriteBuffer_spriteCount];
+		InterfaceParent.SpriteBuffer_yOffsets = new int[class457.SpriteBuffer_spriteCount];
+		class457.SpriteBuffer_spriteWidths = new int[class457.SpriteBuffer_spriteCount];
+		SoundCache.SpriteBuffer_spriteHeights = new int[class457.SpriteBuffer_spriteCount];
+		class181.SpriteBuffer_pixels = new byte[class457.SpriteBuffer_spriteCount][];
+		var1.offset = var0.length - 7 - class457.SpriteBuffer_spriteCount * 8;
+		class457.SpriteBuffer_spriteWidth = var1.readUnsignedShort();
+		class457.SpriteBuffer_spriteHeight = var1.readUnsignedShort();
+		int var2 = (var1.readUnsignedByte() & 255) + 1;
+
+		int var3;
+		for (var3 = 0; var3 < class457.SpriteBuffer_spriteCount; ++var3) {
+			class457.SpriteBuffer_xOffsets[var3] = var1.readUnsignedShort();
+		}
+
+		for (var3 = 0; var3 < class457.SpriteBuffer_spriteCount; ++var3) {
+			InterfaceParent.SpriteBuffer_yOffsets[var3] = var1.readUnsignedShort();
+		}
+
+		for (var3 = 0; var3 < class457.SpriteBuffer_spriteCount; ++var3) {
+			class457.SpriteBuffer_spriteWidths[var3] = var1.readUnsignedShort();
+		}
+
+		for (var3 = 0; var3 < class457.SpriteBuffer_spriteCount; ++var3) {
+			SoundCache.SpriteBuffer_spriteHeights[var3] = var1.readUnsignedShort();
+		}
+
+		var1.offset = var0.length - 7 - class457.SpriteBuffer_spriteCount * 8 - (var2 - 1) * 3;
+		class457.SpriteBuffer_spritePalette = new int[var2];
+
+		for (var3 = 1; var3 < var2; ++var3) {
+			class457.SpriteBuffer_spritePalette[var3] = var1.readMedium();
+			if (class457.SpriteBuffer_spritePalette[var3] == 0) {
+				class457.SpriteBuffer_spritePalette[var3] = 1;
+			}
+		}
+
+		var1.offset = 0;
+
+		for (var3 = 0; var3 < class457.SpriteBuffer_spriteCount; ++var3) {
+			int var4 = class457.SpriteBuffer_spriteWidths[var3];
+			int var5 = SoundCache.SpriteBuffer_spriteHeights[var3];
+			int var6 = var4 * var5;
+			byte[] var7 = new byte[var6];
+			class181.SpriteBuffer_pixels[var3] = var7;
+			int var8 = var1.readUnsignedByte();
+			int var9;
+			if (var8 == 0) {
+				for (var9 = 0; var9 < var6; ++var9) {
+					var7[var9] = var1.readByte();
+				}
+			} else if (var8 == 1) {
+				for (var9 = 0; var9 < var4; ++var9) {
+					for (int var10 = 0; var10 < var5; ++var10) {
+						var7[var9 + var4 * var10] = var1.readByte();
+					}
+				}
+			}
 		}
 
 	}

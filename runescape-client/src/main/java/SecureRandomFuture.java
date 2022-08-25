@@ -6,20 +6,15 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("bh")
+@ObfuscatedName("bp")
 @Implements("SecureRandomFuture")
 public class SecureRandomFuture {
-	@ObfuscatedName("ta")
-	@ObfuscatedSignature(
-		descriptor = "Lcc;"
-	)
-	@Export("clientPreferences")
-	static ClientPreferences clientPreferences;
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@Export("executor")
 	ExecutorService executor;
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@Export("future")
 	Future future;
 
@@ -28,10 +23,10 @@ public class SecureRandomFuture {
 		this.future = this.executor.submit(new SecureRandomCallable());
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "392598921"
+		descriptor = "(B)V",
+		garbageValue = "-35"
 	)
 	@Export("shutdown")
 	void shutdown() {
@@ -39,138 +34,62 @@ public class SecureRandomFuture {
 		this.executor = null;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-786037347"
+		garbageValue = "-1809149421"
 	)
 	@Export("isDone")
 	boolean isDone() {
 		return this.future.isDone();
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/security/SecureRandom;",
-		garbageValue = "-1927504024"
+		descriptor = "(S)Ljava/security/SecureRandom;",
+		garbageValue = "1001"
 	)
 	@Export("get")
 	SecureRandom get() {
 		try {
 			return (SecureRandom)this.future.get();
 		} catch (Exception var2) {
-			return DecorativeObject.method4340();
+			return Script.method1936();
 		}
 	}
 
-	@ObfuscatedName("r")
+	@ObfuscatedName("y")
 	@ObfuscatedSignature(
-		descriptor = "(IIIZII)J",
-		garbageValue = "205087229"
+		descriptor = "(ILbz;ZI)I",
+		garbageValue = "1497596653"
 	)
-	@Export("calculateTag")
-	public static long calculateTag(int var0, int var1, int var2, boolean var3, int var4) {
-		long var5 = (long)((var0 & 127) << 0 | (var1 & 127) << 7 | (var2 & 3) << 14) | ((long)var4 & 4294967295L) << 17;
-		if (var3) {
-			var5 |= 65536L;
-		}
+	static int method1932(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? SoundSystem.scriptDotWidget : Ignored.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETTARGETMASK) {
+			Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = ModeWhere.Widget_unpackTargetMask(class193.getWidgetFlags(var3));
+			return 1;
+		} else if (var0 != ScriptOpcodes.CC_GETOP) {
+			if (var0 == ScriptOpcodes.CC_GETOPBASE) {
+				if (var3.dataText == null) {
+					Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = "";
+				} else {
+					Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = var3.dataText;
+				}
 
-		return var5;
-	}
-
-	@ObfuscatedName("fz")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-1413371821"
-	)
-	@Export("forceDisconnect")
-	static final void forceDisconnect(int var0) {
-		LoginScreenAnimation.logOut();
-		switch(var0) {
-		case 1:
-			PlayerType.method5521(24);
-			class19.setLoginResponseString("", "You were disconnected from the server.", "");
-			break;
-		case 2:
-			PlayerType.method5521(24);
-			class19.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
-		}
-
-	}
-
-	@ObfuscatedName("ge")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-1736689537"
-	)
-	static final void method2025(int var0, int var1) {
-		if (var0 < 128) {
-			var0 = 128;
-		}
-
-		if (var0 > 383) {
-			var0 = 383;
-		}
-
-		if (UserComparator7.cameraPitch < var0) {
-			UserComparator7.cameraPitch = (var0 - UserComparator7.cameraPitch) * ChatChannel.field956 / 1000 + UserComparator7.cameraPitch + WorldMapSection1.field2755;
-			if (UserComparator7.cameraPitch > var0) {
-				UserComparator7.cameraPitch = var0;
+				return 1;
+			} else {
+				return 2;
 			}
-		}
-
-		if (UserComparator7.cameraPitch > var0) {
-			UserComparator7.cameraPitch -= (UserComparator7.cameraPitch - var0) * ChatChannel.field956 / 1000 + WorldMapSection1.field2755;
-			if (UserComparator7.cameraPitch < var0) {
-				UserComparator7.cameraPitch = var0;
-			}
-		}
-
-		int var2 = var1 - class379.cameraYaw;
-		if (var2 > 1024) {
-			var2 -= 2048;
-		}
-
-		if (var2 < -1024) {
-			var2 += 2048;
-		}
-
-		if (var2 > 0) {
-			class379.cameraYaw = class379.cameraYaw + WorldMapSection1.field2755 + var2 * ChatChannel.field956 / 1000;
-			class379.cameraYaw &= 2047;
-		}
-
-		if (var2 < 0) {
-			class379.cameraYaw -= -var2 * ChatChannel.field956 / 1000 + WorldMapSection1.field2755;
-			class379.cameraYaw &= 2047;
-		}
-
-		int var3 = var1 - class379.cameraYaw;
-		if (var3 > 1024) {
-			var3 -= 2048;
-		}
-
-		if (var3 < -1024) {
-			var3 += 2048;
-		}
-
-		if (var3 < 0 && var2 > 0 || var3 > 0 && var2 < 0) {
-			class379.cameraYaw = var1;
-		}
-
-	}
-
-	@ObfuscatedName("ls")
-	@ObfuscatedSignature(
-		descriptor = "(Ljm;S)Ljava/lang/String;",
-		garbageValue = "13301"
-	)
-	@Export("Widget_getSpellActionName")
-	static String Widget_getSpellActionName(Widget var0) {
-		if (class404.Widget_unpackTargetMask(class363.getWidgetFlags(var0)) == 0) {
-			return null;
 		} else {
-			return var0.spellActionName != null && var0.spellActionName.trim().length() != 0 ? var0.spellActionName : null;
+			int var4 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+			--var4;
+			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
+				Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = var3.actions[var4];
+			} else {
+				Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = "";
+			}
+
+			return 1;
 		}
 	}
 }
