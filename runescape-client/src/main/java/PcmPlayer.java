@@ -5,205 +5,210 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ar")
+@ObfuscatedName("af")
 @Implements("PcmPlayer")
 public class PcmPlayer {
-	@ObfuscatedName("w")
+	@ObfuscatedName("q")
+	@Export("PcmPlayer_stereo")
+	public static boolean PcmPlayer_stereo;
+	@ObfuscatedName("k")
 	@Export("soundSystemExecutor")
 	static ScheduledExecutorService soundSystemExecutor;
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(
-		descriptor = "Lal;"
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = -89074195
 	)
-	@Export("soundSystem")
-	static SoundSystem soundSystem;
-	@ObfuscatedName("hb")
+	public static int field279;
+	@ObfuscatedName("m")
+	@Export("Tiles_hueMultiplier")
+	static int[] Tiles_hueMultiplier;
+	@ObfuscatedName("ch")
 	@ObfuscatedSignature(
-		descriptor = "Lpl;"
+		descriptor = "[Lqe;"
 	)
-	@Export("redHintArrowSprite")
-	static SpritePixels redHintArrowSprite;
-	@ObfuscatedName("h")
+	@Export("worldSelectArrows")
+	static IndexedSprite[] worldSelectArrows;
+	@ObfuscatedName("u")
 	@Export("samples")
 	protected int[] samples;
-	@ObfuscatedName("g")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "Lai;"
+		descriptor = "Lah;"
 	)
 	@Export("stream")
 	PcmStream stream;
-	@ObfuscatedName("e")
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = 722877979
+		intValue = -1437568663
 	)
-	int field284;
-	@ObfuscatedName("a")
+	int field281;
+	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		longValue = -5703185867842976777L
+		longValue = 8741985463652068785L
 	)
 	@Export("timeMs")
 	long timeMs;
-	@ObfuscatedName("u")
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = -2075578253
+		intValue = 895919135
 	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("k")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = 114915137
+		intValue = 578376697
 	)
-	int field298;
-	@ObfuscatedName("f")
+	int field300;
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = -690684053
+		intValue = -363737623
 	)
-	int field288;
-	@ObfuscatedName("l")
+	int field286;
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		longValue = 4521790688810739283L
+		longValue = 7995751903745327077L
 	)
-	long field280;
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(
-		intValue = -702543021
-	)
-	int field290;
+	long field287;
 	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = 1097572003
+		intValue = 77946161
 	)
-	int field291;
-	@ObfuscatedName("z")
+	int field288;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1396809547
+		intValue = 1883029617
 	)
-	int field292;
-	@ObfuscatedName("i")
+	int field293;
+	@ObfuscatedName("t")
 	@ObfuscatedGetter(
-		longValue = 3233827279749364883L
+		intValue = -527189205
 	)
-	long field293;
-	@ObfuscatedName("y")
-	boolean field294;
-	@ObfuscatedName("am")
+	int field290;
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 204749631
+		longValue = 3890268651486961207L
 	)
-	int field295;
-	@ObfuscatedName("az")
+	long field291;
+	@ObfuscatedName("g")
+	boolean field292;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -1250489603
+	)
+	int field277;
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "[Lai;"
+		descriptor = "[Lah;"
 	)
-	PcmStream[] field296;
+	PcmStream[] field295;
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "[Lai;"
+		descriptor = "[Lah;"
 	)
-	PcmStream[] field285;
+	PcmStream[] field302;
 
 	protected PcmPlayer() {
-		this.field284 = 32;
-		this.timeMs = Ignored.method6459();
-		this.field280 = 0L;
+		this.field281 = 32;
+		this.timeMs = class181.method3483();
+		this.field287 = 0L;
+		this.field288 = 0;
+		this.field293 = 0;
 		this.field290 = 0;
-		this.field291 = 0;
-		this.field292 = 0;
-		this.field293 = 0L;
-		this.field294 = true;
-		this.field295 = 0;
-		this.field296 = new PcmStream[8];
-		this.field285 = new PcmStream[8];
+		this.field291 = 0L;
+		this.field292 = true;
+		this.field277 = 0;
+		this.field295 = new PcmStream[8];
+		this.field302 = new PcmStream[8];
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-993652709"
+		garbageValue = "2068921690"
 	)
 	@Export("init")
 	protected void init() throws Exception {
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-865384228"
+		descriptor = "(IB)V",
+		garbageValue = "6"
 	)
 	@Export("open")
 	protected void open(int var1) throws Exception {
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "2142020678"
+		descriptor = "(B)I",
+		garbageValue = "-91"
 	)
 	@Export("position")
 	protected int position() throws Exception {
 		return this.capacity;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("v")
 	@Export("write")
 	protected void write() throws Exception {
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "-88"
+		garbageValue = "-68"
 	)
 	@Export("close")
 	protected void close() {
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-514018891"
+		garbageValue = "-829256546"
 	)
 	@Export("discard")
 	protected void discard() throws Exception {
 	}
 
-	@ObfuscatedName("i")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(Lai;I)V",
-		garbageValue = "-193761027"
+		descriptor = "(Lah;B)V",
+		garbageValue = "-115"
 	)
 	@Export("setStream")
 	public final synchronized void setStream(PcmStream var1) {
 		this.stream = var1;
 	}
 
-	@ObfuscatedName("y")
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "29619557"
+		garbageValue = "-1234729688"
 	)
 	@Export("run")
 	public final synchronized void run() {
 		if (this.samples != null) {
-			long var1 = Ignored.method6459();
+			long var1 = class181.method3483();
 
 			try {
-				if (0L != this.field280) {
-					if (var1 < this.field280) {
+				if (0L != this.field287) {
+					if (var1 < this.field287) {
 						return;
 					}
 
 					this.open(this.capacity);
-					this.field280 = 0L;
-					this.field294 = true;
+					this.field287 = 0L;
+					this.field292 = true;
 				}
 
 				int var3 = this.position();
-				if (this.field292 - var3 > this.field290) {
-					this.field290 = this.field292 - var3;
+				if (this.field290 - var3 > this.field288) {
+					this.field288 = this.field290 - var3;
 				}
 
-				int var4 = this.field288 + this.field298;
+				int var4 = this.field286 + this.field300;
 				if (var4 + 256 > 16384) {
 					var4 = 16128;
 				}
@@ -217,10 +222,10 @@ public class PcmPlayer {
 					this.close();
 					this.open(this.capacity);
 					var3 = 0;
-					this.field294 = true;
+					this.field292 = true;
 					if (var4 + 256 > this.capacity) {
 						var4 = this.capacity - 256;
-						this.field288 = var4 - this.field298;
+						this.field286 = var4 - this.field300;
 					}
 				}
 
@@ -230,38 +235,38 @@ public class PcmPlayer {
 					var3 += 256;
 				}
 
-				if (var1 > this.field293) {
-					if (!this.field294) {
-						if (this.field290 == 0 && this.field291 == 0) {
+				if (var1 > this.field291) {
+					if (!this.field292) {
+						if (this.field288 == 0 && this.field293 == 0) {
 							this.close();
-							this.field280 = 2000L + var1;
+							this.field287 = 2000L + var1;
 							return;
 						}
 
-						this.field288 = Math.min(this.field291, this.field290);
-						this.field291 = this.field290;
+						this.field286 = Math.min(this.field293, this.field288);
+						this.field293 = this.field288;
 					} else {
-						this.field294 = false;
+						this.field292 = false;
 					}
 
-					this.field290 = 0;
-					this.field293 = 2000L + var1;
+					this.field288 = 0;
+					this.field291 = 2000L + var1;
 				}
 
-				this.field292 = var3;
+				this.field290 = var3;
 			} catch (Exception var7) {
 				this.close();
-				this.field280 = 2000L + var1;
+				this.field287 = var1 + 2000L;
 			}
 
 			try {
-				if (var1 > this.timeMs + 500000L) {
+				if (var1 > 500000L + this.timeMs) {
 					var1 = this.timeMs;
 				}
 
 				while (var1 > 5000L + this.timeMs) {
 					this.skip(256);
-					this.timeMs += (long)(256000 / (class339.field4058 * 981712656));
+					this.timeMs += (long)(256000 / (class344.field4152 * -449918071));
 				}
 			} catch (Exception var6) {
 				this.timeMs = var1;
@@ -270,49 +275,49 @@ public class PcmPlayer {
 		}
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1599335992"
+		descriptor = "(B)V",
+		garbageValue = "64"
 	)
-	public final void method747() {
-		this.field294 = true;
+	public final void method669() {
+		this.field292 = true;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-101835154"
+		garbageValue = "-2017665651"
 	)
 	@Export("tryDiscard")
 	public final synchronized void tryDiscard() {
-		this.field294 = true;
+		this.field292 = true;
 
 		try {
 			this.discard();
 		} catch (Exception var2) {
 			this.close();
-			this.field280 = Ignored.method6459() + 2000L;
+			this.field287 = class181.method3483() + 2000L;
 		}
 
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-917395831"
+		garbageValue = "-121473973"
 	)
 	@Export("shutdown")
 	public final synchronized void shutdown() {
-		if (soundSystem != null) {
+		if (TaskHandler.soundSystem != null) {
 			boolean var1 = true;
 
 			for (int var2 = 0; var2 < 2; ++var2) {
-				if (this == soundSystem.players[var2]) {
-					soundSystem.players[var2] = null;
+				if (this == TaskHandler.soundSystem.players[var2]) {
+					TaskHandler.soundSystem.players[var2] = null;
 				}
 
-				if (soundSystem.players[var2] != null) {
+				if (TaskHandler.soundSystem.players[var2] != null) {
 					var1 = false;
 				}
 			}
@@ -320,7 +325,7 @@ public class PcmPlayer {
 			if (var1) {
 				soundSystemExecutor.shutdownNow();
 				soundSystemExecutor = null;
-				soundSystem = null;
+				TaskHandler.soundSystem = null;
 			}
 		}
 
@@ -328,16 +333,16 @@ public class PcmPlayer {
 		this.samples = null;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "1441903742"
+		garbageValue = "1430293749"
 	)
 	@Export("skip")
 	final void skip(int var1) {
-		this.field295 -= var1;
-		if (this.field295 < 0) {
-			this.field295 = 0;
+		this.field277 -= var1;
+		if (this.field277 < 0) {
+			this.field277 = 0;
 		}
 
 		if (this.stream != null) {
@@ -350,22 +355,22 @@ public class PcmPlayer {
 	@Export("fill")
 	final void fill(int[] var1, int var2) {
 		int var3 = var2;
-		if (SpriteMask.PcmPlayer_stereo) {
+		if (PcmPlayer_stereo) {
 			var3 = var2 << 1;
 		}
 
-		class333.clearIntArray(var1, 0, var3);
-		this.field295 -= var2;
-		if (this.stream != null && this.field295 <= 0) {
-			this.field295 += class339.field4058 * 981712656 >> 4;
-			class10.PcmStream_disable(this.stream);
-			this.method751(this.stream, this.stream.vmethod991());
+		class351.clearIntArray(var1, 0, var3);
+		this.field277 -= var2;
+		if (this.stream != null && this.field277 <= 0) {
+			this.field277 += class344.field4152 * -449918071 >> 4;
+			class146.PcmStream_disable(this.stream);
+			this.method674(this.stream, this.stream.vmethod920());
 			int var4 = 0;
 			int var5 = 255;
 
 			int var6;
 			PcmStream var10;
-			label108:
+			label107:
 			for (var6 = 7; var5 != 0; --var6) {
 				int var7;
 				int var8;
@@ -381,13 +386,13 @@ public class PcmPlayer {
 					if ((var9 & 1) != 0) {
 						var5 &= ~(1 << var7);
 						var10 = null;
-						PcmStream var11 = this.field296[var7];
+						PcmStream var11 = this.field295[var7];
 
-						label102:
+						label101:
 						while (true) {
 							while (true) {
 								if (var11 == null) {
-									break label102;
+									break label101;
 								}
 
 								AbstractSound var12 = var11.sound;
@@ -397,33 +402,33 @@ public class PcmPlayer {
 									var11 = var11.after;
 								} else {
 									var11.active = true;
-									int var13 = var11.vmethod5260();
+									int var13 = var11.vmethod5396();
 									var4 += var13;
 									if (var12 != null) {
 										var12.position += var13;
 									}
 
-									if (var4 >= this.field284) {
-										break label108;
+									if (var4 >= this.field281) {
+										break label107;
 									}
 
 									PcmStream var14 = var11.firstSubStream();
 									if (var14 != null) {
-										for (int var15 = var11.field346; var14 != null; var14 = var11.nextSubStream()) {
-											this.method751(var14, var15 * var14.vmethod991() >> 8);
+										for (int var15 = var11.field348; var14 != null; var14 = var11.nextSubStream()) {
+											this.method674(var14, var15 * var14.vmethod920() >> 8);
 										}
 									}
 
 									PcmStream var18 = var11.after;
 									var11.after = null;
 									if (var10 == null) {
-										this.field296[var7] = var18;
+										this.field295[var7] = var18;
 									} else {
 										var10.after = var18;
 									}
 
 									if (var18 == null) {
-										this.field285[var7] = var10;
+										this.field302[var7] = var10;
 									}
 
 									var11 = var18;
@@ -438,9 +443,9 @@ public class PcmPlayer {
 			}
 
 			for (var6 = 0; var6 < 8; ++var6) {
-				PcmStream var16 = this.field296[var6];
-				PcmStream[] var17 = this.field296;
-				this.field285[var6] = null;
+				PcmStream var16 = this.field295[var6];
+				PcmStream[] var17 = this.field295;
+				this.field302[var6] = null;
 
 				for (var17[var6] = null; var16 != null; var16 = var10) {
 					var10 = var16.after;
@@ -449,32 +454,120 @@ public class PcmPlayer {
 			}
 		}
 
-		if (this.field295 < 0) {
-			this.field295 = 0;
+		if (this.field277 < 0) {
+			this.field277 = 0;
 		}
 
 		if (this.stream != null) {
 			this.stream.fill(var1, 0, var2);
 		}
 
-		this.timeMs = Ignored.method6459();
+		this.timeMs = class181.method3483();
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lai;IB)V",
-		garbageValue = "-65"
+		descriptor = "(Lah;II)V",
+		garbageValue = "-1247840564"
 	)
-	final void method751(PcmStream var1, int var2) {
+	final void method674(PcmStream var1, int var2) {
 		int var3 = var2 >> 5;
-		PcmStream var4 = this.field285[var3];
+		PcmStream var4 = this.field302[var3];
 		if (var4 == null) {
-			this.field296[var3] = var1;
+			this.field295[var3] = var1;
 		} else {
 			var4.after = var1;
 		}
 
-		this.field285[var3] = var1;
-		var1.field346 = var2;
+		this.field302[var3] = var1;
+		var1.field348 = var2;
+	}
+
+	@ObfuscatedName("s")
+	public static final int method666(double var0, double var2, double var4) {
+		double var6 = var4;
+		double var8 = var4;
+		double var10 = var4;
+		if (var2 != 0.0D) {
+			double var12;
+			if (var4 < 0.5D) {
+				var12 = var4 * (var2 + 1.0D);
+			} else {
+				var12 = var2 + var4 - var2 * var4;
+			}
+
+			double var14 = 2.0D * var4 - var12;
+			double var16 = 0.3333333333333333D + var0;
+			if (var16 > 1.0D) {
+				--var16;
+			}
+
+			double var20 = var0 - 0.3333333333333333D;
+			if (var20 < 0.0D) {
+				++var20;
+			}
+
+			if (var16 * 6.0D < 1.0D) {
+				var6 = var16 * 6.0D * (var12 - var14) + var14;
+			} else if (2.0D * var16 < 1.0D) {
+				var6 = var12;
+			} else if (3.0D * var16 < 2.0D) {
+				var6 = (0.6666666666666666D - var16) * (var12 - var14) * 6.0D + var14;
+			} else {
+				var6 = var14;
+			}
+
+			if (var0 * 6.0D < 1.0D) {
+				var8 = 6.0D * (var12 - var14) * var0 + var14;
+			} else if (2.0D * var0 < 1.0D) {
+				var8 = var12;
+			} else if (var0 * 3.0D < 2.0D) {
+				var8 = var14 + 6.0D * (0.6666666666666666D - var0) * (var12 - var14);
+			} else {
+				var8 = var14;
+			}
+
+			if (var20 * 6.0D < 1.0D) {
+				var10 = var20 * 6.0D * (var12 - var14) + var14;
+			} else if (2.0D * var20 < 1.0D) {
+				var10 = var12;
+			} else if (3.0D * var20 < 2.0D) {
+				var10 = var14 + 6.0D * (var12 - var14) * (0.6666666666666666D - var20);
+			} else {
+				var10 = var14;
+			}
+		}
+
+		int var22 = (int)(256.0D * var6);
+		int var13 = (int)(256.0D * var8);
+		int var23 = (int)(256.0D * var10);
+		int var15 = var23 + (var13 << 8) + (var22 << 16);
+		return var15;
+	}
+
+	@ObfuscatedName("fj")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "400465000"
+	)
+	static void method689() {
+		int var0 = Players.Players_count;
+		int[] var1 = Players.Players_indices;
+
+		for (int var2 = 0; var2 < var0; ++var2) {
+			if (var1[var2] != Client.combatTargetPlayerIndex && var1[var2] != Client.localPlayerIndex) {
+				class9.addPlayerToScene(Client.players[var1[var2]], true);
+			}
+		}
+
+	}
+
+	@ObfuscatedName("gm")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1869318837"
+	)
+	static boolean method723() {
+		return (Client.drawPlayerNames & 1) != 0;
 	}
 }

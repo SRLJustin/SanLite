@@ -1,145 +1,261 @@
-import java.awt.Component;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ep")
-public class class136 extends class126 {
-	@ObfuscatedName("gr")
-	@ObfuscatedSignature(
-		descriptor = "Llx;"
-	)
-	@Export("fontBold12")
-	static Font fontBold12;
-	@ObfuscatedName("c")
+@ObfuscatedName("ea")
+public class class136 extends class144 {
+	@ObfuscatedName("aj")
+	@Export("fontHelvetica13")
+	static java.awt.Font fontHelvetica13;
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -1563253375
+		intValue = -868352589
 	)
-	int field1556;
-	@ObfuscatedName("b")
-	String field1557;
+	int field1590;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Let;"
 	)
-	final class129 this$0;
+	final class145 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "(Let;)V"
 	)
-	class136(class129 var1) {
+	class136(class145 var1) {
 		this.this$0 = var1;
+		this.field1590 = -1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lqr;I)V",
+		garbageValue = "1539485988"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1556 = var1.readInt();
-		this.field1557 = var1.readStringCp1252NullTerminated();
+	void vmethod3074(Buffer var1) {
+		this.field1590 = var1.readUnsignedShort();
+		var1.readUnsignedByte();
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			var1.readLong();
+		}
+
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(Lec;I)V",
+		garbageValue = "-1270425284"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2873(this.field1556, this.field1557);
+	void vmethod3073(ClanChannel var1) {
+		var1.removeMember(this.field1590);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Component;I)V",
-		garbageValue = "-54146153"
+		descriptor = "(ILbz;ZI)I",
+		garbageValue = "-857459553"
 	)
-	static void method2839(Component var0) {
-		var0.addMouseListener(MouseHandler.MouseHandler_instance);
-		var0.addMouseMotionListener(MouseHandler.MouseHandler_instance);
-		var0.addFocusListener(MouseHandler.MouseHandler_instance);
-	}
+	static int method2878(int var0, Script var1, boolean var2) {
+		if (var0 == ScriptOpcodes.SOUND_SYNTH) {
+			Nameable.Interpreter_intStackSize -= 3;
+			class147.method3038(Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize], Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize + 1], Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize + 2]);
+			return 1;
+		} else if (var0 == ScriptOpcodes.SOUND_SONG) {
+			InvDefinition.playSong(Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize]);
+			return 1;
+		} else if (var0 == ScriptOpcodes.SOUND_JINGLE) {
+			Nameable.Interpreter_intStackSize -= 2;
+			JagexCache.method3206(Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize], Interpreter.Interpreter_intStack[Nameable.Interpreter_intStackSize + 1]);
+			return 1;
+		} else {
+			class83 var3;
+			class82 var4;
+			int var5;
+			int var6;
+			String var7;
+			if (var0 != 3212 && var0 != 3213 && var0 != 3209 && var0 != 3181 && var0 != 3203 && var0 != 3205 && var0 != 3207) {
+				if (var0 != 3214 && var0 != 3215 && var0 != 3210 && var0 != 3182 && var0 != 3204 && var0 != 3206 && var0 != 3208) {
+					return var0 == 3211 ? 1 : 2;
+				} else {
+					var3 = class83.field1076;
+					var4 = class82.field1065;
+					boolean var8 = false;
+					if (var0 == 3214) {
+						var6 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+						var3 = (class83)GameEngine.findEnumerated(Players.method2388(), var6);
+						if (var3 == null) {
+							throw new RuntimeException(String.format("Unrecognized device option %d", var6));
+						}
+					}
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(CB)Z",
-		garbageValue = "-10"
-	)
-	public static boolean method2842(char var0) {
-		if ((var0 <= 0 || var0 >= 128) && (var0 < 160 || var0 > 255)) {
-			if (var0 != 0) {
-				char[] var1 = class328.cp1252AsciiExtension;
+					if (var0 == 3215) {
+						var6 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+						var4 = (class82)GameEngine.findEnumerated(GameEngine.method528(), var6);
+						if (var4 == null) {
+							throw new RuntimeException(String.format("Unrecognized game option %d", var6));
+						}
+					}
 
-				for (int var2 = 0; var2 < var1.length; ++var2) {
-					char var3 = var1[var2];
-					if (var0 == var3) {
-						return true;
+					if (var0 == 3210) {
+						var6 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+						var3 = (class83)GameEngine.findEnumerated(Players.method2388(), var6);
+						if (var3 == null) {
+							var4 = (class82)GameEngine.findEnumerated(GameEngine.method528(), var6);
+							if (var4 == null) {
+								throw new RuntimeException(String.format("Unrecognized client option %d", var6));
+							}
+						}
+					} else if (var0 == 3182) {
+						var3 = class83.field1078;
+					} else if (var0 == 3204) {
+						var4 = class82.field1062;
+					} else if (var0 == 3206) {
+						var4 = class82.field1063;
+					} else if (var0 == 3208) {
+						var4 = class82.field1064;
+					}
+
+					if (var4 == class82.field1065) {
+						switch(var3.field1075) {
+						case 1:
+							var5 = FriendsChatMember.clientPreferences.method2211() ? 1 : 0;
+							break;
+						case 2:
+							var5 = FriendsChatMember.clientPreferences.method2213() ? 1 : 0;
+							break;
+						case 3:
+							var5 = FriendsChatMember.clientPreferences.method2216() ? 1 : 0;
+							break;
+						case 4:
+							var5 = FriendsChatMember.clientPreferences.method2218();
+							break;
+						case 5:
+							var5 = WorldMapSection2.method4502();
+							break;
+						default:
+							var7 = String.format("Unkown device option: %s.", var3.toString());
+							throw new RuntimeException(var7);
+						}
+					} else {
+						switch(var4.field1061) {
+						case 1:
+							var5 = FriendsChatMember.clientPreferences.method2209() ? 1 : 0;
+							break;
+						case 2:
+							var6 = FriendsChatMember.clientPreferences.method2222();
+							var5 = Math.round((float)(var6 * 100) / 255.0F);
+							break;
+						case 3:
+							var6 = FriendsChatMember.clientPreferences.method2204();
+							var5 = Math.round((float)(var6 * 100) / 127.0F);
+							break;
+						case 4:
+							var6 = FriendsChatMember.clientPreferences.method2226();
+							var5 = Math.round((float)(var6 * 100) / 127.0F);
+							break;
+						default:
+							var7 = String.format("Unkown game option: %s.", var4.toString());
+							throw new RuntimeException(var7);
+						}
+					}
+
+					Interpreter.Interpreter_intStack[++Nameable.Interpreter_intStackSize - 1] = var5;
+					return 1;
+				}
+			} else {
+				var3 = class83.field1076;
+				var4 = class82.field1065;
+				var5 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+				if (var0 == 3212) {
+					var6 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+					var3 = (class83)GameEngine.findEnumerated(Players.method2388(), var6);
+					if (var3 == null) {
+						throw new RuntimeException(String.format("Unrecognized device option %d", var6));
 					}
 				}
-			}
 
-			return false;
-		} else {
-			return true;
-		}
-	}
-
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "-56"
-	)
-	public static boolean method2841(int var0) {
-		return (var0 >> 20 & 1) != 0;
-	}
-
-	@ObfuscatedName("ic")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;I)V",
-		garbageValue = "429003988"
-	)
-	static void method2840(int var0, String var1) {
-		int var2 = Players.Players_count;
-		int[] var3 = Players.Players_indices;
-		boolean var4 = false;
-		Username var5 = new Username(var1, class194.loginType);
-
-		for (int var6 = 0; var6 < var2; ++var6) {
-			Player var7 = Client.players[var3[var6]];
-			if (var7 != null && var7 != class340.localPlayer && var7.username != null && var7.username.equals(var5)) {
-				PacketBufferNode var8;
-				if (var0 == 1) {
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2887, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.method7343(0);
-					var8.packetBuffer.method7398(var3[var6]);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 4) {
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2807, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.method7349(var3[var6]);
-					var8.packetBuffer.writeByte(0);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 6) {
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2863, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.method7390(0);
-					var8.packetBuffer.method7398(var3[var6]);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 7) {
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2906, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.method7362(0);
-					var8.packetBuffer.method7493(var3[var6]);
-					Client.packetWriter.addNode(var8);
+				if (var0 == 3213) {
+					var6 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+					var4 = (class82)GameEngine.findEnumerated(GameEngine.method528(), var6);
+					if (var4 == null) {
+						throw new RuntimeException(String.format("Unrecognized game option %d", var6));
+					}
 				}
 
-				var4 = true;
-				break;
+				if (var0 == 3209) {
+					var6 = Interpreter.Interpreter_intStack[--Nameable.Interpreter_intStackSize];
+					var3 = (class83)GameEngine.findEnumerated(Players.method2388(), var6);
+					if (var3 == null) {
+						var4 = (class82)GameEngine.findEnumerated(GameEngine.method528(), var6);
+						if (var4 == null) {
+							throw new RuntimeException(String.format("Unrecognized client option %d", var6));
+						}
+					}
+				} else if (var0 == 3181) {
+					var3 = class83.field1078;
+				} else if (var0 == 3203) {
+					var4 = class82.field1062;
+				} else if (var0 == 3205) {
+					var4 = class82.field1063;
+				} else if (var0 == 3207) {
+					var4 = class82.field1064;
+				}
+
+				if (var4 == class82.field1065) {
+					switch(var3.field1075) {
+					case 1:
+						FriendsChatMember.clientPreferences.method2210(var5 == 1);
+						break;
+					case 2:
+						FriendsChatMember.clientPreferences.method2212(var5 == 1);
+						break;
+					case 3:
+						FriendsChatMember.clientPreferences.method2276(var5 == 1);
+						break;
+					case 4:
+						if (var5 < 0) {
+							var5 = 0;
+						}
+
+						FriendsChatMember.clientPreferences.method2217(var5);
+						break;
+					case 5:
+						WorldMapLabel.method4918(var5);
+						break;
+					default:
+						var7 = String.format("Unkown device option: %s.", var3.toString());
+						throw new RuntimeException(var7);
+					}
+				} else {
+					switch(var4.field1061) {
+					case 1:
+						FriendsChatMember.clientPreferences.method2241(var5 == 1);
+						break;
+					case 2:
+						var5 = Math.min(Math.max(var5, 0), 100);
+						var6 = Math.round((float)(var5 * 255) / 100.0F);
+						class10.method100(var6);
+						break;
+					case 3:
+						var5 = Math.min(Math.max(var5, 0), 100);
+						var6 = Math.round((float)(var5 * 127) / 100.0F);
+						class181.method3480(var6);
+						break;
+					case 4:
+						var5 = Math.min(Math.max(var5, 0), 100);
+						var6 = Math.round((float)(var5 * 127) / 100.0F);
+						class132.method2838(var6);
+						break;
+					default:
+						var7 = String.format("Unkown game option: %s.", var4.toString());
+						throw new RuntimeException(var7);
+					}
+				}
+
+				return 1;
 			}
 		}
-
-		if (!var4) {
-			class194.addGameMessage(4, "", "Unable to find " + var1);
-		}
-
 	}
 }

@@ -4,33 +4,35 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gv")
+@ObfuscatedName("gr")
 @Implements("RouteStrategy")
 public abstract class RouteStrategy {
-	@ObfuscatedName("t")
-	@Export("SpriteBuffer_yOffsets")
-	public static int[] SpriteBuffer_yOffsets;
-	@ObfuscatedName("c")
+	@ObfuscatedName("sh")
 	@ObfuscatedGetter(
-		intValue = -1093494781
+		intValue = 1077493760
+	)
+	static int field2198;
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(
+		intValue = 58129171
 	)
 	@Export("approxDestinationX")
 	public int approxDestinationX;
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 601492967
+		intValue = -980043277
 	)
 	@Export("approxDestinationY")
 	public int approxDestinationY;
-	@ObfuscatedName("p")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 1459181163
+		intValue = -393157049
 	)
 	@Export("approxDestinationSizeX")
 	public int approxDestinationSizeX;
-	@ObfuscatedName("m")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1902503467
+		intValue = 312616933
 	)
 	@Export("approxDestinationSizeY")
 	public int approxDestinationSizeY;
@@ -38,72 +40,101 @@ public abstract class RouteStrategy {
 	protected RouteStrategy() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(IIILgf;I)Z",
-		garbageValue = "-563456214"
+		descriptor = "(IIILgl;B)Z",
+		garbageValue = "57"
 	)
 	@Export("hasArrived")
 	public abstract boolean hasArrived(int var1, int var2, int var3, CollisionMap var4);
 
-	@ObfuscatedName("gj")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "-1664950073"
+		descriptor = "(Ldj;[F[FB)V",
+		garbageValue = "0"
 	)
-	@Export("doCheat")
-	static final void doCheat(String var0) {
-		if (var0.equalsIgnoreCase("toggleroof")) {
-			SecureRandomFuture.clientPreferences.roofsHidden = !SecureRandomFuture.clientPreferences.roofsHidden;
-			class127.savePreferences();
-			if (SecureRandomFuture.clientPreferences.roofsHidden) {
-				class194.addGameMessage(99, "", "Roofs are now all hidden");
-			} else {
-				class194.addGameMessage(99, "", "Roofs will only be removed selectively");
+	static void method3813(class117 var0, float[] var1, float[] var2) {
+		if (var0 != null) {
+			float var3 = var1[3] - var1[0];
+			if ((double)var3 != 0.0D) {
+				float var4 = var1[1] - var1[0];
+				float var5 = var1[2] - var1[0];
+				Float var6 = var4 / var3;
+				Float var7 = var5 / var3;
+				var0.field1442 = var6 == 0.33333334F && var7 == 0.6666667F;
+				float var8 = var6;
+				float var9 = var7;
+				if ((double)var6 < 0.0D) {
+					var6 = 0.0F;
+				}
+
+				if ((double)var7 > 1.0D) {
+					var7 = 1.0F;
+				}
+
+				if ((double)var6 > 1.0D || var7 < -1.0F) {
+					Float var10 = var6;
+					Float var11 = 1.0F - var7;
+					if (var6 < 0.0F) {
+						var10 = 0.0F;
+					}
+
+					if (var11 < 0.0F) {
+						var11 = 0.0F;
+					}
+
+					if (var10 > 1.0F || var11 > 1.0F) {
+						float var12 = (float)((double)(var10 * (var10 - 2.0F + var11)) + (double)var11 * ((double)var11 - 2.0D) + 1.0D);
+						if (var12 + class114.field1410 > 0.0F) {
+							class143.method3003(var10, var11);
+						}
+					}
+
+					var11 = 1.0F - var11;
+				}
+
+				if (var6 != var8) {
+					var1[1] = var1[0] + var6 * var3;
+					if (0.0D != (double)var8) {
+						var2[1] = var2[0] + (var2[1] - var2[0]) * var6 / var8;
+					}
+				}
+
+				if (var7 != var9) {
+					var1[2] = var1[0] + var7 * var3;
+					if (1.0D != (double)var9) {
+						var2[2] = (float)((double)var2[3] - (double)(var2[3] - var2[2]) * (1.0D - (double)var7) / (1.0D - (double)var9));
+					}
+				}
+
+				var0.field1437 = var1[0];
+				var0.field1444 = var1[3];
+				SpotAnimationDefinition.method3448(0.0F, var6, var7, 1.0F, var0.field1445);
+				SpotAnimationDefinition.method3448(var2[0], var2[1], var2[2], var2[3], var0.field1440);
 			}
 		}
+	}
 
-		if (var0.equalsIgnoreCase("displayfps")) {
-			Client.displayFps = !Client.displayFps;
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(B)[I",
+		garbageValue = "7"
+	)
+	public static int[] method3814() {
+		int[] var0 = new int[KeyHandler.field138];
+
+		for (int var1 = 0; var1 < KeyHandler.field138; ++var1) {
+			var0[var1] = KeyHandler.field137[var1];
 		}
 
-		if (var0.equalsIgnoreCase("renderself")) {
-			Client.renderSelf = !Client.renderSelf;
-		}
+		return var0;
+	}
 
-		if (var0.equalsIgnoreCase("mouseovertext")) {
-			Client.showMouseOverText = !Client.showMouseOverText;
-		}
-
-		if (Client.staffModLevel >= 2) {
-			if (var0.equalsIgnoreCase("errortest")) {
-				throw new RuntimeException();
-			}
-
-			if (var0.equalsIgnoreCase("showcoord")) {
-				Varcs.worldMap.showCoord = !Varcs.worldMap.showCoord;
-			}
-
-			if (var0.equalsIgnoreCase("fpson")) {
-				Client.displayFps = true;
-			}
-
-			if (var0.equalsIgnoreCase("fpsoff")) {
-				Client.displayFps = false;
-			}
-
-			if (var0.equalsIgnoreCase("gc")) {
-				System.gc();
-			}
-
-			if (var0.equalsIgnoreCase("clientdrop")) {
-				Varcs.method2411();
-			}
-		}
-
-		PacketBufferNode var1 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2846, Client.packetWriter.isaacCipher);
-		var1.packetBuffer.writeByte(var0.length() + 1);
-		var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-		Client.packetWriter.addNode(var1);
+	@ObfuscatedName("jj")
+	static final void method3811(double var0) {
+		Rasterizer3D.method3938(var0);
+		((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).setBrightness(var0);
+		class269.method5150();
+		FriendsChatMember.clientPreferences.method2234(var0);
 	}
 }

@@ -1,109 +1,110 @@
+import java.util.HashMap;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lt")
+@ObfuscatedName("lq")
 public class class329 {
-	@ObfuscatedName("c")
-	static char[] field4005;
-	@ObfuscatedName("b")
-	static char[] field4003;
-	@ObfuscatedName("p")
-	static char[] field4002;
-	@ObfuscatedName("m")
-	static int[] field4004;
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "Lqe;"
+	)
+	static IndexedSprite field4091;
 
 	static {
-		field4005 = new char[64];
-
-		int var0;
-		for (var0 = 0; var0 < 26; ++var0) {
-			field4005[var0] = (char)(var0 + 65);
-		}
-
-		for (var0 = 26; var0 < 52; ++var0) {
-			field4005[var0] = (char)(var0 + 97 - 26);
-		}
-
-		for (var0 = 52; var0 < 62; ++var0) {
-			field4005[var0] = (char)(var0 + 48 - 52);
-		}
-
-		field4005[62] = '+';
-		field4005[63] = '/';
-		field4003 = new char[64];
-
-		for (var0 = 0; var0 < 26; ++var0) {
-			field4003[var0] = (char)(var0 + 65);
-		}
-
-		for (var0 = 26; var0 < 52; ++var0) {
-			field4003[var0] = (char)(var0 + 97 - 26);
-		}
-
-		for (var0 = 52; var0 < 62; ++var0) {
-			field4003[var0] = (char)(var0 + 48 - 52);
-		}
-
-		field4003[62] = '*';
-		field4003[63] = '-';
-		field4002 = new char[64];
-
-		for (var0 = 0; var0 < 26; ++var0) {
-			field4002[var0] = (char)(var0 + 65);
-		}
-
-		for (var0 = 26; var0 < 52; ++var0) {
-			field4002[var0] = (char)(var0 + 97 - 26);
-		}
-
-		for (var0 = 52; var0 < 62; ++var0) {
-			field4002[var0] = (char)(var0 + 48 - 52);
-		}
-
-		field4002[62] = '-';
-		field4002[63] = '_';
-		field4004 = new int[128];
-
-		for (var0 = 0; var0 < field4004.length; ++var0) {
-			field4004[var0] = -1;
-		}
-
-		for (var0 = 65; var0 <= 90; ++var0) {
-			field4004[var0] = var0 - 65;
-		}
-
-		for (var0 = 97; var0 <= 122; ++var0) {
-			field4004[var0] = var0 - 97 + 26;
-		}
-
-		for (var0 = 48; var0 <= 57; ++var0) {
-			field4004[var0] = var0 - 48 + 52;
-		}
-
-		int[] var2 = field4004;
-		field4004[43] = 62;
-		var2[42] = 62;
-		int[] var1 = field4004;
-		field4004[47] = 63;
-		var1[45] = 63;
+		new HashMap();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("hc")
 	@ObfuscatedSignature(
-		descriptor = "(II)F",
-		garbageValue = "-119080424"
+		descriptor = "(Lcq;IIIB)V",
+		garbageValue = "-125"
 	)
-	public static float method6135(int var0) {
-		var0 &= 16383;
-		return (float)(6.283185307179586D * (double)((float)var0 / 16384.0F));
-	}
+	@Export("addPlayerToMenu")
+	static final void addPlayerToMenu(Player var0, int var1, int var2, int var3) {
+		if (ScriptFrame.localPlayer != var0) {
+			if (Client.menuOptionsCount < 400) {
+				String var4;
+				int var7;
+				if (var0.skillLevel == 0) {
+					String var5 = var0.actions[0] + var0.username + var0.actions[1];
+					var7 = var0.combatLevel;
+					int var8 = ScriptFrame.localPlayer.combatLevel;
+					int var9 = var8 - var7;
+					String var6;
+					if (var9 < -9) {
+						var6 = Clock.colorStartTag(16711680);
+					} else if (var9 < -6) {
+						var6 = Clock.colorStartTag(16723968);
+					} else if (var9 < -3) {
+						var6 = Clock.colorStartTag(16740352);
+					} else if (var9 < 0) {
+						var6 = Clock.colorStartTag(16756736);
+					} else if (var9 > 9) {
+						var6 = Clock.colorStartTag(65280);
+					} else if (var9 > 6) {
+						var6 = Clock.colorStartTag(4259584);
+					} else if (var9 > 3) {
+						var6 = Clock.colorStartTag(8453888);
+					} else if (var9 > 0) {
+						var6 = Clock.colorStartTag(12648192);
+					} else {
+						var6 = Clock.colorStartTag(16776960);
+					}
 
-	@ObfuscatedName("hn")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "113"
-	)
-	static boolean method6133() {
-		return (Client.drawPlayerNames & 8) != 0;
+					var4 = var5 + var6 + " " + " (" + "level-" + var0.combatLevel + ")" + var0.actions[2];
+				} else {
+					var4 = var0.actions[0] + var0.username + var0.actions[1] + " " + " (" + "skill-" + var0.skillLevel + ")" + var0.actions[2];
+				}
+
+				int var10;
+				if (Client.isItemSelected == 1) {
+					ChatChannel.insertMenuItemNoShift("Use", Client.selectedItemName + " " + "->" + " " + Clock.colorStartTag(16777215) + var4, 14, var1, var2, var3);
+				} else if (Client.isSpellSelected) {
+					if ((class149.selectedSpellFlags & 8) == 8) {
+						ChatChannel.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + Clock.colorStartTag(16777215) + var4, 15, var1, var2, var3);
+					}
+				} else {
+					for (var10 = 7; var10 >= 0; --var10) {
+						if (Client.playerMenuActions[var10] != null) {
+							short var11 = 0;
+							if (Client.playerMenuActions[var10].equalsIgnoreCase("Attack")) {
+								if (Client.playerAttackOption == AttackOption.AttackOption_hidden) {
+									continue;
+								}
+
+								if (AttackOption.AttackOption_alwaysRightClick == Client.playerAttackOption || AttackOption.AttackOption_dependsOnCombatLevels == Client.playerAttackOption && var0.combatLevel > ScriptFrame.localPlayer.combatLevel) {
+									var11 = 2000;
+								}
+
+								if (ScriptFrame.localPlayer.team != 0 && var0.team != 0) {
+									if (var0.team == ScriptFrame.localPlayer.team) {
+										var11 = 2000;
+									} else {
+										var11 = 0;
+									}
+								} else if (AttackOption.field1287 == Client.playerAttackOption && var0.isClanMember()) {
+									var11 = 2000;
+								}
+							} else if (Client.playerOptionsPriorities[var10]) {
+								var11 = 2000;
+							}
+
+							boolean var12 = false;
+							var7 = Client.playerMenuOpcodes[var10] + var11;
+							ChatChannel.insertMenuItemNoShift(Client.playerMenuActions[var10], Clock.colorStartTag(16777215) + var4, var7, var1, var2, var3);
+						}
+					}
+				}
+
+				for (var10 = 0; var10 < Client.menuOptionsCount; ++var10) {
+					if (Client.menuOpcodes[var10] == 23) {
+						Client.menuTargets[var10] = Clock.colorStartTag(16777215) + var4;
+						break;
+					}
+				}
+
+			}
+		}
 	}
 }

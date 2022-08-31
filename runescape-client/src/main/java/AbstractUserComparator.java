@@ -1,26 +1,36 @@
 import java.util.Comparator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mn")
+@ObfuscatedName("nf")
 @Implements("AbstractUserComparator")
 public abstract class AbstractUserComparator implements Comparator {
-	@ObfuscatedName("j")
-	@Export("Interpreter_stringLocals")
-	static String[] Interpreter_stringLocals;
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
+	@Export("Tiles_shapes")
+	static byte[][][] Tiles_shapes;
+	@ObfuscatedName("r")
+	@Export("cacheParentPaths")
+	static String[] cacheParentPaths;
+	@ObfuscatedName("ja")
+	@ObfuscatedGetter(
+		intValue = 1435916161
+	)
+	@Export("oculusOrbFocalPointY")
+	static int oculusOrbFocalPointY;
+	@ObfuscatedName("h")
 	@Export("nextComparator")
 	Comparator nextComparator;
 
 	protected AbstractUserComparator() {
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/Comparator;I)V",
-		garbageValue = "-1995915904"
+		garbageValue = "-1795552245"
 	)
 	@Export("addComparator")
 	final void addComparator(Comparator var1) {
@@ -32,10 +42,10 @@ public abstract class AbstractUserComparator implements Comparator {
 
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("d")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;Lmv;B)I",
-		garbageValue = "-7"
+		descriptor = "(Lnb;Lnb;B)I",
+		garbageValue = "80"
 	)
 	@Export("compareUser")
 	protected final int compareUser(Nameable var1, Nameable var2) {
@@ -44,5 +54,38 @@ public abstract class AbstractUserComparator implements Comparator {
 
 	public boolean equals(Object var1) {
 		return super.equals(var1);
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(ILnk;Lln;I)V",
+		garbageValue = "-1499141243"
+	)
+	static void method6637(int var0, ArchiveDisk var1, Archive var2) {
+		byte[] var3 = null;
+		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
+			for (ArchiveDiskAction var5 = (ArchiveDiskAction)ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.last(); var5 != null; var5 = (ArchiveDiskAction)ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.previous()) {
+				if ((long)var0 == var5.key && var1 == var5.archiveDisk && var5.type == 0) {
+					var3 = var5.data;
+					break;
+				}
+			}
+		}
+
+		if (var3 != null) {
+			var2.load(var1, var0, var3, true);
+		} else {
+			byte[] var4 = var1.read(var0);
+			var2.load(var1, var0, var4, true);
+		}
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;I)I",
+		garbageValue = "-549396051"
+	)
+	public static int method6644(CharSequence var0) {
+		return WorldMapIcon_0.method4838(var0, 10, true);
 	}
 }

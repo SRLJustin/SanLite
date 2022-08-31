@@ -4,39 +4,44 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gz")
+@ObfuscatedName("hg")
 @Implements("ViewportMouse")
 public class ViewportMouse {
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@Export("ViewportMouse_isInViewport")
 	public static boolean ViewportMouse_isInViewport;
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(
-		intValue = 533460423
-	)
-	@Export("ViewportMouse_x")
-	public static int ViewportMouse_x;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = 1696550227
-	)
-	@Export("ViewportMouse_y")
-	public static int ViewportMouse_y;
-	@ObfuscatedName("m")
-	@Export("ViewportMouse_false0")
-	public static boolean ViewportMouse_false0;
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		intValue = -2019317565
-	)
-	static int field2503;
 	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 194867713
+		intValue = 858842197
+	)
+	@Export("ViewportMouse_x")
+	static int ViewportMouse_x;
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(
+		intValue = 1382738033
+	)
+	@Export("ViewportMouse_y")
+	static int ViewportMouse_y;
+	@ObfuscatedName("v")
+	@Export("ViewportMouse_false0")
+	static boolean ViewportMouse_false0;
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(
+		intValue = -1792884329
+	)
+	static int field2593;
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = 191932759
+	)
+	static int field2599;
+	@ObfuscatedName("u")
+	@ObfuscatedGetter(
+		intValue = -834575933
 	)
 	@Export("ViewportMouse_entityCount")
 	public static int ViewportMouse_entityCount;
-	@ObfuscatedName("g")
+	@ObfuscatedName("l")
 	@Export("ViewportMouse_entityTags")
 	public static long[] ViewportMouse_entityTags;
 
@@ -49,36 +54,71 @@ public class ViewportMouse {
 		ViewportMouse_entityTags = new long[1000];
 	}
 
-	@ObfuscatedName("bo")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "([BB)[B",
-		garbageValue = "14"
+		descriptor = "(II)I",
+		garbageValue = "2086292027"
 	)
-	@Export("decompressBytes")
-	static final byte[] decompressBytes(byte[] var0) {
-		Buffer var1 = new Buffer(var0);
-		int var2 = var1.readUnsignedByte();
-		int var3 = var1.readInt();
-		if (var3 < 0 || AbstractArchive.field3843 != 0 && var3 > AbstractArchive.field3843) {
-			throw new RuntimeException();
-		} else if (var2 == 0) {
-			byte[] var6 = new byte[var3];
-			var1.readBytes(var6, 0, var3);
-			return var6;
-		} else {
-			int var4 = var1.readInt();
-			if (var4 >= 0 && (AbstractArchive.field3843 == 0 || var4 <= AbstractArchive.field3843)) {
-				byte[] var5 = new byte[var4];
-				if (var2 == 1) {
-					BZip2Decompressor.BZip2Decompressor_decompress(var5, var4, var0, var3, 9);
-				} else {
-					AbstractArchive.gzipDecompressor.decompress(var1, var5);
-				}
-
-				return var5;
-			} else {
-				throw new RuntimeException();
-			}
+	@Export("iLog")
+	public static int iLog(int var0) {
+		int var1 = 0;
+		if (var0 < 0 || var0 >= 65536) {
+			var0 >>>= 16;
+			var1 += 16;
 		}
+
+		if (var0 >= 256) {
+			var0 >>>= 8;
+			var1 += 8;
+		}
+
+		if (var0 >= 16) {
+			var0 >>>= 4;
+			var1 += 4;
+		}
+
+		if (var0 >= 4) {
+			var0 >>>= 2;
+			var1 += 2;
+		}
+
+		if (var0 >= 1) {
+			var0 >>>= 1;
+			++var1;
+		}
+
+		return var0 + var1;
+	}
+
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)I",
+		garbageValue = "971084928"
+	)
+	static final int method4395(int var0, int var1, int var2) {
+		int var3 = var0 / var2;
+		int var4 = var0 & var2 - 1;
+		int var5 = var1 / var2;
+		int var6 = var1 & var2 - 1;
+		int var7 = World.method1623(var3, var5);
+		int var8 = World.method1623(var3 + 1, var5);
+		int var9 = World.method1623(var3, var5 + 1);
+		int var10 = World.method1623(var3 + 1, var5 + 1);
+		int var12 = 65536 - Rasterizer3D.Rasterizer3D_cosine[var4 * 1024 / var2] >> 1;
+		int var11 = ((65536 - var12) * var7 >> 16) + (var12 * var8 >> 16);
+		int var14 = 65536 - Rasterizer3D.Rasterizer3D_cosine[var4 * 1024 / var2] >> 1;
+		int var13 = ((65536 - var14) * var9 >> 16) + (var14 * var10 >> 16);
+		int var16 = 65536 - Rasterizer3D.Rasterizer3D_cosine[var6 * 1024 / var2] >> 1;
+		int var15 = ((65536 - var16) * var11 >> 16) + (var13 * var16 >> 16);
+		return var15;
+	}
+
+	@ObfuscatedName("gw")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "1744172239"
+	)
+	static boolean method4413() {
+		return (Client.drawPlayerNames & 4) != 0;
 	}
 }

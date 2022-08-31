@@ -6,92 +6,101 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lj")
+@ObfuscatedName("mm")
 @Implements("ByteArrayPool")
 public class ByteArrayPool {
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1756482419
+		intValue = -862731127
 	)
 	@Export("ByteArrayPool_smallCount")
 	static int ByteArrayPool_smallCount;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 379141881
+		intValue = -1822826689
 	)
 	@Export("ByteArrayPool_mediumCount")
 	static int ByteArrayPool_mediumCount;
-	@ObfuscatedName("j")
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = 173834125
+		intValue = 1571439245
 	)
 	@Export("ByteArrayPool_largeCount")
 	static int ByteArrayPool_largeCount;
-	@ObfuscatedName("w")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -521742755
+		intValue = -1983574547
 	)
-	static int field4026;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = -1862899705
-	)
-	static int field4023;
-	@ObfuscatedName("r")
-	@ObfuscatedGetter(
-		intValue = 1634057369
-	)
-	static int field4028;
+	static int field4209;
 	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = 1124968779
+		intValue = -1700131269
 	)
-	static int field4021;
-	@ObfuscatedName("v")
+	static int field4210;
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -1777784581
+		intValue = -832696811
 	)
-	static int field4030;
+	static int field4201;
 	@ObfuscatedName("d")
+	@ObfuscatedGetter(
+		intValue = -1345624255
+	)
+	static int field4211;
+	@ObfuscatedName("a")
+	@ObfuscatedGetter(
+		intValue = -1304474513
+	)
+	static int field4212;
+	@ObfuscatedName("m")
 	@Export("ByteArrayPool_small")
 	static byte[][] ByteArrayPool_small;
-	@ObfuscatedName("h")
+	@ObfuscatedName("u")
 	@Export("ByteArrayPool_medium")
 	static byte[][] ByteArrayPool_medium;
-	@ObfuscatedName("g")
+	@ObfuscatedName("l")
 	@Export("ByteArrayPool_large")
 	static byte[][] ByteArrayPool_large;
+	@ObfuscatedName("z")
+	static byte[][] field4216;
+	@ObfuscatedName("y")
+	@Export("ByteArrayPool_altSizeArrayCounts")
+	public static int[] ByteArrayPool_altSizeArrayCounts;
 	@ObfuscatedName("e")
-	static byte[][] field4034;
-	@ObfuscatedName("f")
-	public static ArrayList field4035;
+	public static ArrayList field4218;
 
 	static {
 		ByteArrayPool_smallCount = 0;
 		ByteArrayPool_mediumCount = 0;
 		ByteArrayPool_largeCount = 0;
-		field4026 = 0;
-		field4023 = 1000;
-		field4028 = 250;
-		field4021 = 100;
-		field4030 = 50;
+		field4209 = 0;
+		field4210 = 1000;
+		field4201 = 250;
+		field4211 = 100;
+		field4212 = 50;
 		ByteArrayPool_small = new byte[1000][];
 		ByteArrayPool_medium = new byte[250][];
 		ByteArrayPool_large = new byte[100][];
-		field4034 = new byte[50][];
-		field4035 = new ArrayList();
-		field4035.clear();
-		field4035.add(100);
-		field4035.add(5000);
-		field4035.add(10000);
-		field4035.add(30000);
+		field4216 = new byte[50][];
+		field4218 = new ArrayList();
+		class327.method5978();
 		new HashMap();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(IZS)[B",
-		garbageValue = "-3055"
+		descriptor = "(II)Z",
+		garbageValue = "-1708701279"
+	)
+	@Export("isWorldMapEvent")
+	public static boolean isWorldMapEvent(int var0) {
+		return var0 == 10 || var0 == 11 || var0 == 12 || var0 == 13 || var0 == 14 || var0 == 15 || var0 == 16 || var0 == 17;
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(IZI)[B",
+		garbageValue = "-1847300393"
 	)
 	@Export("ByteArrayPool_getArrayBool")
 	static synchronized byte[] ByteArrayPool_getArrayBool(int var0, boolean var1) {
@@ -126,20 +135,20 @@ public class ByteArrayPool {
 		if (var0 != 30000) {
 			if (var0 < 30000) {
 			}
-		} else if (field4026 > 0) {
-			var4 = field4034[--field4026];
-			field4034[field4026] = null;
+		} else if (field4209 > 0) {
+			var4 = field4216[--field4209];
+			field4216[field4209] = null;
 			return var4;
 		}
 
-		if (World.ByteArrayPool_arrays != null) {
-			for (int var2 = 0; var2 < SoundCache.ByteArrayPool_alternativeSizes.length; ++var2) {
-				if (SoundCache.ByteArrayPool_alternativeSizes[var2] != var0) {
-					if (var0 < SoundCache.ByteArrayPool_alternativeSizes[var2]) {
+		if (AbstractByteArrayCopier.ByteArrayPool_arrays != null) {
+			for (int var2 = 0; var2 < UserComparator4.ByteArrayPool_alternativeSizes.length; ++var2) {
+				if (UserComparator4.ByteArrayPool_alternativeSizes[var2] != var0) {
+					if (var0 < UserComparator4.ByteArrayPool_alternativeSizes[var2]) {
 					}
-				} else if (ApproximateRouteStrategy.ByteArrayPool_altSizeArrayCounts[var2] > 0) {
-					byte[] var3 = World.ByteArrayPool_arrays[var2][--ApproximateRouteStrategy.ByteArrayPool_altSizeArrayCounts[var2]];
-					World.ByteArrayPool_arrays[var2][ApproximateRouteStrategy.ByteArrayPool_altSizeArrayCounts[var2]] = null;
+				} else if (ByteArrayPool_altSizeArrayCounts[var2] > 0) {
+					byte[] var3 = AbstractByteArrayCopier.ByteArrayPool_arrays[var2][--ByteArrayPool_altSizeArrayCounts[var2]];
+					AbstractByteArrayCopier.ByteArrayPool_arrays[var2][ByteArrayPool_altSizeArrayCounts[var2]] = null;
 					return var3;
 				}
 			}
@@ -148,13 +157,26 @@ public class ByteArrayPool {
 		return new byte[var0];
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(IZB)Ljava/lang/String;",
-		garbageValue = "43"
+		descriptor = "(II)Lgh;",
+		garbageValue = "-1587681516"
 	)
-	@Export("intToString")
-	public static String intToString(int var0, boolean var1) {
-		return var1 && var0 >= 0 ? Skeleton.method3944(var0, 10, var1) : Integer.toString(var0);
+	@Export("SequenceDefinition_get")
+	public static SequenceDefinition SequenceDefinition_get(int var0) {
+		SequenceDefinition var1 = (SequenceDefinition)SequenceDefinition.SequenceDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = class20.SequenceDefinition_archive.takeFile(12, var0);
+			var1 = new SequenceDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			var1.postDecode();
+			SequenceDefinition.SequenceDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
 	}
 }
