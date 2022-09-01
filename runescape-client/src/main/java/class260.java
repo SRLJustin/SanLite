@@ -1,112 +1,102 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jd")
+@ObfuscatedName("jt")
 public class class260 {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "(I)Z",
+		garbageValue = "1980903392"
 	)
-	@Export("musicPatchesArchive")
-	public static AbstractArchive musicPatchesArchive;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lku;"
-	)
-	@Export("soundEffectsArchive")
-	public static AbstractArchive soundEffectsArchive;
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Ljp;"
-	)
-	@Export("midiPcmStream")
-	public static MidiPcmStream midiPcmStream;
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		intValue = -1837592887
-	)
-	@Export("musicPlayerStatus")
-	public static int musicPlayerStatus;
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = 1576356909
-	)
-	@Export("musicTrackFileId")
-	public static int musicTrackFileId;
-	@ObfuscatedName("r")
-	@ObfuscatedGetter(
-		intValue = 1257628969
-	)
-	@Export("pcmSampleLength")
-	public static int pcmSampleLength;
-	@ObfuscatedName("hk")
-	@ObfuscatedSignature(
-		descriptor = "[Lpl;"
-	)
-	@Export("headIconHintSprites")
-	static SpritePixels[] headIconHintSprites;
-
-	static {
-		musicPlayerStatus = 0;
+	public static boolean method5128() {
+		return class273.musicPlayerStatus != 0 ? true : ItemContainer.midiPcmStream.isReady();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("fd")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;B)Ljava/lang/String;",
-		garbageValue = "0"
+		descriptor = "(IIIB)V",
+		garbageValue = "-83"
 	)
-	public static String method5070(CharSequence var0) {
-		int var1 = var0.length();
-		StringBuilder var2 = new StringBuilder(var1);
-
-		for (int var3 = 0; var3 < var1; ++var3) {
-			char var4 = var0.charAt(var3);
-			if ((var4 < 'a' || var4 > 'z') && (var4 < 'A' || var4 > 'Z') && (var4 < '0' || var4 > '9') && var4 != '.' && var4 != '-' && var4 != '*' && var4 != '_') {
-				if (var4 == ' ') {
-					var2.append('+');
-				} else {
-					byte var5 = class372.charToByteCp1252(var4);
-					var2.append('%');
-					int var6 = var5 >> 4 & 15;
-					if (var6 >= 10) {
-						var2.append((char)(var6 + 55));
-					} else {
-						var2.append((char)(var6 + 48));
-					}
-
-					var6 = var5 & 15;
-					if (var6 >= 10) {
-						var2.append((char)(var6 + 55));
-					} else {
-						var2.append((char)(var6 + 48));
-					}
-				}
-			} else {
-				var2.append(var4);
+	static final void method5127(int var0, int var1, int var2) {
+		if (class16.cameraX < var0) {
+			class16.cameraX = (var0 - class16.cameraX) * WorldMapData_1.field2759 / 1000 + class16.cameraX + class271.field3186;
+			if (class16.cameraX > var0) {
+				class16.cameraX = var0;
 			}
 		}
 
-		return var2.toString();
+		if (class16.cameraX > var0) {
+			class16.cameraX -= (class16.cameraX - var0) * WorldMapData_1.field2759 / 1000 + class271.field3186;
+			if (class16.cameraX < var0) {
+				class16.cameraX = var0;
+			}
+		}
+
+		if (WorldMapLabel.cameraY < var1) {
+			WorldMapLabel.cameraY = (var1 - WorldMapLabel.cameraY) * WorldMapData_1.field2759 / 1000 + WorldMapLabel.cameraY + class271.field3186;
+			if (WorldMapLabel.cameraY > var1) {
+				WorldMapLabel.cameraY = var1;
+			}
+		}
+
+		if (WorldMapLabel.cameraY > var1) {
+			WorldMapLabel.cameraY -= (WorldMapLabel.cameraY - var1) * WorldMapData_1.field2759 / 1000 + class271.field3186;
+			if (WorldMapLabel.cameraY < var1) {
+				WorldMapLabel.cameraY = var1;
+			}
+		}
+
+		if (class269.cameraZ < var2) {
+			class269.cameraZ = (var2 - class269.cameraZ) * WorldMapData_1.field2759 / 1000 + class269.cameraZ + class271.field3186;
+			if (class269.cameraZ > var2) {
+				class269.cameraZ = var2;
+			}
+		}
+
+		if (class269.cameraZ > var2) {
+			class269.cameraZ -= (class269.cameraZ - var2) * WorldMapData_1.field2759 / 1000 + class271.field3186;
+			if (class269.cameraZ < var2) {
+				class269.cameraZ = var2;
+			}
+		}
+
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("jy")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "-68634034"
+		descriptor = "(Lkn;I)Lkn;",
+		garbageValue = "-1790407021"
 	)
-	static final int method5069(int var0, int var1, int var2) {
-		int var3 = var0 / var2;
-		int var4 = var0 & var2 - 1;
-		int var5 = var1 / var2;
-		int var6 = var1 & var2 - 1;
-		int var7 = class139.method2932(var3, var5);
-		int var8 = class139.method2932(var3 + 1, var5);
-		int var9 = class139.method2932(var3, var5 + 1);
-		int var10 = class139.method2932(var3 + 1, var5 + 1);
-		int var11 = class131.method2802(var7, var8, var4, var2);
-		int var12 = class131.method2802(var9, var10, var4, var2);
-		return class131.method2802(var11, var12, var6, var2);
+	static Widget method5126(Widget var0) {
+		Widget var2 = var0;
+		int var3 = class134.method2860(class193.getWidgetFlags(var0));
+		Widget var1;
+		if (var3 == 0) {
+			var1 = null;
+		} else {
+			int var4 = 0;
+
+			while (true) {
+				if (var4 >= var3) {
+					var1 = var2;
+					break;
+				}
+
+				var2 = HitSplatDefinition.getWidget(var2.parentId);
+				if (var2 == null) {
+					var1 = null;
+					break;
+				}
+
+				++var4;
+			}
+		}
+
+		Widget var5 = var1;
+		if (var1 == null) {
+			var5 = var0.parent;
+		}
+
+		return var5;
 	}
 }

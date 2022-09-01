@@ -1,117 +1,118 @@
+import java.io.File;
+import java.io.RandomAccessFile;
 import java.util.concurrent.Callable;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("b")
+@ObfuscatedName("h")
 public class class1 implements Callable {
-	@ObfuscatedName("k")
+	@ObfuscatedName("sm")
 	@ObfuscatedSignature(
-		descriptor = "Lei;"
+		descriptor = "Lqn;"
 	)
-	static ClanChannel field0;
-	@ObfuscatedName("bz")
-	static String field3;
-	@ObfuscatedName("ee")
+	@Export("sceneMinimapSprite")
+	static SpritePixels sceneMinimapSprite;
+	@ObfuscatedName("mz")
+	@ObfuscatedGetter(
+		intValue = -1008403491
+	)
+	@Export("menuY")
+	static int menuY;
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
+		descriptor = "Lqr;"
 	)
-	@Export("archive13")
-	static Archive archive13;
-	@ObfuscatedName("c")
+	final Buffer field9;
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lpi;"
+		descriptor = "Lv;"
 	)
-	final Buffer field2;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Lm;"
-	)
-	final class3 field1;
+	final class3 field0;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lw;"
+		descriptor = "Lk;"
 	)
 	final class7 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lw;Lpi;Lm;)V"
+		descriptor = "(Lk;Lqr;Lv;)V"
 	)
 	class1(class7 var1, Buffer var2, class3 var3) {
 		this.this$0 = var1;
-		this.field2 = var2;
-		this.field1 = var3;
+		this.field9 = var2;
+		this.field0 = var3;
 	}
 
 	public Object call() {
-		return this.field1.vmethod15(this.field2);
+		return this.field0.vmethod12(this.field9);
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)Ljava/io/File;",
+		garbageValue = "-1454847961"
+	)
+	@Export("getFile")
+	static File getFile(String var0) {
+		if (!FileSystem.FileSystem_hasPermissions) {
+			throw new RuntimeException("");
+		} else {
+			File var1 = (File)FileSystem.FileSystem_cacheFiles.get(var0);
+			if (var1 != null) {
+				return var1;
+			} else {
+				File var2 = new File(FileSystem.FileSystem_cacheDir, var0);
+				RandomAccessFile var3 = null;
+
+				try {
+					File var4 = new File(var2.getParent());
+					if (!var4.exists()) {
+						throw new RuntimeException("");
+					} else {
+						var3 = new RandomAccessFile(var2, "rw");
+						int var5 = var3.read();
+						var3.seek(0L);
+						var3.write(var5);
+						var3.seek(0L);
+						var3.close();
+						FileSystem.FileSystem_cacheFiles.put(var0, var2);
+						return var2;
+					}
+				} catch (Exception var8) {
+					try {
+						if (var3 != null) {
+							var3.close();
+							var3 = null;
+						}
+					} catch (Exception var7) {
+					}
+
+					throw new RuntimeException();
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "42"
+		garbageValue = "-43"
 	)
-	public static void method8() {
-		VarbitComposition.VarbitDefinition_cached.clear();
-	}
-
-	@ObfuscatedName("gw")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)V",
-		garbageValue = "2135260751"
-	)
-	static final void method12(int var0, int var1, int var2) {
-		if (UserComparator7.cameraX < var0) {
-			UserComparator7.cameraX = (var0 - UserComparator7.cameraX) * ItemComposition.field2012 / 1000 + UserComparator7.cameraX + Renderable.field2358;
-			if (UserComparator7.cameraX > var0) {
-				UserComparator7.cameraX = var0;
-			}
-		}
-
-		if (UserComparator7.cameraX > var0) {
-			UserComparator7.cameraX -= (UserComparator7.cameraX - var0) * ItemComposition.field2012 / 1000 + Renderable.field2358;
-			if (UserComparator7.cameraX < var0) {
-				UserComparator7.cameraX = var0;
-			}
-		}
-
-		if (AbstractByteArrayCopier.cameraY < var1) {
-			AbstractByteArrayCopier.cameraY = (var1 - AbstractByteArrayCopier.cameraY) * ItemComposition.field2012 / 1000 + AbstractByteArrayCopier.cameraY + Renderable.field2358;
-			if (AbstractByteArrayCopier.cameraY > var1) {
-				AbstractByteArrayCopier.cameraY = var1;
-			}
-		}
-
-		if (AbstractByteArrayCopier.cameraY > var1) {
-			AbstractByteArrayCopier.cameraY -= (AbstractByteArrayCopier.cameraY - var1) * ItemComposition.field2012 / 1000 + Renderable.field2358;
-			if (AbstractByteArrayCopier.cameraY < var1) {
-				AbstractByteArrayCopier.cameraY = var1;
-			}
-		}
-
-		if (UserComparator10.cameraZ < var2) {
-			UserComparator10.cameraZ = (var2 - UserComparator10.cameraZ) * ItemComposition.field2012 / 1000 + UserComparator10.cameraZ + Renderable.field2358;
-			if (UserComparator10.cameraZ > var2) {
-				UserComparator10.cameraZ = var2;
-			}
-		}
-
-		if (UserComparator10.cameraZ > var2) {
-			UserComparator10.cameraZ -= (UserComparator10.cameraZ - var2) * ItemComposition.field2012 / 1000 + Renderable.field2358;
-			if (UserComparator10.cameraZ < var2) {
-				UserComparator10.cameraZ = var2;
-			}
+	public static void method7() {
+		if (NetCache.NetCache_socket != null) {
+			NetCache.NetCache_socket.close();
 		}
 
 	}
 
-	@ObfuscatedName("jg")
+	@ObfuscatedName("la")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "-1424242195"
+		descriptor = "(I)V",
+		garbageValue = "-1880349412"
 	)
-	static final String method11(int var0) {
-		return var0 < 999999999 ? Integer.toString(var0) : "*";
+	static void method10() {
+		FriendsChatMember.clientPreferences.method2228(Client.field480);
 	}
 }

@@ -1,46 +1,51 @@
-import java.awt.Component;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kd")
+@ObfuscatedName("kt")
 @Implements("GameBuild")
 public class GameBuild {
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Lkt;"
 	)
 	@Export("LIVE")
-	public static final GameBuild LIVE;
-	@ObfuscatedName("b")
+	static final GameBuild LIVE;
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Lkt;"
 	)
 	@Export("BUILDLIVE")
-	public static final GameBuild BUILDLIVE;
-	@ObfuscatedName("p")
+	static final GameBuild BUILDLIVE;
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Lkt;"
 	)
 	@Export("RC")
-	public static final GameBuild RC;
-	@ObfuscatedName("m")
+	static final GameBuild RC;
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Lkt;"
 	)
 	@Export("WIP")
-	public static final GameBuild WIP;
-	@ObfuscatedName("t")
+	static final GameBuild WIP;
+	@ObfuscatedName("lj")
+	@ObfuscatedSignature(
+		descriptor = "Lhl;"
+	)
+	@Export("textureProvider")
+	static TextureProvider textureProvider;
+	@ObfuscatedName("c")
 	@Export("name")
 	public final String name;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -794048651
+		intValue = 1346396169
 	)
 	@Export("buildId")
-	public final int buildId;
+	final int buildId;
 
 	static {
 		LIVE = new GameBuild("LIVE", 0);
@@ -52,17 +57,5 @@ public class GameBuild {
 	GameBuild(String var1, int var2) {
 		this.name = var1;
 		this.buildId = var2;
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Component;I)V",
-		garbageValue = "727628854"
-	)
-	static void method5494(Component var0) {
-		var0.removeMouseListener(MouseHandler.MouseHandler_instance);
-		var0.removeMouseMotionListener(MouseHandler.MouseHandler_instance);
-		var0.removeFocusListener(MouseHandler.MouseHandler_instance);
-		MouseHandler.MouseHandler_currentButtonVolatile = 0;
 	}
 }

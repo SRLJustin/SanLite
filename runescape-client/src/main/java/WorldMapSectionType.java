@@ -3,43 +3,42 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("hv")
+@ObfuscatedName("hi")
 @Implements("WorldMapSectionType")
 public enum WorldMapSectionType implements MouseWheel {
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lhv;"
+		descriptor = "Lhi;"
 	)
 	@Export("WORLDMAPSECTIONTYPE0")
 	WORLDMAPSECTIONTYPE0(1, (byte)0),
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lhv;"
+		descriptor = "Lhi;"
 	)
 	@Export("WORLDMAPSECTIONTYPE1")
 	WORLDMAPSECTIONTYPE1(0, (byte)1),
-	@ObfuscatedName("p")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Lhv;"
+		descriptor = "Lhi;"
 	)
 	@Export("WORLDMAPSECTIONTYPE2")
-	WORLDMAPSECTIONTYPE2(3, (byte)2),
-	@ObfuscatedName("m")
+	WORLDMAPSECTIONTYPE2(2, (byte)2),
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lhv;"
+		descriptor = "Lhi;"
 	)
 	@Export("WORLDMAPSECTIONTYPE3")
-	WORLDMAPSECTIONTYPE3(2, (byte)3);
+	WORLDMAPSECTIONTYPE3(3, (byte)3);
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1872417907
+		intValue = 189258081
 	)
 	@Export("type")
 	final int type;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@Export("id")
 	final byte id;
 
@@ -48,44 +47,31 @@ public enum WorldMapSectionType implements MouseWheel {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "48"
+		garbageValue = "104"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lhv;",
-		garbageValue = "-719396809"
+		descriptor = "(I)[Lhi;",
+		garbageValue = "387604014"
 	)
-	static WorldMapSectionType[] method4754() {
-		return new WorldMapSectionType[]{WORLDMAPSECTIONTYPE3, WORLDMAPSECTIONTYPE2, WORLDMAPSECTIONTYPE1, WORLDMAPSECTIONTYPE0};
+	static WorldMapSectionType[] method4874() {
+		return new WorldMapSectionType[]{WORLDMAPSECTIONTYPE2, WORLDMAPSECTIONTYPE3, WORLDMAPSECTIONTYPE1, WORLDMAPSECTIONTYPE0};
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZS)I",
-		garbageValue = "4095"
+		descriptor = "(CI)Z",
+		garbageValue = "-16711936"
 	)
-	static int method4756(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.LOGOUT) {
-			Client.logoutTimer = 250;
-			return 1;
-		} else if (var0 != 5631 && var0 != 5633) {
-			if (var0 == 5632) {
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 26;
-				return 1;
-			} else {
-				return 2;
-			}
-		} else {
-			class13.Interpreter_stringStackSize -= 2;
-			return 1;
-		}
+	static boolean method4879(char var0) {
+		return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"ï¿½$%^&*()-_=+[{]};:'@#~,<.>/?\\| ".indexOf(var0) != -1;
 	}
 }

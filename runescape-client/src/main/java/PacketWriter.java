@@ -5,91 +5,85 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ch")
+@ObfuscatedName("cz")
 @Implements("PacketWriter")
 public class PacketWriter {
-	@ObfuscatedName("rp")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lar;"
-	)
-	@Export("pcmPlayer1")
-	static PcmPlayer pcmPlayer1;
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lmd;"
+		descriptor = "Lnc;"
 	)
 	@Export("socket")
 	AbstractSocket socket;
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Llx;"
 	)
 	@Export("packetBufferNodes")
 	IterableNodeDeque packetBufferNodes;
-	@ObfuscatedName("p")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -1266642989
+		intValue = 368896299
 	)
 	@Export("bufferSize")
 	int bufferSize;
-	@ObfuscatedName("m")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lpi;"
+		descriptor = "Lqr;"
 	)
 	@Export("buffer")
 	Buffer buffer;
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lph;"
+		descriptor = "Lqb;"
 	)
 	@Export("isaacCipher")
 	public IsaacCipher isaacCipher;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lpj;"
+		descriptor = "Lqz;"
 	)
 	@Export("packetBuffer")
 	PacketBuffer packetBuffer;
-	@ObfuscatedName("j")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljy;"
 	)
 	@Export("serverPacket")
 	ServerPacket serverPacket;
-	@ObfuscatedName("w")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 594259629
+		intValue = 807398607
 	)
 	@Export("serverPacketLength")
 	int serverPacketLength;
-	@ObfuscatedName("n")
-	boolean field1278;
-	@ObfuscatedName("r")
-	@ObfuscatedGetter(
-		intValue = 1553002221
-	)
-	int field1287;
 	@ObfuscatedName("o")
+	boolean field1335;
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 1843561553
+		intValue = -1783168523
+	)
+	int field1336;
+	@ObfuscatedName("d")
+	@ObfuscatedGetter(
+		intValue = 1886150225
 	)
 	@Export("pendingWrites")
 	int pendingWrites;
-	@ObfuscatedName("v")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljy;"
 	)
-	ServerPacket field1289;
-	@ObfuscatedName("d")
+	ServerPacket field1337;
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljy;"
 	)
-	ServerPacket field1290;
-	@ObfuscatedName("h")
+	ServerPacket field1339;
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljy;"
 	)
-	ServerPacket field1291;
+	ServerPacket field1330;
 
 	PacketWriter() {
 		this.packetBufferNodes = new IterableNodeDeque();
@@ -98,15 +92,15 @@ public class PacketWriter {
 		this.packetBuffer = new PacketBuffer(40000);
 		this.serverPacket = null;
 		this.serverPacketLength = 0;
-		this.field1278 = true;
-		this.field1287 = 0;
+		this.field1335 = true;
+		this.field1336 = 0;
 		this.pendingWrites = 0;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "750502280"
+		garbageValue = "-51645083"
 	)
 	@Export("clearBuffer")
 	final void clearBuffer() {
@@ -114,10 +108,10 @@ public class PacketWriter {
 		this.bufferSize = 0;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-148495881"
+		descriptor = "(S)V",
+		garbageValue = "-25497"
 	)
 	@Export("flush")
 	final void flush() throws IOException {
@@ -142,10 +136,10 @@ public class PacketWriter {
 
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Liw;I)V",
-		garbageValue = "-1673237142"
+		descriptor = "(Ljg;I)V",
+		garbageValue = "-1493234153"
 	)
 	@Export("addNode")
 	public final void addNode(PacketBufferNode var1) {
@@ -155,20 +149,20 @@ public class PacketWriter {
 		this.bufferSize += var1.index;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lmd;I)V",
-		garbageValue = "1972212609"
+		descriptor = "(Lnc;I)V",
+		garbageValue = "-1478290701"
 	)
 	@Export("setSocket")
 	void setSocket(AbstractSocket var1) {
 		this.socket = var1;
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1419164143"
+		garbageValue = "1758085375"
 	)
 	@Export("close")
 	void close() {
@@ -179,29 +173,44 @@ public class PacketWriter {
 
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1910470967"
+		descriptor = "(B)V",
+		garbageValue = "30"
 	)
 	@Export("removeSocket")
 	void removeSocket() {
 		this.socket = null;
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lmd;",
-		garbageValue = "305203979"
+		descriptor = "(B)Lnc;",
+		garbageValue = "2"
 	)
 	@Export("getSocket")
 	AbstractSocket getSocket() {
 		return this.socket;
 	}
 
-	@ObfuscatedName("n")
-	@Export("Entity_unpackID")
-	public static int Entity_unpackID(long var0) {
-		return (int)(var0 >>> 17 & 4294967295L);
+	@ObfuscatedName("ju")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "29"
+	)
+	@Export("Widget_resetModelFrames")
+	static final void Widget_resetModelFrames(int var0) {
+		if (ParamComposition.loadInterface(var0)) {
+			Widget[] var1 = class358.Widget_interfaceComponents[var0];
+
+			for (int var2 = 0; var2 < var1.length; ++var2) {
+				Widget var3 = var1[var2];
+				if (var3 != null) {
+					var3.modelFrame = 0;
+					var3.modelFrameCycle = 0;
+				}
+			}
+
+		}
 	}
 }

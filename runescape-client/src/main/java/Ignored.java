@@ -4,18 +4,18 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mi")
+@ObfuscatedName("nv")
 @Implements("Ignored")
 public class Ignored extends Nameable {
-	@ObfuscatedName("pz")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Loo;"
+		descriptor = "Lkn;"
 	)
-	@Export("Ignored_cached")
-	static class404 Ignored_cached;
-	@ObfuscatedName("c")
+	@Export("scriptActiveWidget")
+	static Widget scriptActiveWidget;
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 1285120553
+		intValue = 410982667
 	)
 	@Export("id")
 	int id;
@@ -23,20 +23,20 @@ public class Ignored extends Nameable {
 	Ignored() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Lmi;B)I",
-		garbageValue = "109"
+		descriptor = "(Lnv;I)I",
+		garbageValue = "2045269019"
 	)
 	@Export("compareTo_ignored")
 	int compareTo_ignored(Ignored var1) {
 		return this.id - var1.id;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;I)I",
-		garbageValue = "-1921032172"
+		descriptor = "(Lnb;I)I",
+		garbageValue = "1550816169"
 	)
 	@Export("compareTo_user")
 	public int compareTo_user(Nameable var1) {
@@ -47,18 +47,19 @@ public class Ignored extends Nameable {
 		return this.compareTo_ignored((Ignored)var1);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("hg")
 	@ObfuscatedSignature(
-		descriptor = "(I)J",
-		garbageValue = "-376840192"
+		descriptor = "(I)V",
+		garbageValue = "1092263394"
 	)
-	public static final synchronized long method6459() {
-		long var0 = System.currentTimeMillis();
-		if (var0 < class415.field4466) {
-			class415.field4467 += class415.field4466 - var0;
-		}
-
-		class415.field4466 = var0;
-		return var0 + class415.field4467;
+	@Export("addCancelMenuEntry")
+	static void addCancelMenuEntry() {
+		Client.menuOptionsCount = 0;
+		Client.isMenuOpen = false;
+		Client.menuActions[0] = "Cancel";
+		Client.menuTargets[0] = "";
+		Client.menuOpcodes[0] = 1006;
+		Client.menuShiftClick[0] = false;
+		Client.menuOptionsCount = 1;
 	}
 }
