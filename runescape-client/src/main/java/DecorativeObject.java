@@ -1,77 +1,81 @@
-import java.security.SecureRandom;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hp")
+@ObfuscatedName("hk")
 @Implements("DecorativeObject")
-public final class DecorativeObject
-{
-	@ObfuscatedName("c")
+public final class DecorativeObject {
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -2023059781
+		intValue = 1562461341
+	)
+	@Export("canvasHeight")
+	public static int canvasHeight;
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(
+		intValue = -114647615
 	)
 	@Export("tileHeight")
 	int tileHeight;
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 2111603765
+		intValue = 1817381783
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("p")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -1656810997
+		intValue = 193612147
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("m")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -1965519891
+		intValue = -971954679
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 278377977
+		intValue = 163757837
 	)
 	@Export("orientation2")
 	int orientation2;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 1314236601
+		intValue = 373491259
 	)
 	@Export("xOffset")
 	int xOffset;
-	@ObfuscatedName("j")
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = -1594233985
+		intValue = 926659643
 	)
 	@Export("yOffset")
 	int yOffset;
-	@ObfuscatedName("w")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lgq;"
 	)
 	@Export("renderable1")
 	public Renderable renderable1;
-	@ObfuscatedName("n")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lgq;"
 	)
 	@Export("renderable2")
 	public Renderable renderable2;
-	@ObfuscatedName("r")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		longValue = 6911018160892972427L
+		longValue = -5335514292976326337L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("o")
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = 1066794937
+		intValue = 1656580605
 	)
 	@Export("flags")
 	int flags;
@@ -79,16 +83,5 @@ public final class DecorativeObject
 	DecorativeObject() {
 		this.tag = 0L;
 		this.flags = 0;
-	}
-
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/security/SecureRandom;",
-		garbageValue = "-121"
-	)
-	static SecureRandom method4340() {
-		SecureRandom var0 = new SecureRandom();
-		var0.nextInt();
-		return var0;
 	}
 }

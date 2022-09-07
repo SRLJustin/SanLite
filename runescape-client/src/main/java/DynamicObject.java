@@ -4,69 +4,66 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bj")
+@ObfuscatedName("bo")
 @Implements("DynamicObject")
 public class DynamicObject extends Renderable {
-	@ObfuscatedName("o")
-	@Export("musicTrackBoolean")
-	public static boolean musicTrackBoolean;
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 1712801751
+		intValue = -2094517607
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 2015197805
+		intValue = -140486865
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("p")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 1555173169
+		intValue = -1181845419
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("m")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -393716715
+		intValue = -1335219741
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -332192069
+		intValue = -1839332185
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 1639785979
+		intValue = 38712731
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("j")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "Lgn;"
+		descriptor = "Lgh;"
 	)
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
-	@ObfuscatedName("w")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -724114563
+		intValue = -1728628647
 	)
 	@Export("frame")
 	int frame;
-	@ObfuscatedName("n")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = 343705565
+		intValue = -1660744645
 	)
 	@Export("cycleStart")
 	int cycleStart;
 
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIZLgt;)V"
+		descriptor = "(IIIIIIIZLgq;)V"
 	)
 	DynamicObject(int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8, Renderable var9) {
 		this.id = var1;
@@ -76,10 +73,10 @@ public class DynamicObject extends Renderable {
 		this.x = var5;
 		this.y = var6;
 		if (var7 != -1) {
-			this.sequenceDefinition = UserComparator5.SequenceDefinition_get(var7);
+			this.sequenceDefinition = ByteArrayPool.SequenceDefinition_get(var7);
 			this.frame = 0;
 			this.cycleStart = Client.cycle - 1;
-			if (this.sequenceDefinition.field2078 == 0 && var9 != null && var9 instanceof DynamicObject) {
+			if (this.sequenceDefinition.field2181 == 0 && var9 != null && var9 instanceof DynamicObject) {
 				DynamicObject var10 = (DynamicObject)var9;
 				if (this.sequenceDefinition == var10.sequenceDefinition) {
 					this.frame = var10.frame;
@@ -89,21 +86,21 @@ public class DynamicObject extends Renderable {
 			}
 
 			if (var8 && this.sequenceDefinition.frameCount != -1) {
-				if (!this.sequenceDefinition.method3690()) {
+				if (!this.sequenceDefinition.method3725()) {
 					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.frameIds.length);
 					this.cycleStart -= (int)(Math.random() * (double)this.sequenceDefinition.frameLengths[this.frame]);
 				} else {
-					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method3647());
+					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method3729());
 				}
 			}
 		}
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lgo;",
-		garbageValue = "202861607"
+		descriptor = "(B)Lhp;",
+		garbageValue = "4"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
@@ -114,8 +111,8 @@ public class DynamicObject extends Renderable {
 				var1 = 100;
 			}
 
-			if (this.sequenceDefinition.method3690()) {
-				var2 = this.sequenceDefinition.method3647();
+			if (this.sequenceDefinition.method3725()) {
+				var2 = this.sequenceDefinition.method3729();
 				this.frame += var1;
 				var1 = 0;
 				if (this.frame >= var2) {
@@ -125,11 +122,11 @@ public class DynamicObject extends Renderable {
 					}
 				}
 			} else {
-				label79: {
+				label80: {
 					do {
 						do {
 							if (var1 <= this.sequenceDefinition.frameLengths[this.frame]) {
-								break label79;
+								break label80;
 							}
 
 							var1 -= this.sequenceDefinition.frameLengths[this.frame];
@@ -146,7 +143,7 @@ public class DynamicObject extends Renderable {
 			this.cycleStart = Client.cycle - var1;
 		}
 
-		ObjectComposition var12 = class148.getObjectDefinition(this.id);
+		ObjectComposition var12 = FileSystem.getObjectDefinition(this.id);
 		if (var12.transforms != null) {
 			var12 = var12.transform();
 		}
@@ -175,39 +172,101 @@ public class DynamicObject extends Renderable {
 		}
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-2047180013"
+		descriptor = "([Ljava/lang/CharSequence;III)Ljava/lang/String;",
+		garbageValue = "-1660311016"
 	)
-	@Export("iLog")
-	public static int iLog(int var0) {
-		int var1 = 0;
-		if (var0 < 0 || var0 >= 65536) {
-			var0 >>>= 16;
-			var1 += 16;
+	public static String method1949(CharSequence[] var0, int var1, int var2) {
+		if (var2 == 0) {
+			return "";
+		} else if (var2 == 1) {
+			CharSequence var10 = var0[var1];
+			return var10 == null ? "null" : var10.toString();
+		} else {
+			int var3 = var2 + var1;
+			int var4 = 0;
+
+			for (int var5 = var1; var5 < var3; ++var5) {
+				CharSequence var9 = var0[var5];
+				if (var9 == null) {
+					var4 += 4;
+				} else {
+					var4 += var9.length();
+				}
+			}
+
+			StringBuilder var8 = new StringBuilder(var4);
+
+			for (int var6 = var1; var6 < var3; ++var6) {
+				CharSequence var7 = var0[var6];
+				if (var7 == null) {
+					var8.append("null");
+				} else {
+					var8.append(var7);
+				}
+			}
+
+			return var8.toString();
+		}
+	}
+
+	@ObfuscatedName("hs")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V",
+		garbageValue = "-1905507981"
+	)
+	@Export("selectSpell")
+	static void selectSpell(int var0, int var1, int var2, int var3) {
+		Widget var4 = class128.getWidgetChild(var0, var1);
+		if (var4 != null && var4.onTargetEnter != null) {
+			ScriptEvent var5 = new ScriptEvent();
+			var5.widget = var4;
+			var5.args = var4.onTargetEnter;
+			SceneTilePaint.runScriptEvent(var5);
 		}
 
-		if (var0 >= 256) {
-			var0 >>>= 8;
-			var1 += 8;
-		}
+		Client.field646 = var3;
+		Client.isSpellSelected = true;
+		class282.selectedSpellWidget = var0;
+		Client.selectedSpellChildIndex = var1;
+		class149.selectedSpellFlags = var2;
+		class125.method2770(var4);
+	}
 
-		if (var0 >= 16) {
-			var0 >>>= 4;
-			var1 += 4;
+	@ObfuscatedName("km")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "93"
+	)
+	@Export("clanKickUser")
+	static final void clanKickUser(String var0) {
+		if (class19.friendsChatManager != null) {
+			PacketBufferNode var1 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field3017, Client.packetWriter.isaacCipher);
+			var1.packetBuffer.writeByte(class309.stringCp1252NullTerminatedByteSize(var0));
+			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
+			Client.packetWriter.addNode(var1);
 		}
+	}
 
-		if (var0 >= 4) {
-			var0 >>>= 2;
-			var1 += 2;
+	@ObfuscatedName("ke")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "-226908688"
+	)
+	static final void method1954(int var0, int var1) {
+		ClanChannel var2 = var0 >= 0 ? Client.currentClanChannels[var0] : NetCache.guestClanChannel;
+		if (var2 != null && var1 >= 0 && var1 < var2.method3046()) {
+			ClanChannelMember var3 = (ClanChannelMember)var2.members.get(var1);
+			if (var3.rank == -1) {
+				String var4 = var3.username.getName();
+				PacketBufferNode var5 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2984, Client.packetWriter.isaacCipher);
+				var5.packetBuffer.writeByte(3 + class309.stringCp1252NullTerminatedByteSize(var4));
+				var5.packetBuffer.writeByte(var0);
+				var5.packetBuffer.writeShort(var1);
+				var5.packetBuffer.writeStringCp1252NullTerminated(var4);
+				Client.packetWriter.addNode(var5);
+			}
 		}
-
-		if (var0 >= 1) {
-			var0 >>>= 1;
-			++var1;
-		}
-
-		return var0 + var1;
 	}
 }

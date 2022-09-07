@@ -4,13 +4,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kk")
+@ObfuscatedName("lp")
 @Implements("GrandExchangeOfferUnitPriceComparator")
 final class GrandExchangeOfferUnitPriceComparator implements Comparator {
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Lkj;Lkj;I)I",
-		garbageValue = "-1121383818"
+		descriptor = "(Llh;Llh;I)I",
+		garbageValue = "-1485770675"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
@@ -23,5 +23,21 @@ final class GrandExchangeOfferUnitPriceComparator implements Comparator {
 
 	public int compare(Object var1, Object var2) {
 		return this.compare_bridged((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
+	}
+
+	@ObfuscatedName("fp")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "29"
+	)
+	static final void method5960() {
+		for (int var0 = 0; var0 < Client.npcCount; ++var0) {
+			int var1 = Client.npcIndices[var0];
+			NPC var2 = Client.npcs[var1];
+			if (var2 != null) {
+				WorldMapSection2.updateActorSequence(var2, var2.definition.size);
+			}
+		}
+
 	}
 }

@@ -1,54 +1,60 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ot")
+@ObfuscatedName("ps")
 @Implements("FontName")
 public class FontName {
-	@ObfuscatedName("c")
+	@ObfuscatedName("rg")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Leh;"
+	)
+	@Export("guestClanSettings")
+	static ClanSettings guestClanSettings;
+	@ObfuscatedName("uj")
+	@ObfuscatedGetter(
+		longValue = -8852451714535883403L
+	)
+	static long field4587;
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "Lps;"
 	)
 	@Export("FontName_plain11")
 	public static final FontName FontName_plain11;
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Lps;"
 	)
 	@Export("FontName_plain12")
 	public static final FontName FontName_plain12;
-	@ObfuscatedName("p")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Lps;"
 	)
 	@Export("FontName_bold12")
 	public static final FontName FontName_bold12;
-	@ObfuscatedName("m")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Lps;"
 	)
 	@Export("FontName_verdana11")
 	public static final FontName FontName_verdana11;
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Lps;"
 	)
 	@Export("FontName_verdana13")
 	public static final FontName FontName_verdana13;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Lps;"
 	)
 	@Export("FontName_verdana15")
 	public static final FontName FontName_verdana15;
-	@ObfuscatedName("dw")
-	@ObfuscatedSignature(
-		descriptor = "Lmd;"
-	)
-	@Export("js5Socket")
-	static AbstractSocket js5Socket;
-	@ObfuscatedName("j")
+	@ObfuscatedName("i")
 	@Export("name")
 	String name;
 
@@ -65,27 +71,26 @@ public class FontName {
 		this.name = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lj;",
-		garbageValue = "-2104552307"
+		descriptor = "(III)I",
+		garbageValue = "374763571"
 	)
-	public static class6[] method7075() {
-		return new class6[]{class6.field15};
+	public static int method7323(int var0, int var1) {
+		return (var0 << 8) + var1;
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "-4"
+		descriptor = "(IB)I",
+		garbageValue = "96"
 	)
-	public static int method7074(int var0, int var1) {
-		int var2;
-		for (var2 = 0; var1 > 0; --var1) {
-			var2 = var2 << 1 | var0 & 1;
-			var0 >>>= 1;
+	static int method7322(int var0) {
+		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
+		if (var1 == null) {
+			return -1;
+		} else {
+			return var1.nextDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.nextDual).count;
 		}
-
-		return var2;
 	}
 }

@@ -1,23 +1,50 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fe")
+@ObfuscatedName("ft")
 public class class160 {
-	@ObfuscatedName("p")
-	public short[] field1732;
-	@ObfuscatedName("m")
-	public short[] field1738;
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = -942095737
+	)
+	@Export("pcmSampleLength")
+	public static int pcmSampleLength;
+	@ObfuscatedName("y")
+	@ObfuscatedGetter(
+		intValue = 128601363
+	)
+	static int field1744;
+	@ObfuscatedName("b")
+	@ObfuscatedSignature(
+		descriptor = "Lib;"
+	)
+	@Export("worldMapEvent")
+	static WorldMapEvent worldMapEvent;
+	@ObfuscatedName("fz")
+	@ObfuscatedGetter(
+		intValue = -975943677
+	)
+	static int field1751;
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "Lcv;"
+	)
+	public UrlRequest field1749;
+	@ObfuscatedName("h")
+	public float[] field1748;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Leu;"
+	)
+	final class155 this$0;
 
-	class160(int var1) {
-		ItemComposition var2 = UserComparator6.ItemDefinition_get(var1);
-		if (var2.method3560()) {
-			this.field1732 = new short[var2.recolorTo.length];
-			System.arraycopy(var2.recolorTo, 0, this.field1732, 0, this.field1732.length);
-		}
-
-		if (var2.method3572()) {
-			this.field1738 = new short[var2.retextureTo.length];
-			System.arraycopy(var2.retextureTo, 0, this.field1738, 0, this.field1738.length);
-		}
-
+	@ObfuscatedSignature(
+		descriptor = "(Leu;)V"
+	)
+	class160(class155 var1) {
+		this.this$0 = var1;
+		this.field1748 = new float[4];
 	}
 }

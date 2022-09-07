@@ -3,40 +3,40 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ag")
+@ObfuscatedName("aw")
 @Implements("SoundEnvelope")
 public class SoundEnvelope {
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@Export("segments")
 	int segments;
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@Export("durations")
 	int[] durations;
-	@ObfuscatedName("p")
+	@ObfuscatedName("w")
 	@Export("phases")
 	int[] phases;
-	@ObfuscatedName("m")
+	@ObfuscatedName("v")
 	@Export("start")
 	int start;
-	@ObfuscatedName("t")
+	@ObfuscatedName("c")
 	@Export("end")
 	int end;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@Export("form")
 	int form;
-	@ObfuscatedName("j")
+	@ObfuscatedName("i")
 	@Export("ticks")
 	int ticks;
-	@ObfuscatedName("w")
+	@ObfuscatedName("k")
 	@Export("phaseIndex")
 	int phaseIndex;
-	@ObfuscatedName("n")
+	@ObfuscatedName("o")
 	@Export("step")
 	int step;
-	@ObfuscatedName("r")
+	@ObfuscatedName("n")
 	@Export("amplitude")
 	int amplitude;
-	@ObfuscatedName("o")
+	@ObfuscatedName("d")
 	@Export("max")
 	int max;
 
@@ -50,9 +50,9 @@ public class SoundEnvelope {
 		this.phases[1] = 65535;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;)V"
+		descriptor = "(Lqr;)V"
 	)
 	@Export("decode")
 	final void decode(Buffer var1) {
@@ -62,9 +62,9 @@ public class SoundEnvelope {
 		this.decodeSegments(var1);
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;)V"
+		descriptor = "(Lqr;)V"
 	)
 	@Export("decodeSegments")
 	final void decodeSegments(Buffer var1) {
@@ -79,7 +79,7 @@ public class SoundEnvelope {
 
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("w")
 	@Export("reset")
 	final void reset() {
 		this.ticks = 0;
@@ -89,7 +89,7 @@ public class SoundEnvelope {
 		this.max = 0;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("v")
 	@Export("doStep")
 	final int doStep(int var1) {
 		if (this.max >= this.ticks) {

@@ -4,32 +4,40 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fb")
+@ObfuscatedName("fw")
 @Implements("VarpDefinition")
 public class VarpDefinition extends DualNode {
-	@ObfuscatedName("sw")
+	@ObfuscatedName("tf")
 	@ObfuscatedGetter(
-		intValue = 2043894385
+		intValue = -1358941939
 	)
-	static int field1748;
-	@ObfuscatedName("c")
+	static int field1805;
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Lls;"
 	)
 	@Export("VarpDefinition_archive")
-	public static AbstractArchive VarpDefinition_archive;
-	@ObfuscatedName("p")
+	static AbstractArchive VarpDefinition_archive;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(
+		intValue = -1767580571
+	)
+	public static int field1809;
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Liz;"
 	)
 	@Export("VarpDefinition_cached")
 	public static EvictingDualNodeHashTable VarpDefinition_cached;
-	@ObfuscatedName("he")
-	@Export("regionMapArchives")
-	static byte[][] regionMapArchives;
-	@ObfuscatedName("m")
+	@ObfuscatedName("ip")
+	@ObfuscatedSignature(
+		descriptor = "[Lqe;"
+	)
+	@Export("modIconSprites")
+	static IndexedSprite[] modIconSprites;
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1559119131
+		intValue = -953256093
 	)
 	@Export("type")
 	public int type;
@@ -42,10 +50,10 @@ public class VarpDefinition extends DualNode {
 		this.type = 0;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "-1334778255"
+		descriptor = "(Lqr;I)V",
+		garbageValue = "1926258442"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -59,10 +67,10 @@ public class VarpDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;II)V",
-		garbageValue = "-1795168464"
+		descriptor = "(Lqr;IB)V",
+		garbageValue = "-21"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -72,21 +80,21 @@ public class VarpDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("ho")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(Lcy;II)V",
-		garbageValue = "827099258"
+		descriptor = "(I)V",
+		garbageValue = "284353290"
 	)
-	static final void method3167(Actor var0, int var1) {
-		ModeWhere.worldToScreen(var0.x, var0.y, var1);
+	public static void method3288() {
+		FloorOverlayDefinition.FloorOverlayDefinition_cached.clear();
 	}
 
-	@ObfuscatedName("le")
+	@ObfuscatedName("d")
 	@ObfuscatedSignature(
-		descriptor = "(IS)V",
-		garbageValue = "13655"
+		descriptor = "(I)V",
+		garbageValue = "-252579017"
 	)
-	static void method3168(int var0) {
-		Client.oculusOrbState = var0;
+	public static void method3284() {
+		PlayerComposition.Widget_cachedSpriteMasks.clear();
 	}
 }

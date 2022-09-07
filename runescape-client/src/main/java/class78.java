@@ -1,60 +1,54 @@
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ce")
 public class class78 {
-	@ObfuscatedName("oo")
-	@ObfuscatedGetter(
-		intValue = 603715761
-	)
-	static int field1000;
-
-	@ObfuscatedName("c")
+	@ObfuscatedName("sg")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lfj;",
-		garbageValue = "-18"
+		descriptor = "Laf;"
 	)
-	@Export("WorldMapElement_get")
-	public static WorldMapElement WorldMapElement_get(int var0) {
-		return var0 >= 0 && var0 < WorldMapElement.WorldMapElement_cached.length && WorldMapElement.WorldMapElement_cached[var0] != null ? WorldMapElement.WorldMapElement_cached[var0] : new WorldMapElement(var0);
-	}
+	@Export("pcmPlayer0")
+	static PcmPlayer pcmPlayer0;
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lfu;",
-		garbageValue = "-1066482349"
+		descriptor = "(IB)Lfw;",
+		garbageValue = "-14"
 	)
-	@Export("getInvDefinition")
-	public static InvDefinition getInvDefinition(int var0) {
-		InvDefinition var1 = (InvDefinition)InvDefinition.InvDefinition_cached.get((long)var0);
+	@Export("VarpDefinition_get")
+	public static VarpDefinition VarpDefinition_get(int var0) {
+		VarpDefinition var1 = (VarpDefinition)VarpDefinition.VarpDefinition_cached.get((long)var0);
 		if (var1 != null) {
 			return var1;
 		} else {
-			byte[] var2 = InvDefinition.InvDefinition_archive.takeFile(5, var0);
-			var1 = new InvDefinition();
+			byte[] var2 = VarpDefinition.VarpDefinition_archive.takeFile(16, var0);
+			var1 = new VarpDefinition();
 			if (var2 != null) {
 				var1.decode(new Buffer(var2));
 			}
 
-			InvDefinition.InvDefinition_cached.put(var1, (long)var0);
+			VarpDefinition.VarpDefinition_cached.put(var1, (long)var0);
 			return var1;
 		}
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(B)[I",
-		garbageValue = "21"
+		descriptor = "(II)Z",
+		garbageValue = "1585294077"
 	)
-	public static int[] method2140() {
-		int[] var0 = new int[KeyHandler.field140];
+	public static boolean method2054(int var0) {
+		return var0 >= 0 && var0 < 112 ? KeyHandler.field126[var0] : false;
+	}
 
-		for (int var1 = 0; var1 < KeyHandler.field140; ++var1) {
-			var0[var1] = KeyHandler.field139[var1];
-		}
-
-		return var0;
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(CI)Z",
+		garbageValue = "-2035745879"
+	)
+	@Export("isCharAlphabetic")
+	public static boolean isCharAlphabetic(char var0) {
+		return var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
 	}
 }

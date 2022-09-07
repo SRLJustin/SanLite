@@ -3,18 +3,18 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gg")
+@ObfuscatedName("gn")
 @Implements("Frames")
 public class Frames extends DualNode {
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "[Lgu;"
+		descriptor = "[Lga;"
 	)
 	@Export("frames")
 	Animation[] frames;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lku;Lku;IZ)V",
+		descriptor = "(Lls;Lls;IZ)V",
 		garbageValue = "0"
 	)
 	public Frames(AbstractArchive var1, AbstractArchive var2, int var3, boolean var4) {
@@ -46,22 +46,97 @@ public class Frames extends DualNode {
 
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "-102"
+		descriptor = "(II)Z",
+		garbageValue = "1979341269"
 	)
 	@Export("hasAlphaTransform")
 	public boolean hasAlphaTransform(int var1) {
 		return this.frames[var1].hasAlphaTransform;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("gt")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "-24"
+		descriptor = "(IIIIIIIB)V",
+		garbageValue = "8"
 	)
-	public static int method4149(int var0) {
-		return var0 >> 17 & 7;
+	@Export("addPendingSpawnToScene")
+	static final void addPendingSpawnToScene(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+		if (var2 >= 1 && var3 >= 1 && var2 <= 102 && var3 <= 102) {
+			if (Client.isLowDetail && var0 != class268.Client_plane) {
+				return;
+			}
+
+			long var7 = 0L;
+			boolean var9 = true;
+			boolean var10 = false;
+			boolean var11 = false;
+			if (var1 == 0) {
+				var7 = class12.scene.getWallObjectTag(var0, var2, var3);
+			}
+
+			if (var1 == 1) {
+				var7 = class12.scene.getDecorativeObjectTag(var0, var2, var3);
+			}
+
+			if (var1 == 2) {
+				var7 = class12.scene.getGameObjectTag(var0, var2, var3);
+			}
+
+			if (var1 == 3) {
+				var7 = class12.scene.getGroundObjectTag(var0, var2, var3);
+			}
+
+			int var12;
+			if (0L != var7) {
+				var12 = class12.scene.getObjectFlags(var0, var2, var3, var7);
+				int var14 = WorldMapSection2.Entity_unpackID(var7);
+				int var15 = var12 & 31;
+				int var16 = var12 >> 6 & 3;
+				ObjectComposition var13;
+				if (var1 == 0) {
+					class12.scene.removeWallObject(var0, var2, var3);
+					var13 = FileSystem.getObjectDefinition(var14);
+					if (var13.interactType != 0) {
+						Client.collisionMaps[var0].method3778(var2, var3, var15, var16, var13.boolean1);
+					}
+				}
+
+				if (var1 == 1) {
+					class12.scene.removeDecorativeObject(var0, var2, var3);
+				}
+
+				if (var1 == 2) {
+					class12.scene.removeGameObject(var0, var2, var3);
+					var13 = FileSystem.getObjectDefinition(var14);
+					if (var2 + var13.sizeX > 103 || var3 + var13.sizeX > 103 || var2 + var13.sizeY > 103 || var3 + var13.sizeY > 103) {
+						return;
+					}
+
+					if (var13.interactType != 0) {
+						Client.collisionMaps[var0].setFlagOffNonSquare(var2, var3, var13.sizeX, var13.sizeY, var16, var13.boolean1);
+					}
+				}
+
+				if (var1 == 3) {
+					class12.scene.removeGroundObject(var0, var2, var3);
+					var13 = FileSystem.getObjectDefinition(var14);
+					if (var13.interactType == 1) {
+						Client.collisionMaps[var0].method3781(var2, var3);
+					}
+				}
+			}
+
+			if (var4 >= 0) {
+				var12 = var0;
+				if (var0 < 3 && (Tiles.Tiles_renderFlags[1][var2][var3] & 2) == 2) {
+					var12 = var0 + 1;
+				}
+
+				class14.method174(var0, var12, var2, var3, var4, var5, var6, class12.scene, Client.collisionMaps[var0]);
+			}
+		}
+
 	}
 }

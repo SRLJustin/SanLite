@@ -7,81 +7,64 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("cw")
 @Implements("Players")
 public class Players {
-	@ObfuscatedName("qa")
+	@ObfuscatedName("w")
+	static byte[] field1297;
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "[Lgi;"
 	)
-	@Export("friendsChatManager")
-	static FriendsChatManager friendsChatManager;
-	@ObfuscatedName("p")
-	static byte[] field1243;
-	@ObfuscatedName("m")
+	static class192[] field1298;
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "[Lgj;"
+		descriptor = "[Lqr;"
 	)
-	static class185[] field1246;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "[Lpi;"
-	)
-	static Buffer[] field1248;
-	@ObfuscatedName("s")
+	static Buffer[] field1308;
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 60233761
+		intValue = -2113383221
 	)
 	@Export("Players_count")
 	static int Players_count;
-	@ObfuscatedName("j")
+	@ObfuscatedName("i")
 	@Export("Players_indices")
 	static int[] Players_indices;
-	@ObfuscatedName("w")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -1857354621
+		intValue = 1667275583
 	)
 	@Export("Players_emptyIdxCount")
 	static int Players_emptyIdxCount;
-	@ObfuscatedName("n")
+	@ObfuscatedName("o")
 	@Export("Players_emptyIndices")
 	static int[] Players_emptyIndices;
-	@ObfuscatedName("r")
+	@ObfuscatedName("n")
 	@Export("Players_regions")
 	static int[] Players_regions;
-	@ObfuscatedName("o")
+	@ObfuscatedName("d")
 	@Export("Players_orientations")
 	static int[] Players_orientations;
-	@ObfuscatedName("v")
+	@ObfuscatedName("a")
 	@Export("Players_targetIndices")
 	static int[] Players_targetIndices;
-	@ObfuscatedName("d")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = 1591161311
+		intValue = -1903883359
 	)
 	@Export("Players_pendingUpdateCount")
 	static int Players_pendingUpdateCount;
-	@ObfuscatedName("h")
+	@ObfuscatedName("u")
 	@Export("Players_pendingUpdateIndices")
 	static int[] Players_pendingUpdateIndices;
-	@ObfuscatedName("g")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "Lpi;"
+		descriptor = "Lqr;"
 	)
-	static Buffer field1257;
-	@ObfuscatedName("cb")
-	@ObfuscatedGetter(
-		intValue = 1838137179
-	)
-	public static int field1247;
-	@ObfuscatedName("el")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive11")
-	static Archive archive11;
+	static Buffer field1309;
 
 	static {
-		field1243 = new byte[2048];
-		field1246 = new class185[2048];
-		field1248 = new Buffer[2048];
+		field1297 = new byte[2048];
+		field1298 = new class192[2048];
+		field1308 = new Buffer[2048];
 		Players_count = 0;
 		Players_indices = new int[2048];
 		Players_emptyIdxCount = 0;
@@ -91,28 +74,24 @@ public class Players {
 		Players_targetIndices = new int[2048];
 		Players_pendingUpdateCount = 0;
 		Players_pendingUpdateIndices = new int[2048];
-		field1257 = new Buffer(new byte[5000]);
+		field1309 = new Buffer(new byte[5000]);
+	}
+
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Lch;",
+		garbageValue = "643509029"
+	)
+	static class83[] method2388() {
+		return new class83[]{class83.field1077, class83.field1073, class83.field1076, class83.field1078, class83.field1074, class83.field1081};
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;Ljava/lang/String;Ljava/lang/String;IZI)V",
-		garbageValue = "2062230724"
+		descriptor = "(II)Z",
+		garbageValue = "1108116744"
 	)
-	public static void method2382(AbstractArchive var0, String var1, String var2, int var3, boolean var4) {
-		int var5 = var0.getGroupId(var1);
-		int var6 = var0.getFileId(var5, var2);
-		NetSocket.method3118(var0, var5, var6, var3, var4);
-	}
-
-	@ObfuscatedName("kz")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-733179789"
-	)
-	static final void method2383(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 127);
-		SecureRandomFuture.clientPreferences.areaSoundEffectsVolume = var0;
-		class127.savePreferences();
+	public static boolean method2383(int var0) {
+		return (var0 >> 20 & 1) != 0;
 	}
 }

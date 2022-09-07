@@ -1,13 +1,11 @@
-import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("kq")
 public class class307 {
-	@ObfuscatedName("gg")
-	@ObfuscatedSignature(
-		descriptor = "Llx;"
+	@ObfuscatedName("tc")
+	@ObfuscatedGetter(
+		intValue = -641548288
 	)
-	@Export("fontPlain11")
-	static Font fontPlain11;
+	static int field3613;
 }

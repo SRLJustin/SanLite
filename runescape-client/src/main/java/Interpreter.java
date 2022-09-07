@@ -5,63 +5,68 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bu")
+@ObfuscatedName("bs")
 @Implements("Interpreter")
 public class Interpreter {
-	@ObfuscatedName("tb")
-	@ObfuscatedSignature(
-		descriptor = "Lnn;"
-	)
-	@Export("platformInfo")
-	static PlatformInfo platformInfo;
-	@ObfuscatedName("w")
+	@ObfuscatedName("v")
+	@Export("Interpreter_intLocals")
+	static int[] Interpreter_intLocals;
+	@ObfuscatedName("c")
+	@Export("Interpreter_stringLocals")
+	static String[] Interpreter_stringLocals;
+	@ObfuscatedName("q")
 	@Export("Interpreter_arrayLengths")
 	static int[] Interpreter_arrayLengths;
-	@ObfuscatedName("n")
+	@ObfuscatedName("i")
 	@Export("Interpreter_arrays")
 	static int[][] Interpreter_arrays;
-	@ObfuscatedName("r")
+	@ObfuscatedName("k")
 	@Export("Interpreter_intStack")
 	static int[] Interpreter_intStack;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@Export("Interpreter_stringStack")
 	static String[] Interpreter_stringStack;
-	@ObfuscatedName("h")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = -866718889
+		intValue = 1584311727
 	)
 	@Export("Interpreter_frameDepth")
 	static int Interpreter_frameDepth;
-	@ObfuscatedName("g")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "[Lbg;"
+		descriptor = "[Lbu;"
 	)
 	@Export("Interpreter_frames")
 	static ScriptFrame[] Interpreter_frames;
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(
-		intValue = 355212093
+	@ObfuscatedName("r")
+	@ObfuscatedSignature(
+		descriptor = "Lec;"
 	)
-	static int field812;
-	@ObfuscatedName("l")
+	static ClanChannel field826;
+	@ObfuscatedName("p")
 	@Export("Interpreter_calendar")
 	static java.util.Calendar Interpreter_calendar;
-	@ObfuscatedName("q")
+	@ObfuscatedName("e")
 	@Export("Interpreter_MONTHS")
 	static final String[] Interpreter_MONTHS;
-	@ObfuscatedName("z")
-	static boolean field818;
-	@ObfuscatedName("i")
+	@ObfuscatedName("x")
+	static boolean field820;
+	@ObfuscatedName("f")
 	static boolean field816;
-	@ObfuscatedName("y")
-	static ArrayList field817;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("t")
+	static ArrayList field831;
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -1880353715
+		intValue = 1905581353
 	)
-	static int field815;
-	@ObfuscatedName("ax")
-	static final double field814;
+	static int field830;
+	@ObfuscatedName("av")
+	static final double field824;
+	@ObfuscatedName("bl")
+	@ObfuscatedSignature(
+		descriptor = "Lkt;"
+	)
+	static GameBuild field834;
 
 	static {
 		Interpreter_arrayLengths = new int[5];
@@ -72,30 +77,10 @@ public class Interpreter {
 		Interpreter_frames = new ScriptFrame[50];
 		Interpreter_calendar = java.util.Calendar.getInstance();
 		Interpreter_MONTHS = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-		field818 = false;
+		field820 = false;
 		field816 = false;
-		field817 = new ArrayList();
-		field815 = 0;
-		field814 = Math.log(2.0D);
-	}
-
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(CLlf;B)I",
-		garbageValue = "-56"
-	)
-	@Export("lowercaseChar")
-	static int lowercaseChar(char var0, Language var1) {
-		int var2 = var0 << 4;
-		if (Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
-			var0 = Character.toLowerCase(var0);
-			var2 = (var0 << 4) + 1;
-		}
-
-		if (var0 == 241 && var1 == Language.Language_ES) {
-			var2 = 1762;
-		}
-
-		return var2;
+		field831 = new ArrayList();
+		field830 = 0;
+		field824 = Math.log(2.0D);
 	}
 }

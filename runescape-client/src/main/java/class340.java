@@ -1,13 +1,20 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ma")
-public class class340 {
-	@ObfuscatedName("ll")
-	@ObfuscatedSignature(
-		descriptor = "Lck;"
+@ObfuscatedName("mu")
+public final class class340 {
+	@ObfuscatedName("z")
+	@ObfuscatedGetter(
+		intValue = 51853259
 	)
-	@Export("localPlayer")
-	static Player localPlayer;
+	@Export("cacheGamebuild")
+	static int cacheGamebuild;
+	@ObfuscatedName("ed")
+	@ObfuscatedSignature(
+		descriptor = "Lln;"
+	)
+	@Export("archive18")
+	static Archive archive18;
 }

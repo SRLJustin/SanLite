@@ -1,65 +1,63 @@
-import java.lang.management.GarbageCollectorMXBean;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iw")
+@ObfuscatedName("jg")
 @Implements("PacketBufferNode")
 public class PacketBufferNode extends Node {
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "[Liw;"
-	)
-	@Export("PacketBufferNode_packetBufferNodes")
-	static PacketBufferNode[] PacketBufferNode_packetBufferNodes;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = 1440510259
-	)
-	@Export("PacketBufferNode_packetBufferNodeCount")
-	static int PacketBufferNode_packetBufferNodeCount;
-	@ObfuscatedName("aq")
-	@Export("garbageCollector")
-	static GarbageCollectorMXBean garbageCollector;
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Liu;"
+		descriptor = "[Ljg;"
+	)
+	@Export("PacketBufferNode_packetBufferNodes")
+	public static PacketBufferNode[] PacketBufferNode_packetBufferNodes;
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(
+		intValue = 230152311
+	)
+	@Export("PacketBufferNode_packetBufferNodeCount")
+	public static int PacketBufferNode_packetBufferNodeCount;
+	@ObfuscatedName("gt")
+	@ObfuscatedSignature(
+		descriptor = "Lnc;"
+	)
+	static AbstractSocket field3045;
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "Ljb;"
 	)
 	@Export("clientPacket")
-	ClientPacket clientPacket;
-	@ObfuscatedName("b")
+	public ClientPacket clientPacket;
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -2059632065
+		intValue = 1911786961
 	)
 	@Export("clientPacketLength")
-	int clientPacketLength;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = -531807865
-	)
-	@Export("index")
-	public int index;
-	@ObfuscatedName("m")
+	public int clientPacketLength;
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Lpj;"
+		descriptor = "Lqz;"
 	)
 	@Export("packetBuffer")
 	public PacketBuffer packetBuffer;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(
+		intValue = 1990774047
+	)
+	@Export("index")
+	public int index;
 
 	static {
 		PacketBufferNode_packetBufferNodes = new PacketBufferNode[300];
 		PacketBufferNode_packetBufferNodeCount = 0;
 	}
 
-	PacketBufferNode() {
-	}
-
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "817440472"
+		garbageValue = "1882304710"
 	)
 	@Export("release")
 	public void release() {
@@ -68,14 +66,12 @@ public class PacketBufferNode extends Node {
 		}
 	}
 
-	@ObfuscatedName("mk")
+	@ObfuscatedName("r")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-1828413921"
+		descriptor = "(I)V",
+		garbageValue = "1762838535"
 	)
-	static void method5016(int var0) {
-		if (var0 != Client.loginState) {
-			Client.loginState = var0;
-		}
+	static final void method5137() {
+		class4.method20("You can't add yourself to your own ignore list");
 	}
 }
