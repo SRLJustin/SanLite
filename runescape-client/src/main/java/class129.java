@@ -1,145 +1,234 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("da")
-public class class129 {
-	@ObfuscatedName("fe")
-	@ObfuscatedGetter(
-		intValue = -1804512365
-	)
-	@Export("currentPort")
-	static int currentPort;
+@ObfuscatedName("ds")
+public abstract class class129 extends Node {
+	class129() {
+	}
+
 	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		longValue = 6548803859152250067L
+	@ObfuscatedSignature(
+		descriptor = "(Lqq;B)V",
+		garbageValue = "-41"
 	)
-	long field1513;
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(
-		intValue = -2135269879
-	)
-	int field1511;
+	abstract void vmethod3320(Buffer var1);
+
 	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "(Led;I)V",
+		garbageValue = "-538131930"
 	)
-	IterableNodeDeque field1512;
+	abstract void vmethod3313(ClanSettings var1);
 
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;)V"
+		descriptor = "(ILbt;ZI)I",
+		garbageValue = "877438235"
 	)
-	public class129(Buffer var1) {
-		this.field1511 = -1;
-		this.field1512 = new IterableNodeDeque();
-		this.method2780(var1);
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "-65"
-	)
-	void method2780(Buffer var1) {
-		this.field1513 = var1.readLong();
-		this.field1511 = var1.readInt();
-
-		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
-			Object var3;
-			if (var2 == 3) {
-				var3 = new class148(this);
-			} else if (var2 == 1) {
-				var3 = new class124(this);
-			} else if (var2 == 13) {
-				var3 = new class141(this);
-			} else if (var2 == 4) {
-				var3 = new class133(this);
-			} else if (var2 == 6) {
-				var3 = new class140(this);
-			} else if (var2 == 5) {
-				var3 = new class125(this);
-			} else if (var2 == 2) {
-				var3 = new class130(this);
-			} else if (var2 == 7) {
-				var3 = new class123(this);
-			} else if (var2 == 14) {
-				var3 = new class127(this);
-			} else if (var2 == 8) {
-				var3 = new class144(this);
-			} else if (var2 == 9) {
-				var3 = new class150(this);
-			} else if (var2 == 10) {
-				var3 = new class136(this);
-			} else if (var2 == 11) {
-				var3 = new class131(this);
-			} else if (var2 == 12) {
-				var3 = new class135(this);
-			} else {
-				if (var2 != 15) {
-					throw new RuntimeException("");
+	static int method3013(int var0, Script var1, boolean var2) {
+		int var3;
+		int var4;
+		if (var0 == ScriptOpcodes.ADD) {
+			Interpreter.Interpreter_intStackSize -= 2;
+			var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+			var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4 + var3;
+			return 1;
+		} else if (var0 == ScriptOpcodes.SUB) {
+			Interpreter.Interpreter_intStackSize -= 2;
+			var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+			var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3 - var4;
+			return 1;
+		} else if (var0 == ScriptOpcodes.MULTIPLY) {
+			Interpreter.Interpreter_intStackSize -= 2;
+			var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+			var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3 * var4;
+			return 1;
+		} else if (var0 == ScriptOpcodes.DIV) {
+			Interpreter.Interpreter_intStackSize -= 2;
+			var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+			var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3 / var4;
+			return 1;
+		} else if (var0 == ScriptOpcodes.RANDOM) {
+			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (int)(Math.random() * (double)var3);
+			return 1;
+		} else if (var0 == ScriptOpcodes.RANDOMINC) {
+			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (int)(Math.random() * (double)(var3 + 1));
+			return 1;
+		} else {
+			int var5;
+			int var6;
+			int var7;
+			if (var0 == ScriptOpcodes.INTERPOLATE) {
+				Interpreter.Interpreter_intStackSize -= 5;
+				var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+				var6 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 3];
+				var7 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 4];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3 + (var4 - var3) * (var7 - var5) / (var6 - var5);
+				return 1;
+			} else if (var0 == ScriptOpcodes.ADDPERCENT) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3 + var4 * var3 / 100;
+				return 1;
+			} else if (var0 == ScriptOpcodes.SETBIT) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3 | 1 << var4;
+				return 1;
+			} else if (var0 == ScriptOpcodes.CLEARBIT) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3 & -1 - (1 << var4);
+				return 1;
+			} else if (var0 == ScriptOpcodes.TESTBIT) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (var3 & 1 << var4) != 0 ? 1 : 0;
+				return 1;
+			} else if (var0 == ScriptOpcodes.MOD) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3 % var4;
+				return 1;
+			} else if (var0 == ScriptOpcodes.POW) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				if (var3 == 0) {
+					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
+				} else {
+					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (int)Math.pow((double)var3, (double)var4);
 				}
 
-				var3 = new class145(this);
+				return 1;
+			} else if (var0 == ScriptOpcodes.INVPOW) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				if (var3 == 0) {
+					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
+					return 1;
+				} else {
+					switch(var4) {
+					case 0:
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Integer.MAX_VALUE;
+						break;
+					case 1:
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3;
+						break;
+					case 2:
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (int)Math.sqrt((double)var3);
+						break;
+					case 3:
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (int)Math.cbrt((double)var3);
+						break;
+					case 4:
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (int)Math.sqrt(Math.sqrt((double)var3));
+						break;
+					default:
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (int)Math.pow((double)var3, 1.0D / (double)var4);
+					}
+
+					return 1;
+				}
+			} else if (var0 == ScriptOpcodes.AND) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3 & var4;
+				return 1;
+			} else if (var0 == ScriptOpcodes.OR) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3 | var4;
+				return 1;
+			} else if (var0 == ScriptOpcodes.SCALE) {
+				Interpreter.Interpreter_intStackSize -= 3;
+				long var9 = (long)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				long var11 = (long)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				long var13 = (long)Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (int)(var13 * var9 / var11);
+				return 1;
+			} else if (var0 == ScriptOpcodes.BITCOUNT) {
+				var3 = RouteStrategy.method4026(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3;
+				return 1;
+			} else if (var0 == ScriptOpcodes.TOGGLEBIT) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3 ^ 1 << var4;
+				return 1;
+			} else if (var0 == ScriptOpcodes.SETBIT_RANGE) {
+				Interpreter.Interpreter_intStackSize -= 3;
+				var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = KitDefinition.method3588(var3, var4, var5);
+				return 1;
+			} else if (var0 == ScriptOpcodes.CLEARBIT_RANGE) {
+				Interpreter.Interpreter_intStackSize -= 3;
+				var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = WorldMapRectangle.method5113(var3, var4, var5);
+				return 1;
+			} else if (var0 == ScriptOpcodes.GETBIT_RANGE) {
+				Interpreter.Interpreter_intStackSize -= 3;
+				var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+				var6 = 31 - var5;
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3 << var6 >>> var4 + var6;
+				return 1;
+			} else if (var0 == 4030) {
+				Interpreter.Interpreter_intStackSize -= 4;
+				var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+				var6 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 3];
+				var3 = WorldMapRectangle.method5113(var3, var5, var6);
+				var7 = ArchiveLoader.method2208(var6 - var5 + 1);
+				if (var4 > var7) {
+					var4 = var7;
+				}
+
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3 | var4 << var5;
+				return 1;
+			} else if (var0 == 4032) {
+				Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize - 1] = VarbitComposition.method3709(Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize - 1]);
+				return 1;
+			} else if (var0 == 4033) {
+				Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize - 1] = DefaultsGroup.method7084(Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize - 1]);
+				return 1;
+			} else if (var0 == 4034) {
+				Interpreter.Interpreter_intStackSize -= 2;
+				var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+				var5 = FriendsList.method6799(var3, var4);
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var5;
+				return 1;
+			} else if (var0 == 4035) {
+				Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize - 1] = Math.abs(Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize - 1]);
+				return 1;
+			} else {
+				return 2;
 			}
-
-			((class126)var3).vmethod3029(var1);
-			this.field1512.addFirst((Node)var3);
 		}
-
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "1939011884"
-	)
-	public void method2781(ClanSettings var1) {
-		if (this.field1513 == var1.field1562 && this.field1511 == var1.field1563) {
-			for (class126 var2 = (class126)this.field1512.last(); var2 != null; var2 = (class126)this.field1512.previous()) {
-				var2.vmethod3028(var1);
-			}
-
-			++var1.field1563;
-		} else {
-			throw new RuntimeException("");
-		}
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Lix;",
-		garbageValue = "828857412"
-	)
-	@Export("ServerPacket_values")
-	public static ServerPacket[] ServerPacket_values() {
-		return new ServerPacket[]{ServerPacket.field3013, ServerPacket.field2931, ServerPacket.field2983, ServerPacket.field2933, ServerPacket.field2934, ServerPacket.field2930, ServerPacket.field2936, ServerPacket.field2937, ServerPacket.field3000, ServerPacket.field3003, ServerPacket.field2940, ServerPacket.field2941, ServerPacket.field2942, ServerPacket.field3006, ServerPacket.field2944, ServerPacket.field2945, ServerPacket.field2946, ServerPacket.field3008, ServerPacket.field2948, ServerPacket.field2949, ServerPacket.field2950, ServerPacket.field2951, ServerPacket.field2961, ServerPacket.field2982, ServerPacket.field2954, ServerPacket.field2955, ServerPacket.field2956, ServerPacket.field2978, ServerPacket.field2958, ServerPacket.field2959, ServerPacket.field3029, ServerPacket.field2938, ServerPacket.field2962, ServerPacket.field2963, ServerPacket.field2964, ServerPacket.field2965, ServerPacket.field3014, ServerPacket.field2986, ServerPacket.field2968, ServerPacket.field3005, ServerPacket.field2997, ServerPacket.field2971, ServerPacket.field2972, ServerPacket.field2932, ServerPacket.field2974, ServerPacket.field2975, ServerPacket.field2976, ServerPacket.field2987, ServerPacket.field2947, ServerPacket.field2979, ServerPacket.field2980, ServerPacket.field2981, ServerPacket.field2957, ServerPacket.field2939, ServerPacket.field2984, ServerPacket.field2985, ServerPacket.field3016, ServerPacket.field3017, ServerPacket.field2943, ServerPacket.field2989, ServerPacket.field2990, ServerPacket.field2991, ServerPacket.field2992, ServerPacket.field2993, ServerPacket.field2994, ServerPacket.field2995, ServerPacket.field2996, ServerPacket.field2952, ServerPacket.field2998, ServerPacket.field2999, ServerPacket.field2953, ServerPacket.field3001, ServerPacket.field3002, ServerPacket.field2960, ServerPacket.field3004, ServerPacket.field2966, ServerPacket.field2988, ServerPacket.field3007, ServerPacket.field2967, ServerPacket.field3009, ServerPacket.field3010, ServerPacket.field3011, ServerPacket.field3012, ServerPacket.field2969, ServerPacket.field2970, ServerPacket.field3015, ServerPacket.field2935, ServerPacket.field3025, ServerPacket.field3018, ServerPacket.field3019, ServerPacket.field3020, ServerPacket.field3021, ServerPacket.field3022, ServerPacket.field3023, ServerPacket.field3024, ServerPacket.field2973, ServerPacket.field3026, ServerPacket.field3027};
-	}
-
-	@ObfuscatedName("jr")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIII)V",
-		garbageValue = "604899148"
-	)
-	@Export("drawScrollBar")
-	static final void drawScrollBar(int var0, int var1, int var2, int var3, int var4) {
-		AbstractWorldMapData.scrollBarSprites[0].drawAt(var0, var1);
-		AbstractWorldMapData.scrollBarSprites[1].drawAt(var0, var3 + var1 - 16);
-		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1 + 16, 16, var3 - 32, Client.field693);
-		int var5 = var3 * (var3 - 32) / var4;
-		if (var5 < 8) {
-			var5 = 8;
-		}
-
-		int var6 = (var3 - 32 - var5) * var2 / (var4 - var3);
-		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var6 + var1 + 16, 16, var5, Client.field716);
-		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0, var6 + var1 + 16, var5, Client.field544);
-		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 1, var6 + var1 + 16, var5, Client.field544);
-		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 16, 16, Client.field544);
-		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 17, 16, Client.field544);
-		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 15, var6 + var1 + 16, var5, Client.field509);
-		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 14, var6 + var1 + 17, var5 - 1, Client.field509);
-		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var5 + var1 + 15, 16, Client.field509);
-		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0 + 1, var6 + var5 + var1 + 14, 15, Client.field509);
 	}
 }

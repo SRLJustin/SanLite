@@ -4,126 +4,175 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ft")
+@ObfuscatedName("fj")
 @Implements("MilliClock")
 public class MilliClock extends Clock {
-	@ObfuscatedName("c")
-	long[] field1718;
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(
-		intValue = -1638196517
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "Lqu;"
 	)
-	int field1719;
+	@Export("logoSprite")
+	static IndexedSprite logoSprite;
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "Lqq;"
+	)
+	public static Buffer field1810;
+	@ObfuscatedName("c")
+	long[] field1804;
 	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -91104037
+		intValue = -392846051
 	)
-	int field1716;
-	@ObfuscatedName("m")
+	int field1805;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		longValue = 1696569632045813077L
+		intValue = 706631097
 	)
-	long field1717;
-	@ObfuscatedName("t")
+	int field1803;
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -2107971493
+		longValue = -7069218525651298561L
 	)
-	int field1714;
-	@ObfuscatedName("s")
+	long field1809;
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -465084751
+		intValue = -1321269335
 	)
-	int field1715;
+	int field1801;
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(
+		intValue = 1583430667
+	)
+	int field1806;
 
-	public MilliClock() {
-		this.field1718 = new long[10];
-		this.field1719 = 256;
-		this.field1716 = 1;
-		this.field1714 = 0;
-		this.field1717 = Ignored.method6459();
+	MilliClock() {
+		this.field1804 = new long[10];
+		this.field1805 = 256;
+		this.field1803 = 1;
+		this.field1801 = 0;
+		this.field1809 = Language.method6232();
 
 		for (int var1 = 0; var1 < 10; ++var1) {
-			this.field1718[var1] = this.field1717;
+			this.field1804[var1] = this.field1809;
 		}
 
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "18"
+		descriptor = "(I)V",
+		garbageValue = "2049257466"
 	)
 	@Export("mark")
 	public void mark() {
 		for (int var1 = 0; var1 < 10; ++var1) {
-			this.field1718[var1] = 0L;
+			this.field1804[var1] = 0L;
 		}
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "293215312"
+		descriptor = "(IIB)I",
+		garbageValue = "-4"
 	)
 	@Export("wait")
 	public int wait(int var1, int var2) {
-		int var3 = this.field1719;
-		int var4 = this.field1716;
-		this.field1719 = 300;
-		this.field1716 = 1;
-		this.field1717 = Ignored.method6459();
-		if (0L == this.field1718[this.field1715]) {
-			this.field1719 = var3;
-			this.field1716 = var4;
-		} else if (this.field1717 > this.field1718[this.field1715]) {
-			this.field1719 = (int)((long)(var1 * 2560) / (this.field1717 - this.field1718[this.field1715]));
+		int var3 = this.field1805;
+		int var4 = this.field1803;
+		this.field1805 = 300;
+		this.field1803 = 1;
+		this.field1809 = Language.method6232();
+		if (0L == this.field1804[this.field1806]) {
+			this.field1805 = var3;
+			this.field1803 = var4;
+		} else if (this.field1809 > this.field1804[this.field1806]) {
+			this.field1805 = (int)((long)(var1 * 2560) / (this.field1809 - this.field1804[this.field1806]));
 		}
 
-		if (this.field1719 < 25) {
-			this.field1719 = 25;
+		if (this.field1805 < 25) {
+			this.field1805 = 25;
 		}
 
-		if (this.field1719 > 256) {
-			this.field1719 = 256;
-			this.field1716 = (int)((long)var1 - (this.field1717 - this.field1718[this.field1715]) / 10L);
+		if (this.field1805 > 256) {
+			this.field1805 = 256;
+			this.field1803 = (int)((long)var1 - (this.field1809 - this.field1804[this.field1806]) / 10L);
 		}
 
-		if (this.field1716 > var1) {
-			this.field1716 = var1;
+		if (this.field1803 > var1) {
+			this.field1803 = var1;
 		}
 
-		this.field1718[this.field1715] = this.field1717;
-		this.field1715 = (this.field1715 + 1) % 10;
+		this.field1804[this.field1806] = this.field1809;
+		this.field1806 = (this.field1806 + 1) % 10;
 		int var5;
-		if (this.field1716 > 1) {
+		if (this.field1803 > 1) {
 			for (var5 = 0; var5 < 10; ++var5) {
-				if (0L != this.field1718[var5]) {
-					this.field1718[var5] += (long)this.field1716;
+				if (0L != this.field1804[var5]) {
+					this.field1804[var5] += (long)this.field1803;
 				}
 			}
 		}
 
-		if (this.field1716 < var2) {
-			this.field1716 = var2;
+		if (this.field1803 < var2) {
+			this.field1803 = var2;
 		}
 
-		Bounds.method6608((long)this.field1716);
+		class28.method412((long)this.field1803);
 
-		for (var5 = 0; this.field1714 < 256; this.field1714 += this.field1719) {
+		for (var5 = 0; this.field1801 < 256; this.field1801 += this.field1805) {
 			++var5;
 		}
 
-		this.field1714 &= 255;
+		this.field1801 &= 255;
 		return var5;
 	}
 
-	@ObfuscatedName("hl")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "322688664"
+		descriptor = "(II)Z",
+		garbageValue = "-1341812392"
 	)
-	static boolean method3121() {
-		return (Client.drawPlayerNames & 4) != 0;
+	public static boolean method3478(int var0) {
+		return var0 >= WorldMapDecorationType.field3572.id && var0 <= WorldMapDecorationType.field3563.id || var0 == WorldMapDecorationType.field3583.id;
+	}
+
+	@ObfuscatedName("f")
+	public static int method3477(long var0) {
+		return (int)(var0 >>> 7 & 127L);
+	}
+
+	@ObfuscatedName("ie")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIIIIB)V",
+		garbageValue = "-32"
+	)
+	@Export("updatePendingSpawn")
+	static final void updatePendingSpawn(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
+		PendingSpawn var9 = null;
+
+		for (PendingSpawn var10 = (PendingSpawn)Client.pendingSpawns.last(); var10 != null; var10 = (PendingSpawn)Client.pendingSpawns.previous()) {
+			if (var0 == var10.plane && var10.x == var1 && var2 == var10.y && var3 == var10.type) {
+				var9 = var10;
+				break;
+			}
+		}
+
+		if (var9 == null) {
+			var9 = new PendingSpawn();
+			var9.plane = var0;
+			var9.type = var3;
+			var9.x = var1;
+			var9.y = var2;
+			class20.method302(var9);
+			Client.pendingSpawns.addFirst(var9);
+		}
+
+		var9.id = var4;
+		var9.field1123 = var5;
+		var9.orientation = var6;
+		var9.delay = var7;
+		var9.hitpoints = var8;
 	}
 }

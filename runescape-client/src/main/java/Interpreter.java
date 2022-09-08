@@ -1,67 +1,69 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bu")
+@ObfuscatedName("bd")
 @Implements("Interpreter")
 public class Interpreter {
-	@ObfuscatedName("tb")
-	@ObfuscatedSignature(
-		descriptor = "Lnn;"
-	)
-	@Export("platformInfo")
-	static PlatformInfo platformInfo;
+	@ObfuscatedName("n")
+	@Export("Interpreter_intLocals")
+	static int[] Interpreter_intLocals;
+	@ObfuscatedName("k")
+	@Export("Interpreter_stringLocals")
+	static String[] Interpreter_stringLocals;
 	@ObfuscatedName("w")
 	@Export("Interpreter_arrayLengths")
 	static int[] Interpreter_arrayLengths;
-	@ObfuscatedName("n")
+	@ObfuscatedName("s")
 	@Export("Interpreter_arrays")
 	static int[][] Interpreter_arrays;
-	@ObfuscatedName("r")
+	@ObfuscatedName("q")
 	@Export("Interpreter_intStack")
 	static int[] Interpreter_intStack;
-	@ObfuscatedName("v")
+	@ObfuscatedName("m")
+	@ObfuscatedGetter(
+		intValue = 2002811679
+	)
+	@Export("Interpreter_intStackSize")
+	static int Interpreter_intStackSize;
+	@ObfuscatedName("x")
 	@Export("Interpreter_stringStack")
 	static String[] Interpreter_stringStack;
-	@ObfuscatedName("h")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -866718889
+		intValue = -1936721537
 	)
 	@Export("Interpreter_frameDepth")
 	static int Interpreter_frameDepth;
-	@ObfuscatedName("g")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "[Lbg;"
+		descriptor = "[Lbi;"
 	)
 	@Export("Interpreter_frames")
 	static ScriptFrame[] Interpreter_frames;
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(
-		intValue = 355212093
-	)
-	static int field812;
 	@ObfuscatedName("l")
 	@Export("Interpreter_calendar")
 	static java.util.Calendar Interpreter_calendar;
-	@ObfuscatedName("q")
+	@ObfuscatedName("e")
 	@Export("Interpreter_MONTHS")
 	static final String[] Interpreter_MONTHS;
-	@ObfuscatedName("z")
-	static boolean field818;
-	@ObfuscatedName("i")
-	static boolean field816;
 	@ObfuscatedName("y")
-	static ArrayList field817;
-	@ObfuscatedName("ah")
+	static boolean field843;
+	@ObfuscatedName("i")
+	static boolean field833;
+	@ObfuscatedName("r")
+	static ArrayList field848;
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = -1880353715
+		intValue = 178619761
 	)
-	static int field815;
-	@ObfuscatedName("ax")
-	static final double field814;
+	static int field849;
+	@ObfuscatedName("ao")
+	static final double field850;
 
 	static {
 		Interpreter_arrayLengths = new int[5];
@@ -72,30 +74,34 @@ public class Interpreter {
 		Interpreter_frames = new ScriptFrame[50];
 		Interpreter_calendar = java.util.Calendar.getInstance();
 		Interpreter_MONTHS = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-		field818 = false;
-		field816 = false;
-		field817 = new ArrayList();
-		field815 = 0;
-		field814 = Math.log(2.0D);
+		field843 = false;
+		field833 = false;
+		field848 = new ArrayList();
+		field849 = 0;
+		field850 = Math.log(2.0D);
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("lf")
 	@ObfuscatedSignature(
-		descriptor = "(CLlf;B)I",
-		garbageValue = "-56"
+		descriptor = "(S)V",
+		garbageValue = "-31238"
 	)
-	@Export("lowercaseChar")
-	static int lowercaseChar(char var0, Language var1) {
-		int var2 = var0 << 4;
-		if (Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
-			var0 = Character.toLowerCase(var0);
-			var2 = (var0 << 4) + 1;
+	static final void method2011() {
+		for (int var0 = 0; var0 < Players.Players_count; ++var0) {
+			Player var1 = Client.players[Players.Players_indices[var0]];
+			var1.clearIsFriend();
 		}
 
-		if (var0 == 241 && var1 == Language.Language_ES) {
-			var2 = 1762;
+		Iterator var2 = Messages.Messages_hashTable.iterator();
+
+		while (var2.hasNext()) {
+			Message var3 = (Message)var2.next();
+			var3.clearIsFromFriend();
 		}
 
-		return var2;
+		if (class145.friendsChatManager != null) {
+			class145.friendsChatManager.clearFriends();
+		}
+
 	}
 }

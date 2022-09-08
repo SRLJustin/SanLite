@@ -4,55 +4,49 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fh")
+@ObfuscatedName("fa")
 @Implements("KitDefinition")
 public class KitDefinition extends DualNode {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Llv;"
 	)
 	@Export("KitDefinition_archive")
-	static AbstractArchive KitDefinition_archive;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Lku;"
-	)
-	@Export("KitDefinition_modelsArchive")
-	static AbstractArchive KitDefinition_modelsArchive;
-	@ObfuscatedName("p")
+	public static AbstractArchive KitDefinition_archive;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 448904447
+		intValue = -31943631
 	)
 	@Export("KitDefinition_fileCount")
 	public static int KitDefinition_fileCount;
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lif;"
 	)
 	@Export("KitDefinition_cached")
-	static EvictingDualNodeHashTable KitDefinition_cached;
-	@ObfuscatedName("t")
+	public static EvictingDualNodeHashTable KitDefinition_cached;
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 1176017283
+		intValue = 2136918165
 	)
 	@Export("bodypartID")
 	public int bodypartID;
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@Export("models2")
 	int[] models2;
-	@ObfuscatedName("j")
+	@ObfuscatedName("s")
 	@Export("recolorFrom")
 	short[] recolorFrom;
-	@ObfuscatedName("w")
+	@ObfuscatedName("q")
 	@Export("recolorTo")
 	short[] recolorTo;
-	@ObfuscatedName("n")
+	@ObfuscatedName("m")
 	@Export("retextureFrom")
 	short[] retextureFrom;
-	@ObfuscatedName("r")
+	@ObfuscatedName("x")
 	@Export("retextureTo")
 	short[] retextureTo;
-	@ObfuscatedName("o")
+	@ObfuscatedName("j")
 	@Export("models")
 	int[] models;
 	@ObfuscatedName("v")
@@ -71,8 +65,8 @@ public class KitDefinition extends DualNode {
 
 	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "-70"
+		descriptor = "(Lqq;I)V",
+		garbageValue = "1148972426"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -86,10 +80,10 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;II)V",
-		garbageValue = "1440995166"
+		descriptor = "(Lqq;II)V",
+		garbageValue = "527391355"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -132,10 +126,10 @@ public class KitDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "-29"
+		garbageValue = "7"
 	)
 	@Export("ready")
 	public boolean ready() {
@@ -145,7 +139,7 @@ public class KitDefinition extends DualNode {
 			boolean var1 = true;
 
 			for (int var2 = 0; var2 < this.models2.length; ++var2) {
-				if (!KitDefinition_modelsArchive.tryLoadFile(this.models2[var2], 0)) {
+				if (!class431.KitDefinition_modelsArchive.tryLoadFile(this.models2[var2], 0)) {
 					var1 = false;
 				}
 			}
@@ -154,10 +148,10 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lge;",
-		garbageValue = "1561860079"
+		descriptor = "(I)Lgu;",
+		garbageValue = "1781640364"
 	)
 	@Export("getModelData")
 	public ModelData getModelData() {
@@ -167,7 +161,7 @@ public class KitDefinition extends DualNode {
 			ModelData[] var1 = new ModelData[this.models2.length];
 
 			for (int var2 = 0; var2 < this.models2.length; ++var2) {
-				var1[var2] = ModelData.ModelData_get(KitDefinition_modelsArchive, this.models2[var2], 0);
+				var1[var2] = ModelData.ModelData_get(class431.KitDefinition_modelsArchive, this.models2[var2], 0);
 			}
 
 			ModelData var4;
@@ -194,16 +188,16 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1736416150"
+		descriptor = "(B)Z",
+		garbageValue = "-75"
 	)
-	public boolean method3210() {
+	public boolean method3569() {
 		boolean var1 = true;
 
 		for (int var2 = 0; var2 < 5; ++var2) {
-			if (this.models[var2] != -1 && !KitDefinition_modelsArchive.tryLoadFile(this.models[var2], 0)) {
+			if (this.models[var2] != -1 && !class431.KitDefinition_modelsArchive.tryLoadFile(this.models[var2], 0)) {
 				var1 = false;
 			}
 		}
@@ -211,10 +205,10 @@ public class KitDefinition extends DualNode {
 		return var1;
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lge;",
-		garbageValue = "49"
+		descriptor = "(I)Lgu;",
+		garbageValue = "2104174238"
 	)
 	@Export("getKitDefinitionModels")
 	public ModelData getKitDefinitionModels() {
@@ -223,7 +217,7 @@ public class KitDefinition extends DualNode {
 
 		for (int var3 = 0; var3 < 5; ++var3) {
 			if (this.models[var3] != -1) {
-				var1[var2++] = ModelData.ModelData_get(KitDefinition_modelsArchive, this.models[var3], 0);
+				var1[var2++] = ModelData.ModelData_get(class431.KitDefinition_modelsArchive, this.models[var3], 0);
 			}
 		}
 
@@ -244,66 +238,72 @@ public class KitDefinition extends DualNode {
 		return var5;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(Lj;B)Lm;",
-		garbageValue = "-59"
+		descriptor = "(IIII)I",
+		garbageValue = "1490798161"
 	)
-	public static class3 method3238(class6 var0) {
-		switch(var0.field16) {
-		case 0:
-			return new class0();
-		default:
-			throw new IllegalArgumentException();
+	public static int method3588(int var0, int var1, int var2) {
+		int var3 = ArchiveLoader.method2208(var2 - var1 + 1);
+		var3 <<= var1;
+		var0 |= var3;
+		return var0;
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(Lbo;Lbo;IZIZI)I",
+		garbageValue = "716541357"
+	)
+	static int method3577(World var0, World var1, int var2, boolean var3, int var4, boolean var5) {
+		int var6 = class308.compareWorlds(var0, var1, var2, var3);
+		if (var6 != 0) {
+			return var3 ? -var6 : var6;
+		} else if (var4 == -1) {
+			return 0;
+		} else {
+			int var7 = class308.compareWorlds(var0, var1, var4, var5);
+			return var5 ? -var7 : var7;
 		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "445518606"
+		descriptor = "(I)V",
+		garbageValue = "53690591"
 	)
-	static int method3237(int var0, Script var1, boolean var2) {
-		if (var0 == 7400) {
-			--IsaacCipher.Interpreter_intStackSize;
-			--class13.Interpreter_stringStackSize;
-			return 1;
-		} else if (var0 == 7401) {
-			--IsaacCipher.Interpreter_intStackSize;
-			--class13.Interpreter_stringStackSize;
-			return 1;
-		} else if (var0 == 7402) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			--class13.Interpreter_stringStackSize;
-			return 1;
-		} else if (var0 == 7403) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			--class13.Interpreter_stringStackSize;
-			return 1;
-		} else if (var0 == 7404) {
-			--IsaacCipher.Interpreter_intStackSize;
-			--class13.Interpreter_stringStackSize;
-			return 1;
-		} else if (var0 == 7405) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			return 1;
-		} else if (var0 == 7406) {
-			--IsaacCipher.Interpreter_intStackSize;
-			Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-			return 1;
-		} else if (var0 == 7407) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-			return 1;
-		} else if (var0 == 7408) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			--class13.Interpreter_stringStackSize;
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-			return 1;
-		} else if (var0 == 7409) {
-			--IsaacCipher.Interpreter_intStackSize;
-			return 1;
-		} else {
-			return 2;
+	static final void method3589() {
+		if (!ViewportMouse.ViewportMouse_false0) {
+			int var0 = Scene.Scene_cameraPitchSine;
+			int var1 = Scene.Scene_cameraPitchCosine;
+			int var2 = Scene.Scene_cameraYawSine;
+			int var3 = Scene.Scene_cameraYawCosine;
+			byte var4 = 50;
+			short var5 = 3500;
+			int var6 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.Rasterizer3D_clipMidX) * var4 / Rasterizer3D.Rasterizer3D_zoom;
+			int var7 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.Rasterizer3D_clipMidY) * var4 / Rasterizer3D.Rasterizer3D_zoom;
+			int var8 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.Rasterizer3D_clipMidX) * var5 / Rasterizer3D.Rasterizer3D_zoom;
+			int var9 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.Rasterizer3D_clipMidY) * var5 / Rasterizer3D.Rasterizer3D_zoom;
+			int var10 = Rasterizer3D.method4220(var7, var4, var1, var0);
+			int var11 = Rasterizer3D.method4157(var7, var4, var1, var0);
+			var7 = var10;
+			var10 = Rasterizer3D.method4220(var9, var5, var1, var0);
+			int var12 = Rasterizer3D.method4157(var9, var5, var1, var0);
+			var9 = var10;
+			var10 = Rasterizer3D.method4154(var6, var11, var3, var2);
+			var11 = Rasterizer3D.method4150(var6, var11, var3, var2);
+			var6 = var10;
+			var10 = Rasterizer3D.method4154(var8, var12, var3, var2);
+			var12 = Rasterizer3D.method4150(var8, var12, var3, var2);
+			ViewportMouse.field2619 = (var10 + var6) / 2;
+			GrandExchangeOfferOwnWorldComparator.field487 = (var7 + var9) / 2;
+			WorldMapID.field2870 = (var11 + var12) / 2;
+			class152.field1725 = (var10 - var6) / 2;
+			ViewportMouse.field2630 = (var9 - var7) / 2;
+			BuddyRankComparator.field1396 = (var12 - var11) / 2;
+			ViewportMouse.field2625 = Math.abs(class152.field1725);
+			class147.field1689 = Math.abs(ViewportMouse.field2630);
+			class328.field4128 = Math.abs(BuddyRankComparator.field1396);
 		}
 	}
 }

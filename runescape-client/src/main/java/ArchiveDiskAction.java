@@ -4,57 +4,51 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("km")
+@ObfuscatedName("ln")
 @Implements("ArchiveDiskAction")
 public class ArchiveDiskAction extends Node {
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1029019227
+		intValue = -1890921037
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("b")
-	@Export("data")
-	public byte[] data;
 	@ObfuscatedName("p")
+	@Export("data")
+	byte[] data;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lmy;"
+		descriptor = "Lnj;"
 	)
 	@Export("archiveDisk")
-	public ArchiveDisk archiveDisk;
-	@ObfuscatedName("m")
+	ArchiveDisk archiveDisk;
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
+		descriptor = "Llb;"
 	)
 	@Export("archive")
-	public Archive archive;
+	Archive archive;
 
 	ArchiveDiskAction() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("jj")
 	@ObfuscatedSignature(
-		descriptor = "(Lpl;IIIB)V",
-		garbageValue = "1"
+		descriptor = "(IB)Ljava/lang/String;",
+		garbageValue = "9"
 	)
-	static void method5526(SpritePixels var0, int var1, int var2, int var3) {
-		DemotingHashTable var4 = WorldMapRegion.WorldMapRegion_cachedSprites;
-		long var6 = (long)(var3 << 16 | var1 << 8 | var2);
-		var4.put(var0, var6, var0.pixels.length * 4);
-	}
+	@Export("formatItemStacks")
+	static final String formatItemStacks(int var0) {
+		String var1 = Integer.toString(var0);
 
-	@ObfuscatedName("hp")
-	@ObfuscatedSignature(
-		descriptor = "(IIS)V",
-		garbageValue = "128"
-	)
-	static final void method5527(int var0, int var1) {
-		if (Client.hintArrowType == 2) {
-			ModeWhere.worldToScreen(Client.hintArrowSubX * 64 + (Client.hintArrowX - class131.baseX * 64 << 7), Client.hintArrowSubY * 64 + (Client.hintArrowY - TileItem.baseY * 64 << 7), Client.hintArrowHeight * 2);
-			if (Client.viewportTempX > -1 && Client.cycle % 20 < 10) {
-				class260.headIconHintSprites[0].drawTransBgAt(var0 + Client.viewportTempX - 12, Client.viewportTempY + var1 - 28);
-			}
+		for (int var2 = var1.length() - 3; var2 > 0; var2 -= 3) {
+			var1 = var1.substring(0, var2) + "," + var1.substring(var2);
+		}
 
+		if (var1.length() > 9) {
+			return " " + SoundCache.colorStartTag(65408) + var1.substring(0, var1.length() - 8) + "M" + " " + " (" + var1 + ")" + "</col>";
+		} else {
+			return var1.length() > 6 ? " " + SoundCache.colorStartTag(16777215) + var1.substring(0, var1.length() - 4) + "K" + " " + " (" + var1 + ")" + "</col>" : " " + SoundCache.colorStartTag(16776960) + var1 + "</col>";
 		}
 	}
 }
