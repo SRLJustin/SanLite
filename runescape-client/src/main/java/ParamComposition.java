@@ -3,42 +3,35 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("fr")
+@ObfuscatedName("gr")
 @Implements("ParamComposition")
 public class ParamComposition extends DualNode {
-	@ObfuscatedName("ur")
-	@ObfuscatedSignature(
-		descriptor = "Lmy;"
-	)
-	@Export("masterDisk")
-	static ArchiveDisk masterDisk;
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Llv;"
 	)
 	@Export("ParamDefinition_archive")
-	static AbstractArchive ParamDefinition_archive;
-	@ObfuscatedName("b")
+	public static AbstractArchive ParamDefinition_archive;
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lif;"
 	)
 	@Export("ParamComposition_cached")
 	public static EvictingDualNodeHashTable ParamComposition_cached;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@Export("type")
 	char type;
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -871462947
+		intValue = -1498987333
 	)
 	@Export("defaultInt")
 	public int defaultInt;
-	@ObfuscatedName("t")
+	@ObfuscatedName("k")
 	@Export("defaultStr")
 	public String defaultStr;
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@Export("autoDisable")
 	boolean autoDisable;
 
@@ -53,16 +46,16 @@ public class ParamComposition extends DualNode {
 	@ObfuscatedName("p")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "630650762"
+		garbageValue = "517222124"
 	)
 	@Export("postDecode")
 	void postDecode() {
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "-46"
+		descriptor = "(Lqq;B)V",
+		garbageValue = "80"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -76,15 +69,15 @@ public class ParamComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;II)V",
-		garbageValue = "-1961413058"
+		descriptor = "(Lqq;II)V",
+		garbageValue = "374368556"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) {
-			this.type = class279.method5406(var1.readByte());
+			this.type = MusicPatch.method5607(var1.readByte());
 		} else if (var2 == 2) {
 			this.defaultInt = var1.readInt();
 		} else if (var2 == 4) {
@@ -95,99 +88,13 @@ public class ParamComposition extends DualNode {
 
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "404236453"
+		descriptor = "(B)Z",
+		garbageValue = "-64"
 	)
 	@Export("isString")
 	public boolean isString() {
 		return this.type == 's';
-	}
-
-	@ObfuscatedName("x")
-	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "-893226045"
-	)
-	static int method3397(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.SOUND_SYNTH) {
-			IsaacCipher.Interpreter_intStackSize -= 3;
-			LoginScreenAnimation.queueSoundEffect(Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize], Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1], Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 2]);
-			return 1;
-		} else if (var0 == ScriptOpcodes.SOUND_SONG) {
-			class18.playSong(Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize]);
-			return 1;
-		} else if (var0 == ScriptOpcodes.SOUND_JINGLE) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			class315.method5822(Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize], Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1]);
-			return 1;
-		} else {
-			int var3;
-			int var4;
-			if (var0 != 3209 && var0 != 3181 && var0 != 3203 && var0 != 3205 && var0 != 3207) {
-				if (var0 != 3210 && var0 != 3182 && var0 != 3204 && var0 != 3206 && var0 != 3208) {
-					return var0 == 3211 ? 1 : 2;
-				} else {
-					var3 = 0;
-					var4 = 0;
-					if (var0 == 3210) {
-						var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-					} else if (var0 == 3182) {
-						var3 = 6;
-					} else if (var0 == 3204) {
-						var3 = 7;
-					} else if (var0 == 3206) {
-						var3 = 8;
-					} else if (var0 == 3208) {
-						var3 = 9;
-					}
-
-					if (var3 == 6) {
-						float var5 = 200.0F * ((float)SecureRandomFuture.clientPreferences.brightness - 0.5F);
-						var4 = 100 - Math.round(var5);
-					} else if (var3 == 7) {
-						var4 = Math.round((float)SecureRandomFuture.clientPreferences.musicVolume / 2.55F);
-					} else if (var3 == 8) {
-						var4 = Math.round((float)SecureRandomFuture.clientPreferences.soundEffectsVolume / 1.27F);
-					} else if (var3 == 9) {
-						var4 = Math.round((float)SecureRandomFuture.clientPreferences.areaSoundEffectsVolume / 1.27F);
-					}
-
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var4;
-					return 1;
-				}
-			} else {
-				var3 = 0;
-				var4 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				if (var0 == 3209) {
-					var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				} else if (var0 == 3181) {
-					var3 = 6;
-				} else if (var0 == 3203) {
-					var3 = 7;
-				} else if (var0 == 3205) {
-					var3 = 8;
-				} else if (var0 == 3207) {
-					var3 = 9;
-				}
-
-				if (var3 == 6) {
-					var4 = 100 - Math.min(Math.max(var4, 0), 100);
-					InterfaceParent.method2142((double)(0.5F + (float)var4 / 200.0F));
-				} else if (var3 == 7) {
-					var4 = Math.min(Math.max(var4, 0), 100);
-					Varcs.method2426(Math.round((float)var4 * 2.55F));
-				} else if (var3 == 8) {
-					var4 = Math.min(Math.max(var4, 0), 100);
-					class20.updateSoundEffectVolume(Math.round((float)var4 * 1.27F));
-				} else if (var3 == 9) {
-					var4 = Math.min(Math.max(var4, 0), 100);
-					Players.method2383(Math.round(1.27F * (float)var4));
-				}
-
-				return 1;
-			}
-		}
 	}
 }

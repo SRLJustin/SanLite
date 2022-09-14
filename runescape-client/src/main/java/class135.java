@@ -1,71 +1,82 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ev")
-public class class135 extends class126 {
+@ObfuscatedName("es")
+public class class135 extends class145 {
+	@ObfuscatedName("t")
+	@ObfuscatedSignature(
+		descriptor = "Llx;"
+	)
+	@Export("NetCache_currentResponse")
+	public static NetFileRequest NetCache_currentResponse;
+	@ObfuscatedName("iy")
+	@ObfuscatedSignature(
+		descriptor = "[Lqi;"
+	)
+	@Export("headIconHintSprites")
+	static SpritePixels[] headIconHintSprites;
 	@ObfuscatedName("c")
-	String field1555;
+	@ObfuscatedGetter(
+		intValue = 593153933
+	)
+	int field1599;
+	@ObfuscatedName("p")
+	byte field1598;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = -1248744063
+	)
+	int field1600;
+	@ObfuscatedName("n")
+	String field1601;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Lem;"
 	)
-	final class129 this$0;
+	final class146 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "(Lem;)V"
 	)
-	class135(class129 var1) {
+	class135(class146 var1) {
 		this.this$0 = var1;
+		this.field1599 = -1;
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lqq;I)V",
+		garbageValue = "-64301329"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1555 = var1.readStringCp1252NullTerminated();
-		var1.readInt();
+	void vmethod3300(Buffer var1) {
+		this.field1599 = var1.readUnsignedShort();
+		this.field1598 = var1.readByte();
+		this.field1600 = var1.readUnsignedShort();
+		var1.readLong();
+		this.field1601 = var1.readStringCp1252NullTerminated();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(Ler;B)V",
+		garbageValue = "97"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.name = this.field1555;
+	void vmethod3302(ClanChannel var1) {
+		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1599);
+		var2.rank = this.field1598;
+		var2.world = this.field1600;
+		var2.username = new Username(this.field1601);
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("jf")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-877203069"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIII)V",
+		garbageValue = "-1505004044"
 	)
-	public static final void method2832() {
-		ViewportMouse.ViewportMouse_isInViewport = false;
-		ViewportMouse.ViewportMouse_entityCount = 0;
-	}
-
-	@ObfuscatedName("lz")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "1487689727"
-	)
-	static final void method2831(int var0, int var1) {
-		ClanChannel var2 = var0 >= 0 ? Client.currentClanChannels[var0] : UserComparator5.guestClanChannel;
-		if (var2 != null && var1 >= 0 && var1 < var2.method2990()) {
-			ClanChannelMember var3 = (ClanChannelMember)var2.members.get(var1);
-			if (var3.rank == -1) {
-				String var4 = var3.username.getName();
-				PacketWriter var5 = Client.packetWriter;
-				PacketBufferNode var6 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2875, var5.isaacCipher);
-				var6.packetBuffer.writeByte(3 + class116.stringCp1252NullTerminatedByteSize(var4));
-				var6.packetBuffer.writeByte(var0);
-				var6.packetBuffer.writeShort(var1);
-				var6.packetBuffer.writeStringCp1252NullTerminated(var4);
-				var5.addNode(var6);
-			}
-		}
+	@Export("insertMenuItemNoShift")
+	public static final void insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
+		class399.method7298(var0, var1, var2, var3, var4, var5, -1, false);
 	}
 }

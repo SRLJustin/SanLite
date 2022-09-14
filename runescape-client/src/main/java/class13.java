@@ -1,35 +1,41 @@
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-import java.io.File;
 import java.io.IOException;
-import java.util.Date;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Hashtable;
+import java.util.Random;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.DefaultTlsClient;
 import org.bouncycastle.crypto.tls.TlsAuthentication;
 
-@ObfuscatedName("h")
+@ObfuscatedName("t")
 class class13 extends DefaultTlsClient {
-	@ObfuscatedName("t")
-	@Export("cacheDir")
-	public static File cacheDir;
-	@ObfuscatedName("d")
-	@ObfuscatedGetter(
-		intValue = 1540402679
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "Lfx;"
 	)
-	@Export("Interpreter_stringStackSize")
-	static int Interpreter_stringStackSize;
+	@Export("clock")
+	static Clock clock;
+	@ObfuscatedName("cg")
+	@ObfuscatedSignature(
+		descriptor = "Lqu;"
+	)
+	@Export("worldSelectRightSprite")
+	static IndexedSprite worldSelectRightSprite;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Ld;"
+		descriptor = "Lh;"
 	)
 	final class12 this$1;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ld;)V"
+		descriptor = "(Lh;)V"
 	)
 	class13(class12 var1) {
 		this.this$1 = var1;
@@ -57,124 +63,178 @@ class class13 extends DefaultTlsClient {
 		return new class11(this);
 	}
 
-	@ObfuscatedName("c")
-	public static String method195(long var0) {
-		Calendar.Calendar_calendar.setTime(new Date(var0));
-		int var2 = Calendar.Calendar_calendar.get(7);
-		int var3 = Calendar.Calendar_calendar.get(5);
-		int var4 = Calendar.Calendar_calendar.get(2);
-		int var5 = Calendar.Calendar_calendar.get(1);
-		int var6 = Calendar.Calendar_calendar.get(11);
-		int var7 = Calendar.Calendar_calendar.get(12);
-		int var8 = Calendar.Calendar_calendar.get(13);
-		return Calendar.DAYS_OF_THE_WEEK[var2 - 1] + ", " + var3 / 10 + var3 % 10 + "-" + Calendar.MONTH_NAMES_ENGLISH_GERMAN[0][var4] + "-" + var5 + " " + var6 / 10 + var6 % 10 + ":" + var7 / 10 + var7 % 10 + ":" + var8 / 10 + var8 % 10 + " GMT";
-	}
-
 	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Ldn;[F[FI)V",
-		garbageValue = "1644015096"
+		descriptor = "(JLjava/lang/String;I)I",
+		garbageValue = "2014428702"
 	)
-	static void method202(class115 var0, float[] var1, float[] var2) {
-		if (var0 != null) {
-			float var3 = var1[3] - var1[0];
-			if ((double)var3 != 0.0D) {
-				float var4 = var1[1] - var1[0];
-				float var5 = var1[2] - var1[0];
-				Float var6 = var4 / var3;
-				Float var7 = var5 / var3;
-				var0.field1398 = var6 == 0.33333334F && var7 == 0.6666667F;
-				float var8 = var6;
-				float var9 = var7;
-				if ((double)var6 < 0.0D) {
-					var6 = 0.0F;
+	static final int method185(long var0, String var2) {
+		Random var3 = new Random();
+		Buffer var4 = new Buffer(128);
+		Buffer var5 = new Buffer(128);
+		int[] var6 = new int[]{var3.nextInt(), var3.nextInt(), (int)(var0 >> 32), (int)var0};
+		var4.writeByte(10);
+
+		int var7;
+		for (var7 = 0; var7 < 4; ++var7) {
+			var4.writeInt(var3.nextInt());
+		}
+
+		var4.writeInt(var6[0]);
+		var4.writeInt(var6[1]);
+		var4.writeLong(var0);
+		var4.writeLong(0L);
+
+		for (var7 = 0; var7 < 4; ++var7) {
+			var4.writeInt(var3.nextInt());
+		}
+
+		var4.encryptRsa(class65.field870, class65.field862);
+		var5.writeByte(10);
+
+		for (var7 = 0; var7 < 3; ++var7) {
+			var5.writeInt(var3.nextInt());
+		}
+
+		var5.writeLong(var3.nextLong());
+		var5.writeLongMedium(var3.nextLong());
+		if (Client.randomDatData != null) {
+			var5.writeBytes(Client.randomDatData, 0, Client.randomDatData.length);
+		} else {
+			byte[] var8 = new byte[24];
+
+			try {
+				JagexCache.JagexCache_randomDat.seek(0L);
+				JagexCache.JagexCache_randomDat.readFully(var8);
+
+				int var9;
+				for (var9 = 0; var9 < 24 && var8[var9] == 0; ++var9) {
 				}
 
-				if ((double)var7 > 1.0D) {
-					var7 = 1.0F;
+				if (var9 >= 24) {
+					throw new IOException();
 				}
-
-				if ((double)var6 > 1.0D || var7 < -1.0F) {
-					Tile.method3844(var6, var7);
+			} catch (Exception var24) {
+				for (int var10 = 0; var10 < 24; ++var10) {
+					var8[var10] = -1;
 				}
-
-				if (var6 != var8) {
-					var1[1] = var1[0] + var6 * var3;
-					if (0.0D != (double)var8) {
-						var2[1] = var2[0] + (var2[1] - var2[0]) * var6 / var8;
-					}
-				}
-
-				if (var7 != var9) {
-					var1[2] = var1[0] + var7 * var3;
-					if ((double)var9 != 1.0D) {
-						var2[2] = (float)((double)var2[3] - (double)(var2[3] - var2[2]) * (1.0D - (double)var7) / (1.0D - (double)var9));
-					}
-				}
-
-				var0.field1406 = var1[0];
-				var0.field1394 = var1[3];
-				float var10 = var6;
-				float var11 = var7;
-				float[] var12 = var0.field1401;
-				float var13 = var10 - 0.0F;
-				float var14 = var11 - var10;
-				float var15 = 1.0F - var11;
-				float var16 = var14 - var13;
-				var12[3] = var15 - var14 - var16;
-				var12[2] = var16 + var16 + var16;
-				var12[1] = var13 + var13 + var13;
-				var12[0] = 0.0F;
-				var13 = var2[0];
-				var14 = var2[1];
-				var15 = var2[2];
-				var16 = var2[3];
-				float[] var17 = var0.field1402;
-				float var18 = var14 - var13;
-				float var19 = var15 - var14;
-				float var20 = var16 - var15;
-				float var21 = var19 - var18;
-				var17[3] = var20 - var19 - var21;
-				var17[2] = var21 + var21 + var21;
-				var17[1] = var18 + var18 + var18;
-				var17[0] = var13;
 			}
+
+			var5.writeBytes(var8, 0, var8.length);
+		}
+
+		var5.writeLong(var3.nextLong());
+		var5.encryptRsa(class65.field870, class65.field862);
+		var7 = class357.stringCp1252NullTerminatedByteSize(var2);
+		if (var7 % 8 != 0) {
+			var7 += 8 - var7 % 8;
+		}
+
+		Buffer var25 = new Buffer(var7);
+		var25.writeStringCp1252NullTerminated(var2);
+		var25.offset = var7;
+		var25.xteaEncryptAll(var6);
+		Buffer var18 = new Buffer(var4.offset + var5.offset + var25.offset + 5);
+		var18.writeByte(2);
+		var18.writeByte(var4.offset);
+		var18.writeBytes(var4.array, 0, var4.offset);
+		var18.writeByte(var5.offset);
+		var18.writeBytes(var5.array, 0, var5.offset);
+		var18.writeShort(var25.offset);
+		var18.writeBytes(var25.array, 0, var25.offset);
+		String var20 = ItemLayer.method4040(var18.array);
+
+		try {
+			URL var11 = new URL(SecureRandomCallable.method2205("services", false) + "m=accountappeal/login.ws");
+			URLConnection var12 = var11.openConnection();
+			var12.setDoInput(true);
+			var12.setDoOutput(true);
+			var12.setConnectTimeout(5000);
+			OutputStreamWriter var13 = new OutputStreamWriter(var12.getOutputStream());
+			var13.write("data2=" + class452.method8211(var20) + "&dest=" + class452.method8211("passwordchoice.ws"));
+			var13.flush();
+			InputStream var14 = var12.getInputStream();
+			var18 = new Buffer(new byte[1000]);
+
+			do {
+				int var15 = var14.read(var18.array, var18.offset, 1000 - var18.offset);
+				if (var15 == -1) {
+					var13.close();
+					var14.close();
+					String var21 = new String(var18.array);
+					if (var21.startsWith("OFFLINE")) {
+						return 4;
+					} else if (var21.startsWith("WRONG")) {
+						return 7;
+					} else if (var21.startsWith("RELOAD")) {
+						return 3;
+					} else if (var21.startsWith("Not permitted for social network accounts.")) {
+						return 6;
+					} else {
+						var18.xteaDecryptAll(var6);
+
+						while (var18.offset > 0 && var18.array[var18.offset - 1] == 0) {
+							--var18.offset;
+						}
+
+						var21 = new String(var18.array, 0, var18.offset);
+						boolean var16;
+						if (var21 == null) {
+							var16 = false;
+						} else {
+							label106: {
+								try {
+									new URL(var21);
+								} catch (MalformedURLException var22) {
+									var16 = false;
+									break label106;
+								}
+
+								var16 = true;
+							}
+						}
+
+						if (var16) {
+							CollisionMap.openURL(var21, true, false);
+							return 2;
+						} else {
+							return 5;
+						}
+					}
+				}
+
+				var18.offset += var15;
+			} while(var18.offset < 1000);
+
+			return 5;
+		} catch (Throwable var23) {
+			var23.printStackTrace();
+			return 5;
 		}
 	}
 
-	@ObfuscatedName("y")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZB)I",
-		garbageValue = "-18"
+		descriptor = "(ILbt;ZI)I",
+		garbageValue = "535008134"
 	)
-	static int method201(int var0, Script var1, boolean var2) {
-		int var3;
-		if (var0 == 3500) {
-			var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = DevicePcmPlayerProvider.method398(var3) ? 1 : 0;
-			return 1;
-		} else if (var0 == 3501) {
-			var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = StructComposition.method3424(var3) ? 1 : 0;
-			return 1;
-		} else if (var0 == 3502) {
-			var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = class117.method2676(var3) ? 1 : 0;
+	static int method180(int var0, Script var1, boolean var2) {
+		if (var0 == 6754) {
+			int var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+			NPCComposition var4 = class193.getNpcDefinition(var3);
+			Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
 			return 1;
 		} else {
 			return 2;
 		}
 	}
 
-	@ObfuscatedName("jy")
+	@ObfuscatedName("bz")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIII)V",
-		garbageValue = "847874180"
+		descriptor = "(IB)Ljava/lang/Object;",
+		garbageValue = "116"
 	)
-	@Export("updateRootInterface")
-	static final void updateRootInterface(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
-		if (class242.loadInterface(var0)) {
-			FriendSystem.updateInterface(MouseRecorder.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6);
-		}
+	static Object method184(int var0) {
+		return class269.method5366((class434)Varps.findEnumerated(class434.method7781(), var0));
 	}
 }

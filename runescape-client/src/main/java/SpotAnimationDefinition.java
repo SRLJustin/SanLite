@@ -4,90 +4,90 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fo")
+@ObfuscatedName("ft")
 @Implements("SpotAnimationDefinition")
 public class SpotAnimationDefinition extends DualNode {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Llv;"
 	)
 	@Export("SpotAnimationDefinition_archive")
 	static AbstractArchive SpotAnimationDefinition_archive;
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
-	)
-	@Export("SpotAnimationDefinition_modelArchive")
-	static AbstractArchive SpotAnimationDefinition_modelArchive;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lif;"
 	)
 	@Export("SpotAnimationDefinition_cached")
 	static EvictingDualNodeHashTable SpotAnimationDefinition_cached;
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lif;"
 	)
 	@Export("SpotAnimationDefinition_cachedModels")
 	static EvictingDualNodeHashTable SpotAnimationDefinition_cachedModels;
-	@ObfuscatedName("t")
+	@ObfuscatedName("in")
+	@ObfuscatedSignature(
+		descriptor = "[Lqi;"
+	)
+	@Export("crossSprites")
+	static SpritePixels[] crossSprites;
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 1041298401
+		intValue = 1753731371
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -15968409
+		intValue = 1094245679
 	)
 	@Export("archive")
 	int archive;
-	@ObfuscatedName("j")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -373650937
+		intValue = 123967633
 	)
 	@Export("sequence")
 	public int sequence;
-	@ObfuscatedName("w")
+	@ObfuscatedName("q")
 	@Export("recolorFrom")
 	short[] recolorFrom;
-	@ObfuscatedName("n")
+	@ObfuscatedName("m")
 	@Export("recolorTo")
 	short[] recolorTo;
-	@ObfuscatedName("r")
+	@ObfuscatedName("x")
 	@Export("retextureFrom")
 	short[] retextureFrom;
-	@ObfuscatedName("o")
+	@ObfuscatedName("j")
 	@Export("retextureTo")
 	short[] retextureTo;
 	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -2106085717
+		intValue = -2122918033
 	)
 	@Export("widthScale")
 	int widthScale;
-	@ObfuscatedName("d")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 153752537
+		intValue = -1500333515
 	)
 	@Export("heightScale")
 	int heightScale;
-	@ObfuscatedName("h")
+	@ObfuscatedName("t")
 	@ObfuscatedGetter(
-		intValue = -1577811829
+		intValue = -1138258447
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("g")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -695708245
+		intValue = -1615497413
 	)
 	@Export("ambient")
 	int ambient;
-	@ObfuscatedName("e")
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = 176094243
+		intValue = 1594501559
 	)
 	@Export("contrast")
 	int contrast;
@@ -106,10 +106,10 @@ public class SpotAnimationDefinition extends DualNode {
 		this.contrast = 0;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "9"
+		descriptor = "(Lqq;I)V",
+		garbageValue = "-1005863468"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -123,10 +123,10 @@ public class SpotAnimationDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;IB)V",
-		garbageValue = "99"
+		descriptor = "(Lqq;IS)V",
+		garbageValue = "9298"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -170,16 +170,16 @@ public class SpotAnimationDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lgo;",
-		garbageValue = "15"
+		descriptor = "(II)Lha;",
+		garbageValue = "232626041"
 	)
 	@Export("getModel")
 	public final Model getModel(int var1) {
 		Model var2 = (Model)SpotAnimationDefinition_cachedModels.get((long)this.id);
 		if (var2 == null) {
-			ModelData var3 = ModelData.ModelData_get(SpotAnimationDefinition_modelArchive, this.archive, 0);
+			ModelData var3 = ModelData.ModelData_get(class11.SpotAnimationDefinition_modelArchive, this.archive, 0);
 			if (var3 == null) {
 				return null;
 			}
@@ -203,7 +203,7 @@ public class SpotAnimationDefinition extends DualNode {
 
 		Model var5;
 		if (this.sequence != -1 && var1 != -1) {
-			var5 = UserComparator5.SequenceDefinition_get(this.sequence).transformSpotAnimationModel(var2, var1);
+			var5 = class4.SequenceDefinition_get(this.sequence).transformSpotAnimationModel(var2, var1);
 		} else {
 			var5 = var2.toSharedSpotAnimationModel(true);
 		}
@@ -234,47 +234,20 @@ public class SpotAnimationDefinition extends DualNode {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lkw;",
-		garbageValue = "672996916"
+		descriptor = "(IS)Lkw;",
+		garbageValue = "18609"
 	)
-	@Export("PlayerType_values")
-	public static PlayerType[] PlayerType_values() {
-		return new PlayerType[]{PlayerType.PlayerType_hardcoreIronman, PlayerType.PlayerType_jagexModerator, PlayerType.field3795, PlayerType.PlayerType_ultimateIronman, PlayerType.PlayerType_normal, PlayerType.field3802, PlayerType.field3801, PlayerType.PlayerType_playerModerator, PlayerType.PlayerType_ironman};
-	}
-
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "84"
-	)
-	public static int method3362(int var0) {
-		--var0;
-		var0 |= var0 >>> 1;
-		var0 |= var0 >>> 2;
-		var0 |= var0 >>> 4;
-		var0 |= var0 >>> 8;
-		var0 |= var0 >>> 16;
-		return var0 + 1;
-	}
-
-	@ObfuscatedName("lc")
-	@ObfuscatedSignature(
-		descriptor = "(Ljm;I)Ljm;",
-		garbageValue = "-123837697"
-	)
-	static Widget method3340(Widget var0) {
-		int var1 = Frames.method4149(class363.getWidgetFlags(var0));
-		if (var1 == 0) {
-			return null;
-		} else {
-			for (int var2 = 0; var2 < var1; ++var2) {
-				var0 = ChatChannel.getWidget(var0.parentId);
-				if (var0 == null) {
-					return null;
-				}
+	@Export("getWidget")
+	public static Widget getWidget(int var0) {
+		int var1 = var0 >> 16;
+		int var2 = var0 & 65535;
+		if (Calendar.Widget_interfaceComponents[var1] == null || Calendar.Widget_interfaceComponents[var1][var2] == null) {
+			boolean var3 = FloorOverlayDefinition.loadInterface(var1);
+			if (!var3) {
+				return null;
 			}
-
-			return var0;
 		}
+
+		return Calendar.Widget_interfaceComponents[var1][var2];
 	}
 }

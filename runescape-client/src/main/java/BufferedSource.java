@@ -1,50 +1,49 @@
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mr")
+@ObfuscatedName("nm")
 @Implements("BufferedSource")
 public class BufferedSource implements Runnable {
-	@ObfuscatedName("u")
-	@Export("cacheSubPaths")
-	public static String[] cacheSubPaths;
-	@ObfuscatedName("bv")
-	@Export("otp")
-	static String otp;
+	@ObfuscatedName("mm")
+	@ObfuscatedGetter(
+		intValue = 830865447
+	)
+	@Export("menuX")
+	static int menuX;
 	@ObfuscatedName("c")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@Export("inputStream")
 	InputStream inputStream;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -1854638595
+		intValue = -1335488063
 	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@Export("buffer")
 	byte[] buffer;
-	@ObfuscatedName("t")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 1353886439
+		intValue = 885941459
 	)
 	@Export("position")
 	int position;
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 980101141
+		intValue = 1087004357
 	)
 	@Export("limit")
 	int limit;
-	@ObfuscatedName("j")
+	@ObfuscatedName("s")
 	@Export("exception")
 	IOException exception;
 
@@ -62,7 +61,7 @@ public class BufferedSource implements Runnable {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "1211615101"
+		garbageValue = "-204109826"
 	)
 	@Export("isAvailable")
 	boolean isAvailable(int var1) throws IOException {
@@ -93,10 +92,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-146970254"
+		garbageValue = "324153997"
 	)
 	@Export("available")
 	int available() throws IOException {
@@ -117,10 +116,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "52"
+		descriptor = "(I)I",
+		garbageValue = "1116130893"
 	)
 	@Export("readUnsignedByte")
 	int readUnsignedByte() throws IOException {
@@ -140,10 +139,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
 		descriptor = "([BIIB)I",
-		garbageValue = "126"
+		garbageValue = "-37"
 	)
 	@Export("read")
 	int read(byte[] var1, int var2, int var3) throws IOException {
@@ -181,10 +180,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1858620597"
+		garbageValue = "-1863713978"
 	)
 	@Export("close")
 	void close() {
@@ -251,153 +250,65 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Llf;II)Liw;",
-		garbageValue = "821161285"
+		descriptor = "(III)I",
+		garbageValue = "538575636"
 	)
-	public static PacketBufferNode method6527(int var0, String var1, Language var2, int var3) {
-		PacketBufferNode var4 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2897, Client.packetWriter.isaacCipher);
-		var4.packetBuffer.writeByte(0);
-		int var5 = var4.packetBuffer.offset;
-		var4.packetBuffer.writeByte(var0);
-		String var6 = var1.toLowerCase();
-		byte var7 = 0;
-		if (var6.startsWith("yellow:")) {
-			var7 = 0;
-			var1 = var1.substring("yellow:".length());
-		} else if (var6.startsWith("red:")) {
-			var7 = 1;
-			var1 = var1.substring("red:".length());
-		} else if (var6.startsWith("green:")) {
-			var7 = 2;
-			var1 = var1.substring("green:".length());
-		} else if (var6.startsWith("cyan:")) {
-			var7 = 3;
-			var1 = var1.substring("cyan:".length());
-		} else if (var6.startsWith("purple:")) {
-			var7 = 4;
-			var1 = var1.substring("purple:".length());
-		} else if (var6.startsWith("white:")) {
-			var7 = 5;
-			var1 = var1.substring("white:".length());
-		} else if (var6.startsWith("flash1:")) {
-			var7 = 6;
-			var1 = var1.substring("flash1:".length());
-		} else if (var6.startsWith("flash2:")) {
-			var7 = 7;
-			var1 = var1.substring("flash2:".length());
-		} else if (var6.startsWith("flash3:")) {
-			var7 = 8;
-			var1 = var1.substring("flash3:".length());
-		} else if (var6.startsWith("glow1:")) {
-			var7 = 9;
-			var1 = var1.substring("glow1:".length());
-		} else if (var6.startsWith("glow2:")) {
-			var7 = 10;
-			var1 = var1.substring("glow2:".length());
-		} else if (var6.startsWith("glow3:")) {
-			var7 = 11;
-			var1 = var1.substring("glow3:".length());
-		} else if (var2 != Language.Language_EN) {
-			if (var6.startsWith("yellow:")) {
-				var7 = 0;
-				var1 = var1.substring("yellow:".length());
-			} else if (var6.startsWith("red:")) {
-				var7 = 1;
-				var1 = var1.substring("red:".length());
-			} else if (var6.startsWith("green:")) {
-				var7 = 2;
-				var1 = var1.substring("green:".length());
-			} else if (var6.startsWith("cyan:")) {
-				var7 = 3;
-				var1 = var1.substring("cyan:".length());
-			} else if (var6.startsWith("purple:")) {
-				var7 = 4;
-				var1 = var1.substring("purple:".length());
-			} else if (var6.startsWith("white:")) {
-				var7 = 5;
-				var1 = var1.substring("white:".length());
-			} else if (var6.startsWith("flash1:")) {
-				var7 = 6;
-				var1 = var1.substring("flash1:".length());
-			} else if (var6.startsWith("flash2:")) {
-				var7 = 7;
-				var1 = var1.substring("flash2:".length());
-			} else if (var6.startsWith("flash3:")) {
-				var7 = 8;
-				var1 = var1.substring("flash3:".length());
-			} else if (var6.startsWith("glow1:")) {
-				var7 = 9;
-				var1 = var1.substring("glow1:".length());
-			} else if (var6.startsWith("glow2:")) {
-				var7 = 10;
-				var1 = var1.substring("glow2:".length());
-			} else if (var6.startsWith("glow3:")) {
-				var7 = 11;
-				var1 = var1.substring("glow3:".length());
-			}
-		}
-
-		var6 = var1.toLowerCase();
-		byte var8 = 0;
-		if (var6.startsWith("wave:")) {
-			var8 = 1;
-			var1 = var1.substring("wave:".length());
-		} else if (var6.startsWith("wave2:")) {
-			var8 = 2;
-			var1 = var1.substring("wave2:".length());
-		} else if (var6.startsWith("shake:")) {
-			var8 = 3;
-			var1 = var1.substring("shake:".length());
-		} else if (var6.startsWith("scroll:")) {
-			var8 = 4;
-			var1 = var1.substring("scroll:".length());
-		} else if (var6.startsWith("slide:")) {
-			var8 = 5;
-			var1 = var1.substring("slide:".length());
-		} else if (var2 != Language.Language_EN) {
-			if (var6.startsWith("wave:")) {
-				var8 = 1;
-				var1 = var1.substring("wave:".length());
-			} else if (var6.startsWith("wave2:")) {
-				var8 = 2;
-				var1 = var1.substring("wave2:".length());
-			} else if (var6.startsWith("shake:")) {
-				var8 = 3;
-				var1 = var1.substring("shake:".length());
-			} else if (var6.startsWith("scroll:")) {
-				var8 = 4;
-				var1 = var1.substring("scroll:".length());
-			} else if (var6.startsWith("slide:")) {
-				var8 = 5;
-				var1 = var1.substring("slide:".length());
-			}
-		}
-
-		var4.packetBuffer.writeByte(var7);
-		var4.packetBuffer.writeByte(var8);
-		class370.method6755(var4.packetBuffer, var1);
-		if (var0 == class282.field3379.rsOrdinal()) {
-			var4.packetBuffer.writeByte(var3);
-		}
-
-		var4.packetBuffer.method7357(var4.packetBuffer.offset - var5);
-		return var4;
+	static final int method7052(int var0, int var1) {
+		int var2 = var1 * 57 + var0;
+		var2 ^= var2 << 13;
+		int var3 = (var2 * var2 * 15731 + 789221) * var2 + 1376312589 & Integer.MAX_VALUE;
+		return var3 >> 19 & 255;
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("gd")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "843929154"
+		descriptor = "(Lkw;III)V",
+		garbageValue = "-1127533475"
 	)
-	static void method6516() {
-		Iterator var0 = Messages.Messages_hashTable.iterator();
+	@Export("checkIfMinimapClicked")
+	static final void checkIfMinimapClicked(Widget var0, int var1, int var2) {
+		if (Client.minimapState == 0 || Client.minimapState == 3) {
+			if (!Client.isMenuOpen && (MouseHandler.MouseHandler_lastButton == 1 || !Renderable.mouseCam && MouseHandler.MouseHandler_lastButton == 4)) {
+				SpriteMask var3 = var0.getSpriteMask(true);
+				if (var3 == null) {
+					return;
+				}
 
-		while (var0.hasNext()) {
-			Message var1 = (Message)var0.next();
-			var1.clearIsFromIgnored();
+				int var4 = MouseHandler.MouseHandler_lastPressedX - var1;
+				int var5 = MouseHandler.MouseHandler_lastPressedY - var2;
+				if (var3.contains(var4, var5)) {
+					var4 -= var3.width / 2;
+					var5 -= var3.height / 2;
+					int var6 = Client.camAngleY & 2047;
+					int var7 = Rasterizer3D.Rasterizer3D_sine[var6];
+					int var8 = Rasterizer3D.Rasterizer3D_cosine[var6];
+					int var9 = var8 * var4 + var7 * var5 >> 11;
+					int var10 = var8 * var5 - var4 * var7 >> 11;
+					int var11 = var9 + class67.localPlayer.x >> 7;
+					int var12 = class67.localPlayer.y - var10 >> 7;
+					PacketBufferNode var13 = class120.getPacketBufferNode(ClientPacket.field2977, Client.packetWriter.isaacCipher);
+					var13.packetBuffer.writeByte(18);
+					var13.packetBuffer.method7962(class128.baseX * 64 + var11);
+					var13.packetBuffer.writeShort(WorldMapData_1.baseY * 8 + var12);
+					var13.packetBuffer.method7952(KeyHandler.KeyHandler_pressedKeys[82] ? (KeyHandler.KeyHandler_pressedKeys[81] ? 2 : 1) : 0);
+					var13.packetBuffer.writeByte(var4);
+					var13.packetBuffer.writeByte(var5);
+					var13.packetBuffer.writeShort(Client.camAngleY);
+					var13.packetBuffer.writeByte(57);
+					var13.packetBuffer.writeByte(0);
+					var13.packetBuffer.writeByte(0);
+					var13.packetBuffer.writeByte(89);
+					var13.packetBuffer.writeShort(class67.localPlayer.x);
+					var13.packetBuffer.writeShort(class67.localPlayer.y);
+					var13.packetBuffer.writeByte(63);
+					Client.packetWriter.addNode(var13);
+					Client.destinationX = var11;
+					Client.destinationY = var12;
+				}
+			}
+
 		}
-
 	}
 }

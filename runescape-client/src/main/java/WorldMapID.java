@@ -3,170 +3,90 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
+import netscape.javascript.JSObject;
 
-@ObfuscatedName("hk")
+@ObfuscatedName("ii")
 @Implements("WorldMapID")
 public class WorldMapID {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lhk;"
+		descriptor = "Lii;"
 	)
-	static final WorldMapID field2739;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Lhk;"
-	)
-	static final WorldMapID field2741;
-	@ObfuscatedName("hr")
-	@Export("xteaKeys")
-	static int[][] xteaKeys;
+	static final WorldMapID field2873;
 	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "Lii;"
+	)
+	static final WorldMapID field2868;
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 2061213835
+		intValue = -362664165
+	)
+	static int field2870;
+	@ObfuscatedName("ba")
+	@ObfuscatedGetter(
+		intValue = 943758061
+	)
+	static int field2874;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = -414282509
 	)
 	@Export("value")
 	final int value;
 
 	static {
-		field2739 = new WorldMapID(0);
-		field2741 = new WorldMapID(1);
+		field2873 = new WorldMapID(0);
+		field2868 = new WorldMapID(1);
 	}
 
 	WorldMapID(int var1) {
 		this.value = var1;
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-3"
+		descriptor = "(Llb;II)V",
+		garbageValue = "-1011889815"
 	)
-	static void method4805() {
-		if (Client.Login_isUsernameRemembered && Login.Login_username != null && Login.Login_username.length() > 0) {
-			Login.currentLoginField = 1;
+	public static void method5123(Archive var0, int var1) {
+		MilliClock.field1810.offset = var1 * 8 + 5;
+		if (MilliClock.field1810.offset >= MilliClock.field1810.array.length) {
+			if (var0.field4028) {
+				var0.method5983();
+			} else {
+				throw new RuntimeException("");
+			}
 		} else {
-			Login.currentLoginField = 0;
+			int var2 = MilliClock.field1810.readInt();
+			int var3 = MilliClock.field1810.readInt();
+			var0.loadIndex(var2, var3);
 		}
-
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("mx")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "112852327"
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "-501668566"
 	)
-	static int method4804(int var0, Script var1, boolean var2) {
-		Widget var3;
-		if (var0 >= 2000) {
-			var0 -= 1000;
-			var3 = ChatChannel.getWidget(Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize]);
-		} else {
-			var3 = var2 ? WorldMapArea.scriptDotWidget : Messages.scriptActiveWidget;
-		}
+	static void method5124(String var0) {
+		AttackOption.field1279 = var0;
 
-		String var4 = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
-		int[] var5 = null;
-		if (var4.length() > 0 && var4.charAt(var4.length() - 1) == 'Y') {
-			int var6 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-			if (var6 > 0) {
-				for (var5 = new int[var6]; var6-- > 0; var5[var6] = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize]) {
-				}
-			}
-
-			var4 = var4.substring(0, var4.length() - 1);
-		}
-
-		Object[] var8 = new Object[var4.length() + 1];
-
-		int var7;
-		for (var7 = var8.length - 1; var7 >= 1; --var7) {
-			if (var4.charAt(var7 - 1) == 's') {
-				var8[var7] = Interpreter.Interpreter_stringStack[--class13.Interpreter_stringStackSize];
+		try {
+			String var1 = IgnoreList.client.getParameter(Integer.toString(18));
+			String var2 = IgnoreList.client.getParameter(Integer.toString(13));
+			String var3 = var1 + "settings=" + var0 + "; version=1; path=/; domain=" + var2;
+			if (var0.length() == 0) {
+				var3 = var3 + "; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0";
 			} else {
-				var8[var7] = new Integer(Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize]);
-			}
-		}
-
-		var7 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-		if (var7 != -1) {
-			var8[0] = new Integer(var7);
-		} else {
-			var8 = null;
-		}
-
-		if (var0 == ScriptOpcodes.CC_SETONCLICK) {
-			var3.onClick = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONHOLD) {
-			var3.onHold = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONRELEASE) {
-			var3.onRelease = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONMOUSEOVER) {
-			var3.onMouseOver = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONMOUSELEAVE) {
-			var3.onMouseLeave = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONDRAG) {
-			var3.onDrag = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONTARGETLEAVE) {
-			var3.onTargetLeave = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONVARTRANSMIT) {
-			var3.onVarTransmit = var8;
-			var3.varTransmitTriggers = var5;
-		} else if (var0 == ScriptOpcodes.CC_SETONTIMER) {
-			var3.onTimer = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONOP) {
-			var3.onOp = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONDRAGCOMPLETE) {
-			var3.onDragComplete = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONCLICKREPEAT) {
-			var3.onClickRepeat = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONMOUSEREPEAT) {
-			var3.onMouseRepeat = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONINVTRANSMIT) {
-			var3.onInvTransmit = var8;
-			var3.invTransmitTriggers = var5;
-		} else if (var0 == ScriptOpcodes.CC_SETONSTATTRANSMIT) {
-			var3.onStatTransmit = var8;
-			var3.statTransmitTriggers = var5;
-		} else if (var0 == ScriptOpcodes.CC_SETONTARGETENTER) {
-			var3.onTargetEnter = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONSCROLLWHEEL) {
-			var3.onScroll = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONCHATTRANSMIT) {
-			var3.onChatTransmit = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONKEY) {
-			var3.onKey = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONFRIENDTRANSMIT) {
-			var3.onFriendTransmit = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONCLANTRANSMIT) {
-			var3.onClanTransmit = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONMISCTRANSMIT) {
-			var3.onMiscTransmit = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONDIALOGABORT) {
-			var3.onDialogAbort = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONSUBCHANGE) {
-			var3.onSubChange = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONSTOCKTRANSMIT) {
-			var3.onStockTransmit = var8;
-		} else if (var0 == 1426) {
-			var3.field3294 = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONRESIZE) {
-			var3.onResize = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONCLANSETTINGSTRANSMIT) {
-			var3.field3217 = var8;
-		} else if (var0 == ScriptOpcodes.CC_SETONCLANCHANNELTRANSMIT) {
-			var3.field3340 = var8;
-		} else if (var0 == 1430) {
-			var3.field3335 = var8;
-		} else {
-			if (var0 != 1431) {
-				return 2;
+				var3 = var3 + "; Expires=" + IgnoreList.method6781(Language.method6232() + 94608000000L) + "; Max-Age=" + 94608000L;
 			}
 
-			var3.field3336 = var8;
+			Client var4 = IgnoreList.client;
+			String var5 = "document.cookie=\"" + var3 + "\"";
+			JSObject.getWindow(var4).eval(var5);
+		} catch (Throwable var6) {
 		}
 
-		var3.hasListener = true;
-		return 1;
 	}
 }

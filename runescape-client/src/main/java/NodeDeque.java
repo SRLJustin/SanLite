@@ -3,18 +3,18 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lh")
+@ObfuscatedName("lc")
 @Implements("NodeDeque")
 public class NodeDeque {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lnw;"
+		descriptor = "Lov;"
 	)
 	@Export("sentinel")
 	public Node sentinel;
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lnw;"
+		descriptor = "Lov;"
 	)
 	@Export("current")
 	Node current;
@@ -39,9 +39,9 @@ public class NodeDeque {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Lnw;)V"
+		descriptor = "(Lov;)V"
 	)
 	@Export("addFirst")
 	public void addFirst(Node var1) {
@@ -55,9 +55,9 @@ public class NodeDeque {
 		var1.previous.next = var1;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lnw;)V"
+		descriptor = "(Lov;)V"
 	)
 	@Export("addLast")
 	public void addLast(Node var1) {
@@ -71,9 +71,9 @@ public class NodeDeque {
 		var1.previous.next = var1;
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "()Lnw;"
+		descriptor = "()Lov;"
 	)
 	@Export("removeLast")
 	public Node removeLast() {
@@ -86,9 +86,9 @@ public class NodeDeque {
 		}
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "()Lnw;"
+		descriptor = "()Lov;"
 	)
 	@Export("removeFirst")
 	public Node removeFirst() {
@@ -101,9 +101,9 @@ public class NodeDeque {
 		}
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "()Lnw;"
+		descriptor = "()Lov;"
 	)
 	@Export("last")
 	public Node last() {
@@ -117,9 +117,9 @@ public class NodeDeque {
 		}
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "()Lnw;"
+		descriptor = "()Lov;"
 	)
 	@Export("first")
 	public Node first() {
@@ -133,9 +133,9 @@ public class NodeDeque {
 		}
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "()Lnw;"
+		descriptor = "()Lov;"
 	)
 	@Export("previous")
 	public Node previous() {
@@ -149,9 +149,9 @@ public class NodeDeque {
 		}
 	}
 
-	@ObfuscatedName("r")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "()Lnw;"
+		descriptor = "()Lov;"
 	)
 	@Export("next")
 	public Node next() {
@@ -165,9 +165,9 @@ public class NodeDeque {
 		}
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(Lnw;Lnw;)V"
+		descriptor = "(Lov;Lov;)V"
 	)
 	@Export("NodeDeque_addBefore")
 	public static void NodeDeque_addBefore(Node var0, Node var1) {
