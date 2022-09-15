@@ -4,122 +4,134 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jq")
+@ObfuscatedName("jb")
 @Implements("MusicPatchNode")
 public class MusicPatchNode extends Node {
-	@ObfuscatedName("ss")
+	@ObfuscatedName("te")
 	@ObfuscatedGetter(
-		intValue = -1089450297
+		intValue = 1357856768
 	)
-	static int field3150;
+	static int field3301;
+	@ObfuscatedName("ig")
+	@ObfuscatedSignature(
+		descriptor = "Lgp;"
+	)
+	@Export("scene")
+	static Scene scene;
+	@ObfuscatedName("mg")
+	@ObfuscatedGetter(
+		intValue = -367498747
+	)
+	@Export("menuWidth")
+	static int menuWidth;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 2120721647
+		intValue = -2122177483
 	)
-	int field3149;
-	@ObfuscatedName("b")
+	int field3303;
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Ljt;"
+		descriptor = "Ljx;"
 	)
 	@Export("patch")
 	MusicPatch patch;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Laj;"
+		descriptor = "Lab;"
 	)
 	@Export("rawSound")
 	RawSound rawSound;
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lil;"
+		descriptor = "Ljc;"
 	)
-	MusicPatchNode2 field3131;
-	@ObfuscatedName("t")
+	MusicPatchNode2 field3307;
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -523823363
+		intValue = -1394938405
 	)
-	int field3128;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -1860888427
-	)
-	int field3133;
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(
-		intValue = 549821861
-	)
-	int field3132;
+	int field3314;
 	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 266246813
+		intValue = 598278571
 	)
-	int field3147;
-	@ObfuscatedName("n")
+	int field3311;
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 761118797
+		intValue = 946170127
 	)
-	int field3136;
-	@ObfuscatedName("r")
+	int field3299;
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -1410694573
+		intValue = 1689760395
 	)
-	int field3137;
-	@ObfuscatedName("o")
+	int field3297;
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -1347738891
+		intValue = -1655175911
 	)
-	int field3138;
+	int field3293;
+	@ObfuscatedName("x")
+	@ObfuscatedGetter(
+		intValue = -1990808293
+	)
+	int field3302;
+	@ObfuscatedName("j")
+	@ObfuscatedGetter(
+		intValue = 1189870605
+	)
+	int field3296;
 	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 873660032
+		intValue = 641898845
 	)
-	int field3139;
-	@ObfuscatedName("d")
-	@ObfuscatedGetter(
-		intValue = 899740579
-	)
-	int field3140;
+	int field3304;
 	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -957159786
+		intValue = -830547077
 	)
-	int field3141;
-	@ObfuscatedName("g")
+	int field3305;
+	@ObfuscatedName("t")
 	@ObfuscatedGetter(
-		intValue = 707181103
+		intValue = 982248577
 	)
-	int field3142;
-	@ObfuscatedName("e")
-	@ObfuscatedGetter(
-		intValue = -1399619147
-	)
-	int field3143;
-	@ObfuscatedName("a")
-	@ObfuscatedGetter(
-		intValue = 1374449229
-	)
-	int field3144;
+	int field3306;
 	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 1593408009
+		intValue = -477051149
 	)
-	int field3145;
-	@ObfuscatedName("k")
+	int field3300;
+	@ObfuscatedName("d")
+	@ObfuscatedGetter(
+		intValue = -1891563053
+	)
+	int field3308;
+	@ObfuscatedName("b")
+	@ObfuscatedGetter(
+		intValue = -336676207
+	)
+	int field3309;
+	@ObfuscatedName("a")
+	@ObfuscatedGetter(
+		intValue = -610946301
+	)
+	int field3295;
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "Lat;"
+		descriptor = "Lae;"
 	)
 	@Export("stream")
 	RawPcmStream stream;
-	@ObfuscatedName("f")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = 1680704123
+		intValue = 328839995
 	)
-	int field3134;
-	@ObfuscatedName("q")
+	int field3312;
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = 125903423
+		intValue = 1631749861
 	)
-	int field3135;
+	int field3313;
 
 	MusicPatchNode() {
 	}
@@ -127,135 +139,21 @@ public class MusicPatchNode extends Node {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1075118408"
+		garbageValue = "1053593547"
 	)
-	void method5292() {
+	void method5640() {
 		this.patch = null;
 		this.rawSound = null;
-		this.field3131 = null;
+		this.field3307 = null;
 		this.stream = null;
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "([BIII)Ljava/lang/String;",
-		garbageValue = "-1684371840"
-	)
-	public static String method5294(byte[] var0, int var1, int var2) {
-		char[] var3 = new char[var2];
-		int var4 = 0;
-		int var5 = var1;
-
-		int var8;
-		for (int var6 = var2 + var1; var5 < var6; var3[var4++] = (char)var8) {
-			int var7 = var0[var5++] & 255;
-			if (var7 < 128) {
-				if (var7 == 0) {
-					var8 = 65533;
-				} else {
-					var8 = var7;
-				}
-			} else if (var7 < 192) {
-				var8 = 65533;
-			} else if (var7 < 224) {
-				if (var5 < var6 && (var0[var5] & 192) == 128) {
-					var8 = (var7 & 31) << 6 | var0[var5++] & 63;
-					if (var8 < 128) {
-						var8 = 65533;
-					}
-				} else {
-					var8 = 65533;
-				}
-			} else if (var7 < 240) {
-				if (var5 + 1 < var6 && (var0[var5] & 192) == 128 && (var0[var5 + 1] & 192) == 128) {
-					var8 = (var7 & 15) << 12 | (var0[var5++] & 63) << 6 | var0[var5++] & 63;
-					if (var8 < 2048) {
-						var8 = 65533;
-					}
-				} else {
-					var8 = 65533;
-				}
-			} else if (var7 < 248) {
-				if (var5 + 2 < var6 && (var0[var5] & 192) == 128 && (var0[var5 + 1] & 192) == 128 && (var0[var5 + 2] & 192) == 128) {
-					var8 = (var7 & 7) << 18 | (var0[var5++] & 63) << 12 | (var0[var5++] & 63) << 6 | var0[var5++] & 63;
-					if (var8 >= 65536 && var8 <= 1114111) {
-						var8 = 65533;
-					} else {
-						var8 = 65533;
-					}
-				} else {
-					var8 = 65533;
-				}
-			} else {
-				var8 = 65533;
-			}
-		}
-
-		return new String(var3, 0, var4);
 	}
 
 	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;IZB)I",
-		garbageValue = "-8"
+		descriptor = "(IB)Z",
+		garbageValue = "-12"
 	)
-	public static int method5293(CharSequence var0, int var1, boolean var2) {
-		if (var1 >= 2 && var1 <= 36) {
-			boolean var3 = false;
-			boolean var4 = false;
-			int var5 = 0;
-			int var6 = var0.length();
-
-			for (int var7 = 0; var7 < var6; ++var7) {
-				char var8 = var0.charAt(var7);
-				if (var7 == 0) {
-					if (var8 == '-') {
-						var3 = true;
-						continue;
-					}
-
-					if (var8 == '+') {
-						continue;
-					}
-				}
-
-				int var10;
-				if (var8 >= '0' && var8 <= '9') {
-					var10 = var8 - '0';
-				} else if (var8 >= 'A' && var8 <= 'Z') {
-					var10 = var8 - '7';
-				} else {
-					if (var8 < 'a' || var8 > 'z') {
-						throw new NumberFormatException();
-					}
-
-					var10 = var8 - 'W';
-				}
-
-				if (var10 >= var1) {
-					throw new NumberFormatException();
-				}
-
-				if (var3) {
-					var10 = -var10;
-				}
-
-				int var9 = var5 * var1 + var10;
-				if (var9 / var1 != var5) {
-					throw new NumberFormatException();
-				}
-
-				var5 = var9;
-				var4 = true;
-			}
-
-			if (!var4) {
-				throw new NumberFormatException();
-			} else {
-				return var5;
-			}
-		} else {
-			throw new IllegalArgumentException("" + var1);
-		}
+	public static boolean method5641(int var0) {
+		return (var0 >> 31 & 1) != 0;
 	}
 }

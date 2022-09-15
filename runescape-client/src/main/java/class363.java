@@ -1,157 +1,189 @@
-import net.runelite.mapping.Export;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mt")
-public class class363 {
-	@ObfuscatedName("gp")
+@ObfuscatedName("mk")
+public final class class363 {
+	@ObfuscatedName("c")
+	final Comparator field4312;
+	@ObfuscatedName("p")
+	final Map field4309;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lcy;I)V",
-		garbageValue = "499018335"
+		descriptor = "Lmh;"
 	)
-	static final void method6612(Actor var0) {
-		var0.isWalking = false;
-		SequenceDefinition var1;
-		int var2;
-		if (var0.movementSequence != -1) {
-			var1 = UserComparator5.SequenceDefinition_get(var0.movementSequence);
-			if (var1 != null) {
-				if (!var1.method3690() && var1.frameIds != null) {
-					++var0.movementFrameCycle;
-					if (var0.movementFrame < var1.frameIds.length && var0.movementFrameCycle > var1.frameLengths[var0.movementFrame]) {
-						var0.movementFrameCycle = 1;
-						++var0.movementFrame;
-						class409.method7269(var1, var0.movementFrame, var0.x, var0.y);
-					}
+	final class349 field4307;
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "Lmh;"
+	)
+	final class349 field4308;
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(
+		longValue = -2535260607380577403L
+	)
+	final long field4305;
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "Lmq;"
+	)
+	final class361 field4310;
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(
+		intValue = -1693667935
+	)
+	final int field4311;
 
-					if (var0.movementFrame >= var1.frameIds.length) {
-						var0.movementFrameCycle = 0;
-						var0.movementFrame = 0;
-						class409.method7269(var1, var0.movementFrame, var0.x, var0.y);
-					}
-				} else if (var1.method3690()) {
-					++var0.movementFrame;
-					var2 = var1.method3647();
-					if (var0.movementFrame < var2) {
-						Varcs.method2427(var1, var0.movementFrame, var0.x, var0.y);
-					} else {
-						var0.movementFrameCycle = 0;
-						var0.movementFrame = 0;
-						Varcs.method2427(var1, var0.movementFrame, var0.x, var0.y);
-					}
-				} else {
-					var0.movementSequence = -1;
-				}
-			} else {
-				var0.movementSequence = -1;
-			}
-		}
-
-		if (var0.spotAnimation != -1 && Client.cycle >= var0.field1130) {
-			if (var0.spotAnimationFrame < 0) {
-				var0.spotAnimationFrame = 0;
+	@ObfuscatedSignature(
+		descriptor = "(JILmq;)V"
+	)
+	class363(long var1, int var3, class361 var4) {
+		this.field4312 = new class362(this);
+		this.field4305 = var1;
+		this.field4311 = var3;
+		this.field4310 = var4;
+		if (this.field4311 == -1) {
+			this.field4309 = new HashMap(64);
+			this.field4307 = new class349(64, this.field4312);
+			this.field4308 = null;
+		} else {
+			if (this.field4310 == null) {
+				throw new IllegalArgumentException("");
 			}
 
-			int var4 = AccessFile.SpotAnimationDefinition_get(var0.spotAnimation).sequence;
-			if (var4 != -1) {
-				SequenceDefinition var5 = UserComparator5.SequenceDefinition_get(var4);
-				if (var5 != null && var5.frameIds != null) {
-					++var0.spotAnimationFrameCycle;
-					if (var0.spotAnimationFrame < var5.frameIds.length && var0.spotAnimationFrameCycle > var5.frameLengths[var0.spotAnimationFrame]) {
-						var0.spotAnimationFrameCycle = 1;
-						++var0.spotAnimationFrame;
-						class409.method7269(var5, var0.spotAnimationFrame, var0.x, var0.y);
-					}
-
-					if (var0.spotAnimationFrame >= var5.frameIds.length && (var0.spotAnimationFrame < 0 || var0.spotAnimationFrame >= var5.frameIds.length)) {
-						var0.spotAnimation = -1;
-					}
-				} else if (var5.method3690()) {
-					++var0.spotAnimationFrame;
-					int var3 = var5.method3647();
-					if (var0.spotAnimationFrame < var3) {
-						Varcs.method2427(var5, var0.spotAnimationFrame, var0.x, var0.y);
-					} else if (var0.spotAnimationFrame < 0 || var0.spotAnimationFrame >= var3) {
-						var0.spotAnimation = -1;
-					}
-				} else {
-					var0.spotAnimation = -1;
-				}
-			} else {
-				var0.spotAnimation = -1;
-			}
-		}
-
-		if (var0.sequence != -1 && var0.sequenceDelay <= 1) {
-			var1 = UserComparator5.SequenceDefinition_get(var0.sequence);
-			if (var1.field2096 == 1 && var0.field1098 > 0 && var0.field1136 <= Client.cycle && var0.field1157 < Client.cycle) {
-				var0.sequenceDelay = 1;
-				return;
-			}
-		}
-
-		if (var0.sequence != -1 && var0.sequenceDelay == 0) {
-			var1 = UserComparator5.SequenceDefinition_get(var0.sequence);
-			if (var1 != null) {
-				if (!var1.method3690() && var1.frameIds != null) {
-					++var0.sequenceFrameCycle;
-					if (var0.sequenceFrame < var1.frameIds.length && var0.sequenceFrameCycle > var1.frameLengths[var0.sequenceFrame]) {
-						var0.sequenceFrameCycle = 1;
-						++var0.sequenceFrame;
-						class409.method7269(var1, var0.sequenceFrame, var0.x, var0.y);
-					}
-
-					if (var0.sequenceFrame >= var1.frameIds.length) {
-						var0.sequenceFrame -= var1.frameCount;
-						++var0.field1126;
-						if (var0.field1126 >= var1.field2095) {
-							var0.sequence = -1;
-						} else if (var0.sequenceFrame >= 0 && var0.sequenceFrame < var1.frameIds.length) {
-							class409.method7269(var1, var0.sequenceFrame, var0.x, var0.y);
-						} else {
-							var0.sequence = -1;
-						}
-					}
-
-					var0.isWalking = var1.field2091;
-				} else if (var1.method3690()) {
-					++var0.sequenceFrame;
-					var2 = var1.method3648().method2691();
-					if (var0.sequenceFrame < var2) {
-						Varcs.method2427(var1, var0.sequenceFrame, var0.x, var0.y);
-					} else {
-						var0.sequenceFrame -= var1.frameCount;
-						++var0.field1126;
-						if (var0.field1126 >= var1.field2095) {
-							var0.sequence = -1;
-						} else if (var0.sequenceFrame >= 0 && var0.sequenceFrame < var2) {
-							Varcs.method2427(var1, var0.sequenceFrame, var0.x, var0.y);
-						} else {
-							var0.sequence = -1;
-						}
-					}
-				} else {
-					var0.sequence = -1;
-				}
-			} else {
-				var0.sequence = -1;
-			}
-		}
-
-		if (var0.sequenceDelay > 0) {
-			--var0.sequenceDelay;
+			this.field4309 = new HashMap(this.field4311);
+			this.field4307 = new class349(this.field4311, this.field4312);
+			this.field4308 = new class349(this.field4311);
 		}
 
 	}
 
-	@ObfuscatedName("lr")
 	@ObfuscatedSignature(
-		descriptor = "(Ljm;I)I",
-		garbageValue = "1020849345"
+		descriptor = "(ILmq;)V"
 	)
-	@Export("getWidgetFlags")
-	static int getWidgetFlags(Widget var0) {
-		IntegerNode var1 = (IntegerNode)Client.widgetFlags.get(((long)var0.id << 32) + (long)var0.childIndex);
-		return var1 != null ? var1.integer : var0.flags;
+	public class363(int var1, class361 var2) {
+		this(-1L, var1, var2);
+	}
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "776562823"
+	)
+	boolean method6747() {
+		return this.field4311 != -1;
+	}
+
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;I)Ljava/lang/Object;",
+		garbageValue = "1302830563"
+	)
+	public Object method6758(Object var1) {
+		synchronized(this) {
+			if (this.field4305 != -1L) {
+				this.method6749();
+			}
+
+			class364 var3 = (class364)this.field4309.get(var1);
+			if (var3 == null) {
+				return null;
+			} else {
+				this.method6748(var3, false);
+				return var3.field4319;
+			}
+		}
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;Ljava/lang/Object;I)Ljava/lang/Object;",
+		garbageValue = "904640996"
+	)
+	public Object method6750(Object var1, Object var2) {
+		synchronized(this) {
+			if (-1L != this.field4305) {
+				this.method6749();
+			}
+
+			class364 var4 = (class364)this.field4309.get(var1);
+			if (var4 != null) {
+				Object var8 = var4.field4319;
+				var4.field4319 = var2;
+				this.method6748(var4, false);
+				return var8;
+			} else {
+				class364 var5;
+				if (this.method6747() && this.field4309.size() == this.field4311) {
+					var5 = (class364)this.field4308.remove();
+					this.field4309.remove(var5.field4316);
+					this.field4307.remove(var5);
+				}
+
+				var5 = new class364(var2, var1);
+				this.field4309.put(var1, var5);
+				this.method6748(var5, true);
+				return null;
+			}
+		}
+	}
+
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "(Lns;ZI)V",
+		garbageValue = "1053593547"
+	)
+	void method6748(class364 var1, boolean var2) {
+		if (!var2) {
+			this.field4307.remove(var1);
+			if (this.method6747() && !this.field4308.remove(var1)) {
+				throw new IllegalStateException("");
+			}
+		}
+
+		var1.field4317 = System.currentTimeMillis();
+		if (this.method6747()) {
+			switch(this.field4310.field4302) {
+			case 0:
+				var1.field4318 = var1.field4317;
+				break;
+			case 1:
+				++var1.field4318;
+			}
+
+			this.field4308.add(var1);
+		}
+
+		this.field4307.add(var1);
+	}
+
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "26"
+	)
+	void method6749() {
+		if (this.field4305 == -1L) {
+			throw new IllegalStateException("");
+		} else {
+			long var1 = System.currentTimeMillis() - this.field4305;
+
+			while (!this.field4307.isEmpty()) {
+				class364 var3 = (class364)this.field4307.peek();
+				if (var3.field4317 >= var1) {
+					return;
+				}
+
+				this.field4309.remove(var3.field4316);
+				this.field4307.remove(var3);
+				if (this.method6747()) {
+					this.field4308.remove(var3);
+				}
+			}
+
+		}
 	}
 }
