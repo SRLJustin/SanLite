@@ -1,60 +1,102 @@
+import java.net.MalformedURLException;
+import java.net.URL;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kp")
+@ObfuscatedName("kk")
 public class class292 {
-	static {
-		int var0 = 0;
-		int var1 = 0;
-		class288[] var2 = class213.method4355();
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "Lcm;"
+	)
+	UrlRequest field3357;
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "Lqi;"
+	)
+	SpritePixels field3358;
 
-		for (int var3 = 0; var3 < var2.length; ++var3) {
-			class288 var4 = var2[var3];
-			if (var4.field3435 > var0) {
-				var0 = var4.field3435;
-			}
-
-			if (var4.field3437 > var1) {
-				var1 = var4.field3437;
-			}
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Lch;)V"
+	)
+	class292(String var1, UrlRequester var2) {
+		try {
+			this.field3357 = var2.request(new URL(var1));
+		} catch (MalformedURLException var4) {
+			this.field3357 = null;
 		}
 
 	}
 
-	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/String;[IIII)V",
-		garbageValue = "-862238795"
+		descriptor = "(Lcm;)V"
 	)
-	public static void method5504(String[] var0, int[] var1, int var2, int var3) {
-		if (var2 < var3) {
-			int var4 = (var3 + var2) / 2;
-			int var5 = var2;
-			String var6 = var0[var4];
-			var0[var4] = var0[var3];
-			var0[var3] = var6;
-			int var7 = var1[var4];
-			var1[var4] = var1[var3];
-			var1[var3] = var7;
+	class292(UrlRequest var1) {
+		this.field3357 = var1;
+	}
 
-			for (int var8 = var2; var8 < var3; ++var8) {
-				if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
-					String var9 = var0[var8];
-					var0[var8] = var0[var5];
-					var0[var5] = var9;
-					int var10 = var1[var8];
-					var1[var8] = var1[var5];
-					var1[var5++] = var10;
-				}
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lqi;",
+		garbageValue = "1783597520"
+	)
+	SpritePixels method5722() {
+		if (this.field3358 == null && this.field3357 != null && this.field3357.isDone()) {
+			if (this.field3357.getResponse() != null) {
+				this.field3358 = class21.method322(this.field3357.getResponse());
 			}
 
-			var0[var3] = var0[var5];
-			var0[var5] = var6;
-			var1[var3] = var1[var5];
-			var1[var5] = var7;
-			method5504(var0, var1, var2, var5 - 1);
-			method5504(var0, var1, var5 + 1, var3);
+			this.field3357 = null;
 		}
 
+		return this.field3358;
+	}
+
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "(IIILgz;IS)V",
+		garbageValue = "-3813"
+	)
+	static void method5723(int var0, int var1, int var2, ObjectComposition var3, int var4) {
+		ObjectSound var5 = new ObjectSound();
+		var5.plane = var0;
+		var5.x = var1 * 128;
+		var5.y = var2 * 16384;
+		int var6 = var3.sizeX;
+		int var7 = var3.sizeY;
+		if (var4 == 1 || var4 == 3) {
+			var6 = var3.sizeY;
+			var7 = var3.sizeX;
+		}
+
+		var5.maxX = (var6 + var1) * 128;
+		var5.maxY = (var7 + var2) * 128;
+		var5.soundEffectId = var3.ambientSoundId;
+		var5.field823 = var3.int7 * 128;
+		var5.field819 = var3.int5;
+		var5.field827 = var3.int6;
+		var5.soundEffectIds = var3.soundEffectIds;
+		if (var3.transforms != null) {
+			var5.obj = var3;
+			var5.set();
+		}
+
+		ObjectSound.objectSounds.addFirst(var5);
+		if (var5.soundEffectIds != null) {
+			var5.field829 = var5.field819 + (int)(Math.random() * (double)(var5.field827 - var5.field819));
+		}
+
+	}
+
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1017893852"
+	)
+	public static void method5724() {
+		Widget.field3386.clear();
+		Widget.field3387.clear();
+		Widget.archive0.clear();
+		Widget.archive1.clear();
 	}
 }

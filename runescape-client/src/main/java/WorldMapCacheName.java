@@ -1,86 +1,68 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("id")
+@ObfuscatedName("ia")
 @Implements("WorldMapCacheName")
 public class WorldMapCacheName {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lid;"
+		descriptor = "Lia;"
 	)
-	public static final WorldMapCacheName field2768;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Lid;"
-	)
-	public static final WorldMapCacheName field2763;
+	public static final WorldMapCacheName field2896;
 	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lid;"
+		descriptor = "Lia;"
 	)
-	public static final WorldMapCacheName field2764;
-	@ObfuscatedName("m")
+	public static final WorldMapCacheName field2894;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lid;"
+		descriptor = "Lia;"
 	)
-	static final WorldMapCacheName field2765;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Lid;"
-	)
-	public static final WorldMapCacheName field2766;
+	public static final WorldMapCacheName field2895;
 	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lpl;"
+		descriptor = "Lia;"
 	)
-	@Export("leftTitleSprite")
-	static SpritePixels leftTitleSprite;
-	@ObfuscatedName("s")
+	static final WorldMapCacheName field2898;
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "Lia;"
+	)
+	public static final WorldMapCacheName field2900;
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(
+		intValue = 793212413
+	)
+	@Export("gameCyclesToDo")
+	static int gameCyclesToDo;
+	@ObfuscatedName("w")
 	@Export("name")
 	public final String name;
 
 	static {
-		field2768 = new WorldMapCacheName("details");
-		field2763 = new WorldMapCacheName("compositemap");
-		field2764 = new WorldMapCacheName("compositetexture");
-		field2765 = new WorldMapCacheName("area");
-		field2766 = new WorldMapCacheName("labels");
+		field2896 = new WorldMapCacheName("details");
+		field2894 = new WorldMapCacheName("compositemap");
+		field2895 = new WorldMapCacheName("compositetexture");
+		field2898 = new WorldMapCacheName("area");
+		field2900 = new WorldMapCacheName("labels");
 	}
 
 	WorldMapCacheName(String var1) {
 		this.name = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-875853562"
+		descriptor = "(Llv;Ljava/lang/String;Ljava/lang/String;B)Lqu;",
+		garbageValue = "5"
 	)
-	public static int method4865(int var0, int var1) {
-		int var2;
-		if (var1 > var0) {
-			var2 = var0;
-			var0 = var1;
-			var1 = var2;
-		}
-
-		while (var1 != 0) {
-			var2 = var0 % var1;
-			var0 = var1;
-			var1 = var2;
-		}
-
-		return var0;
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(III)Z",
-		garbageValue = "985293867"
-	)
-	public static boolean method4864(int var0, int var1) {
-		return (var0 >> var1 + 1 & 1) != 0;
+	@Export("SpriteBuffer_getIndexedSpriteByName")
+	public static IndexedSprite SpriteBuffer_getIndexedSpriteByName(AbstractArchive var0, String var1, String var2) {
+		int var3 = var0.getGroupId(var1);
+		int var4 = var0.getFileId(var3, var2);
+		return class431.method7757(var0, var3, var4);
 	}
 }

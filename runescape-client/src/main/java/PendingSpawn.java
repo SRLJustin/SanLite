@@ -4,75 +4,75 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cg")
+@ObfuscatedName("cw")
 @Implements("PendingSpawn")
 public final class PendingSpawn extends Node {
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 747226221
+		intValue = -1767120265
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -1980117299
+		intValue = -101306375
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -554114639
+		intValue = -235463367
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 1191230763
+		intValue = 1223672293
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("t")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -748187349
+		intValue = -675081877
 	)
 	@Export("objectId")
 	int objectId;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = 1874163139
-	)
-	int field1087;
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(
-		intValue = 474042509
-	)
-	int field1080;
 	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -208489985
+		intValue = 649279117
+	)
+	int field1119;
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(
+		intValue = 1253109749
+	)
+	int field1121;
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(
+		intValue = -1567816187
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("n")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -104687109
+		intValue = 1426985427
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("r")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = 753624769
+		intValue = -1255864427
 	)
-	int field1075;
-	@ObfuscatedName("o")
+	int field1123;
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -2017319267
+		intValue = 1779538209
 	)
 	@Export("delay")
 	int delay;
 	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -1649420319
+		intValue = 1706194461
 	)
 	@Export("hitpoints")
 	int hitpoints;
@@ -84,99 +84,122 @@ public final class PendingSpawn extends Node {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "([BIIB)Ljava/lang/String;",
-		garbageValue = "-94"
+		descriptor = "(I)[Lku;",
+		garbageValue = "-2075436167"
 	)
-	public static String method2224(byte[] var0, int var1, int var2) {
-		StringBuilder var3 = new StringBuilder();
-
-		for (int var4 = var1; var4 < var2 + var1; var4 += 3) {
-			int var5 = var0[var4] & 255;
-			var3.append(class329.field4005[var5 >>> 2]);
-			if (var4 < var2 - 1) {
-				int var6 = var0[var4 + 1] & 255;
-				var3.append(class329.field4005[(var5 & 3) << 4 | var6 >>> 4]);
-				if (var4 < var2 - 2) {
-					int var7 = var0[var4 + 2] & 255;
-					var3.append(class329.field4005[(var6 & 15) << 2 | var7 >>> 6]).append(class329.field4005[var7 & 63]);
-				} else {
-					var3.append(class329.field4005[(var6 & 15) << 2]).append("=");
-				}
-			} else {
-				var3.append(class329.field4005[(var5 & 3) << 4]).append("==");
-			}
-		}
-
-		return var3.toString();
+	static class303[] method2330() {
+		return new class303[]{class303.field3620, class303.field3619};
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-2136768167"
+		descriptor = "([Lbo;II[I[II)V",
+		garbageValue = "-2066626145"
 	)
-	static void method2225(int var0, int var1) {
-		long var2 = (long)((var0 << 16) + var1);
-		NetFileRequest var4 = (NetFileRequest)NetCache.NetCache_pendingWrites.get(var2);
-		if (var4 != null) {
-			NetCache.NetCache_pendingWritesQueue.addLast(var4);
-		}
-	}
+	@Export("sortWorlds")
+	static void sortWorlds(World[] var0, int var1, int var2, int[] var3, int[] var4) {
+		if (var1 < var2) {
+			int var5 = var1 - 1;
+			int var6 = var2 + 1;
+			int var7 = (var2 + var1) / 2;
+			World var8 = var0[var7];
+			var0[var7] = var0[var1];
+			var0[var1] = var8;
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "([BIII)Ljava/lang/String;",
-		garbageValue = "-373054385"
-	)
-	@Export("decodeStringCp1252")
-	public static String decodeStringCp1252(byte[] var0, int var1, int var2) {
-		char[] var3 = new char[var2];
-		int var4 = 0;
+			while (var5 < var6) {
+				boolean var9 = true;
 
-		for (int var5 = 0; var5 < var2; ++var5) {
-			int var6 = var0[var5 + var1] & 255;
-			if (var6 != 0) {
-				if (var6 >= 128 && var6 < 160) {
-					char var7 = class328.cp1252AsciiExtension[var6 - 128];
-					if (var7 == 0) {
-						var7 = '?';
+				int var10;
+				int var11;
+				int var12;
+				do {
+					--var6;
+
+					for (var10 = 0; var10 < 4; ++var10) {
+						if (var3[var10] == 2) {
+							var11 = var0[var6].index;
+							var12 = var8.index;
+						} else if (var3[var10] == 1) {
+							var11 = var0[var6].population;
+							var12 = var8.population;
+							if (var11 == -1 && var4[var10] == 1) {
+								var11 = 2001;
+							}
+
+							if (var12 == -1 && var4[var10] == 1) {
+								var12 = 2001;
+							}
+						} else if (var3[var10] == 3) {
+							var11 = var0[var6].isMembersOnly() ? 1 : 0;
+							var12 = var8.isMembersOnly() ? 1 : 0;
+						} else {
+							var11 = var0[var6].id;
+							var12 = var8.id;
+						}
+
+						if (var11 != var12) {
+							if ((var4[var10] != 1 || var11 <= var12) && (var4[var10] != 0 || var11 >= var12)) {
+								var9 = false;
+							}
+							break;
+						}
+
+						if (var10 == 3) {
+							var9 = false;
+						}
 					}
+				} while(var9);
 
-					var6 = var7;
+				var9 = true;
+
+				do {
+					++var5;
+
+					for (var10 = 0; var10 < 4; ++var10) {
+						if (var3[var10] == 2) {
+							var11 = var0[var5].index;
+							var12 = var8.index;
+						} else if (var3[var10] == 1) {
+							var11 = var0[var5].population;
+							var12 = var8.population;
+							if (var11 == -1 && var4[var10] == 1) {
+								var11 = 2001;
+							}
+
+							if (var12 == -1 && var4[var10] == 1) {
+								var12 = 2001;
+							}
+						} else if (var3[var10] == 3) {
+							var11 = var0[var5].isMembersOnly() ? 1 : 0;
+							var12 = var8.isMembersOnly() ? 1 : 0;
+						} else {
+							var11 = var0[var5].id;
+							var12 = var8.id;
+						}
+
+						if (var11 != var12) {
+							if ((var4[var10] != 1 || var11 >= var12) && (var4[var10] != 0 || var11 <= var12)) {
+								var9 = false;
+							}
+							break;
+						}
+
+						if (var10 == 3) {
+							var9 = false;
+						}
+					}
+				} while(var9);
+
+				if (var5 < var6) {
+					World var13 = var0[var5];
+					var0[var5] = var0[var6];
+					var0[var6] = var13;
 				}
-
-				var3[var4++] = (char)var6;
 			}
+
+			sortWorlds(var0, var1, var6, var3, var4);
+			sortWorlds(var0, var6 + 1, var2, var3, var4);
 		}
 
-		return new String(var3, 0, var4);
-	}
-
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "2133440883"
-	)
-	static final int method2223(int var0, int var1) {
-		if (var0 == -2) {
-			return 12345678;
-		} else if (var0 == -1) {
-			if (var1 < 2) {
-				var1 = 2;
-			} else if (var1 > 126) {
-				var1 = 126;
-			}
-
-			return var1;
-		} else {
-			var1 = (var0 & 127) * var1 / 128;
-			if (var1 < 2) {
-				var1 = 2;
-			} else if (var1 > 126) {
-				var1 = 126;
-			}
-
-			return (var0 & 65408) + var1;
-		}
 	}
 }
