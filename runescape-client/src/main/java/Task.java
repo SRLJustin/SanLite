@@ -13,22 +13,22 @@ public class Task {
 	)
 	@Export("next")
 	Task next;
-	@ObfuscatedName("t")
+	@ObfuscatedName("n")
 	@Export("status")
 	public volatile int status;
-	@ObfuscatedName("s")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -610240129
+		intValue = -822445223
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("j")
+	@ObfuscatedName("w")
 	@Export("intArgument")
 	public int intArgument;
-	@ObfuscatedName("w")
+	@ObfuscatedName("s")
 	@Export("objectArgument")
 	Object objectArgument;
-	@ObfuscatedName("n")
+	@ObfuscatedName("q")
 	@Export("result")
 	public volatile Object result;
 

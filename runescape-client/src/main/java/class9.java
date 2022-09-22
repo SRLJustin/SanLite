@@ -3,112 +3,178 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("r")
+@ObfuscatedName("x")
 public class class9 implements MouseWheel {
+	@ObfuscatedName("ul")
+	@ObfuscatedSignature(
+		descriptor = "Los;"
+	)
+	@Export("platformInfo")
+	static PlatformInfo platformInfo;
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lr;"
+		descriptor = "Lx;"
 	)
-	static final class9 field37;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Lr;"
-	)
-	public static final class9 field36;
+	public static final class9 field34;
 	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lr;"
+		descriptor = "Lx;"
 	)
-	static final class9 field44;
-	@ObfuscatedName("m")
+	public static final class9 field32;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lr;"
+		descriptor = "Lx;"
 	)
-	static final class9 field38;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Lr;"
-	)
-	static final class9 field39;
-	@ObfuscatedName("eu")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive1")
-	static Archive archive1;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -171712909
-	)
-	int field45;
-	@ObfuscatedName("j")
-	String field35;
-	@ObfuscatedName("w")
-	boolean field42;
+	static final class9 field33;
 	@ObfuscatedName("n")
-	boolean field43;
+	@ObfuscatedSignature(
+		descriptor = "Lx;"
+	)
+	static final class9 field37;
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "Lx;"
+	)
+	static final class9 field35;
+	@ObfuscatedName("ff")
+	@ObfuscatedGetter(
+		intValue = -516341067
+	)
+	static int field31;
+	@ObfuscatedName("w")
+	@ObfuscatedGetter(
+		intValue = -355301615
+	)
+	int field38;
+	@ObfuscatedName("s")
+	String field40;
+	@ObfuscatedName("q")
+	boolean field36;
+	@ObfuscatedName("m")
+	boolean field39;
 
 	static {
-		field37 = new class9(0, "POST", true, true);
-		field36 = new class9(1, "GET", true, false);
-		field44 = new class9(2, "PUT", false, true);
-		field38 = new class9(3, "PATCH", false, true);
-		field39 = new class9(4, "DELETE", false, true);
+		field34 = new class9(0, "POST", true, true);
+		field32 = new class9(1, "GET", true, false);
+		field33 = new class9(2, "PUT", false, true);
+		field37 = new class9(3, "PATCH", false, true);
+		field35 = new class9(4, "DELETE", false, true);
 	}
 
 	class9(int var1, String var2, boolean var3, boolean var4) {
-		this.field45 = var1;
-		this.field35 = var2;
-		this.field42 = var3;
-		this.field43 = var4;
+		this.field38 = var1;
+		this.field40 = var2;
+		this.field36 = var3;
+		this.field39 = var4;
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "17"
+		descriptor = "(I)Z",
+		garbageValue = "-2133594239"
 	)
-	boolean method85() {
-		return this.field42;
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "48"
-	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field45;
+	boolean method87() {
+		return this.field36;
 	}
 
 	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "1278274271"
+		descriptor = "(B)I",
+		garbageValue = "1"
 	)
-	String method100() {
-		return this.field35;
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field38;
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-338873662"
+	)
+	public String method75() {
+		return this.field40;
+	}
+
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-1849660708"
+		garbageValue = "1305116386"
 	)
-	boolean method86() {
-		return this.field43;
+	boolean method76() {
+		return this.field39;
 	}
 
-	@ObfuscatedName("gz")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "29"
+		descriptor = "(IIB)I",
+		garbageValue = "1"
 	)
-	static void method88() {
-		if (Client.renderSelf) {
-			Buddy.addPlayerToScene(class340.localPlayer, false);
+	static final int method83(int var0, int var1) {
+		if (var0 == -1) {
+			return 12345678;
+		} else {
+			var1 = (var0 & 127) * var1 / 128;
+			if (var1 < 2) {
+				var1 = 2;
+			} else if (var1 > 126) {
+				var1 = 126;
+			}
+
+			return (var0 & 65408) + var1;
+		}
+	}
+
+	@ObfuscatedName("gx")
+	@ObfuscatedSignature(
+		descriptor = "(IS)V",
+		garbageValue = "17950"
+	)
+	@Export("playSong")
+	static void playSong(int var0) {
+		if (var0 == -1 && !Client.field651) {
+			class17.method267();
+		} else if (var0 != -1 && var0 != Client.currentTrackGroupId && Player.clientPreferences.method2402() != 0 && !Client.field651) {
+			Archive var1 = class14.field76;
+			int var2 = Player.clientPreferences.method2402();
+			class274.musicPlayerStatus = 1;
+			class274.musicTrackArchive = var1;
+			class274.musicTrackGroupId = var0;
+			StructComposition.musicTrackFileId = 0;
+			class269.musicTrackVolume = var2;
+			TriBool.musicTrackBoolean = false;
+			VarcInt.pcmSampleLength = 2;
 		}
 
+		Client.currentTrackGroupId = var0;
+	}
+
+	@ObfuscatedName("ih")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V",
+		garbageValue = "-1657093407"
+	)
+	static final void method89(int var0, int var1, int var2, int var3) {
+		for (int var4 = 0; var4 < Client.rootWidgetCount; ++var4) {
+			if (Client.rootWidgetWidths[var4] + Client.rootWidgetXs[var4] > var0 && Client.rootWidgetXs[var4] < var0 + var2 && Client.rootWidgetYs[var4] + Client.rootWidgetHeights[var4] > var1 && Client.rootWidgetYs[var4] < var3 + var1) {
+				Client.field714[var4] = true;
+			}
+		}
+
+	}
+
+	@ObfuscatedName("lt")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "37"
+	)
+	@Export("clanKickUser")
+	static final void clanKickUser(String var0) {
+		if (class145.friendsChatManager != null) {
+			PacketBufferNode var1 = class120.getPacketBufferNode(ClientPacket.field3002, Client.packetWriter.isaacCipher);
+			var1.packetBuffer.writeByte(class357.stringCp1252NullTerminatedByteSize(var0));
+			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
+			Client.packetWriter.addNode(var1);
+		}
 	}
 }

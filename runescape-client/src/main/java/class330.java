@@ -1,9 +1,9 @@
-import net.runelite.mapping.Export;
+import java.util.HashMap;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("ly")
-public final class class330 {
-	@ObfuscatedName("j")
-	@Export("SpriteBuffer_spriteHeights")
-	public static int[] SpriteBuffer_spriteHeights;
+@ObfuscatedName("lk")
+public class class330 {
+	static {
+		new HashMap();
+	}
 }

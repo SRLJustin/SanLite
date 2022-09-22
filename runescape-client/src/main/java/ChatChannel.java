@@ -4,35 +4,37 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("by")
+@ObfuscatedName("bn")
 @Implements("ChatChannel")
 public class ChatChannel {
-	@ObfuscatedName("sm")
-	@ObfuscatedGetter(
-		intValue = 1987554027
-	)
-	static int field956;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = -764291983
-	)
-	@Export("musicTrackVolume")
-	public static int musicTrackVolume;
-	@ObfuscatedName("en")
+	@ObfuscatedName("uo")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
+		descriptor = "Lnj;"
 	)
-	@Export("archive14")
-	static Archive archive14;
-	@ObfuscatedName("b")
+	static ArchiveDisk field992;
+	@ObfuscatedName("u")
+	static int[][][] field996;
+	@ObfuscatedName("ey")
 	@ObfuscatedSignature(
-		descriptor = "[Lbr;"
+		descriptor = "Llb;"
+	)
+	@Export("archive8")
+	static Archive archive8;
+	@ObfuscatedName("iv")
+	@ObfuscatedSignature(
+		descriptor = "[Lqu;"
+	)
+	@Export("scrollBarSprites")
+	static IndexedSprite[] scrollBarSprites;
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "[Lbj;"
 	)
 	@Export("messages")
 	Message[] messages;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 587145695
+		intValue = 561519127
 	)
 	@Export("count")
 	int count;
@@ -43,8 +45,8 @@ public class ChatChannel {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lbr;",
-		garbageValue = "358093741"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)Lbj;",
+		garbageValue = "14"
 	)
 	@Export("addMessage")
 	Message addMessage(int var1, String var2, String var3, String var4) {
@@ -72,102 +74,41 @@ public class ChatChannel {
 		return var5;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lbr;",
-		garbageValue = "-91"
+		descriptor = "(II)Lbj;",
+		garbageValue = "-2032102999"
 	)
 	@Export("getMessage")
 	Message getMessage(int var1) {
 		return var1 >= 0 && var1 < this.count ? this.messages[var1] : null;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1262269232"
+		descriptor = "(B)I",
+		garbageValue = "1"
 	)
 	@Export("size")
 	int size() {
 		return this.count;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;B)J",
-		garbageValue = "-84"
+		descriptor = "(IB)Lqr;",
+		garbageValue = "0"
 	)
-	static long method2054(CharSequence var0) {
-		long var1 = 0L;
-		int var3 = var0.length();
+	public static PrivateChatMode method2146(int var0) {
+		PrivateChatMode[] var1 = class10.method106();
 
-		for (int var4 = 0; var4 < var3; ++var4) {
-			var1 *= 37L;
-			char var5 = var0.charAt(var4);
-			if (var5 >= 'A' && var5 <= 'Z') {
-				var1 += (long)(var5 + 1 - 65);
-			} else if (var5 >= 'a' && var5 <= 'z') {
-				var1 += (long)(var5 + 1 - 97);
-			} else if (var5 >= '0' && var5 <= '9') {
-				var1 += (long)(var5 + 27 - 48);
-			}
-
-			if (var1 >= 177917621779460413L) {
-				break;
+		for (int var2 = 0; var2 < var1.length; ++var2) {
+			PrivateChatMode var3 = var1[var2];
+			if (var0 == var3.field4853) {
+				return var3;
 			}
 		}
 
-		while (var1 % 37L == 0L && 0L != var1) {
-			var1 /= 37L;
-		}
-
-		return var1;
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(II)Ljm;",
-		garbageValue = "1761147769"
-	)
-	@Export("getWidget")
-	public static Widget getWidget(int var0) {
-		int var1 = var0 >> 16;
-		int var2 = var0 & 65535;
-		if (MouseRecorder.Widget_interfaceComponents[var1] == null || MouseRecorder.Widget_interfaceComponents[var1][var2] == null) {
-			boolean var3 = class242.loadInterface(var1);
-			if (!var3) {
-				return null;
-			}
-		}
-
-		return MouseRecorder.Widget_interfaceComponents[var1][var2];
-	}
-
-	@ObfuscatedName("ka")
-	@ObfuscatedSignature(
-		descriptor = "(IIIB)Lcl;",
-		garbageValue = "3"
-	)
-	static final InterfaceParent method2058(int var0, int var1, int var2) {
-		InterfaceParent var3 = new InterfaceParent();
-		var3.group = var1;
-		var3.type = var2;
-		Client.interfaceParents.put(var3, (long)var0);
-		class140.Widget_resetModelFrames(var1);
-		Widget var4 = getWidget(var0);
-		SecureRandomCallable.invalidateWidget(var4);
-		if (Client.meslayerContinueWidget != null) {
-			SecureRandomCallable.invalidateWidget(Client.meslayerContinueWidget);
-			Client.meslayerContinueWidget = null;
-		}
-
-		FileSystem.decrementMenuEntries();
-		class115.revalidateWidgetScroll(MouseRecorder.Widget_interfaceComponents[var0 >> 16], var4, false);
-		class33.runWidgetOnLoadListener(var1);
-		if (Client.rootInterface != -1) {
-			Message.runIntfCloseListeners(Client.rootInterface, 1);
-		}
-
-		return var3;
+		return null;
 	}
 }

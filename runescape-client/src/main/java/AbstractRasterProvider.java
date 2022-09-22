@@ -4,21 +4,21 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pn")
+@ObfuscatedName("qd")
 @Implements("AbstractRasterProvider")
 public abstract class AbstractRasterProvider {
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@Export("pixels")
 	public int[] pixels;
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 1468450979
+		intValue = 697858245
 	)
 	@Export("width")
 	public int width;
-	@ObfuscatedName("t")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 191788269
+		intValue = -1550839689
 	)
 	@Export("height")
 	public int height;
@@ -26,48 +26,38 @@ public abstract class AbstractRasterProvider {
 	protected AbstractRasterProvider() {
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "0"
+		descriptor = "(III)V",
+		garbageValue = "28507398"
 	)
 	@Export("drawFull")
 	public abstract void drawFull(int var1, int var2);
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "1782361529"
+		descriptor = "(IIIIB)V",
+		garbageValue = "-41"
 	)
 	@Export("draw")
 	public abstract void draw(int var1, int var2, int var3, int var4);
 
-	@ObfuscatedName("k")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1651135554"
+		descriptor = "(B)V",
+		garbageValue = "-102"
 	)
 	@Export("apply")
 	public final void apply() {
 		Rasterizer2D.Rasterizer2D_replace(this.pixels, this.width, this.height);
 	}
 
-	@ObfuscatedName("fe")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-685860336"
+		descriptor = "(Llv;III)[Lqi;",
+		garbageValue = "475253810"
 	)
-	static int method7714() {
-		if (Client.archiveLoaders != null && Client.archiveLoadersDone < Client.archiveLoaders.size()) {
-			int var0 = 0;
-
-			for (int var1 = 0; var1 <= Client.archiveLoadersDone; ++var1) {
-				var0 += ((ArchiveLoader)Client.archiveLoaders.get(var1)).loadedCount;
-			}
-
-			return var0 * 10000 / Client.field753;
-		} else {
-			return 10000;
-		}
+	public static SpritePixels[] method8301(AbstractArchive var0, int var1, int var2) {
+		return !Occluder.SpriteBuffer_loadSpritesFromArchive(var0, var1, var2) ? null : class124.method2967();
 	}
 }

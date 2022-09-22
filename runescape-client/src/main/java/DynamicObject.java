@@ -1,72 +1,72 @@
+import java.lang.management.GarbageCollectorMXBean;
+import java.lang.management.ManagementFactory;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bj")
+@ObfuscatedName("bb")
 @Implements("DynamicObject")
 public class DynamicObject extends Renderable {
-	@ObfuscatedName("o")
-	@Export("musicTrackBoolean")
-	public static boolean musicTrackBoolean;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1712801751
+		intValue = -585589299
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = 2015197805
+		intValue = -1720592507
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1555173169
+		intValue = -873668315
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -393716715
+		intValue = 995624317
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("t")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -332192069
+		intValue = -1828700547
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 1639785979
+		intValue = 2077372087
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("j")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lgn;"
+		descriptor = "Lgd;"
 	)
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
-	@ObfuscatedName("w")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -724114563
+		intValue = -1793820327
 	)
 	@Export("frame")
 	int frame;
-	@ObfuscatedName("n")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = 343705565
+		intValue = -306120065
 	)
 	@Export("cycleStart")
 	int cycleStart;
 
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIZLgt;)V"
+		descriptor = "(IIIIIIIZLgg;)V"
 	)
 	DynamicObject(int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8, Renderable var9) {
 		this.id = var1;
@@ -76,12 +76,12 @@ public class DynamicObject extends Renderable {
 		this.x = var5;
 		this.y = var6;
 		if (var7 != -1) {
-			this.sequenceDefinition = UserComparator5.SequenceDefinition_get(var7);
+			this.sequenceDefinition = class4.SequenceDefinition_get(var7);
 			this.frame = 0;
 			this.cycleStart = Client.cycle - 1;
-			if (this.sequenceDefinition.field2078 == 0 && var9 != null && var9 instanceof DynamicObject) {
+			if (this.sequenceDefinition.field2219 == 0 && var9 != null && var9 instanceof DynamicObject) {
 				DynamicObject var10 = (DynamicObject)var9;
-				if (this.sequenceDefinition == var10.sequenceDefinition) {
+				if (var10.sequenceDefinition == this.sequenceDefinition) {
 					this.frame = var10.frame;
 					this.cycleStart = var10.cycleStart;
 					return;
@@ -89,21 +89,21 @@ public class DynamicObject extends Renderable {
 			}
 
 			if (var8 && this.sequenceDefinition.frameCount != -1) {
-				if (!this.sequenceDefinition.method3690()) {
+				if (!this.sequenceDefinition.method3945()) {
 					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.frameIds.length);
 					this.cycleStart -= (int)(Math.random() * (double)this.sequenceDefinition.frameLengths[this.frame]);
 				} else {
-					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method3647());
+					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method3950());
 				}
 			}
 		}
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lgo;",
-		garbageValue = "202861607"
+		descriptor = "(B)Lha;",
+		garbageValue = "13"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
@@ -114,8 +114,8 @@ public class DynamicObject extends Renderable {
 				var1 = 100;
 			}
 
-			if (this.sequenceDefinition.method3690()) {
-				var2 = this.sequenceDefinition.method3647();
+			if (this.sequenceDefinition.method3945()) {
+				var2 = this.sequenceDefinition.method3950();
 				this.frame += var1;
 				var1 = 0;
 				if (this.frame >= var2) {
@@ -125,11 +125,11 @@ public class DynamicObject extends Renderable {
 					}
 				}
 			} else {
-				label79: {
+				label83: {
 					do {
 						do {
 							if (var1 <= this.sequenceDefinition.frameLengths[this.frame]) {
-								break label79;
+								break label83;
 							}
 
 							var1 -= this.sequenceDefinition.frameLengths[this.frame];
@@ -146,7 +146,7 @@ public class DynamicObject extends Renderable {
 			this.cycleStart = Client.cycle - var1;
 		}
 
-		ObjectComposition var12 = class148.getObjectDefinition(this.id);
+		ObjectComposition var12 = PlayerComposition.getObjectDefinition(this.id);
 		if (var12.transforms != null) {
 			var12 = var12.transform();
 		}
@@ -168,46 +168,65 @@ public class DynamicObject extends Renderable {
 			int var6 = (var3 >> 1) + this.y;
 			int var7 = (var3 + 1 >> 1) + this.y;
 			int[][] var8 = Tiles.Tiles_heights[this.plane];
-			int var9 = var8[var4][var7] + var8[var4][var6] + var8[var5][var6] + var8[var5][var7] >> 2;
+			int var9 = var8[var5][var7] + var8[var4][var7] + var8[var5][var6] + var8[var4][var6] >> 2;
 			int var10 = (this.x << 7) + (var2 << 6);
 			int var11 = (this.y << 7) + (var3 << 6);
 			return var12.getModelDynamic(this.type, this.orientation, var8, var10, var9, var11, this.sequenceDefinition, this.frame);
 		}
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-2047180013"
+		descriptor = "(S)I",
+		garbageValue = "-29763"
 	)
-	@Export("iLog")
-	public static int iLog(int var0) {
-		int var1 = 0;
-		if (var0 < 0 || var0 >= 65536) {
-			var0 >>>= 16;
-			var1 += 16;
+	@Export("getGcDuration")
+	protected static int getGcDuration() {
+		int var0 = 0;
+		if (VarcInt.garbageCollector == null || !VarcInt.garbageCollector.isValid()) {
+			try {
+				Iterator var1 = ManagementFactory.getGarbageCollectorMXBeans().iterator();
+
+				while (var1.hasNext()) {
+					GarbageCollectorMXBean var2 = (GarbageCollectorMXBean)var1.next();
+					if (var2.isValid()) {
+						VarcInt.garbageCollector = var2;
+						GameEngine.garbageCollectorLastCheckTimeMs = -1L;
+						GameEngine.garbageCollectorLastCollectionTime = -1L;
+					}
+				}
+			} catch (Throwable var11) {
+			}
 		}
 
-		if (var0 >= 256) {
-			var0 >>>= 8;
-			var1 += 8;
+		if (VarcInt.garbageCollector != null) {
+			long var9 = Language.method6232();
+			long var3 = VarcInt.garbageCollector.getCollectionTime();
+			if (GameEngine.garbageCollectorLastCollectionTime != -1L) {
+				long var5 = var3 - GameEngine.garbageCollectorLastCollectionTime;
+				long var7 = var9 - GameEngine.garbageCollectorLastCheckTimeMs;
+				if (0L != var7) {
+					var0 = (int)(var5 * 100L / var7);
+				}
+			}
+
+			GameEngine.garbageCollectorLastCollectionTime = var3;
+			GameEngine.garbageCollectorLastCheckTimeMs = var9;
 		}
 
-		if (var0 >= 16) {
-			var0 >>>= 4;
-			var1 += 4;
-		}
+		return var0;
+	}
 
-		if (var0 >= 4) {
-			var0 >>>= 2;
-			var1 += 2;
+	@ObfuscatedName("jz")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Ljava/lang/String;",
+		garbageValue = "1"
+	)
+	static String method2135(int var0) {
+		if (var0 < 0) {
+			return "";
+		} else {
+			return Client.menuTargets[var0].length() > 0 ? Client.menuActions[var0] + " " + Client.menuTargets[var0] : Client.menuActions[var0];
 		}
-
-		if (var0 >= 1) {
-			var0 >>>= 1;
-			++var1;
-		}
-
-		return var0 + var1;
 	}
 }
