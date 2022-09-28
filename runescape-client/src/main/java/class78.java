@@ -1,60 +1,73 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
+import java.net.URL;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ce")
+@ObfuscatedName("cy")
 public class class78 {
-	@ObfuscatedName("oo")
-	@ObfuscatedGetter(
-		intValue = 603715761
-	)
-	static int field1000;
-
-	@ObfuscatedName("c")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lfj;",
-		garbageValue = "-18"
+		descriptor = "(Ljava/lang/String;ILjava/lang/String;B)Z",
+		garbageValue = "6"
 	)
-	@Export("WorldMapElement_get")
-	public static WorldMapElement WorldMapElement_get(int var0) {
-		return var0 >= 0 && var0 < WorldMapElement.WorldMapElement_cached.length && WorldMapElement.WorldMapElement_cached[var0] != null ? WorldMapElement.WorldMapElement_cached[var0] : new WorldMapElement(var0);
-	}
+	static boolean method2234(String var0, int var1, String var2) {
+		if (var1 == 0) {
+			try {
+				if (!class29.field172.startsWith("win")) {
+					throw new Exception();
+				} else if (!var0.startsWith("http://") && !var0.startsWith("https://")) {
+					throw new Exception();
+				} else {
+					String var10 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?&=,.%+-_#:/*";
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lfu;",
-		garbageValue = "-1066482349"
-	)
-	@Export("getInvDefinition")
-	public static InvDefinition getInvDefinition(int var0) {
-		InvDefinition var1 = (InvDefinition)InvDefinition.InvDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = InvDefinition.InvDefinition_archive.takeFile(5, var0);
-			var1 = new InvDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+					for (int var4 = 0; var4 < var0.length(); ++var4) {
+						if (var10.indexOf(var0.charAt(var4)) == -1) {
+							throw new Exception();
+						}
+					}
+
+					Runtime.getRuntime().exec("cmd /c start \"j\" \"" + var0 + "\"");
+					return true;
+				}
+			} catch (Throwable var5) {
+				return false;
+			}
+		} else if (var1 == 1) {
+			try {
+				Object var3 = class27.method405(class29.field179, var2, new Object[]{(new URL(class29.field179.getCodeBase(), var0)).toString()});
+				return var3 != null;
+			} catch (Throwable var6) {
+				return false;
+			}
+		} else if (var1 == 2) {
+			try {
+				class29.field179.getAppletContext().showDocument(new URL(class29.field179.getCodeBase(), var0), "_blank");
+				return true;
+			} catch (Exception var7) {
+				return false;
+			}
+		} else if (var1 == 3) {
+			try {
+				class27.method404(class29.field179, "loggedout");
+			} catch (Throwable var9) {
 			}
 
-			InvDefinition.InvDefinition_cached.put(var1, (long)var0);
-			return var1;
+			try {
+				class29.field179.getAppletContext().showDocument(new URL(class29.field179.getCodeBase(), var0), "_top");
+				return true;
+			} catch (Exception var8) {
+				return false;
+			}
+		} else {
+			throw new IllegalArgumentException();
 		}
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(B)[I",
-		garbageValue = "21"
+		descriptor = "(ILbt;ZS)I",
+		garbageValue = "-16458"
 	)
-	public static int[] method2140() {
-		int[] var0 = new int[KeyHandler.field140];
-
-		for (int var1 = 0; var1 < KeyHandler.field140; ++var1) {
-			var0[var1] = KeyHandler.field139[var1];
-		}
-
-		return var0;
+	static int method2235(int var0, Script var1, boolean var2) {
+		return 2;
 	}
 }

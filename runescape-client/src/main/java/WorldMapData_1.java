@@ -4,41 +4,36 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hu")
+@ObfuscatedName("hg")
 @Implements("WorldMapData_1")
 public class WorldMapData_1 extends AbstractWorldMapData {
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "Lme;"
+	@ObfuscatedName("hr")
+	@ObfuscatedGetter(
+		intValue = -1682284031
 	)
-	static Bounds field2652;
-	@ObfuscatedName("gt")
-	@ObfuscatedSignature(
-		descriptor = "Lcq;"
-	)
-	@Export("urlRequester")
-	static UrlRequester urlRequester;
+	@Export("baseY")
+	static int baseY;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -2038326589
+		intValue = 1116278325
 	)
 	@Export("chunkXLow")
 	int chunkXLow;
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = 45783071
+		intValue = -41303617
 	)
 	@Export("chunkYLow")
 	int chunkYLow;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1904366233
+		intValue = 2090770237
 	)
 	@Export("chunkX")
 	int chunkX;
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -584157989
+		intValue = -569736079
 	)
 	@Export("chunkY")
 	int chunkY;
@@ -48,13 +43,13 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "4"
+		descriptor = "(Lqq;I)V",
+		garbageValue = "-1802270107"
 	)
 	@Export("init")
 	void init(Buffer var1) {
 		int var2 = var1.readUnsignedByte();
-		if (var2 != WorldMapID.field2741.value) {
+		if (var2 != WorldMapID.field2868.value) {
 			throw new IllegalStateException("");
 		} else {
 			super.minPlane = var1.readUnsignedByte();
@@ -67,26 +62,26 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 			super.regionY = var1.readUnsignedShort();
 			this.chunkX = var1.readUnsignedByte();
 			this.chunkY = var1.readUnsignedByte();
-			super.groupId = var1.method7400();
-			super.fileId = var1.method7400();
+			super.groupId = var1.method8028();
+			super.fileId = var1.method8028();
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "28"
+		descriptor = "(Lqq;I)V",
+		garbageValue = "1696330768"
 	)
 	@Export("readGeography")
 	void readGeography(Buffer var1) {
 		super.planes = Math.min(super.planes, 4);
 		super.floorUnderlayIds = new short[1][64][64];
 		super.floorOverlayIds = new short[super.planes][64][64];
-		super.field2699 = new byte[super.planes][64][64];
-		super.field2706 = new byte[super.planes][64][64];
+		super.field2839 = new byte[super.planes][64][64];
+		super.field2834 = new byte[super.planes][64][64];
 		super.decorations = new WorldMapDecoration[super.planes][64][64][];
 		int var2 = var1.readUnsignedByte();
-		if (var2 != class231.field2735.value) {
+		if (var2 != class239.field2863.value) {
 			throw new IllegalStateException("");
 		} else {
 			int var3 = var1.readUnsignedByte();
@@ -106,40 +101,40 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-298089645"
+		garbageValue = "160894715"
 	)
 	@Export("getChunkXLow")
 	int getChunkXLow() {
 		return this.chunkXLow;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "94"
+		descriptor = "(I)I",
+		garbageValue = "1162098254"
 	)
 	@Export("getChunkYLow")
 	int getChunkYLow() {
 		return this.chunkYLow;
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "-66"
+		garbageValue = "28"
 	)
 	@Export("getChunkX")
 	int getChunkX() {
 		return this.chunkX;
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "737518377"
+		descriptor = "(B)I",
+		garbageValue = "29"
 	)
 	@Export("getChunkY")
 	int getChunkY() {
@@ -151,8 +146,8 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 			return false;
 		} else {
 			WorldMapData_1 var2 = (WorldMapData_1)var1;
-			if (var2.regionX == super.regionX && super.regionY == var2.regionY) {
-				return var2.chunkX == this.chunkX && this.chunkY == var2.chunkY;
+			if (var2.regionX == super.regionX && var2.regionY == super.regionY) {
+				return var2.chunkX == this.chunkX && var2.chunkY == this.chunkY;
 			} else {
 				return false;
 			}
@@ -161,5 +156,20 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 
 	public int hashCode() {
 		return super.regionX | super.regionY << 8 | this.chunkX << 16 | this.chunkY << 24;
+	}
+
+	@ObfuscatedName("mt")
+	@ObfuscatedSignature(
+		descriptor = "(Lqq;II)V",
+		garbageValue = "-1669102732"
+	)
+	static void method4979(Buffer var0, int var1) {
+		byte[] var2 = var0.array;
+		if (Client.randomDatData == null) {
+			Client.randomDatData = new byte[24];
+		}
+
+		class352.writeRandomDat(var2, var1, Client.randomDatData, 0, 24);
+		ApproximateRouteStrategy.method1170(var0, var1);
 	}
 }

@@ -12,8 +12,13 @@ import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
-@ObfuscatedName("e")
+@ObfuscatedName("d")
 public class class15 extends SSLSocketFactory {
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "Ld;"
+	)
+	public static class15 field86;
 	@ObfuscatedName("c")
 	SecureRandom field85;
 
@@ -24,17 +29,41 @@ public class class15 extends SSLSocketFactory {
 
 	}
 
-	class15() {
+	public class15() {
 		this.field85 = new SecureRandom();
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;B)Ljavax/net/ssl/SSLSocket;",
-		garbageValue = "117"
+		descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;I)Ljavax/net/ssl/SSLSocket;",
+		garbageValue = "1419454418"
 	)
-	SSLSocket method227(String var1, TlsClientProtocol var2) {
+	SSLSocket method198(String var1, TlsClientProtocol var2) {
 		return new class12(this, var2, var1);
+	}
+
+	public String[] getSupportedCipherSuites() {
+		return null;
+	}
+
+	public String[] getDefaultCipherSuites() {
+		return null;
+	}
+
+	public Socket createSocket(InetAddress var1, int var2) throws IOException {
+		return null;
+	}
+
+	public Socket createSocket(String var1, int var2) throws IOException, UnknownHostException {
+		return null;
+	}
+
+	public Socket createSocket(String var1, int var2, InetAddress var3, int var4) throws IOException, UnknownHostException {
+		return null;
+	}
+
+	public Socket createSocket(InetAddress var1, int var2, InetAddress var3, int var4) throws IOException {
+		return null;
 	}
 
 	public Socket createSocket(Socket var1, String var2, int var3, boolean var4) throws IOException {
@@ -47,30 +76,6 @@ public class class15 extends SSLSocketFactory {
 		}
 
 		TlsClientProtocol var5 = new TlsClientProtocol(var1.getInputStream(), var1.getOutputStream(), this.field85);
-		return this.method227(var2, var5);
-	}
-
-	public Socket createSocket(InetAddress var1, int var2, InetAddress var3, int var4) throws IOException {
-		return null;
-	}
-
-	public String[] getDefaultCipherSuites() {
-		return null;
-	}
-
-	public String[] getSupportedCipherSuites() {
-		return null;
-	}
-
-	public Socket createSocket(String var1, int var2) throws IOException, UnknownHostException {
-		return null;
-	}
-
-	public Socket createSocket(InetAddress var1, int var2) throws IOException {
-		return null;
-	}
-
-	public Socket createSocket(String var1, int var2, InetAddress var3, int var4) throws IOException, UnknownHostException {
-		return null;
+		return this.method198(var2, var5);
 	}
 }

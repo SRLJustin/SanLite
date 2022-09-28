@@ -1,68 +1,48 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ek")
-public class class133 extends class126 {
-	@ObfuscatedName("ez")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive15")
-	static Archive archive15;
-	@ObfuscatedName("fv")
-	@ObfuscatedGetter(
-		intValue = -1093073267
-	)
-	@Export("js5Port")
-	static int js5Port;
-	@ObfuscatedName("c")
-	boolean field1543;
-	@ObfuscatedName("b")
-	byte field1547;
-	@ObfuscatedName("p")
-	byte field1544;
+@ObfuscatedName("ei")
+public class class133 extends class129 {
 	@ObfuscatedName("m")
-	byte field1542;
-	@ObfuscatedName("t")
-	byte field1546;
+	public static short[] field1589;
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		intValue = -1847310195
+	)
+	int field1586;
+	@ObfuscatedName("p")
+	byte field1588;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Leo;"
 	)
-	final class129 this$0;
+	final class132 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "(Leo;)V"
 	)
-	class133(class129 var1) {
+	class133(class132 var1) {
 		this.this$0 = var1;
+		this.field1586 = -1;
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lqq;B)V",
+		garbageValue = "-41"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1543 = var1.readUnsignedByte() == 1;
-		this.field1547 = var1.readByte();
-		this.field1544 = var1.readByte();
-		this.field1542 = var1.readByte();
-		this.field1546 = var1.readByte();
+	void vmethod3320(Buffer var1) {
+		this.field1586 = var1.readUnsignedShort();
+		this.field1588 = var1.readByte();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(Led;I)V",
+		garbageValue = "-538131930"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.allowGuests = this.field1543;
-		var1.field1567 = this.field1547;
-		var1.field1568 = this.field1544;
-		var1.field1569 = this.field1542;
-		var1.field1570 = this.field1546;
+	void vmethod3313(ClanSettings var1) {
+		var1.method3151(this.field1586, this.field1588);
 	}
 }
