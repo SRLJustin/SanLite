@@ -4,77 +4,112 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kw")
+@ObfuscatedName("kj")
 @Implements("PlayerType")
 public enum PlayerType implements MouseWheel {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Lkj;"
 	)
 	@Export("PlayerType_normal")
 	PlayerType_normal(0, -1, true, false, true),
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Lkj;"
 	)
 	@Export("PlayerType_playerModerator")
 	PlayerType_playerModerator(1, 0, true, true, true),
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Lkj;"
 	)
 	@Export("PlayerType_jagexModerator")
 	PlayerType_jagexModerator(2, 1, true, true, false),
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Lkj;"
 	)
 	@Export("PlayerType_ironman")
 	PlayerType_ironman(3, 2, false, false, true),
-	@ObfuscatedName("t")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Lkj;"
 	)
 	@Export("PlayerType_ultimateIronman")
 	PlayerType_ultimateIronman(4, 3, false, false, true),
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Lkj;"
 	)
 	@Export("PlayerType_hardcoreIronman")
 	PlayerType_hardcoreIronman(5, 10, false, false, true),
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "Lkj;"
+	)
+	field3990(6, 22, false, false, true),
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "Lkj;"
+	)
+	field3988(7, 41, false, false, true),
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "Lkj;"
+	)
+	field3992(8, 42, false, false, true),
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "Lkj;"
+	)
+	field3993(9, 43, false, false, true),
 	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Lkj;"
 	)
-	field3801(6, 22, false, false, true),
-	@ObfuscatedName("w")
+	field3994(10, 44, false, false, true),
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Lkj;"
 	)
-	field3802(7, 41, false, false, true),
-	@ObfuscatedName("n")
+	field3995(11, 45, false, false, true),
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Lkj;"
 	)
-	field3795(8, 42, false, false, true);
+	field3996(12, 46, false, false, true),
+	@ObfuscatedName("t")
+	@ObfuscatedSignature(
+		descriptor = "Lkj;"
+	)
+	field3986(13, 47, false, false, true),
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(
+		descriptor = "Lkj;"
+	)
+	field3998(14, 48, false, false, true),
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(
+		descriptor = "Lkj;"
+	)
+	field3999(15, 49, false, false, true);
 
-	@ObfuscatedName("r")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = -1858175947
+		intValue = -1197271127
 	)
 	@Export("id")
 	final int id;
-	@ObfuscatedName("o")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = -1675383045
+		intValue = -938815979
 	)
 	@Export("modIcon")
 	public final int modIcon;
-	@ObfuscatedName("v")
+	@ObfuscatedName("l")
 	@Export("isPrivileged")
 	public final boolean isPrivileged;
-	@ObfuscatedName("d")
+	@ObfuscatedName("e")
 	@Export("isUser")
 	public final boolean isUser;
 
@@ -85,24 +120,27 @@ public enum PlayerType implements MouseWheel {
 		this.isUser = var7;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "48"
+		garbageValue = "1"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1177241334"
+		descriptor = "(ILbt;ZB)I",
+		garbageValue = "-26"
 	)
-	static void method5521(int var0) {
-		if (var0 != Login.loginIndex) {
-			Login.loginIndex = var0;
+	static int method5943(int var0, Script var1, boolean var2) {
+		if (var0 == 7108) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Widget.method5882() ? 1 : 0;
+			return 1;
+		} else {
+			return 2;
 		}
 	}
 }

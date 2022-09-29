@@ -4,53 +4,53 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bn")
+@ObfuscatedName("bt")
 @Implements("Script")
 public class Script extends DualNode {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lif;"
 	)
 	@Export("Script_cached")
 	static EvictingDualNodeHashTable Script_cached;
-	@ObfuscatedName("b")
-	String field937;
 	@ObfuscatedName("p")
+	String field967;
+	@ObfuscatedName("f")
 	@Export("opcodes")
 	int[] opcodes;
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@Export("intOperands")
 	int[] intOperands;
-	@ObfuscatedName("t")
+	@ObfuscatedName("k")
 	@Export("stringOperands")
 	String[] stringOperands;
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 1986002175
+		intValue = 855315925
 	)
 	@Export("localIntCount")
 	int localIntCount;
-	@ObfuscatedName("j")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 140084379
+		intValue = -821812551
 	)
 	@Export("localStringCount")
 	int localStringCount;
-	@ObfuscatedName("w")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 773546685
+		intValue = -2132486697
 	)
 	@Export("intArgumentCount")
 	int intArgumentCount;
-	@ObfuscatedName("n")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -2027696431
+		intValue = 1089787721
 	)
 	@Export("stringArgumentCount")
 	int stringArgumentCount;
-	@ObfuscatedName("r")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "[Loz;"
+		descriptor = "[Lpq;"
 	)
 	@Export("switches")
 	IterableNodeHashTable[] switches;
@@ -62,30 +62,34 @@ public class Script extends DualNode {
 	Script() {
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Loz;",
-		garbageValue = "-1725303821"
+		descriptor = "(II)[Lpq;",
+		garbageValue = "45996152"
 	)
 	@Export("newIterableNodeHashTable")
 	IterableNodeHashTable[] newIterableNodeHashTable(int var1) {
 		return new IterableNodeHashTable[var1];
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("d")
 	@ObfuscatedSignature(
-		descriptor = "(ILku;Ljava/lang/String;Ljava/lang/String;IZB)V",
-		garbageValue = "62"
+		descriptor = "(III)I",
+		garbageValue = "1350464717"
 	)
-	public static void method2040(int var0, AbstractArchive var1, String var2, String var3, int var4, boolean var5) {
-		int var6 = var1.getGroupId(var2);
-		int var7 = var1.getFileId(var6, var3);
-		class260.musicPlayerStatus = 1;
-		class124.musicTrackArchive = var1;
-		VarcInt.musicTrackGroupId = var6;
-		class260.musicTrackFileId = var7;
-		ChatChannel.musicTrackVolume = var4;
-		DynamicObject.musicTrackBoolean = var5;
-		class260.pcmSampleLength = var0;
+	static final int method2129(int var0, int var1) {
+		int var2 = BufferedSource.method7052(var0 - 1, var1 - 1) + BufferedSource.method7052(var0 + 1, var1 - 1) + BufferedSource.method7052(var0 - 1, var1 + 1) + BufferedSource.method7052(1 + var0, 1 + var1);
+		int var3 = BufferedSource.method7052(var0 - 1, var1) + BufferedSource.method7052(1 + var0, var1) + BufferedSource.method7052(var0, var1 - 1) + BufferedSource.method7052(var0, 1 + var1);
+		int var4 = BufferedSource.method7052(var0, var1);
+		return var2 / 16 + var3 / 8 + var4 / 4;
+	}
+
+	@ObfuscatedName("y")
+	@ObfuscatedSignature(
+		descriptor = "(Law;I)V",
+		garbageValue = "-662986798"
+	)
+	public static final void method2118(class47 var0) {
+		WorldMapLabel.pcmPlayerProvider = var0;
 	}
 }

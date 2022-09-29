@@ -4,64 +4,55 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("md")
+@ObfuscatedName("nl")
 @Implements("AbstractSocket")
 public abstract class AbstractSocket {
-	@ObfuscatedName("pq")
-	@ObfuscatedSignature(
-		descriptor = "Loo;"
-	)
-	@Export("HitSplatDefinition_cachedSprites")
-	static class404 HitSplatDefinition_cachedSprites;
-
-	protected AbstractSocket() {
+	AbstractSocket() {
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2099219864"
-	)
-	@Export("close")
-	public abstract void close();
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-44"
-	)
-	@Export("readUnsignedByte")
-	public abstract int readUnsignedByte() throws IOException;
-
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1579083707"
-	)
-	@Export("available")
-	public abstract int available() throws IOException;
-
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "1654551476"
+		descriptor = "(IS)Z",
+		garbageValue = "24138"
 	)
 	@Export("isAvailable")
 	public abstract boolean isAvailable(int var1) throws IOException;
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "([BIIS)I",
-		garbageValue = "909"
+		descriptor = "(I)I",
+		garbageValue = "-373123879"
+	)
+	public abstract int vmethod7029() throws IOException;
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "-5"
+	)
+	public abstract int vmethod7013() throws IOException;
+
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "([BIII)I",
+		garbageValue = "-1980976914"
 	)
 	@Export("read")
 	public abstract int read(byte[] var1, int var2, int var3) throws IOException;
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
 		descriptor = "([BIII)V",
-		garbageValue = "-1320460000"
+		garbageValue = "922207509"
 	)
 	@Export("write")
 	public abstract void write(byte[] var1, int var2, int var3) throws IOException;
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1846522085"
+	)
+	@Export("close")
+	public abstract void close();
 }

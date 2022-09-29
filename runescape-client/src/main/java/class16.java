@@ -3,65 +3,159 @@ import java.util.concurrent.atomic.AtomicInteger;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("a")
+@ObfuscatedName("b")
 public class class16 implements ThreadFactory {
+	@ObfuscatedName("su")
+	@ObfuscatedSignature(
+		descriptor = "Lam;"
+	)
+	@Export("pcmStreamMixer")
+	static PcmStreamMixer pcmStreamMixer;
 	@ObfuscatedName("c")
-	final ThreadGroup field87;
-	@ObfuscatedName("b")
-	final AtomicInteger field86;
+	final ThreadGroup field89;
+	@ObfuscatedName("p")
+	final AtomicInteger field87;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lg;"
+		descriptor = "Lu;"
 	)
 	final class14 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lg;)V"
+		descriptor = "(Lu;)V"
 	)
 	class16(class14 var1) {
 		this.this$0 = var1;
-		this.field86 = new AtomicInteger(1);
+		this.field87 = new AtomicInteger(1);
 		SecurityManager var2 = System.getSecurityManager();
-		this.field87 = var2 != null ? var2.getThreadGroup() : Thread.currentThread().getThreadGroup();
+		this.field89 = var2 != null ? var2.getThreadGroup() : Thread.currentThread().getThreadGroup();
 	}
 
 	public Thread newThread(Runnable var1) {
-		Thread var2 = new Thread(this.field87, var1, this.this$0.field79 + "-rest-request-" + this.field86.getAndIncrement(), 0L);
+		Thread var2 = new Thread(this.field89, var1, this.this$0.field78 + "-rest-request-" + this.field87.getAndIncrement(), 0L);
 		var2.setDaemon(true);
 		var2.setPriority(5);
 		return var2;
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Ljm;II)V",
-		garbageValue = "-158278735"
+		descriptor = "(III)I",
+		garbageValue = "1453675384"
 	)
-	@Export("Widget_setKeyIgnoreHeld")
-	static final void Widget_setKeyIgnoreHeld(Widget var0, int var1) {
-		if (var0.field3300 == null) {
-			throw new RuntimeException();
-		} else {
-			if (var0.field3368 == null) {
-				var0.field3368 = new int[var0.field3300.length];
+	static int method217(int var0, int var1) {
+		long var2 = (long)((var0 << 16) + var1);
+		return class135.NetCache_currentResponse != null && class135.NetCache_currentResponse.key == var2 ? class20.NetCache_responseArchiveBuffer.offset * 99 / (class20.NetCache_responseArchiveBuffer.array.length - class135.NetCache_currentResponse.padding) + 1 : 0;
+	}
+
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(III)I",
+		garbageValue = "-1688709395"
+	)
+	static final int method216(int var0, int var1) {
+		if (var0 == -2) {
+			return 12345678;
+		} else if (var0 == -1) {
+			if (var1 < 2) {
+				var1 = 2;
+			} else if (var1 > 126) {
+				var1 = 126;
 			}
 
-			var0.field3368[var1] = Integer.MAX_VALUE;
+			return var1;
+		} else {
+			var1 = (var0 & 127) * var1 / 128;
+			if (var1 < 2) {
+				var1 = 2;
+			} else if (var1 > 126) {
+				var1 = 126;
+			}
+
+			return (var0 & 65408) + var1;
 		}
 	}
 
-	@ObfuscatedName("ko")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "74"
+		descriptor = "(ILbt;ZB)I",
+		garbageValue = "-78"
 	)
-	static void method239(int var0) {
-		class87.tempMenuAction = new MenuAction();
-		class87.tempMenuAction.param0 = Client.menuArguments1[var0];
-		class87.tempMenuAction.param1 = Client.menuArguments2[var0];
-		class87.tempMenuAction.opcode = Client.menuOpcodes[var0];
-		class87.tempMenuAction.identifier = Client.menuIdentifiers[var0];
-		class87.tempMenuAction.action = Client.menuActions[var0];
+	static int method215(int var0, Script var1, boolean var2) {
+		int var3;
+		int var6;
+		int var9;
+		if (var0 == ScriptOpcodes.ENUM_STRING) {
+			Interpreter.Interpreter_intStackSize -= 2;
+			var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+			var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+			EnumComposition var10 = PlayerComposition.getEnum(var3);
+			if (var10.outputType != 's') {
+			}
+
+			for (var6 = 0; var6 < var10.outputCount; ++var6) {
+				if (var9 == var10.keys[var6]) {
+					Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = var10.strVals[var6];
+					var10 = null;
+					break;
+				}
+			}
+
+			if (var10 != null) {
+				Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = var10.defaultStr;
+			}
+
+			return 1;
+		} else if (var0 != ScriptOpcodes.ENUM) {
+			if (var0 == ScriptOpcodes.ENUM_GETOUTPUTCOUNT) {
+				var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+				EnumComposition var4 = PlayerComposition.getEnum(var3);
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4.size();
+				return 1;
+			} else {
+				return 2;
+			}
+		} else {
+			Interpreter.Interpreter_intStackSize -= 4;
+			var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+			var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+			int var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+			var6 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 3];
+			EnumComposition var7 = PlayerComposition.getEnum(var5);
+			if (var3 == var7.inputType && var9 == var7.outputType) {
+				for (int var8 = 0; var8 < var7.outputCount; ++var8) {
+					if (var6 == var7.keys[var8]) {
+						if (var9 == 115) {
+							Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = var7.strVals[var8];
+						} else {
+							Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7.intVals[var8];
+						}
+
+						var7 = null;
+						break;
+					}
+				}
+
+				if (var7 != null) {
+					if (var9 == 115) {
+						Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = var7.defaultStr;
+					} else {
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7.defaultInt;
+					}
+				}
+
+				return 1;
+			} else {
+				if (var9 == 115) {
+					Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = "null";
+				} else {
+					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
+				}
+
+				return 1;
+			}
+		}
 	}
 }
