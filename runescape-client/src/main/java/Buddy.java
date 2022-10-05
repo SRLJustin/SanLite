@@ -4,24 +4,24 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mp")
+@ObfuscatedName("nr")
 @Implements("Buddy")
 public class Buddy extends Nameable {
-	@ObfuscatedName("t")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -162440659
+		intValue = 1360491083
 	)
 	@Export("world")
 	public int world;
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -79798009
+		intValue = 597666939
 	)
 	@Export("int2")
 	public int int2;
-	@ObfuscatedName("j")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 616576577
+		intValue = -1849484327
 	)
 	@Export("rank")
 	public int rank;
@@ -30,10 +30,10 @@ public class Buddy extends Nameable {
 		this.world = -1;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "130615034"
+		descriptor = "(IIS)V",
+		garbageValue = "-8776"
 	)
 	@Export("set")
 	void set(int var1, int var2) {
@@ -41,63 +41,81 @@ public class Buddy extends Nameable {
 		this.int2 = var2;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-619942050"
+		descriptor = "(B)I",
+		garbageValue = "-99"
 	)
 	@Export("getWorld")
 	public int getWorld() {
 		return this.world;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "616550004"
+		garbageValue = "-1159455418"
 	)
 	@Export("hasWorld")
 	public boolean hasWorld() {
 		return this.world > 0;
 	}
 
-	@ObfuscatedName("ga")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(Lck;ZB)V",
-		garbageValue = "94"
+		descriptor = "([BIIB)Z",
+		garbageValue = "14"
 	)
-	@Export("addPlayerToScene")
-	static void addPlayerToScene(Player var0, boolean var1) {
-		if (var0 != null && var0.isVisible() && !var0.isHidden) {
-			var0.isUnanimated = false;
-			if ((Client.isLowDetail && Players.Players_count > 50 || Players.Players_count > 200) && var1 && var0.idleSequence == var0.movementSequence) {
-				var0.isUnanimated = true;
+	static final boolean method6989(byte[] var0, int var1, int var2) {
+		boolean var3 = true;
+		Buffer var4 = new Buffer(var0);
+		int var5 = -1;
+
+		label69:
+		while (true) {
+			int var6 = var4.method8003();
+			if (var6 == 0) {
+				return var3;
 			}
 
-			int var2 = var0.x >> 7;
-			int var3 = var0.y >> 7;
-			if (var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
-				long var4 = SecureRandomFuture.calculateTag(0, 0, 0, false, var0.index);
-				if (var0.model0 != null && Client.cycle >= var0.animationCycleStart && Client.cycle < var0.animationCycleEnd) {
-					var0.isUnanimated = false;
-					var0.tileHeight = FaceNormal.getTileHeight(var0.x, var0.y, class20.Client_plane);
-					var0.playerCycle = Client.cycle;
-					class7.scene.addNullableObject(class20.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.minX, var0.minY, var0.maxX, var0.maxY);
-				} else {
-					if ((var0.x & 127) == 64 && (var0.y & 127) == 64) {
-						if (Client.tileLastDrawnActor[var2][var3] == Client.viewportDrawCount) {
-							return;
-						}
+			var5 += var6;
+			int var7 = 0;
+			boolean var8 = false;
 
-						Client.tileLastDrawnActor[var2][var3] = Client.viewportDrawCount;
+			while (true) {
+				int var9;
+				while (!var8) {
+					var9 = var4.readUShortSmart();
+					if (var9 == 0) {
+						continue label69;
 					}
 
-					var0.tileHeight = FaceNormal.getTileHeight(var0.x, var0.y, class20.Client_plane);
-					var0.playerCycle = Client.cycle;
-					class7.scene.drawEntity(class20.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.isWalking);
+					var7 += var9 - 1;
+					int var10 = var7 & 63;
+					int var11 = var7 >> 6 & 63;
+					int var12 = var4.readUnsignedByte() >> 2;
+					int var13 = var11 + var1;
+					int var14 = var10 + var2;
+					if (var13 > 0 && var14 > 0 && var13 < 103 && var14 < 103) {
+						ObjectComposition var15 = PlayerComposition.getObjectDefinition(var5);
+						if (var12 != 22 || !Client.isLowDetail || var15.int1 != 0 || var15.interactType == 1 || var15.boolean2) {
+							if (!var15.needsModelFiles()) {
+								++Client.field558;
+								var3 = false;
+							}
+
+							var8 = true;
+						}
+					}
 				}
+
+				var9 = var4.readUShortSmart();
+				if (var9 == 0) {
+					break;
+				}
+
+				var4.readUnsignedByte();
 			}
 		}
-
 	}
 }

@@ -3,104 +3,141 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("cl")
+@ObfuscatedName("cv")
 @Implements("InterfaceParent")
 public class InterfaceParent extends Node {
+	@ObfuscatedName("m")
+	static int[] field1040;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1940404497
+		intValue = 1737189293
 	)
 	@Export("group")
 	int group;
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -1832869839
+		intValue = 737701507
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("p")
-	boolean field1014;
+	@ObfuscatedName("f")
+	boolean field1036;
 
 	InterfaceParent() {
-		this.field1014 = false;
+		this.field1036 = false;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;I)V",
-		garbageValue = "-1043204065"
+		descriptor = "(II)Lbj;",
+		garbageValue = "502875656"
 	)
-	public static void method2145(AbstractArchive var0) {
-		ParamComposition.ParamDefinition_archive = var0;
+	@Export("Messages_getMessage")
+	static Message Messages_getMessage(int var0) {
+		return (Message)Messages.Messages_hashTable.get((long)var0);
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lfl;",
-		garbageValue = "-64"
+		descriptor = "(Ldi;[F[FB)V",
+		garbageValue = "67"
 	)
-	public static FloorUnderlayDefinition method2144(int var0) {
-		FloorUnderlayDefinition var1 = (FloorUnderlayDefinition)FloorUnderlayDefinition.FloorUnderlayDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = FloorUnderlayDefinition.FloorUnderlayDefinition_archive.takeFile(1, var0);
-			var1 = new FloorUnderlayDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2), var0);
+	static void method2237(class118 var0, float[] var1, float[] var2) {
+		if (var0 != null) {
+			var0.field1458 = var1[0];
+			float var3 = var1[3] - var1[0];
+			float var4 = var2[3] - var2[0];
+			float var5 = var1[1] - var1[0];
+			float var6 = 0.0F;
+			float var7 = 0.0F;
+			if ((double)var5 != 0.0D) {
+				var6 = (var2[1] - var2[0]) / var5;
 			}
 
-			var1.postDecode();
-			FloorUnderlayDefinition.FloorUnderlayDefinition_cached.put(var1, (long)var0);
-			return var1;
+			var5 = var1[3] - var1[2];
+			if (0.0D != (double)var5) {
+				var7 = (var2[3] - var2[2]) / var5;
+			}
+
+			float var8 = 1.0F / (var3 * var3);
+			float var9 = var3 * var6;
+			float var10 = var7 * var3;
+			var0.field1460[0] = var8 * (var10 + var9 - var4 - var4) / var3;
+			var0.field1460[1] = (var4 + var4 + var4 - var9 - var9 - var10) * var8;
+			var0.field1460[2] = var6;
+			var0.field1460[3] = var2[0];
 		}
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1442239396"
+		descriptor = "(ILbt;ZI)I",
+		garbageValue = "294870217"
 	)
-	public static void method2143() {
-		SpotAnimationDefinition.SpotAnimationDefinition_cached.clear();
-		SpotAnimationDefinition.SpotAnimationDefinition_cachedModels.clear();
+	static int method2238(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? TextureProvider.scriptDotWidget : MenuAction.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETINVOBJECT) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.itemId;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETINVCOUNT) {
+			if (var3.itemId != -1) {
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.itemQuantity;
+			} else {
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
+			}
+
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETID) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.childIndex;
+			return 1;
+		} else if (var0 == 1707) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.method5790() ? 1 : 0;
+			return 1;
+		} else if (var0 == 1708) {
+			return class118.method2875(var3);
+		} else {
+			return var0 == 1709 ? class347.method6510(var3) : 2;
+		}
 	}
 
-	@ObfuscatedName("kw")
-	static final void method2142(double var0) {
-		Rasterizer3D.Rasterizer3D_setBrightness(var0);
-		((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).setBrightness(var0);
-		VerticalAlignment.method3338();
-		SecureRandomFuture.clientPreferences.brightness = var0;
-		class127.savePreferences();
-	}
-
-	@ObfuscatedName("lx")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZI)Ljava/lang/String;",
-		garbageValue = "-2059094026"
+		descriptor = "(ILbt;ZS)I",
+		garbageValue = "256"
 	)
-	static String method2146(String var0, boolean var1) {
-		String var2 = var1 ? "https://" : "http://";
-		if (Client.gameBuild == 1) {
-			var0 = var0 + "-wtrc";
-		} else if (Client.gameBuild == 2) {
-			var0 = var0 + "-wtqa";
-		} else if (Client.gameBuild == 3) {
-			var0 = var0 + "-wtwip";
-		} else if (Client.gameBuild == 5) {
-			var0 = var0 + "-wti";
-		} else if (Client.gameBuild == 4) {
-			var0 = "local";
-		}
+	static int method2239(int var0, Script var1, boolean var2) {
+		if (var0 == ScriptOpcodes.GETWINDOWMODE) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = SceneTilePaint.getWindowedMode();
+			return 1;
+		} else {
+			int var3;
+			if (var0 == ScriptOpcodes.SETWINDOWMODE) {
+				var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+				if (var3 == 1 || var3 == 2) {
+					DecorativeObject.setWindowedMode(var3);
+				}
 
-		String var3 = "";
-		if (class1.field3 != null) {
-			var3 = "/p=" + class1.field3;
-		}
+				return 1;
+			} else if (var0 == ScriptOpcodes.GETDEFAULTWINDOWMODE) {
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Player.clientPreferences.method2411();
+				return 1;
+			} else if (var0 != ScriptOpcodes.SETDEFAULTWINDOWMODE) {
+				if (var0 == 5310) {
+					--Interpreter.Interpreter_intStackSize;
+					return 1;
+				} else {
+					return 2;
+				}
+			} else {
+				var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+				if (var3 == 1 || var3 == 2) {
+					Player.clientPreferences.method2410(var3);
+				}
 
-		String var4 = "runescape.com";
-		return var2 + var0 + "." + var4 + "/l=" + ScriptFrame.clientLanguage + "/a=" + FriendLoginUpdate.field4096 + var3 + "/";
+				return 1;
+			}
+		}
 	}
 }

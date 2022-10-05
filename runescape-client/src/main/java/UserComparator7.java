@@ -1,35 +1,17 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cm")
+@ObfuscatedName("du")
 @Implements("UserComparator7")
 public class UserComparator7 extends AbstractUserComparator {
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		longValue = 1289611995135137433L
-	)
-	public static long field1319;
-	@ObfuscatedName("hx")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "[Lpl;"
+		descriptor = "Lqu;"
 	)
-	@Export("mapMarkerSprites")
-	static SpritePixels[] mapMarkerSprites;
-	@ObfuscatedName("iq")
-	@ObfuscatedGetter(
-		intValue = -427505933
-	)
-	@Export("cameraX")
-	static int cameraX;
-	@ObfuscatedName("in")
-	@ObfuscatedGetter(
-		intValue = 1941000053
-	)
-	@Export("cameraPitch")
-	static int cameraPitch;
+	@Export("options_buttons_2Sprite")
+	static IndexedSprite options_buttons_2Sprite;
 	@ObfuscatedName("c")
 	@Export("reversed")
 	final boolean reversed;
@@ -40,8 +22,8 @@ public class UserComparator7 extends AbstractUserComparator {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lmp;Lmp;I)I",
-		garbageValue = "742897399"
+		descriptor = "(Lnr;Lnr;B)I",
+		garbageValue = "-114"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -56,17 +38,41 @@ public class UserComparator7 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("hj")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1366394197"
+		descriptor = "(ILnj;Llb;I)V",
+		garbageValue = "-1549871621"
 	)
-	static final int method2518() {
-		if (SecureRandomFuture.clientPreferences.roofsHidden) {
-			return class20.Client_plane;
-		} else {
-			int var0 = FaceNormal.getTileHeight(cameraX, UserComparator10.cameraZ, class20.Client_plane);
-			return var0 - AbstractByteArrayCopier.cameraY < 800 && (Tiles.Tiles_renderFlags[class20.Client_plane][cameraX >> 7][UserComparator10.cameraZ >> 7] & 4) != 0 ? class20.Client_plane : 3;
+	static void method2750(int var0, ArchiveDisk var1, Archive var2) {
+		ArchiveDiskAction var3 = new ArchiveDiskAction();
+		var3.type = 1;
+		var3.key = (long)var0;
+		var3.archiveDisk = var1;
+		var3.archive = var2;
+		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
+			ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.addFirst(var3);
 		}
+
+		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_lock) {
+			if (ArchiveDiskActionHandler.field4018 == 0) {
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread = new Thread(new ArchiveDiskActionHandler());
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread.setDaemon(true);
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread.start();
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread.setPriority(5);
+			}
+
+			ArchiveDiskActionHandler.field4018 = 600;
+		}
+	}
+
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "-48"
+	)
+	static final void method2743() {
+		Object var10000 = null;
+		String var0 = "You can't add yourself to your own ignore list";
+		class65.addGameMessage(30, "", var0);
 	}
 }

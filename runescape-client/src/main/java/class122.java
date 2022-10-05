@@ -1,55 +1,21 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dd")
-public enum class122 implements MouseWheel {
+@ObfuscatedName("dn")
+public class class122 {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Ldd;"
-	)
-	field1476(1, 0),
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Ldd;"
-	)
-	field1471(0, 1),
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Ldd;"
-	)
-	field1473(2, 2),
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Ldd;"
-	)
-	field1474(3, 3);
-
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		intValue = -1980268263
-	)
-	public final int field1475;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -83043003
-	)
-	@Export("id")
-	final int id;
-
-	class122(int var3, int var4) {
-		this.field1475 = var3;
-		this.id = var4;
+	static boolean method2927(long var0) {
+		return class17.method271(var0) == 2;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("fk")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "48"
+		descriptor = "(Llb;Ljava/lang/String;I)V",
+		garbageValue = "1453241977"
 	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.id;
+	static void method2926(Archive var0, String var1) {
+		ArchiveLoader var2 = new ArchiveLoader(var0, var1);
+		Client.archiveLoaders.add(var2);
+		Client.field613 += var2.groupCount;
 	}
 }
