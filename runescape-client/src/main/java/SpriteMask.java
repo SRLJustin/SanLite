@@ -4,28 +4,25 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jr")
+@ObfuscatedName("ko")
 @Implements("SpriteMask")
 public class SpriteMask extends DualNode {
-	@ObfuscatedName("s")
-	@Export("PcmPlayer_stereo")
-	public static boolean PcmPlayer_stereo;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1287182683
+		intValue = 1799242845
 	)
 	@Export("width")
 	public final int width;
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = 511314941
+		intValue = -1101967101
 	)
 	@Export("height")
 	public final int height;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@Export("xWidths")
 	public final int[] xWidths;
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@Export("xStarts")
 	public final int[] xStarts;
 
@@ -39,7 +36,7 @@ public class SpriteMask extends DualNode {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(III)Z",
-		garbageValue = "-520538241"
+		garbageValue = "-763774410"
 	)
 	@Export("contains")
 	public boolean contains(int var1, int var2) {
@@ -51,5 +48,35 @@ public class SpriteMask extends DualNode {
 		}
 
 		return false;
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(Llv;Ljava/lang/String;Ljava/lang/String;I)[Lqu;",
+		garbageValue = "335525646"
+	)
+	public static IndexedSprite[] method5693(AbstractArchive var0, String var1, String var2) {
+		int var3 = var0.getGroupId(var1);
+		int var4 = var0.getFileId(var3, var2);
+		return class390.method7253(var0, var3, var4);
+	}
+
+	@ObfuscatedName("mr")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-2028247569"
+	)
+	static void method5688() {
+		if (Varcs.field1323 != null) {
+			Client.field782 = Client.cycle;
+			Varcs.field1323.method6207();
+
+			for (int var0 = 0; var0 < Client.players.length; ++var0) {
+				if (Client.players[var0] != null) {
+					Varcs.field1323.method6201(class128.baseX * 64 + (Client.players[var0].x >> 7), WorldMapData_1.baseY * 64 + (Client.players[var0].y >> 7));
+				}
+			}
+		}
+
 	}
 }

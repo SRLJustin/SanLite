@@ -3,49 +3,50 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ho")
+@ObfuscatedName("hq")
 @Implements("WorldMapIcon_1")
 public class WorldMapIcon_1 extends AbstractWorldMapIcon {
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1692545293
+		intValue = 655769695
 	)
 	@Export("objectDefId")
 	final int objectDefId;
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lhw;"
+		descriptor = "Lhy;"
 	)
 	@Export("region")
 	final WorldMapRegion region;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1380082375
+		intValue = -677113903
 	)
 	@Export("element")
 	int element;
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lhm;"
+		descriptor = "Lik;"
 	)
 	@Export("label")
 	WorldMapLabel label;
-	@ObfuscatedName("t")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -1584169743
+		intValue = 1508318587
 	)
 	@Export("subWidth")
 	int subWidth;
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -853528965
+		intValue = 1513759171
 	)
 	@Export("subHeight")
 	int subHeight;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lju;Lju;ILhw;)V"
+		descriptor = "(Lkz;Lkz;ILhy;)V"
 	)
 	WorldMapIcon_1(Coord var1, Coord var2, int var3, WorldMapRegion var4) {
 		super(var1, var2);
@@ -57,13 +58,13 @@ public class WorldMapIcon_1 extends AbstractWorldMapIcon {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1162816642"
+		garbageValue = "-740691611"
 	)
 	@Export("init")
 	void init() {
-		this.element = class148.getObjectDefinition(this.objectDefId).transform().mapIconId;
-		this.label = this.region.createMapLabel(class78.WorldMapElement_get(this.element));
-		WorldMapElement var1 = class78.WorldMapElement_get(this.getElement());
+		this.element = PlayerComposition.getObjectDefinition(this.objectDefId).transform().mapIconId;
+		this.label = this.region.createMapLabel(class139.WorldMapElement_get(this.element));
+		WorldMapElement var1 = class139.WorldMapElement_get(this.getElement());
 		SpritePixels var2 = var1.getSpriteBool(false);
 		if (var2 != null) {
 			this.subWidth = var2.subWidth;
@@ -75,64 +76,82 @@ public class WorldMapIcon_1 extends AbstractWorldMapIcon {
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1255702565"
+		garbageValue = "922846736"
 	)
 	@Export("getElement")
 	public int getElement() {
 		return this.element;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lhm;",
-		garbageValue = "-577826789"
+		descriptor = "(B)Lik;",
+		garbageValue = "-114"
 	)
 	@Export("getLabel")
 	WorldMapLabel getLabel() {
 		return this.label;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(S)I",
-		garbageValue = "-21504"
+		descriptor = "(I)I",
+		garbageValue = "1340019060"
 	)
 	@Export("getSubWidth")
 	int getSubWidth() {
 		return this.subWidth;
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1225820190"
+		garbageValue = "2085066872"
 	)
 	@Export("getSubHeight")
 	int getSubHeight() {
 		return this.subHeight;
 	}
 
-	@ObfuscatedName("iy")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lbb;III)V",
-		garbageValue = "-77644822"
+		descriptor = "(ILbt;ZI)I",
+		garbageValue = "-1515190918"
 	)
-	static final void method4385(MenuAction var0, int var1, int var2) {
-		Decimator.menuAction(var0.param0, var0.param1, var0.opcode, var0.identifier, var0.action, var0.action, var1, var2);
-	}
+	static int method4702(int var0, Script var1, boolean var2) {
+		int var3;
+		if (var0 == ScriptOpcodes.CAM_FORCEANGLE) {
+			Interpreter.Interpreter_intStackSize -= 2;
+			var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+			int var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+			if (!Client.isCameraLocked) {
+				Client.camAngleX = var3;
+				Client.camAngleY = var4;
+			}
 
-	@ObfuscatedName("lq")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1016164207"
-	)
-	@Export("Clan_leaveChat")
-	static final void Clan_leaveChat() {
-		PacketBufferNode var0 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2857, Client.packetWriter.isaacCipher);
-		var0.packetBuffer.writeByte(0);
-		Client.packetWriter.addNode(var0);
+			return 1;
+		} else if (var0 == ScriptOpcodes.CAM_GETANGLE_XA) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.camAngleX;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CAM_GETANGLE_YA) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.camAngleY;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CAM_SETFOLLOWHEIGHT) {
+			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+			if (var3 < 0) {
+				var3 = 0;
+			}
+
+			Client.camFollowHeight = var3;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CAM_GETFOLLOWHEIGHT) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.camFollowHeight;
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 }

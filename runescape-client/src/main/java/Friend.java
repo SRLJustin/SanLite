@@ -3,26 +3,21 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mw")
+@ObfuscatedName("ne")
 @Implements("Friend")
 public class Friend extends Buddy {
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(
-		descriptor = "Lej;"
-	)
-	static ClanSettings field4084;
 	@ObfuscatedName("c")
-	boolean field4085;
-	@ObfuscatedName("b")
-	boolean field4086;
+	boolean field4339;
+	@ObfuscatedName("p")
+	boolean field4340;
 
 	Friend() {
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lmw;B)I",
-		garbageValue = "-44"
+		descriptor = "(Lne;I)I",
+		garbageValue = "596588464"
 	)
 	@Export("compareToFriend")
 	int compareToFriend(Friend var1) {
@@ -34,23 +29,23 @@ public class Friend extends Buddy {
 			return -1;
 		} else if (var1.world != 0 && super.world == 0) {
 			return 1;
-		} else if (this.field4085 && !var1.field4085) {
+		} else if (this.field4339 && !var1.field4339) {
 			return -1;
-		} else if (!this.field4085 && var1.field4085) {
+		} else if (!this.field4339 && var1.field4339) {
 			return 1;
-		} else if (this.field4086 && !var1.field4086) {
+		} else if (this.field4340 && !var1.field4340) {
 			return -1;
-		} else if (!this.field4086 && var1.field4086) {
+		} else if (!this.field4340 && var1.field4340) {
 			return 1;
 		} else {
 			return super.world != 0 ? super.int2 - var1.int2 : var1.int2 - super.int2;
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;I)I",
-		garbageValue = "-1921032172"
+		descriptor = "(Lnc;I)I",
+		garbageValue = "-1401768476"
 	)
 	@Export("compareTo_user")
 	public int compareTo_user(Nameable var1) {
@@ -61,84 +56,55 @@ public class Friend extends Buddy {
 		return this.compareToFriend((Friend)var1);
 	}
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(B)Lns;",
-		garbageValue = "28"
-	)
-	public static class365 method6296() {
-		synchronized(class365.field4189) {
-			if (class365.field4185 == 0) {
-				return new class365();
-			} else {
-				class365.field4189[--class365.field4185].method6627();
-				return class365.field4189[class365.field4185];
-			}
-		}
-	}
-
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "337"
-	)
-	public static void method6294() {
-		if (MouseHandler.MouseHandler_instance != null) {
-			synchronized(MouseHandler.MouseHandler_instance) {
-				MouseHandler.MouseHandler_instance = null;
-			}
-		}
-
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "([BIII)I",
-		garbageValue = "-696884945"
-	)
-	public static int method6298(byte[] var0, int var1, int var2) {
-		int var3 = -1;
-
-		for (int var4 = var1; var4 < var2; ++var4) {
-			var3 = var3 >>> 8 ^ Buffer.crc32Table[(var3 ^ var0[var4]) & 255];
-		}
-
-		var3 = ~var3;
-		return var3;
-	}
-
-	@ObfuscatedName("it")
+	@ObfuscatedName("ii")
 	@ObfuscatedSignature(
 		descriptor = "(III)V",
-		garbageValue = "2055581970"
+		garbageValue = "-2137951637"
 	)
-	static final void method6288(int var0, int var1) {
-		if (Client.menuOptionsCount >= 2 || Client.isItemSelected != 0 || Client.isSpellSelected) {
-			if (Client.showMouseOverText) {
-				int var2 = UserComparator10.method2543();
-				String var3;
-				if (Client.isItemSelected == 1 && Client.menuOptionsCount < 2) {
-					var3 = "Use" + " " + Client.selectedItemName + " " + "->";
-				} else if (Client.isSpellSelected && Client.menuOptionsCount < 2) {
-					var3 = Client.selectedSpellActionName + " " + Client.selectedSpellName + " " + "->";
-				} else {
-					String var4;
-					if (var2 < 0) {
-						var4 = "";
-					} else if (Client.menuTargets[var2].length() > 0) {
-						var4 = Client.menuActions[var2] + " " + Client.menuTargets[var2];
-					} else {
-						var4 = Client.menuActions[var2];
+	@Export("updateItemPile")
+	static final void updateItemPile(int var0, int var1) {
+		NodeDeque var2 = Client.groundItems[Tiles.Client_plane][var0][var1];
+		if (var2 == null) {
+			MusicPatchNode.scene.removeGroundItemPile(Tiles.Client_plane, var0, var1);
+		} else {
+			long var3 = -99999999L;
+			TileItem var5 = null;
+
+			TileItem var6;
+			for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) {
+				ItemComposition var7 = UserComparator3.ItemDefinition_get(var6.id);
+				long var11 = (long)var7.price;
+				if (var7.isStackable == 1) {
+					var11 *= (long)(var6.quantity + 1);
+				}
+
+				if (var11 > var3) {
+					var3 = var11;
+					var5 = var6;
+				}
+			}
+
+			if (var5 == null) {
+				MusicPatchNode.scene.removeGroundItemPile(Tiles.Client_plane, var0, var1);
+			} else {
+				var2.addLast(var5);
+				TileItem var13 = null;
+				TileItem var8 = null;
+
+				for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) {
+					if (var6.id != var5.id) {
+						if (var13 == null) {
+							var13 = var6;
+						}
+
+						if (var13.id != var6.id && var8 == null) {
+							var8 = var6;
+						}
 					}
-
-					var3 = var4;
 				}
 
-				if (Client.menuOptionsCount > 2) {
-					var3 = var3 + UserComparator5.colorStartTag(16777215) + " " + '/' + " " + (Client.menuOptionsCount - 2) + " more options";
-				}
-
-				class136.fontBold12.drawRandomAlphaAndSpacing(var3, var0 + 4, var1 + 15, 16777215, 0, Client.cycle / 1000);
+				long var9 = class259.calculateTag(var0, var1, 3, false, 0);
+				MusicPatchNode.scene.newGroundItemPile(Tiles.Client_plane, var0, var1, class120.getTileHeight(var0 * 128 + 64, var1 * 128 + 64, Tiles.Client_plane), var5, var9, var13, var8);
 			}
 		}
 	}

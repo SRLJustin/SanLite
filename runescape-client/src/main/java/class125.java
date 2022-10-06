@@ -1,78 +1,79 @@
-import java.io.File;
+import java.awt.FontMetrics;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dw")
-public class class125 extends class126 {
-	@ObfuscatedName("b")
-	@Export("FileSystem_cacheDir")
-	static File FileSystem_cacheDir;
+@ObfuscatedName("dh")
+public enum class125 implements MouseWheel {
 	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "Ldh;"
+	)
+	field1542(1, 0),
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "Ldh;"
+	)
+	field1541(3, 1),
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Ldh;"
+	)
+	field1536(4, 2),
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "Ldh;"
+	)
+	field1539(0, 3),
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "Ldh;"
+	)
+	field1540(2, 4);
+
+	@ObfuscatedName("aq")
+	@Export("loginScreenFontMetrics")
+	static FontMetrics loginScreenFontMetrics;
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -542500645
+		intValue = -148064907
 	)
-	int field1493;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
+	public final int field1544;
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(
+		intValue = 715952817
 	)
-	final class129 this$0;
+	@Export("id")
+	final int id;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
-	)
-	class125(class129 var1) {
-		this.this$0 = var1;
-		this.field1493 = -1;
+	class125(int var3, int var4) {
+		this.field1544 = var3;
+		this.id = var4;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(B)I",
+		garbageValue = "1"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1493 = var1.readUnsignedShort();
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.id;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("gs")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(Lce;B)V",
+		garbageValue = "-82"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2862(this.field1493);
-	}
-
-	@ObfuscatedName("gi")
-	@ObfuscatedSignature(
-		descriptor = "(Lck;IIB)V",
-		garbageValue = "-63"
-	)
-	@Export("performPlayerAnimation")
-	static void performPlayerAnimation(Player var0, int var1, int var2) {
-		if (var0.sequence == var1 && var1 != -1) {
-			int var3 = UserComparator5.SequenceDefinition_get(var1).field2078;
-			if (var3 == 1) {
-				var0.sequenceFrame = 0;
-				var0.sequenceFrameCycle = 0;
-				var0.sequenceDelay = var2;
-				var0.field1126 = 0;
-			}
-
-			if (var3 == 2) {
-				var0.field1126 = 0;
-			}
-		} else if (var1 == -1 || var0.sequence == -1 || UserComparator5.SequenceDefinition_get(var1).field2092 >= UserComparator5.SequenceDefinition_get(var0.sequence).field2092) {
-			var0.sequence = var1;
-			var0.sequenceFrame = 0;
-			var0.sequenceFrameCycle = 0;
-			var0.sequenceDelay = var2;
-			var0.field1126 = 0;
-			var0.field1098 = var0.pathLength;
-		}
-
+	static final void method2968(Actor var0) {
+		int var1 = Math.max(1, var0.field1183 - Client.cycle);
+		int var2 = var0.field1192 * 128 + var0.field1131 * -360448000;
+		int var3 = var0.field1181 * 128 + var0.field1131 * -360448000;
+		var0.x += (var2 - var0.x) / var1;
+		var0.y += (var3 - var0.y) / var1;
+		var0.field1201 = 0;
+		var0.orientation = var0.field1185;
 	}
 }

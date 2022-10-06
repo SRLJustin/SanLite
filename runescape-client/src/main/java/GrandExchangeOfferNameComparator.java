@@ -4,13 +4,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ki")
+@ObfuscatedName("lf")
 @Implements("GrandExchangeOfferNameComparator")
 final class GrandExchangeOfferNameComparator implements Comparator {
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lkj;Lkj;I)I",
-		garbageValue = "-1633503560"
+		descriptor = "(Lla;Lla;I)I",
+		garbageValue = "206382241"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
@@ -25,12 +25,16 @@ final class GrandExchangeOfferNameComparator implements Comparator {
 		return this.compare_bridged((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("d")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "640641737"
+		descriptor = "(IB)I",
+		garbageValue = "-3"
 	)
-	public static int method5727(int var0) {
-		return class378.field4237[var0 & 16383];
+	public static int method6147(int var0) {
+		if (var0 > 0) {
+			return 1;
+		} else {
+			return var0 < 0 ? -1 : 0;
+		}
 	}
 }

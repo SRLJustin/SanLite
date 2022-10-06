@@ -4,101 +4,95 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hl")
+@ObfuscatedName("hd")
 @Implements("GameObject")
 public final class GameObject {
-	@ObfuscatedName("fk")
+	@ObfuscatedName("ix")
 	@ObfuscatedGetter(
-		intValue = -1234198713
+		intValue = 216493687
 	)
-	@Export("worldPort")
-	static int worldPort;
-	@ObfuscatedName("ma")
-	@ObfuscatedGetter(
-		intValue = -1786079239
-	)
-	@Export("menuWidth")
-	static int menuWidth;
+	@Export("selectedItemWidget")
+	static int selectedItemWidget;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1089622701
+		intValue = -524659345
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -465774691
+		intValue = -2019849325
 	)
 	@Export("height")
 	int height;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1923590497
+		intValue = 1901568163
 	)
 	@Export("centerX")
 	int centerX;
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 1996180969
-	)
-	@Export("orientation")
-	int orientation;
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		intValue = 1051509529
+		intValue = 512475551
 	)
 	@Export("centerY")
 	int centerY;
-	@ObfuscatedName("s")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lgg;"
 	)
 	@Export("renderable")
 	public Renderable renderable;
-	@ObfuscatedName("j")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 1723330507
+		intValue = -1736260079
+	)
+	@Export("orientation")
+	int orientation;
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(
+		intValue = 155227051
 	)
 	@Export("startX")
 	int startX;
-	@ObfuscatedName("w")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -621074209
+		intValue = 2081819735
 	)
 	@Export("endX")
 	int endX;
-	@ObfuscatedName("n")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -178409117
+		intValue = -377885443
 	)
 	@Export("startY")
 	int startY;
-	@ObfuscatedName("r")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = 144998379
+		intValue = -1283564619
 	)
 	@Export("endY")
 	int endY;
-	@ObfuscatedName("o")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 1469340071
+		intValue = 942214617
 	)
-	int field2548;
+	int field2679;
 	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 800381971
+		intValue = 1995571253
 	)
 	@Export("lastDrawn")
 	int lastDrawn;
-	@ObfuscatedName("d")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		longValue = -3336818157473405963L
+		longValue = 7185604237786058919L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("h")
+	@ObfuscatedName("t")
 	@ObfuscatedGetter(
-		intValue = -1622989155
+		intValue = 1855881837
 	)
 	@Export("flags")
 	int flags;
@@ -108,38 +102,12 @@ public final class GameObject {
 		this.flags = 0;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "210014678"
+		descriptor = "(IB)Z",
+		garbageValue = "0"
 	)
-	static int method4341(int var0, Script var1, boolean var2) {
-		if (var0 != 6700 && var0 != 6702 && var0 != 6704 && var0 != 6706 && var0 != 6708) {
-			if (var0 != 6701 && var0 != 6703 && var0 != 6705 && var0 != 6707 && var0 != 6709) {
-				if (var0 == 6750) {
-					Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-					return 1;
-				} else if (var0 != 6751 && var0 != 6752 && var0 != 6753) {
-					if (var0 == 6754) {
-						int var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-						NPCComposition var4 = WorldMapLabelSize.getNpcDefinition(var3);
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
-						return 1;
-					} else {
-						return 2;
-					}
-				} else {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -1;
-					return 1;
-				}
-			} else {
-				--IsaacCipher.Interpreter_intStackSize;
-				return 1;
-			}
-		} else {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			--class13.Interpreter_stringStackSize;
-			return 1;
-		}
+	public static boolean method4666(int var0) {
+		return var0 >= 0 && var0 < 112 ? KeyHandler.field134[var0] : false;
 	}
 }

@@ -1,44 +1,31 @@
-import java.awt.image.BufferedImage;
-import java.awt.image.PixelGrabber;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import javax.imageio.ImageIO;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-import net.runelite.mapping.*;
-
-@ObfuscatedName("cd")
+@ObfuscatedName("cn")
 @Implements("MouseRecorder")
 public class MouseRecorder implements Runnable {
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "[[Ljm;"
-	)
-	@Export("Widget_interfaceComponents")
-	public static Widget[][] Widget_interfaceComponents;
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "Lme;"
-	)
-	static Bounds field1044;
 	@ObfuscatedName("c")
 	@Export("isRunning")
 	boolean isRunning;
-	@ObfuscatedName("b")
+	@ObfuscatedName("p")
 	@Export("lock")
 	Object lock;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1539237497
+		intValue = 1716416927
 	)
 	@Export("index")
 	int index;
-	@ObfuscatedName("m")
+	@ObfuscatedName("n")
 	@Export("xs")
 	int[] xs;
-	@ObfuscatedName("t")
+	@ObfuscatedName("k")
 	@Export("ys")
 	int[] ys;
-	@ObfuscatedName("s")
+	@ObfuscatedName("w")
 	@Export("millis")
 	long[] millis;
 
@@ -52,7 +39,7 @@ public class MouseRecorder implements Runnable {
 	}
 
 	public void run() {
-		for (; this.isRunning; Bounds.method6608(50L)) {
+		for (; this.isRunning; class28.method412(50L)) {
 			synchronized(this.lock) {
 				if (this.index < 500) {
 					this.xs[this.index] = MouseHandler.MouseHandler_x;
@@ -67,53 +54,105 @@ public class MouseRecorder implements Runnable {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "([BB)Lpl;",
-		garbageValue = "-5"
+		descriptor = "(Lqq;Ljava/lang/String;I)I",
+		garbageValue = "-1672072918"
 	)
-	public static final SpritePixels method2161(byte[] var0) {
-		BufferedImage var1 = null;
+	public static int method2253(Buffer var0, String var1) {
+		int var2 = var0.offset;
+		int var4 = var1.length();
+		byte[] var5 = new byte[var4];
 
-		try {
-			var1 = ImageIO.read(new ByteArrayInputStream(var0));
-			int var2 = var1.getWidth();
-			int var3 = var1.getHeight();
-			int[] var4 = new int[var2 * var3];
-			PixelGrabber var5 = new PixelGrabber(var1, 0, 0, var2, var3, var4, 0, var2);
-			var5.grabPixels();
-			return new SpritePixels(var4, var2, var3);
-		} catch (IOException var7) {
-		} catch (InterruptedException var8) {
-		}
-
-		return new SpritePixels(0, 0);
-	}
-
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "-41"
-	)
-	static int method2160(int var0, int var1) {
-		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var2 == null) {
-			return 0;
-		} else if (var1 == -1) {
-			return 0;
-		} else {
-			int var3 = 0;
-
-			for (int var4 = 0; var4 < var2.quantities.length; ++var4) {
-				if (var2.ids[var4] == var1) {
-					var3 += var2.quantities[var4];
-				}
+		for (int var6 = 0; var6 < var4; ++var6) {
+			char var7 = var1.charAt(var6);
+			if (var7 > 0 && var7 < 128 || var7 >= 160 && var7 <= 255) {
+				var5[var6] = (byte)var7;
+			} else if (var7 == 8364) {
+				var5[var6] = -128;
+			} else if (var7 == 8218) {
+				var5[var6] = -126;
+			} else if (var7 == 402) {
+				var5[var6] = -125;
+			} else if (var7 == 8222) {
+				var5[var6] = -124;
+			} else if (var7 == 8230) {
+				var5[var6] = -123;
+			} else if (var7 == 8224) {
+				var5[var6] = -122;
+			} else if (var7 == 8225) {
+				var5[var6] = -121;
+			} else if (var7 == 710) {
+				var5[var6] = -120;
+			} else if (var7 == 8240) {
+				var5[var6] = -119;
+			} else if (var7 == 352) {
+				var5[var6] = -118;
+			} else if (var7 == 8249) {
+				var5[var6] = -117;
+			} else if (var7 == 338) {
+				var5[var6] = -116;
+			} else if (var7 == 381) {
+				var5[var6] = -114;
+			} else if (var7 == 8216) {
+				var5[var6] = -111;
+			} else if (var7 == 8217) {
+				var5[var6] = -110;
+			} else if (var7 == 8220) {
+				var5[var6] = -109;
+			} else if (var7 == 8221) {
+				var5[var6] = -108;
+			} else if (var7 == 8226) {
+				var5[var6] = -107;
+			} else if (var7 == 8211) {
+				var5[var6] = -106;
+			} else if (var7 == 8212) {
+				var5[var6] = -105;
+			} else if (var7 == 732) {
+				var5[var6] = -104;
+			} else if (var7 == 8482) {
+				var5[var6] = -103;
+			} else if (var7 == 353) {
+				var5[var6] = -102;
+			} else if (var7 == 8250) {
+				var5[var6] = -101;
+			} else if (var7 == 339) {
+				var5[var6] = -100;
+			} else if (var7 == 382) {
+				var5[var6] = -98;
+			} else if (var7 == 376) {
+				var5[var6] = -97;
+			} else {
+				var5[var6] = 63;
 			}
-
-			return var3;
 		}
+
+		var0.writeSmartByteShort(var5.length);
+		var0.offset += class283.huffman.compress(var5, 0, var5.length, var0.array, var0.offset);
+		return var0.offset - var2;
 	}
 
-	@ObfuscatedName("s")
-	public static int method2159(long var0) {
-		return (int)(var0 >>> 0 & 127L);
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(III)I",
+		garbageValue = "-227157816"
+	)
+	static final int method2252(int var0, int var1) {
+		int var2 = WorldMapElement.method3556(var0 + 45365, var1 + 91923, 4) - 128 + (WorldMapElement.method3556(var0 + 10294, var1 + 37821, 2) - 128 >> 1) + (WorldMapElement.method3556(var0, var1, 1) - 128 >> 2);
+		var2 = (int)(0.3D * (double)var2) + 35;
+		if (var2 < 10) {
+			var2 = 10;
+		} else if (var2 > 60) {
+			var2 = 60;
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-565458904"
+	)
+	public static void method2247() {
+		ItemComposition.ItemDefinition_cachedSprites.clear();
 	}
 }
