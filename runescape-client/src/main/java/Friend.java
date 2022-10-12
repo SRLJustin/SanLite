@@ -3,26 +3,21 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mw")
+@ObfuscatedName("np")
 @Implements("Friend")
 public class Friend extends Buddy {
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(
-		descriptor = "Lej;"
-	)
-	static ClanSettings field4084;
-	@ObfuscatedName("c")
-	boolean field4085;
-	@ObfuscatedName("b")
-	boolean field4086;
+	@ObfuscatedName("a")
+	boolean field4472;
+	@ObfuscatedName("f")
+	boolean field4473;
 
 	Friend() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(Lmw;B)I",
-		garbageValue = "-44"
+		descriptor = "(Lnp;I)I",
+		garbageValue = "-1267649444"
 	)
 	@Export("compareToFriend")
 	int compareToFriend(Friend var1) {
@@ -34,23 +29,23 @@ public class Friend extends Buddy {
 			return -1;
 		} else if (var1.world != 0 && super.world == 0) {
 			return 1;
-		} else if (this.field4085 && !var1.field4085) {
+		} else if (this.field4472 && !var1.field4472) {
 			return -1;
-		} else if (!this.field4085 && var1.field4085) {
+		} else if (!this.field4472 && var1.field4472) {
 			return 1;
-		} else if (this.field4086 && !var1.field4086) {
+		} else if (this.field4473 && !var1.field4473) {
 			return -1;
-		} else if (!this.field4086 && var1.field4086) {
+		} else if (!this.field4473 && var1.field4473) {
 			return 1;
 		} else {
 			return super.world != 0 ? super.int2 - var1.int2 : var1.int2 - super.int2;
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;I)I",
-		garbageValue = "-1921032172"
+		descriptor = "(Loj;I)I",
+		garbageValue = "-1675254672"
 	)
 	@Export("compareTo_user")
 	public int compareTo_user(Nameable var1) {
@@ -61,85 +56,57 @@ public class Friend extends Buddy {
 		return this.compareToFriend((Friend)var1);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lns;",
-		garbageValue = "28"
+		descriptor = "(Llg;I)V",
+		garbageValue = "-1139134966"
 	)
-	public static class365 method6296() {
-		synchronized(class365.field4189) {
-			if (class365.field4185 == 0) {
-				return new class365();
+	public static void method7303(AbstractArchive var0) {
+		class458.field4848 = var0;
+	}
+
+	@ObfuscatedName("jc")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIII)V",
+		garbageValue = "34320253"
+	)
+	static final void method7293(int var0, int var1, int var2, int var3, int var4, int var5) {
+		int var6 = var2 - var0;
+		int var7 = var3 - var1;
+		int var8 = var6 >= 0 ? var6 : -var6;
+		int var9 = var7 >= 0 ? var7 : -var7;
+		int var10 = var8;
+		if (var8 < var9) {
+			var10 = var9;
+		}
+
+		if (var10 != 0) {
+			int var11 = (var6 << 16) / var10;
+			int var12 = (var7 << 16) / var10;
+			if (var12 <= var11) {
+				var11 = -var11;
 			} else {
-				class365.field4189[--class365.field4185].method6627();
-				return class365.field4189[class365.field4185];
+				var12 = -var12;
 			}
-		}
-	}
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "337"
-	)
-	public static void method6294() {
-		if (MouseHandler.MouseHandler_instance != null) {
-			synchronized(MouseHandler.MouseHandler_instance) {
-				MouseHandler.MouseHandler_instance = null;
-			}
-		}
-
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "([BIII)I",
-		garbageValue = "-696884945"
-	)
-	public static int method6298(byte[] var0, int var1, int var2) {
-		int var3 = -1;
-
-		for (int var4 = var1; var4 < var2; ++var4) {
-			var3 = var3 >>> 8 ^ Buffer.crc32Table[(var3 ^ var0[var4]) & 255];
-		}
-
-		var3 = ~var3;
-		return var3;
-	}
-
-	@ObfuscatedName("it")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "2055581970"
-	)
-	static final void method6288(int var0, int var1) {
-		if (Client.menuOptionsCount >= 2 || Client.isItemSelected != 0 || Client.isSpellSelected) {
-			if (Client.showMouseOverText) {
-				int var2 = UserComparator10.method2543();
-				String var3;
-				if (Client.isItemSelected == 1 && Client.menuOptionsCount < 2) {
-					var3 = "Use" + " " + Client.selectedItemName + " " + "->";
-				} else if (Client.isSpellSelected && Client.menuOptionsCount < 2) {
-					var3 = Client.selectedSpellActionName + " " + Client.selectedSpellName + " " + "->";
-				} else {
-					String var4;
-					if (var2 < 0) {
-						var4 = "";
-					} else if (Client.menuTargets[var2].length() > 0) {
-						var4 = Client.menuActions[var2] + " " + Client.menuTargets[var2];
-					} else {
-						var4 = Client.menuActions[var2];
-					}
-
-					var3 = var4;
-				}
-
-				if (Client.menuOptionsCount > 2) {
-					var3 = var3 + UserComparator5.colorStartTag(16777215) + " " + '/' + " " + (Client.menuOptionsCount - 2) + " more options";
-				}
-
-				class136.fontBold12.drawRandomAlphaAndSpacing(var3, var0 + 4, var1 + 15, 16777215, 0, Client.cycle / 1000);
-			}
+			int var13 = var5 * var12 >> 17;
+			int var14 = var5 * var12 + 1 >> 17;
+			int var15 = var5 * var11 >> 17;
+			int var16 = var5 * var11 + 1 >> 17;
+			var0 -= Rasterizer2D.Rasterizer2D_xClipStart;
+			var1 -= Rasterizer2D.Rasterizer2D_yClipStart;
+			int var17 = var0 + var13;
+			int var18 = var0 - var14;
+			int var19 = var0 + var6 - var14;
+			int var20 = var0 + var6 + var13;
+			int var21 = var15 + var1;
+			int var22 = var1 - var16;
+			int var23 = var7 + var1 - var16;
+			int var24 = var15 + var7 + var1;
+			Rasterizer3D.method4233(var17, var18, var19);
+			Rasterizer3D.method4220(var21, var22, var23, var17, var18, var19, var4);
+			Rasterizer3D.method4233(var17, var19, var20);
+			Rasterizer3D.method4220(var21, var23, var24, var17, var19, var20, var4);
 		}
 	}
 }

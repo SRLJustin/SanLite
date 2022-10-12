@@ -6,28 +6,26 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ip")
+@ObfuscatedName("iw")
 @Implements("WorldMapAreaData")
 public class WorldMapAreaData extends WorldMapArea {
-	@ObfuscatedName("fh")
-	static String field2772;
-	@ObfuscatedName("d")
+	@ObfuscatedName("p")
 	@Export("worldMapData0Set")
 	HashSet worldMapData0Set;
-	@ObfuscatedName("h")
+	@ObfuscatedName("b")
 	@Export("worldMapData1Set")
 	HashSet worldMapData1Set;
-	@ObfuscatedName("g")
+	@ObfuscatedName("o")
 	@Export("iconList")
 	List iconList;
 
 	WorldMapAreaData() {
 	}
 
-	@ObfuscatedName("bo")
+	@ObfuscatedName("ci")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;Lpi;IZI)V",
-		garbageValue = "-1001525208"
+		descriptor = "(Lqr;Lqr;IZB)V",
+		garbageValue = "0"
 	)
 	@Export("init")
 	void init(Buffer var1, Buffer var2, int var3, boolean var4) {
@@ -66,10 +64,10 @@ public class WorldMapAreaData extends WorldMapArea {
 		this.initIconsList(var2, var4);
 	}
 
-	@ObfuscatedName("bf")
+	@ObfuscatedName("cq")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;ZB)V",
-		garbageValue = "16"
+		descriptor = "(Lqr;ZB)V",
+		garbageValue = "99"
 	)
 	@Export("initIconsList")
 	void initIconsList(Buffer var1, boolean var2) {
@@ -77,7 +75,7 @@ public class WorldMapAreaData extends WorldMapArea {
 		int var3 = var1.readUnsignedShort();
 
 		for (int var4 = 0; var4 < var3; ++var4) {
-			int var5 = var1.method7400();
+			int var5 = var1.method8422();
 			Coord var6 = new Coord(var1.readInt());
 			boolean var7 = var1.readUnsignedByte() == 1;
 			if (var2 || !var7) {
@@ -89,10 +87,57 @@ public class WorldMapAreaData extends WorldMapArea {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lko;",
-		garbageValue = "1226375978"
+		descriptor = "(IIB)I",
+		garbageValue = "-27"
 	)
-	public static StudioGame[] method4894() {
-		return new StudioGame[]{StudioGame.oldscape, StudioGame.stellardawn, StudioGame.game4, StudioGame.game5, StudioGame.runescape, StudioGame.game3};
+	static int method5266(int var0, int var1) {
+		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var2 == null) {
+			return 0;
+		} else if (var1 == -1) {
+			return 0;
+		} else {
+			int var3 = 0;
+
+			for (int var4 = 0; var4 < var2.quantities.length; ++var4) {
+				if (var2.ids[var4] == var1) {
+					var3 += var2.quantities[var4];
+				}
+			}
+
+			return var3;
+		}
+	}
+
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "-55640084"
+	)
+	public static void method5265(int var0) {
+		if (var0 != -1) {
+			if (MusicPatchPcmStream.Widget_loadedInterfaces[var0]) {
+				UserComparator8.Widget_archive.clearFilesGroup(var0);
+				if (Widget.Widget_interfaceComponents[var0] != null) {
+					boolean var1 = true;
+
+					for (int var2 = 0; var2 < Widget.Widget_interfaceComponents[var0].length; ++var2) {
+						if (Widget.Widget_interfaceComponents[var0][var2] != null) {
+							if (Widget.Widget_interfaceComponents[var0][var2].type != 2) {
+								Widget.Widget_interfaceComponents[var0][var2] = null;
+							} else {
+								var1 = false;
+							}
+						}
+					}
+
+					if (var1) {
+						Widget.Widget_interfaceComponents[var0] = null;
+					}
+
+					MusicPatchPcmStream.Widget_loadedInterfaces[var0] = false;
+				}
+			}
+		}
 	}
 }

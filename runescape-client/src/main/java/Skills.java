@@ -3,13 +3,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ji")
+@ObfuscatedName("li")
 @Implements("Skills")
 public class Skills {
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@Export("Skills_enabled")
 	public static final boolean[] Skills_enabled;
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@Export("Skills_experienceTable")
 	public static int[] Skills_experienceTable;
 
@@ -27,31 +27,16 @@ public class Skills {
 
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;I)I",
-		garbageValue = "-2099525491"
+		descriptor = "(B)V",
+		garbageValue = "74"
 	)
-	@Export("hashString")
-	public static int hashString(CharSequence var0) {
-		int var1 = var0.length();
-		int var2 = 0;
-
-		for (int var3 = 0; var3 < var1; ++var3) {
-			var2 = (var2 << 5) - var2 + class372.charToByteCp1252(var0.charAt(var3));
-		}
-
-		return var2;
-	}
-
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "708045213"
-	)
-	static final void method5487() {
-		Object var10000 = null;
-		String var0 = "You can't add yourself to your own ignore list";
-		class194.addGameMessage(30, "", var0);
+	public static void method6245() {
+		ByteArrayPool.field4393.clear();
+		ByteArrayPool.field4393.add(100);
+		ByteArrayPool.field4393.add(5000);
+		ByteArrayPool.field4393.add(10000);
+		ByteArrayPool.field4393.add(30000);
 	}
 }

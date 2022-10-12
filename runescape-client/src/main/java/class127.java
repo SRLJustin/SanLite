@@ -1,86 +1,35 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@ObfuscatedName("di")
-public class class127 extends class126 {
-	@ObfuscatedName("sd")
-	@ObfuscatedGetter(
-		intValue = -1317167519
-	)
-	static int field1498;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = -646146065
-	)
-	int field1503;
-	@ObfuscatedName("b")
-	boolean field1499;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
-	)
-	final class129 this$0;
+@ObfuscatedName("dz")
+public class class127 implements class119 {
+	@ObfuscatedName("bc")
+	static String field1534;
 
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "(Lorg/json/JSONObject;Ljava/lang/String;I)[F",
+		garbageValue = "1241721335"
 	)
-	class127(class129 var1) {
-		this.this$0 = var1;
-		this.field1503 = -1;
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
-	)
-	void vmethod3029(Buffer var1) {
-		this.field1503 = var1.readUnsignedShort();
-		this.field1499 = var1.readUnsignedByte() == 1;
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
-	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2857(this.field1503, this.field1499);
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-39935659"
-	)
-	static void method2770() {
-		WorldMapRegion.WorldMapRegion_cachedSprites.clear();
-	}
-
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "506416860"
-	)
-	@Export("savePreferences")
-	static void savePreferences() {
-		AccessFile var0 = null;
+	static float[] method2919(JSONObject var0, String var1) throws JSONException {
+		float[] var2 = new float[4];
 
 		try {
-			var0 = class231.getPreferencesFile("", class338.field4054.name, true);
-			Buffer var1 = SecureRandomFuture.clientPreferences.toBuffer();
-			var0.write(var1.array, 0, var1.offset);
-		} catch (Exception var3) {
+			JSONArray var3 = var0.getJSONArray(var1);
+			var2[0] = (float)var3.optDouble(0, 0.0D);
+			var2[1] = (float)var3.optDouble(1, 0.0D);
+			var2[2] = (float)var3.optDouble(2, 1.0D);
+			var2[3] = (float)var3.optDouble(3, 1.0D);
+		} catch (JSONException var4) {
+			var2[0] = 0.0F;
+			var2[1] = 0.0F;
+			var2[2] = 1.0F;
+			var2[3] = 1.0F;
 		}
 
-		try {
-			if (var0 != null) {
-				var0.closeSync(true);
-			}
-		} catch (Exception var2) {
-		}
-
+		return var2;
 	}
 }

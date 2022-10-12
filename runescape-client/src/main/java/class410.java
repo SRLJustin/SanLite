@@ -1,62 +1,67 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oi")
-final class class410 implements class405 {
+@ObfuscatedName("op")
+public enum class410 implements class342 {
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	field4587(3, 1),
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	field4585(0, 2),
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Ljv;"
+		descriptor = "Lop;"
 	)
-	@Export("huffman")
-	public static Huffman huffman;
-
-	@ObfuscatedName("c")
+	field4588(1, 3),
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Lpi;I)V",
-		garbageValue = "246575309"
+		descriptor = "Lop;"
 	)
-	public void vmethod7273(Object var1, Buffer var2) {
-		this.method7275((String)var1, var2);
-	}
+	field4586(2, 10);
 
 	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)Ljava/lang/Object;",
-		garbageValue = "3"
+	static int[] field4590;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(
+		intValue = 379824825
 	)
-	public Object vmethod7271(Buffer var1) {
-		return var1.readStringCp1252NullTerminated();
-	}
-
+	final int field4584;
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lpi;I)V",
-		garbageValue = "1797008189"
+	@ObfuscatedGetter(
+		intValue = 195227197
 	)
-	void method7275(String var1, Buffer var2) {
-		var2.writeStringCp1252NullTerminated(var1);
+	final int field4589;
+
+	class410(int var3, int var4) {
+		this.field4584 = var3;
+		this.field4589 = var4;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lbn;",
-		garbageValue = "-50"
+		descriptor = "(B)I",
+		garbageValue = "0"
 	)
-	@Export("getScript")
-	static Script getScript(int var0) {
-		Script var1 = (Script)Script.Script_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = TaskHandler.archive12.takeFile(var0, 0);
-			if (var2 == null) {
-				return null;
-			} else {
-				var1 = class145.newScript(var2);
-				Script.Script_cached.put(var1, (long)var0);
-				return var1;
-			}
-		}
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field4589;
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(Llg;Ljava/lang/String;Ljava/lang/String;I)[Lry;",
+		garbageValue = "-1746831361"
+	)
+	public static IndexedSprite[] method7741(AbstractArchive var0, String var1, String var2) {
+		int var3 = var0.getGroupId(var1);
+		int var4 = var0.getFileId(var3, var2);
+		return class147.method3146(var0, var3, var4);
 	}
 }

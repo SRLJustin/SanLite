@@ -1,261 +1,182 @@
+import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jq")
+@ObfuscatedName("kj")
 @Implements("MusicPatchNode")
 public class MusicPatchNode extends Node {
-	@ObfuscatedName("ss")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = -1089450297
+		intValue = -418313575
 	)
-	static int field3150;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = 2120721647
-	)
-	int field3149;
-	@ObfuscatedName("b")
+	int field3361;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Ljt;"
+		descriptor = "Lkb;"
 	)
 	@Export("patch")
 	MusicPatch patch;
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Laj;"
+		descriptor = "Lam;"
 	)
 	@Export("rawSound")
 	RawSound rawSound;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "Lil;"
+		descriptor = "Ljz;"
 	)
-	MusicPatchNode2 field3131;
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		intValue = -523823363
-	)
-	int field3128;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -1860888427
-	)
-	int field3133;
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(
-		intValue = 549821861
-	)
-	int field3132;
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = 266246813
-	)
-	int field3147;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = 761118797
-	)
-	int field3136;
-	@ObfuscatedName("r")
-	@ObfuscatedGetter(
-		intValue = -1410694573
-	)
-	int field3137;
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(
-		intValue = -1347738891
-	)
-	int field3138;
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(
-		intValue = 873660032
-	)
-	int field3139;
-	@ObfuscatedName("d")
-	@ObfuscatedGetter(
-		intValue = 899740579
-	)
-	int field3140;
+	MusicPatchNode2 field3374;
 	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -957159786
+		intValue = -1436504421
 	)
-	int field3141;
-	@ObfuscatedName("g")
+	int field3359;
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 707181103
+		intValue = -1238341101
 	)
-	int field3142;
-	@ObfuscatedName("e")
+	int field3364;
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = -1399619147
+		intValue = 628479801
 	)
-	int field3143;
-	@ObfuscatedName("a")
+	int field3365;
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = 1374449229
+		intValue = 346269159
 	)
-	int field3144;
+	int field3366;
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = 1444674333
+	)
+	int field3376;
+	@ObfuscatedName("r")
+	@ObfuscatedGetter(
+		intValue = 493756683
+	)
+	int field3368;
+	@ObfuscatedName("l")
+	@ObfuscatedGetter(
+		intValue = 235445623
+	)
+	int field3369;
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(
+		intValue = -1651138161
+	)
+	int field3370;
+	@ObfuscatedName("p")
+	@ObfuscatedGetter(
+		intValue = 1831826789
+	)
+	int field3379;
+	@ObfuscatedName("b")
+	@ObfuscatedGetter(
+		intValue = -1752710578
+	)
+	int field3372;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = 527741503
+	)
+	int field3373;
 	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 1593408009
+		intValue = 1419597677
 	)
-	int field3145;
-	@ObfuscatedName("k")
+	int field3371;
+	@ObfuscatedName("z")
+	@ObfuscatedGetter(
+		intValue = 1608541685
+	)
+	int field3375;
+	@ObfuscatedName("t")
+	@ObfuscatedGetter(
+		intValue = 630481895
+	)
+	int field3363;
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Lat;"
+		descriptor = "Lar;"
 	)
 	@Export("stream")
 	RawPcmStream stream;
-	@ObfuscatedName("f")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = 1680704123
+		intValue = -1573620375
 	)
-	int field3134;
-	@ObfuscatedName("q")
+	int field3378;
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = 125903423
+		intValue = -231646461
 	)
-	int field3135;
+	int field3362;
 
 	MusicPatchNode() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1075118408"
+		descriptor = "(B)V",
+		garbageValue = "7"
 	)
-	void method5292() {
+	void method5670() {
 		this.patch = null;
 		this.rawSound = null;
-		this.field3131 = null;
+		this.field3374 = null;
 		this.stream = null;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("iv")
 	@ObfuscatedSignature(
-		descriptor = "([BIII)Ljava/lang/String;",
-		garbageValue = "-1684371840"
+		descriptor = "(I)V",
+		garbageValue = "254948321"
 	)
-	public static String method5294(byte[] var0, int var1, int var2) {
-		char[] var3 = new char[var2];
-		int var4 = 0;
-		int var5 = var1;
-
-		int var8;
-		for (int var6 = var2 + var1; var5 < var6; var3[var4++] = (char)var8) {
-			int var7 = var0[var5++] & 255;
-			if (var7 < 128) {
-				if (var7 == 0) {
-					var8 = 65533;
-				} else {
-					var8 = var7;
-				}
-			} else if (var7 < 192) {
-				var8 = 65533;
-			} else if (var7 < 224) {
-				if (var5 < var6 && (var0[var5] & 192) == 128) {
-					var8 = (var7 & 31) << 6 | var0[var5++] & 63;
-					if (var8 < 128) {
-						var8 = 65533;
-					}
-				} else {
-					var8 = 65533;
-				}
-			} else if (var7 < 240) {
-				if (var5 + 1 < var6 && (var0[var5] & 192) == 128 && (var0[var5 + 1] & 192) == 128) {
-					var8 = (var7 & 15) << 12 | (var0[var5++] & 63) << 6 | var0[var5++] & 63;
-					if (var8 < 2048) {
-						var8 = 65533;
-					}
-				} else {
-					var8 = 65533;
-				}
-			} else if (var7 < 248) {
-				if (var5 + 2 < var6 && (var0[var5] & 192) == 128 && (var0[var5 + 1] & 192) == 128 && (var0[var5 + 2] & 192) == 128) {
-					var8 = (var7 & 7) << 18 | (var0[var5++] & 63) << 12 | (var0[var5++] & 63) << 6 | var0[var5++] & 63;
-					if (var8 >= 65536 && var8 <= 1114111) {
-						var8 = 65533;
-					} else {
-						var8 = 65533;
-					}
-				} else {
-					var8 = 65533;
-				}
-			} else {
-				var8 = 65533;
-			}
-		}
-
-		return new String(var3, 0, var4);
+	@Export("addCancelMenuEntry")
+	static void addCancelMenuEntry() {
+		Client.menuOptionsCount = 0;
+		Client.isMenuOpen = false;
+		Client.menuActions[0] = "Cancel";
+		Client.menuTargets[0] = "";
+		Client.menuOpcodes[0] = 1006;
+		Client.menuShiftClick[0] = false;
+		Client.menuOptionsCount = 1;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("mw")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;IZB)I",
-		garbageValue = "-8"
+		descriptor = "(Lqr;I)V",
+		garbageValue = "-1716775323"
 	)
-	public static int method5293(CharSequence var0, int var1, boolean var2) {
-		if (var1 >= 2 && var1 <= 36) {
-			boolean var3 = false;
-			boolean var4 = false;
-			int var5 = 0;
-			int var6 = var0.length();
-
-			for (int var7 = 0; var7 < var6; ++var7) {
-				char var8 = var0.charAt(var7);
-				if (var7 == 0) {
-					if (var8 == '-') {
-						var3 = true;
-						continue;
-					}
-
-					if (var8 == '+') {
-						continue;
-					}
-				}
-
-				int var10;
-				if (var8 >= '0' && var8 <= '9') {
-					var10 = var8 - '0';
-				} else if (var8 >= 'A' && var8 <= 'Z') {
-					var10 = var8 - '7';
-				} else {
-					if (var8 < 'a' || var8 > 'z') {
-						throw new NumberFormatException();
-					}
-
-					var10 = var8 - 'W';
-				}
-
-				if (var10 >= var1) {
-					throw new NumberFormatException();
-				}
-
-				if (var3) {
-					var10 = -var10;
-				}
-
-				int var9 = var5 * var1 + var10;
-				if (var9 / var1 != var5) {
-					throw new NumberFormatException();
-				}
-
-				var5 = var9;
-				var4 = true;
-			}
-
-			if (!var4) {
-				throw new NumberFormatException();
-			} else {
-				return var5;
-			}
+	static void method5669(Buffer var0) {
+		if (Client.randomDatData != null) {
+			var0.writeBytes(Client.randomDatData, 0, Client.randomDatData.length);
 		} else {
-			throw new IllegalArgumentException("" + var1);
+			byte[] var2 = new byte[24];
+
+			try {
+				JagexCache.JagexCache_randomDat.seek(0L);
+				JagexCache.JagexCache_randomDat.readFully(var2);
+
+				int var3;
+				for (var3 = 0; var3 < 24 && var2[var3] == 0; ++var3) {
+				}
+
+				if (var3 >= 24) {
+					throw new IOException();
+				}
+			} catch (Exception var6) {
+				for (int var4 = 0; var4 < 24; ++var4) {
+					var2[var4] = -1;
+				}
+			}
+
+			var0.writeBytes(var2, 0, var2.length);
 		}
 	}
 }

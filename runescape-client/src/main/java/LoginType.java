@@ -4,95 +4,89 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ow")
+@ObfuscatedName("qu")
 @Implements("LoginType")
 public class LoginType {
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "Low;"
+		descriptor = "Lqu;"
 	)
 	@Export("oldscape")
 	public static final LoginType oldscape;
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Low;"
+		descriptor = "Lqu;"
 	)
-	static final LoginType field4397;
-	@ObfuscatedName("p")
+	static final LoginType field4783;
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Low;"
+		descriptor = "Lqu;"
 	)
-	static final LoginType field4402;
-	@ObfuscatedName("m")
+	static final LoginType field4784;
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "Low;"
+		descriptor = "Lqu;"
 	)
-	static final LoginType field4399;
-	@ObfuscatedName("t")
+	static final LoginType field4785;
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Low;"
+		descriptor = "Lqu;"
 	)
-	static final LoginType field4401;
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Low;"
-	)
-	static final LoginType field4407;
+	static final LoginType field4787;
 	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "Low;"
+		descriptor = "Lqu;"
 	)
-	static final LoginType field4403;
-	@ObfuscatedName("w")
+	static final LoginType field4791;
+	@ObfuscatedName("y")
 	@ObfuscatedSignature(
-		descriptor = "Low;"
+		descriptor = "Lqu;"
 	)
-	static final LoginType field4404;
+	static final LoginType field4790;
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(
+		descriptor = "Lqu;"
+	)
+	static final LoginType field4789;
 	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Low;"
+		descriptor = "Lqu;"
 	)
-	public static final LoginType field4405;
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(
-		descriptor = "Lpa;"
-	)
-	@Export("options_buttons_2Sprite")
-	static IndexedSprite options_buttons_2Sprite;
+	public static final LoginType field4788;
 	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = 1619896025
+		intValue = 635719311
 	)
-	final int field4406;
-	@ObfuscatedName("o")
-	final String field4400;
+	public final int field4782;
+	@ObfuscatedName("l")
+	final String field4792;
 
 	static {
-		oldscape = new LoginType(6, 0, "", "");
-		field4397 = new LoginType(1, 1, "", "");
-		field4402 = new LoginType(8, 2, "", "");
-		field4399 = new LoginType(7, 3, "", "");
-		field4401 = new LoginType(4, 4, "", "");
-		field4407 = new LoginType(5, 5, "", "");
-		field4403 = new LoginType(2, 6, "", "");
-		field4404 = new LoginType(0, 7, "", "");
-		field4405 = new LoginType(3, -1, "", "", true, new LoginType[]{oldscape, field4397, field4402, field4401, field4399});
+		oldscape = new LoginType(4, 0, "", "");
+		field4783 = new LoginType(2, 1, "", "");
+		field4784 = new LoginType(5, 2, "", "");
+		field4785 = new LoginType(8, 3, "", "");
+		field4787 = new LoginType(7, 4, "", "");
+		field4791 = new LoginType(3, 5, "", "");
+		field4790 = new LoginType(1, 6, "", "");
+		field4789 = new LoginType(6, 7, "", "");
+		field4788 = new LoginType(0, -1, "", "", true, new LoginType[]{oldscape, field4783, field4784, field4787, field4785});
 	}
 
 	LoginType(int var1, int var2, String var3, String var4) {
-		this.field4406 = var1;
-		this.field4400 = var4;
+		this.field4782 = var1;
+		this.field4792 = var4;
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(IILjava/lang/String;Ljava/lang/String;Z[Low;)V"
+		descriptor = "(IILjava/lang/String;Ljava/lang/String;Z[Lqu;)V"
 	)
 	LoginType(int var1, int var2, String var3, String var4, boolean var5, LoginType[] var6) {
-		this.field4406 = var1;
-		this.field4400 = var4;
+		this.field4782 = var1;
+		this.field4792 = var4;
 	}
 
 	public String toString() {
-		return this.field4400;
+		return this.field4792;
 	}
 }
