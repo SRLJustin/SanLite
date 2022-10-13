@@ -1,3 +1,4 @@
+import java.awt.FontMetrics;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -16,80 +17,93 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("o")
+@ObfuscatedName("l")
 public class class10 {
-	@ObfuscatedName("aq")
-	static String field58;
-	@ObfuscatedName("fb")
-	@ObfuscatedGetter(
-		intValue = 892937659
-	)
-	static int field59;
-	@ObfuscatedName("ht")
-	@Export("regionLandArchiveIds")
-	static int[] regionLandArchiveIds;
-	@ObfuscatedName("c")
-	HttpsURLConnection field53;
-	@ObfuscatedName("b")
-	final Map field48;
-	@ObfuscatedName("p")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Lni;"
+		descriptor = "Ler;"
 	)
-	class377 field50;
-	@ObfuscatedName("m")
-	Map field49;
-	@ObfuscatedName("t")
+	static ClanSettings field56;
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(
+		intValue = -1116853935
+	)
+	@Export("canvasHeight")
+	public static int canvasHeight;
+	@ObfuscatedName("ac")
+	@Export("loginScreenFontMetrics")
+	static FontMetrics loginScreenFontMetrics;
+	@ObfuscatedName("a")
+	HttpsURLConnection field53;
+	@ObfuscatedName("f")
+	final Map field59;
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "Lpc;"
+	)
+	class418 field52;
+	@ObfuscatedName("x")
+	Map field51;
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
 		descriptor = "Lr;"
 	)
-	final class9 field52;
-	@ObfuscatedName("s")
-	boolean field51;
+	final class9 field54;
 	@ObfuscatedName("j")
-	boolean field57;
-	@ObfuscatedName("w")
+	boolean field55;
+	@ObfuscatedName("y")
+	boolean field50;
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = 755208065
+		intValue = 1255809723
 	)
-	int field55;
+	int field57;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URL;Lr;)V"
+		descriptor = "(Ljava/net/URL;Lr;Z)V"
 	)
-	public class10(URL var1, class9 var2) throws IOException {
-		this.field51 = false;
-		this.field57 = false;
-		this.field55 = 300000;
-		if (!var2.method85()) {
-			throw new UnsupportedEncodingException("Unsupported request method used " + var2.method100());
+	public class10(URL var1, class9 var2, boolean var3) throws IOException {
+		this.field55 = false;
+		this.field50 = false;
+		this.field57 = 300000;
+		if (!var2.method73()) {
+			throw new UnsupportedEncodingException("Unsupported request method used " + var2.method70());
 		} else {
 			this.field53 = (HttpsURLConnection)var1.openConnection();
-			this.field53.setSSLSocketFactory(new class15());
-			this.field52 = var2;
-			this.field48 = new HashMap();
-			this.field49 = new HashMap();
+			if (!var3) {
+				HttpsURLConnection var4 = this.field53;
+				if (class15.field81 == null) {
+					class15.field81 = new class15();
+				}
+
+				class15 var5 = class15.field81;
+				var4.setSSLSocketFactory(var5);
+			}
+
+			this.field54 = var2;
+			this.field59 = new HashMap();
+			this.field51 = new HashMap();
 		}
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;I)V",
-		garbageValue = "-659899332"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;B)V",
+		garbageValue = "3"
 	)
-	public void method121(String var1, String var2) {
-		if (!this.field51) {
-			this.field48.put(var1, var2);
+	public void method79(String var1, String var2) {
+		if (!this.field55) {
+			this.field59.put(var1, var2);
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "1718208734"
+		garbageValue = "-1448491896"
 	)
-	String method109() {
-		ArrayList var1 = new ArrayList(this.field49.entrySet());
+	String method80() {
+		ArrayList var1 = new ArrayList(this.field51.entrySet());
 		Collections.sort(var1, new class18(this));
 		StringBuilder var2 = new StringBuilder();
 		Iterator var3 = var1.iterator();
@@ -100,7 +114,7 @@ public class class10 {
 				var2.append(",");
 			}
 
-			var2.append(((class376)var4.getKey()).method6793());
+			var2.append(((class417)var4.getKey()).method7779());
 			float var5 = (Float)var4.getValue();
 			if (var5 < 1.0F) {
 				String var6 = Float.toString(var5).substring(0, 4);
@@ -111,31 +125,31 @@ public class class10 {
 		return var2.toString();
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "8"
+		descriptor = "(I)V",
+		garbageValue = "-894417470"
 	)
-	void method104() throws ProtocolException {
-		if (!this.field51) {
-			this.field53.setRequestMethod(this.field52.method100());
-			if (!this.field49.isEmpty()) {
-				this.field48.put("Accept", this.method109());
+	void method78() throws ProtocolException {
+		if (!this.field55) {
+			this.field53.setRequestMethod(this.field54.method70());
+			if (!this.field51.isEmpty()) {
+				this.field59.put("Accept", this.method80());
 			}
 
-			Iterator var1 = this.field48.entrySet().iterator();
+			Iterator var1 = this.field59.entrySet().iterator();
 
 			while (var1.hasNext()) {
 				Entry var2 = (Entry)var1.next();
 				this.field53.setRequestProperty((String)var2.getKey(), (String)var2.getValue());
 			}
 
-			if (this.field52.method86() && this.field50 != null) {
+			if (this.field54.method62() && this.field52 != null) {
 				this.field53.setDoOutput(true);
 				ByteArrayOutputStream var13 = new ByteArrayOutputStream();
 
 				try {
-					var13.write(this.field50.method6796(-1647266432));
+					var13.write(this.field52.vmethod7797());
 					var13.writeTo(this.field53.getOutputStream());
 				} catch (IOException var11) {
 					var11.printStackTrace();
@@ -151,34 +165,34 @@ public class class10 {
 				}
 			}
 
-			this.field53.setConnectTimeout(this.field55);
-			this.field53.setInstanceFollowRedirects(this.field57);
-			this.field51 = true;
+			this.field53.setConnectTimeout(this.field57);
+			this.field53.setInstanceFollowRedirects(this.field50);
+			this.field55 = true;
 		}
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-378004067"
+		garbageValue = "820553438"
 	)
-	boolean method105() throws IOException, SocketTimeoutException {
-		if (!this.field51) {
-			this.method104();
+	boolean method84() throws IOException, SocketTimeoutException {
+		if (!this.field55) {
+			this.method78();
 		}
 
 		this.field53.connect();
 		return this.field53.getResponseCode() == -1;
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lq;",
-		garbageValue = "-2098724409"
+		descriptor = "(I)Li;",
+		garbageValue = "1461670023"
 	)
-	class21 method106() {
+	class21 method83() {
 		try {
-			if (!this.field51 || this.field53.getResponseCode() == -1) {
+			if (!this.field55 || this.field53.getResponseCode() == -1) {
 				return new class21("No REST response has been received yet.");
 			}
 		} catch (IOException var10) {
@@ -201,129 +215,131 @@ public class class10 {
 		return var3;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(ILmy;Lkz;B)V",
-		garbageValue = "16"
+		descriptor = "([Lbt;II[I[II)V",
+		garbageValue = "-1552533114"
 	)
-	static void method122(int var0, ArchiveDisk var1, Archive var2) {
-		byte[] var3 = null;
-		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
-			for (ArchiveDiskAction var5 = (ArchiveDiskAction)ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.last(); var5 != null; var5 = (ArchiveDiskAction)ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.previous()) {
-				if (var5.key == (long)var0 && var1 == var5.archiveDisk && var5.type == 0) {
-					var3 = var5.data;
-					break;
-				}
-			}
-		}
+	@Export("sortWorlds")
+	static void sortWorlds(World[] var0, int var1, int var2, int[] var3, int[] var4) {
+		if (var1 < var2) {
+			int var5 = var1 - 1;
+			int var6 = var2 + 1;
+			int var7 = (var2 + var1) / 2;
+			World var8 = var0[var7];
+			var0[var7] = var0[var1];
+			var0[var1] = var8;
 
-		if (var3 != null) {
-			var2.load(var1, var0, var3, true);
-		} else {
-			byte[] var4 = var1.read(var0);
-			var2.load(var1, var0, var4, true);
-		}
-	}
+			while (var5 < var6) {
+				boolean var9 = true;
 
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "([BIIII[Lgf;I)V",
-		garbageValue = "1276924993"
-	)
-	static final void method119(byte[] var0, int var1, int var2, int var3, int var4, CollisionMap[] var5) {
-		int var7;
-		int var8;
-		for (int var6 = 0; var6 < 4; ++var6) {
-			for (var7 = 0; var7 < 64; ++var7) {
-				for (var8 = 0; var8 < 64; ++var8) {
-					if (var7 + var1 > 0 && var7 + var1 < 103 && var8 + var2 > 0 && var8 + var2 < 103) {
-						int[] var10000 = var5[var6].flags[var7 + var1];
-						var10000[var8 + var2] &= -16777217;
+				int var10;
+				int var11;
+				int var12;
+				do {
+					--var6;
+
+					for (var10 = 0; var10 < 4; ++var10) {
+						if (var3[var10] == 2) {
+							var11 = var0[var6].index;
+							var12 = var8.index;
+						} else if (var3[var10] == 1) {
+							var11 = var0[var6].population;
+							var12 = var8.population;
+							if (var11 == -1 && var4[var10] == 1) {
+								var11 = 2001;
+							}
+
+							if (var12 == -1 && var4[var10] == 1) {
+								var12 = 2001;
+							}
+						} else if (var3[var10] == 3) {
+							var11 = var0[var6].isMembersOnly() ? 1 : 0;
+							var12 = var8.isMembersOnly() ? 1 : 0;
+						} else {
+							var11 = var0[var6].id;
+							var12 = var8.id;
+						}
+
+						if (var11 != var12) {
+							if ((var4[var10] != 1 || var11 <= var12) && (var4[var10] != 0 || var11 >= var12)) {
+								var9 = false;
+							}
+							break;
+						}
+
+						if (var10 == 3) {
+							var9 = false;
+						}
 					}
+				} while(var9);
+
+				var9 = true;
+
+				do {
+					++var5;
+
+					for (var10 = 0; var10 < 4; ++var10) {
+						if (var3[var10] == 2) {
+							var11 = var0[var5].index;
+							var12 = var8.index;
+						} else if (var3[var10] == 1) {
+							var11 = var0[var5].population;
+							var12 = var8.population;
+							if (var11 == -1 && var4[var10] == 1) {
+								var11 = 2001;
+							}
+
+							if (var12 == -1 && var4[var10] == 1) {
+								var12 = 2001;
+							}
+						} else if (var3[var10] == 3) {
+							var11 = var0[var5].isMembersOnly() ? 1 : 0;
+							var12 = var8.isMembersOnly() ? 1 : 0;
+						} else {
+							var11 = var0[var5].id;
+							var12 = var8.id;
+						}
+
+						if (var12 != var11) {
+							if ((var4[var10] != 1 || var11 >= var12) && (var4[var10] != 0 || var11 <= var12)) {
+								var9 = false;
+							}
+							break;
+						}
+
+						if (var10 == 3) {
+							var9 = false;
+						}
+					}
+				} while(var9);
+
+				if (var5 < var6) {
+					World var13 = var0[var5];
+					var0[var5] = var0[var6];
+					var0[var6] = var13;
 				}
 			}
-		}
 
-		Buffer var10 = new Buffer(var0);
-
-		for (var7 = 0; var7 < 4; ++var7) {
-			for (var8 = 0; var8 < 64; ++var8) {
-				for (int var9 = 0; var9 < 64; ++var9) {
-					ScriptFrame.loadTerrain(var10, var7, var8 + var1, var9 + var2, var3, var4, 0);
-				}
-			}
+			sortWorlds(var0, var1, var6, var3, var4);
+			sortWorlds(var0, var6 + 1, var2, var3, var4);
 		}
 
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("kk")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "1542275516"
+		descriptor = "(II)V",
+		garbageValue = "870241653"
 	)
-	static final void method123(String var0) {
-		PacketBufferNode var1 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2895, Client.packetWriter.isaacCipher);
-		var1.packetBuffer.writeByte(class116.stringCp1252NullTerminatedByteSize(var0));
-		var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-		Client.packetWriter.addNode(var1);
-	}
-
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(Lai;I)V",
-		garbageValue = "372010078"
-	)
-	@Export("PcmStream_disable")
-	static final void PcmStream_disable(PcmStream var0) {
-		var0.active = false;
-		if (var0.sound != null) {
-			var0.sound.position = 0;
-		}
-
-		for (PcmStream var1 = var0.firstSubStream(); var1 != null; var1 = var0.nextSubStream()) {
-			PcmStream_disable(var1);
-		}
-
-	}
-
-	@ObfuscatedName("iv")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "708882827"
-	)
-	static final void method124(int var0, int var1, int var2, int var3) {
-		for (int var4 = 0; var4 < Client.rootWidgetCount; ++var4) {
-			if (Client.rootWidgetWidths[var4] + Client.rootWidgetXs[var4] > var0 && Client.rootWidgetXs[var4] < var0 + var2 && Client.rootWidgetHeights[var4] + Client.rootWidgetYs[var4] > var1 && Client.rootWidgetYs[var4] < var3 + var1) {
-				Client.field504[var4] = true;
-			}
-		}
-
-	}
-
-	@ObfuscatedName("kh")
-	@ObfuscatedSignature(
-		descriptor = "(Lcl;ZI)V",
-		garbageValue = "-1418873427"
-	)
-	@Export("closeInterface")
-	static final void closeInterface(InterfaceParent var0, boolean var1) {
-		int var2 = var0.group;
-		int var3 = (int)var0.key;
-		var0.remove();
-		if (var1) {
-			class273.method5333(var2);
-		}
-
-		TextureProvider.method4185(var2);
-		Widget var4 = ChatChannel.getWidget(var3);
-		if (var4 != null) {
-			SecureRandomCallable.invalidateWidget(var4);
-		}
-
-		FileSystem.decrementMenuEntries();
-		if (Client.rootInterface != -1) {
-			Message.runIntfCloseListeners(Client.rootInterface, 1);
-		}
-
+	static void method93(int var0) {
+		PendingSpawn.tempMenuAction = new MenuAction();
+		PendingSpawn.tempMenuAction.param0 = Client.menuArguments1[var0];
+		PendingSpawn.tempMenuAction.param1 = Client.menuArguments2[var0];
+		PendingSpawn.tempMenuAction.opcode = Client.menuOpcodes[var0];
+		PendingSpawn.tempMenuAction.identifier = Client.menuIdentifiers[var0];
+		PendingSpawn.tempMenuAction.field883 = Client.field647[var0];
+		PendingSpawn.tempMenuAction.field884 = Client.menuActions[var0];
+		PendingSpawn.tempMenuAction.field889 = Client.menuTargets[var0];
 	}
 }

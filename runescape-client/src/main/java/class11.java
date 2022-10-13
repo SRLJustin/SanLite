@@ -4,39 +4,47 @@ import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.util.LinkedList;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 import org.bouncycastle.crypto.tls.Certificate;
 import org.bouncycastle.crypto.tls.CertificateRequest;
 import org.bouncycastle.crypto.tls.TlsAuthentication;
 import org.bouncycastle.crypto.tls.TlsCredentials;
 
-@ObfuscatedName("v")
+@ObfuscatedName("s")
 class class11 implements TlsAuthentication {
-	@ObfuscatedName("d")
-	@ObfuscatedSignature(
-		descriptor = "Law;"
+	@ObfuscatedName("tm")
+	@ObfuscatedGetter(
+		intValue = -1416787840
 	)
-	@Export("pcmPlayerProvider")
-	static class47 pcmPlayerProvider;
-	@ObfuscatedName("be")
+	static int field62;
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "Lpa;"
+		descriptor = "Llg;"
 	)
-	@Export("worldSelectLeftSprite")
-	static IndexedSprite worldSelectLeftSprite;
+	@Export("ParamDefinition_archive")
+	static AbstractArchive ParamDefinition_archive;
+	@ObfuscatedName("iu")
+	@ObfuscatedGetter(
+		intValue = -1280417715
+	)
+	static int field64;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lh;"
+		descriptor = "Lb;"
 	)
 	final class13 this$2;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lh;)V"
+		descriptor = "(Lb;)V"
 	)
 	class11(class13 var1) {
 		this.this$2 = var1;
+	}
+
+	public TlsCredentials getClientCredentials(CertificateRequest var1) throws IOException {
+		return null;
 	}
 
 	public void notifyServerCertificate(Certificate var1) throws IOException {
@@ -56,52 +64,62 @@ class class11 implements TlsAuthentication {
 		}
 	}
 
-	public TlsCredentials getClientCredentials(CertificateRequest var1) throws IOException {
-		return null;
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "1845295776"
+	)
+	static final void method101(String var0) {
+		MouseHandler.addGameMessage(30, "", var0);
 	}
 
-	@ObfuscatedName("l")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "-1179058549"
+		descriptor = "(I)V",
+		garbageValue = "91255593"
 	)
-	static int method125(int var0, Script var1, boolean var2) {
-		Widget var3 = ChatChannel.getWidget(Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize]);
-		if (var0 == ScriptOpcodes.IF_GETTARGETMASK) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = class404.Widget_unpackTargetMask(class363.getWidgetFlags(var3));
-			return 1;
-		} else if (var0 != ScriptOpcodes.IF_GETOP) {
-			if (var0 == ScriptOpcodes.IF_GETOPBASE) {
-				if (var3.dataText == null) {
-					Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-				} else {
-					Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var3.dataText;
+	static void method102() {
+		GrandExchangeOfferOwnWorldComparator.method1171(24);
+		MusicPatchNode2.setLoginResponseString("", "You were disconnected from the server.", "");
+	}
+
+	@ObfuscatedName("hy")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-91915795"
+	)
+	static final void method100() {
+		for (Projectile var0 = (Projectile)Client.projectiles.last(); var0 != null; var0 = (Projectile)Client.projectiles.previous()) {
+			if (var0.plane == ApproximateRouteStrategy.Client_plane && Client.cycle <= var0.cycleEnd) {
+				if (Client.cycle >= var0.cycleStart) {
+					if (var0.targetIndex > 0) {
+						NPC var1 = Client.npcs[var0.targetIndex - 1];
+						if (var1 != null && var1.x >= 0 && var1.x < 13312 && var1.y >= 0 && var1.y < 13312) {
+							var0.setDestination(var1.x, var1.y, class132.getTileHeight(var1.x, var1.y, var0.plane) - var0.endHeight, Client.cycle);
+						}
+					}
+
+					if (var0.targetIndex < 0) {
+						int var2 = -var0.targetIndex - 1;
+						Player var3;
+						if (var2 == Client.localPlayerIndex) {
+							var3 = class296.localPlayer;
+						} else {
+							var3 = Client.players[var2];
+						}
+
+						if (var3 != null && var3.x >= 0 && var3.x < 13312 && var3.y >= 0 && var3.y < 13312) {
+							var0.setDestination(var3.x, var3.y, class132.getTileHeight(var3.x, var3.y, var0.plane) - var0.endHeight, Client.cycle);
+						}
+					}
+
+					var0.advance(Client.field558);
+					class139.scene.drawEntity(ApproximateRouteStrategy.Client_plane, (int)var0.x, (int)var0.y, (int)var0.z, 60, var0, var0.yaw, -1L, false);
 				}
-
-				return 1;
 			} else {
-				return 2;
+				var0.remove();
 			}
-		} else {
-			int var4 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-			--var4;
-			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
-				Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var3.actions[var4];
-			} else {
-				Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-			}
-
-			return 1;
 		}
-	}
 
-	@ObfuscatedName("iu")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIII)V",
-		garbageValue = "-380667098"
-	)
-	@Export("insertMenuItemNoShift")
-	public static final void insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
-		class21.insertMenuItem(var0, var1, var2, var3, var4, var5, false);
 	}
 }
