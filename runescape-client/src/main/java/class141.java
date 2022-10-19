@@ -1,134 +1,83 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("eo")
-public class class141 extends class126 {
-	@ObfuscatedName("m")
-	@Export("SpriteBuffer_xOffsets")
-	public static int[] SpriteBuffer_xOffsets;
+@ObfuscatedName("et")
+public class class141 extends class151 {
+	@ObfuscatedName("a")
+	@ObfuscatedGetter(
+		intValue = -1972983481
+	)
+	int field1631;
+	@ObfuscatedName("f")
+	byte field1630;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		longValue = 2275648101234972147L
+		intValue = 1076916533
 	)
-	long field1610;
-	@ObfuscatedName("b")
-	String field1607;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = 65665449
-	)
-	int field1608;
+	int field1634;
+	@ObfuscatedName("x")
+	String field1633;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Lem;"
 	)
-	final class129 this$0;
+	final class152 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "(Lem;)V"
 	)
-	class141(class129 var1) {
+	class141(class152 var1) {
 		this.this$0 = var1;
-		this.field1610 = -1L;
-		this.field1607 = null;
-		this.field1608 = 0;
+		this.field1631 = -1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lqr;B)V",
+		garbageValue = "85"
 	)
-	void vmethod3029(Buffer var1) {
-		if (var1.readUnsignedByte() != 255) {
-			--var1.offset;
-			this.field1610 = var1.readLong();
-		}
-
-		this.field1607 = var1.readStringCp1252NullTerminatedOrNull();
-		this.field1608 = var1.readUnsignedShort();
+	void vmethod3238(Buffer var1) {
+		this.field1631 = var1.readUnsignedShort();
+		this.field1630 = var1.readByte();
+		this.field1634 = var1.readUnsignedShort();
+		var1.readLong();
+		this.field1633 = var1.readStringCp1252NullTerminated();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(Leq;I)V",
+		garbageValue = "-1303116736"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2850(this.field1610, this.field1607, this.field1608);
+	void vmethod3239(ClanChannel var1) {
+		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1631);
+		var2.rank = this.field1630;
+		var2.world = this.field1634;
+		var2.username = new Username(this.field1633);
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-1452138237"
+		descriptor = "(Llg;Llg;Llg;I)V",
+		garbageValue = "717052064"
 	)
-	@Export("clearItemContainer")
-	static void clearItemContainer(int var0) {
-		ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var1 != null) {
-			for (int var2 = 0; var2 < var1.ids.length; ++var2) {
-				var1.ids[var2] = -1;
-				var1.quantities[var2] = 0;
-			}
-
-		}
+	public static void method3036(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2) {
+		HitSplatDefinition.HitSplatDefinition_archive = var0;
+		HitSplatDefinition.field2057 = var1;
+		HitSplatDefinition.HitSplatDefinition_fontsArchive = var2;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "-1880227128"
+		descriptor = "(IB)J",
+		garbageValue = "-41"
 	)
-	static int method2950(int var0, Script var1, boolean var2) {
-		int var3;
-		if (var0 == ScriptOpcodes.CAM_FORCEANGLE) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-			int var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-			if (!Client.isCameraLocked) {
-				Client.camAngleX = var3;
-				Client.camAngleY = var4;
-			}
-
-			return 1;
-		} else if (var0 == ScriptOpcodes.CAM_GETANGLE_XA) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.camAngleX;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CAM_GETANGLE_YA) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.camAngleY;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CAM_SETFOLLOWHEIGHT) {
-			var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-			if (var3 < 0) {
-				var3 = 0;
-			}
-
-			Client.camFollowHeight = var3;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CAM_GETFOLLOWHEIGHT) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.camFollowHeight;
-			return 1;
+	public static long method3037(int var0) {
+		if (var0 > 63) {
+			throw new class360("Cannot generate max unsigned value for more than 63 bits as this is greater than the boundaries of a java long. Value provided: %d", new Object[]{var0});
 		} else {
-			return 2;
-		}
-	}
-
-	@ObfuscatedName("lf")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "921441126"
-	)
-	@Export("Clan_joinChat")
-	static final void Clan_joinChat(String var0) {
-		if (!var0.equals("")) {
-			PacketBufferNode var1 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2857, Client.packetWriter.isaacCipher);
-			var1.packetBuffer.writeByte(class116.stringCp1252NullTerminatedByteSize(var0));
-			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-			Client.packetWriter.addNode(var1);
+			return (long)Math.pow(2.0D, (double)var0) - 1L;
 		}
 	}
 }

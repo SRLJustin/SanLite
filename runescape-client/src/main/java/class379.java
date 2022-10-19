@@ -1,29 +1,38 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nk")
+@ObfuscatedName("nw")
 public class class379 {
-	@ObfuscatedName("r")
-	static final int[] field4238;
-	@ObfuscatedName("o")
-	static final int[] field4244;
-	@ObfuscatedName("iu")
-	@ObfuscatedGetter(
-		intValue = -1725466411
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "Lnw;"
 	)
-	@Export("cameraYaw")
-	static int cameraYaw;
+	public static final class379 field4437;
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Lnw;"
+	)
+	static final class379 field4433;
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = 568981163
+	)
+	@Export("Interpreter_intStackSize")
+	static int Interpreter_intStackSize;
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		intValue = -1688777027
+	)
+	final int field4434;
 
 	static {
-		field4238 = new int[2048];
-		field4244 = new int[2048];
-		double var0 = 0.0030679615757712823D;
+		field4437 = new class379(0);
+		field4433 = new class379(1);
+	}
 
-		for (int var2 = 0; var2 < 2048; ++var2) {
-			field4238[var2] = (int)(65536.0D * Math.sin(var0 * (double)var2));
-			field4244[var2] = (int)(65536.0D * Math.cos(var0 * (double)var2));
-		}
-
+	class379(int var1) {
+		this.field4434 = var1;
 	}
 }

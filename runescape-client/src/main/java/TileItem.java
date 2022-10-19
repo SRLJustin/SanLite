@@ -7,48 +7,66 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("cz")
 @Implements("TileItem")
 public final class TileItem extends Renderable {
-	@ObfuscatedName("gk")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = -1033887581
-	)
-	@Export("baseY")
-	static int baseY;
-	@ObfuscatedName("hw")
-	@Export("regionLandArchives")
-	static byte[][] regionLandArchives;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = -1624584431
+		intValue = -540814643
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -763742907
+		intValue = -2008483939
 	)
 	@Export("quantity")
 	int quantity;
+	@ObfuscatedName("x")
+	@ObfuscatedGetter(
+		intValue = -759090005
+	)
+	int field1298;
 
 	TileItem() {
+		this.field1298 = 31;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lgo;",
-		garbageValue = "202861607"
+		descriptor = "(IB)V",
+		garbageValue = "62"
+	)
+	void method2545(int var1) {
+		this.field1298 = var1;
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lha;",
+		garbageValue = "-157507070"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		return UserComparator6.ItemDefinition_get(this.id).getModel(this.quantity);
+		return MidiPcmStream.ItemDefinition_get(this.id).getModel(this.quantity);
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;Lku;B)V",
-		garbageValue = "37"
+		descriptor = "(IB)Z",
+		garbageValue = "1"
 	)
-	public static void method2368(AbstractArchive var0, AbstractArchive var1) {
-		SpotAnimationDefinition.SpotAnimationDefinition_archive = var0;
-		SpotAnimationDefinition.SpotAnimationDefinition_modelArchive = var1;
+	boolean method2544(int var1) {
+		if (var1 >= 0 && var1 <= 4) {
+			return (this.field1298 & 1 << var1) != 0;
+		} else {
+			return true;
+		}
+	}
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/String;[II)V",
+		garbageValue = "1484656216"
+	)
+	public static void method2554(String[] var0, int[] var1) {
+		GrandExchangeOfferTotalQuantityComparator.method6472(var0, var1, 0, var0.length - 1);
 	}
 }

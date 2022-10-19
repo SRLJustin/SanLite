@@ -3,143 +3,402 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("da")
-public class class129 {
-	@ObfuscatedName("fe")
+@ObfuscatedName("dh")
+public class class129 extends DualNode {
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = -1804512365
+		intValue = -1307484353
 	)
-	@Export("currentPort")
-	static int currentPort;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		longValue = 6548803859152250067L
-	)
-	long field1513;
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(
-		intValue = -2135269879
-	)
-	int field1511;
-	@ObfuscatedName("p")
+	int field1540;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "[[Ldb;"
 	)
-	IterableNodeDeque field1512;
+	public class124[][] field1539;
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "[[Ldb;"
+	)
+	class124[][] field1538;
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "Lhv;"
+	)
+	public Skeleton field1541;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(
+		intValue = 444658097
+	)
+	int field1542;
+	@ObfuscatedName("j")
+	boolean field1543;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;)V"
+		descriptor = "(Llg;Llg;IZ)V"
 	)
-	public class129(Buffer var1) {
-		this.field1511 = -1;
-		this.field1512 = new IterableNodeDeque();
-		this.method2780(var1);
+	class129(AbstractArchive var1, AbstractArchive var2, int var3, boolean var4) {
+		this.field1539 = null;
+		this.field1538 = null;
+		this.field1542 = 0;
+		this.field1540 = var3;
+		byte[] var5 = var1.takeFile(this.field1540 >> 16 & 65535, this.field1540 & 65535);
+		Buffer var6 = new Buffer(var5);
+		int var7 = var6.readUnsignedByte();
+		int var8 = var6.readUnsignedShort();
+		byte[] var9;
+		if (var4) {
+			var9 = var2.getFile(0, var8);
+		} else {
+			var9 = var2.getFile(var8, 0);
+		}
+
+		this.field1541 = new Skeleton(var8, var9);
+		this.method2921(var6, var7);
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(Lqr;II)V",
+		garbageValue = "569723886"
+	)
+	void method2921(Buffer var1, int var2) {
+		var1.readUnsignedShort();
+		var1.readUnsignedShort();
+		this.field1542 = var1.readUnsignedByte();
+		int var3 = var1.readUnsignedShort();
+		this.field1538 = new class124[this.field1541.method4263().method4246()][];
+		this.field1539 = new class124[this.field1541.method4262()][];
+
+		for (int var4 = 0; var4 < var3; ++var4) {
+			int var6 = var1.readUnsignedByte();
+			class125[] var7 = new class125[]{class125.field1510, class125.field1503, class125.field1501, class125.field1502, class125.field1499, class125.field1504};
+			class125 var8 = (class125)DecorativeObject.findEnumerated(var7, var6);
+			if (var8 == null) {
+				var8 = class125.field1510;
+			}
+
+			int var13 = var1.readShortSmart();
+			class126 var9 = ItemContainer.method2225(var1.readUnsignedByte());
+			class124 var10 = new class124();
+			var10.method2874(var1, var2);
+			int var11 = var8.method2901();
+			class124[][] var12;
+			if (var8 == class125.field1503) {
+				var12 = this.field1538;
+			} else {
+				var12 = this.field1539;
+			}
+
+			if (var12[var13] == null) {
+				var12[var13] = new class124[var11];
+			}
+
+			var12[var13][var9.method2907()] = var10;
+			if (var8 == class125.field1499) {
+				this.field1543 = true;
+			}
+		}
+
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "-65"
+		descriptor = "(I)I",
+		garbageValue = "1403093085"
 	)
-	void method2780(Buffer var1) {
-		this.field1513 = var1.readLong();
-		this.field1511 = var1.readInt();
+	public int method2923() {
+		return this.field1542;
+	}
 
-		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
-			Object var3;
-			if (var2 == 3) {
-				var3 = new class148(this);
-			} else if (var2 == 1) {
-				var3 = new class124(this);
-			} else if (var2 == 13) {
-				var3 = new class141(this);
-			} else if (var2 == 4) {
-				var3 = new class133(this);
-			} else if (var2 == 6) {
-				var3 = new class140(this);
-			} else if (var2 == 5) {
-				var3 = new class125(this);
-			} else if (var2 == 2) {
-				var3 = new class130(this);
-			} else if (var2 == 7) {
-				var3 = new class123(this);
-			} else if (var2 == 14) {
-				var3 = new class127(this);
-			} else if (var2 == 8) {
-				var3 = new class144(this);
-			} else if (var2 == 9) {
-				var3 = new class150(this);
-			} else if (var2 == 10) {
-				var3 = new class136(this);
-			} else if (var2 == 11) {
-				var3 = new class131(this);
-			} else if (var2 == 12) {
-				var3 = new class135(this);
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1355661796"
+	)
+	public boolean method2928() {
+		return this.field1543;
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(ILdi;IIB)V",
+		garbageValue = "57"
+	)
+	public void method2940(int var1, class122 var2, int var3, int var4) {
+		class407 var5 = Coord.method5706();
+		this.method2925(var5, var3, var2, var1);
+		this.method2920(var5, var3, var2, var1);
+		this.method2926(var5, var3, var2, var1);
+		var2.method2847(var5);
+		var5.method7695();
+	}
+
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "(Lov;ILdi;IB)V",
+		garbageValue = "1"
+	)
+	void method2925(class407 var1, int var2, class122 var3, int var4) {
+		float[] var5 = var3.method2845(this.field1542);
+		float var6 = var5[0];
+		float var7 = var5[1];
+		float var8 = var5[2];
+		if (this.field1538[var2] != null) {
+			class124 var9 = this.field1538[var2][0];
+			class124 var10 = this.field1538[var2][1];
+			class124 var11 = this.field1538[var2][2];
+			if (var9 != null) {
+				var6 = var9.method2885(var4);
+			}
+
+			if (var10 != null) {
+				var7 = var10.method2885(var4);
+			}
+
+			if (var11 != null) {
+				var8 = var11.method2885(var4);
+			}
+		}
+
+		class406 var16 = FriendSystem.method1847();
+		var16.method7638(1.0F, 0.0F, 0.0F, var6);
+		class406 var14 = FriendSystem.method1847();
+		var14.method7638(0.0F, 1.0F, 0.0F, var7);
+		class406 var15 = FriendSystem.method1847();
+		var15.method7638(0.0F, 0.0F, 1.0F, var8);
+		class406 var12 = FriendSystem.method1847();
+		var12.method7615(var15);
+		var12.method7615(var16);
+		var12.method7615(var14);
+		class407 var13 = Coord.method5706();
+		var13.method7653(var12);
+		var1.method7652(var13);
+		var16.method7623();
+		var14.method7623();
+		var15.method7623();
+		var12.method7623();
+		var13.method7695();
+	}
+
+	@ObfuscatedName("y")
+	@ObfuscatedSignature(
+		descriptor = "(Lov;ILdi;IB)V",
+		garbageValue = "-7"
+	)
+	void method2926(class407 var1, int var2, class122 var3, int var4) {
+		float[] var5 = var3.method2834(this.field1542);
+		float var6 = var5[0];
+		float var7 = var5[1];
+		float var8 = var5[2];
+		if (this.field1538[var2] != null) {
+			class124 var9 = this.field1538[var2][3];
+			class124 var10 = this.field1538[var2][4];
+			class124 var11 = this.field1538[var2][5];
+			if (var9 != null) {
+				var6 = var9.method2885(var4);
+			}
+
+			if (var10 != null) {
+				var7 = var10.method2885(var4);
+			}
+
+			if (var11 != null) {
+				var8 = var11.method2885(var4);
+			}
+		}
+
+		var1.field4566[12] = var6;
+		var1.field4566[13] = var7;
+		var1.field4566[14] = var8;
+	}
+
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(
+		descriptor = "(Lov;ILdi;II)V",
+		garbageValue = "-1585869503"
+	)
+	void method2920(class407 var1, int var2, class122 var3, int var4) {
+		float[] var5 = var3.method2835(this.field1542);
+		float var6 = var5[0];
+		float var7 = var5[1];
+		float var8 = var5[2];
+		if (this.field1538[var2] != null) {
+			class124 var9 = this.field1538[var2][6];
+			class124 var10 = this.field1538[var2][7];
+			class124 var11 = this.field1538[var2][8];
+			if (var9 != null) {
+				var6 = var9.method2885(var4);
+			}
+
+			if (var10 != null) {
+				var7 = var10.method2885(var4);
+			}
+
+			if (var11 != null) {
+				var8 = var11.method2885(var4);
+			}
+		}
+
+		class407 var12 = Coord.method5706();
+		var12.method7650(var6, var7, var8);
+		var1.method7652(var12);
+		var12.method7695();
+	}
+
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "(Lkn;I)I",
+		garbageValue = "-2135954243"
+	)
+	static int method2946(Widget var0) {
+		if (var0.type != 11) {
+			Interpreter.Interpreter_stringStack[class125.Interpreter_stringStackSize - 1] = "";
+			return 1;
+		} else {
+			String var1 = Interpreter.Interpreter_stringStack[--class125.Interpreter_stringStackSize];
+			Interpreter.Interpreter_stringStack[++class125.Interpreter_stringStackSize - 1] = var0.method6136(var1);
+			return 1;
+		}
+	}
+
+	@ObfuscatedName("fq")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "-849892544"
+	)
+	@Export("getLoginError")
+	static void getLoginError(int var0) {
+		int var1 = Login.loginIndex;
+		if (var0 == -3) {
+			MusicPatchNode2.setLoginResponseString("Connection timed out.", "Please try using a different world.", "");
+		} else if (var0 == -2) {
+			MusicPatchNode2.setLoginResponseString("Error connecting to server.", "Please try using a different world.", "");
+		} else if (var0 == -1) {
+			MusicPatchNode2.setLoginResponseString("No response from server.", "Please try using a different world.", "");
+		} else if (var0 == 3) {
+			GrandExchangeOfferOwnWorldComparator.method1171(3);
+			Login.field925 = 1;
+		} else if (var0 == 4) {
+			GrandExchangeOfferOwnWorldComparator.method1171(14);
+			Login.field907 = 0;
+		} else if (var0 == 5) {
+			Login.field925 = 2;
+			MusicPatchNode2.setLoginResponseString("Either your account is still logged in, or the last", "world you were using has become unavailable.", "Please try again later.");
+		} else if (var0 != 68 && (Client.onMobile || var0 != 6)) {
+			if (var0 == 7) {
+				MusicPatchNode2.setLoginResponseString("This world is full.", "Please use a different world.", "");
+			} else if (var0 == 8) {
+				MusicPatchNode2.setLoginResponseString("Unable to connect.", "Login server offline.", "");
+			} else if (var0 == 9) {
+				MusicPatchNode2.setLoginResponseString("Login limit exceeded.", "Too many connections from your address.", "");
+			} else if (var0 == 10) {
+				MusicPatchNode2.setLoginResponseString("Unable to connect.", "Bad session id.", "");
+			} else if (var0 == 11) {
+				MusicPatchNode2.setLoginResponseString("We suspect someone knows your password.", "Press 'change your password' on front page.", "");
+			} else if (var0 == 12) {
+				MusicPatchNode2.setLoginResponseString("You need a members account to login to this world.", "Please subscribe, or use a different world.", "");
+			} else if (var0 == 13) {
+				MusicPatchNode2.setLoginResponseString("Could not complete login.", "Please try using a different world.", "");
+			} else if (var0 == 14) {
+				MusicPatchNode2.setLoginResponseString("The server is being updated.", "Please wait 1 minute and try again.", "");
+			} else if (var0 == 16) {
+				MusicPatchNode2.setLoginResponseString("Too many login attempts.", "Please wait a few minutes before trying again.", "");
+			} else if (var0 == 17) {
+				MusicPatchNode2.setLoginResponseString("To access this free world, log into a", "members world and move your character", "to a non-members area.");
+			} else if (var0 == 18) {
+				GrandExchangeOfferOwnWorldComparator.method1171(14);
+				Login.field907 = 1;
+			} else if (var0 == 19) {
+				MusicPatchNode2.setLoginResponseString("This world is running a closed Beta.", "Sorry invited players only.", "Please use a different world.");
+			} else if (var0 == 20) {
+				MusicPatchNode2.setLoginResponseString("Invalid loginserver requested.", "Please try using a different world.", "");
+			} else if (var0 == 22) {
+				MusicPatchNode2.setLoginResponseString("Malformed login packet.", "Please try again.", "");
+			} else if (var0 == 23) {
+				MusicPatchNode2.setLoginResponseString("No reply from loginserver.", "Please wait 1 minute and try again.", "");
+			} else if (var0 == 24) {
+				MusicPatchNode2.setLoginResponseString("Error loading your profile.", "Please contact customer support.", "");
+			} else if (var0 == 25) {
+				MusicPatchNode2.setLoginResponseString("Unexpected loginserver response.", "Please try using a different world.", "");
+			} else if (var0 == 26) {
+				MusicPatchNode2.setLoginResponseString("This computers address has been blocked", "as it was used to break our rules.", "");
+			} else if (var0 == 27) {
+				MusicPatchNode2.setLoginResponseString("", "Service unavailable.", "");
+			} else if (var0 == 31) {
+				MusicPatchNode2.setLoginResponseString("Your account must have a displayname set", "in order to play the game.  Please set it", "via the website, or the main game.");
+			} else if (var0 == 32) {
+				GrandExchangeOfferOwnWorldComparator.method1171(14);
+				Login.field907 = 2;
+			} else if (var0 == 37) {
+				MusicPatchNode2.setLoginResponseString("Your account is currently inaccessible.", "Please try again in a few minutes.", "");
+			} else if (var0 == 38) {
+				MusicPatchNode2.setLoginResponseString("You need to vote to play!", "Visit runescape.com and vote,", "and then come back here!");
+			} else if (var0 == 55) {
+				GrandExchangeOfferOwnWorldComparator.method1171(8);
 			} else {
-				if (var2 != 15) {
-					throw new RuntimeException("");
+				if (var0 == 56) {
+					MusicPatchNode2.setLoginResponseString("Enter the 6-digit code generated by your", "authenticator app.", "");
+					class21.method305(11);
+					return;
 				}
 
-				var3 = new class145(this);
+				if (var0 == 57) {
+					MusicPatchNode2.setLoginResponseString("The code you entered was incorrect.", "Please try again.", "");
+					class21.method305(11);
+					return;
+				}
+
+				if (var0 == 61) {
+					MusicPatchNode2.setLoginResponseString("", "Please enter your date of birth (DD/MM/YYYY)", "");
+					GrandExchangeOfferOwnWorldComparator.method1171(7);
+				} else {
+					if (var0 == 62) {
+						class21.method305(10);
+						GrandExchangeOfferOwnWorldComparator.method1171(9);
+						MusicPatchNode2.setLoginResponseString("Login attempt timed out.", "Please try again.", "");
+						return;
+					}
+
+					if (var0 == 63) {
+						class21.method305(10);
+						GrandExchangeOfferOwnWorldComparator.method1171(9);
+						MusicPatchNode2.setLoginResponseString("You were signed out.", "Please sign in again.", "");
+						return;
+					}
+
+					if (var0 == 65 || var0 == 67) {
+						class21.method305(10);
+						GrandExchangeOfferOwnWorldComparator.method1171(9);
+						MusicPatchNode2.setLoginResponseString("Failed to login.", "Please try again.", "");
+						return;
+					}
+
+					if (var0 == 71) {
+						class21.method305(10);
+						GrandExchangeOfferOwnWorldComparator.method1171(7);
+						MusicPatchNode2.setLoginResponseString("There was a problem updating your DOB.", "Please try again later. If the problem ", "persists, please contact Jagex Support.");
+					} else if (var0 == 73) {
+						class21.method305(10);
+						GrandExchangeOfferOwnWorldComparator.method1171(6);
+						MusicPatchNode2.setLoginResponseString("Your date of birth information is waiting", "to be reviewed by our staff.", "It will be processed shortly.");
+					} else if (var0 == 72) {
+						class21.method305(10);
+						GrandExchangeOfferOwnWorldComparator.method1171(26);
+					} else {
+						MusicPatchNode2.setLoginResponseString("Unexpected server response", "Please try using a different world.", "");
+					}
+				}
 			}
-
-			((class126)var3).vmethod3029(var1);
-			this.field1512.addFirst((Node)var3);
-		}
-
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "1939011884"
-	)
-	public void method2781(ClanSettings var1) {
-		if (this.field1513 == var1.field1562 && this.field1511 == var1.field1563) {
-			for (class126 var2 = (class126)this.field1512.last(); var2 != null; var2 = (class126)this.field1512.previous()) {
-				var2.vmethod3028(var1);
-			}
-
-			++var1.field1563;
 		} else {
-			throw new RuntimeException("");
-		}
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Lix;",
-		garbageValue = "828857412"
-	)
-	@Export("ServerPacket_values")
-	public static ServerPacket[] ServerPacket_values() {
-		return new ServerPacket[]{ServerPacket.field3013, ServerPacket.field2931, ServerPacket.field2983, ServerPacket.field2933, ServerPacket.field2934, ServerPacket.field2930, ServerPacket.field2936, ServerPacket.field2937, ServerPacket.field3000, ServerPacket.field3003, ServerPacket.field2940, ServerPacket.field2941, ServerPacket.field2942, ServerPacket.field3006, ServerPacket.field2944, ServerPacket.field2945, ServerPacket.field2946, ServerPacket.field3008, ServerPacket.field2948, ServerPacket.field2949, ServerPacket.field2950, ServerPacket.field2951, ServerPacket.field2961, ServerPacket.field2982, ServerPacket.field2954, ServerPacket.field2955, ServerPacket.field2956, ServerPacket.field2978, ServerPacket.field2958, ServerPacket.field2959, ServerPacket.field3029, ServerPacket.field2938, ServerPacket.field2962, ServerPacket.field2963, ServerPacket.field2964, ServerPacket.field2965, ServerPacket.field3014, ServerPacket.field2986, ServerPacket.field2968, ServerPacket.field3005, ServerPacket.field2997, ServerPacket.field2971, ServerPacket.field2972, ServerPacket.field2932, ServerPacket.field2974, ServerPacket.field2975, ServerPacket.field2976, ServerPacket.field2987, ServerPacket.field2947, ServerPacket.field2979, ServerPacket.field2980, ServerPacket.field2981, ServerPacket.field2957, ServerPacket.field2939, ServerPacket.field2984, ServerPacket.field2985, ServerPacket.field3016, ServerPacket.field3017, ServerPacket.field2943, ServerPacket.field2989, ServerPacket.field2990, ServerPacket.field2991, ServerPacket.field2992, ServerPacket.field2993, ServerPacket.field2994, ServerPacket.field2995, ServerPacket.field2996, ServerPacket.field2952, ServerPacket.field2998, ServerPacket.field2999, ServerPacket.field2953, ServerPacket.field3001, ServerPacket.field3002, ServerPacket.field2960, ServerPacket.field3004, ServerPacket.field2966, ServerPacket.field2988, ServerPacket.field3007, ServerPacket.field2967, ServerPacket.field3009, ServerPacket.field3010, ServerPacket.field3011, ServerPacket.field3012, ServerPacket.field2969, ServerPacket.field2970, ServerPacket.field3015, ServerPacket.field2935, ServerPacket.field3025, ServerPacket.field3018, ServerPacket.field3019, ServerPacket.field3020, ServerPacket.field3021, ServerPacket.field3022, ServerPacket.field3023, ServerPacket.field3024, ServerPacket.field2973, ServerPacket.field3026, ServerPacket.field3027};
-	}
-
-	@ObfuscatedName("jr")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIII)V",
-		garbageValue = "604899148"
-	)
-	@Export("drawScrollBar")
-	static final void drawScrollBar(int var0, int var1, int var2, int var3, int var4) {
-		AbstractWorldMapData.scrollBarSprites[0].drawAt(var0, var1);
-		AbstractWorldMapData.scrollBarSprites[1].drawAt(var0, var3 + var1 - 16);
-		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1 + 16, 16, var3 - 32, Client.field693);
-		int var5 = var3 * (var3 - 32) / var4;
-		if (var5 < 8) {
-			var5 = 8;
+			MusicPatchNode2.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", "");
 		}
 
-		int var6 = (var3 - 32 - var5) * var2 / (var4 - var3);
-		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var6 + var1 + 16, 16, var5, Client.field716);
-		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0, var6 + var1 + 16, var5, Client.field544);
-		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 1, var6 + var1 + 16, var5, Client.field544);
-		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 16, 16, Client.field544);
-		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 17, 16, Client.field544);
-		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 15, var6 + var1 + 16, var5, Client.field509);
-		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 14, var6 + var1 + 17, var5 - 1, Client.field509);
-		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var5 + var1 + 15, 16, Client.field509);
-		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0 + 1, var6 + var5 + var1 + 14, 15, Client.field509);
+		class21.method305(10);
+		int var4 = Login.loginIndex;
+		boolean var5 = var1 != var4;
+		if (!var5 && Client.field615.method8675()) {
+			GrandExchangeOfferOwnWorldComparator.method1171(9);
+		}
+
 	}
 }

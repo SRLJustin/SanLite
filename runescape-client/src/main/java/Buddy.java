@@ -3,25 +3,26 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("mp")
+@ObfuscatedName("of")
 @Implements("Buddy")
 public class Buddy extends Nameable {
-	@ObfuscatedName("t")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -162440659
+		intValue = 1899402835
 	)
 	@Export("world")
 	public int world;
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -79798009
+		intValue = 1732968995
 	)
 	@Export("int2")
 	public int int2;
-	@ObfuscatedName("j")
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = 616576577
+		intValue = 924228175
 	)
 	@Export("rank")
 	public int rank;
@@ -30,10 +31,10 @@ public class Buddy extends Nameable {
 		this.world = -1;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "130615034"
+		descriptor = "(IIB)V",
+		garbageValue = "78"
 	)
 	@Export("set")
 	void set(int var1, int var2) {
@@ -41,63 +42,53 @@ public class Buddy extends Nameable {
 		this.int2 = var2;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-619942050"
+		garbageValue = "-949915725"
 	)
 	@Export("getWorld")
 	public int getWorld() {
 		return this.world;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "616550004"
+		descriptor = "(B)Z",
+		garbageValue = "75"
 	)
 	@Export("hasWorld")
 	public boolean hasWorld() {
 		return this.world > 0;
 	}
 
-	@ObfuscatedName("ga")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "(Lck;ZB)V",
-		garbageValue = "94"
+		descriptor = "(ILbz;ZI)I",
+		garbageValue = "-974133059"
 	)
-	@Export("addPlayerToScene")
-	static void addPlayerToScene(Player var0, boolean var1) {
-		if (var0 != null && var0.isVisible() && !var0.isHidden) {
-			var0.isUnanimated = false;
-			if ((Client.isLowDetail && Players.Players_count > 50 || Players.Players_count > 200) && var1 && var0.idleSequence == var0.movementSequence) {
-				var0.isUnanimated = true;
-			}
-
-			int var2 = var0.x >> 7;
-			int var3 = var0.y >> 7;
-			if (var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
-				long var4 = SecureRandomFuture.calculateTag(0, 0, 0, false, var0.index);
-				if (var0.model0 != null && Client.cycle >= var0.animationCycleStart && Client.cycle < var0.animationCycleEnd) {
-					var0.isUnanimated = false;
-					var0.tileHeight = FaceNormal.getTileHeight(var0.x, var0.y, class20.Client_plane);
-					var0.playerCycle = Client.cycle;
-					class7.scene.addNullableObject(class20.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.minX, var0.minY, var0.maxX, var0.maxY);
-				} else {
-					if ((var0.x & 127) == 64 && (var0.y & 127) == 64) {
-						if (Client.tileLastDrawnActor[var2][var3] == Client.viewportDrawCount) {
-							return;
-						}
-
-						Client.tileLastDrawnActor[var2][var3] = Client.viewportDrawCount;
-					}
-
-					var0.tileHeight = FaceNormal.getTileHeight(var0.x, var0.y, class20.Client_plane);
-					var0.playerCycle = Client.cycle;
-					class7.scene.drawEntity(class20.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.isWalking);
-				}
-			}
+	static int method7457(int var0, Script var1, boolean var2) {
+		Widget var3 = class281.getWidget(Interpreter.Interpreter_intStack[--class379.Interpreter_intStackSize]);
+		if (var0 == ScriptOpcodes.IF_GETX) {
+			Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var3.x;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETY) {
+			Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var3.y;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETWIDTH) {
+			Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var3.width;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETHEIGHT) {
+			Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var3.height;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETHIDE) {
+			Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var3.isHidden ? 1 : 0;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETLAYER) {
+			Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var3.parentId;
+			return 1;
+		} else {
+			return 2;
 		}
-
 	}
 }
