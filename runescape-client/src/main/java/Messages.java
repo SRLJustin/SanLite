@@ -6,56 +6,75 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ci")
+@ObfuscatedName("df")
 @Implements("Messages")
 public class Messages {
-	@ObfuscatedName("um")
-	@ObfuscatedSignature(
-		descriptor = "Llw;"
-	)
-	public static class312 field1273;
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@Export("Messages_channels")
 	static final Map Messages_channels;
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Loz;"
+		descriptor = "Lpe;"
 	)
 	@Export("Messages_hashTable")
 	static final IterableNodeHashTable Messages_hashTable;
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lls;"
+		descriptor = "Lmq;"
 	)
 	@Export("Messages_queue")
 	static final IterableDualNodeQueue Messages_queue;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = 1900201555
+		intValue = 824043359
 	)
 	@Export("Messages_count")
 	static int Messages_count;
-	@ObfuscatedName("e")
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = 1135032351
+	)
+	@Export("musicTrackVolume")
+	public static int musicTrackVolume;
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "Ljm;"
+		descriptor = "Lqr;"
 	)
-	@Export("scriptActiveWidget")
-	static Widget scriptActiveWidget;
-	@ObfuscatedName("ge")
-	@ObfuscatedGetter(
-		longValue = -3704126848335008397L
-	)
-	static long field1272;
-	@ObfuscatedName("gd")
-	@ObfuscatedGetter(
-		intValue = -1932714305
-	)
-	static int field1277;
+	public static Buffer field1361;
 
 	static {
 		Messages_channels = new HashMap();
 		Messages_hashTable = new IterableNodeHashTable(1024);
 		Messages_queue = new IterableDualNodeQueue();
 		Messages_count = 0;
+	}
+
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "26"
+	)
+	static void method2645() {
+		InvDefinition.field1862 = new int[2000];
+		int var0 = 0;
+		int var1 = 240;
+
+		int var3;
+		for (byte var2 = 12; var0 < 16; var1 -= var2) {
+			var3 = class9.method72((double)((float)var1 / 360.0F), 0.9998999834060669D, (double)((float)var0 * 0.425F / 16.0F + 0.075F));
+			InvDefinition.field1862[var0] = var3;
+			++var0;
+		}
+
+		var1 = 48;
+
+		for (int var5 = var1 / 6; var0 < InvDefinition.field1862.length; var1 -= var5) {
+			var3 = var0 * 2;
+
+			for (int var4 = class9.method72((double)((float)var1 / 360.0F), 0.9998999834060669D, 0.5D); var0 < var3 && var0 < InvDefinition.field1862.length; ++var0) {
+				InvDefinition.field1862[var0] = var4;
+			}
+		}
+
 	}
 }

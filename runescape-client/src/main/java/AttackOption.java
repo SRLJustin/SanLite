@@ -1,44 +1,49 @@
+import java.awt.Image;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ca")
+@ObfuscatedName("cb")
 @Implements("AttackOption")
-public enum AttackOption implements MouseWheel {
-	@ObfuscatedName("c")
+public enum AttackOption implements class342 {
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "Lca;"
+		descriptor = "Lcb;"
 	)
 	@Export("AttackOption_dependsOnCombatLevels")
 	AttackOption_dependsOnCombatLevels(0),
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lca;"
+		descriptor = "Lcb;"
 	)
 	@Export("AttackOption_alwaysRightClick")
 	AttackOption_alwaysRightClick(1),
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lca;"
+		descriptor = "Lcb;"
 	)
-	field1232(2),
-	@ObfuscatedName("m")
+	field1285(2),
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "Lca;"
+		descriptor = "Lcb;"
 	)
 	@Export("AttackOption_hidden")
 	AttackOption_hidden(3),
-	@ObfuscatedName("t")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lca;"
+		descriptor = "Lcb;"
 	)
-	field1234(4);
+	field1289(4);
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("ak")
+	static Image field1295;
+	@ObfuscatedName("al")
+	protected static String field1294;
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -268107797
+		intValue = 827039641
 	)
 	@Export("id")
 	final int id;
@@ -47,22 +52,41 @@ public enum AttackOption implements MouseWheel {
 		this.id = var3;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "48"
+		garbageValue = "0"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("lg")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-379261507"
+		descriptor = "(IIIIIII)I",
+		garbageValue = "1633135416"
 	)
-	static boolean method2356() {
-		return SecureRandomFuture.clientPreferences.field1197 >= Client.field473;
+	public static int method2540(int var0, int var1, int var2, int var3, int var4, int var5) {
+		if ((var5 & 1) == 1) {
+			int var6 = var3;
+			var3 = var4;
+			var4 = var6;
+		}
+
+		var2 &= 3;
+		if (var2 == 0) {
+			return var0;
+		} else if (var2 == 1) {
+			return var1;
+		} else {
+			return var2 == 2 ? 7 - var0 - (var3 - 1) : 7 - var1 - (var4 - 1);
+		}
+	}
+
+	@ObfuscatedName("y")
+	@Export("Entity_unpackID")
+	public static int Entity_unpackID(long var0) {
+		return (int)(var0 >>> 17 & 4294967295L);
 	}
 }

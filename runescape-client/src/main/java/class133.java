@@ -3,66 +3,79 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ek")
-public class class133 extends class126 {
-	@ObfuscatedName("ez")
+@ObfuscatedName("eb")
+public class class133 extends class135 {
+	@ObfuscatedName("lt")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
+		descriptor = "Lkn;"
 	)
-	@Export("archive15")
-	static Archive archive15;
-	@ObfuscatedName("fv")
+	static Widget field1575;
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = -1093073267
+		longValue = -6099282781711769875L
 	)
-	@Export("js5Port")
-	static int js5Port;
-	@ObfuscatedName("c")
-	boolean field1543;
-	@ObfuscatedName("b")
-	byte field1547;
-	@ObfuscatedName("p")
-	byte field1544;
-	@ObfuscatedName("m")
-	byte field1542;
-	@ObfuscatedName("t")
-	byte field1546;
+	long field1573;
+	@ObfuscatedName("f")
+	String field1572;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Lel;"
 	)
-	final class129 this$0;
+	final class138 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "(Lel;)V"
 	)
-	class133(class129 var1) {
+	class133(class138 var1) {
 		this.this$0 = var1;
+		this.field1573 = -1L;
+		this.field1572 = null;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lqr;I)V",
+		garbageValue = "-1428026624"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1543 = var1.readUnsignedByte() == 1;
-		this.field1547 = var1.readByte();
-		this.field1544 = var1.readByte();
-		this.field1542 = var1.readByte();
-		this.field1546 = var1.readByte();
+	void vmethod3254(Buffer var1) {
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			this.field1573 = var1.readLong();
+		}
+
+		this.field1572 = var1.readStringCp1252NullTerminatedOrNull();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(Ler;B)V",
+		garbageValue = "-110"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.allowGuests = this.field1543;
-		var1.field1567 = this.field1547;
-		var1.field1568 = this.field1544;
-		var1.field1569 = this.field1542;
-		var1.field1570 = this.field1546;
+	void vmethod3248(ClanSettings var1) {
+		var1.method3080(this.field1573, this.field1572, 0);
+	}
+
+	@ObfuscatedName("y")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1780275774"
+	)
+	static void method2975() {
+		ItemContainer.itemContainers = new NodeHashTable(32);
+	}
+
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "115"
+	)
+	@Export("Messages_getLastChatID")
+	static int Messages_getLastChatID(int var0) {
+		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
+		if (var1 == null) {
+			return -1;
+		} else {
+			return var1.previousDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.previousDual).count;
+		}
 	}
 }
