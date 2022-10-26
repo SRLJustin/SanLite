@@ -1,46 +1,45 @@
-import java.awt.Component;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kd")
+@ObfuscatedName("lt")
 @Implements("GameBuild")
 public class GameBuild {
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Llt;"
 	)
 	@Export("LIVE")
-	public static final GameBuild LIVE;
-	@ObfuscatedName("b")
+	static final GameBuild LIVE;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Llt;"
 	)
 	@Export("BUILDLIVE")
-	public static final GameBuild BUILDLIVE;
-	@ObfuscatedName("p")
+	static final GameBuild BUILDLIVE;
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Llt;"
 	)
 	@Export("RC")
-	public static final GameBuild RC;
-	@ObfuscatedName("m")
+	static final GameBuild RC;
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Llt;"
 	)
 	@Export("WIP")
-	public static final GameBuild WIP;
-	@ObfuscatedName("t")
+	static final GameBuild WIP;
+	@ObfuscatedName("h")
 	@Export("name")
 	public final String name;
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -794048651
+		intValue = -1087843529
 	)
 	@Export("buildId")
-	public final int buildId;
+	final int buildId;
 
 	static {
 		LIVE = new GameBuild("LIVE", 0);
@@ -54,15 +53,17 @@ public class GameBuild {
 		this.buildId = var2;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Component;I)V",
-		garbageValue = "727628854"
+		descriptor = "(ILbz;ZB)I",
+		garbageValue = "46"
 	)
-	static void method5494(Component var0) {
-		var0.removeMouseListener(MouseHandler.MouseHandler_instance);
-		var0.removeMouseMotionListener(MouseHandler.MouseHandler_instance);
-		var0.removeFocusListener(MouseHandler.MouseHandler_instance);
-		MouseHandler.MouseHandler_currentButtonVolatile = 0;
+	static int method6255(int var0, Script var1, boolean var2) {
+		if (var0 == 7108) {
+			Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = class248.method5163() ? 1 : 0;
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 }

@@ -4,10 +4,16 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cu")
+@ObfuscatedName("dt")
 @Implements("UserComparator4")
 public class UserComparator4 implements Comparator {
-	@ObfuscatedName("c")
+	@ObfuscatedName("jg")
+	@ObfuscatedSignature(
+		descriptor = "[Lry;"
+	)
+	@Export("modIconSprites")
+	static IndexedSprite[] modIconSprites;
+	@ObfuscatedName("a")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -15,10 +21,10 @@ public class UserComparator4 implements Comparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(Lmp;Lmp;I)I",
-		garbageValue = "-427505933"
+		descriptor = "(Lof;Lof;I)I",
+		garbageValue = "941056838"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(Buddy var1, Buddy var2) {
@@ -33,206 +39,70 @@ public class UserComparator4 implements Comparator {
 		return super.equals(var1);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("r")
 	@ObfuscatedSignature(
-		descriptor = "(Low;I)I",
-		garbageValue = "801134739"
+		descriptor = "(I)V",
+		garbageValue = "1111285286"
 	)
-	static final int method2508(LoginType var0) {
-		if (var0 == null) {
-			return 12;
-		} else {
-			switch(var0.field4406) {
-			case 5:
-				return 20;
-			default:
-				return 12;
-			}
-		}
+	static final void method2732() {
+		class11.method101("Your friend list is full. Max of 200 for free users, and 400 for members");
 	}
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "([Lbw;II[I[II)V",
-		garbageValue = "388391303"
-	)
-	@Export("sortWorlds")
-	static void sortWorlds(World[] var0, int var1, int var2, int[] var3, int[] var4) {
-		if (var1 < var2) {
-			int var5 = var1 - 1;
-			int var6 = var2 + 1;
-			int var7 = (var2 + var1) / 2;
-			World var8 = var0[var7];
-			var0[var7] = var0[var1];
-			var0[var1] = var8;
-
-			while (var5 < var6) {
-				boolean var9 = true;
-
-				int var10;
-				int var11;
-				int var12;
-				do {
-					--var6;
-
-					for (var10 = 0; var10 < 4; ++var10) {
-						if (var3[var10] == 2) {
-							var11 = var0[var6].index;
-							var12 = var8.index;
-						} else if (var3[var10] == 1) {
-							var11 = var0[var6].population;
-							var12 = var8.population;
-							if (var11 == -1 && var4[var10] == 1) {
-								var11 = 2001;
-							}
-
-							if (var12 == -1 && var4[var10] == 1) {
-								var12 = 2001;
-							}
-						} else if (var3[var10] == 3) {
-							var11 = var0[var6].isMembersOnly() ? 1 : 0;
-							var12 = var8.isMembersOnly() ? 1 : 0;
-						} else {
-							var11 = var0[var6].id;
-							var12 = var8.id;
-						}
-
-						if (var12 != var11) {
-							if ((var4[var10] != 1 || var11 <= var12) && (var4[var10] != 0 || var11 >= var12)) {
-								var9 = false;
-							}
-							break;
-						}
-
-						if (var10 == 3) {
-							var9 = false;
-						}
-					}
-				} while(var9);
-
-				var9 = true;
-
-				do {
-					++var5;
-
-					for (var10 = 0; var10 < 4; ++var10) {
-						if (var3[var10] == 2) {
-							var11 = var0[var5].index;
-							var12 = var8.index;
-						} else if (var3[var10] == 1) {
-							var11 = var0[var5].population;
-							var12 = var8.population;
-							if (var11 == -1 && var4[var10] == 1) {
-								var11 = 2001;
-							}
-
-							if (var12 == -1 && var4[var10] == 1) {
-								var12 = 2001;
-							}
-						} else if (var3[var10] == 3) {
-							var11 = var0[var5].isMembersOnly() ? 1 : 0;
-							var12 = var8.isMembersOnly() ? 1 : 0;
-						} else {
-							var11 = var0[var5].id;
-							var12 = var8.id;
-						}
-
-						if (var12 != var11) {
-							if ((var4[var10] != 1 || var11 >= var12) && (var4[var10] != 0 || var11 <= var12)) {
-								var9 = false;
-							}
-							break;
-						}
-
-						if (var10 == 3) {
-							var9 = false;
-						}
-					}
-				} while(var9);
-
-				if (var5 < var6) {
-					World var13 = var0[var5];
-					var0[var5] = var0[var6];
-					var0[var6] = var13;
-				}
-			}
-
-			sortWorlds(var0, var1, var6, var3, var4);
-			sortWorlds(var0, var6 + 1, var2, var3, var4);
-		}
-
-	}
-
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(Ldn;[F[FS)V",
-		garbageValue = "5664"
-	)
-	static void method2504(class115 var0, float[] var1, float[] var2) {
-		if (var0 != null) {
-			var0.field1406 = var1[0];
-			float var3 = var1[3] - var1[0];
-			float var4 = var2[3] - var2[0];
-			float var5 = var1[1] - var1[0];
-			float var6 = 0.0F;
-			float var7 = 0.0F;
-			if ((double)var5 != 0.0D) {
-				var6 = (var2[1] - var2[0]) / var5;
-			}
-
-			var5 = var1[3] - var1[2];
-			if (0.0D != (double)var5) {
-				var7 = (var2[3] - var2[2]) / var5;
-			}
-
-			float var8 = 1.0F / (var3 * var3);
-			float var9 = var6 * var3;
-			float var10 = var7 * var3;
-			var0.field1401[0] = var8 * (var9 + var10 - var4 - var4) / var3;
-			var0.field1401[1] = (var4 + var4 + var4 - var9 - var9 - var10) * var8;
-			var0.field1401[2] = var6;
-			var0.field1401[3] = var2[0];
-		}
-	}
-
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "(Lbw;Lbw;IZIZB)I",
-		garbageValue = "-82"
-	)
-	static int method2506(World var0, World var1, int var2, boolean var3, int var4, boolean var5) {
-		int var6 = ReflectionCheck.compareWorlds(var0, var1, var2, var3);
-		if (var6 != 0) {
-			return var3 ? -var6 : var6;
-		} else if (var4 == -1) {
-			return 0;
-		} else {
-			int var7 = ReflectionCheck.compareWorlds(var0, var1, var4, var5);
-			return var5 ? -var7 : var7;
-		}
-	}
-
-	@ObfuscatedName("lm")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "-452202636"
+		garbageValue = "1902813783"
 	)
-	static void method2499(String var0) {
-		class1.field3 = var0;
+	static final void method2739(String var0) {
+		class11.method101(var0 + " is already on your friend list");
+	}
 
-		try {
-			String var1 = class295.client.getParameter(Integer.toString(18));
-			String var2 = class295.client.getParameter(Integer.toString(13));
-			String var3 = var1 + "settings=" + var0 + "; version=1; path=/; domain=" + var2;
-			if (var0.length() == 0) {
-				var3 = var3 + "; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0";
-			} else {
-				var3 = var3 + "; Expires=" + class13.method195(Ignored.method6459() + 94608000000L) + "; Max-Age=" + 94608000L;
-			}
-
-			class27.method432(class295.client, "document.cookie=\"" + var3 + "\"");
-		} catch (Throwable var4) {
-		}
-
+	@ObfuscatedName("gj")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "-60"
+	)
+	static final void method2738() {
+		FloorOverlayDefinition.FloorOverlayDefinition_cached.clear();
+		class148.method3155();
+		InvDefinition.method3413();
+		class145.method3072();
+		class18.method268();
+		WorldMapIcon_1.method4715();
+		UrlRequest.method2726();
+		class97.method2522();
+		VarbitComposition.VarbitDefinition_cached.clear();
+		class156.method3225();
+		PcmPlayer.HitSplatDefinition_cachedSprites.method8210();
+		class203.Ignored_cached.method8210();
+		HitSplatDefinition.HitSplatDefinition_cached.clear();
+		HitSplatDefinition.HitSplatDefinition_cachedSprites.clear();
+		HitSplatDefinition.HitSplatDefinition_cachedFonts.clear();
+		HealthBarDefinition.HealthBarDefinition_cached.clear();
+		HealthBarDefinition.HealthBarDefinition_cachedSprites.clear();
+		StructComposition.StructDefinition_cached.clear();
+		ArchiveDiskActionHandler.method6291();
+		ObjectSound.method1854();
+		class456.PlayerComposition_cachedModels.clear();
+		class458.Widget_cachedSprites.clear();
+		Client.Widget_cachedModels.clear();
+		Client.Widget_cachedFonts.clear();
+		HorizontalAlignment.method3543();
+		MusicPatchPcmStream.method5658();
+		((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).clear();
+		Script.Script_cached.clear();
+		class150.archive5.clearFiles();
+		MouseHandler.archive6.clearFiles();
+		PlayerType.archive7.clearFiles();
+		Canvas.archive4.clearFiles();
+		SecureRandomFuture.archive9.clearFiles();
+		ReflectionCheck.archive10.clearFiles();
+		WorldMapSectionType.archive11.clearFiles();
+		class142.archive8.clearFiles();
+		Client.field522.clearFiles();
+		WorldMapRegion.field2798.clearFiles();
+		class7.field32.clearFiles();
+		class188.archive12.clearFiles();
+		class250.field2930.clearFiles();
 	}
 }
