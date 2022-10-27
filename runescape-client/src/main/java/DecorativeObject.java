@@ -1,77 +1,85 @@
-import java.security.SecureRandom;
+import java.lang.management.GarbageCollectorMXBean;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hp")
+@ObfuscatedName("hi")
 @Implements("DecorativeObject")
-public final class DecorativeObject
-{
-	@ObfuscatedName("c")
+public final class DecorativeObject {
+	@ObfuscatedName("uy")
+	@ObfuscatedSignature(
+		descriptor = "Lba;"
+	)
+	@Export("friendSystem")
+	public static FriendSystem friendSystem;
+	@ObfuscatedName("at")
+	@Export("garbageCollector")
+	static GarbageCollectorMXBean garbageCollector;
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = -2023059781
+		intValue = 1764616911
 	)
 	@Export("tileHeight")
 	int tileHeight;
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 2111603765
+		intValue = -1833070631
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1656810997
+		intValue = -1705508063
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = -1965519891
+		intValue = -309068729
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("t")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 278377977
+		intValue = 183254539
 	)
 	@Export("orientation2")
 	int orientation2;
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 1314236601
+		intValue = -2009332571
 	)
 	@Export("xOffset")
 	int xOffset;
-	@ObfuscatedName("j")
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = -1594233985
+		intValue = -417052637
 	)
 	@Export("yOffset")
 	int yOffset;
-	@ObfuscatedName("w")
+	@ObfuscatedName("d")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lhd;"
 	)
 	@Export("renderable1")
 	public Renderable renderable1;
 	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lhd;"
 	)
 	@Export("renderable2")
 	public Renderable renderable2;
 	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		longValue = 6911018160892972427L
+		longValue = 2290048433807273417L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("o")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = 1066794937
+		intValue = 1818479357
 	)
 	@Export("flags")
 	int flags;
@@ -81,14 +89,34 @@ public final class DecorativeObject
 		this.flags = 0;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/security/SecureRandom;",
-		garbageValue = "-121"
+		descriptor = "([Lmv;II)Lmv;",
+		garbageValue = "1378360626"
 	)
-	static SecureRandom method4340() {
-		SecureRandom var0 = new SecureRandom();
-		var0.nextInt();
-		return var0;
+	@Export("findEnumerated")
+	public static class342 findEnumerated(class342[] var0, int var1) {
+		class342[] var2 = var0;
+
+		for (int var3 = 0; var3 < var2.length; ++var3) {
+			class342 var4 = var2[var3];
+			if (var1 == var4.rsOrdinal()) {
+				return var4;
+			}
+		}
+
+		return null;
+	}
+
+	@ObfuscatedName("ke")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "1518285879"
+	)
+	@Export("runIntfCloseListeners")
+	static final void runIntfCloseListeners(int var0, int var1) {
+		if (WorldMapManager.loadInterface(var0)) {
+			ClientPreferences.runComponentCloseListeners(Widget.Widget_interfaceComponents[var0], var1);
+		}
 	}
 }
