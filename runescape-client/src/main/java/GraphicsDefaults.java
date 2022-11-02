@@ -4,96 +4,90 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mh")
+@ObfuscatedName("or")
 @Implements("GraphicsDefaults")
 public class GraphicsDefaults {
-	@ObfuscatedName("ua")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = 22213427
-	)
-	@Export("foundItemIdCount")
-	static int foundItemIdCount;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = -765662895
+		intValue = 1143172387
 	)
 	@Export("compass")
 	public int compass;
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -537478073
+		intValue = -864189905
 	)
-	public int field4163;
-	@ObfuscatedName("p")
+	public int field4536;
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 580753427
+		intValue = 35824071
 	)
 	@Export("mapScenes")
 	public int mapScenes;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = 1919856699
+		intValue = 2039169195
 	)
 	@Export("headIconsPk")
 	public int headIconsPk;
-	@ObfuscatedName("t")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -643030741
+		intValue = -2112358395
 	)
-	public int field4166;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -997092261
-	)
-	public int field4173;
+	public int field4538;
 	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -2100757521
+		intValue = -1102270247
 	)
-	public int field4169;
-	@ObfuscatedName("w")
+	public int field4539;
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = -1795462849
+		intValue = 1708342261
 	)
-	public int field4168;
+	public int field4540;
+	@ObfuscatedName("d")
+	@ObfuscatedGetter(
+		intValue = -1036565301
+	)
+	public int field4541;
 	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 1214363223
+		intValue = 539674131
 	)
-	public int field4170;
+	public int field4542;
 	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = -377568519
+		intValue = 178036597
 	)
-	public int field4171;
-	@ObfuscatedName("o")
+	public int field4543;
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = -1238810733
+		intValue = -1363465089
 	)
-	public int field4172;
+	public int field4544;
 
 	public GraphicsDefaults() {
 		this.compass = -1;
-		this.field4163 = -1;
+		this.field4536 = -1;
 		this.mapScenes = -1;
 		this.headIconsPk = -1;
-		this.field4166 = -1;
-		this.field4173 = -1;
-		this.field4169 = -1;
-		this.field4168 = -1;
-		this.field4170 = -1;
-		this.field4171 = -1;
-		this.field4172 = -1;
+		this.field4538 = -1;
+		this.field4539 = -1;
+		this.field4540 = -1;
+		this.field4541 = -1;
+		this.field4542 = -1;
+		this.field4543 = -1;
+		this.field4544 = -1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;B)V",
-		garbageValue = "-112"
+		descriptor = "(Llg;I)V",
+		garbageValue = "-2108438411"
 	)
 	@Export("decode")
 	public void decode(AbstractArchive var1) {
-		byte[] var2 = var1.takeFileFlat(DefaultsGroup.field4160.group);
+		byte[] var2 = var1.takeFileFlat(DefaultsGroup.field4533.group);
 		Buffer var3 = new Buffer(var2);
 
 		while (true) {
@@ -107,53 +101,30 @@ public class GraphicsDefaults {
 				var3.readMedium();
 				break;
 			case 2:
-				this.compass = var3.method7400();
-				this.field4163 = var3.method7400();
-				this.mapScenes = var3.method7400();
-				this.headIconsPk = var3.method7400();
-				this.field4166 = var3.method7400();
-				this.field4173 = var3.method7400();
-				this.field4169 = var3.method7400();
-				this.field4168 = var3.method7400();
-				this.field4170 = var3.method7400();
-				this.field4171 = var3.method7400();
-				this.field4172 = var3.method7400();
+				this.compass = var3.method8422();
+				this.field4536 = var3.method8422();
+				this.mapScenes = var3.method8422();
+				this.headIconsPk = var3.method8422();
+				this.field4538 = var3.method8422();
+				this.field4539 = var3.method8422();
+				this.field4540 = var3.method8422();
+				this.field4541 = var3.method8422();
+				this.field4542 = var3.method8422();
+				this.field4543 = var3.method8422();
+				this.field4544 = var3.method8422();
 			}
 		}
 	}
 
-	@ObfuscatedName("p")
-	@Export("base37DecodeLong")
-	public static String base37DecodeLong(long var0) {
-		if (var0 > 0L && var0 < 6582952005840035281L) {
-			if (0L == var0 % 37L) {
-				return null;
-			} else {
-				int var2 = 0;
-
-				for (long var3 = var0; var3 != 0L; var3 /= 37L) {
-					++var2;
-				}
-
-				StringBuilder var5;
-				char var8;
-				for (var5 = new StringBuilder(var2); var0 != 0L; var5.append(var8)) {
-					long var6 = var0;
-					var0 /= 37L;
-					var8 = class332.base37Table[(int)(var6 - 37L * var0)];
-					if (var8 == '_') {
-						int var9 = var5.length() - 1;
-						var5.setCharAt(var9, Character.toUpperCase(var5.charAt(var9)));
-						var8 = 160;
-					}
-				}
-
-				var5.reverse();
-				var5.setCharAt(0, Character.toUpperCase(var5.charAt(0)));
-				return var5.toString();
-			}
-		} else {
-			return null;
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "70"
+	)
+	static void method7570(int var0) {
+		ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var1 != null) {
+			var1.remove();
 		}
 	}
 }

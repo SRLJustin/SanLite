@@ -4,615 +4,717 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ix")
+@ObfuscatedName("jw")
 @Implements("ServerPacket")
 public class ServerPacket {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field3013;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2931;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2983;
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2933;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2934;
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2930;
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2936;
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2937;
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field3000;
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field3003;
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2940;
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2941;
-	@ObfuscatedName("d")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2942;
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field3006;
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2944;
-	@ObfuscatedName("e")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2945;
 	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2946;
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field3008;
-	@ObfuscatedName("k")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2948;
+	public static final ServerPacket field3194;
 	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2949;
-	@ObfuscatedName("l")
+	public static final ServerPacket field3131;
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2950;
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2951;
+	public static final ServerPacket field3230;
 	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2961;
-	@ObfuscatedName("z")
+	public static final ServerPacket field3153;
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2982;
-	@ObfuscatedName("i")
+	public static final ServerPacket field3134;
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2954;
+	public static final ServerPacket field3135;
 	@ObfuscatedName("y")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2955;
-	@ObfuscatedName("ah")
+	public static final ServerPacket field3136;
+	@ObfuscatedName("d")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2956;
-	@ObfuscatedName("ao")
+	public static final ServerPacket field3179;
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2978;
-	@ObfuscatedName("ab")
+	public static final ServerPacket field3160;
+	@ObfuscatedName("r")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2958;
-	@ObfuscatedName("an")
+	public static final ServerPacket field3139;
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2959;
-	@ObfuscatedName("ax")
+	public static final ServerPacket field3140;
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field3029;
-	@ObfuscatedName("am")
+	public static final ServerPacket field3141;
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2938;
-	@ObfuscatedName("az")
+	public static final ServerPacket field3142;
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2962;
-	@ObfuscatedName("au")
+	public static final ServerPacket field3168;
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2963;
-	@ObfuscatedName("av")
+	public static final ServerPacket field3144;
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2964;
-	@ObfuscatedName("ap")
+	public static final ServerPacket field3151;
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2965;
-	@ObfuscatedName("ac")
+	public static final ServerPacket field3221;
+	@ObfuscatedName("t")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field3014;
+	public static final ServerPacket field3147;
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3227;
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3149;
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3242;
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3197;
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3138;
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3150;
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3154;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3155;
 	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2986;
+	public static final ServerPacket field3156;
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3132;
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3158;
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3159;
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3174;
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2968;
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field3005;
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2997;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2971;
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2972;
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2932;
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2974;
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2975;
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2976;
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2987;
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2947;
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2979;
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2980;
+	public static final ServerPacket field3146;
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2981;
-	@ObfuscatedName("bp")
+	public static final ServerPacket field3162;
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2957;
-	@ObfuscatedName("bd")
+	public static final ServerPacket field3201;
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2939;
-	@ObfuscatedName("ba")
+	public static final ServerPacket field3191;
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2984;
-	@ObfuscatedName("bq")
+	public static final ServerPacket field3165;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2985;
-	@ObfuscatedName("bg")
+	public static final ServerPacket field3166;
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field3016;
-	@ObfuscatedName("br")
+	public static final ServerPacket field3167;
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field3017;
-	@ObfuscatedName("bi")
+	public static final ServerPacket field3163;
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2943;
-	@ObfuscatedName("bm")
+	public static final ServerPacket field3169;
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2989;
-	@ObfuscatedName("bw")
+	public static final ServerPacket field3170;
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2990;
-	@ObfuscatedName("bl")
+	public static final ServerPacket field3171;
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2991;
-	@ObfuscatedName("bz")
+	public static final ServerPacket field3172;
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2992;
-	@ObfuscatedName("bu")
+	public static final ServerPacket field3243;
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2993;
-	@ObfuscatedName("bs")
+	public static final ServerPacket field3173;
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2994;
-	@ObfuscatedName("bv")
+	public static final ServerPacket field3175;
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2995;
-	@ObfuscatedName("bb")
+	public static final ServerPacket field3176;
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2996;
-	@ObfuscatedName("bc")
+	public static final ServerPacket field3210;
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2952;
+	public static final ServerPacket field3178;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3199;
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3180;
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3181;
 	@ObfuscatedName("bx")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2998;
-	@ObfuscatedName("bt")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2999;
+	public static final ServerPacket field3182;
 	@ObfuscatedName("bh")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2953;
-	@ObfuscatedName("bn")
+	public static final ServerPacket field3183;
+	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field3001;
-	@ObfuscatedName("bj")
+	public static final ServerPacket field3184;
+	@ObfuscatedName("bp")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field3002;
-	@ObfuscatedName("by")
+	public static final ServerPacket field3137;
+	@ObfuscatedName("bl")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2960;
-	@ObfuscatedName("bk")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field3004;
+	public static final ServerPacket field3186;
 	@ObfuscatedName("bo")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2966;
-	@ObfuscatedName("bf")
+	public static final ServerPacket field3187;
+	@ObfuscatedName("bg")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2988;
+	public static final ServerPacket field3143;
+	@ObfuscatedName("bd")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3189;
+	@ObfuscatedName("bq")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3152;
+	@ObfuscatedName("bk")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3217;
+	@ObfuscatedName("bc")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3192;
+	@ObfuscatedName("bv")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3193;
+	@ObfuscatedName("bt")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3177;
+	@ObfuscatedName("ba")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3195;
+	@ObfuscatedName("br")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3196;
 	@ObfuscatedName("be")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field3007;
-	@ObfuscatedName("ce")
+	public static final ServerPacket field3130;
+	@ObfuscatedName("by")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2967;
-	@ObfuscatedName("cl")
+	public static final ServerPacket field3198;
+	@ObfuscatedName("bb")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field3009;
-	@ObfuscatedName("cp")
+	public static final ServerPacket field3188;
+	@ObfuscatedName("bu")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field3010;
+	public static final ServerPacket field3200;
+	@ObfuscatedName("bj")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3229;
+	@ObfuscatedName("bw")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3211;
+	@ObfuscatedName("bn")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3203;
+	@ObfuscatedName("bf")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3204;
+	@ObfuscatedName("bz")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3205;
+	@ObfuscatedName("bi")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3206;
+	@ObfuscatedName("bs")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3207;
 	@ObfuscatedName("cd")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field3011;
-	@ObfuscatedName("ck")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field3012;
+	public static final ServerPacket field3208;
 	@ObfuscatedName("cg")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field2969;
-	@ObfuscatedName("cy")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2970;
-	@ObfuscatedName("cn")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field3015;
-	@ObfuscatedName("cv")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2935;
-	@ObfuscatedName("co")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field3025;
-	@ObfuscatedName("cc")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field3018;
+	public static final ServerPacket field3209;
 	@ObfuscatedName("cs")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field3019;
-	@ObfuscatedName("cr")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field3020;
-	@ObfuscatedName("cb")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field3021;
-	@ObfuscatedName("cj")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field3022;
-	@ObfuscatedName("ca")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field3023;
-	@ObfuscatedName("cz")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field3024;
-	@ObfuscatedName("cw")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field2973;
-	@ObfuscatedName("ct")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	public static final ServerPacket field3026;
+	public static final ServerPacket field3148;
 	@ObfuscatedName("ci")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljw;"
 	)
-	public static final ServerPacket field3027;
+	public static final ServerPacket field3164;
+	@ObfuscatedName("cq")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3212;
+	@ObfuscatedName("ck")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3213;
+	@ObfuscatedName("ca")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3214;
+	@ObfuscatedName("cf")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3215;
+	@ObfuscatedName("cj")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3216;
+	@ObfuscatedName("cy")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3185;
+	@ObfuscatedName("co")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3218;
+	@ObfuscatedName("cw")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3219;
+	@ObfuscatedName("cl")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3220;
+	@ObfuscatedName("cu")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3202;
 	@ObfuscatedName("ch")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3222;
+	@ObfuscatedName("ce")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3223;
+	@ObfuscatedName("cm")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3224;
+	@ObfuscatedName("cc")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3225;
+	@ObfuscatedName("cr")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3226;
+	@ObfuscatedName("ct")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3239;
+	@ObfuscatedName("cb")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3228;
+	@ObfuscatedName("cz")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3190;
+	@ObfuscatedName("cn")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3145;
+	@ObfuscatedName("cv")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3231;
+	@ObfuscatedName("cx")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3232;
+	@ObfuscatedName("cp")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3233;
+	@ObfuscatedName("ds")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3234;
+	@ObfuscatedName("df")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3235;
+	@ObfuscatedName("dc")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3236;
+	@ObfuscatedName("dk")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3237;
+	@ObfuscatedName("du")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3238;
+	@ObfuscatedName("de")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3161;
+	@ObfuscatedName("dt")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
+	public static final ServerPacket field3240;
+	@ObfuscatedName("he")
 	@ObfuscatedGetter(
-		intValue = -836596687
+		intValue = 1691110679
+	)
+	static int field3133;
+	@ObfuscatedName("da")
+	@ObfuscatedGetter(
+		intValue = -1220623677
 	)
 	@Export("id")
 	public final int id;
-	@ObfuscatedName("cq")
+	@ObfuscatedName("dx")
 	@ObfuscatedGetter(
-		intValue = 230000835
+		intValue = 652557057
 	)
 	@Export("length")
 	public final int length;
 
 	static {
-		field3013 = new ServerPacket(0, 6);
-		field2931 = new ServerPacket(1, -1);
-		field2983 = new ServerPacket(2, 7);
-		field2933 = new ServerPacket(3, -2);
-		field2934 = new ServerPacket(4, -2);
-		field2930 = new ServerPacket(5, 8);
-		field2936 = new ServerPacket(6, 0);
-		field2937 = new ServerPacket(7, 7);
-		field3000 = new ServerPacket(8, 6);
-		field3003 = new ServerPacket(9, 5);
-		field2940 = new ServerPacket(10, -2);
-		field2941 = new ServerPacket(11, 2);
-		field2942 = new ServerPacket(12, 6);
-		field3006 = new ServerPacket(13, 4);
-		field2944 = new ServerPacket(14, 1);
-		field2945 = new ServerPacket(15, 2);
-		field2946 = new ServerPacket(16, 2);
-		field3008 = new ServerPacket(17, -2);
-		field2948 = new ServerPacket(18, 4);
-		field2949 = new ServerPacket(19, -1);
-		field2950 = new ServerPacket(20, 1);
-		field2951 = new ServerPacket(21, -2);
-		field2961 = new ServerPacket(22, 0);
-		field2982 = new ServerPacket(23, 14);
-		field2954 = new ServerPacket(24, -2);
-		field2955 = new ServerPacket(25, -1);
-		field2956 = new ServerPacket(26, 3);
-		field2978 = new ServerPacket(27, 10);
-		field2958 = new ServerPacket(28, 0);
-		field2959 = new ServerPacket(29, 6);
-		field3029 = new ServerPacket(30, 8);
-		field2938 = new ServerPacket(31, 2);
-		field2962 = new ServerPacket(32, 2);
-		field2963 = new ServerPacket(33, 4);
-		field2964 = new ServerPacket(34, 6);
-		field2965 = new ServerPacket(35, 0);
-		field3014 = new ServerPacket(36, 1);
-		field2986 = new ServerPacket(37, 0);
-		field2968 = new ServerPacket(38, -2);
-		field3005 = new ServerPacket(39, -1);
-		field2997 = new ServerPacket(40, -2);
-		field2971 = new ServerPacket(41, -1);
-		field2972 = new ServerPacket(42, 5);
-		field2932 = new ServerPacket(43, 6);
-		field2974 = new ServerPacket(44, 4);
-		field2975 = new ServerPacket(45, 2);
-		field2976 = new ServerPacket(46, 4);
-		field2987 = new ServerPacket(47, 6);
-		field2947 = new ServerPacket(48, -2);
-		field2979 = new ServerPacket(49, -1);
-		field2980 = new ServerPacket(50, 2);
-		field2981 = new ServerPacket(51, 0);
-		field2957 = new ServerPacket(52, 6);
-		field2939 = new ServerPacket(53, 2);
-		field2984 = new ServerPacket(54, -2);
-		field2985 = new ServerPacket(55, 4);
-		field3016 = new ServerPacket(56, -2);
-		field3017 = new ServerPacket(57, 5);
-		field2943 = new ServerPacket(58, 0);
-		field2989 = new ServerPacket(59, 1);
-		field2990 = new ServerPacket(60, 20);
-		field2991 = new ServerPacket(61, 5);
-		field2992 = new ServerPacket(62, 6);
-		field2993 = new ServerPacket(63, -2);
-		field2994 = new ServerPacket(64, 15);
-		field2995 = new ServerPacket(65, 28);
-		field2996 = new ServerPacket(66, 2);
-		field2952 = new ServerPacket(67, 6);
-		field2998 = new ServerPacket(68, 0);
-		field2999 = new ServerPacket(69, -1);
-		field2953 = new ServerPacket(70, 8);
-		field3001 = new ServerPacket(71, -2);
-		field3002 = new ServerPacket(72, -1);
-		field2960 = new ServerPacket(73, 8);
-		field3004 = new ServerPacket(74, -2);
-		field2966 = new ServerPacket(75, -2);
-		field2988 = new ServerPacket(76, 12);
-		field3007 = new ServerPacket(77, 6);
-		field2967 = new ServerPacket(78, -2);
-		field3009 = new ServerPacket(79, 1);
-		field3010 = new ServerPacket(80, -2);
-		field3011 = new ServerPacket(81, 5);
-		field3012 = new ServerPacket(82, -2);
-		field2969 = new ServerPacket(83, -1);
-		field2970 = new ServerPacket(84, -2);
-		field3015 = new ServerPacket(85, 1);
-		field2935 = new ServerPacket(86, 10);
-		field3025 = new ServerPacket(87, 0);
-		field3018 = new ServerPacket(88, -2);
-		field3019 = new ServerPacket(89, 4);
-		field3020 = new ServerPacket(90, -2);
-		field3021 = new ServerPacket(91, -2);
-		field3022 = new ServerPacket(92, -2);
-		field3023 = new ServerPacket(93, 2);
-		field3024 = new ServerPacket(94, 3);
-		field2973 = new ServerPacket(95, -2);
-		field3026 = new ServerPacket(96, -2);
-		field3027 = new ServerPacket(97, 4);
+		field3194 = new ServerPacket(0, -1);
+		field3131 = new ServerPacket(1, 1);
+		field3230 = new ServerPacket(2, -1);
+		field3153 = new ServerPacket(3, -2);
+		field3134 = new ServerPacket(4, 2);
+		field3135 = new ServerPacket(5, 8);
+		field3136 = new ServerPacket(6, 5);
+		field3179 = new ServerPacket(7, -2);
+		field3160 = new ServerPacket(8, -2);
+		field3139 = new ServerPacket(9, 0);
+		field3140 = new ServerPacket(10, 2);
+		field3141 = new ServerPacket(11, 5);
+		field3142 = new ServerPacket(12, 6);
+		field3168 = new ServerPacket(13, 15);
+		field3144 = new ServerPacket(14, -2);
+		field3151 = new ServerPacket(15, 0);
+		field3221 = new ServerPacket(16, -2);
+		field3147 = new ServerPacket(17, 4);
+		field3227 = new ServerPacket(18, 1);
+		field3149 = new ServerPacket(19, 4);
+		field3242 = new ServerPacket(20, 12);
+		field3197 = new ServerPacket(21, 6);
+		field3138 = new ServerPacket(22, 6);
+		field3150 = new ServerPacket(23, 4);
+		field3154 = new ServerPacket(24, 2);
+		field3155 = new ServerPacket(25, 2);
+		field3156 = new ServerPacket(26, -2);
+		field3132 = new ServerPacket(27, 5);
+		field3158 = new ServerPacket(28, -2);
+		field3159 = new ServerPacket(29, -2);
+		field3174 = new ServerPacket(30, -2);
+		field3146 = new ServerPacket(31, 3);
+		field3162 = new ServerPacket(32, 28);
+		field3201 = new ServerPacket(33, -2);
+		field3191 = new ServerPacket(34, 6);
+		field3165 = new ServerPacket(35, 2);
+		field3166 = new ServerPacket(36, -2);
+		field3167 = new ServerPacket(37, 0);
+		field3163 = new ServerPacket(38, 2);
+		field3169 = new ServerPacket(39, -2);
+		field3170 = new ServerPacket(40, -1);
+		field3171 = new ServerPacket(41, 7);
+		field3172 = new ServerPacket(42, -2);
+		field3243 = new ServerPacket(43, 8);
+		field3173 = new ServerPacket(44, 8);
+		field3175 = new ServerPacket(45, 8);
+		field3176 = new ServerPacket(46, 2);
+		field3210 = new ServerPacket(47, -2);
+		field3178 = new ServerPacket(48, 7);
+		field3199 = new ServerPacket(49, 0);
+		field3180 = new ServerPacket(50, 17);
+		field3181 = new ServerPacket(51, 5);
+		field3182 = new ServerPacket(52, 2);
+		field3183 = new ServerPacket(53, 5);
+		field3184 = new ServerPacket(54, 4);
+		field3137 = new ServerPacket(55, 10);
+		field3186 = new ServerPacket(56, -2);
+		field3187 = new ServerPacket(57, 4);
+		field3143 = new ServerPacket(58, 5);
+		field3189 = new ServerPacket(59, 0);
+		field3152 = new ServerPacket(60, 10);
+		field3217 = new ServerPacket(61, -1);
+		field3192 = new ServerPacket(62, -1);
+		field3193 = new ServerPacket(63, 6);
+		field3177 = new ServerPacket(64, 1);
+		field3195 = new ServerPacket(65, 8);
+		field3196 = new ServerPacket(66, 8);
+		field3130 = new ServerPacket(67, 6);
+		field3198 = new ServerPacket(68, 0);
+		field3188 = new ServerPacket(69, 20);
+		field3200 = new ServerPacket(70, 1);
+		field3229 = new ServerPacket(71, -1);
+		field3211 = new ServerPacket(72, 5);
+		field3203 = new ServerPacket(73, -2);
+		field3204 = new ServerPacket(74, -1);
+		field3205 = new ServerPacket(75, 6);
+		field3206 = new ServerPacket(76, 6);
+		field3207 = new ServerPacket(77, -2);
+		field3208 = new ServerPacket(78, -1);
+		field3209 = new ServerPacket(79, 1);
+		field3148 = new ServerPacket(80, -2);
+		field3164 = new ServerPacket(81, 6);
+		field3212 = new ServerPacket(82, 0);
+		field3213 = new ServerPacket(83, 6);
+		field3214 = new ServerPacket(84, -2);
+		field3215 = new ServerPacket(85, 0);
+		field3216 = new ServerPacket(86, -1);
+		field3185 = new ServerPacket(87, 1);
+		field3218 = new ServerPacket(88, 2);
+		field3219 = new ServerPacket(89, -2);
+		field3220 = new ServerPacket(90, 2);
+		field3202 = new ServerPacket(91, 4);
+		field3222 = new ServerPacket(92, 4);
+		field3223 = new ServerPacket(93, -2);
+		field3224 = new ServerPacket(94, 6);
+		field3225 = new ServerPacket(95, 4);
+		field3226 = new ServerPacket(96, 14);
+		field3239 = new ServerPacket(97, 8);
+		field3228 = new ServerPacket(98, -2);
+		field3190 = new ServerPacket(99, -2);
+		field3145 = new ServerPacket(100, 0);
+		field3231 = new ServerPacket(101, -2);
+		field3232 = new ServerPacket(102, 6);
+		field3233 = new ServerPacket(103, -2);
+		field3234 = new ServerPacket(104, 17);
+		field3235 = new ServerPacket(105, -2);
+		field3236 = new ServerPacket(106, -2);
+		field3237 = new ServerPacket(107, 16);
+		field3238 = new ServerPacket(108, 4);
+		field3161 = new ServerPacket(109, 5);
+		field3240 = new ServerPacket(110, 8);
 	}
 
 	ServerPacket(int var1, int var2) {
 		this.id = var1;
 		this.length = var2;
+	}
+
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "(Lca;S)V",
+		garbageValue = "-4020"
+	)
+	@Export("runScriptEvent")
+	public static void runScriptEvent(ScriptEvent var0) {
+		class103.runScript(var0, 500000, 475000);
+	}
+
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "1276551764"
+	)
+	public static boolean method5399(int var0) {
+		return (var0 >> 31 & 1) != 0;
 	}
 }

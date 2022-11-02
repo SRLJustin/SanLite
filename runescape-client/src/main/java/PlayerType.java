@@ -4,77 +4,123 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kw")
+@ObfuscatedName("lu")
 @Implements("PlayerType")
-public enum PlayerType implements MouseWheel {
-	@ObfuscatedName("c")
+public enum PlayerType implements class342 {
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Llu;"
 	)
 	@Export("PlayerType_normal")
 	PlayerType_normal(0, -1, true, false, true),
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Llu;"
 	)
 	@Export("PlayerType_playerModerator")
 	PlayerType_playerModerator(1, 0, true, true, true),
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Llu;"
 	)
 	@Export("PlayerType_jagexModerator")
 	PlayerType_jagexModerator(2, 1, true, true, false),
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Llu;"
 	)
 	@Export("PlayerType_ironman")
 	PlayerType_ironman(3, 2, false, false, true),
-	@ObfuscatedName("t")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Llu;"
 	)
 	@Export("PlayerType_ultimateIronman")
 	PlayerType_ultimateIronman(4, 3, false, false, true),
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Llu;"
 	)
 	@Export("PlayerType_hardcoreIronman")
 	PlayerType_hardcoreIronman(5, 10, false, false, true),
-	@ObfuscatedName("j")
+	@ObfuscatedName("y")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Llu;"
 	)
-	field3801(6, 22, false, false, true),
-	@ObfuscatedName("w")
+	field4109(6, 22, false, false, true),
+	@ObfuscatedName("d")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Llu;"
 	)
-	field3802(7, 41, false, false, true),
+	field4101(7, 41, false, false, true),
 	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Llu;"
 	)
-	field3795(8, 42, false, false, true);
-
+	field4102(8, 42, false, false, true),
 	@ObfuscatedName("r")
+	@ObfuscatedSignature(
+		descriptor = "Llu;"
+	)
+	field4103(9, 43, false, false, true),
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "Llu;"
+	)
+	field4104(10, 44, false, false, true),
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "Llu;"
+	)
+	field4105(11, 45, false, false, true),
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "Llu;"
+	)
+	field4106(12, 46, false, false, true),
+	@ObfuscatedName("b")
+	@ObfuscatedSignature(
+		descriptor = "Llu;"
+	)
+	field4107(13, 47, false, false, true),
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "Llu;"
+	)
+	field4094(14, 48, false, false, true),
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(
+		descriptor = "Llu;"
+	)
+	field4108(15, 49, false, false, true),
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "Llu;"
+	)
+	field4110(16, 52, false, false, true);
+
+	@ObfuscatedName("ev")
+	@ObfuscatedSignature(
+		descriptor = "Llx;"
+	)
+	@Export("archive7")
+	static Archive archive7;
+	@ObfuscatedName("t")
 	@ObfuscatedGetter(
-		intValue = -1858175947
+		intValue = 618402991
 	)
 	@Export("id")
 	final int id;
-	@ObfuscatedName("o")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -1675383045
+		intValue = 1398686511
 	)
 	@Export("modIcon")
 	public final int modIcon;
-	@ObfuscatedName("v")
+	@ObfuscatedName("m")
 	@Export("isPrivileged")
 	public final boolean isPrivileged;
-	@ObfuscatedName("d")
+	@ObfuscatedName("q")
 	@Export("isUser")
 	public final boolean isUser;
 
@@ -85,24 +131,47 @@ public enum PlayerType implements MouseWheel {
 		this.isUser = var7;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "48"
+		garbageValue = "0"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1177241334"
+		descriptor = "(I)V",
+		garbageValue = "-1845544647"
 	)
-	static void method5521(int var0) {
-		if (var0 != Login.loginIndex) {
-			Login.loginIndex = var0;
+	static void method6274() {
+		if (Login.clearLoginScreen) {
+			class356.titleboxSprite = null;
+			class143.titlebuttonSprite = null;
+			class239.runesSprite = null;
+			class313.leftTitleSprite = null;
+			HealthBar.rightTitleSprite = null;
+			MouseRecorder.logoSprite = null;
+			class16.title_muteSprite = null;
+			Login.options_buttons_0Sprite = null;
+			class181.options_buttons_2Sprite = null;
+			DirectByteArrayCopier.worldSelectBackSprites = null;
+			CollisionMap.worldSelectFlagSprites = null;
+			MouseRecorder.worldSelectArrows = null;
+			SpotAnimationDefinition.worldSelectStars = null;
+			WorldMapManager.field2822 = null;
+			GraphicsObject.loginScreenRunesAnimation.method2344();
+			class283.musicPlayerStatus = 1;
+			DevicePcmPlayerProvider.musicTrackArchive = null;
+			class283.musicTrackGroupId = -1;
+			class283.musicTrackFileId = -1;
+			Messages.musicTrackVolume = 0;
+			GrandExchangeEvents.musicTrackBoolean = false;
+			class19.pcmSampleLength = 2;
+			MouseHandler.method697(true);
+			Login.clearLoginScreen = false;
 		}
 	}
 }
