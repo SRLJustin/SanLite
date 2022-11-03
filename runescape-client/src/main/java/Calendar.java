@@ -1,28 +1,27 @@
 import java.util.TimeZone;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jf")
+@ObfuscatedName("kw")
 @Implements("Calendar")
 public class Calendar {
-	@ObfuscatedName("c")
+	@ObfuscatedName("sq")
+	@ObfuscatedSignature(
+		descriptor = "Lri;"
+	)
+	@Export("sceneMinimapSprite")
+	static SpritePixels sceneMinimapSprite;
+	@ObfuscatedName("a")
 	@Export("MONTH_NAMES_ENGLISH_GERMAN")
 	static final String[][] MONTH_NAMES_ENGLISH_GERMAN;
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@Export("DAYS_OF_THE_WEEK")
 	static final String[] DAYS_OF_THE_WEEK;
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@Export("Calendar_calendar")
 	static java.util.Calendar Calendar_calendar;
-	@ObfuscatedName("ne")
-	@ObfuscatedGetter(
-		intValue = -1622402519
-	)
-	@Export("selectedItemSlot")
-	static int selectedItemSlot;
 
 	static {
 		MONTH_NAMES_ENGLISH_GERMAN = new String[][]{{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}, {"Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"}, {"jan", "fév", "mars", "avr", "mai", "juin", "juil", "août", "sept", "oct", "nov", "déc"}, {"jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"}, {"jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec"}, {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}, {"ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"}};
@@ -31,34 +30,13 @@ public class Calendar {
 		Calendar_calendar = java.util.Calendar.getInstance(TimeZone.getTimeZone("GMT"));
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("kt")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIII)I",
-		garbageValue = "880813540"
+		descriptor = "(II)V",
+		garbageValue = "-1393150588"
 	)
-	public static int method5320(int var0, int var1, int var2, int var3, int var4, int var5) {
-		if ((var5 & 1) == 1) {
-			int var6 = var3;
-			var3 = var4;
-			var4 = var6;
-		}
-
-		var2 &= 3;
-		if (var2 == 0) {
-			return var1;
-		} else if (var2 == 1) {
-			return 7 - var0 - (var3 - 1);
-		} else {
-			return var2 == 2 ? 7 - var1 - (var4 - 1) : var0;
-		}
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "1"
-	)
-	static int method5323(int var0) {
-		return (int)Math.pow(2.0D, (double)(7.0F + (float)var0 / 256.0F));
+	static final void method6226(int var0) {
+		var0 = Math.min(Math.max(var0, 0), 127);
+		BufferedSink.clientPreferences.method2394(var0);
 	}
 }

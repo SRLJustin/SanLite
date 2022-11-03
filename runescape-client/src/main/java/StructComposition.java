@@ -3,18 +3,24 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fp")
+@ObfuscatedName("ge")
 @Implements("StructComposition")
 public class StructComposition extends DualNode {
-	@ObfuscatedName("b")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Llg;"
+	)
+	@Export("StructDefinition_archive")
+	public static AbstractArchive StructDefinition_archive;
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Ljx;"
 	)
 	@Export("StructDefinition_cached")
-	static EvictingDualNodeHashTable StructDefinition_cached;
-	@ObfuscatedName("p")
+	public static EvictingDualNodeHashTable StructDefinition_cached;
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Loz;"
+		descriptor = "Lpe;"
 	)
 	@Export("params")
 	IterableNodeHashTable params;
@@ -26,19 +32,19 @@ public class StructComposition extends DualNode {
 	StructComposition() {
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1697114474"
+		descriptor = "(B)V",
+		garbageValue = "-35"
 	)
 	@Export("postDecode")
 	void postDecode() {
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "260928351"
+		descriptor = "(Lqr;B)V",
+		garbageValue = "-50"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -52,102 +58,74 @@ public class StructComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;IB)V",
-		garbageValue = "76"
+		descriptor = "(Lqr;II)V",
+		garbageValue = "-458084373"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 249) {
-			this.params = Canvas.readStringIntParameters(var1, this.params);
+			this.params = FaceNormal.readStringIntParameters(var1, this.params);
 		}
 
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
 		descriptor = "(III)I",
-		garbageValue = "-1808649424"
+		garbageValue = "-1059246046"
 	)
 	@Export("getIntParam")
 	public int getIntParam(int var1, int var2) {
-		return class12.method158(this.params, var1, var2);
+		return Language.method6584(this.params, var1, var2);
 	}
 
 	@ObfuscatedName("j")
 	@ObfuscatedSignature(
 		descriptor = "(ILjava/lang/String;I)Ljava/lang/String;",
-		garbageValue = "-1725182955"
+		garbageValue = "-348365462"
 	)
 	@Export("getStringParam")
 	public String getStringParam(int var1, String var2) {
-		return Skeleton.method3948(this.params, var1, var2);
+		return FriendLoginUpdate.method7304(this.params, var1, var2);
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-64"
+		descriptor = "(II)F",
+		garbageValue = "473934492"
 	)
-	public static void method3444() {
-		class260.midiPcmStream.clear();
-		class260.musicPlayerStatus = 1;
-		class124.musicTrackArchive = null;
+	public static float method3677(int var0) {
+		var0 &= 16383;
+		return (float)(6.283185307179586D * (double)((float)var0 / 16384.0F));
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "2"
+		descriptor = "(I)V",
+		garbageValue = "-268428904"
 	)
-	public static boolean method3424(int var0) {
-		return var0 >= 0 && var0 < 112 ? KeyHandler.field132[var0] : false;
-	}
+	public static void method3676() {
+		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_lock) {
+			if (ArchiveDiskActionHandler.field4122 != 0) {
+				ArchiveDiskActionHandler.field4122 = 1;
 
-	@ObfuscatedName("lv")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZI)V",
-		garbageValue = "488868822"
-	)
-	@Export("findItemDefinitions")
-	static void findItemDefinitions(String var0, boolean var1) {
-		var0 = var0.toLowerCase();
-		short[] var2 = new short[16];
-		int var3 = 0;
-
-		for (int var4 = 0; var4 < WorldMapLabelSize.ItemDefinition_fileCount; ++var4) {
-			ItemComposition var9 = UserComparator6.ItemDefinition_get(var4);
-			if ((!var1 || var9.isTradable) && var9.noteTemplate == -1 && var9.name.toLowerCase().indexOf(var0) != -1) {
-				if (var3 >= 250) {
-					GraphicsDefaults.foundItemIdCount = -1;
-					class113.foundItemIds = null;
-					return;
+				try {
+					ArchiveDiskActionHandler.ArchiveDiskActionHandler_lock.wait();
+				} catch (InterruptedException var3) {
 				}
-
-				if (var3 >= var2.length) {
-					short[] var6 = new short[var2.length * 2];
-
-					for (int var7 = 0; var7 < var3; ++var7) {
-						var6[var7] = var2[var7];
-					}
-
-					var2 = var6;
-				}
-
-				var2[var3++] = (short)var4;
 			}
+
 		}
+	}
 
-		class113.foundItemIds = var2;
-		class336.foundItemIndex = 0;
-		GraphicsDefaults.foundItemIdCount = var3;
-		String[] var8 = new String[GraphicsDefaults.foundItemIdCount];
-
-		for (int var5 = 0; var5 < GraphicsDefaults.foundItemIdCount; ++var5) {
-			var8[var5] = UserComparator6.ItemDefinition_get(var2[var5]).name;
-		}
-
-		KeyHandler.method390(var8, class113.foundItemIds);
+	@ObfuscatedName("ff")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "-969804644"
+	)
+	static int method3661(int var0) {
+		return var0 * 3 + 600;
 	}
 }

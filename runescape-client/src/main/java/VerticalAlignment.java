@@ -4,37 +4,41 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fs")
+@ObfuscatedName("ga")
 @Implements("VerticalAlignment")
-public enum VerticalAlignment implements MouseWheel {
-	@ObfuscatedName("c")
+public enum VerticalAlignment implements class342 {
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "Lfs;"
+		descriptor = "Lga;"
 	)
-	field1870(2, 0),
-	@ObfuscatedName("b")
+	field2004(0, 0),
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lfs;"
+		descriptor = "Lga;"
 	)
 	@Export("VerticalAlignment_centered")
 	VerticalAlignment_centered(1, 1),
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lfs;"
+		descriptor = "Lga;"
 	)
-	field1869(0, 2);
+	field2002(2, 2);
 
-	@ObfuscatedName("h")
-	static int[] field1874;
-	@ObfuscatedName("m")
+	@ObfuscatedName("ls")
+	@ObfuscatedSignature(
+		descriptor = "Lkn;"
+	)
+	@Export("dragInventoryWidget")
+	static Widget dragInventoryWidget;
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = -1994152567
+		intValue = 1173271927
 	)
 	@Export("value")
 	public final int value;
-	@ObfuscatedName("t")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -927577259
+		intValue = 1965041919
 	)
 	@Export("id")
 	final int id;
@@ -44,45 +48,13 @@ public enum VerticalAlignment implements MouseWheel {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "48"
+		garbageValue = "0"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Lfr;",
-		garbageValue = "65"
-	)
-	@Export("getParamDefinition")
-	public static ParamComposition getParamDefinition(int var0) {
-		ParamComposition var1 = (ParamComposition)ParamComposition.ParamComposition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = ParamComposition.ParamDefinition_archive.takeFile(11, var0);
-			var1 = new ParamComposition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-
-			var1.postDecode();
-			ParamComposition.ParamComposition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("k")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "21"
-	)
-	public static void method3338() {
-		ItemComposition.ItemDefinition_cachedSprites.clear();
 	}
 }
