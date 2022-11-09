@@ -4,22 +4,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kc")
+@ObfuscatedName("lo")
 @Implements("GrandExchangeOfferAgeComparator")
 final class GrandExchangeOfferAgeComparator implements Comparator {
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
-	)
-	@Export("HealthBarDefinition_archive")
-	static AbstractArchive HealthBarDefinition_archive;
-	@ObfuscatedName("ar")
-	protected static String field3882;
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Lkj;Lkj;B)I",
-		garbageValue = "75"
+		descriptor = "(Llp;Llp;I)I",
+		garbageValue = "153301173"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
@@ -34,117 +25,40 @@ final class GrandExchangeOfferAgeComparator implements Comparator {
 		return super.equals(var1);
 	}
 
-	@ObfuscatedName("ii")
+	@ObfuscatedName("jz")
 	@ObfuscatedSignature(
-		descriptor = "(Lcr;IIII)V",
-		garbageValue = "1259918287"
+		descriptor = "(Lkn;III)V",
+		garbageValue = "-1452719084"
 	)
-	@Export("addNpcToMenu")
-	static final void addNpcToMenu(NPC var0, int var1, int var2, int var3) {
-		NPCComposition var4 = var0.definition;
-		if (Client.menuOptionsCount < 400) {
-			if (var4.transforms != null) {
-				var4 = var4.transform();
-			}
-
-			if (var4 != null) {
-				if (var4.isInteractable) {
-					if (!var4.isFollower || Client.followerIndex == var1) {
-						String var5 = var4.name;
-						int var6;
-						if (var4.combatLevel != 0 && var0.field1119 != 0) {
-							var6 = var0.field1119 != -1 ? var0.field1119 : var4.combatLevel;
-							var5 = var5 + Tiles.method2108(var6, class340.localPlayer.combatLevel) + " " + " (" + "level-" + var6 + ")";
-						}
-
-						if (var4.isFollower && Client.followerOpsLowPriority) {
-							class11.insertMenuItemNoShift("Examine", UserComparator5.colorStartTag(16776960) + var5, 1003, var1, var2, var3);
-						}
-
-						if (Client.isItemSelected == 1) {
-							class11.insertMenuItemNoShift("Use", Client.selectedItemName + " " + "->" + " " + UserComparator5.colorStartTag(16776960) + var5, 7, var1, var2, var3);
-						} else if (Client.isSpellSelected) {
-							if ((class91.selectedSpellFlags & 2) == 2) {
-								class11.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + UserComparator5.colorStartTag(16776960) + var5, 8, var1, var2, var3);
-							}
-						} else {
-							var6 = var4.isFollower && Client.followerOpsLowPriority ? 2000 : 0;
-							String[] var7 = var4.actions;
-							int var8;
-							int var9;
-							if (var7 != null) {
-								for (var8 = 4; var8 >= 0; --var8) {
-									if (var7[var8] != null && !var7[var8].equalsIgnoreCase("Attack")) {
-										var9 = 0;
-										if (var8 == 0) {
-											var9 = var6 + 9;
-										}
-
-										if (var8 == 1) {
-											var9 = var6 + 10;
-										}
-
-										if (var8 == 2) {
-											var9 = var6 + 11;
-										}
-
-										if (var8 == 3) {
-											var9 = var6 + 12;
-										}
-
-										if (var8 == 4) {
-											var9 = var6 + 13;
-										}
-
-										class11.insertMenuItemNoShift(var7[var8], UserComparator5.colorStartTag(16776960) + var5, var9, var1, var2, var3);
-									}
-								}
-							}
-
-							if (var7 != null) {
-								for (var8 = 4; var8 >= 0; --var8) {
-									if (var7[var8] != null && var7[var8].equalsIgnoreCase("Attack")) {
-										short var10 = 0;
-										if (AttackOption.AttackOption_hidden != Client.npcAttackOption) {
-											if (AttackOption.AttackOption_alwaysRightClick == Client.npcAttackOption || Client.npcAttackOption == AttackOption.AttackOption_dependsOnCombatLevels && var4.combatLevel > class340.localPlayer.combatLevel) {
-												var10 = 2000;
-											}
-
-											var9 = 0;
-											if (var8 == 0) {
-												var9 = var10 + 9;
-											}
-
-											if (var8 == 1) {
-												var9 = var10 + 10;
-											}
-
-											if (var8 == 2) {
-												var9 = var10 + 11;
-											}
-
-											if (var8 == 3) {
-												var9 = var10 + 12;
-											}
-
-											if (var8 == 4) {
-												var9 = var10 + 13;
-											}
-
-											class11.insertMenuItemNoShift(var7[var8], UserComparator5.colorStartTag(16776960) + var5, var9, var1, var2, var3);
-										}
-									}
-								}
-							}
-
-							if (!var4.isFollower || !Client.followerOpsLowPriority) {
-								class11.insertMenuItemNoShift("Examine", UserComparator5.colorStartTag(16776960) + var5, 1003, var1, var2, var3);
-							}
-						}
-
-					}
-				}
-			}
+	@Export("alignWidgetPosition")
+	static void alignWidgetPosition(Widget var0, int var1, int var2) {
+		if (var0.xAlignment == 0) {
+			var0.x = var0.rawX;
+		} else if (var0.xAlignment == 1) {
+			var0.x = var0.rawX + (var1 - var0.width) / 2;
+		} else if (var0.xAlignment == 2) {
+			var0.x = var1 - var0.width - var0.rawX;
+		} else if (var0.xAlignment == 3) {
+			var0.x = var0.rawX * var1 >> 14;
+		} else if (var0.xAlignment == 4) {
+			var0.x = (var0.rawX * var1 >> 14) + (var1 - var0.width) / 2;
+		} else {
+			var0.x = var1 - var0.width - (var0.rawX * var1 >> 14);
 		}
+
+		if (var0.yAlignment == 0) {
+			var0.y = var0.rawY;
+		} else if (var0.yAlignment == 1) {
+			var0.y = (var2 - var0.height) / 2 + var0.rawY;
+		} else if (var0.yAlignment == 2) {
+			var0.y = var2 - var0.height - var0.rawY;
+		} else if (var0.yAlignment == 3) {
+			var0.y = var2 * var0.rawY >> 14;
+		} else if (var0.yAlignment == 4) {
+			var0.y = (var2 * var0.rawY >> 14) + (var2 - var0.height) / 2;
+		} else {
+			var0.y = var2 - var0.height - (var2 * var0.rawY >> 14);
+		}
+
 	}
 }

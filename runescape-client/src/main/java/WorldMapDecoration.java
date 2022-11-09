@@ -4,29 +4,24 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hb")
+@ObfuscatedName("is")
 @Implements("WorldMapDecoration")
 public class WorldMapDecoration {
-	@ObfuscatedName("kr")
-	@ObfuscatedSignature(
-		descriptor = "Ljm;"
-	)
-	static Widget field2722;
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = -534188833
+		intValue = 1531493799
 	)
 	@Export("objectDefinitionId")
 	final int objectDefinitionId;
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -1834904579
+		intValue = 1505004585
 	)
 	@Export("decoration")
 	final int decoration;
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 556880363
+		intValue = 1529813931
 	)
 	@Export("rotation")
 	final int rotation;
@@ -37,95 +32,44 @@ public class WorldMapDecoration {
 		this.rotation = var3;
 	}
 
-	@ObfuscatedName("gc")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIZI)V",
-		garbageValue = "2097152469"
+		descriptor = "(III)Lkn;",
+		garbageValue = "-1310850366"
 	)
-	@Export("setViewportShape")
-	static final void setViewportShape(int var0, int var1, int var2, int var3, boolean var4) {
-		if (var2 < 1) {
-			var2 = 1;
-		}
-
-		if (var3 < 1) {
-			var3 = 1;
-		}
-
-		int var5 = var3 - 334;
-		int var6;
-		if (var5 < 0) {
-			var6 = Client.field690;
-		} else if (var5 >= 100) {
-			var6 = Client.field707;
+	@Export("getWidgetChild")
+	public static Widget getWidgetChild(int var0, int var1) {
+		Widget var2 = class281.getWidget(var0);
+		if (var1 == -1) {
+			return var2;
 		} else {
-			var6 = (Client.field707 - Client.field690) * var5 / 100 + Client.field690;
+			return var2 != null && var2.children != null && var1 < var2.children.length ? var2.children[var1] : null;
 		}
+	}
 
-		int var7 = var3 * var6 * 512 / (var2 * 334);
-		int var8;
-		int var9;
-		short var17;
-		if (var7 < Client.field736) {
-			var17 = Client.field736;
-			var6 = var17 * var2 * 334 / (var3 * 512);
-			if (var6 > Client.field735) {
-				var6 = Client.field735;
-				var8 = var3 * var6 * 512 / (var17 * 334);
-				var9 = (var2 - var8) / 2;
-				if (var4) {
-					Rasterizer2D.Rasterizer2D_resetClip();
-					Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var9, var3, -16777216);
-					Rasterizer2D.Rasterizer2D_fillRectangle(var0 + var2 - var9, var1, var9, var3, -16777216);
-				}
-
-				var0 += var9;
-				var2 -= var9 * 2;
-			}
-		} else if (var7 > Client.field737) {
-			var17 = Client.field737;
-			var6 = var17 * var2 * 334 / (var3 * 512);
-			if (var6 < Client.field619) {
-				var6 = Client.field619;
-				var8 = var17 * var2 * 334 / (var6 * 512);
-				var9 = (var3 - var8) / 2;
-				if (var4) {
-					Rasterizer2D.Rasterizer2D_resetClip();
-					Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var2, var9, -16777216);
-					Rasterizer2D.Rasterizer2D_fillRectangle(var0, var3 + var1 - var9, var2, var9, -16777216);
-				}
-
-				var1 += var9;
-				var3 -= var9 * 2;
-			}
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(Ldb;FI)F",
+		garbageValue = "-1677535030"
+	)
+	static float method5149(class124 var0, float var1) {
+		if (var0 == null) {
+			return 0.0F;
+		} else {
+			float var2 = var1 - var0.field1485;
+			return var0.field1487[3] + (var0.field1487[2] + (var2 * var0.field1487[0] + var0.field1487[1]) * var2) * var2;
 		}
+	}
 
-		Client.viewportZoom = var3 * var6 / 334;
-		if (var2 != Client.viewportWidth || var3 != Client.viewportHeight) {
-			int[] var16 = new int[9];
-
-			for (var9 = 0; var9 < var16.length; ++var9) {
-				int var10 = var9 * 32 + 15 + 128;
-				int var11 = class142.method2958(var10);
-				int var12 = Rasterizer3D.Rasterizer3D_sine[var10];
-				int var14 = var3 - 334;
-				if (var14 < 0) {
-					var14 = 0;
-				} else if (var14 > 100) {
-					var14 = 100;
-				}
-
-				int var15 = (Client.zoomWidth - Client.zoomHeight) * var14 / 100 + Client.zoomHeight;
-				int var13 = var15 * var11 / 256;
-				var16[var9] = var13 * var12 >> 16;
-			}
-
-			Scene.Scene_buildVisiblityMap(var16, 500, 800, var2 * 334 / var3, 334);
-		}
-
-		Client.viewportOffsetX = var0;
-		Client.viewportOffsetY = var1;
-		Client.viewportWidth = var2;
-		Client.viewportHeight = var3;
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)I",
+		garbageValue = "-1213424322"
+	)
+	public static int method5148(int var0, int var1, int var2) {
+		int var3 = Archive.method6338(var2 - var1 + 1);
+		var3 <<= var1;
+		var0 |= var3;
+		return var0;
 	}
 }

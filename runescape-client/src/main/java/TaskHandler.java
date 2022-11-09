@@ -7,34 +7,33 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eb")
+@ObfuscatedName("fp")
 @Implements("TaskHandler")
 public class TaskHandler implements Runnable {
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@Export("javaVendor")
 	public static String javaVendor;
-	@ObfuscatedName("eo")
+	@ObfuscatedName("f")
+	@Export("javaVersion")
+	public static String javaVersion;
+	@ObfuscatedName("r")
+	public static short[] field1780;
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive12")
-	static Archive archive12;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lfk;"
+		descriptor = "Lfy;"
 	)
 	@Export("current")
 	Task current;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "Lfk;"
+		descriptor = "Lfy;"
 	)
 	@Export("task")
 	Task task;
-	@ObfuscatedName("t")
+	@ObfuscatedName("h")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@Export("isClosed")
 	boolean isClosed;
 
@@ -43,11 +42,11 @@ public class TaskHandler implements Runnable {
 		this.task = null;
 		this.isClosed = false;
 		javaVendor = "Unknown";
-		NPC.javaVersion = "1.6";
+		javaVersion = "1.6";
 
 		try {
 			javaVendor = System.getProperty("java.vendor");
-			NPC.javaVersion = System.getProperty("java.version");
+			javaVersion = System.getProperty("java.version");
 		} catch (Exception var2) {
 		}
 
@@ -58,10 +57,10 @@ public class TaskHandler implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "-23939"
+		descriptor = "(B)V",
+		garbageValue = "8"
 	)
 	@Export("close")
 	public final void close() {
@@ -77,10 +76,10 @@ public class TaskHandler implements Runnable {
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(IIILjava/lang/Object;I)Lfk;",
-		garbageValue = "838873650"
+		descriptor = "(IIILjava/lang/Object;I)Lfy;",
+		garbageValue = "-1390753324"
 	)
 	@Export("newTask")
 	final Task newTask(int var1, int var2, int var3, Object var4) {
@@ -101,20 +100,20 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;II)Lfk;",
-		garbageValue = "1945864892"
+		descriptor = "(Ljava/lang/String;IB)Lfy;",
+		garbageValue = "1"
 	)
 	@Export("newSocketTask")
 	public final Task newSocketTask(String var1, int var2) {
 		return this.newTask(1, var2, 0, var1);
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Runnable;II)Lfk;",
-		garbageValue = "-1633812322"
+		descriptor = "(Ljava/lang/Runnable;II)Lfy;",
+		garbageValue = "-24807431"
 	)
 	@Export("newThreadTask")
 	public final Task newThreadTask(Runnable var1, int var2) {
@@ -169,15 +168,140 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "([BI)[B",
-		garbageValue = "-1643511224"
+		descriptor = "(Lqk;B)V",
+		garbageValue = "85"
 	)
-	public static byte[] method3047(byte[] var0) {
-		int var1 = var0.length;
-		byte[] var2 = new byte[var1];
-		System.arraycopy(var0, 0, var2, 0, var1);
-		return var2;
+	static final void method3340(PacketBuffer var0) {
+		int var1 = 0;
+		var0.importIndex();
+
+		byte[] var10000;
+		int var2;
+		int var4;
+		int var5;
+		for (var2 = 0; var2 < Players.Players_count; ++var2) {
+			var5 = Players.Players_indices[var2];
+			if ((Players.field1323[var5] & 1) == 0) {
+				if (var1 > 0) {
+					--var1;
+					var10000 = Players.field1323;
+					var10000[var5] = (byte)(var10000[var5] | 2);
+				} else {
+					var4 = var0.readBits(1);
+					if (var4 == 0) {
+						var1 = Interpreter.method2005(var0);
+						var10000 = Players.field1323;
+						var10000[var5] = (byte)(var10000[var5] | 2);
+					} else {
+						class71.readPlayerUpdate(var0, var5);
+					}
+				}
+			}
+		}
+
+		var0.exportIndex();
+		if (var1 != 0) {
+			throw new RuntimeException();
+		} else {
+			var0.importIndex();
+
+			for (var2 = 0; var2 < Players.Players_count; ++var2) {
+				var5 = Players.Players_indices[var2];
+				if ((Players.field1323[var5] & 1) != 0) {
+					if (var1 > 0) {
+						--var1;
+						var10000 = Players.field1323;
+						var10000[var5] = (byte)(var10000[var5] | 2);
+					} else {
+						var4 = var0.readBits(1);
+						if (var4 == 0) {
+							var1 = Interpreter.method2005(var0);
+							var10000 = Players.field1323;
+							var10000[var5] = (byte)(var10000[var5] | 2);
+						} else {
+							class71.readPlayerUpdate(var0, var5);
+						}
+					}
+				}
+			}
+
+			var0.exportIndex();
+			if (var1 != 0) {
+				throw new RuntimeException();
+			} else {
+				var0.importIndex();
+
+				for (var2 = 0; var2 < Players.Players_emptyIdxCount; ++var2) {
+					var5 = Players.Players_emptyIndices[var2];
+					if ((Players.field1323[var5] & 1) != 0) {
+						if (var1 > 0) {
+							--var1;
+							var10000 = Players.field1323;
+							var10000[var5] = (byte)(var10000[var5] | 2);
+						} else {
+							var4 = var0.readBits(1);
+							if (var4 == 0) {
+								var1 = Interpreter.method2005(var0);
+								var10000 = Players.field1323;
+								var10000[var5] = (byte)(var10000[var5] | 2);
+							} else if (class412.updateExternalPlayer(var0, var5)) {
+								var10000 = Players.field1323;
+								var10000[var5] = (byte)(var10000[var5] | 2);
+							}
+						}
+					}
+				}
+
+				var0.exportIndex();
+				if (var1 != 0) {
+					throw new RuntimeException();
+				} else {
+					var0.importIndex();
+
+					for (var2 = 0; var2 < Players.Players_emptyIdxCount; ++var2) {
+						var5 = Players.Players_emptyIndices[var2];
+						if ((Players.field1323[var5] & 1) == 0) {
+							if (var1 > 0) {
+								--var1;
+								var10000 = Players.field1323;
+								var10000[var5] = (byte)(var10000[var5] | 2);
+							} else {
+								var4 = var0.readBits(1);
+								if (var4 == 0) {
+									var1 = Interpreter.method2005(var0);
+									var10000 = Players.field1323;
+									var10000[var5] = (byte)(var10000[var5] | 2);
+								} else if (class412.updateExternalPlayer(var0, var5)) {
+									var10000 = Players.field1323;
+									var10000[var5] = (byte)(var10000[var5] | 2);
+								}
+							}
+						}
+					}
+
+					var0.exportIndex();
+					if (var1 != 0) {
+						throw new RuntimeException();
+					} else {
+						Players.Players_count = 0;
+						Players.Players_emptyIdxCount = 0;
+
+						for (var2 = 1; var2 < 2048; ++var2) {
+							var10000 = Players.field1323;
+							var10000[var2] = (byte)(var10000[var2] >> 1);
+							Player var3 = Client.players[var2];
+							if (var3 != null) {
+								Players.Players_indices[++Players.Players_count - 1] = var2;
+							} else {
+								Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var2;
+							}
+						}
+
+					}
+				}
+			}
+		}
 	}
 }

@@ -10,37 +10,31 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @Deprecated
-@ObfuscatedName("ct")
+@ObfuscatedName("ds")
 @Implements("Varcs")
 public class Varcs {
-	@ObfuscatedName("uk")
-	@ObfuscatedSignature(
-		descriptor = "Lov;"
-	)
-	@Export("worldMap")
-	static WorldMap worldMap;
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@Export("intsPersistence")
 	boolean[] intsPersistence;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@Export("map")
 	Map map;
 	/** @deprecated */
-	@ObfuscatedName("t")
+	@ObfuscatedName("h")
 	@Export("strings")
 	String[] strings;
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@Export("unwrittenChanges")
 	boolean unwrittenChanges;
-	@ObfuscatedName("j")
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		longValue = -4836717580474471841L
+		longValue = 6607387257894408165L
 	)
-	long field1267;
+	long field1356;
 
 	Varcs() {
 		this.unwrittenChanges = false;
-		int var1 = class131.archive2.getGroupFileCount(19);
+		int var1 = class157.archive2.getGroupFileCount(19);
 		this.map = new HashMap();
 		this.intsPersistence = new boolean[var1];
 
@@ -54,7 +48,7 @@ public class Varcs {
 				byte[] var5 = VarcInt.VarcInt_archive.takeFile(19, var2);
 				var4 = new VarcInt();
 				if (var5 != null) {
-					var4.method3198(new Buffer(var5));
+					var4.method3459(new Buffer(var5));
 				}
 
 				VarcInt.VarcInt_cached.put(var4, (long)var2);
@@ -65,18 +59,18 @@ public class Varcs {
 		}
 
 		var2 = 0;
-		if (class131.archive2.method5584(15)) {
-			var2 = class131.archive2.getGroupFileCount(15);
+		if (class157.archive2.method6298(15)) {
+			var2 = class157.archive2.getGroupFileCount(15);
 		}
 
 		this.strings = new String[var2];
 		this.read();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
 		descriptor = "(IIB)V",
-		garbageValue = "1"
+		garbageValue = "-14"
 	)
 	@Export("setInt")
 	void setInt(int var1, int var2) {
@@ -87,10 +81,10 @@ public class Varcs {
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1323241994"
+		descriptor = "(IB)I",
+		garbageValue = "32"
 	)
 	@Export("getInt")
 	int getInt(int var1) {
@@ -98,20 +92,20 @@ public class Varcs {
 		return var2 instanceof Integer ? (Integer)var2 : -1;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(ILjava/lang/String;I)V",
-		garbageValue = "1511387186"
+		garbageValue = "-930824979"
 	)
 	@Export("setString")
 	void setString(int var1, String var2) {
 		this.map.put(var1, var2);
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
 		descriptor = "(IB)Ljava/lang/String;",
-		garbageValue = "34"
+		garbageValue = "-26"
 	)
 	@Export("getString")
 	String getString(int var1) {
@@ -121,10 +115,10 @@ public class Varcs {
 
 	/** @deprecated */
 	@Deprecated
-	@ObfuscatedName("t")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
 		descriptor = "(ILjava/lang/String;I)V",
-		garbageValue = "827123605"
+		garbageValue = "2034530215"
 	)
 	@Export("setStringOld")
 	void setStringOld(int var1, String var2) {
@@ -133,20 +127,20 @@ public class Varcs {
 
 	/** @deprecated */
 	@Deprecated
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
 		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "-254051098"
+		garbageValue = "-1748116686"
 	)
 	@Export("getStringOld")
 	String getStringOld(int var1) {
 		return this.strings[var1];
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("y")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1102785873"
+		descriptor = "(B)V",
+		garbageValue = "126"
 	)
 	@Export("clearTransient")
 	void clearTransient() {
@@ -163,20 +157,20 @@ public class Varcs {
 
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("d")
 	@ObfuscatedSignature(
-		descriptor = "(ZI)Loa;",
-		garbageValue = "-624786284"
+		descriptor = "(ZI)Lqv;",
+		garbageValue = "1722935868"
 	)
 	@Export("getPreferencesFile")
 	AccessFile getPreferencesFile(boolean var1) {
-		return class231.getPreferencesFile("2", class338.field4054.name, var1);
+		return class156.getPreferencesFile("2", class376.field4411.name, var1);
 	}
 
 	@ObfuscatedName("n")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1424242195"
+		garbageValue = "-1968826266"
 	)
 	@Export("write")
 	void write() {
@@ -196,7 +190,7 @@ public class Varcs {
 					if (var7 instanceof Integer) {
 						var2 += 4;
 					} else if (var7 instanceof String) {
-						var2 += class116.stringCp1252NullTerminatedByteSize((String)var7);
+						var2 += Actor.stringCp1252NullTerminatedByteSize((String)var7);
 					}
 
 					++var3;
@@ -214,9 +208,9 @@ public class Varcs {
 				if (this.intsPersistence[var13]) {
 					var23.writeShort(var13);
 					Object var8 = var12.getValue();
-					class409 var9 = class409.method7247(var8.getClass());
-					var23.writeByte(var9.field4452);
-					class409.method7255(var8, var23);
+					class453 var9 = class453.method8255(var8.getClass());
+					var23.writeByte(var9.field4832);
+					class453.method8265(var8, var23);
 				}
 			}
 
@@ -231,19 +225,19 @@ public class Varcs {
 		}
 
 		this.unwrittenChanges = false;
-		this.field1267 = Ignored.method6459();
+		this.field1356 = UserComparator8.method2748();
 	}
 
 	@ObfuscatedName("r")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1176168777"
+		descriptor = "(B)V",
+		garbageValue = "1"
 	)
 	@Export("read")
 	void read() {
 		AccessFile var1 = this.getPreferencesFile(false);
 
-		label210: {
+		label224: {
 			try {
 				byte[] var2 = new byte[(int)var1.length()];
 
@@ -255,68 +249,67 @@ public class Varcs {
 					}
 				}
 
-				Buffer var15 = new Buffer(var2);
-				if (var15.array.length - var15.offset < 1) {
+				Buffer var14 = new Buffer(var2);
+				if (var14.array.length - var14.offset < 1) {
 					return;
 				}
 
-				int var16 = var15.readUnsignedByte();
-				if (var16 >= 0 && var16 <= 2) {
+				int var15 = var14.readUnsignedByte();
+				if (var15 >= 0 && var15 <= 2) {
 					int var7;
 					int var8;
 					int var9;
-					int var17;
-					if (var16 >= 2) {
-						var17 = var15.readUnsignedShort();
+					int var16;
+					if (var15 >= 2) {
+						var16 = var14.readUnsignedShort();
 						var7 = 0;
 
 						while (true) {
-							if (var7 >= var17) {
-								break label210;
+							if (var7 >= var16) {
+								break label224;
 							}
 
-							var8 = var15.readUnsignedShort();
-							var9 = var15.readUnsignedByte();
-							class409[] var10 = new class409[]{class409.field4442, class409.field4449, class409.field4445};
-							class409 var11 = (class409)class130.findEnumerated(var10, var9);
-							Object var12 = var11.method7250(var15);
+							var8 = var14.readUnsignedShort();
+							var9 = var14.readUnsignedByte();
+							class453 var10 = (class453)DecorativeObject.findEnumerated(class453.method8268(), var9);
+							Object var11 = var10.method8257(var14);
 							if (this.intsPersistence[var8]) {
-								this.map.put(var8, var12);
+								this.map.put(var8, var11);
 							}
 
 							++var7;
 						}
 					} else {
-						var17 = var15.readUnsignedShort();
+						var16 = var14.readUnsignedShort();
 
-						for (var7 = 0; var7 < var17; ++var7) {
-							var8 = var15.readUnsignedShort();
-							var9 = var15.readInt();
+						for (var7 = 0; var7 < var16; ++var7) {
+							var8 = var14.readUnsignedShort();
+							var9 = var14.readInt();
 							if (this.intsPersistence[var8]) {
 								this.map.put(var8, var9);
 							}
 						}
 
-						var7 = var15.readUnsignedShort();
+						var7 = var14.readUnsignedShort();
 						var8 = 0;
 
 						while (true) {
 							if (var8 >= var7) {
-								break label210;
+								break label224;
 							}
 
-							var15.readUnsignedShort();
-							var15.readStringCp1252NullTerminated();
+							var14.readUnsignedShort();
+							var14.readStringCp1252NullTerminated();
 							++var8;
 						}
 					}
 				}
-			} catch (Exception var26) {
-				break label210;
+			} catch (Exception var25) {
+				break label224;
 			} finally {
 				try {
 					var1.close();
-				} catch (Exception var25) {
+				} catch (Exception var24) {
 				}
 
 			}
@@ -327,113 +320,184 @@ public class Varcs {
 		this.unwrittenChanges = false;
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1321758199"
+		descriptor = "(B)V",
+		garbageValue = "82"
 	)
 	@Export("tryWrite")
 	void tryWrite() {
-		if (this.unwrittenChanges && this.field1267 < Ignored.method6459() - 60000L) {
+		if (this.unwrittenChanges && this.field1356 < UserComparator8.method2748() - 60000L) {
 			this.write();
 		}
 
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1397883931"
+		descriptor = "(B)Z",
+		garbageValue = "4"
 	)
 	@Export("hasUnwrittenChanges")
 	boolean hasUnwrittenChanges() {
 		return this.unwrittenChanges;
 	}
 
-	@ObfuscatedName("fi")
+	@ObfuscatedName("hl")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-397371798"
+		descriptor = "(IIIII)V",
+		garbageValue = "2015445151"
 	)
-	static final void method2411() {
-		if (Client.logoutTimer > 0) {
-			LoginScreenAnimation.logOut();
-		} else {
-			Client.timer.method6231();
-			VertexNormal.updateGameState(40);
-			Coord.field3186 = Client.packetWriter.getSocket();
-			Client.packetWriter.removeSocket();
-		}
-	}
+	static final void method2612(int var0, int var1, int var2, int var3) {
+		Client.overheadTextCount = 0;
+		boolean var4 = false;
+		int var5 = -1;
+		int var6 = -1;
+		int var7 = Players.Players_count;
+		int[] var8 = Players.Players_indices;
 
-	@ObfuscatedName("fa")
-	@ObfuscatedSignature(
-		descriptor = "(Lgn;IIIB)V",
-		garbageValue = "23"
-	)
-	static void method2427(SequenceDefinition var0, int var1, int var2, int var3) {
-		if (Client.soundEffectCount < 50 && SecureRandomFuture.clientPreferences.areaSoundEffectsVolume != 0) {
-			if (var0.field2075 != null && var0.field2075.containsKey(var1)) {
-				class315.method5816((Integer)var0.field2075.get(var1), var2, var3);
-			}
-		}
-	}
+		int var9;
+		for (var9 = 0; var9 < var7 + Client.npcCount; ++var9) {
+			Object var20;
+			if (var9 < var7) {
+				var20 = Client.players[var8[var9]];
+				if (var8[var9] == Client.combatTargetPlayerIndex) {
+					var4 = true;
+					var5 = var9;
+					continue;
+				}
 
-	@ObfuscatedName("hv")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIIIB)V",
-		garbageValue = "-39"
-	)
-	@Export("updatePendingSpawn")
-	static final void updatePendingSpawn(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
-		PendingSpawn var9 = null;
-
-		for (PendingSpawn var10 = (PendingSpawn)Client.pendingSpawns.last(); var10 != null; var10 = (PendingSpawn)Client.pendingSpawns.previous()) {
-			if (var0 == var10.plane && var10.x == var1 && var2 == var10.y && var3 == var10.type) {
-				var9 = var10;
-				break;
-			}
-		}
-
-		if (var9 == null) {
-			var9 = new PendingSpawn();
-			var9.plane = var0;
-			var9.type = var3;
-			var9.x = var1;
-			var9.y = var2;
-			class4.method26(var9);
-			Client.pendingSpawns.addFirst(var9);
-		}
-
-		var9.id = var4;
-		var9.field1075 = var5;
-		var9.orientation = var6;
-		var9.delay = var7;
-		var9.hitpoints = var8;
-	}
-
-	@ObfuscatedName("km")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-1218655419"
-	)
-	static final void method2426(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 255);
-		if (var0 != SecureRandomFuture.clientPreferences.musicVolume) {
-			if (SecureRandomFuture.clientPreferences.musicVolume == 0 && Client.currentTrackGroupId != -1) {
-				NetSocket.method3118(WorldMapScaleHandler.archive6, Client.currentTrackGroupId, 0, var0, false);
-				Client.field743 = false;
-			} else if (var0 == 0) {
-				StructComposition.method3444();
-				Client.field743 = false;
-			} else if (class260.musicPlayerStatus != 0) {
-				ChatChannel.musicTrackVolume = var0;
+				if (var20 == class296.localPlayer) {
+					var6 = var9;
+					continue;
+				}
 			} else {
-				class260.midiPcmStream.setPcmStreamVolume(var0);
+				var20 = Client.npcs[Client.npcIndices[var9 - var7]];
 			}
 
-			SecureRandomFuture.clientPreferences.musicVolume = var0;
-			class127.savePreferences();
+			class138.drawActor2d((Actor)var20, var9, var0, var1, var2, var3);
+		}
+
+		if (Client.renderSelf && var6 != -1) {
+			class138.drawActor2d(class296.localPlayer, var6, var0, var1, var2, var3);
+		}
+
+		if (var4) {
+			class138.drawActor2d(Client.players[Client.combatTargetPlayerIndex], var5, var0, var1, var2, var3);
+		}
+
+		for (var9 = 0; var9 < Client.overheadTextCount; ++var9) {
+			int var10 = Client.overheadTextXs[var9];
+			int var11 = Client.overheadTextYs[var9];
+			int var12 = Client.overheadTextXOffsets[var9];
+			int var13 = Client.overheadTextAscents[var9];
+			boolean var14 = true;
+
+			while (var14) {
+				var14 = false;
+
+				for (int var19 = 0; var19 < var9; ++var19) {
+					if (var11 + 2 > Client.overheadTextYs[var19] - Client.overheadTextAscents[var19] && var11 - var13 < Client.overheadTextYs[var19] + 2 && var10 - var12 < Client.overheadTextXOffsets[var19] + Client.overheadTextXs[var19] && var12 + var10 > Client.overheadTextXs[var19] - Client.overheadTextXOffsets[var19] && Client.overheadTextYs[var19] - Client.overheadTextAscents[var19] < var11) {
+						var11 = Client.overheadTextYs[var19] - Client.overheadTextAscents[var19];
+						var14 = true;
+					}
+				}
+			}
+
+			Client.viewportTempX = Client.overheadTextXs[var9];
+			Client.viewportTempY = Client.overheadTextYs[var9] = var11;
+			String var15 = Client.overheadText[var9];
+			if (Client.chatEffects == 0) {
+				int var16 = 16776960;
+				if (Client.overheadTextColors[var9] < 6) {
+					var16 = Client.field727[Client.overheadTextColors[var9]];
+				}
+
+				if (Client.overheadTextColors[var9] == 6) {
+					var16 = Client.viewportDrawCount % 20 < 10 ? 16711680 : 16776960;
+				}
+
+				if (Client.overheadTextColors[var9] == 7) {
+					var16 = Client.viewportDrawCount % 20 < 10 ? 255 : '\uffff';
+				}
+
+				if (Client.overheadTextColors[var9] == 8) {
+					var16 = Client.viewportDrawCount % 20 < 10 ? '뀀' : 8454016;
+				}
+
+				int var17;
+				if (Client.overheadTextColors[var9] == 9) {
+					var17 = 150 - Client.overheadTextCyclesRemaining[var9];
+					if (var17 < 50) {
+						var16 = var17 * 1280 + 16711680;
+					} else if (var17 < 100) {
+						var16 = 16776960 - (var17 - 50) * 327680;
+					} else if (var17 < 150) {
+						var16 = (var17 - 100) * 5 + 65280;
+					}
+				}
+
+				if (Client.overheadTextColors[var9] == 10) {
+					var17 = 150 - Client.overheadTextCyclesRemaining[var9];
+					if (var17 < 50) {
+						var16 = var17 * 5 + 16711680;
+					} else if (var17 < 100) {
+						var16 = 16711935 - (var17 - 50) * 327680;
+					} else if (var17 < 150) {
+						var16 = (var17 - 100) * 327680 + 255 - (var17 - 100) * 5;
+					}
+				}
+
+				if (Client.overheadTextColors[var9] == 11) {
+					var17 = 150 - Client.overheadTextCyclesRemaining[var9];
+					if (var17 < 50) {
+						var16 = 16777215 - var17 * 327685;
+					} else if (var17 < 100) {
+						var16 = (var17 - 50) * 327685 + 65280;
+					} else if (var17 < 150) {
+						var16 = 16777215 - (var17 - 100) * 327680;
+					}
+				}
+
+				if (Client.overheadTextEffects[var9] == 0) {
+					UserComparator3.fontBold12.drawCentered(var15, var0 + Client.viewportTempX, Client.viewportTempY + var1, var16, 0);
+				}
+
+				if (Client.overheadTextEffects[var9] == 1) {
+					UserComparator3.fontBold12.drawCenteredWave(var15, var0 + Client.viewportTempX, Client.viewportTempY + var1, var16, 0, Client.viewportDrawCount);
+				}
+
+				if (Client.overheadTextEffects[var9] == 2) {
+					UserComparator3.fontBold12.drawCenteredWave2(var15, var0 + Client.viewportTempX, Client.viewportTempY + var1, var16, 0, Client.viewportDrawCount);
+				}
+
+				if (Client.overheadTextEffects[var9] == 3) {
+					UserComparator3.fontBold12.drawCenteredShake(var15, var0 + Client.viewportTempX, Client.viewportTempY + var1, var16, 0, Client.viewportDrawCount, 150 - Client.overheadTextCyclesRemaining[var9]);
+				}
+
+				if (Client.overheadTextEffects[var9] == 4) {
+					var17 = (150 - Client.overheadTextCyclesRemaining[var9]) * (UserComparator3.fontBold12.stringWidth(var15) + 100) / 150;
+					Rasterizer2D.Rasterizer2D_expandClip(var0 + Client.viewportTempX - 50, var1, var0 + Client.viewportTempX + 50, var3 + var1);
+					UserComparator3.fontBold12.draw(var15, var0 + Client.viewportTempX + 50 - var17, Client.viewportTempY + var1, var16, 0);
+					Rasterizer2D.Rasterizer2D_setClip(var0, var1, var0 + var2, var3 + var1);
+				}
+
+				if (Client.overheadTextEffects[var9] == 5) {
+					var17 = 150 - Client.overheadTextCyclesRemaining[var9];
+					int var18 = 0;
+					if (var17 < 25) {
+						var18 = var17 - 25;
+					} else if (var17 > 125) {
+						var18 = var17 - 125;
+					}
+
+					Rasterizer2D.Rasterizer2D_expandClip(var0, Client.viewportTempY + var1 - UserComparator3.fontBold12.ascent - 1, var0 + var2, Client.viewportTempY + var1 + 5);
+					UserComparator3.fontBold12.drawCentered(var15, var0 + Client.viewportTempX, var18 + Client.viewportTempY + var1, var16, 0);
+					Rasterizer2D.Rasterizer2D_setClip(var0, var1, var0 + var2, var3 + var1);
+				}
+			} else {
+				UserComparator3.fontBold12.drawCentered(var15, var0 + Client.viewportTempX, Client.viewportTempY + var1, 16776960, 0);
+			}
 		}
 
 	}

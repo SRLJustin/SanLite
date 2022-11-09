@@ -4,36 +4,36 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ga")
+@ObfuscatedName("hw")
 @Implements("VertexNormal")
 public class VertexNormal {
-	@ObfuscatedName("ei")
+	@ObfuscatedName("hf")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
+		descriptor = "Lfy;"
 	)
-	@Export("archive18")
-	static Archive archive18;
-	@ObfuscatedName("b")
+	@Export("socketTask")
+	static Task socketTask;
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = 571778343
+		intValue = 1046360711
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -1513329049
+		intValue = 1848636231
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = -73747775
+		intValue = -209584019
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("t")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 89505295
+		intValue = -867877795
 	)
 	@Export("magnitude")
 	int magnitude;
@@ -42,7 +42,7 @@ public class VertexNormal {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lga;)V"
+		descriptor = "(Lhw;)V"
 	)
 	VertexNormal(VertexNormal var1) {
 		this.x = var1.x;
@@ -51,72 +51,36 @@ public class VertexNormal {
 		this.magnitude = var1.magnitude;
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("bu")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "339374654"
+		descriptor = "([BI)[B",
+		garbageValue = "-546159612"
 	)
-	@Export("Messages_getLastChatID")
-	static int Messages_getLastChatID(int var0) {
-		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
-		if (var1 == null) {
-			return -1;
+	@Export("decompressBytes")
+	static final byte[] decompressBytes(byte[] var0) {
+		Buffer var1 = new Buffer(var0);
+		int var2 = var1.readUnsignedByte();
+		int var3 = var1.readInt();
+		if (var3 < 0 || AbstractArchive.field4157 != 0 && var3 > AbstractArchive.field4157) {
+			throw new RuntimeException();
+		} else if (var2 == 0) {
+			byte[] var6 = new byte[var3];
+			var1.readBytes(var6, 0, var3);
+			return var6;
 		} else {
-			return var1.previousDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.previousDual).count;
-		}
-	}
-
-	@ObfuscatedName("ew")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-2020888732"
-	)
-	@Export("updateGameState")
-	static void updateGameState(int var0) {
-		if (var0 != Client.gameState) {
-			if (Client.gameState == 0) {
-				class295.client.method498();
-			}
-
-			if (var0 == 20 || var0 == 40 || var0 == 45) {
-				PacketBufferNode.method5016(0);
-				Client.field545 = 0;
-				Client.field541 = 0;
-				Client.timer.method6232(var0);
-				if (var0 != 20) {
-					FriendSystem.method1791(false);
-				}
-			}
-
-			if (var0 != 20 && var0 != 40 && Coord.field3186 != null) {
-				Coord.field3186.close();
-				Coord.field3186 = null;
-			}
-
-			if (Client.gameState == 25) {
-				Client.field602 = 0;
-				Client.field529 = 0;
-				Client.field530 = 1;
-				Client.field617 = 0;
-				Client.field532 = 1;
-			}
-
-			int var1;
-			if (var0 != 5 && var0 != 10) {
-				if (var0 == 20) {
-					var1 = Client.gameState == 11 ? 4 : 0;
-					DefaultsGroup.method6568(class257.archive10, UserComparator6.archive8, true, var1);
-				} else if (var0 == 11) {
-					DefaultsGroup.method6568(class257.archive10, UserComparator6.archive8, false, 4);
+			int var4 = var1.readInt();
+			if (var4 >= 0 && (AbstractArchive.field4157 == 0 || var4 <= AbstractArchive.field4157)) {
+				byte[] var5 = new byte[var4];
+				if (var2 == 1) {
+					BZip2Decompressor.BZip2Decompressor_decompress(var5, var4, var0, var3, 9);
 				} else {
-					SoundCache.method823();
+					AbstractArchive.gzipDecompressor.decompress(var1, var5);
 				}
-			} else {
-				var1 = AttackOption.method2356() ? 0 : 12;
-				DefaultsGroup.method6568(class257.archive10, UserComparator6.archive8, true, var1);
-			}
 
-			Client.gameState = var0;
+				return var5;
+			} else {
+				throw new RuntimeException();
+			}
 		}
 	}
 }
