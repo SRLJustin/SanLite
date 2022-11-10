@@ -3,73 +3,89 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eu")
-public class class130 extends class126 {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = 70738287
-	)
-	int field1524;
-	@ObfuscatedName("b")
-	byte field1522;
-	// $FF: synthetic field
+@ObfuscatedName("es")
+public enum class130 implements class342 {
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Les;"
 	)
-	final class129 this$0;
-
+	field1552(0, 0),
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "Les;"
 	)
-	class130(class129 var1) {
-		this.this$0 = var1;
-		this.field1524 = -1;
-	}
-
+	field1551(1, 1),
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "Les;"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1524 = var1.readUnsignedShort();
-		this.field1522 = var1.readByte();
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
-	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2887(this.field1524, this.field1522);
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "([Lll;IB)Lll;",
-		garbageValue = "5"
-	)
-	@Export("findEnumerated")
-	public static MouseWheel findEnumerated(MouseWheel[] var0, int var1) {
-		MouseWheel[] var2 = var0;
-
-		for (int var3 = 0; var3 < var2.length; ++var3) {
-			MouseWheel var4 = var2[var3];
-			if (var1 == var4.rsOrdinal()) {
-				return var4;
-			}
-		}
-
-		return null;
-	}
-
+	field1547(2, 2),
 	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(Law;I)V",
-		garbageValue = "1459785075"
+		descriptor = "Les;"
 	)
-	public static final void method2795(class47 var0) {
-		class11.pcmPlayerProvider = var0;
+	field1545(3, 3),
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "Les;"
+	)
+	field1546(4, 4),
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "Les;"
+	)
+	field1549(5, 5),
+	@ObfuscatedName("y")
+	@ObfuscatedSignature(
+		descriptor = "Les;"
+	)
+	field1550(6, 6),
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(
+		descriptor = "Les;"
+	)
+	field1548(7, 7),
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "Les;"
+	)
+	field1553(8, 8);
+
+	@ObfuscatedName("r")
+	@ObfuscatedGetter(
+		intValue = 542971727
+	)
+	final int field1554;
+	@ObfuscatedName("l")
+	@ObfuscatedGetter(
+		intValue = -1129342791
+	)
+	final int field1555;
+
+	class130(int var3, int var4) {
+		this.field1554 = var3;
+		this.field1555 = var4;
+	}
+
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "0"
+	)
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field1555;
+	}
+
+	@ObfuscatedName("lg")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "159732315"
+	)
+	@Export("Clan_leaveChat")
+	static final void Clan_leaveChat() {
+		PacketBufferNode var0 = FloorUnderlayDefinition.getPacketBufferNode(ClientPacket.field3006, Client.packetWriter.isaacCipher);
+		var0.packetBuffer.writeByte(0);
+		Client.packetWriter.addNode(var0);
 	}
 }

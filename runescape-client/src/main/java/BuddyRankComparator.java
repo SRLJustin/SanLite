@@ -1,17 +1,24 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("do")
+@ObfuscatedName("dr")
 @Implements("BuddyRankComparator")
 public class BuddyRankComparator extends AbstractUserComparator {
-	@ObfuscatedName("pw")
-	@ObfuscatedSignature(
-		descriptor = "Lnq;"
+	@ObfuscatedName("ti")
+	@ObfuscatedGetter(
+		intValue = -1637433344
 	)
-	static class370 field1342;
-	@ObfuscatedName("c")
+	static int field1431;
+	@ObfuscatedName("iq")
+	@ObfuscatedSignature(
+		descriptor = "Lri;"
+	)
+	@Export("compass")
+	static SpritePixels compass;
+	@ObfuscatedName("a")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -19,10 +26,10 @@ public class BuddyRankComparator extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(Lmp;Lmp;I)I",
-		garbageValue = "-1364999182"
+		descriptor = "(Lof;Lof;I)I",
+		garbageValue = "-1386108744"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -37,17 +44,13 @@ public class BuddyRankComparator extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ld")
+	@ObfuscatedName("y")
 	@ObfuscatedSignature(
-		descriptor = "(IIIZI)V",
-		garbageValue = "1683360444"
+		descriptor = "(CB)Z",
+		garbageValue = "-93"
 	)
-	public static void method2547(int var0, int var1, int var2, boolean var3) {
-		PacketBufferNode var4 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2819, Client.packetWriter.isaacCipher);
-		var4.packetBuffer.method7527(var3 ? Client.field607 : 0);
-		var4.packetBuffer.method7349(var0);
-		var4.packetBuffer.method7343(var2);
-		var4.packetBuffer.writeShort(var1);
-		Client.packetWriter.addNode(var4);
+	@Export("isCharAlphabetic")
+	public static boolean isCharAlphabetic(char var0) {
+		return var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
 	}
 }

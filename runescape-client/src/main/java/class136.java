@@ -1,144 +1,168 @@
-import java.awt.Component;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ep")
-public class class136 extends class126 {
-	@ObfuscatedName("gr")
-	@ObfuscatedSignature(
-		descriptor = "Llx;"
-	)
-	@Export("fontBold12")
-	static Font fontBold12;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = -1563253375
-	)
-	int field1556;
+@ObfuscatedName("ew")
+public class class136 extends class135 {
 	@ObfuscatedName("b")
-	String field1557;
+	@ObfuscatedSignature(
+		descriptor = "Lkn;"
+	)
+	static Widget field1589;
+	@ObfuscatedName("a")
+	@ObfuscatedGetter(
+		intValue = 1922783559
+	)
+	int field1587;
+	@ObfuscatedName("f")
+	boolean field1588;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Lel;"
 	)
-	final class129 this$0;
+	final class138 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "(Lel;)V"
 	)
-	class136(class129 var1) {
+	class136(class138 var1) {
 		this.this$0 = var1;
+		this.field1587 = -1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lqr;I)V",
+		garbageValue = "-1428026624"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1556 = var1.readInt();
-		this.field1557 = var1.readStringCp1252NullTerminated();
+	void vmethod3254(Buffer var1) {
+		this.field1587 = var1.readUnsignedShort();
+		this.field1588 = var1.readUnsignedByte() == 1;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(Ler;B)V",
+		garbageValue = "-110"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2873(this.field1556, this.field1557);
+	void vmethod3248(ClanSettings var1) {
+		var1.method3102(this.field1587, this.field1588);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Component;I)V",
-		garbageValue = "-54146153"
+		descriptor = "(ILbz;ZS)I",
+		garbageValue = "3789"
 	)
-	static void method2839(Component var0) {
-		var0.addMouseListener(MouseHandler.MouseHandler_instance);
-		var0.addMouseMotionListener(MouseHandler.MouseHandler_instance);
-		var0.addFocusListener(MouseHandler.MouseHandler_instance);
-	}
+	static int method2991(int var0, Script var1, boolean var2) {
+		int var3;
+		int var6;
+		int var9;
+		if (var0 == ScriptOpcodes.ENUM_STRING) {
+			class379.Interpreter_intStackSize -= 2;
+			var3 = Interpreter.Interpreter_intStack[class379.Interpreter_intStackSize];
+			var9 = Interpreter.Interpreter_intStack[class379.Interpreter_intStackSize + 1];
+			EnumComposition var10 = Clock.getEnum(var3);
+			if (var10.outputType != 's') {
+			}
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(CB)Z",
-		garbageValue = "-10"
-	)
-	public static boolean method2842(char var0) {
-		if ((var0 <= 0 || var0 >= 128) && (var0 < 160 || var0 > 255)) {
-			if (var0 != 0) {
-				char[] var1 = class328.cp1252AsciiExtension;
+			for (var6 = 0; var6 < var10.outputCount; ++var6) {
+				if (var9 == var10.keys[var6]) {
+					Interpreter.Interpreter_stringStack[++class125.Interpreter_stringStackSize - 1] = var10.strVals[var6];
+					var10 = null;
+					break;
+				}
+			}
 
-				for (int var2 = 0; var2 < var1.length; ++var2) {
-					char var3 = var1[var2];
-					if (var0 == var3) {
-						return true;
+			if (var10 != null) {
+				Interpreter.Interpreter_stringStack[++class125.Interpreter_stringStackSize - 1] = var10.defaultStr;
+			}
+
+			return 1;
+		} else if (var0 != ScriptOpcodes.ENUM) {
+			if (var0 == ScriptOpcodes.ENUM_GETOUTPUTCOUNT) {
+				var3 = Interpreter.Interpreter_intStack[--class379.Interpreter_intStackSize];
+				EnumComposition var4 = Clock.getEnum(var3);
+				Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var4.size();
+				return 1;
+			} else {
+				return 2;
+			}
+		} else {
+			class379.Interpreter_intStackSize -= 4;
+			var3 = Interpreter.Interpreter_intStack[class379.Interpreter_intStackSize];
+			var9 = Interpreter.Interpreter_intStack[class379.Interpreter_intStackSize + 1];
+			int var5 = Interpreter.Interpreter_intStack[class379.Interpreter_intStackSize + 2];
+			var6 = Interpreter.Interpreter_intStack[class379.Interpreter_intStackSize + 3];
+			EnumComposition var7 = Clock.getEnum(var5);
+			if (var3 == var7.inputType && var9 == var7.outputType) {
+				for (int var8 = 0; var8 < var7.outputCount; ++var8) {
+					if (var6 == var7.keys[var8]) {
+						if (var9 == 115) {
+							Interpreter.Interpreter_stringStack[++class125.Interpreter_stringStackSize - 1] = var7.strVals[var8];
+						} else {
+							Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var7.intVals[var8];
+						}
+
+						var7 = null;
+						break;
 					}
 				}
-			}
 
-			return false;
-		} else {
-			return true;
-		}
-	}
-
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "-56"
-	)
-	public static boolean method2841(int var0) {
-		return (var0 >> 20 & 1) != 0;
-	}
-
-	@ObfuscatedName("ic")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;I)V",
-		garbageValue = "429003988"
-	)
-	static void method2840(int var0, String var1) {
-		int var2 = Players.Players_count;
-		int[] var3 = Players.Players_indices;
-		boolean var4 = false;
-		Username var5 = new Username(var1, class194.loginType);
-
-		for (int var6 = 0; var6 < var2; ++var6) {
-			Player var7 = Client.players[var3[var6]];
-			if (var7 != null && var7 != class340.localPlayer && var7.username != null && var7.username.equals(var5)) {
-				PacketBufferNode var8;
-				if (var0 == 1) {
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2887, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.method7343(0);
-					var8.packetBuffer.method7398(var3[var6]);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 4) {
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2807, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.method7349(var3[var6]);
-					var8.packetBuffer.writeByte(0);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 6) {
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2863, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.method7390(0);
-					var8.packetBuffer.method7398(var3[var6]);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 7) {
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2906, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.method7362(0);
-					var8.packetBuffer.method7493(var3[var6]);
-					Client.packetWriter.addNode(var8);
+				if (var7 != null) {
+					if (var9 == 115) {
+						Interpreter.Interpreter_stringStack[++class125.Interpreter_stringStackSize - 1] = var7.defaultStr;
+					} else {
+						Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = var7.defaultInt;
+					}
 				}
 
-				var4 = true;
-				break;
+				return 1;
+			} else {
+				if (var9 == 115) {
+					Interpreter.Interpreter_stringStack[++class125.Interpreter_stringStackSize - 1] = "null";
+				} else {
+					Interpreter.Interpreter_intStack[++class379.Interpreter_intStackSize - 1] = 0;
+				}
+
+				return 1;
 			}
 		}
+	}
 
-		if (!var4) {
-			class194.addGameMessage(4, "", "Unable to find " + var1);
+	@ObfuscatedName("kf")
+	@ObfuscatedSignature(
+		descriptor = "(Lkn;Lgp;IIZI)V",
+		garbageValue = "1315594698"
+	)
+	@Export("addWidgetItemMenuItem")
+	static final void addWidgetItemMenuItem(Widget var0, ItemComposition var1, int var2, int var3, boolean var4) {
+		String[] var5 = var1.inventoryActions;
+		byte var6 = -1;
+		String var7 = null;
+		if (var5 != null && var5[var3] != null) {
+			if (var3 == 0) {
+				var6 = 33;
+			} else if (var3 == 1) {
+				var6 = 34;
+			} else if (var3 == 2) {
+				var6 = 35;
+			} else if (var3 == 3) {
+				var6 = 36;
+			} else {
+				var6 = 37;
+			}
+
+			var7 = var5[var3];
+		} else if (var3 == 4) {
+			var6 = 37;
+			var7 = "Drop";
+		}
+
+		if (var6 != -1 && var7 != null) {
+			UserComparator8.method2744(var7, GameObject.colorStartTag(16748608) + var1.name, var6, 0, var2, var0.id, var1.id, var4);
 		}
 
 	}
