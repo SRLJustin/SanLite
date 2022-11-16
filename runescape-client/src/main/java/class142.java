@@ -1,38 +1,61 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ee")
-public abstract class class142 extends Node {
-	@ObfuscatedName("sp")
-	@ObfuscatedGetter(
-		intValue = -843354001
+@ObfuscatedName("ey")
+public class class142 extends class135 {
+	@ObfuscatedName("eu")
+	@ObfuscatedSignature(
+		descriptor = "Llx;"
 	)
-	static int field1615;
+	@Export("archive8")
+	static Archive archive8;
+	@ObfuscatedName("a")
+	boolean field1641;
+	@ObfuscatedName("f")
+	byte field1637;
+	@ObfuscatedName("c")
+	byte field1636;
+	@ObfuscatedName("x")
+	byte field1639;
+	@ObfuscatedName("h")
+	byte field1640;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lel;"
+	)
+	final class138 this$0;
 
-	class142() {
+	@ObfuscatedSignature(
+		descriptor = "(Lel;)V"
+	)
+	class142(class138 var1) {
+		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "4"
+		descriptor = "(Lqr;I)V",
+		garbageValue = "-1428026624"
 	)
-	abstract void vmethod3022(Buffer var1);
+	void vmethod3254(Buffer var1) {
+		this.field1641 = var1.readUnsignedByte() == 1;
+		this.field1637 = var1.readByte();
+		this.field1636 = var1.readByte();
+		this.field1639 = var1.readByte();
+		this.field1640 = var1.readByte();
+	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lei;B)V",
-		garbageValue = "40"
+		descriptor = "(Ler;B)V",
+		garbageValue = "-110"
 	)
-	abstract void vmethod3021(ClanChannel var1);
-
-	@ObfuscatedName("fu")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-1686144009"
-	)
-	static int method2958(int var0) {
-		return var0 * 3 + 600;
+	void vmethod3248(ClanSettings var1) {
+		var1.allowGuests = this.field1641;
+		var1.field1670 = this.field1637;
+		var1.field1660 = this.field1636;
+		var1.field1680 = this.field1639;
+		var1.field1671 = this.field1640;
 	}
 }
