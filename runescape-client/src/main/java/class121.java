@@ -1,81 +1,38 @@
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dj")
-public enum class121 implements MouseWheel {
-	@ObfuscatedName("c")
+@ObfuscatedName("dw")
+public class class121 {
+	@ObfuscatedName("sl")
 	@ObfuscatedSignature(
-		descriptor = "Ldj;"
+		descriptor = "Ler;"
 	)
-	field1465(0, 0),
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Ldj;"
-	)
-	field1461(1, 1),
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Ldj;"
-	)
-	field1459(2, 2),
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Ldj;"
-	)
-	field1462(3, 3),
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Ldj;"
-	)
-	field1463(4, 4),
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Ldj;"
-	)
-	field1464(5, 5),
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "Ldj;"
-	)
-	field1469(6, 6),
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(
-		descriptor = "Ldj;"
-	)
-	field1466(7, 7),
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "Ldj;"
-	)
-	field1467(8, 8);
+	@Export("guestClanSettings")
+	static ClanSettings guestClanSettings;
+	@ObfuscatedName("x")
+	public static final float field1454;
+	@ObfuscatedName("h")
+	public static final float field1452;
 
-	@ObfuscatedName("rf")
-	static boolean field1470;
-	@ObfuscatedName("r")
-	@ObfuscatedGetter(
-		intValue = 1751927131
-	)
-	final int field1460;
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(
-		intValue = -85516245
-	)
-	final int field1468;
-
-	class121(int var3, int var4) {
-		this.field1460 = var3;
-		this.field1468 = var4;
+	static {
+		field1454 = Math.ulp(1.0F);
+		field1452 = 2.0F * field1454;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "48"
+		descriptor = "(ILbz;ZB)I",
+		garbageValue = "-111"
 	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field1468;
+	static int method2823(int var0, Script var1, boolean var2) {
+		if (var0 == 6809) {
+			int var3 = Interpreter.Interpreter_intStack[--class379.Interpreter_intStackSize];
+			ObjectComposition var4 = InterfaceParent.getObjectDefinition(var3);
+			Interpreter.Interpreter_stringStack[++class125.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 }
