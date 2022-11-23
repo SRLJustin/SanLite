@@ -4,34 +4,37 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ke")
+@ObfuscatedName("lj")
 @Implements("ArchiveDiskActionHandler")
 public class ArchiveDiskActionHandler implements Runnable {
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "Llh;"
+		descriptor = "Lme;"
 	)
 	@Export("ArchiveDiskActionHandler_requestQueue")
-	public static NodeDeque ArchiveDiskActionHandler_requestQueue;
-	@ObfuscatedName("b")
+	static NodeDeque ArchiveDiskActionHandler_requestQueue;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Llh;"
+		descriptor = "Lme;"
 	)
 	@Export("ArchiveDiskActionHandler_responseQueue")
-	public static NodeDeque ArchiveDiskActionHandler_responseQueue;
-	@ObfuscatedName("p")
+	static NodeDeque ArchiveDiskActionHandler_responseQueue;
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 449251955
+		intValue = 1199311371
 	)
-	static int field3815;
-	@ObfuscatedName("m")
+	static int field4122;
+	@ObfuscatedName("x")
 	@Export("ArchiveDiskActionHandler_lock")
 	static Object ArchiveDiskActionHandler_lock;
+	@ObfuscatedName("h")
+	@Export("ArchiveDiskActionHandler_thread")
+	static Thread ArchiveDiskActionHandler_thread;
 
 	static {
 		ArchiveDiskActionHandler_requestQueue = new NodeDeque();
 		ArchiveDiskActionHandler_responseQueue = new NodeDeque();
-		field3815 = 0;
+		field4122 = 0;
 		ArchiveDiskActionHandler_lock = new Object();
 	}
 
@@ -60,64 +63,75 @@ public class ArchiveDiskActionHandler implements Runnable {
 					}
 
 					synchronized(ArchiveDiskActionHandler_lock) {
-						if (field3815 <= 1) {
-							field3815 = 0;
+						if (field4122 <= 1) {
+							field4122 = 0;
 							ArchiveDiskActionHandler_lock.notifyAll();
 							return;
 						}
 
-						field3815 = 600;
+						field4122 = 600;
 					}
 				} else {
-					Bounds.method6608(100L);
+					class197.method3946(100L);
 					synchronized(ArchiveDiskActionHandler_lock) {
-						if (field3815 <= 1) {
-							field3815 = 0;
+						if (field4122 <= 1) {
+							field4122 = 0;
 							ArchiveDiskActionHandler_lock.notifyAll();
 							return;
 						}
 
-						--field3815;
+						--field4122;
 					}
 				}
 			}
 		} catch (Exception var13) {
-			AccessFile.RunException_sendStackTrace((String)null, var13);
+			class421.RunException_sendStackTrace((String)null, var13);
 		}
 	}
 
-	@ObfuscatedName("gl")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZB)V",
-		garbageValue = "-14"
+		descriptor = "(II)I",
+		garbageValue = "-2029749129"
 	)
-	@Export("drawLoadingMessage")
-	static final void drawLoadingMessage(String var0, boolean var1) {
-		if (Client.showLoadingMessages) {
-			byte var2 = 4;
-			int var3 = var2 + 6;
-			int var4 = var2 + 6;
-			int var5 = class114.fontPlain12.lineWidth(var0, 250);
-			int var6 = class114.fontPlain12.lineCount(var0, 250) * 13;
-			Rasterizer2D.Rasterizer2D_fillRectangle(var3 - var2, var4 - var2, var2 + var2 + var5, var2 + var6 + var2, 0);
-			Rasterizer2D.Rasterizer2D_drawRectangle(var3 - var2, var4 - var2, var2 + var5 + var2, var2 + var2 + var6, 16777215);
-			class114.fontPlain12.drawLines(var0, var3, var4, var5, var6, 16777215, -1, 1, 1, 0);
-			class10.method124(var3 - var2, var4 - var2, var2 + var5 + var2, var6 + var2 + var2);
-			if (var1) {
-				class19.rasterProvider.drawFull(0, 0);
-			} else {
-				int var7 = var3;
-				int var8 = var4;
-				int var9 = var5;
-				int var10 = var6;
+	public static int method6293(int var0) {
+		return var0 >>> 4 & class459.field4854;
+	}
 
-				for (int var11 = 0; var11 < Client.rootWidgetCount; ++var11) {
-					if (Client.rootWidgetWidths[var11] + Client.rootWidgetXs[var11] > var7 && Client.rootWidgetXs[var11] < var9 + var7 && Client.rootWidgetHeights[var11] + Client.rootWidgetYs[var11] > var8 && Client.rootWidgetYs[var11] < var8 + var10) {
-						Client.field686[var11] = true;
-					}
-				}
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Les;",
+		garbageValue = "13"
+	)
+	static class130 method6280(int var0) {
+		class130[] var1 = new class130[]{class130.field1552, class130.field1551, class130.field1547, class130.field1545, class130.field1546, class130.field1549, class130.field1550, class130.field1548, class130.field1553};
+		class130 var2 = (class130)DecorativeObject.findEnumerated(var1, var0);
+		if (var2 == null) {
+			var2 = class130.field1553;
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("y")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-59706697"
+	)
+	public static void method6291() {
+		ParamComposition.ParamComposition_cached.clear();
+	}
+
+	@ObfuscatedName("gc")
+	@ObfuscatedSignature(
+		descriptor = "(Lgg;IIII)V",
+		garbageValue = "-1574294658"
+	)
+	static void method6292(SequenceDefinition var0, int var1, int var2, int var3) {
+		if (Client.soundEffectCount < 50 && BufferedSink.clientPreferences.method2411() != 0) {
+			if (var0.soundEffects != null && var1 < var0.soundEffects.length) {
+				class101.method2567(var0.soundEffects[var1], var2, var3);
 			}
-
 		}
 	}
 }

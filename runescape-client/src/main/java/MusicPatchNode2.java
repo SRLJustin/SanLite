@@ -1,94 +1,73 @@
-import java.io.File;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("il")
+@ObfuscatedName("jz")
 @Implements("MusicPatchNode2")
 public class MusicPatchNode2 {
+	@ObfuscatedName("a")
+	byte[] field3288;
+	@ObfuscatedName("f")
+	byte[] field3286;
 	@ObfuscatedName("c")
-	byte[] field3056;
-	@ObfuscatedName("b")
-	byte[] field3054;
-	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = 1373142443
+		intValue = -1582078627
 	)
-	int field3052;
-	@ObfuscatedName("m")
+	int field3282;
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = 354734067
+		intValue = -732362687
 	)
-	int field3055;
-	@ObfuscatedName("t")
+	int field3283;
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -488769373
+		intValue = -9953013
 	)
-	int field3053;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -1877607089
-	)
-	int field3057;
+	int field3284;
 	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 843760969
+		intValue = 1601035699
 	)
-	int field3058;
-	@ObfuscatedName("w")
+	int field3285;
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = 1302289953
+		intValue = 508196383
 	)
-	int field3059;
+	int field3280;
+	@ObfuscatedName("d")
+	@ObfuscatedGetter(
+		intValue = 1320352045
+	)
+	int field3287;
 	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -579671659
+		intValue = 425773117
 	)
-	int field3060;
+	int field3281;
 
 	MusicPatchNode2() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/io/File;B)V",
-		garbageValue = "-1"
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "2092953426"
 	)
-	public static void method5048(File var0) {
-		class125.FileSystem_cacheDir = var0;
-		if (!class125.FileSystem_cacheDir.exists()) {
-			throw new RuntimeException("");
-		} else {
-			FileSystem.FileSystem_hasPermissions = true;
-		}
+	static final void method5441(String var0) {
+		class11.method101("Please remove " + var0 + " from your ignore list first");
 	}
 
-	@ObfuscatedName("g")
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
-		descriptor = "(IIIS)I",
-		garbageValue = "3121"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
+		garbageValue = "69"
 	)
-	@Export("hslToRgb")
-	static final int hslToRgb(int var0, int var1, int var2) {
-		if (var2 > 179) {
-			var1 /= 2;
-		}
-
-		if (var2 > 192) {
-			var1 /= 2;
-		}
-
-		if (var2 > 217) {
-			var1 /= 2;
-		}
-
-		if (var2 > 243) {
-			var1 /= 2;
-		}
-
-		int var3 = (var1 / 32 << 7) + (var0 / 4 << 10) + var2 / 2;
-		return var3;
+	@Export("setLoginResponseString")
+	static void setLoginResponseString(String var0, String var1, String var2) {
+		Login.Login_response1 = var0;
+		Login.Login_response2 = var1;
+		Login.Login_response3 = var2;
 	}
 }
