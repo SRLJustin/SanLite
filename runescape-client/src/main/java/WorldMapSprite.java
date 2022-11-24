@@ -1,21 +1,12 @@
-import java.awt.Desktop;
-import java.awt.Desktop.Action;
-import java.net.URI;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hq")
+@ObfuscatedName("ig")
 @Implements("WorldMapSprite")
 public final class WorldMapSprite {
-	@ObfuscatedName("ut")
-	@ObfuscatedGetter(
-		longValue = 3393919401906433013L
-	)
-	static long field2727;
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@Export("tileColors")
 	final int[] tileColors;
 
@@ -27,42 +18,50 @@ public final class WorldMapSprite {
 		this.tileColors = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
 		descriptor = "(III)I",
-		garbageValue = "-1161754740"
+		garbageValue = "-22574883"
 	)
 	@Export("getTileColor")
 	final int getTileColor(int var1, int var2) {
 		return this.tileColors[var1 + var2 * 64];
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZZI)V",
-		garbageValue = "230861091"
+		descriptor = "(III)I",
+		garbageValue = "997193825"
 	)
-	@Export("openURL")
-	public static void openURL(String var0, boolean var1, boolean var2) {
-		if (var1) {
-			if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Action.BROWSE)) {
-				try {
-					Desktop.getDesktop().browse(new URI(var0));
-					return;
-				} catch (Exception var4) {
-				}
-			}
+	static final int method5154(int var0, int var1) {
+		int var2 = var1 * 57 + var0;
+		var2 ^= var2 << 13;
+		int var3 = var2 * (var2 * var2 * 15731 + 789221) + 1376312589 & Integer.MAX_VALUE;
+		return var3 >> 19 & 255;
+	}
 
-			if (class29.field177.startsWith("win")) {
-				NPC.method2314(var0, 0, "openjs");
-			} else if (class29.field177.startsWith("mac")) {
-				NPC.method2314(var0, 1, "openjs");
-			} else {
-				NPC.method2314(var0, 2, "openjs");
-			}
-		} else {
-			NPC.method2314(var0, 3, "openjs");
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "([BIIB)I",
+		garbageValue = "0"
+	)
+	public static int method5156(byte[] var0, int var1, int var2) {
+		int var3 = -1;
+
+		for (int var4 = var1; var4 < var2; ++var4) {
+			var3 = var3 >>> 8 ^ Buffer.crc32Table[(var3 ^ var0[var4]) & 255];
 		}
 
+		var3 = ~var3;
+		return var3;
+	}
+
+	@ObfuscatedName("bx")
+	@ObfuscatedSignature(
+		descriptor = "(ILbz;ZB)I",
+		garbageValue = "-89"
+	)
+	static int method5155(int var0, Script var1, boolean var2) {
+		return 2;
 	}
 }

@@ -1,39 +1,34 @@
+import java.applet.Applet;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cn")
+@ObfuscatedName("cu")
 @Implements("HealthBarUpdate")
 public class HealthBarUpdate extends Node {
-	@ObfuscatedName("ed")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive20")
-	static Archive archive20;
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = 4690351
+		intValue = -2099337445
 	)
 	@Export("cycle")
 	int cycle;
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1083128331
+		intValue = -1755264669
 	)
 	@Export("health")
 	int health;
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1681269367
+		intValue = -230167291
 	)
 	@Export("health2")
 	int health2;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = 1073400791
+		intValue = 1970776735
 	)
 	@Export("cycleOffset")
 	int cycleOffset;
@@ -45,10 +40,10 @@ public class HealthBarUpdate extends Node {
 		this.cycleOffset = var4;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
 		descriptor = "(IIIII)V",
-		garbageValue = "1606460707"
+		garbageValue = "-1406934532"
 	)
 	@Export("set")
 	void set(int var1, int var2, int var3, int var4) {
@@ -56,5 +51,18 @@ public class HealthBarUpdate extends Node {
 		this.health = var2;
 		this.health2 = var3;
 		this.cycleOffset = var4;
+	}
+
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/applet/Applet;Ljava/lang/String;I)V",
+		garbageValue = "-2080899398"
+	)
+	public static void method2341(Applet var0, String var1) {
+		class32.field175 = var0;
+		if (var1 != null) {
+			class32.field176 = var1;
+		}
+
 	}
 }

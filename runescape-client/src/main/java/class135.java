@@ -1,71 +1,50 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ev")
-public class class135 extends class126 {
-	@ObfuscatedName("c")
-	String field1555;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
-	)
-	final class129 this$0;
-
-	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
-	)
-	class135(class129 var1) {
-		this.this$0 = var1;
+@ObfuscatedName("ej")
+public abstract class class135 extends Node {
+	class135() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lqr;I)V",
+		garbageValue = "-1428026624"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1555 = var1.readStringCp1252NullTerminated();
-		var1.readInt();
-	}
+	abstract void vmethod3254(Buffer var1);
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(Ler;B)V",
+		garbageValue = "-110"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.name = this.field1555;
-	}
+	abstract void vmethod3248(ClanSettings var1);
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("mc")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-877203069"
+		descriptor = "(Ljava/lang/String;ZB)Ljava/lang/String;",
+		garbageValue = "52"
 	)
-	public static final void method2832() {
-		ViewportMouse.ViewportMouse_isInViewport = false;
-		ViewportMouse.ViewportMouse_entityCount = 0;
-	}
-
-	@ObfuscatedName("lz")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "1487689727"
-	)
-	static final void method2831(int var0, int var1) {
-		ClanChannel var2 = var0 >= 0 ? Client.currentClanChannels[var0] : UserComparator5.guestClanChannel;
-		if (var2 != null && var1 >= 0 && var1 < var2.method2990()) {
-			ClanChannelMember var3 = (ClanChannelMember)var2.members.get(var1);
-			if (var3.rank == -1) {
-				String var4 = var3.username.getName();
-				PacketWriter var5 = Client.packetWriter;
-				PacketBufferNode var6 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2875, var5.isaacCipher);
-				var6.packetBuffer.writeByte(3 + class116.stringCp1252NullTerminatedByteSize(var4));
-				var6.packetBuffer.writeByte(var0);
-				var6.packetBuffer.writeShort(var1);
-				var6.packetBuffer.writeStringCp1252NullTerminated(var4);
-				var5.addNode(var6);
-			}
+	static String method2990(String var0, boolean var1) {
+		String var2 = var1 ? "https://" : "http://";
+		if (Client.gameBuild == 1) {
+			var0 = var0 + "-wtrc";
+		} else if (Client.gameBuild == 2) {
+			var0 = var0 + "-wtqa";
+		} else if (Client.gameBuild == 3) {
+			var0 = var0 + "-wtwip";
+		} else if (Client.gameBuild == 5) {
+			var0 = var0 + "-wti";
+		} else if (Client.gameBuild == 4) {
+			var0 = "local";
 		}
+
+		String var3 = "";
+		if (DynamicObject.field974 != null) {
+			var3 = "/p=" + DynamicObject.field974;
+		}
+
+		String var4 = "runescape.com";
+		return var2 + var0 + "." + var4 + "/l=" + class103.clientLanguage + "/a=" + Canvas.field126 + var3 + "/";
 	}
 }
