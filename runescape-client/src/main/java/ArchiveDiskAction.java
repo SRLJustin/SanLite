@@ -4,57 +4,31 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("km")
+@ObfuscatedName("lv")
 @Implements("ArchiveDiskAction")
 public class ArchiveDiskAction extends Node {
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = 1029019227
+		intValue = -455279703
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@Export("data")
-	public byte[] data;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lmy;"
-	)
-	@Export("archiveDisk")
-	public ArchiveDisk archiveDisk;
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive")
-	public Archive archive;
-
-	ArchiveDiskAction() {
-	}
-
+	byte[] data;
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpl;IIIB)V",
-		garbageValue = "1"
+		descriptor = "Lob;"
 	)
-	static void method5526(SpritePixels var0, int var1, int var2, int var3) {
-		DemotingHashTable var4 = WorldMapRegion.WorldMapRegion_cachedSprites;
-		long var6 = (long)(var3 << 16 | var1 << 8 | var2);
-		var4.put(var0, var6, var0.pixels.length * 4);
-	}
-
-	@ObfuscatedName("hp")
+	@Export("archiveDisk")
+	ArchiveDisk archiveDisk;
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(IIS)V",
-		garbageValue = "128"
+		descriptor = "Llx;"
 	)
-	static final void method5527(int var0, int var1) {
-		if (Client.hintArrowType == 2) {
-			ModeWhere.worldToScreen(Client.hintArrowSubX * 64 + (Client.hintArrowX - class131.baseX * 64 << 7), Client.hintArrowSubY * 64 + (Client.hintArrowY - TileItem.baseY * 64 << 7), Client.hintArrowHeight * 2);
-			if (Client.viewportTempX > -1 && Client.cycle % 20 < 10) {
-				class260.headIconHintSprites[0].drawTransBgAt(var0 + Client.viewportTempX - 12, Client.viewportTempY + var1 - 28);
-			}
+	@Export("archive")
+	Archive archive;
 
-		}
+	ArchiveDiskAction() {
 	}
 }
