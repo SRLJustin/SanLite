@@ -3,84 +3,155 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("id")
+@ObfuscatedName("ih")
 @Implements("WorldMapCacheName")
 public class WorldMapCacheName {
+	@ObfuscatedName("vk")
+	@ObfuscatedSignature(
+		descriptor = "Lly;"
+	)
+	@Export("grandExchangeEvents")
+	static GrandExchangeEvents grandExchangeEvents;
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "Lih;"
+	)
+	public static final WorldMapCacheName field2954;
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Lih;"
+	)
+	public static final WorldMapCacheName field2949;
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lid;"
+		descriptor = "Lih;"
 	)
-	public static final WorldMapCacheName field2768;
-	@ObfuscatedName("b")
+	public static final WorldMapCacheName field2948;
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "Lid;"
+		descriptor = "Lih;"
 	)
-	public static final WorldMapCacheName field2763;
-	@ObfuscatedName("p")
+	static final WorldMapCacheName field2950;
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lid;"
+		descriptor = "Lih;"
 	)
-	public static final WorldMapCacheName field2764;
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Lid;"
-	)
-	static final WorldMapCacheName field2765;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Lid;"
-	)
-	public static final WorldMapCacheName field2766;
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "Lpl;"
-	)
-	@Export("leftTitleSprite")
-	static SpritePixels leftTitleSprite;
-	@ObfuscatedName("s")
+	public static final WorldMapCacheName field2952;
+	@ObfuscatedName("j")
 	@Export("name")
 	public final String name;
 
 	static {
-		field2768 = new WorldMapCacheName("details");
-		field2763 = new WorldMapCacheName("compositemap");
-		field2764 = new WorldMapCacheName("compositetexture");
-		field2765 = new WorldMapCacheName("area");
-		field2766 = new WorldMapCacheName("labels");
+		field2954 = new WorldMapCacheName("details");
+		field2949 = new WorldMapCacheName("compositemap");
+		field2948 = new WorldMapCacheName("compositetexture");
+		field2950 = new WorldMapCacheName("area");
+		field2952 = new WorldMapCacheName("labels");
 	}
 
 	WorldMapCacheName(String var1) {
 		this.name = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-875853562"
+		descriptor = "(Lqk;B)V",
+		garbageValue = "-81"
 	)
-	public static int method4865(int var0, int var1) {
-		int var2;
-		if (var1 > var0) {
-			var2 = var0;
-			var0 = var1;
-			var1 = var2;
+	@Export("updatePlayer")
+	static final void updatePlayer(PacketBuffer var0) {
+		var0.importIndex();
+		int var1 = Client.localPlayerIndex;
+		Player var2 = class296.localPlayer = Client.players[var1] = new Player();
+		var2.index = var1;
+		int var3 = var0.readBits(30);
+		byte var4 = (byte)(var3 >> 28);
+		int var5 = var3 >> 14 & 16383;
+		int var6 = var3 & 16383;
+		var2.pathX[0] = var5 - class26.baseX * 64;
+		var2.x = (var2.pathX[0] << 7) + (var2.transformedSize() << 6);
+		var2.pathY[0] = var6 - class158.baseY * 64;
+		var2.y = (var2.pathY[0] << 7) + (var2.transformedSize() << 6);
+		ApproximateRouteStrategy.Client_plane = var2.plane = var4;
+		if (Players.field1315[var1] != null) {
+			var2.read(Players.field1315[var1]);
 		}
 
-		while (var1 != 0) {
-			var2 = var0 % var1;
-			var0 = var1;
-			var1 = var2;
+		Players.Players_count = 0;
+		Players.Players_indices[++Players.Players_count - 1] = var1;
+		Players.field1323[var1] = 0;
+		Players.Players_emptyIdxCount = 0;
+
+		for (int var7 = 1; var7 < 2048; ++var7) {
+			if (var1 != var7) {
+				int var8 = var0.readBits(18);
+				int var9 = var8 >> 16;
+				int var10 = var8 >> 8 & 597;
+				int var11 = var8 & 597;
+				Players.Players_regions[var7] = (var10 << 14) + var11 + (var9 << 28);
+				Players.Players_orientations[var7] = 0;
+				Players.Players_targetIndices[var7] = -1;
+				Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var7;
+				Players.field1323[var7] = 0;
+			}
 		}
 
-		return var0;
+		var0.exportIndex();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(III)Z",
-		garbageValue = "985293867"
+		descriptor = "(Lqk;II)V",
+		garbageValue = "1119932413"
 	)
-	public static boolean method4864(int var0, int var1) {
-		return (var0 >> var1 + 1 & 1) != 0;
+	@Export("updatePlayers")
+	static final void updatePlayers(PacketBuffer var0, int var1) {
+		int var2 = var0.offset;
+		Players.Players_pendingUpdateCount = 0;
+		TaskHandler.method3340(var0);
+		class21.method297(var0);
+		if (var0.offset - var2 != var1) {
+			throw new RuntimeException(var0.offset - var2 + " " + var1);
+		}
+	}
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V",
+		garbageValue = "-2038399298"
+	)
+	static final void method5228(int var0, int var1, int var2, int var3) {
+		for (int var4 = var1; var4 <= var3 + var1; ++var4) {
+			for (int var5 = var0; var5 <= var0 + var2; ++var5) {
+				if (var5 >= 0 && var5 < 104 && var4 >= 0 && var4 < 104) {
+					class32.field179[0][var5][var4] = 127;
+					if (var0 == var5 && var5 > 0) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 - 1][var4];
+					}
+
+					if (var0 + var2 == var5 && var5 < 103) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 + 1][var4];
+					}
+
+					if (var4 == var1 && var4 > 0) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 - 1];
+					}
+
+					if (var4 == var3 + var1 && var4 < 103) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 + 1];
+					}
+				}
+			}
+		}
+
+	}
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Z",
+		garbageValue = "-101"
+	)
+	public static boolean method5229(int var0) {
+		return (var0 >> 22 & 1) != 0;
 	}
 }

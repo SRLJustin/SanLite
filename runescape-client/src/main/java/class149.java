@@ -3,68 +3,66 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ex")
-public class class149 extends class142 {
-	@ObfuscatedName("m")
+@ObfuscatedName("eu")
+public class class149 extends class135 {
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = 351712585
+		intValue = -1406247549
 	)
-	public static int field1663;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = -1386681445
-	)
-	static int field1661;
-	@ObfuscatedName("e")
-	@ObfuscatedSignature(
-		descriptor = "Lpi;"
-	)
-	@Export("NetCache_responseArchiveBuffer")
-	public static Buffer NetCache_responseArchiveBuffer;
-	@ObfuscatedName("c")
-	String field1662;
-	@ObfuscatedName("b")
-	byte field1660;
-	@ObfuscatedName("p")
-	byte field1659;
+	int field1699;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Len;"
+		descriptor = "Lel;"
 	)
-	final class143 this$0;
+	final class138 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Len;)V"
+		descriptor = "(Lel;)V"
 	)
-	class149(class143 var1) {
+	class149(class138 var1) {
 		this.this$0 = var1;
+		this.field1699 = -1;
+	}
+
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "(Lqr;I)V",
+		garbageValue = "-1428026624"
+	)
+	void vmethod3254(Buffer var1) {
+		this.field1699 = var1.readUnsignedShort();
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(Ler;B)V",
+		garbageValue = "-110"
+	)
+	void vmethod3248(ClanSettings var1) {
+		var1.method3084(this.field1699);
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "4"
+		descriptor = "(I)V",
+		garbageValue = "2144467823"
 	)
-	void vmethod3022(Buffer var1) {
-		this.field1662 = var1.readStringCp1252NullTerminatedOrNull();
-		if (this.field1662 != null) {
-			var1.readUnsignedByte();
-			this.field1660 = var1.readByte();
-			this.field1659 = var1.readByte();
+	@Export("savePreferences")
+	static void savePreferences() {
+		AccessFile var0 = null;
+
+		try {
+			var0 = class156.getPreferencesFile("", class376.field4411.name, true);
+			Buffer var1 = BufferedSink.clientPreferences.toBuffer();
+			var0.write(var1.array, 0, var1.offset);
+		} catch (Exception var3) {
 		}
 
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(Lei;B)V",
-		garbageValue = "40"
-	)
-	void vmethod3021(ClanChannel var1) {
-		var1.name = this.field1662;
-		if (this.field1662 != null) {
-			var1.field1636 = this.field1660;
-			var1.field1643 = this.field1659;
+		try {
+			if (var0 != null) {
+				var0.closeSync(true);
+			}
+		} catch (Exception var2) {
 		}
 
 	}

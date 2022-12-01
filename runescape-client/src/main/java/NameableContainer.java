@@ -7,34 +7,34 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mo")
+@ObfuscatedName("on")
 @Implements("NameableContainer")
 public abstract class NameableContainer {
 	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -1781747119
+		intValue = 1695015859
 	)
 	@Export("capacity")
 	final int capacity;
 	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = -1097399689
+		intValue = -486443911
 	)
 	@Export("size")
 	int size;
-	@ObfuscatedName("o")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "[Lmv;"
+		descriptor = "[Loj;"
 	)
 	@Export("array")
 	Nameable[] array;
-	@ObfuscatedName("v")
+	@ObfuscatedName("s")
 	@Export("usernamesMap")
 	HashMap usernamesMap;
-	@ObfuscatedName("d")
+	@ObfuscatedName("p")
 	@Export("previousUsernamesMap")
 	HashMap previousUsernamesMap;
-	@ObfuscatedName("h")
+	@ObfuscatedName("b")
 	@Export("comparator")
 	Comparator comparator;
 
@@ -47,26 +47,26 @@ public abstract class NameableContainer {
 		this.previousUsernamesMap = new HashMap(var1 / 8);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lmv;",
-		garbageValue = "2"
+		descriptor = "(B)Loj;",
+		garbageValue = "31"
 	)
 	@Export("newInstance")
 	abstract Nameable newInstance();
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Lmv;",
-		garbageValue = "-813912346"
+		descriptor = "(II)[Loj;",
+		garbageValue = "-41299588"
 	)
 	@Export("newTypedArray")
 	abstract Nameable[] newTypedArray(int var1);
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "17075718"
+		garbageValue = "-1953629195"
 	)
 	@Export("clear")
 	public void clear() {
@@ -76,30 +76,30 @@ public abstract class NameableContainer {
 		this.previousUsernamesMap.clear();
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-3"
+		descriptor = "(I)I",
+		garbageValue = "936617473"
 	)
 	@Export("getSize")
 	public int getSize() {
 		return this.size;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "2022472115"
+		garbageValue = "-1838216958"
 	)
 	@Export("isFull")
 	public boolean isFull() {
 		return this.size == this.capacity;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;I)Z",
-		garbageValue = "-1621761472"
+		descriptor = "(Lrg;I)Z",
+		garbageValue = "-1635365855"
 	)
 	@Export("contains")
 	public boolean contains(Username var1) {
@@ -110,10 +110,10 @@ public abstract class NameableContainer {
 		}
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;I)Lmv;",
-		garbageValue = "981419574"
+		descriptor = "(Lrg;B)Loj;",
+		garbageValue = "12"
 	)
 	@Export("getByUsername")
 	public Nameable getByUsername(Username var1) {
@@ -121,30 +121,30 @@ public abstract class NameableContainer {
 		return var2 != null ? var2 : this.getByPreviousUsername(var1);
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;I)Lmv;",
-		garbageValue = "-1608136690"
+		descriptor = "(Lrg;B)Loj;",
+		garbageValue = "-16"
 	)
 	@Export("getByCurrentUsername")
 	Nameable getByCurrentUsername(Username var1) {
 		return !var1.hasCleanName() ? null : (Nameable)this.usernamesMap.get(var1);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;I)Lmv;",
-		garbageValue = "-2078394585"
+		descriptor = "(Lrg;I)Loj;",
+		garbageValue = "2070159512"
 	)
 	@Export("getByPreviousUsername")
 	Nameable getByPreviousUsername(Username var1) {
 		return !var1.hasCleanName() ? null : (Nameable)this.previousUsernamesMap.get(var1);
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;I)Z",
-		garbageValue = "-1330621985"
+		descriptor = "(Lrg;B)Z",
+		garbageValue = "-61"
 	)
 	@Export("removeByUsername")
 	public final boolean removeByUsername(Username var1) {
@@ -157,10 +157,10 @@ public abstract class NameableContainer {
 		}
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;I)V",
-		garbageValue = "-230761700"
+		descriptor = "(Loj;I)V",
+		garbageValue = "-691454376"
 	)
 	@Export("remove")
 	final void remove(Nameable var1) {
@@ -171,10 +171,10 @@ public abstract class NameableContainer {
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;B)Lmv;",
-		garbageValue = "-4"
+		descriptor = "(Lrg;I)Loj;",
+		garbageValue = "-2054707737"
 	)
 	@Export("addLastNoPreviousUsername")
 	Nameable addLastNoPreviousUsername(Username var1) {
@@ -183,22 +183,26 @@ public abstract class NameableContainer {
 
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;Lpo;I)Lmv;",
-		garbageValue = "290354448"
+		descriptor = "(Lrg;Lrg;I)Loj;",
+		garbageValue = "-645107578"
 	)
 	@Export("addLast")
 	Nameable addLast(Username var1, Username var2) {
-		Nameable var3 = this.newInstance();
-		var3.set(var1, var2);
-		this.arrayAddLast(var3);
-		this.mapPut(var3);
-		return var3;
+		if (this.getByCurrentUsername(var1) != null) {
+			throw new IllegalStateException();
+		} else {
+			Nameable var3 = this.newInstance();
+			var3.set(var1, var2);
+			this.arrayAddLast(var3);
+			this.mapPut(var3);
+			return var3;
+		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lmv;",
-		garbageValue = "108"
+		descriptor = "(II)Loj;",
+		garbageValue = "221714526"
 	)
 	@Export("get")
 	public final Nameable get(int var1) {
@@ -209,10 +213,10 @@ public abstract class NameableContainer {
 		}
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "822595962"
+		garbageValue = "-1037280537"
 	)
 	@Export("sort")
 	public final void sort() {
@@ -224,10 +228,10 @@ public abstract class NameableContainer {
 
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;Lpo;Lpo;B)V",
-		garbageValue = "20"
+		descriptor = "(Loj;Lrg;Lrg;I)V",
+		garbageValue = "165259804"
 	)
 	@Export("changeName")
 	final void changeName(Nameable var1, Username var2, Username var3) {
@@ -236,10 +240,10 @@ public abstract class NameableContainer {
 		this.mapPut(var1);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;I)I",
-		garbageValue = "1978039321"
+		descriptor = "(Loj;I)I",
+		garbageValue = "-1422965268"
 	)
 	@Export("indexOf")
 	final int indexOf(Nameable var1) {
@@ -252,33 +256,37 @@ public abstract class NameableContainer {
 		return -1;
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;B)V",
-		garbageValue = "-50"
+		descriptor = "(Loj;I)V",
+		garbageValue = "-641917828"
 	)
 	@Export("mapRemove")
 	final void mapRemove(Nameable var1) {
-		if (var1.previousUsername != null) {
-			this.previousUsernamesMap.remove(var1.previousUsername);
-		}
+		if (this.usernamesMap.remove(var1.username) == null) {
+			throw new IllegalStateException();
+		} else {
+			if (var1.previousUsername != null) {
+				this.previousUsernamesMap.remove(var1.previousUsername);
+			}
 
+		}
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;I)V",
-		garbageValue = "2060796938"
+		descriptor = "(Loj;I)V",
+		garbageValue = "-792727175"
 	)
 	@Export("arrayAddLast")
 	final void arrayAddLast(Nameable var1) {
 		this.array[++this.size - 1] = var1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;B)V",
-		garbageValue = "67"
+		descriptor = "(Loj;B)V",
+		garbageValue = "-43"
 	)
 	@Export("mapPut")
 	final void mapPut(Nameable var1) {
@@ -292,10 +300,10 @@ public abstract class NameableContainer {
 
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "-2019912678"
+		garbageValue = "2142344104"
 	)
 	@Export("arrayRemove")
 	final void arrayRemove(int var1) {
@@ -306,20 +314,20 @@ public abstract class NameableContainer {
 
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "2074989504"
+		descriptor = "(B)V",
+		garbageValue = "-38"
 	)
 	@Export("removeComparator")
 	public final void removeComparator() {
 		this.comparator = null;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Comparator;B)V",
-		garbageValue = "2"
+		descriptor = "(Ljava/util/Comparator;I)V",
+		garbageValue = "1295085332"
 	)
 	@Export("addComparator")
 	public final void addComparator(Comparator var1) {
@@ -329,5 +337,95 @@ public abstract class NameableContainer {
 			((AbstractUserComparator)this.comparator).addComparator(var1);
 		}
 
+	}
+
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "(Llg;Llg;ZII)V",
+		garbageValue = "-2066181658"
+	)
+	static void method7441(AbstractArchive var0, AbstractArchive var1, boolean var2, int var3) {
+		if (Login.clearLoginScreen) {
+			if (var3 == 4) {
+				GrandExchangeOfferOwnWorldComparator.method1171(4);
+			}
+
+		} else {
+			if (var3 == 0) {
+				GrandExchangeEvents.method6463(var2);
+			} else {
+				GrandExchangeOfferOwnWorldComparator.method1171(var3);
+			}
+
+			Rasterizer2D.Rasterizer2D_clear();
+			byte[] var4 = var0.takeFileByNames("title.jpg", "");
+			class313.leftTitleSprite = class26.method394(var4);
+			HealthBar.rightTitleSprite = class313.leftTitleSprite.mirrorHorizontally();
+			int var5 = Client.worldProperties;
+			if ((var5 & 536870912) != 0) {
+				MouseRecorder.logoSprite = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "logo_deadman_mode", "");
+			} else if ((var5 & 1073741824) != 0) {
+				MouseRecorder.logoSprite = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "logo_seasonal_mode", "");
+			} else if ((var5 & 256) != 0) {
+				MouseRecorder.logoSprite = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "logo_speedrunning", "");
+			} else {
+				MouseRecorder.logoSprite = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "logo", "");
+			}
+
+			class356.titleboxSprite = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "titlebox", "");
+			class143.titlebuttonSprite = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton", "");
+			class362.field4314 = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton_large", "");
+			class138.field1609 = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "play_now_text", "");
+			AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton_wide42,1", "");
+			class239.runesSprite = class410.method7741(var1, "runes", "");
+			class16.title_muteSprite = class410.method7741(var1, "title_mute", "");
+			Login.options_buttons_0Sprite = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,0", "");
+			MouseRecorder.field1059 = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,4", "");
+			class181.options_buttons_2Sprite = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,2", "");
+			class341.field4230 = AbstractUserComparator.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,6", "");
+			ModeWhere.field4271 = Login.options_buttons_0Sprite.subWidth;
+			Login.field915 = Login.options_buttons_0Sprite.subHeight * -507610800;
+			GraphicsObject.loginScreenRunesAnimation = new LoginScreenAnimation(class239.runesSprite);
+			if (var2) {
+				Login.Login_username = "";
+				Login.Login_password = "";
+				Login.field914 = new String[8];
+				Login.field913 = 0;
+			}
+
+			class360.field4308 = 0;
+			class355.otp = "";
+			Login.field900 = true;
+			Login.worldSelectOpen = false;
+			if (!BufferedSink.clientPreferences.method2383()) {
+				FloorUnderlayDefinition.method3623(2, ReflectionCheck.archive10, "scape main", "", 255, false);
+			} else {
+				class283.musicPlayerStatus = 1;
+				DevicePcmPlayerProvider.musicTrackArchive = null;
+				class283.musicTrackGroupId = -1;
+				class283.musicTrackFileId = -1;
+				Messages.musicTrackVolume = 0;
+				GrandExchangeEvents.musicTrackBoolean = false;
+				class19.pcmSampleLength = 2;
+			}
+
+			MouseHandler.method697(false);
+			Login.clearLoginScreen = true;
+			Login.xPadding = (GameEngine.canvasWidth - 765) / 2;
+			Login.loginBoxX = Login.xPadding + 202;
+			Canvas.loginBoxCenter = Login.loginBoxX + 180;
+			class313.leftTitleSprite.drawAt(Login.xPadding, 0);
+			HealthBar.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
+			MouseRecorder.logoSprite.drawAt(Login.xPadding + 382 - MouseRecorder.logoSprite.subWidth / 2, 18);
+		}
+	}
+
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/String;[SI)V",
+		garbageValue = "-2135224371"
+	)
+	public static void method7442(String[] var0, short[] var1) {
+		VarpDefinition.sortItemsByName(var0, var1, 0, var0.length - 1);
 	}
 }

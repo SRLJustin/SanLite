@@ -1,50 +1,43 @@
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mr")
+@ObfuscatedName("og")
 @Implements("BufferedSource")
 public class BufferedSource implements Runnable {
-	@ObfuscatedName("u")
-	@Export("cacheSubPaths")
-	public static String[] cacheSubPaths;
-	@ObfuscatedName("bv")
-	@Export("otp")
-	static String otp;
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@Export("inputStream")
 	InputStream inputStream;
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1854638595
+		intValue = -1382594299
 	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@Export("buffer")
 	byte[] buffer;
-	@ObfuscatedName("t")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 1353886439
+		intValue = 1854647413
 	)
 	@Export("position")
 	int position;
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 980101141
+		intValue = 993907297
 	)
 	@Export("limit")
 	int limit;
-	@ObfuscatedName("j")
+	@ObfuscatedName("y")
 	@Export("exception")
 	IOException exception;
 
@@ -59,10 +52,10 @@ public class BufferedSource implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "1211615101"
+		descriptor = "(IS)Z",
+		garbageValue = "29157"
 	)
 	@Export("isAvailable")
 	boolean isAvailable(int var1) throws IOException {
@@ -93,10 +86,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-146970254"
+		garbageValue = "2130958003"
 	)
 	@Export("available")
 	int available() throws IOException {
@@ -117,15 +110,15 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "52"
+		descriptor = "(I)I",
+		garbageValue = "1744196611"
 	)
 	@Export("readUnsignedByte")
 	int readUnsignedByte() throws IOException {
 		synchronized(this) {
-			if (this.position == this.limit) {
+			if (this.limit == this.position) {
 				if (this.exception != null) {
 					throw new IOException(this.exception.toString());
 				} else {
@@ -140,10 +133,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
 		descriptor = "([BIIB)I",
-		garbageValue = "126"
+		garbageValue = "74"
 	)
 	@Export("read")
 	int read(byte[] var1, int var2, int var3) throws IOException {
@@ -181,10 +174,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1858620597"
+		garbageValue = "326056098"
 	)
 	@Export("close")
 	void close() {
@@ -251,153 +244,50 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Llf;II)Liw;",
-		garbageValue = "821161285"
+		descriptor = "(Llg;IIB)[Lri;",
+		garbageValue = "-36"
 	)
-	public static PacketBufferNode method6527(int var0, String var1, Language var2, int var3) {
-		PacketBufferNode var4 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2897, Client.packetWriter.isaacCipher);
-		var4.packetBuffer.writeByte(0);
-		int var5 = var4.packetBuffer.offset;
-		var4.packetBuffer.writeByte(var0);
-		String var6 = var1.toLowerCase();
-		byte var7 = 0;
-		if (var6.startsWith("yellow:")) {
-			var7 = 0;
-			var1 = var1.substring("yellow:".length());
-		} else if (var6.startsWith("red:")) {
-			var7 = 1;
-			var1 = var1.substring("red:".length());
-		} else if (var6.startsWith("green:")) {
-			var7 = 2;
-			var1 = var1.substring("green:".length());
-		} else if (var6.startsWith("cyan:")) {
-			var7 = 3;
-			var1 = var1.substring("cyan:".length());
-		} else if (var6.startsWith("purple:")) {
-			var7 = 4;
-			var1 = var1.substring("purple:".length());
-		} else if (var6.startsWith("white:")) {
-			var7 = 5;
-			var1 = var1.substring("white:".length());
-		} else if (var6.startsWith("flash1:")) {
-			var7 = 6;
-			var1 = var1.substring("flash1:".length());
-		} else if (var6.startsWith("flash2:")) {
-			var7 = 7;
-			var1 = var1.substring("flash2:".length());
-		} else if (var6.startsWith("flash3:")) {
-			var7 = 8;
-			var1 = var1.substring("flash3:".length());
-		} else if (var6.startsWith("glow1:")) {
-			var7 = 9;
-			var1 = var1.substring("glow1:".length());
-		} else if (var6.startsWith("glow2:")) {
-			var7 = 10;
-			var1 = var1.substring("glow2:".length());
-		} else if (var6.startsWith("glow3:")) {
-			var7 = 11;
-			var1 = var1.substring("glow3:".length());
-		} else if (var2 != Language.Language_EN) {
-			if (var6.startsWith("yellow:")) {
-				var7 = 0;
-				var1 = var1.substring("yellow:".length());
-			} else if (var6.startsWith("red:")) {
-				var7 = 1;
-				var1 = var1.substring("red:".length());
-			} else if (var6.startsWith("green:")) {
-				var7 = 2;
-				var1 = var1.substring("green:".length());
-			} else if (var6.startsWith("cyan:")) {
-				var7 = 3;
-				var1 = var1.substring("cyan:".length());
-			} else if (var6.startsWith("purple:")) {
-				var7 = 4;
-				var1 = var1.substring("purple:".length());
-			} else if (var6.startsWith("white:")) {
-				var7 = 5;
-				var1 = var1.substring("white:".length());
-			} else if (var6.startsWith("flash1:")) {
-				var7 = 6;
-				var1 = var1.substring("flash1:".length());
-			} else if (var6.startsWith("flash2:")) {
-				var7 = 7;
-				var1 = var1.substring("flash2:".length());
-			} else if (var6.startsWith("flash3:")) {
-				var7 = 8;
-				var1 = var1.substring("flash3:".length());
-			} else if (var6.startsWith("glow1:")) {
-				var7 = 9;
-				var1 = var1.substring("glow1:".length());
-			} else if (var6.startsWith("glow2:")) {
-				var7 = 10;
-				var1 = var1.substring("glow2:".length());
-			} else if (var6.startsWith("glow3:")) {
-				var7 = 11;
-				var1 = var1.substring("glow3:".length());
+	public static SpritePixels[] method7532(AbstractArchive var0, int var1, int var2) {
+		byte[] var4 = var0.takeFile(var1, var2);
+		boolean var3;
+		if (var4 == null) {
+			var3 = false;
+		} else {
+			class335.SpriteBuffer_decode(var4);
+			var3 = true;
+		}
+
+		if (!var3) {
+			return null;
+		} else {
+			SpritePixels[] var5 = new SpritePixels[class477.SpriteBuffer_spriteCount];
+
+			for (int var6 = 0; var6 < class477.SpriteBuffer_spriteCount; ++var6) {
+				SpritePixels var7 = var5[var6] = new SpritePixels();
+				var7.width = class477.SpriteBuffer_spriteWidth;
+				var7.height = class477.SpriteBuffer_spriteHeight;
+				var7.xOffset = class451.SpriteBuffer_xOffsets[var6];
+				var7.yOffset = class319.SpriteBuffer_yOffsets[var6];
+				var7.subWidth = class450.SpriteBuffer_spriteWidths[var6];
+				var7.subHeight = class477.SpriteBuffer_spriteHeights[var6];
+				int var8 = var7.subHeight * var7.subWidth;
+				byte[] var9 = class453.SpriteBuffer_pixels[var6];
+				var7.pixels = new int[var8];
+
+				for (int var10 = 0; var10 < var8; ++var10) {
+					var7.pixels[var10] = class477.SpriteBuffer_spritePalette[var9[var10] & 255];
+				}
 			}
+
+			class451.SpriteBuffer_xOffsets = null;
+			class319.SpriteBuffer_yOffsets = null;
+			class450.SpriteBuffer_spriteWidths = null;
+			class477.SpriteBuffer_spriteHeights = null;
+			class477.SpriteBuffer_spritePalette = null;
+			class453.SpriteBuffer_pixels = null;
+			return var5;
 		}
-
-		var6 = var1.toLowerCase();
-		byte var8 = 0;
-		if (var6.startsWith("wave:")) {
-			var8 = 1;
-			var1 = var1.substring("wave:".length());
-		} else if (var6.startsWith("wave2:")) {
-			var8 = 2;
-			var1 = var1.substring("wave2:".length());
-		} else if (var6.startsWith("shake:")) {
-			var8 = 3;
-			var1 = var1.substring("shake:".length());
-		} else if (var6.startsWith("scroll:")) {
-			var8 = 4;
-			var1 = var1.substring("scroll:".length());
-		} else if (var6.startsWith("slide:")) {
-			var8 = 5;
-			var1 = var1.substring("slide:".length());
-		} else if (var2 != Language.Language_EN) {
-			if (var6.startsWith("wave:")) {
-				var8 = 1;
-				var1 = var1.substring("wave:".length());
-			} else if (var6.startsWith("wave2:")) {
-				var8 = 2;
-				var1 = var1.substring("wave2:".length());
-			} else if (var6.startsWith("shake:")) {
-				var8 = 3;
-				var1 = var1.substring("shake:".length());
-			} else if (var6.startsWith("scroll:")) {
-				var8 = 4;
-				var1 = var1.substring("scroll:".length());
-			} else if (var6.startsWith("slide:")) {
-				var8 = 5;
-				var1 = var1.substring("slide:".length());
-			}
-		}
-
-		var4.packetBuffer.writeByte(var7);
-		var4.packetBuffer.writeByte(var8);
-		class370.method6755(var4.packetBuffer, var1);
-		if (var0 == class282.field3379.rsOrdinal()) {
-			var4.packetBuffer.writeByte(var3);
-		}
-
-		var4.packetBuffer.method7357(var4.packetBuffer.offset - var5);
-		return var4;
-	}
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "843929154"
-	)
-	static void method6516() {
-		Iterator var0 = Messages.Messages_hashTable.iterator();
-
-		while (var0.hasNext()) {
-			Message var1 = (Message)var0.next();
-			var1.clearIsFromIgnored();
-		}
-
 	}
 }

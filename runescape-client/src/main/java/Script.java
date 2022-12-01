@@ -4,53 +4,65 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bn")
+@ObfuscatedName("bz")
 @Implements("Script")
 public class Script extends DualNode {
-	@ObfuscatedName("c")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Ljx;"
 	)
 	@Export("Script_cached")
 	static EvictingDualNodeHashTable Script_cached;
-	@ObfuscatedName("b")
-	String field937;
-	@ObfuscatedName("p")
+	@ObfuscatedName("dq")
+	static boolean field972;
+	@ObfuscatedName("pb")
+	@ObfuscatedGetter(
+		intValue = 2134394913
+	)
+	static int field973;
+	@ObfuscatedName("px")
+	@ObfuscatedSignature(
+		descriptor = "[Lkn;"
+	)
+	static Widget[] field971;
+	@ObfuscatedName("f")
+	String field962;
+	@ObfuscatedName("c")
 	@Export("opcodes")
 	int[] opcodes;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@Export("intOperands")
 	int[] intOperands;
-	@ObfuscatedName("t")
+	@ObfuscatedName("h")
 	@Export("stringOperands")
 	String[] stringOperands;
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 1986002175
+		intValue = 1624364019
 	)
 	@Export("localIntCount")
 	int localIntCount;
-	@ObfuscatedName("j")
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = 140084379
+		intValue = -2093681401
 	)
 	@Export("localStringCount")
 	int localStringCount;
-	@ObfuscatedName("w")
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = 773546685
+		intValue = 1508495137
 	)
 	@Export("intArgumentCount")
 	int intArgumentCount;
 	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -2027696431
+		intValue = 1760588085
 	)
 	@Export("stringArgumentCount")
 	int stringArgumentCount;
 	@ObfuscatedName("r")
 	@ObfuscatedSignature(
-		descriptor = "[Loz;"
+		descriptor = "[Lpe;"
 	)
 	@Export("switches")
 	IterableNodeHashTable[] switches;
@@ -62,30 +74,65 @@ public class Script extends DualNode {
 	Script() {
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Loz;",
-		garbageValue = "-1725303821"
+		descriptor = "(IS)[Lpe;",
+		garbageValue = "10134"
 	)
 	@Export("newIterableNodeHashTable")
 	IterableNodeHashTable[] newIterableNodeHashTable(int var1) {
 		return new IterableNodeHashTable[var1];
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(ILku;Ljava/lang/String;Ljava/lang/String;IZB)V",
-		garbageValue = "62"
+		descriptor = "(II)Lfz;",
+		garbageValue = "-1956190631"
 	)
-	public static void method2040(int var0, AbstractArchive var1, String var2, String var3, int var4, boolean var5) {
-		int var6 = var1.getGroupId(var2);
-		int var7 = var1.getFileId(var6, var3);
-		class260.musicPlayerStatus = 1;
-		class124.musicTrackArchive = var1;
-		VarcInt.musicTrackGroupId = var6;
-		class260.musicTrackFileId = var7;
-		ChatChannel.musicTrackVolume = var4;
-		DynamicObject.musicTrackBoolean = var5;
-		class260.pcmSampleLength = var0;
+	@Export("KitDefinition_get")
+	public static KitDefinition KitDefinition_get(int var0) {
+		KitDefinition var1 = (KitDefinition)KitDefinition.KitDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = KitDefinition.KitDefinition_archive.takeFile(3, var0);
+			var1 = new KitDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			KitDefinition.KitDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1548637382"
+	)
+	static void method2120() {
+		Tiles.Tiles_minPlane = 99;
+		Tiles.field994 = new short[4][104][104];
+		Tiles.field1001 = new short[4][104][104];
+		Tiles.field996 = new byte[4][104][104];
+		class174.field1852 = new byte[4][104][104];
+		UserComparator7.field1410 = new int[4][105][105];
+		class32.field179 = new byte[4][105][105];
+		Tiles.field995 = new int[105][105];
+		class32.field181 = new int[104];
+		FriendSystem.field818 = new int[104];
+		DefaultsGroup.field4531 = new int[104];
+		ClanChannelMember.field1591 = new int[104];
+		class410.field4590 = new int[104];
+	}
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(B)[Llq;",
+		garbageValue = "19"
+	)
+	public static StudioGame[] method2127() {
+		return new StudioGame[]{StudioGame.runescape, StudioGame.game4, StudioGame.game5, StudioGame.stellardawn, StudioGame.game3, StudioGame.oldscape};
 	}
 }

@@ -4,35 +4,50 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ml")
+@ObfuscatedName("ne")
 @Implements("FriendLoginUpdate")
 public class FriendLoginUpdate extends Link {
-	@ObfuscatedName("bu")
+	@ObfuscatedName("vu")
 	@ObfuscatedGetter(
-		intValue = -1607694617
+		intValue = -693221637
 	)
-	static int field4096;
-	@ObfuscatedName("c")
+	@Export("foundItemIndex")
+	static int foundItemIndex;
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = -1414251107
+		intValue = 645904559
 	)
-	public int field4097;
-	@ObfuscatedName("b")
+	public int field4477;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lpo;"
+		descriptor = "Lrg;"
 	)
 	@Export("username")
 	public Username username;
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@Export("world")
 	public short world;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;I)V"
+		descriptor = "(Lrg;I)V"
 	)
 	FriendLoginUpdate(Username var1, int var2) {
-		this.field4097 = (int)(Ignored.method6459() / 1000L);
+		this.field4477 = (int)(UserComparator8.method2748() / 1000L);
 		this.username = var1;
 		this.world = (short)var2;
+	}
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(Lpe;ILjava/lang/String;I)Ljava/lang/String;",
+		garbageValue = "1666410399"
+	)
+	static String method7304(IterableNodeHashTable var0, int var1, String var2) {
+		if (var0 == null) {
+			return var2;
+		} else {
+			ObjectNode var3 = (ObjectNode)var0.get((long)var1);
+			return var3 == null ? var2 : (String)var3.obj;
+		}
 	}
 }

@@ -1,44 +1,48 @@
-import java.awt.image.BufferedImage;
-import java.awt.image.PixelGrabber;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import javax.imageio.ImageIO;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-import net.runelite.mapping.*;
-
-@ObfuscatedName("cd")
+@ObfuscatedName("cf")
 @Implements("MouseRecorder")
 public class MouseRecorder implements Runnable {
-	@ObfuscatedName("j")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "[[Ljm;"
+		descriptor = "Lry;"
 	)
-	@Export("Widget_interfaceComponents")
-	public static Widget[][] Widget_interfaceComponents;
-	@ObfuscatedName("ay")
+	@Export("logoSprite")
+	static IndexedSprite logoSprite;
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "Lme;"
+		descriptor = "Lry;"
 	)
-	static Bounds field1044;
-	@ObfuscatedName("c")
+	static IndexedSprite field1059;
+	@ObfuscatedName("ck")
+	@ObfuscatedSignature(
+		descriptor = "[Lry;"
+	)
+	@Export("worldSelectArrows")
+	static IndexedSprite[] worldSelectArrows;
+	@ObfuscatedName("a")
 	@Export("isRunning")
 	boolean isRunning;
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@Export("lock")
 	Object lock;
-	@ObfuscatedName("p")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1539237497
+		intValue = -1285600337
 	)
 	@Export("index")
 	int index;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@Export("xs")
 	int[] xs;
-	@ObfuscatedName("t")
+	@ObfuscatedName("h")
 	@Export("ys")
 	int[] ys;
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@Export("millis")
 	long[] millis;
 
@@ -52,7 +56,7 @@ public class MouseRecorder implements Runnable {
 	}
 
 	public void run() {
-		for (; this.isRunning; Bounds.method6608(50L)) {
+		for (; this.isRunning; class197.method3946(50L)) {
 			synchronized(this.lock) {
 				if (this.index < 500) {
 					this.xs[this.index] = MouseHandler.MouseHandler_x;
@@ -63,57 +67,5 @@ public class MouseRecorder implements Runnable {
 			}
 		}
 
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "([BB)Lpl;",
-		garbageValue = "-5"
-	)
-	public static final SpritePixels method2161(byte[] var0) {
-		BufferedImage var1 = null;
-
-		try {
-			var1 = ImageIO.read(new ByteArrayInputStream(var0));
-			int var2 = var1.getWidth();
-			int var3 = var1.getHeight();
-			int[] var4 = new int[var2 * var3];
-			PixelGrabber var5 = new PixelGrabber(var1, 0, 0, var2, var3, var4, 0, var2);
-			var5.grabPixels();
-			return new SpritePixels(var4, var2, var3);
-		} catch (IOException var7) {
-		} catch (InterruptedException var8) {
-		}
-
-		return new SpritePixels(0, 0);
-	}
-
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "-41"
-	)
-	static int method2160(int var0, int var1) {
-		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var2 == null) {
-			return 0;
-		} else if (var1 == -1) {
-			return 0;
-		} else {
-			int var3 = 0;
-
-			for (int var4 = 0; var4 < var2.quantities.length; ++var4) {
-				if (var2.ids[var4] == var1) {
-					var3 += var2.quantities[var4];
-				}
-			}
-
-			return var3;
-		}
-	}
-
-	@ObfuscatedName("s")
-	public static int method2159(long var0) {
-		return (int)(var0 >>> 0 & 127L);
 	}
 }
