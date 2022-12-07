@@ -1,226 +1,197 @@
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("z")
+@ObfuscatedName("am")
 @Implements("KeyHandler")
-public final class KeyHandler implements KeyListener, FocusListener {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lz;"
-	)
-	@Export("KeyHandler_instance")
-	public static KeyHandler KeyHandler_instance;
-	@ObfuscatedName("s")
-	@Export("ArchiveDiskActionHandler_thread")
-	static Thread ArchiveDiskActionHandler_thread;
-	@ObfuscatedName("d")
-	@ObfuscatedSignature(
-		descriptor = "Lpa;"
-	)
-	@Export("options_buttons_0Sprite")
-	static IndexedSprite options_buttons_0Sprite;
-	@ObfuscatedName("co")
-	@Export("KeyHandler_pressedKeys")
-	public static boolean[] KeyHandler_pressedKeys;
-	@ObfuscatedName("cc")
-	public static boolean[] field132;
-	@ObfuscatedName("cs")
-	public static boolean[] field130;
-	@ObfuscatedName("cj")
-	public static int[] field134;
-	@ObfuscatedName("ca")
+public class KeyHandler {
+	@ObfuscatedName("bp")
 	@ObfuscatedGetter(
-		intValue = -30228915
+		intValue = -55139539
 	)
-	public static int field135;
-	@ObfuscatedName("cz")
-	@ObfuscatedGetter(
-		intValue = 1719312863
-	)
-	public static int field120;
-	@ObfuscatedName("cw")
-	static char[] field137;
-	@ObfuscatedName("ct")
-	static int[] field131;
-	@ObfuscatedName("ci")
-	public static int[] field139;
-	@ObfuscatedName("ch")
-	@ObfuscatedGetter(
-		intValue = -341769643
-	)
-	public static int field140;
-	@ObfuscatedName("cq")
-	public static int[] field141;
-	@ObfuscatedName("cf")
-	@ObfuscatedGetter(
-		intValue = 307265495
-	)
-	public static int field142;
-	@ObfuscatedName("cu")
-	@ObfuscatedGetter(
-		intValue = -834396131
-	)
-	public static int field143;
-	@ObfuscatedName("cx")
-	@ObfuscatedGetter(
-		intValue = 601711547
-	)
-	public static int field144;
-	@ObfuscatedName("cm")
-	@ObfuscatedGetter(
-		intValue = 1247090595
-	)
-	public static int field145;
-	@ObfuscatedName("dm")
-	@ObfuscatedGetter(
-		intValue = 589740013
-	)
-	@Export("KeyHandler_idleCycles")
-	public static volatile int KeyHandler_idleCycles;
-	@ObfuscatedName("dr")
+	static int field172;
+	@ObfuscatedName("cy")
 	@Export("KeyHandler_keyCodes")
 	static int[] KeyHandler_keyCodes;
-	@ObfuscatedName("ek")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
+	@ObfuscatedName("js")
+	@ObfuscatedGetter(
+		intValue = 1655404347
 	)
-	@Export("archive4")
-	static Archive archive4;
+	@Export("oculusOrbFocalPointX")
+	static int oculusOrbFocalPointX;
 
 	static {
-		KeyHandler_instance = new KeyHandler();
-		KeyHandler_pressedKeys = new boolean[112];
-		field132 = new boolean[112];
-		field130 = new boolean[112];
-		field134 = new int[128];
-		field135 = 0;
-		field120 = 0;
-		field137 = new char[128];
-		field131 = new int[128];
-		field139 = new int[128];
-		field140 = 0;
-		field141 = new int[128];
-		field142 = 0;
-		field143 = 0;
-		field144 = 0;
-		field145 = 0;
-		KeyHandler_idleCycles = 0;
 		KeyHandler_keyCodes = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, 85, 80, 84, -1, 91, -1, -1, -1, 81, 82, 86, -1, -1, -1, -1, -1, -1, -1, -1, 13, -1, -1, -1, -1, 83, 104, 105, 103, 102, 96, 98, 97, 99, -1, -1, -1, -1, -1, -1, -1, 25, 16, 17, 18, 19, 20, 21, 22, 23, 24, -1, -1, -1, -1, -1, -1, -1, 48, 68, 66, 50, 34, 51, 52, 53, 39, 54, 55, 56, 70, 69, 40, 41, 32, 35, 49, 36, 38, 67, 33, 65, 37, 64, -1, -1, -1, -1, -1, 228, 231, 227, 233, 224, 219, 225, 230, 226, 232, 89, 87, -1, 88, 229, 90, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, -1, -1, -1, 101, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100, -1, 87, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
 	}
 
-	KeyHandler() {
-	}
-
-	public final synchronized void keyPressed(KeyEvent var1) {
-		if (KeyHandler_instance != null) {
-			int var2 = var1.getKeyCode();
-			if (var2 >= 0 && var2 < KeyHandler_keyCodes.length) {
-				var2 = KeyHandler_keyCodes[var2];
-				if ((var2 & 128) != 0) {
-					var2 = -1;
-				}
-			} else {
-				var2 = -1;
-			}
-
-			if (field120 >= 0 && var2 >= 0) {
-				field134[field120] = var2;
-				field120 = field120 + 1 & 127;
-				if (field135 == field120) {
-					field120 = -1;
-				}
-			}
-
-			int var3;
-			if (var2 >= 0) {
-				var3 = field144 + 1 & 127;
-				if (var3 != field143) {
-					field131[field144] = var2;
-					field137[field144] = 0;
-					field144 = var3;
-				}
-			}
-
-			var3 = var1.getModifiers();
-			if ((var3 & 10) != 0 || var2 == 85 || var2 == 10) {
-				var1.consume();
-			}
-		}
-
-	}
-
-	public final synchronized void keyReleased(KeyEvent var1) {
-		if (KeyHandler_instance != null) {
-			int var2 = var1.getKeyCode();
-			if (var2 >= 0 && var2 < KeyHandler_keyCodes.length) {
-				var2 = KeyHandler_keyCodes[var2] & -129;
-			} else {
-				var2 = -1;
-			}
-
-			if (field120 >= 0 && var2 >= 0) {
-				field134[field120] = ~var2;
-				field120 = field120 + 1 & 127;
-				if (field135 == field120) {
-					field120 = -1;
-				}
-			}
-		}
-
-		var1.consume();
-	}
-
-	public final void keyTyped(KeyEvent var1) {
-		if (KeyHandler_instance != null) {
-			char var2 = var1.getKeyChar();
-			if (var2 != 0 && var2 != '\uffff' && class136.method2842(var2)) {
-				int var3 = field144 + 1 & 127;
-				if (var3 != field143) {
-					field131[field144] = -1;
-					field137[field144] = var2;
-					field144 = var3;
-				}
-			}
-		}
-
-		var1.consume();
-	}
-
-	public final void focusGained(FocusEvent var1) {
-	}
-
-	public final synchronized void focusLost(FocusEvent var1) {
-		if (KeyHandler_instance != null) {
-			field120 = -1;
-		}
-
-	}
-
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/String;[SI)V",
-		garbageValue = "1763095521"
+		descriptor = "(B)Z",
+		garbageValue = "79"
 	)
-	public static void method390(String[] var0, short[] var1) {
-		Projectile.sortItemsByName(var0, var1, 0, var0.length - 1);
+	@Export("loadWorlds")
+	static boolean loadWorlds() {
+		try {
+			if (class1.World_request == null) {
+				class1.World_request = TaskHandler.urlRequester.request(new URL(class9.field41));
+			} else if (class1.World_request.isDone()) {
+				byte[] var0 = class1.World_request.getResponse();
+				Buffer var1 = new Buffer(var0);
+				var1.readInt();
+				World.World_count = var1.readUnsignedShort();
+				World.World_worlds = new World[World.World_count];
+
+				World var3;
+				for (int var2 = 0; var2 < World.World_count; var3.index = var2++) {
+					var3 = World.World_worlds[var2] = new World();
+					var3.id = var1.readUnsignedShort();
+					var3.properties = var1.readInt();
+					var3.host = var1.readStringCp1252NullTerminated();
+					var3.activity = var1.readStringCp1252NullTerminated();
+					var3.location = var1.readUnsignedByte();
+					var3.population = var1.readShort();
+				}
+
+				class420.sortWorlds(World.World_worlds, 0, World.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
+				class1.World_request = null;
+				return true;
+			}
+		} catch (Exception var4) {
+			var4.printStackTrace();
+			class1.World_request = null;
+		}
+
+		return false;
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "51"
+		descriptor = "(Lly;IIIZB)V",
+		garbageValue = "1"
 	)
-	static final int method367(int var0, int var1) {
-		int var2 = var1 * 57 + var0;
-		var2 ^= var2 << 13;
-		int var3 = (var2 * var2 * 15731 + 789221) * var2 + 1376312589 & Integer.MAX_VALUE;
-		return var3 >> 19 & 255;
+	public static void method426(AbstractArchive var0, int var1, int var2, int var3, boolean var4) {
+		class286.musicPlayerStatus = 1;
+		class304.musicTrackArchive = var0;
+		class109.musicTrackGroupId = var1;
+		class286.musicTrackFileId = var2;
+		class467.musicTrackVolume = var3;
+		class145.musicTrackBoolean = var4;
+		class286.pcmSampleLength = 10000;
+	}
+
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "(IIIB)Lbm;",
+		garbageValue = "3"
+	)
+	@Export("getWorldMapScript")
+	static Script getWorldMapScript(int var0, int var1, int var2) {
+		int var3 = (var1 << 8) + var0;
+		Script var6 = (Script)Script.Script_cached.get((long)(var3 << 16));
+		Script var5;
+		if (var6 != null) {
+			var5 = var6;
+		} else {
+			String var7 = String.valueOf(var3);
+			int var8 = class71.archive12.getGroupId(var7);
+			if (var8 == -1) {
+				var5 = null;
+			} else {
+				label59: {
+					byte[] var9 = class71.archive12.takeFileFlat(var8);
+					if (var9 != null) {
+						if (var9.length <= 1) {
+							var5 = null;
+							break label59;
+						}
+
+						var6 = FriendSystem.newScript(var9);
+						if (var6 != null) {
+							Script.Script_cached.put(var6, (long)(var3 << 16));
+							var5 = var6;
+							break label59;
+						}
+					}
+
+					var5 = null;
+				}
+			}
+		}
+
+		if (var5 != null) {
+			return var5;
+		} else {
+			int var13 = (-3 - var2 << 8) + var0;
+			Script var15 = (Script)Script.Script_cached.get((long)(var13 << 16));
+			Script var14;
+			if (var15 != null) {
+				var14 = var15;
+			} else {
+				String var10 = String.valueOf(var13);
+				int var11 = class71.archive12.getGroupId(var10);
+				if (var11 == -1) {
+					var14 = null;
+				} else {
+					byte[] var12 = class71.archive12.takeFileFlat(var11);
+					if (var12 != null) {
+						if (var12.length <= 1) {
+							var14 = null;
+							return var14 != null ? var14 : null;
+						}
+
+						var15 = FriendSystem.newScript(var12);
+						if (var15 != null) {
+							Script.Script_cached.put(var15, (long)(var13 << 16));
+							var14 = var15;
+							return var14 != null ? var14 : null;
+						}
+					}
+
+					var14 = null;
+				}
+			}
+
+			return var14 != null ? var14 : null;
+		}
+	}
+
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1517575560"
+	)
+	protected static final void method430() {
+		UrlRequest.clock.mark();
+
+		int var0;
+		for (var0 = 0; var0 < 32; ++var0) {
+			GameEngine.graphicsTickTimes[var0] = 0L;
+		}
+
+		for (var0 = 0; var0 < 32; ++var0) {
+			GameEngine.clientTickTimes[var0] = 0L;
+		}
+
+		class173.gameCyclesToDo = 0;
+	}
+
+	@ObfuscatedName("he")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "1"
+	)
+	static final void method429() {
+		if (BufferedSink.field4572) {
+			for (int var0 = 0; var0 < Players.Players_count; ++var0) {
+				Player var1 = Client.players[Players.Players_indices[var0]];
+				var1.method2294();
+			}
+
+			BufferedSink.field4572 = false;
+		}
+
 	}
 }
