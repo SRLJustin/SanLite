@@ -4,69 +4,66 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bj")
+@ObfuscatedName("bk")
 @Implements("DynamicObject")
 public class DynamicObject extends Renderable {
-	@ObfuscatedName("o")
-	@Export("musicTrackBoolean")
-	public static boolean musicTrackBoolean;
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 1712801751
+		intValue = -2074471671
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = 2015197805
+		intValue = 1709661329
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1555173169
+		intValue = -1920524297
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = -393716715
+		intValue = -14987683
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("t")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -332192069
+		intValue = -1813409375
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 1639785979
+		intValue = -1033732035
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("j")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lgn;"
+		descriptor = "Lga;"
 	)
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
-	@ObfuscatedName("w")
+	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = -724114563
+		intValue = 1771160437
 	)
 	@Export("frame")
 	int frame;
-	@ObfuscatedName("n")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 343705565
+		intValue = 672307685
 	)
 	@Export("cycleStart")
 	int cycleStart;
 
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIZLgt;)V"
+		descriptor = "(IIIIIIIZLhr;)V"
 	)
 	DynamicObject(int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8, Renderable var9) {
 		this.id = var1;
@@ -76,10 +73,10 @@ public class DynamicObject extends Renderable {
 		this.x = var5;
 		this.y = var6;
 		if (var7 != -1) {
-			this.sequenceDefinition = UserComparator5.SequenceDefinition_get(var7);
+			this.sequenceDefinition = class216.SequenceDefinition_get(var7);
 			this.frame = 0;
 			this.cycleStart = Client.cycle - 1;
-			if (this.sequenceDefinition.field2078 == 0 && var9 != null && var9 instanceof DynamicObject) {
+			if (this.sequenceDefinition.field2276 == 0 && var9 != null && var9 instanceof DynamicObject) {
 				DynamicObject var10 = (DynamicObject)var9;
 				if (this.sequenceDefinition == var10.sequenceDefinition) {
 					this.frame = var10.frame;
@@ -89,21 +86,21 @@ public class DynamicObject extends Renderable {
 			}
 
 			if (var8 && this.sequenceDefinition.frameCount != -1) {
-				if (!this.sequenceDefinition.method3690()) {
+				if (!this.sequenceDefinition.method4020()) {
 					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.frameIds.length);
 					this.cycleStart -= (int)(Math.random() * (double)this.sequenceDefinition.frameLengths[this.frame]);
 				} else {
-					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method3647());
+					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method4024());
 				}
 			}
 		}
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lgo;",
-		garbageValue = "202861607"
+		descriptor = "(I)Lhh;",
+		garbageValue = "-1279733976"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
@@ -114,8 +111,8 @@ public class DynamicObject extends Renderable {
 				var1 = 100;
 			}
 
-			if (this.sequenceDefinition.method3690()) {
-				var2 = this.sequenceDefinition.method3647();
+			if (this.sequenceDefinition.method4020()) {
+				var2 = this.sequenceDefinition.method4024();
 				this.frame += var1;
 				var1 = 0;
 				if (this.frame >= var2) {
@@ -125,11 +122,11 @@ public class DynamicObject extends Renderable {
 					}
 				}
 			} else {
-				label79: {
+				label81: {
 					do {
 						do {
 							if (var1 <= this.sequenceDefinition.frameLengths[this.frame]) {
-								break label79;
+								break label81;
 							}
 
 							var1 -= this.sequenceDefinition.frameLengths[this.frame];
@@ -146,7 +143,7 @@ public class DynamicObject extends Renderable {
 			this.cycleStart = Client.cycle - var1;
 		}
 
-		ObjectComposition var12 = class148.getObjectDefinition(this.id);
+		ObjectComposition var12 = VarpDefinition.getObjectDefinition(this.id);
 		if (var12.transforms != null) {
 			var12 = var12.transform();
 		}
@@ -168,46 +165,88 @@ public class DynamicObject extends Renderable {
 			int var6 = (var3 >> 1) + this.y;
 			int var7 = (var3 + 1 >> 1) + this.y;
 			int[][] var8 = Tiles.Tiles_heights[this.plane];
-			int var9 = var8[var4][var7] + var8[var4][var6] + var8[var5][var6] + var8[var5][var7] >> 2;
+			int var9 = var8[var5][var7] + var8[var4][var6] + var8[var5][var6] + var8[var4][var7] >> 2;
 			int var10 = (this.x << 7) + (var2 << 6);
 			int var11 = (this.y << 7) + (var3 << 6);
 			return var12.getModelDynamic(this.type, this.orientation, var8, var10, var9, var11, this.sequenceDefinition, this.frame);
 		}
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(Lqy;Lql;I)Lql;",
+		garbageValue = "-1322672693"
+	)
+	@Export("readStringIntParameters")
+	static final IterableNodeHashTable readStringIntParameters(Buffer var0, IterableNodeHashTable var1) {
+		int var2 = var0.readUnsignedByte();
+		int var3;
+		if (var1 == null) {
+			var3 = AccessFile.method8302(var2);
+			var1 = new IterableNodeHashTable(var3);
+		}
+
+		for (var3 = 0; var3 < var2; ++var3) {
+			boolean var4 = var0.readUnsignedByte() == 1;
+			int var5 = var0.readMedium();
+			Object var6;
+			if (var4) {
+				var6 = new ObjectNode(var0.readStringCp1252NullTerminated());
+			} else {
+				var6 = new IntegerNode(var0.readInt());
+			}
+
+			var1.put((Node)var6, (long)var5);
+		}
+
+		return var1;
+	}
+
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "-59"
+	)
+	static void method2139(int var0) {
+		ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var1 != null) {
+			var1.remove();
+		}
+	}
+
+	@ObfuscatedName("r")
 	@ObfuscatedSignature(
 		descriptor = "(II)I",
-		garbageValue = "-2047180013"
+		garbageValue = "1835636041"
 	)
-	@Export("iLog")
-	public static int iLog(int var0) {
-		int var1 = 0;
-		if (var0 < 0 || var0 >= 65536) {
-			var0 >>>= 16;
-			var1 += 16;
+	static int method2141(int var0) {
+		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
+		if (var1 == null) {
+			return -1;
+		} else {
+			return var1.nextDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.nextDual).count;
 		}
+	}
 
-		if (var0 >= 256) {
-			var0 >>>= 8;
-			var1 += 8;
-		}
-
-		if (var0 >= 16) {
-			var0 >>>= 4;
-			var1 += 4;
-		}
-
-		if (var0 >= 4) {
-			var0 >>>= 2;
-			var1 += 2;
-		}
-
-		if (var0 >= 1) {
-			var0 >>>= 1;
-			++var1;
-		}
-
-		return var0 + var1;
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(ILkd;IIIII[FB)Lkd;",
+		garbageValue = "42"
+	)
+	static Widget method2137(int var0, Widget var1, int var2, int var3, int var4, int var5, int var6, float[] var7) {
+		Widget var8 = new Widget();
+		var8.type = var0;
+		var8.parentId = var1.id;
+		var8.childIndex = var2;
+		var8.isIf3 = true;
+		var8.xAlignment = var3;
+		var8.yAlignment = var4;
+		var8.widthAlignment = var5;
+		var8.heightAlignment = var6;
+		var8.rawX = (int)((float)var1.width * var7[0]);
+		var8.rawY = (int)(var7[1] * (float)var1.height);
+		var8.rawWidth = (int)(var7[2] * (float)var1.width);
+		var8.rawHeight = (int)(var7[3] * (float)var1.height);
+		return var8;
 	}
 }
