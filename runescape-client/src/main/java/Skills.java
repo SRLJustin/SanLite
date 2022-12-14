@@ -3,13 +3,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ji")
+@ObfuscatedName("lk")
 @Implements("Skills")
 public class Skills {
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@Export("Skills_enabled")
 	public static final boolean[] Skills_enabled;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@Export("Skills_experienceTable")
 	public static int[] Skills_experienceTable;
 
@@ -27,31 +27,12 @@ public class Skills {
 
 	}
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;I)I",
-		garbageValue = "-2099525491"
-	)
-	@Export("hashString")
-	public static int hashString(CharSequence var0) {
-		int var1 = var0.length();
-		int var2 = 0;
-
-		for (int var3 = 0; var3 < var1; ++var3) {
-			var2 = (var2 << 5) - var2 + class372.charToByteCp1252(var0.charAt(var3));
-		}
-
-		return var2;
-	}
-
 	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "708045213"
+		descriptor = "(I)[Lf;",
+		garbageValue = "992557969"
 	)
-	static final void method5487() {
-		Object var10000 = null;
-		String var0 = "You can't add yourself to your own ignore list";
-		class194.addGameMessage(30, "", var0);
+	public static class6[] method6369() {
+		return new class6[]{class6.field17};
 	}
 }

@@ -1,124 +1,122 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hd")
+@ObfuscatedName("hi")
 public class class213 {
-	@ObfuscatedName("c")
+	@ObfuscatedName("uk")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lkt;",
-		garbageValue = "1655670329"
+		descriptor = "Lpk;"
 	)
-	static class288[] method4355() {
-		return new class288[]{class288.field3436, class288.field3438};
+	@Export("platformInfo")
+	static PlatformInfo platformInfo;
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "[Ldt;"
+	)
+	class123[] field2510;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(
+		intValue = 1879864783
+	)
+	int field2515;
+
+	@ObfuscatedSignature(
+		descriptor = "(Lqy;I)V"
+	)
+	class213(Buffer var1, int var2) {
+		this.field2510 = new class123[var2];
+		this.field2515 = var1.readUnsignedByte();
+
+		for (int var3 = 0; var3 < this.field2510.length; ++var3) {
+			class123 var4 = new class123(this.field2515, var1, false);
+			this.field2510[var3] = var4;
+		}
+
+		this.method4399();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Ldn;FZI)F",
-		garbageValue = "244172504"
+		descriptor = "(I)V",
+		garbageValue = "1801753384"
 	)
-	static float method4354(class115 var0, float var1, boolean var2) {
-		float var3 = 0.0F;
-		if (var0 != null && var0.method2637() != 0) {
-			float var4 = (float)var0.field1393[0].field1359;
-			float var5 = (float)var0.field1393[var0.method2637() - 1].field1359;
-			float var6 = var5 - var4;
-			if (0.0D == (double)var6) {
-				return var0.field1393[0].field1349;
-			} else {
-				float var7 = 0.0F;
-				if (var1 > var5) {
-					var7 = (var1 - var5) / var6;
-				} else {
-					var7 = (var1 - var4) / var6;
-				}
+	void method4399() {
+		class123[] var1 = this.field2510;
 
-				double var8 = (double)((int)var7);
-				float var10 = Math.abs((float)((double)var7 - var8));
-				float var11 = var10 * var6;
-				var8 = Math.abs(var8 + 1.0D);
-				double var12 = var8 / 2.0D;
-				double var14 = (double)((int)var12);
-				var10 = (float)(var12 - var14);
-				float var16;
-				float var17;
-				if (var2) {
-					if (var0.field1410 == class114.field1386) {
-						if ((double)var10 != 0.0D) {
-							var11 += var4;
-						} else {
-							var11 = var5 - var11;
-						}
-					} else if (var0.field1410 != class114.field1384 && var0.field1410 != class114.field1391) {
-						if (var0.field1410 == class114.field1383) {
-							var11 = var4 - var1;
-							var16 = var0.field1393[0].field1350;
-							var17 = var0.field1393[0].field1351;
-							var3 = var0.field1393[0].field1349;
-							if (0.0D != (double)var16) {
-								var3 -= var11 * var17 / var16;
-							}
-
-							return var3;
-						}
-					} else {
-						var11 = var5 - var11;
-					}
-				} else if (var0.field1396 == class114.field1386) {
-					if ((double)var10 != 0.0D) {
-						var11 = var5 - var11;
-					} else {
-						var11 += var4;
-					}
-				} else if (var0.field1396 != class114.field1384 && var0.field1396 != class114.field1391) {
-					if (var0.field1396 == class114.field1383) {
-						var11 = var1 - var5;
-						var16 = var0.field1393[var0.method2637() - 1].field1352;
-						var17 = var0.field1393[var0.method2637() - 1].field1357;
-						var3 = var0.field1393[var0.method2637() - 1].field1349;
-						if (0.0D != (double)var16) {
-							var3 += var17 * var11 / var16;
-						}
-
-						return var3;
-					}
-				} else {
-					var11 += var4;
-				}
-
-				var3 = class14.method210(var0, var11);
-				float var18;
-				if (var2 && var0.field1410 == class114.field1391) {
-					var18 = var0.field1393[var0.method2637() - 1].field1349 - var0.field1393[0].field1349;
-					var3 = (float)((double)var3 - var8 * (double)var18);
-				} else if (!var2 && var0.field1396 == class114.field1391) {
-					var18 = var0.field1393[var0.method2637() - 1].field1349 - var0.field1393[0].field1349;
-					var3 = (float)((double)var3 + (double)var18 * var8);
-				}
-
-				return var3;
+		for (int var2 = 0; var2 < var1.length; ++var2) {
+			class123 var3 = var1[var2];
+			if (var3.field1516 >= 0) {
+				var3.field1513 = this.field2510[var3.field1516];
 			}
-		} else {
-			return var3;
 		}
+
+	}
+
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-294189999"
+	)
+	public int method4400() {
+		return this.field2510.length;
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(II)Ldt;",
+		garbageValue = "2141149812"
+	)
+	class123 method4401(int var1) {
+		return var1 >= this.method4400() ? null : this.field2510[var1];
+	}
+
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Ldt;",
+		garbageValue = "-777333146"
+	)
+	class123[] method4412() {
+		return this.field2510;
 	}
 
 	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1639930062"
+		descriptor = "(Lew;IB)V",
+		garbageValue = "-52"
 	)
-	public static void method4356() {
-		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_lock) {
-			if (ArchiveDiskActionHandler.field3815 != 0) {
-				ArchiveDiskActionHandler.field3815 = 1;
+	void method4403(class130 var1, int var2) {
+		this.method4414(var1, var2, (boolean[])null, false);
+	}
 
-				try {
-					ArchiveDiskActionHandler.ArchiveDiskActionHandler_lock.wait();
-				} catch (InterruptedException var3) {
-				}
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "(Lew;I[ZZI)V",
+		garbageValue = "1653301978"
+	)
+	void method4414(class130 var1, int var2, boolean[] var3, boolean var4) {
+		int var5 = var1.method3021();
+		int var6 = 0;
+		class123[] var7 = this.method4412();
+
+		for (int var8 = 0; var8 < var7.length; ++var8) {
+			class123 var9 = var7[var8];
+			if (var3 == null || var4 == var3[var6]) {
+				var1.method3003(var2, var9, var6, var5);
 			}
 
+			++var6;
 		}
+
+	}
+
+	@ObfuscatedName("np")
+	@ObfuscatedSignature(
+		descriptor = "(S)Z",
+		garbageValue = "6274"
+	)
+	public static boolean method4420() {
+		return Client.clickedWidget != null;
 	}
 }

@@ -1,155 +1,219 @@
+import java.io.File;
+import java.util.HashMap;
+import java.util.TimeZone;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("je")
-public class class281 {
-	@ObfuscatedName("rq")
+@ke
+@ObfuscatedName("jg")
+public final class class281 {
+	@ObfuscatedName("sf")
 	@ObfuscatedSignature(
-		descriptor = "Lap;"
+		descriptor = "Lnc;"
 	)
-	@Export("pcmStreamMixer")
-	static PcmStreamMixer pcmStreamMixer;
-	@ObfuscatedName("mj")
+	@Export("friendsChatManager")
+	static FriendsChatManager friendsChatManager;
+	@ObfuscatedName("sa")
+	static boolean field3319;
+	@ObfuscatedName("v")
+	static final HashMap field3318;
+	@ObfuscatedName("m")
+	@Export("cacheDir")
+	public static File cacheDir;
+	@ObfuscatedName("jk")
 	@ObfuscatedSignature(
-		descriptor = "Ljm;"
+		descriptor = "[Lrx;"
 	)
-	static Widget field3375;
+	@Export("mapDotSprites")
+	static SpritePixels[] mapDotSprites;
 
-	@ObfuscatedName("kx")
+	static {
+		field3318 = new HashMap();
+		java.util.Calendar.getInstance(method5503("Europe/London"));
+	}
+
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1649545590"
+		descriptor = "(Ljava/lang/String;I)Ljava/util/TimeZone;",
+		garbageValue = "32904762"
 	)
-	@Export("changeGameOptions")
-	static final void changeGameOptions(int var0) {
-		UserComparator6.method2551();
-		ObjectComposition.method3540();
-		int var1 = SecureRandomCallable.VarpDefinition_get(var0).type;
-		if (var1 != 0) {
-			int var2 = Varps.Varps_main[var0];
-			if (var1 == 1) {
-				if (var2 == 1) {
-					InterfaceParent.method2142(0.9D);
-				}
+	static TimeZone method5503(String var0) {
+		synchronized(field3318) {
+			TimeZone var2 = (TimeZone)field3318.get(var0);
+			if (var2 == null) {
+				var2 = TimeZone.getTimeZone(var0);
+				field3318.put(var0, var2);
+			}
 
-				if (var2 == 2) {
-					InterfaceParent.method2142(0.8D);
-				}
+			return var2;
+		}
+	}
 
-				if (var2 == 3) {
-					InterfaceParent.method2142(0.7D);
-				}
+	@ObfuscatedName("iq")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "12"
+	)
+	static void method5504() {
+		int var0 = Players.Players_count;
+		int[] var1 = Players.Players_indices;
 
-				if (var2 == 4) {
-					InterfaceParent.method2142(0.6D);
+		for (int var2 = 0; var2 < var0; ++var2) {
+			if (var1[var2] != Client.combatTargetPlayerIndex && var1[var2] != Client.localPlayerIndex) {
+				WorldMapAreaData.addPlayerToScene(Client.players[var1[var2]], true);
+			}
+		}
+
+	}
+
+	@ObfuscatedName("iv")
+	@ObfuscatedSignature(
+		descriptor = "(IIZI)V",
+		garbageValue = "283375352"
+	)
+	static final void method5499(int var0, int var1, boolean var2) {
+		if (!var2 || var0 != class17.field101 || MusicPatchNode2.field3341 != var1) {
+			class17.field101 = var0;
+			MusicPatchNode2.field3341 = var1;
+			class140.method3102(25);
+			SoundSystem.drawLoadingMessage("Loading - please wait.", true);
+			int var3 = class154.baseX * 64;
+			int var4 = class365.baseY * 64;
+			class154.baseX = (var0 - 6) * 8;
+			class365.baseY = (var1 - 6) * 8;
+			int var5 = class154.baseX * 64 - var3;
+			int var6 = class365.baseY * 64 - var4;
+			var3 = class154.baseX * 64;
+			var4 = class365.baseY * 64;
+
+			int var7;
+			int var9;
+			int[] var10000;
+			for (var7 = 0; var7 < 65536; ++var7) {
+				NPC var19 = Client.npcs[var7];
+				if (var19 != null) {
+					for (var9 = 0; var9 < 10; ++var9) {
+						var10000 = var19.pathX;
+						var10000[var9] -= var5;
+						var10000 = var19.pathY;
+						var10000[var9] -= var6;
+					}
+
+					var19.x -= var5 * 128;
+					var19.y -= var6 * 128;
 				}
 			}
 
-			if (var1 == 3) {
-				if (var2 == 0) {
-					Varcs.method2426(255);
-				}
+			for (var7 = 0; var7 < 2048; ++var7) {
+				Player var22 = Client.players[var7];
+				if (var22 != null) {
+					for (var9 = 0; var9 < 10; ++var9) {
+						var10000 = var22.pathX;
+						var10000[var9] -= var5;
+						var10000 = var22.pathY;
+						var10000[var9] -= var6;
+					}
 
-				if (var2 == 1) {
-					Varcs.method2426(192);
-				}
-
-				if (var2 == 2) {
-					Varcs.method2426(128);
-				}
-
-				if (var2 == 3) {
-					Varcs.method2426(64);
-				}
-
-				if (var2 == 4) {
-					Varcs.method2426(0);
+					var22.x -= var5 * 128;
+					var22.y -= var6 * 128;
 				}
 			}
 
-			if (var1 == 4) {
-				if (var2 == 0) {
-					class20.updateSoundEffectVolume(127);
-				}
+			byte var20 = 0;
+			byte var8 = 104;
+			byte var21 = 1;
+			if (var5 < 0) {
+				var20 = 103;
+				var8 = -1;
+				var21 = -1;
+			}
 
-				if (var2 == 1) {
-					class20.updateSoundEffectVolume(96);
-				}
+			byte var10 = 0;
+			byte var11 = 104;
+			byte var12 = 1;
+			if (var6 < 0) {
+				var10 = 103;
+				var11 = -1;
+				var12 = -1;
+			}
 
-				if (var2 == 2) {
-					class20.updateSoundEffectVolume(64);
-				}
+			int var14;
+			for (int var13 = var20; var13 != var8; var13 += var21) {
+				for (var14 = var10; var11 != var14; var14 += var12) {
+					int var15 = var13 + var5;
+					int var16 = var14 + var6;
 
-				if (var2 == 3) {
-					class20.updateSoundEffectVolume(32);
-				}
-
-				if (var2 == 4) {
-					class20.updateSoundEffectVolume(0);
+					for (int var17 = 0; var17 < 4; ++var17) {
+						if (var15 >= 0 && var16 >= 0 && var15 < 104 && var16 < 104) {
+							Client.groundItems[var17][var13][var14] = Client.groundItems[var17][var15][var16];
+						} else {
+							Client.groundItems[var17][var13][var14] = null;
+						}
+					}
 				}
 			}
 
-			if (var1 == 5) {
-				Client.leftClickOpensMenu = var2;
-			}
-
-			if (var1 == 6) {
-				Client.chatEffects = var2;
-			}
-
-			if (var1 == 9) {
-				Client.field641 = var2;
-			}
-
-			if (var1 == 10) {
-				if (var2 == 0) {
-					Players.method2383(127);
-				}
-
-				if (var2 == 1) {
-					Players.method2383(96);
-				}
-
-				if (var2 == 2) {
-					Players.method2383(64);
-				}
-
-				if (var2 == 3) {
-					Players.method2383(32);
-				}
-
-				if (var2 == 4) {
-					Players.method2383(0);
+			for (PendingSpawn var18 = (PendingSpawn)Client.pendingSpawns.last(); var18 != null; var18 = (PendingSpawn)Client.pendingSpawns.previous()) {
+				var18.x -= var5;
+				var18.y -= var6;
+				if (var18.x < 0 || var18.y < 0 || var18.x >= 104 || var18.y >= 104) {
+					var18.remove();
 				}
 			}
 
-			if (var1 == 17) {
-				Client.followerIndex = var2 & 65535;
+			if (Client.destinationX != 0) {
+				Client.destinationX -= var5;
+				Client.destinationY -= var6;
 			}
 
-			if (var1 == 18) {
-				Client.playerAttackOption = (AttackOption)class130.findEnumerated(FloorUnderlayDefinition.method3376(), var2);
-				if (Client.playerAttackOption == null) {
-					Client.playerAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;
-				}
-			}
+			Client.soundEffectCount = 0;
+			Client.isCameraLocked = false;
+			class145.cameraX -= var5 << 7;
+			ClanChannel.cameraZ -= var6 << 7;
+			KeyHandler.oculusOrbFocalPointX -= var5 << 7;
+			class14.oculusOrbFocalPointY -= var6 << 7;
+			Client.field619 = -1;
+			Client.graphicsObjects.clear();
+			Client.projectiles.clear();
 
-			if (var1 == 19) {
-				if (var2 == -1) {
-					Client.combatTargetPlayerIndex = -1;
-				} else {
-					Client.combatTargetPlayerIndex = var2 & 2047;
-				}
-			}
-
-			if (var1 == 22) {
-				Client.npcAttackOption = (AttackOption)class130.findEnumerated(FloorUnderlayDefinition.method3376(), var2);
-				if (Client.npcAttackOption == null) {
-					Client.npcAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;
-				}
+			for (var14 = 0; var14 < 4; ++var14) {
+				Client.collisionMaps[var14].clear();
 			}
 
 		}
+	}
+
+	@ObfuscatedName("jx")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "-1604095117"
+	)
+	static final boolean method5505(int var0) {
+		if (var0 < 0) {
+			return false;
+		} else {
+			int var1 = Client.menuOpcodes[var0];
+			if (var1 >= 2000) {
+				var1 -= 2000;
+			}
+
+			return var1 == 1007;
+		}
+	}
+
+	@ObfuscatedName("lk")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "-1475515227"
+	)
+	static boolean method5501(int var0) {
+		for (int var1 = 0; var1 < Client.field710; ++var1) {
+			if (Client.field751[var1] == var0) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

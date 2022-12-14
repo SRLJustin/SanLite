@@ -4,43 +4,51 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gx")
+@ObfuscatedName("hs")
 @Implements("GroundObject")
-public final class GroundObject
-{
-	@ObfuscatedName("c")
+public final class GroundObject {
+	@ObfuscatedName("u")
+	@Export("SpriteBuffer_pixels")
+	public static byte[][] SpriteBuffer_pixels;
+	@ObfuscatedName("cx")
+	@ObfuscatedSignature(
+		descriptor = "[Lra;"
+	)
+	@Export("worldSelectArrows")
+	static IndexedSprite[] worldSelectArrows;
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -1861325243
+		intValue = 133255249
 	)
 	@Export("tileHeight")
 	int tileHeight;
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = -1924923823
+		intValue = 804453261
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -2119498473
+		intValue = 1531498091
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(
-		longValue = -7418429141280982005L
-	)
-	@Export("tag")
-	public long tag;
-	@ObfuscatedName("t")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lhr;"
 	)
 	@Export("renderable")
 	public Renderable renderable;
-	@ObfuscatedName("s")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = 1944235645
+		longValue = 4180672137059809271L
+	)
+	@Export("tag")
+	public long tag;
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(
+		intValue = -1420887887
 	)
 	@Export("flags")
 	int flags;
@@ -48,192 +56,219 @@ public final class GroundObject
 	GroundObject() {
 	}
 
-	@ObfuscatedName("ih")
+	@ObfuscatedName("hv")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIB)V",
-		garbageValue = "28"
+		descriptor = "(Lct;IB)V",
+		garbageValue = "13"
 	)
-	@Export("addSceneMenuOptions")
-	static final void addSceneMenuOptions(int var0, int var1, int var2, int var3) {
-		if (Client.isItemSelected == 0 && !Client.isSpellSelected) {
-			class11.insertMenuItemNoShift("Walk here", "", 23, 0, var0 - var2, var1 - var3);
-		}
-
-		long var4 = -1L;
-		long var6 = -1L;
-
-		int var8;
-		for (var8 = 0; var8 < class113.method2616(); ++var8) {
-			long var23 = MenuAction.method1960(var8);
-			if (var23 != var6) {
-				var6 = var23;
-				int var25 = FloorOverlayDefinition.method3618(var8);
-				long var14 = ViewportMouse.ViewportMouse_entityTags[var8];
-				int var13 = (int)(var14 >>> 7 & 127L);
-				var13 = var13;
-				int var26 = class114.method2629(var8);
-				int var15 = PacketWriter.Entity_unpackID(ViewportMouse.ViewportMouse_entityTags[var8]);
-				int var16 = var15;
-				if (var26 == 2 && class7.scene.getObjectFlags(class20.Client_plane, var25, var13, var23) >= 0) {
-					ObjectComposition var17 = class148.getObjectDefinition(var15);
-					if (var17.transforms != null) {
-						var17 = var17.transform();
-					}
-
-					if (var17 == null) {
-						continue;
-					}
-
-					if (Client.isItemSelected == 1) {
-						class11.insertMenuItemNoShift("Use", Client.selectedItemName + " " + "->" + " " + UserComparator5.colorStartTag(65535) + var17.name, 1, var15, var25, var13);
-					} else if (Client.isSpellSelected) {
-						if ((class91.selectedSpellFlags & 4) == 4) {
-							class11.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + UserComparator5.colorStartTag(65535) + var17.name, 2, var15, var25, var13);
-						}
+	@Export("updateActorSequence")
+	static final void updateActorSequence(Actor var0, int var1) {
+		SequenceDefinition var2;
+		int var3;
+		int var4;
+		SequenceDefinition var12;
+		int var14;
+		if (var0.field1233 >= Client.cycle) {
+			class273.method5479(var0);
+		} else {
+			int var5;
+			int var7;
+			int var8;
+			if (var0.field1234 >= Client.cycle) {
+				boolean var11 = var0.field1234 == Client.cycle || var0.sequence == -1 || var0.sequenceDelay != 0;
+				if (!var11) {
+					var12 = class216.SequenceDefinition_get(var0.sequence);
+					if (var12 != null && !var12.method4020()) {
+						var11 = var0.sequenceFrameCycle + 1 > var12.frameLengths[var0.sequenceFrame];
 					} else {
-						String[] var18 = var17.actions;
-						if (var18 != null) {
-							for (int var19 = 4; var19 >= 0; --var19) {
-								if (var18[var19] != null) {
-									short var20 = 0;
-									if (var19 == 0) {
-										var20 = 3;
-									}
+						var11 = true;
+					}
+				}
 
-									if (var19 == 1) {
-										var20 = 4;
-									}
+				if (var11) {
+					var3 = var0.field1234 - var0.field1233;
+					var4 = Client.cycle - var0.field1233;
+					var5 = var0.field1196 * 128 + var0.field1181 * 64;
+					int var13 = var0.field1185 * 128 + var0.field1181 * 64;
+					var7 = var0.field1230 * 128 + var0.field1181 * 64;
+					var8 = var0.field1213 * 128 + var0.field1181 * 64;
+					var0.x = (var7 * var4 + var5 * (var3 - var4)) / var3;
+					var0.y = (var8 * var4 + var13 * (var3 - var4)) / var3;
+				}
 
-									if (var19 == 2) {
-										var20 = 5;
-									}
+				var0.field1239 = 0;
+				var0.orientation = var0.field1235;
+				var0.rotation = var0.orientation;
+			} else {
+				var0.movementSequence = var0.idleSequence;
+				if (var0.pathLength == 0) {
+					var0.field1239 = 0;
+				} else {
+					label621: {
+						if (var0.sequence != -1 && var0.sequenceDelay == 0) {
+							var2 = class216.SequenceDefinition_get(var0.sequence);
+							if (var0.field1252 > 0 && var2.field2290 == 0) {
+								++var0.field1239;
+								break label621;
+							}
 
-									if (var19 == 3) {
-										var20 = 6;
-									}
+							if (var0.field1252 <= 0 && var2.field2284 == 0) {
+								++var0.field1239;
+								break label621;
+							}
+						}
 
-									if (var19 == 4) {
-										var20 = 1001;
-									}
+						var14 = var0.x;
+						var3 = var0.y;
+						var4 = var0.pathX[var0.pathLength - 1] * 128 + var0.field1181 * 64;
+						var5 = var0.pathY[var0.pathLength - 1] * 128 + var0.field1181 * 64;
+						if (var14 < var4) {
+							if (var3 < var5) {
+								var0.orientation = 1280;
+							} else if (var3 > var5) {
+								var0.orientation = 1792;
+							} else {
+								var0.orientation = 1536;
+							}
+						} else if (var14 > var4) {
+							if (var3 < var5) {
+								var0.orientation = 768;
+							} else if (var3 > var5) {
+								var0.orientation = 256;
+							} else {
+								var0.orientation = 512;
+							}
+						} else if (var3 < var5) {
+							var0.orientation = 1024;
+						} else if (var3 > var5) {
+							var0.orientation = 0;
+						}
 
-									class11.insertMenuItemNoShift(var18[var19], UserComparator5.colorStartTag(65535) + var17.name, var20, var16, var25, var13);
+						class204 var6 = var0.pathTraversed[var0.pathLength - 1];
+						if (var4 - var14 <= 256 && var4 - var14 >= -256 && var5 - var3 <= 256 && var5 - var3 >= -256) {
+							var7 = var0.orientation - var0.rotation & 2047;
+							if (var7 > 1024) {
+								var7 -= 2048;
+							}
+
+							var8 = var0.walkBackSequence;
+							if (var7 >= -256 && var7 <= 256) {
+								var8 = var0.walkSequence;
+							} else if (var7 >= 256 && var7 < 768) {
+								var8 = var0.walkRightSequence;
+							} else if (var7 >= -768 && var7 <= -256) {
+								var8 = var0.walkLeftSequence;
+							}
+
+							if (var8 == -1) {
+								var8 = var0.walkSequence;
+							}
+
+							var0.movementSequence = var8;
+							int var9 = 4;
+							boolean var10 = true;
+							if (var0 instanceof NPC) {
+								var10 = ((NPC)var0).definition.isClickable;
+							}
+
+							if (var10) {
+								if (var0.rotation != var0.orientation && var0.targetIndex == -1 && var0.field1249 != 0) {
+									var9 = 2;
 								}
-							}
-						}
 
-						class11.insertMenuItemNoShift("Examine", UserComparator5.colorStartTag(65535) + var17.name, 1002, var17.id, var25, var13);
-					}
-				}
+								if (var0.pathLength > 2) {
+									var9 = 6;
+								}
 
-				Player var21;
-				int var27;
-				NPC var28;
-				int var35;
-				int[] var36;
-				if (var26 == 1) {
-					NPC var31 = Client.npcs[var16];
-					if (var31 == null) {
-						continue;
-					}
+								if (var0.pathLength > 3) {
+									var9 = 8;
+								}
 
-					if (var31.definition.size == 1 && (var31.x & 127) == 64 && (var31.y & 127) == 64) {
-						for (var27 = 0; var27 < Client.npcCount; ++var27) {
-							var28 = Client.npcs[Client.npcIndices[var27]];
-							if (var28 != null && var28 != var31 && var28.definition.size == 1 && var31.x == var28.x && var28.y == var31.y) {
-								GrandExchangeOfferAgeComparator.addNpcToMenu(var28, Client.npcIndices[var27], var25, var13);
-							}
-						}
-
-						var27 = Players.Players_count;
-						var36 = Players.Players_indices;
-
-						for (var35 = 0; var35 < var27; ++var35) {
-							var21 = Client.players[var36[var35]];
-							if (var21 != null && var31.x == var21.x && var21.y == var31.y) {
-								class233.addPlayerToMenu(var21, var36[var35], var25, var13);
-							}
-						}
-					}
-
-					GrandExchangeOfferAgeComparator.addNpcToMenu(var31, var16, var25, var13);
-				}
-
-				if (var26 == 0) {
-					Player var32 = Client.players[var16];
-					if (var32 == null) {
-						continue;
-					}
-
-					if ((var32.x & 127) == 64 && (var32.y & 127) == 64) {
-						for (var27 = 0; var27 < Client.npcCount; ++var27) {
-							var28 = Client.npcs[Client.npcIndices[var27]];
-							if (var28 != null && var28.definition.size == 1 && var32.x == var28.x && var32.y == var28.y) {
-								GrandExchangeOfferAgeComparator.addNpcToMenu(var28, Client.npcIndices[var27], var25, var13);
-							}
-						}
-
-						var27 = Players.Players_count;
-						var36 = Players.Players_indices;
-
-						for (var35 = 0; var35 < var27; ++var35) {
-							var21 = Client.players[var36[var35]];
-							if (var21 != null && var32 != var21 && var21.x == var32.x && var21.y == var32.y) {
-								class233.addPlayerToMenu(var21, var36[var35], var25, var13);
-							}
-						}
-					}
-
-					if (var16 != Client.combatTargetPlayerIndex) {
-						class233.addPlayerToMenu(var32, var16, var25, var13);
-					} else {
-						var4 = var23;
-					}
-				}
-
-				if (var26 == 3) {
-					NodeDeque var34 = Client.groundItems[class20.Client_plane][var25][var13];
-					if (var34 != null) {
-						for (TileItem var33 = (TileItem)var34.first(); var33 != null; var33 = (TileItem)var34.next()) {
-							ItemComposition var37 = UserComparator6.ItemDefinition_get(var33.id);
-							if (Client.isItemSelected == 1) {
-								class11.insertMenuItemNoShift("Use", Client.selectedItemName + " " + "->" + " " + UserComparator5.colorStartTag(16748608) + var37.name, 16, var33.id, var25, var13);
-							} else if (Client.isSpellSelected) {
-								if ((class91.selectedSpellFlags & 1) == 1) {
-									class11.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + UserComparator5.colorStartTag(16748608) + var37.name, 17, var33.id, var25, var13);
+								if (var0.field1239 > 0 && var0.pathLength > 1) {
+									var9 = 8;
+									--var0.field1239;
 								}
 							} else {
-								String[] var29 = var37.groundActions;
+								if (var0.pathLength > 1) {
+									var9 = 6;
+								}
 
-								for (int var30 = 4; var30 >= 0; --var30) {
-									if (var29 != null && var29[var30] != null) {
-										byte var22 = 0;
-										if (var30 == 0) {
-											var22 = 18;
-										}
+								if (var0.pathLength > 2) {
+									var9 = 8;
+								}
 
-										if (var30 == 1) {
-											var22 = 19;
-										}
+								if (var0.field1239 > 0 && var0.pathLength > 1) {
+									var9 = 8;
+									--var0.field1239;
+								}
+							}
 
-										if (var30 == 2) {
-											var22 = 20;
-										}
+							if (var6 == class204.field2357) {
+								var9 <<= 1;
+							} else if (var6 == class204.field2356) {
+								var9 >>= 1;
+							}
 
-										if (var30 == 3) {
-											var22 = 21;
-										}
+							if (var9 >= 8) {
+								if (var0.movementSequence == var0.walkSequence && var0.runSequence != -1) {
+									var0.movementSequence = var0.runSequence;
+								} else if (var0.movementSequence == var0.walkBackSequence && var0.field1191 != -1) {
+									var0.movementSequence = var0.field1191;
+								} else if (var0.walkLeftSequence == var0.movementSequence && var0.field1201 != -1) {
+									var0.movementSequence = var0.field1201;
+								} else if (var0.walkRightSequence == var0.movementSequence && var0.field1193 != -1) {
+									var0.movementSequence = var0.field1193;
+								}
+							} else if (var9 <= 1) {
+								if (var0.walkSequence == var0.movementSequence && var0.field1194 != -1) {
+									var0.movementSequence = var0.field1194;
+								} else if (var0.movementSequence == var0.walkBackSequence && var0.field1195 != -1) {
+									var0.movementSequence = var0.field1195;
+								} else if (var0.movementSequence == var0.walkLeftSequence && var0.field1226 != -1) {
+									var0.movementSequence = var0.field1226;
+								} else if (var0.movementSequence == var0.walkRightSequence && var0.field1197 != -1) {
+									var0.movementSequence = var0.field1197;
+								}
+							}
 
-										if (var30 == 4) {
-											var22 = 22;
-										}
-
-										class11.insertMenuItemNoShift(var29[var30], UserComparator5.colorStartTag(16748608) + var37.name, var22, var33.id, var25, var13);
-									} else if (var30 == 2) {
-										class11.insertMenuItemNoShift("Take", UserComparator5.colorStartTag(16748608) + var37.name, 20, var33.id, var25, var13);
+							if (var4 != var14 || var3 != var5) {
+								if (var14 < var4) {
+									var0.x += var9;
+									if (var0.x > var4) {
+										var0.x = var4;
+									}
+								} else if (var14 > var4) {
+									var0.x -= var9;
+									if (var0.x < var4) {
+										var0.x = var4;
 									}
 								}
 
-								class11.insertMenuItemNoShift("Examine", UserComparator5.colorStartTag(16748608) + var37.name, 1004, var33.id, var25, var13);
+								if (var3 < var5) {
+									var0.y += var9;
+									if (var0.y > var5) {
+										var0.y = var5;
+									}
+								} else if (var3 > var5) {
+									var0.y -= var9;
+									if (var0.y < var5) {
+										var0.y = var5;
+									}
+								}
+							}
+
+							if (var4 == var0.x && var5 == var0.y) {
+								--var0.pathLength;
+								if (var0.field1252 > 0) {
+									--var0.field1252;
+								}
+							}
+						} else {
+							var0.x = var4;
+							var0.y = var5;
+							--var0.pathLength;
+							if (var0.field1252 > 0) {
+								--var0.field1252;
 							}
 						}
 					}
@@ -241,12 +276,195 @@ public final class GroundObject
 			}
 		}
 
-		if (-1L != var4) {
-			var8 = MouseRecorder.method2159(var4);
-			int var9 = (int)(var4 >>> 7 & 127L);
-			Player var11 = Client.players[Client.combatTargetPlayerIndex];
-			class233.addPlayerToMenu(var11, Client.combatTargetPlayerIndex, var8, var9);
+		if (var0.x < 128 || var0.y < 128 || var0.x >= 13184 || var0.y >= 13184) {
+			var0.sequence = -1;
+			var0.spotAnimation = -1;
+			var0.field1233 = 0;
+			var0.field1234 = 0;
+			var0.x = var0.pathX[0] * 128 + var0.field1181 * 64;
+			var0.y = var0.pathY[0] * 128 + var0.field1181 * 64;
+			var0.method2348();
 		}
 
+		if (class155.localPlayer == var0 && (var0.x < 1536 || var0.y < 1536 || var0.x >= 11776 || var0.y >= 11776)) {
+			var0.sequence = -1;
+			var0.spotAnimation = -1;
+			var0.field1233 = 0;
+			var0.field1234 = 0;
+			var0.x = var0.pathX[0] * 128 + var0.field1181 * 64;
+			var0.y = var0.pathY[0] * 128 + var0.field1181 * 64;
+			var0.method2348();
+		}
+
+		FriendSystem.method1862(var0);
+		var0.isWalking = false;
+		if (var0.movementSequence != -1) {
+			var2 = class216.SequenceDefinition_get(var0.movementSequence);
+			if (var2 != null) {
+				if (!var2.method4020() && var2.frameIds != null) {
+					++var0.movementFrameCycle;
+					if (var0.movementFrame < var2.frameIds.length && var0.movementFrameCycle > var2.frameLengths[var0.movementFrame]) {
+						var0.movementFrameCycle = 1;
+						++var0.movementFrame;
+						FriendsChatManager.method7459(var2, var0.movementFrame, var0.x, var0.y);
+					}
+
+					if (var0.movementFrame >= var2.frameIds.length) {
+						if (var2.frameCount > 0) {
+							var0.movementFrame -= var2.frameCount;
+							if (var2.field2298) {
+								++var0.field1218;
+							}
+
+							if (var0.movementFrame < 0 || var0.movementFrame >= var2.frameIds.length || var2.field2298 && var0.field1218 >= var2.field2301) {
+								var0.movementFrameCycle = 0;
+								var0.movementFrame = 0;
+								var0.field1218 = 0;
+							}
+						} else {
+							var0.movementFrameCycle = 0;
+							var0.movementFrame = 0;
+						}
+
+						FriendsChatManager.method7459(var2, var0.movementFrame, var0.x, var0.y);
+					}
+				} else if (var2.method4020()) {
+					++var0.movementFrame;
+					var3 = var2.method4024();
+					if (var0.movementFrame < var3) {
+						class20.method293(var2, var0.movementFrame, var0.x, var0.y);
+					} else {
+						if (var2.frameCount > 0) {
+							var0.movementFrame -= var2.frameCount;
+							if (var2.field2298) {
+								++var0.field1218;
+							}
+
+							if (var0.movementFrame < 0 || var0.movementFrame >= var3 || var2.field2298 && var0.field1218 >= var2.field2301) {
+								var0.movementFrame = 0;
+								var0.movementFrameCycle = 0;
+								var0.field1218 = 0;
+							}
+						} else {
+							var0.movementFrameCycle = 0;
+							var0.movementFrame = 0;
+						}
+
+						class20.method293(var2, var0.movementFrame, var0.x, var0.y);
+					}
+				} else {
+					var0.movementSequence = -1;
+				}
+			} else {
+				var0.movementSequence = -1;
+			}
+		}
+
+		if (var0.spotAnimation != -1 && Client.cycle >= var0.field1227) {
+			if (var0.spotAnimationFrame < 0) {
+				var0.spotAnimationFrame = 0;
+			}
+
+			var14 = ClanSettings.SpotAnimationDefinition_get(var0.spotAnimation).sequence;
+			if (var14 != -1) {
+				var12 = class216.SequenceDefinition_get(var14);
+				if (var12 != null && var12.frameIds != null && !var12.method4020()) {
+					++var0.field1214;
+					if (var0.spotAnimationFrame < var12.frameIds.length && var0.field1214 > var12.frameLengths[var0.spotAnimationFrame]) {
+						var0.field1214 = 1;
+						++var0.spotAnimationFrame;
+						FriendsChatManager.method7459(var12, var0.spotAnimationFrame, var0.x, var0.y);
+					}
+
+					if (var0.spotAnimationFrame >= var12.frameIds.length && (var0.spotAnimationFrame < 0 || var0.spotAnimationFrame >= var12.frameIds.length)) {
+						var0.spotAnimation = -1;
+					}
+				} else if (var12.method4020()) {
+					++var0.spotAnimationFrame;
+					var4 = var12.method4024();
+					if (var0.spotAnimationFrame < var4) {
+						class20.method293(var12, var0.spotAnimationFrame, var0.x, var0.y);
+					} else if (var0.spotAnimationFrame < 0 || var0.spotAnimationFrame >= var4) {
+						var0.spotAnimation = -1;
+					}
+				} else {
+					var0.spotAnimation = -1;
+				}
+			} else {
+				var0.spotAnimation = -1;
+			}
+		}
+
+		if (var0.sequence != -1 && var0.sequenceDelay <= 1) {
+			var2 = class216.SequenceDefinition_get(var0.sequence);
+			if (var2.field2290 == 1 && var0.field1252 > 0 && var0.field1233 <= Client.cycle && var0.field1234 < Client.cycle) {
+				var0.sequenceDelay = 1;
+				return;
+			}
+		}
+
+		if (var0.sequence != -1 && var0.sequenceDelay == 0) {
+			var2 = class216.SequenceDefinition_get(var0.sequence);
+			if (var2 == null) {
+				var0.sequence = -1;
+			} else if (!var2.method4020() && var2.frameIds != null) {
+				++var0.sequenceFrameCycle;
+				if (var0.sequenceFrame < var2.frameIds.length && var0.sequenceFrameCycle > var2.frameLengths[var0.sequenceFrame]) {
+					var0.sequenceFrameCycle = 1;
+					++var0.sequenceFrame;
+					FriendsChatManager.method7459(var2, var0.sequenceFrame, var0.x, var0.y);
+				}
+
+				if (var0.sequenceFrame >= var2.frameIds.length) {
+					var0.sequenceFrame -= var2.frameCount;
+					++var0.field1223;
+					if (var0.field1223 >= var2.field2301) {
+						var0.sequence = -1;
+					} else if (var0.sequenceFrame >= 0 && var0.sequenceFrame < var2.frameIds.length) {
+						FriendsChatManager.method7459(var2, var0.sequenceFrame, var0.x, var0.y);
+					} else {
+						var0.sequence = -1;
+					}
+				}
+
+				var0.isWalking = var2.field2281;
+			} else if (var2.method4020()) {
+				++var0.sequenceFrame;
+				var3 = var2.method4024();
+				if (var0.sequenceFrame < var3) {
+					class20.method293(var2, var0.sequenceFrame, var0.x, var0.y);
+				} else {
+					var0.sequenceFrame -= var2.frameCount;
+					++var0.field1223;
+					if (var0.field1223 >= var2.field2301) {
+						var0.sequence = -1;
+					} else if (var0.sequenceFrame >= 0 && var0.sequenceFrame < var3) {
+						class20.method293(var2, var0.sequenceFrame, var0.x, var0.y);
+					} else {
+						var0.sequence = -1;
+					}
+				}
+			} else {
+				var0.sequence = -1;
+			}
+		}
+
+		if (var0.sequenceDelay > 0) {
+			--var0.sequenceDelay;
+		}
+
+	}
+
+	@ObfuscatedName("jv")
+	@ObfuscatedSignature(
+		descriptor = "(III)Lgg;",
+		garbageValue = "1330231937"
+	)
+	static RouteStrategy method4298(int var0, int var1) {
+		Client.field805.approxDestinationX = var0;
+		Client.field805.approxDestinationY = var1;
+		Client.field805.approxDestinationSizeX = 1;
+		Client.field805.approxDestinationSizeY = 1;
+		return Client.field805;
 	}
 }

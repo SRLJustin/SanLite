@@ -3,111 +3,387 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("r")
-public class class9 implements MouseWheel {
-	@ObfuscatedName("c")
+@ObfuscatedName("b")
+public class class9 implements class345 {
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lr;"
+		descriptor = "Lb;"
 	)
-	static final class9 field37;
-	@ObfuscatedName("b")
+	public static final class9 field43;
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "Lr;"
+		descriptor = "Lb;"
 	)
-	public static final class9 field36;
-	@ObfuscatedName("p")
+	public static final class9 field33;
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lr;"
+		descriptor = "Lb;"
 	)
-	static final class9 field44;
+	static final class9 field42;
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "Lb;"
+	)
+	static final class9 field35;
 	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "Lr;"
+		descriptor = "Lb;"
 	)
-	static final class9 field38;
-	@ObfuscatedName("t")
+	static final class9 field36;
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "Lr;"
+		descriptor = "Lrx;"
 	)
-	static final class9 field39;
-	@ObfuscatedName("eu")
+	@Export("rightTitleSprite")
+	static SpritePixels rightTitleSprite;
+	@ObfuscatedName("bx")
+	static String field41;
+	@ObfuscatedName("er")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
+		descriptor = "Lln;"
 	)
-	@Export("archive1")
-	static Archive archive1;
-	@ObfuscatedName("s")
+	@Export("archive7")
+	static Archive archive7;
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -171712909
+		intValue = 1316615471
 	)
 	int field45;
-	@ObfuscatedName("j")
-	String field35;
-	@ObfuscatedName("w")
-	boolean field42;
-	@ObfuscatedName("n")
-	boolean field43;
+	@ObfuscatedName("f")
+	String field37;
+	@ObfuscatedName("r")
+	boolean field34;
+	@ObfuscatedName("u")
+	boolean field40;
 
 	static {
-		field37 = new class9(0, "POST", true, true);
-		field36 = new class9(1, "GET", true, false);
-		field44 = new class9(2, "PUT", false, true);
-		field38 = new class9(3, "PATCH", false, true);
-		field39 = new class9(4, "DELETE", false, true);
+		field43 = new class9(0, "POST", true, true);
+		field33 = new class9(1, "GET", true, false);
+		field42 = new class9(2, "PUT", false, true);
+		field35 = new class9(3, "PATCH", false, true);
+		field36 = new class9(4, "DELETE", false, true);
 	}
 
 	class9(int var1, String var2, boolean var3, boolean var4) {
 		this.field45 = var1;
-		this.field35 = var2;
-		this.field42 = var3;
-		this.field43 = var4;
+		this.field37 = var2;
+		this.field34 = var3;
+		this.field40 = var4;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "17"
+		descriptor = "(I)Z",
+		garbageValue = "2030872852"
 	)
-	boolean method85() {
-		return this.field42;
+	boolean method69() {
+		return this.field34;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "48"
+		garbageValue = "96"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.field45;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "1278274271"
+		garbageValue = "923368011"
 	)
-	String method100() {
-		return this.field35;
+	public String method70() {
+		return this.field37;
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1849660708"
+		descriptor = "(B)Z",
+		garbageValue = "12"
 	)
-	boolean method86() {
-		return this.field43;
+	boolean method71() {
+		return this.field40;
 	}
 
-	@ObfuscatedName("gz")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "29"
+		descriptor = "(II)Lqr;",
+		garbageValue = "2126474190"
 	)
-	static void method88() {
-		if (Client.renderSelf) {
-			Buddy.addPlayerToScene(class340.localPlayer, false);
+	public static class456 method82(int var0) {
+		int var1 = class454.field4866[var0];
+		if (var1 == 1) {
+			return class456.field4874;
+		} else if (var1 == 2) {
+			return class456.field4871;
+		} else {
+			return var1 == 3 ? class456.field4870 : null;
+		}
+	}
+
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "(IIB)V",
+		garbageValue = "6"
+	)
+	@Export("changeWorldSelectSorting")
+	static void changeWorldSelectSorting(int var0, int var1) {
+		int[] var2 = new int[4];
+		int[] var3 = new int[4];
+		var2[0] = var0;
+		var3[0] = var1;
+		int var4 = 1;
+
+		for (int var5 = 0; var5 < 4; ++var5) {
+			if (World.World_sortOption1[var5] != var0) {
+				var2[var4] = World.World_sortOption1[var5];
+				var3[var4] = World.World_sortOption2[var5];
+				++var4;
+			}
+		}
+
+		World.World_sortOption1 = var2;
+		World.World_sortOption2 = var3;
+		class420.sortWorlds(World.World_worlds, 0, World.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
+	}
+
+	@ObfuscatedName("b")
+	@ObfuscatedSignature(
+		descriptor = "(Lkd;IIIB)V",
+		garbageValue = "0"
+	)
+	@Export("Widget_setKeyRate")
+	static final void Widget_setKeyRate(Widget var0, int var1, int var2, int var3) {
+		if (var0.field3630 == null) {
+			throw new RuntimeException();
+		} else {
+			var0.field3630[var1] = var2;
+			var0.field3625[var1] = var3;
+		}
+	}
+
+	@ObfuscatedName("hz")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1971964072"
+	)
+	static final void method80() {
+		int var0;
+		int var1;
+		int var2;
+		int var3;
+		int var4;
+		int var5;
+		if (Client.oculusOrbState == 0) {
+			var0 = class155.localPlayer.x;
+			var1 = class155.localPlayer.y;
+			if (KeyHandler.oculusOrbFocalPointX - var0 < -500 || KeyHandler.oculusOrbFocalPointX - var0 > 500 || class14.oculusOrbFocalPointY - var1 < -500 || class14.oculusOrbFocalPointY - var1 > 500) {
+				KeyHandler.oculusOrbFocalPointX = var0;
+				class14.oculusOrbFocalPointY = var1;
+			}
+
+			if (var0 != KeyHandler.oculusOrbFocalPointX) {
+				KeyHandler.oculusOrbFocalPointX += (var0 - KeyHandler.oculusOrbFocalPointX) / 16;
+			}
+
+			if (var1 != class14.oculusOrbFocalPointY) {
+				class14.oculusOrbFocalPointY += (var1 - class14.oculusOrbFocalPointY) / 16;
+			}
+
+			var2 = KeyHandler.oculusOrbFocalPointX >> 7;
+			var3 = class14.oculusOrbFocalPointY >> 7;
+			var4 = SpotAnimationDefinition.getTileHeight(KeyHandler.oculusOrbFocalPointX, class14.oculusOrbFocalPointY, class383.Client_plane);
+			var5 = 0;
+			int var6;
+			if (var2 > 3 && var3 > 3 && var2 < 100 && var3 < 100) {
+				for (var6 = var2 - 4; var6 <= var2 + 4; ++var6) {
+					for (int var7 = var3 - 4; var7 <= var3 + 4; ++var7) {
+						int var8 = class383.Client_plane;
+						if (var8 < 3 && (Tiles.Tiles_renderFlags[1][var6][var7] & 2) == 2) {
+							++var8;
+						}
+
+						int var9 = var4 - Tiles.Tiles_heights[var8][var6][var7];
+						if (var9 > var5) {
+							var5 = var9;
+						}
+					}
+				}
+			}
+
+			var6 = var5 * 192;
+			if (var6 > 98048) {
+				var6 = 98048;
+			}
+
+			if (var6 < 32768) {
+				var6 = 32768;
+			}
+
+			if (var6 > Client.field604) {
+				Client.field604 += (var6 - Client.field604) / 24;
+			} else if (var6 < Client.field604) {
+				Client.field604 += (var6 - Client.field604) / 80;
+			}
+
+			ApproximateRouteStrategy.field498 = SpotAnimationDefinition.getTileHeight(class155.localPlayer.x, class155.localPlayer.y, class383.Client_plane) - Client.camFollowHeight;
+		} else if (Client.oculusOrbState == 1) {
+			if (Client.field529 && class155.localPlayer != null) {
+				var0 = class155.localPlayer.pathX[0];
+				var1 = class155.localPlayer.pathY[0];
+				if (var0 >= 0 && var1 >= 0 && var0 < 104 && var1 < 104) {
+					KeyHandler.oculusOrbFocalPointX = class155.localPlayer.x;
+					var2 = SpotAnimationDefinition.getTileHeight(class155.localPlayer.x, class155.localPlayer.y, class383.Client_plane) - Client.camFollowHeight;
+					if (var2 < ApproximateRouteStrategy.field498) {
+						ApproximateRouteStrategy.field498 = var2;
+					}
+
+					class14.oculusOrbFocalPointY = class155.localPlayer.y;
+					Client.field529 = false;
+				}
+			}
+
+			short var10 = -1;
+			if (Client.field747.method4106(33)) {
+				var10 = 0;
+			} else if (Client.field747.method4106(49)) {
+				var10 = 1024;
+			}
+
+			if (Client.field747.method4106(48)) {
+				if (var10 == 0) {
+					var10 = 1792;
+				} else if (var10 == 1024) {
+					var10 = 1280;
+				} else {
+					var10 = 1536;
+				}
+			} else if (Client.field747.method4106(50)) {
+				if (var10 == 0) {
+					var10 = 256;
+				} else if (var10 == 1024) {
+					var10 = 768;
+				} else {
+					var10 = 512;
+				}
+			}
+
+			byte var11 = 0;
+			if (Client.field747.method4106(35)) {
+				var11 = -1;
+			} else if (Client.field747.method4106(51)) {
+				var11 = 1;
+			}
+
+			var2 = 0;
+			if (var10 >= 0 || var11 != 0) {
+				var2 = Client.field747.method4106(81) ? Client.oculusOrbSlowedSpeed : Client.oculusOrbNormalSpeed;
+				var2 *= 16;
+				Client.field596 = var10;
+				Client.field597 = var11;
+			}
+
+			if (Client.field638 < var2) {
+				Client.field638 += var2 / 8;
+				if (Client.field638 > var2) {
+					Client.field638 = var2;
+				}
+			} else if (Client.field638 > var2) {
+				Client.field638 = Client.field638 * 9 / 10;
+			}
+
+			if (Client.field638 > 0) {
+				var3 = Client.field638 / 16;
+				if (Client.field596 >= 0) {
+					var0 = Client.field596 - class128.cameraYaw & 2047;
+					var4 = Rasterizer3D.Rasterizer3D_sine[var0];
+					var5 = Rasterizer3D.Rasterizer3D_cosine[var0];
+					KeyHandler.oculusOrbFocalPointX += var4 * var3 / 65536;
+					class14.oculusOrbFocalPointY += var5 * var3 / 65536;
+				}
+
+				if (Client.field597 != 0) {
+					ApproximateRouteStrategy.field498 += var3 * Client.field597;
+					if (ApproximateRouteStrategy.field498 > 0) {
+						ApproximateRouteStrategy.field498 = 0;
+					}
+				}
+			} else {
+				Client.field596 = -1;
+				Client.field597 = -1;
+			}
+
+			if (Client.field747.method4106(13)) {
+				Client.packetWriter.addNode(class136.getPacketBufferNode(ClientPacket.field3073, Client.packetWriter.isaacCipher));
+				Client.oculusOrbState = 0;
+			}
+		}
+
+		if (MouseHandler.MouseHandler_currentButton == 4 && SceneTilePaint.mouseCam) {
+			var0 = MouseHandler.MouseHandler_y - Client.field592;
+			Client.field663 = var0 * 2;
+			Client.field592 = var0 != -1 && var0 != 1 ? (Client.field592 + MouseHandler.MouseHandler_y) / 2 : MouseHandler.MouseHandler_y;
+			var1 = Client.field591 - MouseHandler.MouseHandler_x;
+			Client.field589 = var1 * 2;
+			Client.field591 = var1 != -1 && var1 != 1 ? (MouseHandler.MouseHandler_x + Client.field591) / 2 : MouseHandler.MouseHandler_x;
+		} else {
+			if (Client.field747.method4106(96)) {
+				Client.field589 += (-24 - Client.field589) / 2;
+			} else if (Client.field747.method4106(97)) {
+				Client.field589 += (24 - Client.field589) / 2;
+			} else {
+				Client.field589 /= 2;
+			}
+
+			if (Client.field747.method4106(98)) {
+				Client.field663 += (12 - Client.field663) / 2;
+			} else if (Client.field747.method4106(99)) {
+				Client.field663 += (-12 - Client.field663) / 2;
+			} else {
+				Client.field663 /= 2;
+			}
+
+			Client.field592 = MouseHandler.MouseHandler_y;
+			Client.field591 = MouseHandler.MouseHandler_x;
+		}
+
+		Client.camAngleY = Client.field589 / 2 + Client.camAngleY & 2047;
+		Client.camAngleX += Client.field663 / 2;
+		if (Client.camAngleX < 128) {
+			Client.camAngleX = 128;
+		}
+
+		if (Client.camAngleX > 383) {
+			Client.camAngleX = 383;
+		}
+
+	}
+
+	@ObfuscatedName("lo")
+	@ObfuscatedSignature(
+		descriptor = "(Lcx;ZB)V",
+		garbageValue = "93"
+	)
+	@Export("closeInterface")
+	static final void closeInterface(InterfaceParent var0, boolean var1) {
+		int var2 = var0.group;
+		int var3 = (int)var0.key;
+		var0.remove();
+		if (var1) {
+			HitSplatDefinition.method3850(var2);
+		}
+
+		VarpDefinition.method3547(var2);
+		Widget var4 = class175.getWidget(var3);
+		if (var4 != null) {
+			class69.method2030(var4);
+		}
+
+		if (Client.rootInterface != -1) {
+			GrandExchangeOfferAgeComparator.runIntfCloseListeners(Client.rootInterface, 1);
 		}
 
 	}

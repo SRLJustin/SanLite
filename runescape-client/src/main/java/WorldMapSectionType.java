@@ -1,45 +1,47 @@
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("hv")
+@ObfuscatedName("im")
 @Implements("WorldMapSectionType")
-public enum WorldMapSectionType implements MouseWheel {
-	@ObfuscatedName("c")
+public enum WorldMapSectionType implements class345 {
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lhv;"
+		descriptor = "Lim;"
 	)
 	@Export("WORLDMAPSECTIONTYPE0")
-	WORLDMAPSECTIONTYPE0(1, (byte)0),
-	@ObfuscatedName("b")
+	WORLDMAPSECTIONTYPE0(2, (byte)0),
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "Lhv;"
+		descriptor = "Lim;"
 	)
 	@Export("WORLDMAPSECTIONTYPE1")
-	WORLDMAPSECTIONTYPE1(0, (byte)1),
-	@ObfuscatedName("p")
+	WORLDMAPSECTIONTYPE1(3, (byte)1),
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lhv;"
+		descriptor = "Lim;"
 	)
 	@Export("WORLDMAPSECTIONTYPE2")
-	WORLDMAPSECTIONTYPE2(3, (byte)2),
-	@ObfuscatedName("m")
+	WORLDMAPSECTIONTYPE2(0, (byte)2),
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "Lhv;"
+		descriptor = "Lim;"
 	)
 	@Export("WORLDMAPSECTIONTYPE3")
-	WORLDMAPSECTIONTYPE3(2, (byte)3);
+	WORLDMAPSECTIONTYPE3(1, (byte)3);
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -1872417907
+		intValue = -1816718813
 	)
 	@Export("type")
 	final int type;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@Export("id")
 	final byte id;
 
@@ -48,44 +50,123 @@ public enum WorldMapSectionType implements MouseWheel {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "48"
+		garbageValue = "96"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lhv;",
-		garbageValue = "-719396809"
+		descriptor = "(Lly;Lly;I)V",
+		garbageValue = "-414015759"
 	)
-	static WorldMapSectionType[] method4754() {
-		return new WorldMapSectionType[]{WORLDMAPSECTIONTYPE3, WORLDMAPSECTIONTYPE2, WORLDMAPSECTIONTYPE1, WORLDMAPSECTIONTYPE0};
+	public static void method5233(AbstractArchive var0, AbstractArchive var1) {
+		SpotAnimationDefinition.SpotAnimationDefinition_archive = var0;
+		SpotAnimationDefinition.SpotAnimationDefinition_modelArchive = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZS)I",
-		garbageValue = "4095"
+		descriptor = "(I)V",
+		garbageValue = "934969929"
 	)
-	static int method4756(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.LOGOUT) {
-			Client.logoutTimer = 250;
-			return 1;
-		} else if (var0 != 5631 && var0 != 5633) {
-			if (var0 == 5632) {
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 26;
-				return 1;
+	public static void method5237() {
+		try {
+			File var0 = new File(UserComparator3.userHomeDirectory, "random.dat");
+			int var2;
+			if (var0.exists()) {
+				JagexCache.JagexCache_randomDat = new BufferedFile(new AccessFile(var0, "rw", 25L), 24, 0);
 			} else {
-				return 2;
+				label38:
+				for (int var1 = 0; var1 < class89.cacheSubPaths.length; ++var1) {
+					for (var2 = 0; var2 < class121.cacheParentPaths.length; ++var2) {
+						File var3 = new File(class121.cacheParentPaths[var2] + class89.cacheSubPaths[var1] + File.separatorChar + "random.dat");
+						if (var3.exists()) {
+							JagexCache.JagexCache_randomDat = new BufferedFile(new AccessFile(var3, "rw", 25L), 24, 0);
+							break label38;
+						}
+					}
+				}
 			}
-		} else {
-			class13.Interpreter_stringStackSize -= 2;
-			return 1;
+
+			if (JagexCache.JagexCache_randomDat == null) {
+				RandomAccessFile var4 = new RandomAccessFile(var0, "rw");
+				var2 = var4.read();
+				var4.seek(0L);
+				var4.write(var2);
+				var4.seek(0L);
+				var4.close();
+				JagexCache.JagexCache_randomDat = new BufferedFile(new AccessFile(var0, "rw", 25L), 24, 0);
+			}
+		} catch (IOException var5) {
 		}
+
+	}
+
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(III)I",
+		garbageValue = "1437663571"
+	)
+	static final int method5234(int var0, int var1) {
+		if (var0 == -2) {
+			return 12345678;
+		} else if (var0 == -1) {
+			if (var1 < 2) {
+				var1 = 2;
+			} else if (var1 > 126) {
+				var1 = 126;
+			}
+
+			return var1;
+		} else {
+			var1 = (var0 & 127) * var1 / 128;
+			if (var1 < 2) {
+				var1 = 2;
+			} else if (var1 > 126) {
+				var1 = 126;
+			}
+
+			return (var0 & 65408) + var1;
+		}
+	}
+
+	@ObfuscatedName("ji")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-632900931"
+	)
+	static void method5230() {
+		Client.menuOptionsCount = 0;
+		Client.isMenuOpen = false;
+	}
+
+	@ObfuscatedName("lx")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1176729619"
+	)
+	static final void method5236() {
+		PacketBufferNode var0 = class136.getPacketBufferNode(ClientPacket.field3099, Client.packetWriter.isaacCipher);
+		Client.packetWriter.addNode(var0);
+		Interpreter.field868 = true;
+
+		for (InterfaceParent var1 = (InterfaceParent)Client.interfaceParents.first(); var1 != null; var1 = (InterfaceParent)Client.interfaceParents.next()) {
+			if (var1.type == 0 || var1.type == 3) {
+				class9.closeInterface(var1, true);
+			}
+		}
+
+		if (Client.meslayerContinueWidget != null) {
+			class69.method2030(Client.meslayerContinueWidget);
+			Client.meslayerContinueWidget = null;
+		}
+
+		Interpreter.field868 = false;
 	}
 }
