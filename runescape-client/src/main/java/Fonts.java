@@ -4,27 +4,27 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oh")
+@ObfuscatedName("pz")
 @Implements("Fonts")
 public class Fonts {
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Lly;"
 	)
 	@Export("spritesArchive")
 	AbstractArchive spritesArchive;
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Lly;"
 	)
 	@Export("fontsArchive")
 	AbstractArchive fontsArchive;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@Export("map")
 	HashMap map;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lku;Lku;)V"
+		descriptor = "(Lly;Lly;)V"
 	)
 	public Fonts(AbstractArchive var1, AbstractArchive var2) {
 		this.spritesArchive = var1;
@@ -32,10 +32,10 @@ public class Fonts {
 		this.map = new HashMap();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "([Lot;I)Ljava/util/HashMap;",
-		garbageValue = "700588236"
+		descriptor = "([Lpt;I)Ljava/util/HashMap;",
+		garbageValue = "-1014513679"
 	)
 	@Export("createMap")
 	public HashMap createMap(FontName[] var1) {
@@ -52,26 +52,10 @@ public class Fonts {
 				String var9 = var5.name;
 				int var10 = var7.getGroupId(var9);
 				int var11 = var7.getFileId(var10, "");
-				Font var12;
-				if (!class147.SpriteBuffer_loadSpritesFromArchive(var7, var10, var11)) {
-					var12 = null;
-				} else {
-					byte[] var14 = var8.takeFile(var10, var11);
-					Font var13;
-					if (var14 == null) {
-						var13 = null;
-					} else {
-						Font var15 = new Font(var14, class141.SpriteBuffer_xOffsets, RouteStrategy.SpriteBuffer_yOffsets, class432.SpriteBuffer_spriteWidths, class330.SpriteBuffer_spriteHeights, class432.SpriteBuffer_spritePalette, class369.SpriteBuffer_pixels);
-						UserComparator3.method2529();
-						var13 = var15;
-					}
-
-					var12 = var13;
-				}
-
-				if (var12 != null) {
-					this.map.put(var5, var12);
-					var2.put(var5, var12);
+				Font var6 = Timer.method7358(var7, var8, var10, var11);
+				if (var6 != null) {
+					this.map.put(var5, var6);
+					var2.put(var5, var6);
 				}
 			}
 		}
