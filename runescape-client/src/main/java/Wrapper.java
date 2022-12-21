@@ -2,10 +2,10 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("ie")
+@ObfuscatedName("jd")
 @Implements("Wrapper")
 public abstract class Wrapper extends DualNode {
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@Export("size")
 	final int size;
 
@@ -13,11 +13,11 @@ public abstract class Wrapper extends DualNode {
 		this.size = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@Export("get")
 	abstract Object get();
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@Export("isSoft")
 	abstract boolean isSoft();
 }

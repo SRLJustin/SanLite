@@ -1,44 +1,57 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@Deprecated
-@ObfuscatedName("kf")
-public final class class286 {
-	@ObfuscatedName("hm")
+@ObfuscatedName("kn")
+public class class286 {
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "[Lpl;"
+		descriptor = "Lly;"
 	)
-	@Export("headIconPkSprites")
-	static SpritePixels[] headIconPkSprites;
-
-	@ObfuscatedName("t")
+	@Export("musicPatchesArchive")
+	static AbstractArchive musicPatchesArchive;
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(IIIZIZI)V",
-		garbageValue = "2058183094"
+		descriptor = "Lly;"
 	)
-	@Export("doWorldSorting")
-	static void doWorldSorting(int var0, int var1, int var2, boolean var3, int var4, boolean var5) {
-		if (var0 < var1) {
-			int var6 = (var0 + var1) / 2;
-			int var7 = var0;
-			World var8 = class334.World_worlds[var6];
-			class334.World_worlds[var6] = class334.World_worlds[var1];
-			class334.World_worlds[var1] = var8;
+	@Export("musicSamplesArchive")
+	static AbstractArchive musicSamplesArchive;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Lly;"
+	)
+	@Export("soundEffectsArchive")
+	static AbstractArchive soundEffectsArchive;
+	@ObfuscatedName("m")
+	@ObfuscatedGetter(
+		intValue = -248283575
+	)
+	@Export("musicPlayerStatus")
+	public static int musicPlayerStatus;
+	@ObfuscatedName("q")
+	@Export("PcmPlayer_stereo")
+	public static boolean PcmPlayer_stereo;
+	@ObfuscatedName("r")
+	@ObfuscatedGetter(
+		intValue = -334824875
+	)
+	@Export("musicTrackFileId")
+	public static int musicTrackFileId;
+	@ObfuscatedName("b")
+	@ObfuscatedGetter(
+		intValue = 623704693
+	)
+	@Export("pcmSampleLength")
+	public static int pcmSampleLength;
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(
+		descriptor = "Lkc;"
+	)
+	@Export("musicTrack")
+	static MusicTrack musicTrack;
 
-			for (int var9 = var0; var9 < var1; ++var9) {
-				if (UserComparator4.method2506(class334.World_worlds[var9], var8, var2, var3, var4, var5) <= 0) {
-					World var10 = class334.World_worlds[var9];
-					class334.World_worlds[var9] = class334.World_worlds[var7];
-					class334.World_worlds[var7++] = var10;
-				}
-			}
-
-			class334.World_worlds[var1] = class334.World_worlds[var7];
-			class334.World_worlds[var7] = var8;
-			doWorldSorting(var0, var7 - 1, var2, var3, var4, var5);
-			doWorldSorting(var7 + 1, var1, var2, var3, var4, var5);
-		}
-
+	static {
+		musicPlayerStatus = 0;
 	}
 }

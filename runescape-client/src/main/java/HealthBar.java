@@ -1,42 +1,42 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cs")
+@ObfuscatedName("ce")
 @Implements("HealthBar")
 public class HealthBar extends Node {
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -1200843619
-	)
-	static int field1209;
-	@ObfuscatedName("p")
+	@ObfuscatedName("ex")
 	@ObfuscatedSignature(
-		descriptor = "Lfd;"
+		descriptor = "Lln;"
+	)
+	@Export("archive6")
+	static Archive archive6;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Lfw;"
 	)
 	@Export("definition")
 	HealthBarDefinition definition;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Lmv;"
 	)
 	@Export("updates")
 	IterableNodeDeque updates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfd;)V"
+		descriptor = "(Lfw;)V"
 	)
 	HealthBar(HealthBarDefinition var1) {
 		this.updates = new IterableNodeDeque();
 		this.definition = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "2125258753"
+		descriptor = "(IIIIS)V",
+		garbageValue = "-24757"
 	)
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
@@ -69,10 +69,10 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lcn;",
-		garbageValue = "849241629"
+		descriptor = "(II)Lcu;",
+		garbageValue = "-1494424352"
 	)
 	@Export("get")
 	HealthBarUpdate get(int var1) {
@@ -83,7 +83,7 @@ public class HealthBar extends Node {
 				var2 = var3;
 			}
 
-			if (this.definition.int5 + var2.cycle + var2.cycleOffset > var1) {
+			if (this.definition.int5 + var2.cycleOffset + var2.cycle > var1) {
 				return var2;
 			} else {
 				var2.remove();
@@ -94,61 +94,78 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "80"
+		descriptor = "(I)Z",
+		garbageValue = "-1047690816"
 	)
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method5915();
+		return this.updates.method6774();
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(Lly;I)V",
+		garbageValue = "784434833"
+	)
+	public static void method2528(AbstractArchive var0) {
+		ParamComposition.ParamDefinition_archive = var0;
+	}
+
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "2114195084"
+		garbageValue = "-8692175"
 	)
-	static void method2311() {
-		if (Login.Login_username == null || Login.Login_username.length() <= 0) {
-			if (SecureRandomFuture.clientPreferences.rememberedUsername != null) {
-				Login.Login_username = SecureRandomFuture.clientPreferences.rememberedUsername;
-				Client.Login_isUsernameRemembered = true;
-			} else {
-				Client.Login_isUsernameRemembered = false;
+	static void method2526() {
+		for (ObjectSound var0 = (ObjectSound)ObjectSound.objectSounds.last(); var0 != null; var0 = (ObjectSound)ObjectSound.objectSounds.previous()) {
+			if (var0.obj != null) {
+				var0.set();
 			}
-
 		}
+
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(CI)C",
-		garbageValue = "2115145690"
+		descriptor = "(CII)Ljava/lang/String;",
+		garbageValue = "1267412510"
 	)
-	static char method2313(char var0) {
-		return var0 != 181 && var0 != 402 ? Character.toTitleCase(var0) : var0;
+	static String method2525(char var0, int var1) {
+		char[] var2 = new char[var1];
+
+		for (int var3 = 0; var3 < var1; ++var3) {
+			var2[var3] = var0;
+		}
+
+		return new String(var2);
 	}
 
-	@ObfuscatedName("iq")
+	@ObfuscatedName("ke")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "517043711"
+		descriptor = "(IIIIIIIII)V",
+		garbageValue = "824026775"
 	)
-	@Export("Widget_runOnTargetLeave")
-	static void Widget_runOnTargetLeave() {
-		if (Client.isSpellSelected) {
-			Widget var0 = class126.getWidgetChild(class20.selectedSpellWidget, Client.selectedSpellChildIndex);
-			if (var0 != null && var0.onTargetLeave != null) {
-				ScriptEvent var1 = new ScriptEvent();
-				var1.widget = var0;
-				var1.args = var0.onTargetLeave;
-				class285.runScriptEvent(var1);
+	@Export("drawWidgets")
+	static final void drawWidgets(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+		if (Players.loadInterface(var0)) {
+			MouseHandler.field268 = null;
+			class34.drawInterface(class71.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6, var7);
+			if (MouseHandler.field268 != null) {
+				class34.drawInterface(MouseHandler.field268, -1412584499, var1, var2, var3, var4, class142.field1691, HealthBarDefinition.field1989, var7);
+				MouseHandler.field268 = null;
 			}
 
-			Client.field633 = -1;
-			Client.isSpellSelected = false;
-			SecureRandomCallable.invalidateWidget(var0);
+		} else {
+			if (var7 != -1) {
+				Client.field731[var7] = true;
+			} else {
+				for (int var8 = 0; var8 < 100; ++var8) {
+					Client.field731[var8] = true;
+				}
+			}
+
 		}
 	}
 }

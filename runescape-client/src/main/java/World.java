@@ -4,72 +4,72 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bw")
+@ObfuscatedName("bz")
 @Implements("World")
 public class World {
-	@ObfuscatedName("s")
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "[Lbz;"
+	)
+	@Export("World_worlds")
+	static World[] World_worlds;
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 63855855
+		intValue = -1789792685
 	)
 	@Export("World_count")
 	static int World_count;
-	@ObfuscatedName("j")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -951276337
+		intValue = 1216377021
 	)
 	@Export("World_listCount")
 	static int World_listCount;
-	@ObfuscatedName("w")
+	@ObfuscatedName("r")
 	@Export("World_sortOption2")
 	static int[] World_sortOption2;
-	@ObfuscatedName("n")
+	@ObfuscatedName("u")
 	@Export("World_sortOption1")
 	static int[] World_sortOption1;
-	@ObfuscatedName("k")
-	@Export("ByteArrayPool_arrays")
-	public static byte[][][] ByteArrayPool_arrays;
-	@ObfuscatedName("ai")
-	@Export("hasFocus")
-	protected static boolean hasFocus;
-	@ObfuscatedName("ip")
+	@ObfuscatedName("ig")
 	@ObfuscatedSignature(
-		descriptor = "[Lpa;"
+		descriptor = "[Lrx;"
 	)
-	@Export("modIconSprites")
-	static IndexedSprite[] modIconSprites;
-	@ObfuscatedName("o")
+	@Export("headIconPkSprites")
+	static SpritePixels[] headIconPkSprites;
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 402163899
+		intValue = -944957609
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("v")
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = 967201023
+		intValue = -1208284293
 	)
 	@Export("properties")
 	int properties;
-	@ObfuscatedName("d")
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = 1525969609
+		intValue = -512350001
 	)
 	@Export("population")
 	int population;
-	@ObfuscatedName("h")
+	@ObfuscatedName("o")
 	@Export("host")
 	String host;
-	@ObfuscatedName("g")
+	@ObfuscatedName("n")
 	@Export("activity")
 	String activity;
-	@ObfuscatedName("e")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -102724797
+		intValue = 2095420555
 	)
 	@Export("location")
 	int location;
 	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = 742286855
+		intValue = 1217896967
 	)
 	@Export("index")
 	int index;
@@ -84,105 +84,126 @@ public class World {
 	World() {
 	}
 
-	@ObfuscatedName("r")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "16"
+		descriptor = "(I)Z",
+		garbageValue = "475623933"
 	)
 	@Export("isMembersOnly")
 	boolean isMembersOnly() {
 		return (1 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-624791914"
+		garbageValue = "-2088011917"
 	)
-	boolean method1696() {
+	boolean method1785() {
 		return (2 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1709463484"
+		descriptor = "(B)Z",
+		garbageValue = "80"
 	)
 	@Export("isPvp")
 	boolean isPvp() {
 		return (4 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("d")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-1754892594"
+		garbageValue = "1129666838"
 	)
-	boolean method1676() {
+	boolean method1748() {
 		return (8 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-24"
+		descriptor = "(I)Z",
+		garbageValue = "-1842559739"
 	)
 	@Export("isDeadman")
 	boolean isDeadman() {
 		return (536870912 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("g")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-126940607"
+		garbageValue = "1891731193"
 	)
 	@Export("isBeta")
 	boolean isBeta() {
 		return (33554432 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("e")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "-98"
+		garbageValue = "7"
 	)
-	boolean method1679() {
+	boolean method1806() {
 		return (1073741824 & this.properties) != 0;
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(Ljm;I[B[BI)V",
-		garbageValue = "-1955457060"
+		descriptor = "(B)Z",
+		garbageValue = "19"
 	)
-	@Export("Widget_setKey")
-	static final void Widget_setKey(Widget var0, int var1, byte[] var2, byte[] var3) {
-		if (var0.field3300 == null) {
-			if (var2 == null) {
-				return;
-			}
+	boolean method1804() {
+		return (256 & this.properties) != 0;
+	}
 
-			var0.field3300 = new byte[11][];
-			var0.field3301 = new byte[11][];
-			var0.field3302 = new int[11];
-			var0.field3303 = new int[11];
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1936366564"
+	)
+	boolean method1753() {
+		return (134217728 & this.properties) != 0;
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "([Lme;II)Lme;",
+		garbageValue = "64778385"
+	)
+	@Export("findEnumerated")
+	public static class345 findEnumerated(class345[] var0, int var1) {
+		class345[] var2 = var0;
+
+		for (int var3 = 0; var3 < var2.length; ++var3) {
+			class345 var4 = var2[var3];
+			if (var1 == var4.rsOrdinal()) {
+				return var4;
+			}
 		}
 
-		var0.field3300[var1] = var2;
-		if (var2 != null) {
-			var0.field3299 = true;
-		} else {
-			var0.field3299 = false;
+		return null;
+	}
 
-			for (int var4 = 0; var4 < var0.field3300.length; ++var4) {
-				if (var0.field3300[var4] != null) {
-					var0.field3299 = true;
-					break;
-				}
-			}
-		}
-
-		var0.field3301[var1] = var3;
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(IIIB)I",
+		garbageValue = "100"
+	)
+	static final int method1801(int var0, int var1, int var2) {
+		int var3 = var0 / var2;
+		int var4 = var0 & var2 - 1;
+		int var5 = var1 / var2;
+		int var6 = var1 & var2 - 1;
+		int var7 = class143.method3131(var3, var5);
+		int var8 = class143.method3131(var3 + 1, var5);
+		int var9 = class143.method3131(var3, var5 + 1);
+		int var10 = class143.method3131(var3 + 1, var5 + 1);
+		int var11 = MouseHandler.method700(var7, var8, var4, var2);
+		int var12 = MouseHandler.method700(var9, var10, var4, var2);
+		return MouseHandler.method700(var11, var12, var6, var2);
 	}
 }
