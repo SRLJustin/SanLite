@@ -4,38 +4,36 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ju")
+@ObfuscatedName("ky")
 @Implements("Coord")
 public class Coord {
-	@ObfuscatedName("q")
-	@Export("operatingSystemName")
-	public static String operatingSystemName;
-	@ObfuscatedName("gu")
+	@ObfuscatedName("ju")
 	@ObfuscatedSignature(
-		descriptor = "Lmd;"
+		descriptor = "[Lra;"
 	)
-	static AbstractSocket field3186;
-	@ObfuscatedName("c")
+	@Export("modIconSprites")
+	static IndexedSprite[] modIconSprites;
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 2028633895
+		intValue = -606144137
 	)
 	@Export("plane")
 	public int plane;
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = -115571391
+		intValue = 453228853
 	)
 	@Export("x")
 	public int x;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -193761027
+		intValue = 141048333
 	)
 	@Export("y")
 	public int y;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lju;)V"
+		descriptor = "(Lky;)V"
 	)
 	public Coord(Coord var1) {
 		this.plane = var1.plane;
@@ -60,24 +58,20 @@ public class Coord {
 
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "844590476"
+		descriptor = "(B)I",
+		garbageValue = "15"
 	)
 	@Export("packed")
 	public int packed() {
-		int var2 = this.plane;
-		int var3 = this.x;
-		int var4 = this.y;
-		int var1 = var2 << 28 | var3 << 14 | var4;
-		return var1;
+		return class140.method3104(this.plane, this.x, this.y);
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lju;B)Z",
-		garbageValue = "-21"
+		descriptor = "(Lky;I)Z",
+		garbageValue = "-2001881010"
 	)
 	@Export("equalsCoord")
 	boolean equalsCoord(Coord var1) {
@@ -90,14 +84,18 @@ public class Coord {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
-		garbageValue = "1213799253"
+		descriptor = "(Ljava/lang/String;B)Ljava/lang/String;",
+		garbageValue = "4"
 	)
 	@Export("toString")
 	String toString(String var1) {
 		return this.plane + var1 + (this.x >> 6) + var1 + (this.y >> 6) + var1 + (this.x & 63) + var1 + (this.y & 63);
+	}
+
+	public int hashCode() {
+		return this.packed();
 	}
 
 	public String toString() {
@@ -110,9 +108,5 @@ public class Coord {
 		} else {
 			return !(var1 instanceof Coord) ? false : this.equalsCoord((Coord)var1);
 		}
-	}
-
-	public int hashCode() {
-		return this.packed();
 	}
 }

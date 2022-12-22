@@ -4,24 +4,24 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gh")
+@ObfuscatedName("hz")
 @Implements("FaceNormal")
 public class FaceNormal {
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -38617703
+		intValue = -1593342669
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = -1161789305
+		intValue = -2131754663
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1924631327
+		intValue = 1522131961
 	)
 	@Export("z")
 	int z;
@@ -29,38 +29,48 @@ public class FaceNormal {
 	FaceNormal() {
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "37"
+		descriptor = "(Ljava/lang/String;B)I",
+		garbageValue = "10"
 	)
-	public static int method4142(int var0, int var1) {
-		int var2 = var0 >>> 31;
-		return (var0 + var2) / var1 - var2;
+	public static int method4618(String var0) {
+		return var0.length() + 2;
 	}
 
-	@ObfuscatedName("hr")
+	@ObfuscatedName("gc")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "-2015271850"
+		descriptor = "(I)V",
+		garbageValue = "1404253299"
 	)
-	@Export("getTileHeight")
-	static final int getTileHeight(int var0, int var1, int var2) {
-		int var3 = var0 >> 7;
-		int var4 = var1 >> 7;
-		if (var3 >= 0 && var4 >= 0 && var3 <= 103 && var4 <= 103) {
-			int var5 = var2;
-			if (var2 < 3 && (Tiles.Tiles_renderFlags[1][var3][var4] & 2) == 2) {
-				var5 = var2 + 1;
-			}
-
-			int var6 = var0 & 127;
-			int var7 = var1 & 127;
-			int var8 = (128 - var6) * Tiles.Tiles_heights[var5][var3][var4] + var6 * Tiles.Tiles_heights[var5][var3 + 1][var4] >> 7;
-			int var9 = var6 * Tiles.Tiles_heights[var5][var3 + 1][var4 + 1] + Tiles.Tiles_heights[var5][var3][var4 + 1] * (128 - var6) >> 7;
-			return var8 * (128 - var7) + var9 * var7 >> 7;
+	static final void method4619() {
+		if (Client.logoutTimer > 0) {
+			Player.method2331();
 		} else {
-			return 0;
+			Client.timer.method7330();
+			class140.method3102(40);
+			class14.field83 = Client.packetWriter.getSocket();
+			Client.packetWriter.removeSocket();
+		}
+	}
+
+	@ObfuscatedName("mu")
+	@ObfuscatedSignature(
+		descriptor = "(IIZI)V",
+		garbageValue = "739721891"
+	)
+	static final void method4620(int var0, int var1, boolean var2) {
+		if (Client.currentClanChannels[var0] != null) {
+			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3312()) {
+				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
+				PacketBufferNode var4 = class136.getPacketBufferNode(ClientPacket.field3078, Client.packetWriter.isaacCipher);
+				var4.packetBuffer.writeByte(4 + class13.stringCp1252NullTerminatedByteSize(var3.username.getName()));
+				var4.packetBuffer.writeByte(var0);
+				var4.packetBuffer.writeShort(var1);
+				var4.packetBuffer.writeBoolean(var2);
+				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName());
+				Client.packetWriter.addNode(var4);
+			}
 		}
 	}
 }

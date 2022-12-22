@@ -5,91 +5,85 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ch")
+@ObfuscatedName("de")
 @Implements("PacketWriter")
 public class PacketWriter {
-	@ObfuscatedName("rp")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lar;"
-	)
-	@Export("pcmPlayer1")
-	static PcmPlayer pcmPlayer1;
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lmd;"
+		descriptor = "Lou;"
 	)
 	@Export("socket")
 	AbstractSocket socket;
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Lmv;"
 	)
 	@Export("packetBufferNodes")
 	IterableNodeDeque packetBufferNodes;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -1266642989
+		intValue = -1512304017
 	)
 	@Export("bufferSize")
 	int bufferSize;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "Lpi;"
+		descriptor = "Lqy;"
 	)
 	@Export("buffer")
 	Buffer buffer;
-	@ObfuscatedName("t")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "Lph;"
+		descriptor = "Lrg;"
 	)
 	@Export("isaacCipher")
 	public IsaacCipher isaacCipher;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lpj;"
+		descriptor = "Lqx;"
 	)
 	@Export("packetBuffer")
 	PacketBuffer packetBuffer;
-	@ObfuscatedName("j")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljf;"
 	)
 	@Export("serverPacket")
 	ServerPacket serverPacket;
-	@ObfuscatedName("w")
+	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = 594259629
+		intValue = 395481445
 	)
 	@Export("serverPacketLength")
 	int serverPacketLength;
-	@ObfuscatedName("n")
-	boolean field1278;
-	@ObfuscatedName("r")
+	@ObfuscatedName("u")
+	boolean field1430;
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = 1553002221
+		intValue = -562413973
 	)
-	int field1287;
-	@ObfuscatedName("o")
+	int field1420;
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 1843561553
+		intValue = -1673559747
 	)
 	@Export("pendingWrites")
 	int pendingWrites;
-	@ObfuscatedName("v")
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljf;"
 	)
-	ServerPacket field1289;
-	@ObfuscatedName("d")
+	ServerPacket field1431;
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljf;"
 	)
-	ServerPacket field1290;
-	@ObfuscatedName("h")
+	ServerPacket field1432;
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Lix;"
+		descriptor = "Ljf;"
 	)
-	ServerPacket field1291;
+	ServerPacket field1433;
 
 	PacketWriter() {
 		this.packetBufferNodes = new IterableNodeDeque();
@@ -98,15 +92,15 @@ public class PacketWriter {
 		this.packetBuffer = new PacketBuffer(40000);
 		this.serverPacket = null;
 		this.serverPacketLength = 0;
-		this.field1278 = true;
-		this.field1287 = 0;
+		this.field1430 = true;
+		this.field1420 = 0;
 		this.pendingWrites = 0;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "750502280"
+		garbageValue = "1102121791"
 	)
 	@Export("clearBuffer")
 	final void clearBuffer() {
@@ -114,10 +108,10 @@ public class PacketWriter {
 		this.bufferSize = 0;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-148495881"
+		garbageValue = "1736028032"
 	)
 	@Export("flush")
 	final void flush() throws IOException {
@@ -142,10 +136,10 @@ public class PacketWriter {
 
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Liw;I)V",
-		garbageValue = "-1673237142"
+		descriptor = "(Ljx;S)V",
+		garbageValue = "21536"
 	)
 	@Export("addNode")
 	public final void addNode(PacketBufferNode var1) {
@@ -155,20 +149,20 @@ public class PacketWriter {
 		this.bufferSize += var1.index;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(Lmd;I)V",
-		garbageValue = "1972212609"
+		descriptor = "(Lou;B)V",
+		garbageValue = "41"
 	)
 	@Export("setSocket")
 	void setSocket(AbstractSocket var1) {
 		this.socket = var1;
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1419164143"
+		garbageValue = "-1012692446"
 	)
 	@Export("close")
 	void close() {
@@ -179,29 +173,73 @@ public class PacketWriter {
 
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1910470967"
+		garbageValue = "-1728539133"
 	)
 	@Export("removeSocket")
 	void removeSocket() {
 		this.socket = null;
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lmd;",
-		garbageValue = "305203979"
+		descriptor = "(B)Lou;",
+		garbageValue = "121"
 	)
 	@Export("getSocket")
 	AbstractSocket getSocket() {
 		return this.socket;
 	}
 
-	@ObfuscatedName("n")
-	@Export("Entity_unpackID")
-	public static int Entity_unpackID(long var0) {
-		return (int)(var0 >>> 17 & 4294967295L);
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(Lly;Lly;ZII)V",
+		garbageValue = "1924558705"
+	)
+	public static void method2741(AbstractArchive var0, AbstractArchive var1, boolean var2, int var3) {
+		NPCComposition.NpcDefinition_archive = var0;
+		class363.field4361 = var1;
+		GrandExchangeOfferUnitPriceComparator.field4275 = var2;
+		NPCComposition.field2022 = var3;
+	}
+
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "315974479"
+	)
+	@Export("Widget_unpackTargetMask")
+	public static int Widget_unpackTargetMask(int var0) {
+		return var0 >> 11 & 63;
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(III)I",
+		garbageValue = "1292831199"
+	)
+	public static int method2729(int var0, int var1) {
+		int var2;
+		for (var2 = 0; var1 > 0; --var1) {
+			var2 = var2 << 1 | var0 & 1;
+			var0 >>>= 1;
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "(II)Ljava/lang/String;",
+		garbageValue = "1918112547"
+	)
+	static final String method2742(int var0) {
+		if (var0 < 100000) {
+			return "<col=ffff00>" + var0 + "</col>";
+		} else {
+			return var0 < 10000000 ? "<col=ffffff>" + var0 / 1000 + "K" + "</col>" : "<col=00ff80>" + var0 / 1000000 + "M" + "</col>";
+		}
 	}
 }

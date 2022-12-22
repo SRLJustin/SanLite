@@ -6,28 +6,26 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ip")
+@ObfuscatedName("il")
 @Implements("WorldMapAreaData")
 public class WorldMapAreaData extends WorldMapArea {
-	@ObfuscatedName("fh")
-	static String field2772;
-	@ObfuscatedName("d")
+	@ObfuscatedName("i")
 	@Export("worldMapData0Set")
 	HashSet worldMapData0Set;
-	@ObfuscatedName("h")
+	@ObfuscatedName("o")
 	@Export("worldMapData1Set")
 	HashSet worldMapData1Set;
-	@ObfuscatedName("g")
+	@ObfuscatedName("n")
 	@Export("iconList")
 	List iconList;
 
 	WorldMapAreaData() {
 	}
 
-	@ObfuscatedName("bo")
+	@ObfuscatedName("bn")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;Lpi;IZI)V",
-		garbageValue = "-1001525208"
+		descriptor = "(Lqy;Lqy;IZI)V",
+		garbageValue = "-2083183142"
 	)
 	@Export("init")
 	void init(Buffer var1, Buffer var2, int var3, boolean var4) {
@@ -66,10 +64,10 @@ public class WorldMapAreaData extends WorldMapArea {
 		this.initIconsList(var2, var4);
 	}
 
-	@ObfuscatedName("bf")
+	@ObfuscatedName("ba")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;ZB)V",
-		garbageValue = "16"
+		descriptor = "(Lqy;ZB)V",
+		garbageValue = "31"
 	)
 	@Export("initIconsList")
 	void initIconsList(Buffer var1, boolean var2) {
@@ -77,7 +75,7 @@ public class WorldMapAreaData extends WorldMapArea {
 		int var3 = var1.readUnsignedShort();
 
 		for (int var4 = 0; var4 < var3; ++var4) {
-			int var5 = var1.method7400();
+			int var5 = var1.method8568();
 			Coord var6 = new Coord(var1.readInt());
 			boolean var7 = var1.readUnsignedByte() == 1;
 			if (var2 || !var7) {
@@ -87,12 +85,43 @@ public class WorldMapAreaData extends WorldMapArea {
 
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("ip")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lko;",
-		garbageValue = "1226375978"
+		descriptor = "(Lcj;ZB)V",
+		garbageValue = "8"
 	)
-	public static StudioGame[] method4894() {
-		return new StudioGame[]{StudioGame.oldscape, StudioGame.stellardawn, StudioGame.game4, StudioGame.game5, StudioGame.runescape, StudioGame.game3};
+	@Export("addPlayerToScene")
+	static void addPlayerToScene(Player var0, boolean var1) {
+		if (var0 != null && var0.isVisible() && !var0.isHidden) {
+			var0.isUnanimated = false;
+			if ((Client.isLowDetail && Players.Players_count > 50 || Players.Players_count > 200) && var1 && var0.movementSequence == var0.idleSequence) {
+				var0.isUnanimated = true;
+			}
+
+			int var2 = var0.x >> 7;
+			int var3 = var0.y >> 7;
+			if (var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
+				long var4 = GameEngine.calculateTag(0, 0, 0, false, var0.index);
+				if (var0.model0 != null && Client.cycle >= var0.animationCycleStart && Client.cycle < var0.animationCycleEnd) {
+					var0.isUnanimated = false;
+					var0.tileHeight = SpotAnimationDefinition.getTileHeight(var0.x, var0.y, class383.Client_plane);
+					var0.playerCycle = Client.cycle;
+					ReflectionCheck.scene.addNullableObject(class383.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.minX, var0.minY, var0.maxX, var0.maxY);
+				} else {
+					if ((var0.x & 127) == 64 && (var0.y & 127) == 64) {
+						if (Client.tileLastDrawnActor[var2][var3] == Client.viewportDrawCount) {
+							return;
+						}
+
+						Client.tileLastDrawnActor[var2][var3] = Client.viewportDrawCount;
+					}
+
+					var0.tileHeight = SpotAnimationDefinition.getTileHeight(var0.x, var0.y, class383.Client_plane);
+					var0.playerCycle = Client.cycle;
+					ReflectionCheck.scene.drawEntity(class383.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.isWalking);
+				}
+			}
+		}
+
 	}
 }

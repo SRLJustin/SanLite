@@ -1,143 +1,163 @@
-import java.awt.Image;
 import java.util.Comparator;
 import java.util.Map.Entry;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("k")
+@ObfuscatedName("l")
 class class18 implements Comparator {
-	@ObfuscatedName("av")
-	static Image field97;
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "Lly;"
+	)
+	@Export("HitSplatDefinition_archive")
+	public static AbstractArchive HitSplatDefinition_archive;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lo;"
+		descriptor = "Lj;"
 	)
 	final class10 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lo;)V"
+		descriptor = "(Lj;)V"
 	)
 	class18(class10 var1) {
 		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Map$Entry;Ljava/util/Map$Entry;I)I",
-		garbageValue = "661952074"
+		descriptor = "(Ljava/util/Map$Entry;Ljava/util/Map$Entry;B)I",
+		garbageValue = "-60"
 	)
-	int method294(Entry var1, Entry var2) {
+	int method257(Entry var1, Entry var2) {
 		return ((Float)var2.getValue()).compareTo((Float)var1.getValue());
+	}
+
+	public int compare(Object var1, Object var2) {
+		return this.method257((Entry)var1, (Entry)var2);
 	}
 
 	public boolean equals(Object var1) {
 		return super.equals(var1);
 	}
 
-	public int compare(Object var1, Object var2) {
-		return this.method294((Entry)var1, (Entry)var2);
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(IIIB)I",
+		garbageValue = "42"
+	)
+	public static int method266(int var0, int var1, int var2) {
+		var2 &= 3;
+		if (var2 == 0) {
+			return var1;
+		} else if (var2 == 1) {
+			return 7 - var0;
+		} else {
+			return var2 == 2 ? 7 - var1 : var0;
+		}
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lfw;",
-		garbageValue = "-1896200601"
+		descriptor = "(III)I",
+		garbageValue = "801580605"
 	)
-	public static FloorOverlayDefinition method302(int var0) {
-		FloorOverlayDefinition var1 = (FloorOverlayDefinition)FloorOverlayDefinition.FloorOverlayDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
+	static int method267(int var0, int var1) {
+		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var2 == null) {
+			return -1;
 		} else {
-			byte[] var2 = FloorOverlayDefinition.FloorOverlayDefinition_archive.takeFile(4, var0);
-			var1 = new FloorOverlayDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2), var0);
+			return var1 >= 0 && var1 < var2.ids.length ? var2.ids[var1] : -1;
+		}
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "1"
+	)
+	public static int method269(int var0) {
+		return var0 != 0 && var0 != 1 ? -1 : 0;
+	}
+
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(
+		descriptor = "(Lkd;I[B[BB)V",
+		garbageValue = "120"
+	)
+	@Export("Widget_setKey")
+	static final void Widget_setKey(Widget var0, int var1, byte[] var2, byte[] var3) {
+		if (var0.field3622 == null) {
+			if (var2 == null) {
+				return;
 			}
 
-			var1.postDecode();
-			FloorOverlayDefinition.FloorOverlayDefinition_cached.put(var1, (long)var0);
-			return var1;
+			var0.field3622 = new byte[11][];
+			var0.field3623 = new byte[11][];
+			var0.field3630 = new int[11];
+			var0.field3625 = new int[11];
 		}
-	}
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Lfp;",
-		garbageValue = "28"
-	)
-	@Export("StructDefinition_getStructDefinition")
-	public static StructComposition StructDefinition_getStructDefinition(int var0) {
-		StructComposition var1 = (StructComposition)StructComposition.StructDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
+		var0.field3622[var1] = var2;
+		if (var2 != null) {
+			var0.field3621 = true;
 		} else {
-			byte[] var2 = class17.StructDefinition_archive.takeFile(34, var0);
-			var1 = new StructComposition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+			var0.field3621 = false;
+
+			for (int var4 = 0; var4 < var0.field3622.length; ++var4) {
+				if (var0.field3622[var4] != null) {
+					var0.field3621 = true;
+					break;
+				}
 			}
+		}
 
-			var1.postDecode();
-			StructComposition.StructDefinition_cached.put(var1, (long)var0);
-			return var1;
+		var0.field3623[var1] = var3;
+	}
+
+	@ObfuscatedName("gh")
+	@ObfuscatedSignature(
+		descriptor = "(Lln;Ljava/lang/String;I)V",
+		garbageValue = "-156913966"
+	)
+	static void method263(Archive var0, String var1) {
+		ArchiveLoader var2 = new ArchiveLoader(var0, var1);
+		Client.archiveLoaders.add(var2);
+		Client.field804 += var2.groupCount;
+	}
+
+	@ObfuscatedName("lg")
+	@ObfuscatedSignature(
+		descriptor = "(Lkd;III)V",
+		garbageValue = "-1041605206"
+	)
+	@Export("clickWidget")
+	static final void clickWidget(Widget var0, int var1, int var2) {
+		if (Client.clickedWidget == null && !Client.isMenuOpen) {
+			if (var0 != null && class306.method6317(var0) != null) {
+				Client.clickedWidget = var0;
+				Client.field694 = class306.method6317(var0);
+				Client.widgetClickX = var1;
+				Client.widgetClickY = var2;
+				class87.field1109 = 0;
+				Client.isDraggingWidget = false;
+				int var3 = Client.menuOptionsCount - 1;
+				if (var3 != -1) {
+					ReflectionCheck.method711(var3);
+				}
+
+			}
 		}
 	}
 
-	@ObfuscatedName("fn")
+	@ObfuscatedName("ly")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "5"
+		descriptor = "(II)V",
+		garbageValue = "-53673761"
 	)
-	@Export("playSong")
-	static void playSong(int var0) {
-		if (var0 == -1 && !Client.field743) {
-			StructComposition.method3444();
-		} else if (var0 != -1 && var0 != Client.currentTrackGroupId && SecureRandomFuture.clientPreferences.musicVolume != 0 && !Client.field743) {
-			Archive var1 = WorldMapScaleHandler.archive6;
-			int var2 = SecureRandomFuture.clientPreferences.musicVolume;
-			class260.musicPlayerStatus = 1;
-			class124.musicTrackArchive = var1;
-			VarcInt.musicTrackGroupId = var0;
-			class260.musicTrackFileId = 0;
-			ChatChannel.musicTrackVolume = var2;
-			DynamicObject.musicTrackBoolean = false;
-			class260.pcmSampleLength = 2;
-		}
-
-		Client.currentTrackGroupId = var0;
-	}
-
-	@ObfuscatedName("gb")
-	@ObfuscatedSignature(
-		descriptor = "(Lcy;I)V",
-		garbageValue = "-1637898710"
-	)
-	static final void method293(Actor var0) {
-		if (var0.field1157 == Client.cycle || var0.sequence == -1 || var0.sequenceDelay != 0 || var0.sequenceFrameCycle + 1 > UserComparator5.SequenceDefinition_get(var0.sequence).frameLengths[var0.sequenceFrame]) {
-			int var1 = var0.field1157 - var0.field1136;
-			int var2 = Client.cycle - var0.field1136;
-			int var3 = var0.field1132 * 128 + var0.field1120 * 64;
-			int var4 = var0.field1134 * 128 + var0.field1120 * 64;
-			int var5 = var0.field1133 * 128 + var0.field1120 * 64;
-			int var6 = var0.field1135 * 128 + var0.field1120 * 64;
-			var0.x = (var5 * var2 + var3 * (var1 - var2)) / var1;
-			var0.y = (var6 * var2 + var4 * (var1 - var2)) / var1;
-		}
-
-		var0.field1117 = 0;
-		var0.orientation = var0.field1138;
-		var0.rotation = var0.orientation;
-	}
-
-	@ObfuscatedName("jh")
-	@ObfuscatedSignature(
-		descriptor = "(IIIZI)V",
-		garbageValue = "-1056239746"
-	)
-	static final void method297(int var0, int var1, int var2, boolean var3) {
-		if (class242.loadInterface(var0)) {
-			class92.resizeInterface(MouseRecorder.Widget_interfaceComponents[var0], -1, var1, var2, var3);
-		}
+	static final void method270(int var0) {
+		var0 = Math.min(Math.max(var0, 0), 127);
+		StructComposition.clientPreferences.method2427(var0);
 	}
 }

@@ -1,52 +1,57 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ec")
-public class class150 extends class126 {
-	@ObfuscatedName("dc")
-	@Export("mouseCam")
-	static boolean mouseCam;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = 43726911
+@ObfuscatedName("ez")
+public class class150 extends class136 {
+	@ObfuscatedName("r")
+	@ObfuscatedSignature(
+		descriptor = "Lra;"
 	)
-	int field1666;
-	@ObfuscatedName("b")
+	static IndexedSprite field1756;
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		longValue = -6413239553486837791L
+		intValue = 1536120659
 	)
-	long field1669;
+	int field1755;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Lem;"
 	)
-	final class129 this$0;
+	final class139 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "(Lem;)V"
 	)
-	class150(class129 var1) {
+	class150(class139 var1) {
 		this.this$0 = var1;
+		this.field1755 = -1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lqy;I)V",
+		garbageValue = "1101327225"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1666 = var1.readInt();
-		this.field1669 = var1.readLong();
+	void vmethod3349(Buffer var1) {
+		this.field1755 = var1.readUnsignedShort();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(Lep;I)V",
+		garbageValue = "839088249"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2856(this.field1666, this.field1669);
+	void vmethod3350(ClanSettings var1) {
+		var1.method3189(this.field1755);
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Z",
+		garbageValue = "48"
+	)
+	public static boolean method3261(int var0) {
+		return var0 == WorldMapDecorationType.field3749.id;
 	}
 }

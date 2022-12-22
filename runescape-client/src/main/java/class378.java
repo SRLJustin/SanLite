@@ -1,21 +1,18 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nf")
+@ObfuscatedName("nr")
 public class class378 {
-	@ObfuscatedName("t")
-	static final int[] field4233;
-	@ObfuscatedName("s")
-	static final int[] field4237;
-
-	static {
-		field4233 = new int[16384];
-		field4237 = new int[16384];
-		double var0 = 3.834951969714103E-4D;
-
-		for (int var2 = 0; var2 < 16384; ++var2) {
-			field4233[var2] = (int)(16384.0D * Math.sin(var0 * (double)var2));
-			field4237[var2] = (int)(16384.0D * Math.cos((double)var2 * var0));
+	@ObfuscatedName("lc")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIIB)V",
+		garbageValue = "29"
+	)
+	@Export("updateRootInterface")
+	static final void updateRootInterface(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+		if (Players.loadInterface(var0)) {
+			class144.updateInterface(class71.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6);
 		}
-
 	}
 }
