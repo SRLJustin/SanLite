@@ -1,117 +1,407 @@
 import java.util.concurrent.Callable;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("b")
+@ObfuscatedName("e")
 public class class1 implements Callable {
-	@ObfuscatedName("k")
-	@ObfuscatedSignature(
-		descriptor = "Lei;"
-	)
-	static ClanChannel field0;
-	@ObfuscatedName("bz")
-	static String field3;
-	@ObfuscatedName("ee")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive13")
-	static Archive archive13;
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lpi;"
-	)
-	final Buffer field2;
 	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "Lm;"
+		descriptor = "Ldm;"
+	)
+	@Export("World_request")
+	static UrlRequest World_request;
+	@ObfuscatedName("a")
+	@ObfuscatedGetter(
+		intValue = 735259681
+	)
+	static int field2;
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "Lqy;"
+	)
+	final Buffer field5;
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "Lx;"
 	)
 	final class3 field1;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lw;"
+		descriptor = "Lr;"
 	)
 	final class7 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lw;Lpi;Lm;)V"
+		descriptor = "(Lr;Lqy;Lx;)V"
 	)
 	class1(class7 var1, Buffer var2, class3 var3) {
 		this.this$0 = var1;
-		this.field2 = var2;
+		this.field5 = var2;
 		this.field1 = var3;
 	}
 
 	public Object call() {
-		return this.field1.vmethod15(this.field2);
+		return this.field1.vmethod13(this.field5);
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "42"
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "-2058763970"
 	)
-	public static void method8() {
-		VarbitComposition.VarbitDefinition_cached.clear();
+	static final void method10(String var0) {
+		StringBuilder var10000 = (new StringBuilder()).append(var0);
+		Object var10001 = null;
+		String var1 = var10000.append(" is already on your friend list").toString();
+		KitDefinition.addGameMessage(30, "", var1);
 	}
 
-	@ObfuscatedName("gw")
+	@ObfuscatedName("hs")
 	@ObfuscatedSignature(
 		descriptor = "(IIII)V",
-		garbageValue = "2135260751"
+		garbageValue = "1539382446"
 	)
-	static final void method12(int var0, int var1, int var2) {
-		if (UserComparator7.cameraX < var0) {
-			UserComparator7.cameraX = (var0 - UserComparator7.cameraX) * ItemComposition.field2012 / 1000 + UserComparator7.cameraX + Renderable.field2358;
-			if (UserComparator7.cameraX > var0) {
-				UserComparator7.cameraX = var0;
-			}
-		}
-
-		if (UserComparator7.cameraX > var0) {
-			UserComparator7.cameraX -= (UserComparator7.cameraX - var0) * ItemComposition.field2012 / 1000 + Renderable.field2358;
-			if (UserComparator7.cameraX < var0) {
-				UserComparator7.cameraX = var0;
-			}
-		}
-
-		if (AbstractByteArrayCopier.cameraY < var1) {
-			AbstractByteArrayCopier.cameraY = (var1 - AbstractByteArrayCopier.cameraY) * ItemComposition.field2012 / 1000 + AbstractByteArrayCopier.cameraY + Renderable.field2358;
-			if (AbstractByteArrayCopier.cameraY > var1) {
-				AbstractByteArrayCopier.cameraY = var1;
-			}
-		}
-
-		if (AbstractByteArrayCopier.cameraY > var1) {
-			AbstractByteArrayCopier.cameraY -= (AbstractByteArrayCopier.cameraY - var1) * ItemComposition.field2012 / 1000 + Renderable.field2358;
-			if (AbstractByteArrayCopier.cameraY < var1) {
-				AbstractByteArrayCopier.cameraY = var1;
-			}
-		}
-
-		if (UserComparator10.cameraZ < var2) {
-			UserComparator10.cameraZ = (var2 - UserComparator10.cameraZ) * ItemComposition.field2012 / 1000 + UserComparator10.cameraZ + Renderable.field2358;
-			if (UserComparator10.cameraZ > var2) {
-				UserComparator10.cameraZ = var2;
-			}
-		}
-
-		if (UserComparator10.cameraZ > var2) {
-			UserComparator10.cameraZ -= (UserComparator10.cameraZ - var2) * ItemComposition.field2012 / 1000 + Renderable.field2358;
-			if (UserComparator10.cameraZ < var2) {
-				UserComparator10.cameraZ = var2;
-			}
+	static void method11(int var0, int var1, int var2) {
+		if (StructComposition.clientPreferences.method2426() != 0 && var1 != 0 && Client.soundEffectCount < 50) {
+			Client.field766[Client.soundEffectCount] = var0;
+			Client.field767[Client.soundEffectCount] = var1;
+			Client.field795[Client.soundEffectCount] = var2;
+			Client.field575[Client.soundEffectCount] = null;
+			Client.field621[Client.soundEffectCount] = 0;
+			++Client.soundEffectCount;
 		}
 
 	}
 
-	@ObfuscatedName("jg")
+	@ObfuscatedName("jj")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "-1424242195"
+		descriptor = "(Lqx;B)V",
+		garbageValue = "0"
 	)
-	static final String method11(int var0) {
-		return var0 < 999999999 ? Integer.toString(var0) : "*";
+	static final void method7(PacketBuffer var0) {
+		for (int var1 = 0; var1 < Client.field564; ++var1) {
+			int var2 = Client.field565[var1];
+			NPC var3 = Client.npcs[var2];
+			int var4 = var0.readUnsignedByte();
+			int var5;
+			if ((var4 & 1) != 0) {
+				var5 = var0.readUnsignedByte();
+				var4 += var5 << 8;
+			}
+
+			if ((var4 & 2048) != 0) {
+				var5 = var0.readUnsignedByte();
+				var4 += var5 << 16;
+			}
+
+			if ((var4 & 131072) != 0) {
+				var5 = var0.method8760();
+				var3.turnLeftSequence = (var5 & 1) != 0 ? var0.method8592() : var3.definition.turnLeftSequence;
+				var3.turnRightSequence = (var5 & 2) != 0 ? var0.readUnsignedShort() : var3.definition.turnRightSequence;
+				var3.walkSequence = (var5 & 4) != 0 ? var0.readUnsignedShort() : var3.definition.walkSequence;
+				var3.walkBackSequence = (var5 & 8) != 0 ? var0.readUnsignedShort() : var3.definition.walkBackSequence;
+				var3.walkLeftSequence = (var5 & 16) != 0 ? var0.readUnsignedShort() : var3.definition.walkLeftSequence;
+				var3.walkRightSequence = (var5 & 32) != 0 ? var0.method8530() : var3.definition.walkRightSequence;
+				var3.runSequence = (var5 & 64) != 0 ? var0.method8591() : var3.definition.field2035;
+				var3.field1191 = (var5 & 128) != 0 ? var0.method8530() : var3.definition.field2038;
+				var3.field1201 = (var5 & 256) != 0 ? var0.method8530() : var3.definition.field2039;
+				var3.field1193 = (var5 & 512) != 0 ? var0.method8592() : var3.definition.field2040;
+				var3.field1194 = (var5 & 1024) != 0 ? var0.method8591() : var3.definition.field2041;
+				var3.field1195 = (var5 & 2048) != 0 ? var0.method8530() : var3.definition.field2042;
+				var3.field1226 = (var5 & 4096) != 0 ? var0.method8530() : var3.definition.field2043;
+				var3.field1197 = (var5 & 8192) != 0 ? var0.method8591() : var3.definition.field2044;
+				var3.idleSequence = (var5 & 16384) != 0 ? var0.method8530() : var3.definition.idleSequence;
+			}
+
+			if ((var4 & 4) != 0) {
+				var3.definition = class129.getNpcDefinition(var0.method8530());
+				GameObject.method4832(var3);
+				var3.method2541();
+			}
+
+			if ((var4 & 1024) != 0) {
+				var3.field1238 = Client.cycle + var0.method8592();
+				var3.field1200 = Client.cycle + var0.method8592();
+				var3.field1240 = var0.method8718();
+				var3.field1220 = var0.readByte();
+				var3.field1232 = var0.method8718();
+				var3.field1243 = (byte)var0.method8581();
+			}
+
+			int[] var6;
+			int var7;
+			int var8;
+			int var9;
+			int var10;
+			short[] var13;
+			short[] var14;
+			long var15;
+			if ((var4 & 512) != 0) {
+				var5 = var0.method8581();
+				if ((var5 & 1) == 1) {
+					var3.method2567();
+				} else {
+					var6 = null;
+					if ((var5 & 2) == 2) {
+						var7 = var0.method8699();
+						var6 = new int[var7];
+
+						for (var8 = 0; var8 < var7; ++var8) {
+							var9 = var0.method8530();
+							var9 = var9 == 65535 ? -1 : var9;
+							var6[var8] = var9;
+						}
+					}
+
+					var13 = null;
+					if ((var5 & 4) == 4) {
+						var8 = 0;
+						if (var3.definition.recolorTo != null) {
+							var8 = var3.definition.recolorTo.length;
+						}
+
+						var13 = new short[var8];
+
+						for (var9 = 0; var9 < var8; ++var9) {
+							var13[var9] = (short)var0.method8592();
+						}
+					}
+
+					var14 = null;
+					if ((var5 & 8) == 8) {
+						var9 = 0;
+						if (var3.definition.retextureTo != null) {
+							var9 = var3.definition.retextureTo.length;
+						}
+
+						var14 = new short[var9];
+
+						for (var10 = 0; var10 < var9; ++var10) {
+							var14[var10] = (short)var0.method8530();
+						}
+					}
+
+					var15 = (long)(++NPC.field1315 - 1);
+					var3.method2544(new class185(var15, var6, var13, var14));
+				}
+			}
+
+			if ((var4 & 8192) != 0) {
+				var3.field1253 = var0.method8585();
+			}
+
+			int var17;
+			if ((var4 & 32) != 0) {
+				var5 = var0.method8591();
+				if (var5 == 65535) {
+					var5 = -1;
+				}
+
+				var17 = var0.readUnsignedByte();
+				if (var5 == var3.sequence && var5 != -1) {
+					var7 = class216.SequenceDefinition_get(var5).field2276;
+					if (var7 == 1) {
+						var3.sequenceFrame = 0;
+						var3.sequenceFrameCycle = 0;
+						var3.sequenceDelay = var17;
+						var3.field1223 = 0;
+					}
+
+					if (var7 == 2) {
+						var3.field1223 = 0;
+					}
+				} else if (var5 == -1 || var3.sequence == -1 || class216.SequenceDefinition_get(var5).field2300 >= class216.SequenceDefinition_get(var3.sequence).field2300) {
+					var3.sequence = var5;
+					var3.sequenceFrame = 0;
+					var3.sequenceFrameCycle = 0;
+					var3.sequenceDelay = var17;
+					var3.field1223 = 0;
+					var3.field1252 = var3.pathLength;
+				}
+			}
+
+			if ((var4 & 16) != 0) {
+				var5 = var0.method8702();
+				int var11;
+				if (var5 > 0) {
+					for (var17 = 0; var17 < var5; ++var17) {
+						var8 = -1;
+						var9 = -1;
+						var10 = -1;
+						var7 = var0.readUShortSmart();
+						if (var7 == 32767) {
+							var7 = var0.readUShortSmart();
+							var9 = var0.readUShortSmart();
+							var8 = var0.readUShortSmart();
+							var10 = var0.readUShortSmart();
+						} else if (var7 != 32766) {
+							var9 = var0.readUShortSmart();
+						} else {
+							var7 = -1;
+						}
+
+						var11 = var0.readUShortSmart();
+						var3.addHitSplat(var7, var9, var8, var10, Client.cycle, var11);
+					}
+				}
+
+				var17 = var0.readUnsignedByte();
+				if (var17 > 0) {
+					for (var7 = 0; var7 < var17; ++var7) {
+						var8 = var0.readUShortSmart();
+						var9 = var0.readUShortSmart();
+						if (var9 != 32767) {
+							var10 = var0.readUShortSmart();
+							var11 = var0.method8702();
+							int var12 = var9 > 0 ? var0.method8581() : var11;
+							var3.addHealthBar(var8, Client.cycle, var9, var10, var11, var12);
+						} else {
+							var3.removeHealthBar(var8);
+						}
+					}
+				}
+			}
+
+			if ((var4 & 128) != 0) {
+				var3.overheadText = var0.readStringCp1252NullTerminated();
+				var3.field1248 = 100;
+			}
+
+			if ((var4 & 4096) != 0) {
+				var3.method2531(var0.readUnsignedByte());
+			}
+
+			if ((var4 & 256) != 0) {
+				var3.method2573(var0.readStringCp1252NullTerminated());
+			}
+
+			if ((var4 & 8) != 0) {
+				var5 = var0.readUnsignedShort();
+				var17 = var0.readUnsignedShort();
+				var3.field1228 = var0.readUnsignedByte() == 1;
+				var7 = var3.x - (var5 - class154.baseX * 64 - class154.baseX * 64) * 64;
+				var8 = var3.y - (var17 - class365.baseY * 64 - class365.baseY * 64) * 64;
+				if (var7 != 0 || var8 != 0) {
+					var3.field1190 = (int)(Math.atan2((double)var7, (double)var8) * 325.949D) & 2047;
+				}
+			}
+
+			if ((var4 & 32768) != 0) {
+				var3.field1196 = var0.method8718();
+				var3.field1185 = var0.readByte();
+				var3.field1230 = var0.method8718();
+				var3.field1213 = var0.method8701();
+				var3.field1233 = var0.readUnsignedShort() + Client.cycle;
+				var3.field1234 = var0.method8530() + Client.cycle;
+				var3.field1235 = var0.readUnsignedShort();
+				var3.pathLength = 1;
+				var3.field1252 = 0;
+				var3.field1196 += var3.pathX[0];
+				var3.field1185 += var3.pathY[0];
+				var3.field1230 += var3.pathX[0];
+				var3.field1213 += var3.pathY[0];
+			}
+
+			if ((var4 & 16384) != 0) {
+				var5 = var0.method8699();
+				if ((var5 & 1) == 1) {
+					var3.method2560();
+				} else {
+					var6 = null;
+					if ((var5 & 2) == 2) {
+						var7 = var0.readUnsignedByte();
+						var6 = new int[var7];
+
+						for (var8 = 0; var8 < var7; ++var8) {
+							var9 = var0.method8591();
+							var9 = var9 == 65535 ? -1 : var9;
+							var6[var8] = var9;
+						}
+					}
+
+					var13 = null;
+					if ((var5 & 4) == 4) {
+						var8 = 0;
+						if (var3.definition.recolorTo != null) {
+							var8 = var3.definition.recolorTo.length;
+						}
+
+						var13 = new short[var8];
+
+						for (var9 = 0; var9 < var8; ++var9) {
+							var13[var9] = (short)var0.method8530();
+						}
+					}
+
+					var14 = null;
+					if ((var5 & 8) == 8) {
+						var9 = 0;
+						if (var3.definition.retextureTo != null) {
+							var9 = var3.definition.retextureTo.length;
+						}
+
+						var14 = new short[var9];
+
+						for (var10 = 0; var10 < var9; ++var10) {
+							var14[var10] = (short)var0.method8591();
+						}
+					}
+
+					var15 = (long)(++NPC.field1317 - 1);
+					var3.method2542(new class185(var15, var6, var13, var14));
+				}
+			}
+
+			if ((var4 & 64) != 0) {
+				var3.targetIndex = var0.readUnsignedShort();
+				if (ParamComposition.field2121) {
+					var3.targetIndex += var0.method8699() << 16;
+					var5 = 16777215;
+				} else {
+					var5 = 65535;
+				}
+
+				if (var5 == var3.targetIndex) {
+					var3.targetIndex = -1;
+				}
+			}
+
+			if ((var4 & 2) != 0) {
+				var3.spotAnimation = var0.readUnsignedShort();
+				var5 = var0.method8585();
+				var3.field1246 = var5 >> 16;
+				var3.field1227 = (var5 & 65535) + Client.cycle;
+				var3.spotAnimationFrame = 0;
+				var3.field1214 = 0;
+				if (var3.field1227 > Client.cycle) {
+					var3.spotAnimationFrame = -1;
+				}
+
+				if (var3.spotAnimation == 65535) {
+					var3.spotAnimation = -1;
+				}
+			}
+
+			if ((var4 & 65536) != 0) {
+				var5 = var0.method8699();
+				var6 = new int[8];
+				var13 = new short[8];
+
+				for (var8 = 0; var8 < 8; ++var8) {
+					if ((var5 & 1 << var8) != 0) {
+						var6[var8] = var0.method8568();
+						var13[var8] = (short)var0.method8781();
+					} else {
+						var6[var8] = -1;
+						var13[var8] = -1;
+					}
+				}
+
+				var3.method2540(var6, var13);
+			}
+		}
+
 	}
 }
