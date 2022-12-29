@@ -4,38 +4,38 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lk")
+@ObfuscatedName("mu")
 @Implements("IterableNodeDequeDescendingIterator")
 public class IterableNodeDequeDescendingIterator implements Iterator {
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Lmv;"
 	)
 	@Export("deque")
 	IterableNodeDeque deque;
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "Lnw;"
+		descriptor = "Lpl;"
 	)
-	Node field3964;
-	@ObfuscatedName("p")
+	Node field4332;
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lnw;"
+		descriptor = "Lpl;"
 	)
 	@Export("last")
 	Node last;
 
 	@ObfuscatedSignature(
-		descriptor = "(Llr;)V"
+		descriptor = "(Lmv;)V"
 	)
 	IterableNodeDequeDescendingIterator(IterableNodeDeque var1) {
 		this.last = null;
 		this.setDeque(var1);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Llr;)V"
+		descriptor = "(Lmv;)V"
 	)
 	@Export("setDeque")
 	void setDeque(IterableNodeDeque var1) {
@@ -43,10 +43,10 @@ public class IterableNodeDequeDescendingIterator implements Iterator {
 		this.start();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@Export("start")
 	void start() {
-		this.field3964 = this.deque != null ? this.deque.sentinel.previous : null;
+		this.field4332 = this.deque != null ? this.deque.sentinel.previous : null;
 		this.last = null;
 	}
 
@@ -60,16 +60,16 @@ public class IterableNodeDequeDescendingIterator implements Iterator {
 	}
 
 	public boolean hasNext() {
-		return this.deque.sentinel != this.field3964 && this.field3964 != null;
+		return this.deque.sentinel != this.field4332 && this.field4332 != null;
 	}
 
 	public Object next() {
-		Node var1 = this.field3964;
+		Node var1 = this.field4332;
 		if (var1 == this.deque.sentinel) {
 			var1 = null;
-			this.field3964 = null;
+			this.field4332 = null;
 		} else {
-			this.field3964 = var1.previous;
+			this.field4332 = var1.previous;
 		}
 
 		this.last = var1;

@@ -1,97 +1,156 @@
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.PrintWriter;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.net.URL;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eg")
-public class class132 extends class142 {
-	@ObfuscatedName("o")
-	public static short[] field1540;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = 1971211247
+@ObfuscatedName("et")
+public enum class132 implements class345 {
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "Let;"
 	)
-	int field1535;
-	@ObfuscatedName("b")
-	byte field1541;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = 2049940809
+	field1624(2, 0),
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "Let;"
 	)
-	int field1536;
+	field1629(4, 1),
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Let;"
+	)
+	field1625(0, 2),
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "Let;"
+	)
+	field1626(3, 3),
 	@ObfuscatedName("m")
-	String field1538;
-	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Len;"
+		descriptor = "Let;"
 	)
-	final class143 this$0;
+	field1628(1, 4);
 
-	@ObfuscatedSignature(
-		descriptor = "(Len;)V"
+	@ObfuscatedName("q")
+	@ObfuscatedGetter(
+		intValue = 2018184127
 	)
-	class132(class143 var1) {
-		this.this$0 = var1;
-		this.field1535 = -1;
+	public final int field1627;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = 1796142361
+	)
+	@Export("id")
+	final int id;
+
+	class132(int var3, int var4) {
+		this.field1627 = var3;
+		this.id = var4;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "4"
+		descriptor = "(B)I",
+		garbageValue = "96"
 	)
-	void vmethod3022(Buffer var1) {
-		this.field1535 = var1.readUnsignedShort();
-		this.field1541 = var1.readByte();
-		this.field1536 = var1.readUnsignedShort();
-		var1.readLong();
-		this.field1538 = var1.readStringCp1252NullTerminated();
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.id;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Lei;B)V",
-		garbageValue = "40"
+		descriptor = "(Ljava/lang/String;Ljava/lang/Throwable;I)V",
+		garbageValue = "1018084003"
 	)
-	void vmethod3021(ClanChannel var1) {
-		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1535);
-		var2.rank = this.field1541;
-		var2.world = this.field1536;
-		var2.username = new Username(this.field1538);
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "420472721"
-	)
-	static void method2810() {
-		if (TaskHandler.javaVendor.toLowerCase().indexOf("microsoft") != -1) {
-			KeyHandler.KeyHandler_keyCodes[186] = 57;
-			KeyHandler.KeyHandler_keyCodes[187] = 27;
-			KeyHandler.KeyHandler_keyCodes[188] = 71;
-			KeyHandler.KeyHandler_keyCodes[189] = 26;
-			KeyHandler.KeyHandler_keyCodes[190] = 72;
-			KeyHandler.KeyHandler_keyCodes[191] = 73;
-			KeyHandler.KeyHandler_keyCodes[192] = 58;
-			KeyHandler.KeyHandler_keyCodes[219] = 42;
-			KeyHandler.KeyHandler_keyCodes[220] = 74;
-			KeyHandler.KeyHandler_keyCodes[221] = 43;
-			KeyHandler.KeyHandler_keyCodes[222] = 59;
-			KeyHandler.KeyHandler_keyCodes[223] = 28;
+	@Export("RunException_sendStackTrace")
+	public static void RunException_sendStackTrace(String var0, Throwable var1) {
+		if (var1 != null) {
+			var1.printStackTrace();
 		} else {
-			KeyHandler.KeyHandler_keyCodes[44] = 71;
-			KeyHandler.KeyHandler_keyCodes[45] = 26;
-			KeyHandler.KeyHandler_keyCodes[46] = 72;
-			KeyHandler.KeyHandler_keyCodes[47] = 73;
-			KeyHandler.KeyHandler_keyCodes[59] = 57;
-			KeyHandler.KeyHandler_keyCodes[61] = 27;
-			KeyHandler.KeyHandler_keyCodes[91] = 42;
-			KeyHandler.KeyHandler_keyCodes[92] = 74;
-			KeyHandler.KeyHandler_keyCodes[93] = 43;
-			KeyHandler.KeyHandler_keyCodes[192] = 28;
-			KeyHandler.KeyHandler_keyCodes[222] = 58;
-			KeyHandler.KeyHandler_keyCodes[520] = 59;
-		}
+			try {
+				String var2 = "";
+				if (var1 != null) {
+					Throwable var4 = var1;
+					String var5;
+					if (var1 instanceof RunException) {
+						RunException var6 = (RunException)var1;
+						var5 = var6.message + " | ";
+						var4 = var6.throwable;
+					} else {
+						var5 = "";
+					}
 
+					StringWriter var18 = new StringWriter();
+					PrintWriter var7 = new PrintWriter(var18);
+					var4.printStackTrace(var7);
+					var7.close();
+					String var8 = var18.toString();
+					BufferedReader var9 = new BufferedReader(new StringReader(var8));
+					String var10 = var9.readLine();
+
+					label61:
+					while (true) {
+						while (true) {
+							String var11 = var9.readLine();
+							if (var11 == null) {
+								var5 = var5 + "| " + var10;
+								var2 = var5;
+								break label61;
+							}
+
+							int var12 = var11.indexOf(40);
+							int var13 = var11.indexOf(41, var12 + 1);
+							if (var12 >= 0 && var13 >= 0) {
+								String var14 = var11.substring(var12 + 1, var13);
+								int var15 = var14.indexOf(".java:");
+								if (var15 >= 0) {
+									var14 = var14.substring(0, var15) + var14.substring(var15 + 5);
+									var5 = var5 + var14 + ' ';
+									continue;
+								}
+
+								var11 = var11.substring(0, var12);
+							}
+
+							var11 = var11.trim();
+							var11 = var11.substring(var11.lastIndexOf(32) + 1);
+							var11 = var11.substring(var11.lastIndexOf(9) + 1);
+							var5 = var5 + var11 + ' ';
+						}
+					}
+				}
+
+				if (var0 != null) {
+					if (var1 != null) {
+						var2 = var2 + " | ";
+					}
+
+					var2 = var2 + var0;
+				}
+
+				System.out.println("Error: " + var2);
+				var2 = var2.replace(':', '.');
+				var2 = var2.replace('@', '_');
+				var2 = var2.replace('&', '_');
+				var2 = var2.replace('#', '_');
+				if (class422.RunException_applet == null) {
+					return;
+				}
+
+				URL var3 = new URL(class422.RunException_applet.getCodeBase(), "clienterror.ws?cv=" + RunException.field5066 + "&cs=" + RunException.field5065 + "&u=" + RunException.localPlayerName + "&v1=" + TaskHandler.javaVendor + "&v2=" + TaskHandler.javaVersion + "&ct=" + RunException.clientType + "&e=" + var2);
+				DataInputStream var17 = new DataInputStream(var3.openStream());
+				var17.read();
+				var17.close();
+			} catch (Exception var16) {
+			}
+
+		}
 	}
 }

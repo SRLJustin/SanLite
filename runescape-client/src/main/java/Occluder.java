@@ -4,141 +4,158 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gl")
+@ObfuscatedName("hv")
 @Implements("Occluder")
 public final class Occluder {
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 1159040081
+		intValue = -1514606591
 	)
 	@Export("minTileX")
 	int minTileX;
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = -342962923
+		intValue = -1843218791
 	)
 	@Export("maxTileX")
 	int maxTileX;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1018728031
+		intValue = -250574197
 	)
 	@Export("minTileY")
 	int minTileY;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = -303087101
+		intValue = -839589963
 	)
 	@Export("maxTileY")
 	int maxTileY;
-	@ObfuscatedName("t")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -1878203499
+		intValue = -845662039
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 1169287087
+		intValue = 227042381
 	)
 	@Export("minX")
 	int minX;
-	@ObfuscatedName("j")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -1004767669
+		intValue = -201172581
 	)
 	@Export("maxX")
 	int maxX;
-	@ObfuscatedName("w")
+	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = -596343551
+		intValue = -754335941
 	)
 	@Export("minZ")
 	int minZ;
-	@ObfuscatedName("n")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -1032991231
+		intValue = 253383223
 	)
 	@Export("maxZ")
 	int maxZ;
-	@ObfuscatedName("r")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = 973854413
+		intValue = 554630705
 	)
 	@Export("minY")
 	int minY;
-	@ObfuscatedName("o")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 613174517
+		intValue = 1377372931
 	)
 	@Export("maxY")
 	int maxY;
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(
-		intValue = 2116164351
-	)
-	int field2378;
-	@ObfuscatedName("d")
-	@ObfuscatedGetter(
-		intValue = -824345461
-	)
-	int field2369;
-	@ObfuscatedName("h")
-	@ObfuscatedGetter(
-		intValue = -1750638079
-	)
-	int field2380;
 	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = 72228107
+		intValue = 1764147967
 	)
-	int field2381;
-	@ObfuscatedName("e")
+	int field2621;
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = -1522475315
+		intValue = -1535206503
 	)
-	int field2368;
+	int field2630;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = -961493963
+	)
+	int field2631;
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = -2087575951
+	)
+	int field2632;
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(
+		intValue = 619321753
+	)
+	int field2633;
 	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = -1800993445
+		intValue = -1441193489
 	)
-	int field2383;
-	@ObfuscatedName("u")
+	int field2634;
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 269877121
+		intValue = -1410345339
 	)
-	int field2367;
+	int field2635;
 
 	Occluder() {
 	}
 
-	@ObfuscatedName("gt")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "-69"
+		descriptor = "(B)V",
+		garbageValue = "8"
 	)
-	@Export("setWindowedMode")
-	static void setWindowedMode(int var0) {
-		Client.field514 = 0L;
-		if (var0 >= 2) {
-			Client.isResizable = true;
-		} else {
-			Client.isResizable = false;
+	public static void method4627() {
+		try {
+			if (class286.musicPlayerStatus == 1) {
+				int var0 = class251.midiPcmStream.method5650();
+				if (var0 > 0 && class251.midiPcmStream.isReady()) {
+					var0 -= class286.pcmSampleLength;
+					if (var0 < 0) {
+						var0 = 0;
+					}
+
+					class251.midiPcmStream.setPcmStreamVolume(var0);
+					return;
+				}
+
+				class251.midiPcmStream.clear();
+				class251.midiPcmStream.removeAll();
+				if (class304.musicTrackArchive != null) {
+					class286.musicPlayerStatus = 2;
+				} else {
+					class286.musicPlayerStatus = 0;
+				}
+
+				class286.musicTrack = null;
+				ItemContainer.soundCache = null;
+			}
+		} catch (Exception var2) {
+			var2.printStackTrace();
+			class251.midiPcmStream.clear();
+			class286.musicPlayerStatus = 0;
+			class286.musicTrack = null;
+			ItemContainer.soundCache = null;
+			class304.musicTrackArchive = null;
 		}
 
-		if (class143.getWindowedMode() == 1) {
-			class295.client.setMaxCanvasSize(765, 503);
-		} else {
-			class295.client.setMaxCanvasSize(7680, 2160);
-		}
+	}
 
-		if (Client.gameState >= 25) {
-			PacketBufferNode var1 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2824, Client.packetWriter.isaacCipher);
-			var1.packetBuffer.writeByte(class143.getWindowedMode());
-			var1.packetBuffer.writeShort(class186.canvasWidth);
-			var1.packetBuffer.writeShort(WallObject.canvasHeight);
-			Client.packetWriter.addNode(var1);
-		}
-
+	@ObfuscatedName("f")
+	@Export("Entity_unpackID")
+	public static int Entity_unpackID(long var0) {
+		return (int)(var0 >>> 17 & 4294967295L);
 	}
 }

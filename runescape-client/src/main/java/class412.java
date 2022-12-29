@@ -1,43 +1,42 @@
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ob")
+@ObfuscatedName("oz")
 public class class412 {
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
-		garbageValue = "103250498"
+	@ObfuscatedName("h")
+	float[] field4630;
+	@ObfuscatedName("e")
+	@ObfuscatedGetter(
+		intValue = 1911705725
 	)
-	public static String method7287(String var0) {
-		int var1 = var0.length();
-		char[] var2 = new char[var1];
-		byte var3 = 2;
+	int field4632;
 
-		for (int var4 = 0; var4 < var1; ++var4) {
-			char var5 = var0.charAt(var4);
-			if (var3 == 0) {
-				var5 = Character.toLowerCase(var5);
-			} else if (var3 == 2 || Character.isUpperCase(var5)) {
-				var5 = HealthBar.method2313(var5);
-			}
+	class412(float[] var1, int var2) {
+		this.field4630 = var1;
+		this.field4632 = var2;
+	}
 
-			if (Character.isLetter(var5)) {
-				var3 = 0;
-			} else if (var5 != '.' && var5 != '?' && var5 != '!') {
-				if (Character.isSpaceChar(var5)) {
-					if (var3 != 2) {
-						var3 = 1;
-					}
-				} else {
-					var3 = 1;
-				}
-			} else {
-				var3 = 2;
-			}
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;I)I",
+		garbageValue = "-541800699"
+	)
+	public static int method7858(CharSequence var0) {
+		return class318.method6373(var0, 10, true);
+	}
 
-			var2[var4] = var5;
+	@ObfuscatedName("nl")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lqf;",
+		garbageValue = "-565161685"
+	)
+	static class460 method7854(int var0) {
+		class460 var1 = (class460)Client.Widget_cachedFonts.get((long)var0);
+		if (var1 == null) {
+			var1 = new class460(Ignored.field4539, var0);
 		}
 
-		return new String(var2);
+		return var1;
 	}
 }
