@@ -3,37 +3,31 @@ import java.io.IOException;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.util.LinkedList;
+import java.util.concurrent.ScheduledExecutorService;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 import org.bouncycastle.crypto.tls.Certificate;
 import org.bouncycastle.crypto.tls.CertificateRequest;
 import org.bouncycastle.crypto.tls.TlsAuthentication;
 import org.bouncycastle.crypto.tls.TlsCredentials;
 
-@ObfuscatedName("v")
+@ObfuscatedName("g")
 class class11 implements TlsAuthentication {
-	@ObfuscatedName("d")
-	@ObfuscatedSignature(
-		descriptor = "Law;"
-	)
-	@Export("pcmPlayerProvider")
-	static class47 pcmPlayerProvider;
-	@ObfuscatedName("be")
-	@ObfuscatedSignature(
-		descriptor = "Lpa;"
-	)
-	@Export("worldSelectLeftSprite")
-	static IndexedSprite worldSelectLeftSprite;
+	@ObfuscatedName("q")
+	@Export("SpriteBuffer_spriteWidths")
+	public static int[] SpriteBuffer_spriteWidths;
+	@ObfuscatedName("r")
+	@Export("soundSystemExecutor")
+	static ScheduledExecutorService soundSystemExecutor;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lh;"
+		descriptor = "Lo;"
 	)
 	final class13 this$2;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lh;)V"
+		descriptor = "(Lo;)V"
 	)
 	class11(class13 var1) {
 		this.this$2 = var1;
@@ -50,7 +44,7 @@ class class11 implements TlsAuthentication {
 				var3.add(var2.generateCertificate(new ByteArrayInputStream(var6.getEncoded())));
 			}
 
-			this.this$2.this$1.field67 = (java.security.cert.Certificate[])((java.security.cert.Certificate[])var3.toArray(new java.security.cert.Certificate[0]));
+			this.this$2.this$1.field69 = (java.security.cert.Certificate[])((java.security.cert.Certificate[])var3.toArray(new java.security.cert.Certificate[0]));
 		} catch (CertificateException var7) {
 			throw new IOException(var7);
 		}
@@ -60,48 +54,36 @@ class class11 implements TlsAuthentication {
 		return null;
 	}
 
-	@ObfuscatedName("l")
+	@ObfuscatedName("jk")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "-1179058549"
+		descriptor = "(IIIIIIIIIII)V",
+		garbageValue = "-507085025"
 	)
-	static int method125(int var0, Script var1, boolean var2) {
-		Widget var3 = ChatChannel.getWidget(Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize]);
-		if (var0 == ScriptOpcodes.IF_GETTARGETMASK) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = class404.Widget_unpackTargetMask(class363.getWidgetFlags(var3));
-			return 1;
-		} else if (var0 != ScriptOpcodes.IF_GETOP) {
-			if (var0 == ScriptOpcodes.IF_GETOPBASE) {
-				if (var3.dataText == null) {
-					Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-				} else {
-					Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var3.dataText;
-				}
+	static final void method105(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9) {
+		PendingSpawn var10 = null;
 
-				return 1;
-			} else {
-				return 2;
+		for (PendingSpawn var11 = (PendingSpawn)Client.pendingSpawns.last(); var11 != null; var11 = (PendingSpawn)Client.pendingSpawns.previous()) {
+			if (var0 == var11.plane && var11.x == var1 && var2 == var11.y && var3 == var11.type) {
+				var10 = var11;
+				break;
 			}
-		} else {
-			int var4 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-			--var4;
-			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
-				Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var3.actions[var4];
-			} else {
-				Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-			}
-
-			return 1;
 		}
-	}
 
-	@ObfuscatedName("iu")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIII)V",
-		garbageValue = "-380667098"
-	)
-	@Export("insertMenuItemNoShift")
-	public static final void insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
-		class21.insertMenuItem(var0, var1, var2, var3, var4, var5, false);
+		if (var10 == null) {
+			var10 = new PendingSpawn();
+			var10.plane = var0;
+			var10.type = var3;
+			var10.x = var1;
+			var10.y = var2;
+			UserComparator4.method2809(var10);
+			Client.pendingSpawns.addFirst(var10);
+		}
+
+		var10.field1167 = var4;
+		var10.field1169 = var5;
+		var10.field1168 = var6;
+		var10.field1162 = var8;
+		var10.field1173 = var9;
+		var10.method2338(var7);
 	}
 }

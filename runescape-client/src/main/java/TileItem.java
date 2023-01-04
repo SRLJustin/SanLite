@@ -4,51 +4,76 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cz")
+@ObfuscatedName("cr")
 @Implements("TileItem")
 public final class TileItem extends Renderable {
-	@ObfuscatedName("gk")
-	@ObfuscatedGetter(
-		intValue = -1033887581
+	@ObfuscatedName("ss")
+	@ObfuscatedSignature(
+		descriptor = "Lax;"
 	)
-	@Export("baseY")
-	static int baseY;
-	@ObfuscatedName("hw")
-	@Export("regionLandArchives")
-	static byte[][] regionLandArchives;
-	@ObfuscatedName("c")
+	@Export("pcmPlayer0")
+	static PcmPlayer pcmPlayer0;
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -1624584431
+		intValue = -1495440553
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = -763742907
+		intValue = 1996619089
 	)
 	@Export("quantity")
 	int quantity;
+	@ObfuscatedName("x")
+	@ObfuscatedGetter(
+		intValue = -1010430043
+	)
+	int field1353;
 
 	TileItem() {
+		this.field1353 = 31;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lgo;",
-		garbageValue = "202861607"
+		descriptor = "(II)V",
+		garbageValue = "-434295648"
+	)
+	void method2612(int var1) {
+		this.field1353 = var1;
+	}
+
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lhh;",
+		garbageValue = "-1279733976"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		return UserComparator6.ItemDefinition_get(this.id).getModel(this.quantity);
+		return NPCComposition.ItemDefinition_get(this.id).getModel(this.quantity);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;Lku;B)V",
-		garbageValue = "37"
+		descriptor = "(IB)Z",
+		garbageValue = "8"
 	)
-	public static void method2368(AbstractArchive var0, AbstractArchive var1) {
-		SpotAnimationDefinition.SpotAnimationDefinition_archive = var0;
-		SpotAnimationDefinition.SpotAnimationDefinition_modelArchive = var1;
+	boolean method2613(int var1) {
+		if (var1 >= 0 && var1 <= 4) {
+			return (this.field1353 & 1 << var1) != 0;
+		} else {
+			return true;
+		}
+	}
+
+	@ObfuscatedName("mh")
+	@ObfuscatedSignature(
+		descriptor = "(Lqy;IB)V",
+		garbageValue = "7"
+	)
+	static void method2619(Buffer var0, int var1) {
+		ArchiveLoader.method2222(var0.array, var1);
+		class125.method2940(var0, var1);
 	}
 }

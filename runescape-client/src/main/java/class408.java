@@ -1,41 +1,39 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("os")
-final class class408 implements class405 {
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = -271022059
-	)
-	@Export("WorldMapElement_count")
-	public static int WorldMapElement_count;
+@ObfuscatedName("ow")
+public class class408 {
+	@ObfuscatedName("h")
+	float field4598;
+	@ObfuscatedName("e")
+	float field4599;
+	@ObfuscatedName("v")
+	float field4597;
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Lpi;I)V",
-		garbageValue = "246575309"
-	)
-	public void vmethod7273(Object var1, Buffer var2) {
-		this.method7238((Long)var1, var2);
+	static {
+		new class408(0.0F, 0.0F, 0.0F);
+		new class408(1.0F, 1.0F, 1.0F);
+		new class408(1.0F, 0.0F, 0.0F);
+		new class408(0.0F, 1.0F, 0.0F);
+		new class408(0.0F, 0.0F, 1.0F);
 	}
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)Ljava/lang/Object;",
-		garbageValue = "3"
-	)
-	public Object vmethod7271(Buffer var1) {
-		return var1.readLong();
+	class408(float var1, float var2, float var3) {
+		this.field4598 = var1;
+		this.field4599 = var2;
+		this.field4597 = var3;
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Long;Lpi;I)V",
-		garbageValue = "-1540315910"
+		descriptor = "(B)F",
+		garbageValue = "83"
 	)
-	void method7238(Long var1, Buffer var2) {
-		var2.writeLong(var1);
+	final float method7751() {
+		return (float)Math.sqrt((double)(this.field4598 * this.field4598 + this.field4599 * this.field4599 + this.field4597 * this.field4597));
+	}
+
+	public String toString() {
+		return this.field4598 + ", " + this.field4599 + ", " + this.field4597;
 	}
 }
