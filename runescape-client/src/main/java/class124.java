@@ -3,102 +3,83 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dl")
-public class class124 extends class126 {
-	@ObfuscatedName("s")
+@ObfuscatedName("dp")
+public enum class124 implements class345 {
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Ldp;"
 	)
-	@Export("musicTrackArchive")
-	public static AbstractArchive musicTrackArchive;
-	@ObfuscatedName("c")
+	field1535(0, 0),
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "Ldp;"
+	)
+	field1528(1, 1),
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Ldp;"
+	)
+	field1529(2, 2),
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "Ldp;"
+	)
+	field1536(3, 3),
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "Ldp;"
+	)
+	field1531(4, 4);
+
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		longValue = 3062767969711137225L
+		intValue = 324015279
 	)
-	long field1485;
-	@ObfuscatedName("b")
-	String field1484;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
+	final int field1532;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = 1800983085
 	)
-	final class129 this$0;
+	final int field1530;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
-	)
-	class124(class129 var1) {
-		this.this$0 = var1;
-		this.field1485 = -1L;
-		this.field1484 = null;
+	class124(int var3, int var4) {
+		this.field1532 = var3;
+		this.field1530 = var4;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(B)I",
+		garbageValue = "96"
 	)
-	void vmethod3029(Buffer var1) {
-		if (var1.readUnsignedByte() != 255) {
-			--var1.offset;
-			this.field1485 = var1.readLong();
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field1530;
+	}
+
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "(ZI)V",
+		garbageValue = "-1048113560"
+	)
+	static void method2939(boolean var0) {
+		byte var1 = 0;
+		boolean var2 = StructComposition.clientPreferences.method2424() >= Client.field511;
+		if (!var2) {
+			var1 = 12;
+		} else if (BuddyRankComparator.client.method1230() || BuddyRankComparator.client.method1231()) {
+			var1 = 10;
 		}
 
-		this.field1484 = var1.readStringCp1252NullTerminatedOrNull();
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
-	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2850(this.field1485, this.field1484, 0);
-	}
-
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(Lpj;B)I",
-		garbageValue = "3"
-	)
-	static int method2747(PacketBuffer var0) {
-		int var1 = var0.readBits(2);
-		int var2;
-		if (var1 == 0) {
-			var2 = 0;
-		} else if (var1 == 1) {
-			var2 = var0.readBits(5);
-		} else if (var1 == 2) {
-			var2 = var0.readBits(8);
-		} else {
-			var2 = var0.readBits(11);
+		class12.method155(var1);
+		if (var0) {
+			Login.Login_username = "";
+			Login.Login_password = "";
+			class143.field1697 = 0;
+			class141.otp = "";
 		}
 
-		return var2;
-	}
-
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lpl;",
-		garbageValue = "970200706"
-	)
-	static SpritePixels method2754() {
-		SpritePixels var0 = new SpritePixels();
-		var0.width = class432.SpriteBuffer_spriteWidth;
-		var0.height = class432.SpriteBuffer_spriteHeight;
-		var0.xOffset = class141.SpriteBuffer_xOffsets[0];
-		var0.yOffset = RouteStrategy.SpriteBuffer_yOffsets[0];
-		var0.subWidth = class432.SpriteBuffer_spriteWidths[0];
-		var0.subHeight = class330.SpriteBuffer_spriteHeights[0];
-		int var1 = var0.subWidth * var0.subHeight;
-		byte[] var2 = class369.SpriteBuffer_pixels[0];
-		var0.pixels = new int[var1];
-
-		for (int var3 = 0; var3 < var1; ++var3) {
-			var0.pixels[var3] = class432.SpriteBuffer_spritePalette[var2[var3] & 255];
-		}
-
-		UserComparator3.method2529();
-		return var0;
+		GameObject.method4831();
+		SoundSystem.method873();
 	}
 }

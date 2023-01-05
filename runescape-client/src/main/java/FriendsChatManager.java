@@ -4,127 +4,175 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mc")
+@ObfuscatedName("nc")
 @Implements("FriendsChatManager")
 public class FriendsChatManager extends NameableContainer {
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "Low;"
+		descriptor = "Lqi;"
 	)
 	@Export("loginType")
 	final LoginType loginType;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lmz;"
+		descriptor = "Lnn;"
 	)
 	@Export("localUser")
 	final Usernamed localUser;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@Export("name")
 	public String name;
-	@ObfuscatedName("t")
+	@ObfuscatedName("m")
 	@Export("owner")
 	public String owner;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@Export("minKick")
 	public byte minKick;
-	@ObfuscatedName("j")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -541938127
+		intValue = 1090208209
 	)
 	@Export("rank")
 	public int rank;
-	@ObfuscatedName("w")
+	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = 805449653
+		intValue = 1853458419
 	)
-	int field4090;
+	int field4515;
 
 	@ObfuscatedSignature(
-		descriptor = "(Low;Lmz;)V"
+		descriptor = "(Lqi;Lnn;)V"
 	)
 	public FriendsChatManager(LoginType var1, Usernamed var2) {
-		super(100);
+		super(500);
 		this.name = null;
 		this.owner = null;
-		this.field4090 = 1;
+		this.field4515 = 1;
 		this.loginType = var1;
 		this.localUser = var2;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lmv;",
-		garbageValue = "2"
+		descriptor = "(B)Lov;",
+		garbageValue = "47"
 	)
 	@Export("newInstance")
 	Nameable newInstance() {
 		return new FriendsChatMember();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Lmv;",
-		garbageValue = "-813912346"
+		descriptor = "(II)[Lov;",
+		garbageValue = "1710517567"
 	)
 	@Export("newTypedArray")
 	Nameable[] newTypedArray(int var1) {
 		return new FriendsChatMember[var1];
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "982680902"
+		garbageValue = "1741537614"
 	)
-	@Export("readName")
-	final void readName(String var1) {
-		this.name = class92.method2353(var1);
+	final void method7434(String var1) {
+		String var3 = ModeWhere.base37DecodeLong(class32.method461(var1));
+		if (var3 == null) {
+			var3 = "";
+		}
+
+		this.name = var3;
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "550170662"
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "1"
 	)
 	@Export("setOwner")
 	final void setOwner(String var1) {
-		this.owner = class92.method2353(var1);
+		String var3 = ModeWhere.base37DecodeLong(class32.method461(var1));
+		if (var3 == null) {
+			var3 = "";
+		}
+
+		this.owner = var3;
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1860574080"
+		descriptor = "(Lqy;II)V",
+		garbageValue = "-1010256811"
 	)
-	@Export("readUpdate")
-	public final void readUpdate(Buffer var1) {
+	public final void method7444(Buffer var1, int var2) {
 		this.setOwner(var1.readStringCp1252NullTerminated());
-		long var2 = var1.readLong();
-		this.readName(BufferedNetSocket.method6496(var2));
+		long var3 = var1.readLong();
+		long var6 = var3;
+		String var5;
+		int var8;
+		if (var3 > 0L && var3 < 6582952005840035281L) {
+			if (var3 % 37L == 0L) {
+				var5 = null;
+			} else {
+				var8 = 0;
+
+				for (long var9 = var3; var9 != 0L; var9 /= 37L) {
+					++var8;
+				}
+
+				StringBuilder var11 = new StringBuilder(var8);
+
+				while (var6 != 0L) {
+					long var12 = var6;
+					var6 /= 37L;
+					var11.append(class362.base37Table[(int)(var12 - 37L * var6)]);
+				}
+
+				var5 = var11.reverse().toString();
+			}
+		} else {
+			var5 = null;
+		}
+
+		this.method7434(var5);
 		this.minKick = var1.readByte();
-		int var4 = var1.readUnsignedByte();
-		if (var4 != 255) {
+		short var14;
+		if (var2 == 1) {
+			var8 = var1.readUnsignedByte();
+			var14 = 255;
+		} else {
+			if (var2 != 2) {
+				throw new IllegalArgumentException("Invalid friend chat full update version: " + var2);
+			}
+
+			var8 = var1.method8781();
+			var14 = -1;
+		}
+
+		if (var14 != var8) {
+			int var10 = var8;
 			this.clear();
 
-			for (int var5 = 0; var5 < var4; ++var5) {
-				FriendsChatMember var6 = (FriendsChatMember)this.addLastNoPreviousUsername(new Username(var1.readStringCp1252NullTerminated(), this.loginType));
-				int var7 = var1.readUnsignedShort();
-				var6.set(var7, ++this.field4090 - 1);
-				var6.rank = var1.readByte();
+			for (int var15 = 0; var15 < var10; ++var15) {
+				FriendsChatMember var16 = (FriendsChatMember)this.addLastNoPreviousUsername(new Username(var1.readStringCp1252NullTerminated(), this.loginType));
+				int var13 = var1.readUnsignedShort();
+				var16.set(var13, ++this.field4515 - 1);
+				var16.rank = var1.readByte();
 				var1.readStringCp1252NullTerminated();
-				this.isLocalPlayer(var6);
+				this.isLocalPlayer(var16);
 			}
 
 		}
 	}
 
-	@ObfuscatedName("r")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "191521599"
+		descriptor = "(Lqy;B)V",
+		garbageValue = "109"
 	)
-	public final void method6305(Buffer var1) {
+	public final void method7437(Buffer var1) {
 		Username var2 = new Username(var1.readStringCp1252NullTerminated(), this.loginType);
 		int var3 = var1.readUnsignedShort();
 		byte var4 = var1.readByte();
@@ -154,17 +202,17 @@ public class FriendsChatManager extends NameableContainer {
 				var6 = (FriendsChatMember)this.addLastNoPreviousUsername(var2);
 			}
 
-			var6.set(var3, ++this.field4090 - 1);
+			var6.set(var3, ++this.field4515 - 1);
 			var6.rank = var4;
 			this.isLocalPlayer(var6);
 		}
 
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1074072286"
+		garbageValue = "-1056288552"
 	)
 	@Export("clearFriends")
 	public final void clearFriends() {
@@ -174,10 +222,10 @@ public class FriendsChatManager extends NameableContainer {
 
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1945019430"
+		descriptor = "(B)V",
+		garbageValue = "-87"
 	)
 	@Export("invalidateIgnoreds")
 	public final void invalidateIgnoreds() {
@@ -187,10 +235,10 @@ public class FriendsChatManager extends NameableContainer {
 
 	}
 
-	@ObfuscatedName("d")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(Lmx;I)V",
-		garbageValue = "133175483"
+		descriptor = "(Log;I)V",
+		garbageValue = "1952671001"
 	)
 	@Export("isLocalPlayer")
 	final void isLocalPlayer(FriendsChatMember var1) {
@@ -198,5 +246,47 @@ public class FriendsChatManager extends NameableContainer {
 			this.rank = var1.rank;
 		}
 
+	}
+
+	@ObfuscatedName("gy")
+	@ObfuscatedSignature(
+		descriptor = "(Lga;IIIB)V",
+		garbageValue = "-79"
+	)
+	static void method7459(SequenceDefinition var0, int var1, int var2, int var3) {
+		if (Client.soundEffectCount < 50 && StructComposition.clientPreferences.method2506() != 0) {
+			if (var0.soundEffects != null && var1 < var0.soundEffects.length) {
+				int var4 = var0.soundEffects[var1];
+				if (var4 != 0) {
+					int var7 = var4 >> 8;
+					int var8 = var4 >> 4 & 7;
+					int var9 = var4 & 15;
+					Client.field766[Client.soundEffectCount] = var7;
+					Client.field767[Client.soundEffectCount] = var8;
+					Client.field795[Client.soundEffectCount] = 0;
+					Client.field575[Client.soundEffectCount] = null;
+					int var10 = (var2 - 64) / 128;
+					int var11 = (var3 - 64) / 128;
+					Client.field621[Client.soundEffectCount] = var9 + (var11 << 8) + (var10 << 16);
+					++Client.soundEffectCount;
+				}
+
+			}
+		}
+	}
+
+	@ObfuscatedName("jd")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1514396714"
+	)
+	@Export("addCancelMenuEntry")
+	static void addCancelMenuEntry() {
+		WorldMapSectionType.method5230();
+		Client.menuActions[0] = "Cancel";
+		Client.menuTargets[0] = "";
+		Client.menuOpcodes[0] = 1006;
+		Client.menuShiftClick[0] = false;
+		Client.menuOptionsCount = 1;
 	}
 }

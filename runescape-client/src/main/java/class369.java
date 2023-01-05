@@ -1,57 +1,39 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nt")
-public enum class369 implements MouseWheel {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lnt;"
-	)
-	field4220(1, 1),
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Lnt;"
-	)
-	field4215(2, 2),
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lnt;"
-	)
-	field4216(0, 3),
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Lnt;"
-	)
-	field4214(3, 10);
-
-	@ObfuscatedName("n")
-	@Export("SpriteBuffer_pixels")
-	public static byte[][] SpriteBuffer_pixels;
-	@ObfuscatedName("t")
+@ObfuscatedName("ny")
+public class class369 {
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 705420457
+		intValue = 654594661
 	)
-	final int field4218;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -1652306035
-	)
-	final int field4219;
+	int field4392;
 
-	class369(int var3, int var4) {
-		this.field4218 = var3;
-		this.field4219 = var4;
+	@ObfuscatedSignature(
+		descriptor = "(IZ)V",
+		garbageValue = "1"
+	)
+	class369(int var1, boolean var2) {
+		this.field4392 = var1;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "48"
+		descriptor = "(I)I",
+		garbageValue = "-631047520"
 	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field4219;
+	public int method7145() {
+		return this.field4392;
+	}
+
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "700487735"
+	)
+	public static void method7151() {
+		NPCComposition.NpcDefinition_cached.clear();
+		NPCComposition.NpcDefinition_cachedModels.clear();
 	}
 }
