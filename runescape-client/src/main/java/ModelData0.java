@@ -1,127 +1,242 @@
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InvalidClassException;
+import java.io.ObjectInputStream;
+import java.io.OptionalDataException;
+import java.io.StreamCorruptedException;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.Reflection;
 
-@ObfuscatedName("gd")
+@ObfuscatedName("hk")
 @Implements("ModelData0")
 public class ModelData0 {
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "Lra;"
+	)
+	@Export("titleboxSprite")
+	static IndexedSprite titleboxSprite;
+	@ObfuscatedName("s")
+	@Export("ByteArrayPool_altSizeArrayCounts")
+	public static int[] ByteArrayPool_altSizeArrayCounts;
+
 	ModelData0() {
 	}
 
-	@ObfuscatedName("hu")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(IIZI)V",
-		garbageValue = "190005998"
+		descriptor = "(Lqx;B)V",
+		garbageValue = "0"
 	)
-	static final void method4320(int var0, int var1, boolean var2) {
-		if (!var2 || var0 != Messages.field1277 || class4.field9 != var1) {
-			Messages.field1277 = var0;
-			class4.field9 = var1;
-			VertexNormal.updateGameState(25);
-			ArchiveDiskActionHandler.drawLoadingMessage("Loading - please wait.", true);
-			int var3 = class131.baseX * 64;
-			int var4 = TileItem.baseY * 64;
-			class131.baseX = (var0 - 6) * 8;
-			TileItem.baseY = (var1 - 6) * 8;
-			int var5 = class131.baseX * 64 - var3;
-			int var6 = TileItem.baseY * 64 - var4;
-			var3 = class131.baseX * 64;
-			var4 = TileItem.baseY * 64;
+	@Export("performReflectionCheck")
+	public static void performReflectionCheck(PacketBuffer var0) {
+		ReflectionCheck var1 = (ReflectionCheck)class37.reflectionChecks.last();
+		if (var1 != null) {
+			int var2 = var0.offset;
+			var0.method8536(var1.id);
 
-			int var7;
-			int var9;
-			int[] var10000;
-			for (var7 = 0; var7 < 32768; ++var7) {
-				NPC var19 = Client.npcs[var7];
-				if (var19 != null) {
-					for (var9 = 0; var9 < 10; ++var9) {
-						var10000 = var19.pathX;
-						var10000[var9] -= var5;
-						var10000 = var19.pathY;
-						var10000[var9] -= var6;
-					}
-
-					var19.x -= var5 * 128;
-					var19.y -= var6 * 128;
-				}
-			}
-
-			for (var7 = 0; var7 < 2048; ++var7) {
-				Player var22 = Client.players[var7];
-				if (var22 != null) {
-					for (var9 = 0; var9 < 10; ++var9) {
-						var10000 = var22.pathX;
-						var10000[var9] -= var5;
-						var10000 = var22.pathY;
-						var10000[var9] -= var6;
-					}
-
-					var22.x -= var5 * 128;
-					var22.y -= var6 * 128;
-				}
-			}
-
-			byte var20 = 0;
-			byte var8 = 104;
-			byte var21 = 1;
-			if (var5 < 0) {
-				var20 = 103;
-				var8 = -1;
-				var21 = -1;
-			}
-
-			byte var10 = 0;
-			byte var11 = 104;
-			byte var12 = 1;
-			if (var6 < 0) {
-				var10 = 103;
-				var11 = -1;
-				var12 = -1;
-			}
-
-			int var14;
-			for (int var13 = var20; var13 != var8; var13 += var21) {
-				for (var14 = var10; var14 != var11; var14 += var12) {
-					int var15 = var13 + var5;
-					int var16 = var14 + var6;
-
-					for (int var17 = 0; var17 < 4; ++var17) {
-						if (var15 >= 0 && var16 >= 0 && var15 < 104 && var16 < 104) {
-							Client.groundItems[var17][var13][var14] = Client.groundItems[var17][var15][var16];
-						} else {
-							Client.groundItems[var17][var13][var14] = null;
+			for (int var3 = 0; var3 < var1.size; ++var3) {
+				if (var1.creationErrors[var3] != 0) {
+					var0.writeByte(var1.creationErrors[var3]);
+				} else {
+					try {
+						int var4 = var1.operations[var3];
+						Field var5;
+						int var6;
+						if (var4 == 0) {
+							var5 = var1.fields[var3];
+							var6 = Reflection.getInt(var5, (Object)null);
+							var0.writeByte(0);
+							var0.method8536(var6);
+						} else if (var4 == 1) {
+							var5 = var1.fields[var3];
+							Reflection.setInt(var5, (Object)null, var1.intReplaceValues[var3]);
+							var0.writeByte(0);
+						} else if (var4 == 2) {
+							var5 = var1.fields[var3];
+							var6 = var5.getModifiers();
+							var0.writeByte(0);
+							var0.method8536(var6);
 						}
+
+						Method var25;
+						if (var4 != 3) {
+							if (var4 == 4) {
+								var25 = var1.methods[var3];
+								var6 = var25.getModifiers();
+								var0.writeByte(0);
+								var0.method8536(var6);
+							}
+						} else {
+							var25 = var1.methods[var3];
+							byte[][] var10 = var1.arguments[var3];
+							Object[] var7 = new Object[var10.length];
+
+							for (int var8 = 0; var8 < var10.length; ++var8) {
+								ObjectInputStream var9 = new ObjectInputStream(new ByteArrayInputStream(var10[var8]));
+								var7[var8] = var9.readObject();
+							}
+
+							Object var11 = Reflection.invoke(var25, (Object)null, var7);
+							if (var11 == null) {
+								var0.writeByte(0);
+							} else if (var11 instanceof Number) {
+								var0.writeByte(1);
+								var0.writeLong(((Number)var11).longValue());
+							} else if (var11 instanceof String) {
+								var0.writeByte(2);
+								var0.writeStringCp1252NullTerminated((String)var11);
+							} else {
+								var0.writeByte(4);
+							}
+						}
+					} catch (ClassNotFoundException var13) {
+						var0.writeByte(-10);
+					} catch (InvalidClassException var14) {
+						var0.writeByte(-11);
+					} catch (StreamCorruptedException var15) {
+						var0.writeByte(-12);
+					} catch (OptionalDataException var16) {
+						var0.writeByte(-13);
+					} catch (IllegalAccessException var17) {
+						var0.writeByte(-14);
+					} catch (IllegalArgumentException var18) {
+						var0.writeByte(-15);
+					} catch (InvocationTargetException var19) {
+						var0.writeByte(-16);
+					} catch (SecurityException var20) {
+						var0.writeByte(-17);
+					} catch (IOException var21) {
+						var0.writeByte(-18);
+					} catch (NullPointerException var22) {
+						var0.writeByte(-19);
+					} catch (Exception var23) {
+						var0.writeByte(-20);
+					} catch (Throwable var24) {
+						var0.writeByte(-21);
 					}
 				}
 			}
 
-			for (PendingSpawn var18 = (PendingSpawn)Client.pendingSpawns.last(); var18 != null; var18 = (PendingSpawn)Client.pendingSpawns.previous()) {
-				var18.x -= var5;
-				var18.y -= var6;
-				if (var18.x < 0 || var18.y < 0 || var18.x >= 104 || var18.y >= 104) {
-					var18.remove();
+			var0.writeCrc(var2);
+			var1.remove();
+		}
+	}
+
+	@ObfuscatedName("js")
+	@ObfuscatedSignature(
+		descriptor = "(IIIILjava/lang/String;I)V",
+		garbageValue = "49295"
+	)
+	@Export("widgetDefaultMenuAction")
+	static void widgetDefaultMenuAction(int var0, int var1, int var2, int var3, String var4) {
+		Widget var5 = AttackOption.getWidgetChild(var1, var2);
+		if (var5 != null) {
+			if (var5.onOp != null) {
+				ScriptEvent var6 = new ScriptEvent();
+				var6.widget = var5;
+				var6.opIndex = var0;
+				var6.targetName = var4;
+				var6.args = var5.onOp;
+				WorldMapElement.runScriptEvent(var6);
+			}
+
+			boolean var8 = true;
+			if (var5.contentType > 0) {
+				var8 = NPC.method2583(var5);
+			}
+
+			if (var8) {
+				if (class251.method5275(Clock.getWidgetFlags(var5), var0 - 1)) {
+					PacketBufferNode var7;
+					if (var0 == 1) {
+						var7 = class136.getPacketBufferNode(ClientPacket.field3060, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.method8536(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 2) {
+						var7 = class136.getPacketBufferNode(ClientPacket.field3144, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.method8536(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 3) {
+						var7 = class136.getPacketBufferNode(ClientPacket.field3070, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.method8536(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 4) {
+						var7 = class136.getPacketBufferNode(ClientPacket.field3128, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.method8536(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 5) {
+						var7 = class136.getPacketBufferNode(ClientPacket.field3072, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.method8536(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 6) {
+						var7 = class136.getPacketBufferNode(ClientPacket.field3098, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.method8536(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 7) {
+						var7 = class136.getPacketBufferNode(ClientPacket.field3079, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.method8536(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 8) {
+						var7 = class136.getPacketBufferNode(ClientPacket.field3074, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.method8536(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 9) {
+						var7 = class136.getPacketBufferNode(ClientPacket.field3076, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.method8536(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 10) {
+						var7 = class136.getPacketBufferNode(ClientPacket.field3081, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.method8536(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
 				}
 			}
-
-			if (Client.destinationX != 0) {
-				Client.destinationX -= var5;
-				Client.destinationY -= var6;
-			}
-
-			Client.soundEffectCount = 0;
-			Client.isCameraLocked = false;
-			UserComparator7.cameraX -= var5 << 7;
-			UserComparator10.cameraZ -= var6 << 7;
-			class7.oculusOrbFocalPointX -= var5 << 7;
-			Actor.oculusOrbFocalPointY -= var6 << 7;
-			Client.field570 = -1;
-			Client.graphicsObjects.clear();
-			Client.projectiles.clear();
-
-			for (var14 = 0; var14 < 4; ++var14) {
-				Client.collisionMaps[var14].clear();
-			}
-
 		}
 	}
 }

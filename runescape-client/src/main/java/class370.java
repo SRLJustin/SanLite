@@ -1,47 +1,23 @@
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nq")
-public class class370 implements class375 {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Loc;"
+@ObfuscatedName("np")
+public class class370 {
+	@ObfuscatedName("h")
+	public char field4395;
+	@ObfuscatedName("e")
+	@ObfuscatedGetter(
+		intValue = -761970567
 	)
-	public final class397 field4221;
+	public int field4398;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(
+		intValue = -542980643
+	)
+	public int field4397;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lom;)V"
-	)
-	class370(class398 var1) {
-		this.field4221 = var1;
-	}
-
-	@ObfuscatedSignature(
-		descriptor = "(Lnl;)V"
-	)
-	public class370(class371 var1) {
-		this(new class398(var1));
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "2038166552"
-	)
-	public int method6757(int var1) {
-		return this.field4221.vmethod7128(var1);
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;Ljava/lang/String;S)I",
-		garbageValue = "267"
-	)
-	public static int method6755(Buffer var0, String var1) {
-		int var2 = var0.offset;
-		byte[] var3 = class194.method3933(var1);
-		var0.writeSmartByteShort(var3.length);
-		var0.offset += class410.huffman.compress(var3, 0, var3.length, var0.array, var0.offset);
-		return var0.offset - var2;
+	class370() {
+		this.field4398 = 0;
+		this.field4397 = 0;
 	}
 }

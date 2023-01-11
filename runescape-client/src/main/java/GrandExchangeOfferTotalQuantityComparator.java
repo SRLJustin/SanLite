@@ -1,16 +1,24 @@
 import java.util.Comparator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kh")
+@ObfuscatedName("lx")
 @Implements("GrandExchangeOfferTotalQuantityComparator")
 final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
-	@ObfuscatedName("c")
+	@ObfuscatedName("e")
+	@ObfuscatedGetter(
+		intValue = 1715620411
+	)
+	@Export("SpriteBuffer_spriteWidth")
+	public static int SpriteBuffer_spriteWidth;
+
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Lkj;Lkj;B)I",
-		garbageValue = "79"
+		descriptor = "(Lmg;Lmg;B)I",
+		garbageValue = "22"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
@@ -25,14 +33,21 @@ final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
 		return super.equals(var1);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;Lku;I)V",
-		garbageValue = "-1737768501"
+		descriptor = "(Lkd;II)V",
+		garbageValue = "137593594"
 	)
-	public static void method5725(AbstractArchive var0, AbstractArchive var1) {
-		KitDefinition.KitDefinition_archive = var0;
-		KitDefinition.KitDefinition_modelsArchive = var1;
-		KitDefinition.KitDefinition_fileCount = KitDefinition.KitDefinition_archive.getGroupFileCount(3);
+	@Export("Widget_setKeyIgnoreHeld")
+	static final void Widget_setKeyIgnoreHeld(Widget var0, int var1) {
+		if (var0.field3622 == null) {
+			throw new RuntimeException();
+		} else {
+			if (var0.field3692 == null) {
+				var0.field3692 = new int[var0.field3622.length];
+			}
+
+			var0.field3692[var1] = Integer.MAX_VALUE;
+		}
 	}
 }

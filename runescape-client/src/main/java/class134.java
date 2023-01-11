@@ -1,103 +1,90 @@
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ef")
-public class class134 extends class142 {
-	@ObfuscatedName("c")
+@ObfuscatedName("eo")
+public class class134 extends class136 {
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 642006289
+		longValue = -1817932913018406573L
 	)
-	int field1552;
+	long field1642;
+	@ObfuscatedName("e")
+	String field1641;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Len;"
+		descriptor = "Lem;"
 	)
-	final class143 this$0;
+	final class139 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Len;)V"
+		descriptor = "(Lem;)V"
 	)
-	class134(class143 var1) {
+	class134(class139 var1) {
 		this.this$0 = var1;
-		this.field1552 = -1;
+		this.field1642 = -1L;
+		this.field1641 = null;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "4"
+		descriptor = "(Lqy;I)V",
+		garbageValue = "1101327225"
 	)
-	void vmethod3022(Buffer var1) {
-		this.field1552 = var1.readUnsignedShort();
-		var1.readUnsignedByte();
+	void vmethod3349(Buffer var1) {
 		if (var1.readUnsignedByte() != 255) {
 			--var1.offset;
-			var1.readLong();
+			this.field1642 = var1.readLong();
 		}
 
+		this.field1641 = var1.readStringCp1252NullTerminatedOrNull();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(Lei;B)V",
-		garbageValue = "40"
+		descriptor = "(Lep;I)V",
+		garbageValue = "839088249"
 	)
-	void vmethod3021(ClanChannel var1) {
-		var1.removeMember(this.field1552);
+	void vmethod3350(ClanSettings var1) {
+		var1.method3210(this.field1642, this.field1641, 0);
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZB)I",
-		garbageValue = "1"
+		descriptor = "(Lly;Lly;I)I",
+		garbageValue = "-197424852"
 	)
-	static int method2824(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.GETWINDOWMODE) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = class143.getWindowedMode();
-			return 1;
-		} else {
-			int var3;
-			if (var0 == ScriptOpcodes.SETWINDOWMODE) {
-				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				if (var3 == 1 || var3 == 2) {
-					Occluder.setWindowedMode(var3);
-				}
+	static int method3051(AbstractArchive var0, AbstractArchive var1) {
+		int var2 = 0;
+		String[] var3 = Login.field934;
 
-				return 1;
-			} else if (var0 == ScriptOpcodes.GETDEFAULTWINDOWMODE) {
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = SecureRandomFuture.clientPreferences.windowMode;
-				return 1;
-			} else if (var0 != ScriptOpcodes.SETDEFAULTWINDOWMODE) {
-				if (var0 == 5310) {
-					--IsaacCipher.Interpreter_intStackSize;
-					return 1;
-				} else if (var0 == 5311) {
-					IsaacCipher.Interpreter_intStackSize -= 2;
-					return 1;
-				} else if (var0 == 5312) {
-					--IsaacCipher.Interpreter_intStackSize;
-					return 1;
-				} else if (var0 == 5350) {
-					class13.Interpreter_stringStackSize -= 2;
-					--IsaacCipher.Interpreter_intStackSize;
-					return 1;
-				} else if (var0 == 5351) {
-					--class13.Interpreter_stringStackSize;
-					return 1;
-				} else {
-					return 2;
-				}
-			} else {
-				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				if (var3 == 1 || var3 == 2) {
-					SecureRandomFuture.clientPreferences.windowMode = var3;
-					class127.savePreferences();
-				}
-
-				return 1;
+		int var4;
+		String var5;
+		for (var4 = 0; var4 < var3.length; ++var4) {
+			var5 = var3[var4];
+			if (var0.tryLoadFileByNames(var5, "")) {
+				++var2;
 			}
 		}
+
+		var3 = Login.field932;
+
+		for (var4 = 0; var4 < var3.length; ++var4) {
+			var5 = var3[var4];
+			if (var1.tryLoadFileByNames(var5, "")) {
+				++var2;
+			}
+		}
+
+		var3 = Login.field953;
+
+		for (var4 = 0; var4 < var3.length; ++var4) {
+			var5 = var3[var4];
+			if (var1.getGroupId(var5) != -1 && var1.tryLoadFileByNames(var5, "")) {
+				++var2;
+			}
+		}
+
+		return var2;
 	}
 }

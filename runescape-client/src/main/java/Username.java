@@ -3,62 +3,185 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("po")
+@ObfuscatedName("rp")
 @Implements("Username")
 public class Username implements Comparable {
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@Export("name")
 	String name;
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@Export("cleanName")
 	String cleanName;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Low;)V"
+		descriptor = "(Ljava/lang/String;Lqi;)V"
 	)
 	public Username(String var1, LoginType var2) {
 		this.name = var1;
-		this.cleanName = VarbitComposition.method3395(var1, var2);
+		String var4;
+		if (var1 == null) {
+			var4 = null;
+		} else {
+			label85: {
+				int var5 = 0;
+
+				int var6;
+				for (var6 = var1.length(); var5 < var6; ++var5) {
+					char var8 = var1.charAt(var5);
+					boolean var7 = var8 == 160 || var8 == ' ' || var8 == '_' || var8 == '-';
+					if (!var7) {
+						break;
+					}
+				}
+
+				while (var6 > var5 && GrandExchangeOfferOwnWorldComparator.method1212(var1.charAt(var6 - 1))) {
+					--var6;
+				}
+
+				int var13 = var6 - var5;
+				if (var13 >= 1) {
+					byte var9;
+					if (var2 == null) {
+						var9 = 12;
+					} else {
+						switch(var2.field4833) {
+						case 1:
+							var9 = 20;
+							break;
+						default:
+							var9 = 12;
+						}
+					}
+
+					if (var13 <= var9) {
+						StringBuilder var12 = new StringBuilder(var13);
+
+						for (int var14 = var5; var14 < var6; ++var14) {
+							char var10 = var1.charAt(var14);
+							if (RouteStrategy.method4181(var10)) {
+								char var11 = NameableContainer.method7589(var10);
+								if (var11 != 0) {
+									var12.append(var11);
+								}
+							}
+						}
+
+						if (var12.length() == 0) {
+							var4 = null;
+						} else {
+							var4 = var12.toString();
+						}
+						break label85;
+					}
+				}
+
+				var4 = null;
+			}
+		}
+
+		this.cleanName = var4;
 	}
 
 	public Username(String var1) {
 		this.name = var1;
-		this.cleanName = VarbitComposition.method3395(var1, LoginType.oldscape);
+		LoginType var4 = LoginType.oldscape;
+		String var3;
+		if (var1 == null) {
+			var3 = null;
+		} else {
+			label85: {
+				int var5 = 0;
+
+				int var6;
+				for (var6 = var1.length(); var5 < var6; ++var5) {
+					char var8 = var1.charAt(var5);
+					boolean var7 = var8 == 160 || var8 == ' ' || var8 == '_' || var8 == '-';
+					if (!var7) {
+						break;
+					}
+				}
+
+				while (var6 > var5 && GrandExchangeOfferOwnWorldComparator.method1212(var1.charAt(var6 - 1))) {
+					--var6;
+				}
+
+				int var13 = var6 - var5;
+				if (var13 >= 1) {
+					byte var9;
+					if (var4 == null) {
+						var9 = 12;
+					} else {
+						switch(var4.field4833) {
+						case 1:
+							var9 = 20;
+							break;
+						default:
+							var9 = 12;
+						}
+					}
+
+					if (var13 <= var9) {
+						StringBuilder var12 = new StringBuilder(var13);
+
+						for (int var14 = var5; var14 < var6; ++var14) {
+							char var10 = var1.charAt(var14);
+							if (RouteStrategy.method4181(var10)) {
+								char var11 = NameableContainer.method7589(var10);
+								if (var11 != 0) {
+									var12.append(var11);
+								}
+							}
+						}
+
+						if (var12.length() == 0) {
+							var3 = null;
+						} else {
+							var3 = var12.toString();
+						}
+						break label85;
+					}
+				}
+
+				var3 = null;
+			}
+		}
+
+		this.cleanName = var3;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-1445770894"
+		garbageValue = "-1788894577"
 	)
 	@Export("getName")
 	public String getName() {
 		return this.name;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
 		descriptor = "(B)Ljava/lang/String;",
-		garbageValue = "0"
+		garbageValue = "-94"
 	)
-	public String method7914() {
+	public String method9160() {
 		return this.cleanName;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1835118352"
+		descriptor = "(B)Z",
+		garbageValue = "-35"
 	)
 	@Export("hasCleanName")
 	public boolean hasCleanName() {
 		return this.cleanName != null;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;B)I",
-		garbageValue = "-127"
+		descriptor = "(Lrp;B)I",
+		garbageValue = "115"
 	)
 	@Export("compareToTyped")
 	public int compareToTyped(Username var1) {

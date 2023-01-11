@@ -7,22 +7,22 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ka")
+@ObfuscatedName("lr")
 @Implements("GrandExchangeEvents")
 public class GrandExchangeEvents {
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@Export("GrandExchangeEvents_ageComparator")
 	public static Comparator GrandExchangeEvents_ageComparator;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@Export("GrandExchangeEvents_priceComparator")
 	public static Comparator GrandExchangeEvents_priceComparator;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@Export("GrandExchangeEvents_nameComparator")
 	public static Comparator GrandExchangeEvents_nameComparator;
-	@ObfuscatedName("t")
+	@ObfuscatedName("m")
 	@Export("GrandExchangeEvents_quantityComparator")
 	public static Comparator GrandExchangeEvents_quantityComparator;
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@Export("events")
 	public final List events;
 
@@ -35,7 +35,7 @@ public class GrandExchangeEvents {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;Z)V",
+		descriptor = "(Lqy;Z)V",
 		garbageValue = "1"
 	)
 	public GrandExchangeEvents(Buffer var1, boolean var2) {
@@ -57,10 +57,10 @@ public class GrandExchangeEvents {
 
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Comparator;ZB)V",
-		garbageValue = "39"
+		descriptor = "(Ljava/util/Comparator;ZI)V",
+		garbageValue = "1698148596"
 	)
 	@Export("sort")
 	public void sort(Comparator var1, boolean var2) {
@@ -72,17 +72,30 @@ public class GrandExchangeEvents {
 
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "40"
+		descriptor = "(Laa;B)V",
+		garbageValue = "-67"
 	)
-	public static void method5716() {
-		if (KeyHandler.KeyHandler_instance != null) {
-			synchronized(KeyHandler.KeyHandler_instance) {
-				KeyHandler.KeyHandler_instance = null;
-			}
+	@Export("PcmStream_disable")
+	static final void PcmStream_disable(PcmStream var0) {
+		var0.active = false;
+		if (var0.sound != null) {
+			var0.sound.position = 0;
 		}
 
+		for (PcmStream var1 = var0.firstSubStream(); var1 != null; var1 = var0.nextSubStream()) {
+			PcmStream_disable(var1);
+		}
+
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "82"
+	)
+	static int method6569(int var0) {
+		return (int)((Math.log((double)var0) / Interpreter.field871 - 7.0D) * 256.0D);
 	}
 }
