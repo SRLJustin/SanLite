@@ -8,40 +8,38 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("q")
+@ObfuscatedName("p")
 public class class21 {
-	@ObfuscatedName("v")
+	@ObfuscatedName("ei")
 	@ObfuscatedSignature(
-		descriptor = "Ljk;"
+		descriptor = "Lln;"
 	)
-	@Export("musicTrack")
-	public static MusicTrack musicTrack;
-	@ObfuscatedName("d")
-	static boolean field116;
-	@ObfuscatedName("bf")
-	@ObfuscatedSignature(
-		descriptor = "Lpa;"
-	)
-	static IndexedSprite field118;
-	@ObfuscatedName("c")
+	static Archive field123;
+	@ObfuscatedName("ov")
 	@ObfuscatedGetter(
-		intValue = -1676321481
+		intValue = 429125907
 	)
-	final int field115;
-	@ObfuscatedName("b")
-	final String field114;
+	@Export("selectedSpellFlags")
+	static int selectedSpellFlags;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(
+		intValue = -1186998877
+	)
+	final int field121;
+	@ObfuscatedName("e")
+	final String field122;
 
 	class21(String var1) {
-		this.field115 = 400;
-		this.field114 = "";
+		this.field121 = 400;
+		this.field122 = "";
 	}
 
 	class21(HttpURLConnection var1) throws IOException {
-		this.field115 = var1.getResponseCode();
+		this.field121 = var1.getResponseCode();
 		var1.getResponseMessage();
 		var1.getHeaderFields();
 		StringBuilder var2 = new StringBuilder();
-		InputStream var3 = this.field115 >= 300 ? var1.getErrorStream() : var1.getInputStream();
+		InputStream var3 = this.field121 >= 300 ? var1.getErrorStream() : var1.getInputStream();
 		if (var3 != null) {
 			InputStreamReader var4 = new InputStreamReader(var3);
 			BufferedReader var5 = new BufferedReader(var4);
@@ -54,46 +52,46 @@ public class class21 {
 			var3.close();
 		}
 
-		this.field114 = var2.toString();
+		this.field122 = var2.toString();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1543760704"
+		garbageValue = "-2139924065"
 	)
-	public int method338() {
-		return this.field115;
+	public int method297() {
+		return this.field121;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(S)Ljava/lang/String;",
-		garbageValue = "128"
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-309548900"
 	)
-	public String method339() {
-		return this.field114;
+	public String method298() {
+		return this.field122;
 	}
 
-	@ObfuscatedName("if")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIZI)V",
-		garbageValue = "1482446677"
+		descriptor = "(IB)Lgh;",
+		garbageValue = "96"
 	)
-	@Export("insertMenuItem")
-	static final void insertMenuItem(String var0, String var1, int var2, int var3, int var4, int var5, boolean var6) {
-		if (!Client.isMenuOpen) {
-			if (Client.menuOptionsCount < 500) {
-				Client.menuActions[Client.menuOptionsCount] = var0;
-				Client.menuTargets[Client.menuOptionsCount] = var1;
-				Client.menuOpcodes[Client.menuOptionsCount] = var2;
-				Client.menuIdentifiers[Client.menuOptionsCount] = var3;
-				Client.menuArguments1[Client.menuOptionsCount] = var4;
-				Client.menuArguments2[Client.menuOptionsCount] = var5;
-				Client.menuShiftClick[Client.menuOptionsCount] = var6;
-				++Client.menuOptionsCount;
+	public static FloorUnderlayDefinition method304(int var0) {
+		FloorUnderlayDefinition var1 = (FloorUnderlayDefinition)FloorUnderlayDefinition.FloorUnderlayDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = class283.FloorUnderlayDefinition_archive.takeFile(1, var0);
+			var1 = new FloorUnderlayDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2), var0);
 			}
 
+			var1.postDecode();
+			FloorUnderlayDefinition.FloorUnderlayDefinition_cached.put(var1, (long)var0);
+			return var1;
 		}
 	}
 }

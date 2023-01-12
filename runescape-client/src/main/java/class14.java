@@ -2,189 +2,154 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("g")
+@ObfuscatedName("n")
 public class class14 {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = -691857245
+	@ObfuscatedName("hc")
+	@ObfuscatedSignature(
+		descriptor = "Lou;"
 	)
-	final int field80;
-	@ObfuscatedName("b")
-	final String field79;
-	@ObfuscatedName("p")
-	final ThreadFactory field81;
-	@ObfuscatedName("m")
-	final ThreadPoolExecutor field82;
+	static AbstractSocket field83;
+	@ObfuscatedName("kn")
+	@ObfuscatedGetter(
+		intValue = -866172123
+	)
+	@Export("oculusOrbFocalPointY")
+	static int oculusOrbFocalPointY;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(
+		intValue = -1464480991
+	)
+	final int field81;
+	@ObfuscatedName("e")
+	final String field85;
+	@ObfuscatedName("v")
+	final ThreadFactory field82;
+	@ObfuscatedName("x")
+	final ThreadPoolExecutor field86;
 
 	public class14(String var1, int var2, int var3) {
-		this.field79 = var1;
-		this.field80 = var2;
-		this.field81 = new class16(this);
-		this.field82 = this.method203(var3);
+		this.field85 = var1;
+		this.field81 = var2;
+		this.field82 = new class16(this);
+		this.field86 = this.method166(var3);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
 		descriptor = "(II)Ljava/util/concurrent/ThreadPoolExecutor;",
-		garbageValue = "-1684515517"
+		garbageValue = "496995616"
 	)
-	final ThreadPoolExecutor method203(int var1) {
-		return new ThreadPoolExecutor(var1, var1, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue(this.field80), this.field81);
+	final ThreadPoolExecutor method166(int var1) {
+		return new ThreadPoolExecutor(var1, var1, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue(this.field81), this.field82);
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(Lo;I)Lf;",
-		garbageValue = "-977382928"
+		descriptor = "(Lj;B)Lt;",
+		garbageValue = "-99"
 	)
-	public class19 method213(class10 var1) {
-		if (this.field82.getQueue().remainingCapacity() <= 0) {
-			System.err.println("REST thread pool queue is empty\r\nThread pool size " + this.field82.getCorePoolSize() + " Queue capacity " + this.field80);
+	public class19 method167(class10 var1) {
+		if (this.field86.getQueue().remainingCapacity() <= 0) {
+			System.err.println("REST thread pool queue is empty\r\nThread pool size " + this.field86.getCorePoolSize() + " Queue capacity " + this.field81);
 			return new class19("Queue full");
 		} else {
-			class19 var2 = new class19(this.field82.submit(new class20(this, var1)));
+			class19 var2 = new class19(this.field86.submit(new class20(this, var1)));
 			return var2;
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1972637620"
+		garbageValue = "1559640620"
 	)
-	public final void method206() {
+	public final void method171() {
 		try {
-			this.field82.shutdown();
+			this.field86.shutdown();
 		} catch (Exception var2) {
 			System.err.println("Error shutting down RestRequestService\r\n" + var2);
 		}
 
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(Ldn;FB)F",
-		garbageValue = "1"
+		descriptor = "([BIIII[Lgw;I)V",
+		garbageValue = "2031044103"
 	)
-	static float method210(class115 var0, float var1) {
-		if (var0 != null && var0.method2637() != 0) {
-			if (var1 < (float)var0.field1393[0].field1359) {
-				return var0.field1410 == class114.field1390 ? var0.field1393[0].field1349 : class213.method4354(var0, var1, true);
-			} else if (var1 > (float)var0.field1393[var0.method2637() - 1].field1359) {
-				return var0.field1396 == class114.field1390 ? var0.field1393[var0.method2637() - 1].field1349 : class213.method4354(var0, var1, false);
-			} else if (var0.field1408) {
-				return var0.field1393[0].field1349;
-			} else {
-				class111 var2 = var0.method2631(var1);
-				boolean var3 = false;
-				boolean var4 = false;
-				if (var2 == null) {
-					return 0.0F;
-				} else {
-					if (0.0D == (double)var2.field1352 && (double)var2.field1357 == 0.0D) {
-						var3 = true;
-					} else if (Float.MAX_VALUE == var2.field1352 && var2.field1357 == Float.MAX_VALUE) {
-						var4 = true;
-					} else if (var2.field1354 != null) {
-						if (var0.field1403) {
-							float[] var5 = new float[4];
-							float[] var6 = new float[4];
-							var5[0] = (float)var2.field1359;
-							var6[0] = var2.field1349;
-							var5[1] = var5[0] + var2.field1352 * 0.33333334F;
-							var6[1] = var6[0] + 0.33333334F * var2.field1357;
-							var5[3] = (float)var2.field1354.field1359;
-							var6[3] = var2.field1354.field1349;
-							var5[2] = var5[3] - var2.field1354.field1350 * 0.33333334F;
-							var6[2] = var6[3] - var2.field1354.field1351 * 0.33333334F;
-							if (var0.field1397) {
-								class13.method202(var0, var5, var6);
-							} else {
-								UserComparator4.method2504(var0, var5, var6);
-							}
-
-							var0.field1403 = false;
-						}
-					} else {
-						var3 = true;
-					}
-
-					if (var3) {
-						return var2.field1349;
-					} else if (var4) {
-						return (float)var2.field1359 != var1 && var2.field1354 != null ? var2.field1354.field1349 : var2.field1349;
-					} else {
-						float var11;
-						float var12;
-						if (var0.field1397) {
-							if (var0 == null) {
-								var12 = 0.0F;
-							} else {
-								if (var1 == var0.field1406) {
-									var11 = 0.0F;
-								} else if (var1 == var0.field1394) {
-									var11 = 1.0F;
-								} else {
-									var11 = (var1 - var0.field1406) / (var0.field1394 - var0.field1406);
-								}
-
-								float var7;
-								if (var0.field1398) {
-									var7 = var11;
-								} else {
-									float[] var8 = new float[]{var0.field1401[0] - var11, var0.field1401[1], var0.field1401[2], var0.field1401[3]};
-									float[] var9 = new float[5];
-									int var10 = class144.method2971(var8, 3, 0.0F, true, 1.0F, true, var9);
-									if (var10 == 1) {
-										var7 = var9[0];
-									} else {
-										var7 = 0.0F;
-									}
-								}
-
-								var12 = var0.field1402[0] + var7 * (var0.field1402[1] + var7 * (var0.field1402[2] + var7 * var0.field1402[3]));
-							}
-
-							return var12;
-						} else {
-							if (var0 == null) {
-								var12 = 0.0F;
-							} else {
-								var11 = var1 - var0.field1406;
-								var12 = (var11 * (var11 * var0.field1401[0] + var0.field1401[1]) + var0.field1401[2]) * var11 + var0.field1401[3];
-							}
-
-							return var12;
-						}
+	static final void method168(byte[] var0, int var1, int var2, int var3, int var4, CollisionMap[] var5) {
+		int var7;
+		int var8;
+		for (int var6 = 0; var6 < 4; ++var6) {
+			for (var7 = 0; var7 < 64; ++var7) {
+				for (var8 = 0; var8 < 64; ++var8) {
+					if (var7 + var1 > 0 && var7 + var1 < 103 && var8 + var2 > 0 && var8 + var2 < 103) {
+						int[] var10000 = var5[var6].flags[var7 + var1];
+						var10000[var2 + var8] &= -16777217;
 					}
 				}
 			}
+		}
+
+		Buffer var12 = new Buffer(var0);
+
+		for (var7 = 0; var7 < 4; ++var7) {
+			for (var8 = 0; var8 < 64; ++var8) {
+				for (int var9 = 0; var9 < 64; ++var9) {
+					int var10 = var8 + var1;
+					int var11 = var9 + var2;
+					Messages.loadTerrain(var12, var7, var10, var11, var3 + var10, var11 + var4, 0);
+				}
+			}
+		}
+
+	}
+
+	@ObfuscatedName("t")
+	@ObfuscatedSignature(
+		descriptor = "(ILbm;ZB)I",
+		garbageValue = "39"
+	)
+	static int method172(int var0, Script var1, boolean var2) {
+		Widget var3 = class175.getWidget(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
+		if (var0 == ScriptOpcodes.IF_GETX) {
+			Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3.x;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETY) {
+			Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3.y;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETWIDTH) {
+			Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3.width;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETHEIGHT) {
+			Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3.height;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETHIDE) {
+			Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3.isHidden ? 1 : 0;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETLAYER) {
+			Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3.parentId;
+			return 1;
 		} else {
-			return 0.0F;
+			return 2;
 		}
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("lq")
 	@ObfuscatedSignature(
-		descriptor = "(ZZI)I",
-		garbageValue = "-1522814517"
+		descriptor = "(II)V",
+		garbageValue = "1631694430"
 	)
-	public static int method214(boolean var0, boolean var1) {
-		byte var2 = 0;
-		int var3 = var2 + NetCache.NetCache_pendingPriorityResponsesCount + NetCache.NetCache_pendingPriorityWritesCount;
-		return var3;
-	}
-
-	@ObfuscatedName("id")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "724384814"
-	)
-	static final boolean method204() {
-		return Client.isMenuOpen;
+	static final void method170(int var0) {
+		var0 = Math.max(Math.min(var0, 100), 0);
+		var0 = 100 - var0;
+		float var1 = (float)var0 / 200.0F + 0.5F;
+		FileSystem.method3480((double)var1);
 	}
 }
