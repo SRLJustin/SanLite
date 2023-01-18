@@ -1,81 +1,83 @@
+import java.applet.Applet;
+import java.io.UnsupportedEncodingException;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @ObfuscatedName("pf")
-public class class422 implements MouseWheel {
-	@ObfuscatedName("c")
+public class class422 implements class421 {
+	@ObfuscatedName("h")
+	@Export("RunException_applet")
+	public static Applet RunException_applet;
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lpf;"
+		descriptor = "Lly;"
 	)
-	public static final class422 field4523;
-	@ObfuscatedName("b")
+	@Export("Widget_archive")
+	static AbstractArchive Widget_archive;
+	@ObfuscatedName("v")
+	JSONObject field4658;
+
+	public class422(byte[] var1) throws UnsupportedEncodingException {
+		this.method7923(var1);
+	}
+
+	public class422(String var1) throws UnsupportedEncodingException {
+		this.method7916(var1);
+	}
+
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lpf;"
+		descriptor = "(B)[B",
+		garbageValue = "0"
 	)
-	public static final class422 field4524;
-	@ObfuscatedName("p")
+	public byte[] vmethod7924() throws UnsupportedEncodingException {
+		return this.field4658 == null ? new byte[0] : this.field4658.toString().getBytes("UTF-8");
+	}
+
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lpf;"
+		descriptor = "([BI)V",
+		garbageValue = "1750252743"
 	)
-	static final class422 field4528;
+	void method7923(byte[] var1) throws UnsupportedEncodingException {
+		String var2 = new String(var1, "UTF-8");
+		this.method7916(var2);
+	}
+
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "-1308508243"
+	)
+	void method7916(String var1) throws UnsupportedEncodingException {
+		try {
+			if (var1.charAt(0) == '{') {
+				this.field4658 = new JSONObject(var1);
+			} else {
+				if (var1.charAt(0) != '[') {
+					throw new UnsupportedEncodingException("Invalid JSON passed to the JSON content builder.");
+				}
+
+				JSONArray var2 = new JSONArray(var1);
+				this.field4658 = new JSONObject();
+				this.field4658.put("arrayValues", var2);
+			}
+
+		} catch (JSONException var3) {
+			throw new UnsupportedEncodingException(var3.getMessage());
+		}
+	}
+
 	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "Lpf;"
+		descriptor = "(I)Lorg/json/JSONObject;",
+		garbageValue = "1299055961"
 	)
-	static final class422 field4526;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Lpf;"
-	)
-	static final class422 field4525;
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Lpf;"
-	)
-	static final class422 field4527;
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(
-		intValue = 2111165783
-	)
-	final int field4529;
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = -1059382247
-	)
-	final int field4530;
-
-	static {
-		field4523 = new class422(5, 0);
-		field4524 = new class422(4, 2);
-		field4528 = new class422(0, 5);
-		field4526 = new class422(1, 6);
-		field4525 = new class422(2, 7);
-		field4527 = new class422(3, 8);
-	}
-
-	class422(int var1, int var2) {
-		this.field4529 = var1;
-		this.field4530 = var2;
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "3"
-	)
-	public boolean method7605() {
-		return this == field4524;
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "48"
-	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field4530;
+	public JSONObject method7917() {
+		return this.field4658;
 	}
 }

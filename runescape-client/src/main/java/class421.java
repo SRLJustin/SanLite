@@ -1,11 +1,13 @@
+import java.io.UnsupportedEncodingException;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pp")
+@ObfuscatedName("pu")
 public interface class421 {
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V"
+		descriptor = "(B)[B",
+		garbageValue = "0"
 	)
-	void method7596(Buffer var1);
+	byte[] vmethod7924() throws UnsupportedEncodingException;
 }
