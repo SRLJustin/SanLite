@@ -1,23 +1,12 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ds")
+@ObfuscatedName("dy")
 @Implements("UserComparator9")
 public class UserComparator9 extends AbstractUserComparator {
-	@ObfuscatedName("sq")
-	@ObfuscatedGetter(
-		intValue = -1619133469
-	)
-	static int field1335;
 	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "Lpa;"
-	)
-	static IndexedSprite field1336;
-	@ObfuscatedName("c")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -25,10 +14,10 @@ public class UserComparator9 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Lmp;Lmp;I)I",
-		garbageValue = "-346257464"
+		descriptor = "(Loa;Loa;I)I",
+		garbageValue = "1712293259"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -41,5 +30,15 @@ public class UserComparator9 extends AbstractUserComparator {
 
 	public int compare(Object var1, Object var2) {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
+	}
+
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lbz;",
+		garbageValue = "1979079946"
+	)
+	@Export("getNextWorldListWorld")
+	static World getNextWorldListWorld() {
+		return World.World_listCount < World.World_count ? World.World_worlds[++World.World_listCount - 1] : null;
 	}
 }

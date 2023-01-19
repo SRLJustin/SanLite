@@ -4,84 +4,67 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cw")
+@ObfuscatedName("ci")
 @Implements("Players")
 public class Players {
-	@ObfuscatedName("qa")
+	@ObfuscatedName("v")
+	static byte[] field1370;
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "[Lgs;"
 	)
-	@Export("friendsChatManager")
-	static FriendsChatManager friendsChatManager;
-	@ObfuscatedName("p")
-	static byte[] field1243;
+	static class204[] field1379;
 	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "[Lgj;"
+		descriptor = "[Lqy;"
 	)
-	static class185[] field1246;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "[Lpi;"
-	)
-	static Buffer[] field1248;
-	@ObfuscatedName("s")
+	static Buffer[] field1372;
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 60233761
+		intValue = -316088161
 	)
 	@Export("Players_count")
 	static int Players_count;
-	@ObfuscatedName("j")
+	@ObfuscatedName("f")
 	@Export("Players_indices")
 	static int[] Players_indices;
-	@ObfuscatedName("w")
+	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = -1857354621
+		intValue = 888769669
 	)
 	@Export("Players_emptyIdxCount")
 	static int Players_emptyIdxCount;
-	@ObfuscatedName("n")
+	@ObfuscatedName("u")
 	@Export("Players_emptyIndices")
 	static int[] Players_emptyIndices;
-	@ObfuscatedName("r")
+	@ObfuscatedName("b")
 	@Export("Players_regions")
 	static int[] Players_regions;
-	@ObfuscatedName("o")
+	@ObfuscatedName("j")
 	@Export("Players_orientations")
 	static int[] Players_orientations;
-	@ObfuscatedName("v")
+	@ObfuscatedName("g")
 	@Export("Players_targetIndices")
 	static int[] Players_targetIndices;
-	@ObfuscatedName("d")
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = 1591161311
+		intValue = 279882375
 	)
 	@Export("Players_pendingUpdateCount")
 	static int Players_pendingUpdateCount;
-	@ObfuscatedName("h")
+	@ObfuscatedName("o")
 	@Export("Players_pendingUpdateIndices")
 	static int[] Players_pendingUpdateIndices;
-	@ObfuscatedName("g")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lpi;"
+		descriptor = "Lqy;"
 	)
-	static Buffer field1257;
-	@ObfuscatedName("cb")
-	@ObfuscatedGetter(
-		intValue = 1838137179
-	)
-	public static int field1247;
-	@ObfuscatedName("el")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive11")
-	static Archive archive11;
+	static Buffer field1382;
 
 	static {
-		field1243 = new byte[2048];
-		field1246 = new class185[2048];
-		field1248 = new Buffer[2048];
+		field1370 = new byte[2048];
+		field1379 = new class204[2048];
+		field1372 = new Buffer[2048];
 		Players_count = 0;
 		Players_indices = new int[2048];
 		Players_emptyIdxCount = 0;
@@ -91,28 +74,48 @@ public class Players {
 		Players_targetIndices = new int[2048];
 		Players_pendingUpdateCount = 0;
 		Players_pendingUpdateIndices = new int[2048];
-		field1257 = new Buffer(new byte[5000]);
+		field1382 = new Buffer(new byte[5000]);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;Ljava/lang/String;Ljava/lang/String;IZI)V",
-		garbageValue = "2062230724"
+		descriptor = "(II)Z",
+		garbageValue = "1396196168"
 	)
-	public static void method2382(AbstractArchive var0, String var1, String var2, int var3, boolean var4) {
-		int var5 = var0.getGroupId(var1);
-		int var6 = var0.getFileId(var5, var2);
-		NetSocket.method3118(var0, var5, var6, var3, var4);
-	}
+	@Export("loadInterface")
+	public static boolean loadInterface(int var0) {
+		if (Language.Widget_loadedInterfaces[var0]) {
+			return true;
+		} else if (!class422.Widget_archive.tryLoadGroup(var0)) {
+			return false;
+		} else {
+			int var1 = class422.Widget_archive.getGroupFileCount(var0);
+			if (var1 == 0) {
+				Language.Widget_loadedInterfaces[var0] = true;
+				return true;
+			} else {
+				if (class71.Widget_interfaceComponents[var0] == null) {
+					class71.Widget_interfaceComponents[var0] = new Widget[var1];
+				}
 
-	@ObfuscatedName("kz")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-733179789"
-	)
-	static final void method2383(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 127);
-		SecureRandomFuture.clientPreferences.areaSoundEffectsVolume = var0;
-		class127.savePreferences();
+				for (int var2 = 0; var2 < var1; ++var2) {
+					if (class71.Widget_interfaceComponents[var0][var2] == null) {
+						byte[] var3 = class422.Widget_archive.takeFile(var0, var2);
+						if (var3 != null) {
+							class71.Widget_interfaceComponents[var0][var2] = new Widget();
+							class71.Widget_interfaceComponents[var0][var2].id = var2 + (var0 << 16);
+							if (var3[0] == -1) {
+								class71.Widget_interfaceComponents[var0][var2].decode(new Buffer(var3));
+							} else {
+								class71.Widget_interfaceComponents[var0][var2].decodeLegacy(new Buffer(var3));
+							}
+						}
+					}
+				}
+
+				Language.Widget_loadedInterfaces[var0] = true;
+				return true;
+			}
+		}
 	}
 }

@@ -4,179 +4,111 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cg")
+@ObfuscatedName("cm")
 @Implements("PendingSpawn")
 public final class PendingSpawn extends Node {
-	@ObfuscatedName("c")
+	@ObfuscatedName("ns")
+	@ObfuscatedSignature(
+		descriptor = "Lbs;"
+	)
+	@Export("tempMenuAction")
+	static MenuAction tempMenuAction;
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 747226221
+		intValue = -768872951
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = -1980117299
+		intValue = 1473814219
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -554114639
+		intValue = -1941580187
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = 1191230763
+		intValue = 301883379
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("t")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -748187349
+		intValue = -1863285855
 	)
 	@Export("objectId")
 	int objectId;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 1874163139
+		intValue = 1543631763
 	)
-	int field1087;
-	@ObfuscatedName("j")
+	int field1175;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 474042509
+		intValue = -1082491127
 	)
-	int field1080;
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = -208489985
-	)
-	@Export("id")
-	int id;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = -104687109
-	)
-	@Export("orientation")
-	int orientation;
+	int field1166;
 	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = 753624769
+		intValue = -323138543
 	)
-	int field1075;
+	int field1167;
+	@ObfuscatedName("u")
+	@ObfuscatedGetter(
+		intValue = -910085015
+	)
+	int field1168;
+	@ObfuscatedName("b")
+	@ObfuscatedGetter(
+		intValue = -1613827299
+	)
+	int field1169;
+	@ObfuscatedName("g")
+	@ObfuscatedGetter(
+		intValue = -1272901055
+	)
+	int field1165;
+	@ObfuscatedName("i")
+	@ObfuscatedGetter(
+		intValue = 583629257
+	)
+	int field1162;
 	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -2017319267
+		intValue = 1183420635
 	)
-	@Export("delay")
-	int delay;
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(
-		intValue = -1649420319
-	)
-	@Export("hitpoints")
-	int hitpoints;
+	int field1173;
 
 	PendingSpawn() {
-		this.delay = 0;
-		this.hitpoints = -1;
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "([BIIB)Ljava/lang/String;",
-		garbageValue = "-94"
-	)
-	public static String method2224(byte[] var0, int var1, int var2) {
-		StringBuilder var3 = new StringBuilder();
-
-		for (int var4 = var1; var4 < var2 + var1; var4 += 3) {
-			int var5 = var0[var4] & 255;
-			var3.append(class329.field4005[var5 >>> 2]);
-			if (var4 < var2 - 1) {
-				int var6 = var0[var4 + 1] & 255;
-				var3.append(class329.field4005[(var5 & 3) << 4 | var6 >>> 4]);
-				if (var4 < var2 - 2) {
-					int var7 = var0[var4 + 2] & 255;
-					var3.append(class329.field4005[(var6 & 15) << 2 | var7 >>> 6]).append(class329.field4005[var7 & 63]);
-				} else {
-					var3.append(class329.field4005[(var6 & 15) << 2]).append("=");
-				}
-			} else {
-				var3.append(class329.field4005[(var5 & 3) << 4]).append("==");
-			}
-		}
-
-		return var3.toString();
-	}
-
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-2136768167"
-	)
-	static void method2225(int var0, int var1) {
-		long var2 = (long)((var0 << 16) + var1);
-		NetFileRequest var4 = (NetFileRequest)NetCache.NetCache_pendingWrites.get(var2);
-		if (var4 != null) {
-			NetCache.NetCache_pendingWritesQueue.addLast(var4);
-		}
-	}
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "([BIII)Ljava/lang/String;",
-		garbageValue = "-373054385"
-	)
-	@Export("decodeStringCp1252")
-	public static String decodeStringCp1252(byte[] var0, int var1, int var2) {
-		char[] var3 = new char[var2];
-		int var4 = 0;
-
-		for (int var5 = 0; var5 < var2; ++var5) {
-			int var6 = var0[var5 + var1] & 255;
-			if (var6 != 0) {
-				if (var6 >= 128 && var6 < 160) {
-					char var7 = class328.cp1252AsciiExtension[var6 - 128];
-					if (var7 == 0) {
-						var7 = '?';
-					}
-
-					var6 = var7;
-				}
-
-				var3[var4++] = (char)var6;
-			}
-		}
-
-		return new String(var3, 0, var4);
+		this.field1165 = 31;
+		this.field1162 = 0;
+		this.field1173 = -1;
 	}
 
 	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "2133440883"
+		descriptor = "(IB)V",
+		garbageValue = "-39"
 	)
-	static final int method2223(int var0, int var1) {
-		if (var0 == -2) {
-			return 12345678;
-		} else if (var0 == -1) {
-			if (var1 < 2) {
-				var1 = 2;
-			} else if (var1 > 126) {
-				var1 = 126;
-			}
+	void method2338(int var1) {
+		this.field1165 = var1;
+	}
 
-			return var1;
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "-2145111937"
+	)
+	boolean method2341(int var1) {
+		if (var1 >= 0 && var1 <= 4) {
+			return (this.field1165 & 1 << var1) != 0;
 		} else {
-			var1 = (var0 & 127) * var1 / 128;
-			if (var1 < 2) {
-				var1 = 2;
-			} else if (var1 > 126) {
-				var1 = 126;
-			}
-
-			return (var0 & 65408) + var1;
+			return true;
 		}
 	}
 }

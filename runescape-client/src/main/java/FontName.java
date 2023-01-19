@@ -1,54 +1,55 @@
+import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ot")
+@ObfuscatedName("pt")
 @Implements("FontName")
 public class FontName {
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Lpt;"
 	)
 	@Export("FontName_plain11")
 	public static final FontName FontName_plain11;
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Lpt;"
 	)
 	@Export("FontName_plain12")
 	public static final FontName FontName_plain12;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Lpt;"
 	)
 	@Export("FontName_bold12")
 	public static final FontName FontName_bold12;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Lpt;"
 	)
 	@Export("FontName_verdana11")
 	public static final FontName FontName_verdana11;
-	@ObfuscatedName("t")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Lpt;"
 	)
 	@Export("FontName_verdana13")
 	public static final FontName FontName_verdana13;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Lpt;"
 	)
 	@Export("FontName_verdana15")
 	public static final FontName FontName_verdana15;
-	@ObfuscatedName("dw")
+	@ObfuscatedName("fb")
 	@ObfuscatedSignature(
-		descriptor = "Lmd;"
+		descriptor = "Lln;"
 	)
-	@Export("js5Socket")
-	static AbstractSocket js5Socket;
-	@ObfuscatedName("j")
+	@Export("archive19")
+	static Archive archive19;
+	@ObfuscatedName("f")
 	@Export("name")
 	String name;
 
@@ -65,27 +66,100 @@ public class FontName {
 		this.name = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lj;",
-		garbageValue = "-2104552307"
+		descriptor = "(I)[Lpt;",
+		garbageValue = "1254065539"
 	)
-	public static class6[] method7075() {
-		return new class6[]{class6.field15};
+	public static FontName[] method8203() {
+		return new FontName[]{FontName_plain12, FontName_verdana11, FontName_bold12, FontName_verdana15, FontName_verdana13, FontName_plain11};
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "-4"
+		descriptor = "(I)V",
+		garbageValue = "-2050351066"
 	)
-	public static int method7074(int var0, int var1) {
-		int var2;
-		for (var2 = 0; var1 > 0; --var1) {
-			var2 = var2 << 1 | var0 & 1;
-			var0 >>>= 1;
+	static void method8199() {
+		if (Login.clearLoginScreen) {
+			ModelData0.titleboxSprite = null;
+			Frames.titlebuttonSprite = null;
+			Login.runesSprite = null;
+			SecureRandomCallable.leftTitleSprite = null;
+			class9.rightTitleSprite = null;
+			Login.logoSprite = null;
+			class109.title_muteSprite = null;
+			WorldMapLabel.options_buttons_0Sprite = null;
+			class89.options_buttons_2Sprite = null;
+			GrandExchangeOfferOwnWorldComparator.worldSelectBackSprites = null;
+			class87.worldSelectFlagSprites = null;
+			GroundObject.worldSelectArrows = null;
+			class280.worldSelectStars = null;
+			class98.field1340 = null;
+			class154.loginScreenRunesAnimation.method2381();
+			class384.method7370(2);
+			if (NetCache.NetCache_socket != null) {
+				try {
+					Buffer var0 = new Buffer(4);
+					var0.writeByte(2);
+					var0.writeMedium(0);
+					NetCache.NetCache_socket.write(var0.array, 0, 4);
+				} catch (IOException var3) {
+					try {
+						NetCache.NetCache_socket.close();
+					} catch (Exception var2) {
+					}
+
+					++NetCache.NetCache_ioExceptions;
+					NetCache.NetCache_socket = null;
+				}
+			}
+
+			Login.clearLoginScreen = false;
+		}
+	}
+
+	@ObfuscatedName("ib")
+	@ObfuscatedSignature(
+		descriptor = "(ZI)V",
+		garbageValue = "1513435469"
+	)
+	static final void method8202(boolean var0) {
+		Client.playPcmPlayers();
+		++Client.packetWriter.pendingWrites;
+		if (Client.packetWriter.pendingWrites >= 50 || var0) {
+			Client.packetWriter.pendingWrites = 0;
+			if (!Client.hadNetworkError && Client.packetWriter.getSocket() != null) {
+				PacketBufferNode var1 = class136.getPacketBufferNode(ClientPacket.field3129, Client.packetWriter.isaacCipher);
+				Client.packetWriter.addNode(var1);
+
+				try {
+					Client.packetWriter.flush();
+				} catch (IOException var3) {
+					Client.hadNetworkError = true;
+				}
+			}
+
+		}
+	}
+
+	@ObfuscatedName("kr")
+	@ObfuscatedSignature(
+		descriptor = "(II)Ljava/lang/String;",
+		garbageValue = "-1334048221"
+	)
+	@Export("formatItemStacks")
+	static final String formatItemStacks(int var0) {
+		String var1 = Integer.toString(var0);
+
+		for (int var2 = var1.length() - 3; var2 > 0; var2 -= 3) {
+			var1 = var1.substring(0, var2) + "," + var1.substring(var2);
 		}
 
-		return var2;
+		if (var1.length() > 9) {
+			return " " + MouseRecorder.colorStartTag(65408) + var1.substring(0, var1.length() - 8) + "M" + " " + " (" + var1 + ")" + "</col>";
+		} else {
+			return var1.length() > 6 ? " " + MouseRecorder.colorStartTag(16777215) + var1.substring(0, var1.length() - 4) + "K" + " " + " (" + var1 + ")" + "</col>" : " " + MouseRecorder.colorStartTag(16776960) + var1 + "</col>";
+		}
 	}
 }
