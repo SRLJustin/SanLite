@@ -4,49 +4,45 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fz")
+@ObfuscatedName("go")
 @Implements("EnumComposition")
 public class EnumComposition extends DualNode {
-	@ObfuscatedName("c")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
-	)
-	@Export("EnumDefinition_archive")
-	public static AbstractArchive EnumDefinition_archive;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Ljv;"
 	)
 	@Export("EnumDefinition_cached")
 	static EvictingDualNodeHashTable EnumDefinition_cached;
-	@ObfuscatedName("p")
+	@ObfuscatedName("fe")
+	static String field2006;
+	@ObfuscatedName("v")
 	@Export("inputType")
 	public char inputType;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@Export("outputType")
 	public char outputType;
-	@ObfuscatedName("t")
+	@ObfuscatedName("m")
 	@Export("defaultStr")
 	public String defaultStr;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -129402643
+		intValue = 1478484323
 	)
 	@Export("defaultInt")
 	public int defaultInt;
-	@ObfuscatedName("j")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -988434495
+		intValue = -1015031679
 	)
 	@Export("outputCount")
 	public int outputCount;
-	@ObfuscatedName("w")
+	@ObfuscatedName("r")
 	@Export("keys")
 	public int[] keys;
-	@ObfuscatedName("n")
+	@ObfuscatedName("u")
 	@Export("intVals")
 	public int[] intVals;
-	@ObfuscatedName("r")
+	@ObfuscatedName("b")
 	@Export("strVals")
 	public String[] strVals;
 
@@ -59,10 +55,10 @@ public class EnumComposition extends DualNode {
 		this.outputCount = 0;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1550875336"
+		descriptor = "(Lqy;I)V",
+		garbageValue = "-2074495591"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -76,10 +72,10 @@ public class EnumComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;IB)V",
-		garbageValue = "-68"
+		descriptor = "(Lqy;IS)V",
+		garbageValue = "8918"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -119,142 +115,67 @@ public class EnumComposition extends DualNode {
 	@ObfuscatedName("m")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-2125042449"
+		garbageValue = "-585138184"
 	)
 	@Export("size")
 	public int size() {
 		return this.outputCount;
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIZI)Lpl;",
-		garbageValue = "1794851975"
+		descriptor = "(I)[Ljf;",
+		garbageValue = "-1969198767"
 	)
-	@Export("getItemSprite")
-	public static final SpritePixels getItemSprite(int var0, int var1, int var2, int var3, int var4, boolean var5) {
-		if (var1 == -1) {
-			var4 = 0;
-		} else if (var4 == 2 && var1 != 1) {
-			var4 = 1;
-		}
+	@Export("ServerPacket_values")
+	public static ServerPacket[] ServerPacket_values() {
+		return new ServerPacket[]{ServerPacket.field3218, ServerPacket.field3217, ServerPacket.field3294, ServerPacket.field3186, ServerPacket.field3197, ServerPacket.field3188, ServerPacket.field3185, ServerPacket.field3190, ServerPacket.field3191, ServerPacket.field3208, ServerPacket.field3193, ServerPacket.field3194, ServerPacket.field3195, ServerPacket.field3262, ServerPacket.field3271, ServerPacket.field3198, ServerPacket.field3199, ServerPacket.field3200, ServerPacket.field3201, ServerPacket.field3230, ServerPacket.field3196, ServerPacket.field3204, ServerPacket.field3274, ServerPacket.field3206, ServerPacket.field3272, ServerPacket.field3183, ServerPacket.field3209, ServerPacket.field3210, ServerPacket.field3211, ServerPacket.field3212, ServerPacket.field3205, ServerPacket.field3214, ServerPacket.field3202, ServerPacket.field3270, ServerPacket.field3187, ServerPacket.field3280, ServerPacket.field3219, ServerPacket.field3213, ServerPacket.field3221, ServerPacket.field3222, ServerPacket.field3223, ServerPacket.field3224, ServerPacket.field3251, ServerPacket.field3226, ServerPacket.field3227, ServerPacket.field3184, ServerPacket.field3229, ServerPacket.field3242, ServerPacket.field3231, ServerPacket.field3232, ServerPacket.field3192, ServerPacket.field3257, ServerPacket.field3235, ServerPacket.field3236, ServerPacket.field3237, ServerPacket.field3256, ServerPacket.field3216, ServerPacket.field3240, ServerPacket.field3241, ServerPacket.field3239, ServerPacket.field3243, ServerPacket.field3244, ServerPacket.field3245, ServerPacket.field3246, ServerPacket.field3247, ServerPacket.field3266, ServerPacket.field3285, ServerPacket.field3234, ServerPacket.field3249, ServerPacket.field3225, ServerPacket.field3253, ServerPacket.field3254, ServerPacket.field3255, ServerPacket.field3207, ServerPacket.field3248, ServerPacket.field3258, ServerPacket.field3264, ServerPacket.field3260, ServerPacket.field3261, ServerPacket.field3299, ServerPacket.field3263, ServerPacket.field3238, ServerPacket.field3265, ServerPacket.field3259, ServerPacket.field3267, ServerPacket.field3268, ServerPacket.field3269, ServerPacket.field3286, ServerPacket.field3203, ServerPacket.field3215, ServerPacket.field3287, ServerPacket.field3228, ServerPacket.field3275, ServerPacket.field3276, ServerPacket.field3277, ServerPacket.field3278, ServerPacket.field3279, ServerPacket.field3273, ServerPacket.field3281, ServerPacket.field3282, ServerPacket.field3283, ServerPacket.field3284, ServerPacket.field3252, ServerPacket.field3233, ServerPacket.field3250, ServerPacket.field3288, ServerPacket.field3289, ServerPacket.field3290, ServerPacket.field3291, ServerPacket.field3292, ServerPacket.field3293, ServerPacket.field3189, ServerPacket.field3295, ServerPacket.field3296, ServerPacket.field3297};
+	}
 
-		long var6 = ((long)var4 << 40) + ((long)var2 << 38) + ((long)var1 << 16) + (long)var0 + ((long)var3 << 42);
-		SpritePixels var8;
-		if (!var5) {
-			var8 = (SpritePixels)ItemComposition.ItemDefinition_cachedSprites.get(var6);
-			if (var8 != null) {
-				return var8;
-			}
-		}
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "([BI)Ljava/lang/String;",
+		garbageValue = "-850113409"
+	)
+	public static String method3650(byte[] var0) {
+		int var2 = var0.length;
+		StringBuilder var3 = new StringBuilder();
 
-		ItemComposition var9 = UserComparator6.ItemDefinition_get(var0);
-		if (var1 > 1 && var9.countobj != null) {
-			int var10 = -1;
-
-			for (int var11 = 0; var11 < 10; ++var11) {
-				if (var1 >= var9.countco[var11] && var9.countco[var11] != 0) {
-					var10 = var9.countobj[var11];
-				}
-			}
-
-			if (var10 != -1) {
-				var9 = UserComparator6.ItemDefinition_get(var10);
-			}
-		}
-
-		Model var21 = var9.getModel(1);
-		if (var21 == null) {
-			return null;
-		} else {
-			SpritePixels var22 = null;
-			if (var9.noteTemplate != -1) {
-				var22 = getItemSprite(var9.note, 10, 1, 0, 0, true);
-				if (var22 == null) {
-					return null;
-				}
-			} else if (var9.notedId != -1) {
-				var22 = getItemSprite(var9.unnotedId, var1, var2, var3, 0, false);
-				if (var22 == null) {
-					return null;
-				}
-			} else if (var9.placeholderTemplate != -1) {
-				var22 = getItemSprite(var9.placeholder, var1, 0, 0, 0, false);
-				if (var22 == null) {
-					return null;
-				}
-			}
-
-			int[] var12 = Rasterizer2D.Rasterizer2D_pixels;
-			int var13 = Rasterizer2D.Rasterizer2D_width;
-			int var14 = Rasterizer2D.Rasterizer2D_height;
-			int[] var15 = new int[4];
-			Rasterizer2D.Rasterizer2D_getClipArray(var15);
-			var8 = new SpritePixels(36, 32);
-			Rasterizer2D.Rasterizer2D_replace(var8.pixels, 36, 32);
-			Rasterizer2D.Rasterizer2D_clear();
-			Rasterizer3D.Rasterizer3D_setClipFromRasterizer2D();
-			Rasterizer3D.method3913(16, 16);
-			Rasterizer3D.field2276 = false;
-			if (var9.placeholderTemplate != -1) {
-				var22.drawTransBgAt(0, 0);
-			}
-
-			int var16 = var9.zoom2d;
-			if (var5) {
-				var16 = (int)(1.5D * (double)var16);
-			} else if (var2 == 2) {
-				var16 = (int)((double)var16 * 1.04D);
-			}
-
-			int var17 = var16 * Rasterizer3D.Rasterizer3D_sine[var9.xan2d] >> 16;
-			int var18 = var16 * Rasterizer3D.Rasterizer3D_cosine[var9.xan2d] >> 16;
-			var21.calculateBoundsCylinder();
-			var21.method4241(0, var9.yan2d, var9.zan2d, var9.xan2d, var9.offsetX2d, var21.height / 2 + var17 + var9.offsetY2d, var18 + var9.offsetY2d);
-			if (var9.notedId != -1) {
-				var22.drawTransBgAt(0, 0);
-			}
-
-			if (var2 >= 1) {
-				var8.outline(1);
-			}
-
-			if (var2 >= 2) {
-				var8.outline(16777215);
-			}
-
-			if (var3 != 0) {
-				var8.shadow(var3);
-			}
-
-			Rasterizer2D.Rasterizer2D_replace(var8.pixels, 36, 32);
-			if (var9.noteTemplate != -1) {
-				var22.drawTransBgAt(0, 0);
-			}
-
-			if (var4 == 1 || var4 == 2 && var9.isStackable == 1) {
-				Font var19 = ItemComposition.ItemDefinition_fontPlain11;
-				String var20;
-				if (var1 < 100000) {
-					var20 = "<col=ffff00>" + var1 + "</col>";
-				} else if (var1 < 10000000) {
-					var20 = "<col=ffffff>" + var1 / 1000 + "K" + "</col>";
+		for (int var4 = 0; var4 < var2 + 0; var4 += 3) {
+			int var5 = var0[var4] & 255;
+			var3.append(class359.field4350[var5 >>> 2]);
+			if (var4 < var2 - 1) {
+				int var6 = var0[var4 + 1] & 255;
+				var3.append(class359.field4350[(var5 & 3) << 4 | var6 >>> 4]);
+				if (var4 < var2 - 2) {
+					int var7 = var0[var4 + 2] & 255;
+					var3.append(class359.field4350[(var6 & 15) << 2 | var7 >>> 6]).append(class359.field4350[var7 & 63]);
 				} else {
-					var20 = "<col=00ff80>" + var1 / 1000000 + "M" + "</col>";
+					var3.append(class359.field4350[(var6 & 15) << 2]).append("=");
 				}
-
-				var19.draw(var20, 0, 9, 16776960, 1);
+			} else {
+				var3.append(class359.field4350[(var5 & 3) << 4]).append("==");
 			}
-
-			if (!var5) {
-				ItemComposition.ItemDefinition_cachedSprites.put(var8, var6);
-			}
-
-			Rasterizer2D.Rasterizer2D_replace(var12, var13, var14);
-			Rasterizer2D.Rasterizer2D_setClipArray(var15);
-			Rasterizer3D.Rasterizer3D_setClipFromRasterizer2D();
-			Rasterizer3D.field2276 = true;
-			return var8;
 		}
+
+		String var1 = var3.toString();
+		return var1;
+	}
+
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Throwable;Ljava/lang/String;)Lrw;"
+	)
+	@Export("newRunException")
+	public static RunException newRunException(Throwable var0, String var1) {
+		RunException var2;
+		if (var0 instanceof RunException) {
+			var2 = (RunException)var0;
+			var2.message = var2.message + ' ' + var1;
+		} else {
+			var2 = new RunException(var0, var1);
+		}
+
+		return var2;
 	}
 }
