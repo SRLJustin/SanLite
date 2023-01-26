@@ -5,63 +5,61 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bu")
+@ObfuscatedName("bq")
 @Implements("Interpreter")
 public class Interpreter {
-	@ObfuscatedName("tb")
-	@ObfuscatedSignature(
-		descriptor = "Lnn;"
-	)
-	@Export("platformInfo")
-	static PlatformInfo platformInfo;
-	@ObfuscatedName("w")
+	@ObfuscatedName("x")
+	@Export("Interpreter_intLocals")
+	static int[] Interpreter_intLocals;
+	@ObfuscatedName("q")
 	@Export("Interpreter_arrayLengths")
 	static int[] Interpreter_arrayLengths;
-	@ObfuscatedName("n")
+	@ObfuscatedName("f")
 	@Export("Interpreter_arrays")
 	static int[][] Interpreter_arrays;
 	@ObfuscatedName("r")
 	@Export("Interpreter_intStack")
 	static int[] Interpreter_intStack;
-	@ObfuscatedName("v")
+	@ObfuscatedName("b")
 	@Export("Interpreter_stringStack")
 	static String[] Interpreter_stringStack;
-	@ObfuscatedName("h")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -866718889
+		intValue = 54505361
+	)
+	@Export("Interpreter_stringStackSize")
+	static int Interpreter_stringStackSize;
+	@ObfuscatedName("g")
+	@ObfuscatedGetter(
+		intValue = -1648484327
 	)
 	@Export("Interpreter_frameDepth")
 	static int Interpreter_frameDepth;
-	@ObfuscatedName("g")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "[Lbg;"
+		descriptor = "[Lbl;"
 	)
 	@Export("Interpreter_frames")
 	static ScriptFrame[] Interpreter_frames;
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(
-		intValue = 355212093
-	)
-	static int field812;
 	@ObfuscatedName("l")
 	@Export("Interpreter_calendar")
 	static java.util.Calendar Interpreter_calendar;
-	@ObfuscatedName("q")
+	@ObfuscatedName("t")
 	@Export("Interpreter_MONTHS")
 	static final String[] Interpreter_MONTHS;
-	@ObfuscatedName("z")
-	static boolean field818;
-	@ObfuscatedName("i")
-	static boolean field816;
+	@ObfuscatedName("p")
+	static boolean field865;
+	@ObfuscatedName("d")
+	static boolean field868;
 	@ObfuscatedName("y")
-	static ArrayList field817;
-	@ObfuscatedName("ah")
+	static ArrayList field867;
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = -1880353715
+		intValue = 478223063
 	)
-	static int field815;
-	@ObfuscatedName("ax")
-	static final double field814;
+	static int field874;
+	@ObfuscatedName("ao")
+	static final double field871;
 
 	static {
 		Interpreter_arrayLengths = new int[5];
@@ -72,30 +70,103 @@ public class Interpreter {
 		Interpreter_frames = new ScriptFrame[50];
 		Interpreter_calendar = java.util.Calendar.getInstance();
 		Interpreter_MONTHS = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-		field818 = false;
-		field816 = false;
-		field817 = new ArrayList();
-		field815 = 0;
-		field814 = Math.log(2.0D);
+		field865 = false;
+		field868 = false;
+		field867 = new ArrayList();
+		field874 = 0;
+		field871 = Math.log(2.0D);
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(CLlf;B)I",
-		garbageValue = "-56"
+		descriptor = "(III)I",
+		garbageValue = "-1706343111"
 	)
-	@Export("lowercaseChar")
-	static int lowercaseChar(char var0, Language var1) {
-		int var2 = var0 << 4;
-		if (Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
-			var0 = Character.toLowerCase(var0);
-			var2 = (var0 << 4) + 1;
+	static int method1988(int var0, int var1) {
+		FloorOverlayDefinition var3 = (FloorOverlayDefinition)FloorOverlayDefinition.FloorOverlayDefinition_cached.get((long)var0);
+		FloorOverlayDefinition var2;
+		if (var3 != null) {
+			var2 = var3;
+		} else {
+			byte[] var4 = FloorOverlayDefinition.FloorOverlayDefinition_archive.takeFile(4, var0);
+			var3 = new FloorOverlayDefinition();
+			if (var4 != null) {
+				var3.decode(new Buffer(var4), var0);
+			}
+
+			var3.postDecode();
+			FloorOverlayDefinition.FloorOverlayDefinition_cached.put(var3, (long)var0);
+			var2 = var3;
 		}
 
-		if (var0 == 241 && var1 == Language.Language_ES) {
-			var2 = 1762;
+		if (var2 == null) {
+			return var1;
+		} else if (var2.secondaryRgb >= 0) {
+			return var2.secondaryRgb | -16777216;
+		} else if (var2.texture >= 0) {
+			int var10 = MusicPatchPcmStream.method5774(Rasterizer3D.Rasterizer3D_textureLoader.getAverageTextureRGB(var2.texture), 96);
+			return Rasterizer3D.Rasterizer3D_colorPalette[var10] | -16777216;
+		} else if (var2.primaryRgb == 16711935) {
+			return var1;
+		} else {
+			int var5 = var2.hue;
+			int var6 = var2.saturation;
+			int var7 = var2.lightness;
+			if (var7 > 179) {
+				var6 /= 2;
+			}
+
+			if (var7 > 192) {
+				var6 /= 2;
+			}
+
+			if (var7 > 217) {
+				var6 /= 2;
+			}
+
+			if (var7 > 243) {
+				var6 /= 2;
+			}
+
+			int var8 = (var6 / 32 << 7) + var7 / 2 + (var5 / 4 << 10);
+			int var9 = MusicPatchPcmStream.method5774(var8, 96);
+			return Rasterizer3D.Rasterizer3D_colorPalette[var9] | -16777216;
+		}
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(Lkq;S)V",
+		garbageValue = "750"
+	)
+	public static void method1960(Huffman var0) {
+		class308.huffman = var0;
+	}
+
+	@ObfuscatedName("kf")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIII)V",
+		garbageValue = "1417118672"
+	)
+	@Export("drawScrollBar")
+	static final void drawScrollBar(int var0, int var1, int var2, int var3, int var4) {
+		class89.scrollBarSprites[0].drawAt(var0, var1);
+		class89.scrollBarSprites[1].drawAt(var0, var3 + var1 - 16);
+		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1 + 16, 16, var3 - 32, Client.field719);
+		int var5 = var3 * (var3 - 32) / var4;
+		if (var5 < 8) {
+			var5 = 8;
 		}
 
-		return var2;
+		int var6 = (var3 - 32 - var5) * var2 / (var4 - var3);
+		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var6 + var1 + 16, 16, var5, Client.field651);
+		Rasterizer2D.method8894(var0, var6 + var1 + 16, var5, Client.field584);
+		Rasterizer2D.method8894(var0 + 1, var6 + var1 + 16, var5, Client.field584);
+		Rasterizer2D.method8892(var0, var6 + var1 + 16, 16, Client.field584);
+		Rasterizer2D.method8892(var0, var6 + var1 + 17, 16, Client.field584);
+		Rasterizer2D.method8894(var0 + 15, var6 + var1 + 16, var5, Client.field532);
+		Rasterizer2D.method8894(var0 + 14, var6 + var1 + 17, var5 - 1, Client.field532);
+		Rasterizer2D.method8892(var0, var6 + var5 + var1 + 15, 16, Client.field532);
+		Rasterizer2D.method8892(var0 + 1, var6 + var5 + var1 + 14, 15, Client.field532);
 	}
 }

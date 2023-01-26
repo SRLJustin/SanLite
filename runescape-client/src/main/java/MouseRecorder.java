@@ -1,44 +1,38 @@
-import java.awt.image.BufferedImage;
-import java.awt.image.PixelGrabber;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import javax.imageio.ImageIO;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-import net.runelite.mapping.*;
-
-@ObfuscatedName("cd")
+@ObfuscatedName("cs")
 @Implements("MouseRecorder")
 public class MouseRecorder implements Runnable {
-	@ObfuscatedName("j")
+	@ObfuscatedName("hv")
 	@ObfuscatedSignature(
-		descriptor = "[[Ljm;"
+		descriptor = "Lpz;"
 	)
-	@Export("Widget_interfaceComponents")
-	public static Widget[][] Widget_interfaceComponents;
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "Lme;"
-	)
-	static Bounds field1044;
-	@ObfuscatedName("c")
+	@Export("WorldMapElement_fonts")
+	static Fonts WorldMapElement_fonts;
+	@ObfuscatedName("h")
 	@Export("isRunning")
 	boolean isRunning;
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@Export("lock")
 	Object lock;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1539237497
+		intValue = 1063919825
 	)
 	@Export("index")
 	int index;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@Export("xs")
 	int[] xs;
-	@ObfuscatedName("t")
+	@ObfuscatedName("m")
 	@Export("ys")
 	int[] ys;
-	@ObfuscatedName("s")
+	@ObfuscatedName("q")
 	@Export("millis")
 	long[] millis;
 
@@ -52,7 +46,7 @@ public class MouseRecorder implements Runnable {
 	}
 
 	public void run() {
-		for (; this.isRunning; Bounds.method6608(50L)) {
+		for (; this.isRunning; class12.method157(50L)) {
 			synchronized(this.lock) {
 				if (this.index < 500) {
 					this.xs[this.index] = MouseHandler.MouseHandler_x;
@@ -65,55 +59,201 @@ public class MouseRecorder implements Runnable {
 
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "([BB)Lpl;",
-		garbageValue = "-5"
+		descriptor = "(IB)Ljava/lang/String;",
+		garbageValue = "110"
 	)
-	public static final SpritePixels method2161(byte[] var0) {
-		BufferedImage var1 = null;
-
-		try {
-			var1 = ImageIO.read(new ByteArrayInputStream(var0));
-			int var2 = var1.getWidth();
-			int var3 = var1.getHeight();
-			int[] var4 = new int[var2 * var3];
-			PixelGrabber var5 = new PixelGrabber(var1, 0, 0, var2, var3, var4, 0, var2);
-			var5.grabPixels();
-			return new SpritePixels(var4, var2, var3);
-		} catch (IOException var7) {
-		} catch (InterruptedException var8) {
-		}
-
-		return new SpritePixels(0, 0);
+	@Export("colorStartTag")
+	static String colorStartTag(int var0) {
+		return "<col=" + Integer.toHexString(var0) + ">";
 	}
 
 	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "-41"
+		descriptor = "(ILbm;ZI)I",
+		garbageValue = "-732526221"
 	)
-	static int method2160(int var0, int var1) {
-		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var2 == null) {
-			return 0;
-		} else if (var1 == -1) {
-			return 0;
-		} else {
-			int var3 = 0;
-
-			for (int var4 = 0; var4 < var2.quantities.length; ++var4) {
-				if (var2.ids[var4] == var1) {
-					var3 += var2.quantities[var4];
-				}
+	static int method2264(int var0, Script var1, boolean var2) {
+		Widget var3;
+		if (var0 == ScriptOpcodes.IF_GETINVOBJECT) {
+			var3 = class175.getWidget(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
+			Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3.itemId;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETINVCOUNT) {
+			var3 = class175.getWidget(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
+			if (var3.itemId != -1) {
+				Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3.itemQuantity;
+			} else {
+				Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = 0;
 			}
 
-			return var3;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_HASSUB) {
+			int var5 = Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize];
+			InterfaceParent var4 = (InterfaceParent)Client.interfaceParents.get((long)var5);
+			if (var4 != null) {
+				Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = 1;
+			} else {
+				Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = 0;
+			}
+
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETTOP) {
+			Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = Client.rootInterface;
+			return 1;
+		} else if (var0 == 2707) {
+			var3 = class175.getWidget(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
+			Interpreter.Interpreter_intStack[++class87.Interpreter_intStackSize - 1] = var3.method6172() ? 1 : 0;
+			return 1;
+		} else if (var0 == 2708) {
+			var3 = class175.getWidget(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
+			return class300.method5846(var3);
+		} else if (var0 == 2709) {
+			var3 = class175.getWidget(Interpreter.Interpreter_intStack[--class87.Interpreter_intStackSize]);
+			return LoginScreenAnimation.method2380(var3);
+		} else {
+			return 2;
 		}
 	}
 
-	@ObfuscatedName("s")
-	public static int method2159(long var0) {
-		return (int)(var0 >>> 0 & 127L);
+	@ObfuscatedName("lv")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "-91"
+	)
+	@Export("changeGameOptions")
+	static final void changeGameOptions(int var0) {
+		class136.method3073();
+		HealthBar.method2526();
+		int var1 = class109.VarpDefinition_get(var0).type;
+		if (var1 != 0) {
+			int var2 = Varps.Varps_main[var0];
+			if (var1 == 1) {
+				if (var2 == 1) {
+					FileSystem.method3480(0.9D);
+				}
+
+				if (var2 == 2) {
+					FileSystem.method3480(0.8D);
+				}
+
+				if (var2 == 3) {
+					FileSystem.method3480(0.7D);
+				}
+
+				if (var2 == 4) {
+					FileSystem.method3480(0.6D);
+				}
+			}
+
+			if (var1 == 3) {
+				if (var2 == 0) {
+					class299.method5834(255);
+				}
+
+				if (var2 == 1) {
+					class299.method5834(192);
+				}
+
+				if (var2 == 2) {
+					class299.method5834(128);
+				}
+
+				if (var2 == 3) {
+					class299.method5834(64);
+				}
+
+				if (var2 == 4) {
+					class299.method5834(0);
+				}
+			}
+
+			if (var1 == 4) {
+				if (var2 == 0) {
+					class7.method43(127);
+				}
+
+				if (var2 == 1) {
+					class7.method43(96);
+				}
+
+				if (var2 == 2) {
+					class7.method43(64);
+				}
+
+				if (var2 == 3) {
+					class7.method43(32);
+				}
+
+				if (var2 == 4) {
+					class7.method43(0);
+				}
+			}
+
+			if (var1 == 5) {
+				Client.field598 = var2 == 1;
+			}
+
+			if (var1 == 6) {
+				Client.chatEffects = var2;
+			}
+
+			if (var1 == 9) {
+				Client.field685 = var2;
+			}
+
+			if (var1 == 10) {
+				if (var2 == 0) {
+					class18.method270(127);
+				}
+
+				if (var2 == 1) {
+					class18.method270(96);
+				}
+
+				if (var2 == 2) {
+					class18.method270(64);
+				}
+
+				if (var2 == 3) {
+					class18.method270(32);
+				}
+
+				if (var2 == 4) {
+					class18.method270(0);
+				}
+			}
+
+			if (var1 == 17) {
+				Client.followerIndex = var2 & 65535;
+			}
+
+			AttackOption[] var3;
+			if (var1 == 18) {
+				var3 = new AttackOption[]{AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.AttackOption_alwaysRightClick, AttackOption.AttackOption_hidden, AttackOption.field1347, AttackOption.field1346};
+				Client.playerAttackOption = (AttackOption)World.findEnumerated(var3, var2);
+				if (Client.playerAttackOption == null) {
+					Client.playerAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;
+				}
+			}
+
+			if (var1 == 19) {
+				if (var2 == -1) {
+					Client.combatTargetPlayerIndex = -1;
+				} else {
+					Client.combatTargetPlayerIndex = var2 & 2047;
+				}
+			}
+
+			if (var1 == 22) {
+				var3 = new AttackOption[]{AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.AttackOption_alwaysRightClick, AttackOption.AttackOption_hidden, AttackOption.field1347, AttackOption.field1346};
+				Client.npcAttackOption = (AttackOption)World.findEnumerated(var3, var2);
+				if (Client.npcAttackOption == null) {
+					Client.npcAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;
+				}
+			}
+
+		}
 	}
 }
