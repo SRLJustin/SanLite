@@ -1,94 +1,60 @@
-import java.io.File;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("il")
+@ObfuscatedName("jy")
 @Implements("MusicPatchNode2")
 public class MusicPatchNode2 {
-	@ObfuscatedName("c")
-	byte[] field3056;
-	@ObfuscatedName("b")
-	byte[] field3054;
-	@ObfuscatedName("p")
+	@ObfuscatedName("tl")
 	@ObfuscatedGetter(
-		intValue = 1373142443
+		intValue = 417212897
 	)
-	int field3052;
+	static int field3342;
+	@ObfuscatedName("hb")
+	@ObfuscatedGetter(
+		intValue = 146773611
+	)
+	static int field3341;
+	@ObfuscatedName("h")
+	byte[] field3337;
+	@ObfuscatedName("e")
+	byte[] field3333;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(
+		intValue = 1681362453
+	)
+	int field3335;
+	@ObfuscatedName("x")
+	@ObfuscatedGetter(
+		intValue = 1256732773
+	)
+	int field3340;
 	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = 354734067
+		intValue = -775577851
 	)
-	int field3055;
-	@ObfuscatedName("t")
+	int field3336;
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -488769373
+		intValue = -1424145857
 	)
-	int field3053;
-	@ObfuscatedName("s")
+	int field3332;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -1877607089
+		intValue = -1877072009
 	)
-	int field3057;
-	@ObfuscatedName("j")
+	int field3338;
+	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = 843760969
+		intValue = -258489461
 	)
-	int field3058;
-	@ObfuscatedName("w")
+	int field3339;
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 1302289953
+		intValue = -1803880423
 	)
-	int field3059;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = -579671659
-	)
-	int field3060;
+	int field3334;
 
 	MusicPatchNode2() {
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/io/File;B)V",
-		garbageValue = "-1"
-	)
-	public static void method5048(File var0) {
-		class125.FileSystem_cacheDir = var0;
-		if (!class125.FileSystem_cacheDir.exists()) {
-			throw new RuntimeException("");
-		} else {
-			FileSystem.FileSystem_hasPermissions = true;
-		}
-	}
-
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(
-		descriptor = "(IIIS)I",
-		garbageValue = "3121"
-	)
-	@Export("hslToRgb")
-	static final int hslToRgb(int var0, int var1, int var2) {
-		if (var2 > 179) {
-			var1 /= 2;
-		}
-
-		if (var2 > 192) {
-			var1 /= 2;
-		}
-
-		if (var2 > 217) {
-			var1 /= 2;
-		}
-
-		if (var2 > 243) {
-			var1 /= 2;
-		}
-
-		int var3 = (var1 / 32 << 7) + (var0 / 4 << 10) + var2 / 2;
-		return var3;
 	}
 }

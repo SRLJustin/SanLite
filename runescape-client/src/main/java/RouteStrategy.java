@@ -4,33 +4,36 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gv")
+@ObfuscatedName("gg")
 @Implements("RouteStrategy")
 public abstract class RouteStrategy {
-	@ObfuscatedName("t")
-	@Export("SpriteBuffer_yOffsets")
-	public static int[] SpriteBuffer_yOffsets;
-	@ObfuscatedName("c")
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Lrm;"
+	)
+	@Export("rasterProvider")
+	public static AbstractRasterProvider rasterProvider;
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -1093494781
+		intValue = -2015601201
 	)
 	@Export("approxDestinationX")
 	public int approxDestinationX;
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = 601492967
+		intValue = 941706195
 	)
 	@Export("approxDestinationY")
 	public int approxDestinationY;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1459181163
+		intValue = -20945427
 	)
 	@Export("approxDestinationSizeX")
 	public int approxDestinationSizeX;
-	@ObfuscatedName("m")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = 1902503467
+		intValue = -390996803
 	)
 	@Export("approxDestinationSizeY")
 	public int approxDestinationSizeY;
@@ -38,72 +41,61 @@ public abstract class RouteStrategy {
 	protected RouteStrategy() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(IIILgf;I)Z",
-		garbageValue = "-563456214"
+		descriptor = "(IIILgw;I)Z",
+		garbageValue = "1813316312"
 	)
 	@Export("hasArrived")
-	public abstract boolean hasArrived(int var1, int var2, int var3, CollisionMap var4);
+	protected abstract boolean hasArrived(int var1, int var2, int var3, CollisionMap var4);
 
-	@ObfuscatedName("gj")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "-1664950073"
+		descriptor = "(CB)Z",
+		garbageValue = "39"
 	)
-	@Export("doCheat")
-	static final void doCheat(String var0) {
-		if (var0.equalsIgnoreCase("toggleroof")) {
-			SecureRandomFuture.clientPreferences.roofsHidden = !SecureRandomFuture.clientPreferences.roofsHidden;
-			class127.savePreferences();
-			if (SecureRandomFuture.clientPreferences.roofsHidden) {
-				class194.addGameMessage(99, "", "Roofs are now all hidden");
-			} else {
-				class194.addGameMessage(99, "", "Roofs will only be removed selectively");
+	public static final boolean method4181(char var0) {
+		if (Character.isISOControl(var0)) {
+			return false;
+		} else if (ObjectComposition.isAlphaNumeric(var0)) {
+			return true;
+		} else {
+			char[] var1 = class447.field4842;
+
+			int var2;
+			char var3;
+			for (var2 = 0; var2 < var1.length; ++var2) {
+				var3 = var1[var2];
+				if (var0 == var3) {
+					return true;
+				}
 			}
+
+			var1 = class447.field4841;
+
+			for (var2 = 0; var2 < var1.length; ++var2) {
+				var3 = var1[var2];
+				if (var0 == var3) {
+					return true;
+				}
+			}
+
+			return false;
 		}
+	}
 
-		if (var0.equalsIgnoreCase("displayfps")) {
-			Client.displayFps = !Client.displayFps;
+	@ObfuscatedName("ij")
+	@ObfuscatedSignature(
+		descriptor = "(IIB)V",
+		garbageValue = "16"
+	)
+	static final void method4180(int var0, int var1) {
+		if (Client.hintArrowType == 2) {
+			ScriptFrame.worldToScreen(Client.field531 * 64 + (Client.hintArrowX - class154.baseX * 64 << 7), Client.field626 * 64 + (Client.hintArrowY - class365.baseY * 64 << 7), Client.field530 * 4);
+			if (Client.viewportTempX > -1 && Client.cycle % 20 < 10) {
+				class358.headIconHintSprites[0].drawTransBgAt(var0 + Client.viewportTempX - 12, Client.viewportTempY + var1 - 28);
+			}
+
 		}
-
-		if (var0.equalsIgnoreCase("renderself")) {
-			Client.renderSelf = !Client.renderSelf;
-		}
-
-		if (var0.equalsIgnoreCase("mouseovertext")) {
-			Client.showMouseOverText = !Client.showMouseOverText;
-		}
-
-		if (Client.staffModLevel >= 2) {
-			if (var0.equalsIgnoreCase("errortest")) {
-				throw new RuntimeException();
-			}
-
-			if (var0.equalsIgnoreCase("showcoord")) {
-				Varcs.worldMap.showCoord = !Varcs.worldMap.showCoord;
-			}
-
-			if (var0.equalsIgnoreCase("fpson")) {
-				Client.displayFps = true;
-			}
-
-			if (var0.equalsIgnoreCase("fpsoff")) {
-				Client.displayFps = false;
-			}
-
-			if (var0.equalsIgnoreCase("gc")) {
-				System.gc();
-			}
-
-			if (var0.equalsIgnoreCase("clientdrop")) {
-				Varcs.method2411();
-			}
-		}
-
-		PacketBufferNode var1 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2846, Client.packetWriter.isaacCipher);
-		var1.packetBuffer.writeByte(var0.length() + 1);
-		var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-		Client.packetWriter.addNode(var1);
 	}
 }

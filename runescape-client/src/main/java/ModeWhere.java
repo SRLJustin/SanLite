@@ -1,3 +1,6 @@
+import java.awt.Desktop;
+import java.awt.Desktop.Action;
+import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
 import net.runelite.mapping.Export;
@@ -6,159 +9,246 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lq")
+@ObfuscatedName("mr")
 @Implements("ModeWhere")
-public enum ModeWhere implements MouseWheel {
-	@ObfuscatedName("c")
+public enum ModeWhere implements class345 {
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Llq;"
+		descriptor = "Lmr;"
 	)
-	field3948("", 0, new class313[]{class313.field3915}),
-	@ObfuscatedName("b")
+	field4327("", 0, new class344[]{class344.field4289}),
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "Llq;"
+		descriptor = "Lmr;"
 	)
-	field3940("", 1, new class313[]{class313.field3917, class313.field3915}),
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3938("", 2, new class313[]{class313.field3917, class313.field3916, class313.field3915}),
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3939("", 3, new class313[]{class313.field3917}),
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3955("", 4),
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3941("", 5, new class313[]{class313.field3917, class313.field3915}),
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3943("", 6, new class313[]{class313.field3915}),
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3937("", 8, new class313[]{class313.field3917, class313.field3915}),
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3944("", 9, new class313[]{class313.field3917, class313.field3916}),
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3945("", 10, new class313[]{class313.field3917}),
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3947("", 11, new class313[]{class313.field3917}),
+	field4309("", 1, new class344[]{class344.field4287, class344.field4289}),
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Llq;"
+		descriptor = "Lmr;"
 	)
-	field3942("", 12, new class313[]{class313.field3917, class313.field3915}),
-	@ObfuscatedName("d")
+	field4311("", 2, new class344[]{class344.field4287, class344.field4288, class344.field4289}),
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "Llq;"
+		descriptor = "Lmr;"
 	)
-	field3936("", 13, new class313[]{class313.field3917});
+	field4310("", 3, new class344[]{class344.field4287}),
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "Lmr;"
+	)
+	field4313("", 4),
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "Lmr;"
+	)
+	field4314("", 5, new class344[]{class344.field4287, class344.field4289}),
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Lmr;"
+	)
+	field4324("", 6, new class344[]{class344.field4289}),
+	@ObfuscatedName("r")
+	@ObfuscatedSignature(
+		descriptor = "Lmr;"
+	)
+	field4316("", 8, new class344[]{class344.field4287, class344.field4289}),
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(
+		descriptor = "Lmr;"
+	)
+	field4317("", 9, new class344[]{class344.field4287, class344.field4288}),
+	@ObfuscatedName("b")
+	@ObfuscatedSignature(
+		descriptor = "Lmr;"
+	)
+	field4318("", 10, new class344[]{class344.field4287}),
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "Lmr;"
+	)
+	field4319("", 11, new class344[]{class344.field4287}),
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(
+		descriptor = "Lmr;"
+	)
+	field4326("", 12, new class344[]{class344.field4287, class344.field4289}),
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "Lmr;"
+	)
+	field4315("", 13, new class344[]{class344.field4287});
 
-	@ObfuscatedName("sl")
-	@ObfuscatedGetter(
-		intValue = -1096965871
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "Lqy;"
 	)
-	static int field3951;
-	@ObfuscatedName("cr")
-	public static char field3954;
-	@ObfuscatedName("ms")
-	@ObfuscatedGetter(
-		intValue = -936877643
+	@Export("NetCache_responseArchiveBuffer")
+	public static Buffer NetCache_responseArchiveBuffer;
+	@ObfuscatedName("bo")
+	@ObfuscatedSignature(
+		descriptor = "Llz;"
 	)
-	@Export("menuX")
-	static int menuX;
-	@ObfuscatedName("h")
+	static GameBuild field4325;
+	@ObfuscatedName("ix")
 	@ObfuscatedGetter(
-		intValue = -91884081
+		intValue = -1693192727
+	)
+	@Export("selectedItemWidget")
+	static int selectedItemWidget;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = -59463617
 	)
 	@Export("id")
 	final int id;
-	@ObfuscatedName("g")
-	final Set field3950;
+	@ObfuscatedName("n")
+	final Set field4323;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I[Llp;)V"
+		descriptor = "(Ljava/lang/String;I[Lmk;)V"
 	)
-	ModeWhere(String var3, int var4, class313[] var5) {
-		this.field3950 = new HashSet();
+	ModeWhere(String var3, int var4, class344[] var5) {
+		this.field4323 = new HashSet();
 		this.id = var4;
-		class313[] var6 = var5;
+		class344[] var6 = var5;
 
 		for (int var7 = 0; var7 < var6.length; ++var7) {
-			class313 var8 = var6[var7];
-			this.field3950.add(var8);
+			class344 var8 = var6[var7];
+			this.field4323.add(var8);
 		}
 
 	}
 
 	ModeWhere(String var3, int var4) {
-		this.field3950 = new HashSet();
+		this.field4323 = new HashSet();
 		this.id = var4;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "48"
+		garbageValue = "96"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("ht")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(IIIB)V",
-		garbageValue = "14"
+		descriptor = "(Ljava/lang/String;ZZB)V",
+		garbageValue = "40"
 	)
-	@Export("worldToScreen")
-	static final void worldToScreen(int var0, int var1, int var2) {
-		if (var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
-			int var3 = FaceNormal.getTileHeight(var0, var1, class20.Client_plane) - var2;
-			var0 -= UserComparator7.cameraX;
-			var3 -= AbstractByteArrayCopier.cameraY;
-			var1 -= UserComparator10.cameraZ;
-			int var4 = Rasterizer3D.Rasterizer3D_sine[UserComparator7.cameraPitch];
-			int var5 = Rasterizer3D.Rasterizer3D_cosine[UserComparator7.cameraPitch];
-			int var6 = Rasterizer3D.Rasterizer3D_sine[class379.cameraYaw];
-			int var7 = Rasterizer3D.Rasterizer3D_cosine[class379.cameraYaw];
-			int var8 = var6 * var1 + var0 * var7 >> 16;
-			var1 = var7 * var1 - var0 * var6 >> 16;
-			var0 = var8;
-			var8 = var5 * var3 - var4 * var1 >> 16;
-			var1 = var5 * var1 + var4 * var3 >> 16;
-			if (var1 >= 50) {
-				Client.viewportTempX = var0 * Client.viewportZoom / var1 + Client.viewportWidth / 2;
-				Client.viewportTempY = var8 * Client.viewportZoom / var1 + Client.viewportHeight / 2;
-			} else {
-				Client.viewportTempX = -1;
-				Client.viewportTempY = -1;
+	@Export("openURL")
+	public static void openURL(String var0, boolean var1, boolean var2) {
+		if (var1) {
+			if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Action.BROWSE)) {
+				try {
+					Desktop.getDesktop().browse(new URI(var0));
+					return;
+				} catch (Exception var4) {
+				}
 			}
 
+			if (class32.field183.startsWith("win")) {
+				class12.method115(var0, 0);
+			} else if (class32.field183.startsWith("mac")) {
+				HealthBarUpdate.method2363(var0, 1, "openjs");
+			} else {
+				class12.method115(var0, 2);
+			}
 		} else {
-			Client.viewportTempX = -1;
-			Client.viewportTempY = -1;
+			class12.method115(var0, 3);
 		}
+
+	}
+
+	@ObfuscatedName("e")
+	@Export("base37DecodeLong")
+	public static String base37DecodeLong(long var0) {
+		if (var0 > 0L && var0 < 6582952005840035281L) {
+			if (var0 % 37L == 0L) {
+				return null;
+			} else {
+				int var2 = 0;
+
+				for (long var3 = var0; var3 != 0L; var3 /= 37L) {
+					++var2;
+				}
+
+				StringBuilder var5;
+				char var8;
+				for (var5 = new StringBuilder(var2); var0 != 0L; var5.append(var8)) {
+					long var6 = var0;
+					var0 /= 37L;
+					var8 = class362.base37Table[(int)(var6 - 37L * var0)];
+					if (var8 == '_') {
+						int var9 = var5.length() - 1;
+						var5.setCharAt(var9, Character.toUpperCase(var5.charAt(var9)));
+						var8 = 160;
+					}
+				}
+
+				var5.reverse();
+				var5.setCharAt(0, Character.toUpperCase(var5.charAt(0)));
+				return var5.toString();
+			}
+		} else {
+			return null;
+		}
+	}
+
+	@ObfuscatedName("gt")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "742396295"
+	)
+	static final void method6699() {
+		class154.method3299();
+		FloorUnderlayDefinition.FloorUnderlayDefinition_cached.clear();
+		ScriptFrame.method1173();
+		ObjectComposition.ObjectDefinition_cached.clear();
+		ObjectComposition.ObjectDefinition_cachedModelData.clear();
+		ObjectComposition.ObjectDefinition_cachedEntities.clear();
+		ObjectComposition.ObjectDefinition_cachedModels.clear();
+		class369.method7151();
+		ItemComposition.ItemDefinition_cached.clear();
+		ItemComposition.ItemDefinition_cachedModels.clear();
+		ItemComposition.ItemDefinition_cachedSprites.clear();
+		SequenceDefinition.SequenceDefinition_cached.clear();
+		SequenceDefinition.SequenceDefinition_cachedFrames.clear();
+		SequenceDefinition.SequenceDefinition_cachedModel.clear();
+		class149.method3257();
+		VarbitComposition.VarbitDefinition_cached.clear();
+		ScriptFrame.method1174();
+		class137.HitSplatDefinition_cachedSprites.method8344();
+		class34.Ignored_cached.method8344();
+		HorizontalAlignment.method3658();
+		DecorativeObject.method4828();
+		class273.method5480();
+		class143.method3127();
+		WorldMapElement.WorldMapElement_cachedSprites.clear();
+		class459.PlayerComposition_cachedModels.clear();
+		class420.method7904();
+		Client.Widget_cachedModels.clear();
+		Client.Widget_cachedFonts.clear();
+		class34.method489();
+		HorizontalAlignment.method3653();
+		((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).clear();
+		Script.Script_cached.clear();
+		Client.archive5.method7387();
+		HealthBar.archive6.clearFiles();
+		class9.archive7.clearFiles();
+		FloorUnderlayDefinition.archive3.clearFiles();
+		WorldMapSection0.archive9.clearFiles();
+		class4.archive10.clearFiles();
+		class162.archive11.clearFiles();
+		class301.field3470.clearFiles();
+		ClientPreferences.archive8.clearFiles();
+		Frames.field2615.clearFiles();
+		ClanChannelMember.field1666.clearFiles();
+		class21.field123.clearFiles();
+		class71.archive12.clearFiles();
+		Ignored.field4539.clearFiles();
 	}
 }
