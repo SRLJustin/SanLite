@@ -4,18 +4,17 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mi")
+@ObfuscatedName("oq")
 @Implements("Ignored")
 public class Ignored extends Nameable {
-	@ObfuscatedName("pz")
+	@ObfuscatedName("fd")
 	@ObfuscatedSignature(
-		descriptor = "Loo;"
+		descriptor = "Lln;"
 	)
-	@Export("Ignored_cached")
-	static class404 Ignored_cached;
-	@ObfuscatedName("c")
+	static Archive field4539;
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 1285120553
+		intValue = -291258823
 	)
 	@Export("id")
 	int id;
@@ -23,20 +22,20 @@ public class Ignored extends Nameable {
 	Ignored() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Lmi;B)I",
-		garbageValue = "109"
+		descriptor = "(Loq;I)I",
+		garbageValue = "1170247558"
 	)
 	@Export("compareTo_ignored")
 	int compareTo_ignored(Ignored var1) {
 		return this.id - var1.id;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(Lmv;I)I",
-		garbageValue = "-1921032172"
+		descriptor = "(Lov;I)I",
+		garbageValue = "-1893146393"
 	)
 	@Export("compareTo_user")
 	public int compareTo_user(Nameable var1) {
@@ -47,18 +46,21 @@ public class Ignored extends Nameable {
 		return this.compareTo_ignored((Ignored)var1);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(I)J",
-		garbageValue = "-376840192"
+		descriptor = "(Lly;B)V",
+		garbageValue = "67"
 	)
-	public static final synchronized long method6459() {
-		long var0 = System.currentTimeMillis();
-		if (var0 < class415.field4466) {
-			class415.field4467 += class415.field4466 - var0;
-		}
+	public static void method7606(AbstractArchive var0) {
+		class459.field4882 = var0;
+	}
 
-		class415.field4466 = var0;
-		return var0 + class415.field4467;
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(III)I",
+		garbageValue = "1288576993"
+	)
+	public static int method7614(int var0, int var1) {
+		return (int)Math.round(Math.atan2((double)var0, (double)var1) * 2607.5945876176133D) & 16383;
 	}
 }
