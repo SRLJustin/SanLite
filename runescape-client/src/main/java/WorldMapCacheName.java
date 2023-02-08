@@ -1,86 +1,119 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("id")
+@ObfuscatedName("jt")
 @Implements("WorldMapCacheName")
 public class WorldMapCacheName {
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lid;"
+		descriptor = "Ljt;"
 	)
-	public static final WorldMapCacheName field2768;
-	@ObfuscatedName("b")
+	public static final WorldMapCacheName field3013;
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Lid;"
+		descriptor = "Ljt;"
 	)
-	public static final WorldMapCacheName field2763;
-	@ObfuscatedName("p")
+	public static final WorldMapCacheName field3016;
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lid;"
+		descriptor = "Ljt;"
 	)
-	public static final WorldMapCacheName field2764;
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Lid;"
-	)
-	static final WorldMapCacheName field2765;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Lid;"
-	)
-	public static final WorldMapCacheName field2766;
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "Lpl;"
-	)
-	@Export("leftTitleSprite")
-	static SpritePixels leftTitleSprite;
+	public static final WorldMapCacheName field3011;
 	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "Ljt;"
+	)
+	static final WorldMapCacheName field3018;
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "Ljt;"
+	)
+	public static final WorldMapCacheName field3014;
+	@ObfuscatedName("l")
+	@ObfuscatedGetter(
+		intValue = 1081287219
+	)
+	static int field3010;
+	@ObfuscatedName("bo")
+	@ObfuscatedSignature(
+		descriptor = "Lqj;"
+	)
+	@Export("loginType")
+	static LoginType loginType;
+	@ObfuscatedName("j")
 	@Export("name")
 	public final String name;
 
 	static {
-		field2768 = new WorldMapCacheName("details");
-		field2763 = new WorldMapCacheName("compositemap");
-		field2764 = new WorldMapCacheName("compositetexture");
-		field2765 = new WorldMapCacheName("area");
-		field2766 = new WorldMapCacheName("labels");
+		field3013 = new WorldMapCacheName("details");
+		field3016 = new WorldMapCacheName("compositemap");
+		field3011 = new WorldMapCacheName("compositetexture");
+		field3018 = new WorldMapCacheName("area");
+		field3014 = new WorldMapCacheName("labels");
 	}
 
 	WorldMapCacheName(String var1) {
 		this.name = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-875853562"
+		descriptor = "([Ljava/lang/String;[SIII)V",
+		garbageValue = "-2125263853"
 	)
-	public static int method4865(int var0, int var1) {
-		int var2;
-		if (var1 > var0) {
-			var2 = var0;
-			var0 = var1;
-			var1 = var2;
+	@Export("sortItemsByName")
+	public static void sortItemsByName(String[] var0, short[] var1, int var2, int var3) {
+		if (var2 < var3) {
+			int var4 = (var3 + var2) / 2;
+			int var5 = var2;
+			String var6 = var0[var4];
+			var0[var4] = var0[var3];
+			var0[var3] = var6;
+			short var7 = var1[var4];
+			var1[var4] = var1[var3];
+			var1[var3] = var7;
+
+			for (int var8 = var2; var8 < var3; ++var8) {
+				if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
+					String var9 = var0[var8];
+					var0[var8] = var0[var5];
+					var0[var5] = var9;
+					short var10 = var1[var8];
+					var1[var8] = var1[var5];
+					var1[var5++] = var10;
+				}
+			}
+
+			var0[var3] = var0[var5];
+			var0[var5] = var6;
+			var1[var3] = var1[var5];
+			var1[var5] = var7;
+			sortItemsByName(var0, var1, var2, var5 - 1);
+			sortItemsByName(var0, var1, var5 + 1, var3);
 		}
 
-		while (var1 != 0) {
-			var2 = var0 % var1;
-			var0 = var1;
-			var1 = var2;
-		}
-
-		return var0;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("jm")
 	@ObfuscatedSignature(
-		descriptor = "(III)Z",
-		garbageValue = "985293867"
+		descriptor = "(II)Ljava/lang/String;",
+		garbageValue = "-813422245"
 	)
-	public static boolean method4864(int var0, int var1) {
-		return (var0 >> var1 + 1 & 1) != 0;
+	@Export("formatItemStacks")
+	static final String formatItemStacks(int var0) {
+		String var1 = Integer.toString(var0);
+
+		for (int var2 = var1.length() - 3; var2 > 0; var2 -= 3) {
+			var1 = var1.substring(0, var2) + "," + var1.substring(var2);
+		}
+
+		if (var1.length() > 9) {
+			return " " + class149.colorStartTag(65408) + var1.substring(0, var1.length() - 8) + "M" + " " + " (" + var1 + ")" + "</col>";
+		} else {
+			return var1.length() > 6 ? " " + class149.colorStartTag(16777215) + var1.substring(0, var1.length() - 4) + "K" + " " + " (" + var1 + ")" + "</col>" : " " + class149.colorStartTag(16776960) + var1 + "</col>";
+		}
 	}
 }

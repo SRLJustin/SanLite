@@ -4,198 +4,144 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hh")
+@ObfuscatedName("ip")
 @Implements("WorldMapLabelSize")
 public class WorldMapLabelSize {
-	@ObfuscatedName("c")
+	@ObfuscatedName("vv")
+	@ObfuscatedGetter(
+		intValue = 644356761
+	)
+	@Export("foundItemIndex")
+	static int foundItemIndex;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lhh;"
+		descriptor = "Lip;"
 	)
 	@Export("WorldMapLabelSize_small")
 	public static final WorldMapLabelSize WorldMapLabelSize_small;
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Lhh;"
+		descriptor = "Lip;"
 	)
 	@Export("WorldMapLabelSize_medium")
 	public static final WorldMapLabelSize WorldMapLabelSize_medium;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lhh;"
+		descriptor = "Lip;"
 	)
 	@Export("WorldMapLabelSize_large")
 	public static final WorldMapLabelSize WorldMapLabelSize_large;
-	@ObfuscatedName("j")
-	static byte[][][] field2580;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = -1838818577
+	@ObfuscatedName("hd")
+	@ObfuscatedSignature(
+		descriptor = "Lov;"
 	)
-	@Export("ItemDefinition_fileCount")
-	public static int ItemDefinition_fileCount;
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(
-		intValue = -606313299
+	static AbstractSocket field2818;
+	@ObfuscatedName("lr")
+	@ObfuscatedSignature(
+		descriptor = "Lkz;"
 	)
-	final int field2583;
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		intValue = -330742685
-	)
-	final int field2578;
+	@Export("dragInventoryWidget")
+	static Widget dragInventoryWidget;
 	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -586299201
+		intValue = 1770879535
 	)
-	final int field2579;
+	final int field2815;
+	@ObfuscatedName("z")
+	@ObfuscatedGetter(
+		intValue = 816325489
+	)
+	final int field2823;
+	@ObfuscatedName("j")
+	@ObfuscatedGetter(
+		intValue = 399849031
+	)
+	final int field2820;
 
 	static {
-		WorldMapLabelSize_small = new WorldMapLabelSize(2, 0, 4);
-		WorldMapLabelSize_medium = new WorldMapLabelSize(1, 1, 2);
-		WorldMapLabelSize_large = new WorldMapLabelSize(0, 2, 0);
+		WorldMapLabelSize_small = new WorldMapLabelSize(0, 0, 4);
+		WorldMapLabelSize_medium = new WorldMapLabelSize(2, 1, 2);
+		WorldMapLabelSize_large = new WorldMapLabelSize(1, 2, 0);
 	}
 
 	WorldMapLabelSize(int var1, int var2, int var3) {
-		this.field2583 = var1;
-		this.field2578 = var2;
-		this.field2579 = var3;
+		this.field2815 = var1;
+		this.field2823 = var2;
+		this.field2820 = var3;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(FI)Z",
-		garbageValue = "714158034"
+		garbageValue = "-1217223454"
 	)
-	boolean method4370(float var1) {
-		return var1 >= (float)this.field2579;
+	boolean method4887(float var1) {
+		return var1 >= (float)this.field2820;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lhh;",
-		garbageValue = "1279044140"
+		descriptor = "(II)I",
+		garbageValue = "1114113"
 	)
-	static WorldMapLabelSize[] method4357() {
-		return new WorldMapLabelSize[]{WorldMapLabelSize_large, WorldMapLabelSize_medium, WorldMapLabelSize_small};
+	public static int method4893(int var0) {
+		return var0 >>> 12;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lfi;",
-		garbageValue = "-661734359"
+		descriptor = "([BB)Lba;",
+		garbageValue = "-50"
 	)
-	@Export("getNpcDefinition")
-	public static NPCComposition getNpcDefinition(int var0) {
-		NPCComposition var1 = (NPCComposition)NPCComposition.NpcDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = NPCComposition.NpcDefinition_archive.takeFile(9, var0);
-			var1 = new NPCComposition();
-			var1.id = var0;
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
+	@Export("newScript")
+	static Script newScript(byte[] var0) {
+		Script var1 = new Script();
+		Buffer var2 = new Buffer(var0);
+		var2.offset = var2.array.length - 2;
+		int var3 = var2.readUnsignedShort();
+		int var4 = var2.array.length - 2 - var3 - 12;
+		var2.offset = var4;
+		int var5 = var2.readInt();
+		var1.localIntCount = var2.readUnsignedShort();
+		var1.localStringCount = var2.readUnsignedShort();
+		var1.intArgumentCount = var2.readUnsignedShort();
+		var1.stringArgumentCount = var2.readUnsignedShort();
+		int var6 = var2.readUnsignedByte();
+		int var7;
+		int var8;
+		if (var6 > 0) {
+			var1.switches = var1.newIterableNodeHashTable(var6);
 
-			var1.postDecode();
-			NPCComposition.NpcDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
+			for (var7 = 0; var7 < var6; ++var7) {
+				var8 = var2.readUnsignedShort();
+				IterableNodeHashTable var9 = new IterableNodeHashTable(var8 > 0 ? class4.method21(var8) : 1);
+				var1.switches[var7] = var9;
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lhh;",
-		garbageValue = "-1103968142"
-	)
-	static WorldMapLabelSize method4362(int var0) {
-		WorldMapLabelSize[] var1 = method4357();
-
-		for (int var2 = 0; var2 < var1.length; ++var2) {
-			WorldMapLabelSize var3 = var1[var2];
-			if (var0 == var3.field2578) {
-				return var3;
-			}
-		}
-
-		return null;
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZB)I",
-		garbageValue = "0"
-	)
-	static int method4359(int var0, Script var1, boolean var2) {
-		if (var0 == 7100) {
-			++IsaacCipher.Interpreter_intStackSize;
-			return 1;
-		} else if (var0 == 7101) {
-			class13.Interpreter_stringStackSize += 2;
-			return 1;
-		} else if (var0 != 7102 && var0 != 7103 && var0 != 7104 && var0 != 7105 && var0 != 7109) {
-			if (var0 == 7106) {
-				++IsaacCipher.Interpreter_intStackSize;
-				return 1;
-			} else if (var0 == 7107) {
-				++IsaacCipher.Interpreter_intStackSize;
-				return 1;
-			} else if (var0 == 7108) {
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = class14.method204() ? 1 : 0;
-				return 1;
-			} else if (var0 == 7110) {
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-				return 1;
-			} else if (var0 == 7120) {
-				--IsaacCipher.Interpreter_intStackSize;
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-				return 1;
-			} else if (var0 == 7121) {
-				IsaacCipher.Interpreter_intStackSize -= 2;
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -1;
-				return 1;
-			} else if (var0 == 7122) {
-				IsaacCipher.Interpreter_intStackSize -= 2;
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
-				return 1;
-			} else {
-				return 2;
-			}
-		} else {
-			++IsaacCipher.Interpreter_intStackSize;
-			return 1;
-		}
-	}
-
-	@ObfuscatedName("gq")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1715943871"
-	)
-	static void method4358() {
-		if (Varcs.worldMap != null) {
-			Varcs.worldMap.method6870(class20.Client_plane, class131.baseX * 64 + (class340.localPlayer.x >> 7), TileItem.baseY * 64 + (class340.localPlayer.y >> 7), false);
-			Varcs.worldMap.loadCache();
-		}
-
-	}
-
-	@ObfuscatedName("ln")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-62"
-	)
-	static void method4373() {
-		if (Messages.field1273 != null) {
-			Client.field559 = Client.cycle;
-			Messages.field1273.method5795();
-
-			for (int var0 = 0; var0 < Client.players.length; ++var0) {
-				if (Client.players[var0] != null) {
-					Messages.field1273.method5806(class131.baseX * 64 + (Client.players[var0].x >> 7), TileItem.baseY * 64 + (Client.players[var0].y >> 7));
+				while (var8-- > 0) {
+					int var10 = var2.readInt();
+					int var11 = var2.readInt();
+					var9.put(new IntegerNode(var11), (long)var10);
 				}
 			}
 		}
 
+		var2.offset = 0;
+		var1.field981 = var2.readStringCp1252NullTerminatedOrNull();
+		var1.opcodes = new int[var5];
+		var1.intOperands = new int[var5];
+		var1.stringOperands = new String[var5];
+
+		for (var7 = 0; var2.offset < var4; var1.opcodes[var7++] = var8) {
+			var8 = var2.readUnsignedShort();
+			if (var8 == 3) {
+				var1.stringOperands[var7] = var2.readStringCp1252NullTerminated();
+			} else if (var8 < 100 && var8 != 21 && var8 != 38 && var8 != 39) {
+				var1.intOperands[var7] = var2.readInt();
+			} else {
+				var1.intOperands[var7] = var2.readUnsignedByte();
+			}
+		}
+
+		return var1;
 	}
 }

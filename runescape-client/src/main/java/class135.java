@@ -1,71 +1,136 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ev")
-public class class135 extends class126 {
-	@ObfuscatedName("c")
-	String field1555;
-	// $FF: synthetic field
+@ObfuscatedName("eq")
+public enum class135 implements class349 {
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Leq;"
 	)
-	final class129 this$0;
+	field1626(2, 0),
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "Leq;"
+	)
+	field1623(4, 1),
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Leq;"
+	)
+	field1624(0, 2),
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "Leq;"
+	)
+	field1625(3, 3),
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "Leq;"
+	)
+	field1630(1, 4);
 
-	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+	@ObfuscatedName("uq")
+	@ObfuscatedGetter(
+		intValue = 1009971383
 	)
-	class135(class129 var1) {
-		this.this$0 = var1;
+	static int field1629;
+	@ObfuscatedName("j")
+	@ObfuscatedGetter(
+		intValue = -236409277
+	)
+	public final int field1627;
+	@ObfuscatedName("i")
+	@ObfuscatedGetter(
+		intValue = -1115089473
+	)
+	@Export("id")
+	final int id;
+
+	class135(int var3, int var4) {
+		this.field1627 = var3;
+		this.id = var4;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(B)I",
+		garbageValue = "3"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1555 = var1.readStringCp1252NullTerminated();
-		var1.readInt();
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.id;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(III)Lkz;",
+		garbageValue = "-1176907573"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.name = this.field1555;
+	@Export("getWidgetChild")
+	public static Widget getWidgetChild(int var0, int var1) {
+		Widget var2 = class133.getWidget(var0);
+		if (var1 == -1) {
+			return var2;
+		} else {
+			return var2 != null && var2.children != null && var1 < var2.children.length ? var2.children[var1] : null;
+		}
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-877203069"
+		descriptor = "(I)[Lch;",
+		garbageValue = "381687737"
 	)
-	public static final void method2832() {
-		ViewportMouse.ViewportMouse_isInViewport = false;
-		ViewportMouse.ViewportMouse_entityCount = 0;
+	static class85[] method3131() {
+		return new class85[]{class85.field1084, class85.field1089, class85.field1083, class85.field1086, class85.field1092};
 	}
 
-	@ObfuscatedName("lz")
+	@ObfuscatedName("kd")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "1487689727"
+		descriptor = "([Lkz;IB)V",
+		garbageValue = "10"
 	)
-	static final void method2831(int var0, int var1) {
-		ClanChannel var2 = var0 >= 0 ? Client.currentClanChannels[var0] : UserComparator5.guestClanChannel;
-		if (var2 != null && var1 >= 0 && var1 < var2.method2990()) {
-			ClanChannelMember var3 = (ClanChannelMember)var2.members.get(var1);
-			if (var3.rank == -1) {
-				String var4 = var3.username.getName();
-				PacketWriter var5 = Client.packetWriter;
-				PacketBufferNode var6 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2875, var5.isaacCipher);
-				var6.packetBuffer.writeByte(3 + class116.stringCp1252NullTerminatedByteSize(var4));
-				var6.packetBuffer.writeByte(var0);
-				var6.packetBuffer.writeShort(var1);
-				var6.packetBuffer.writeStringCp1252NullTerminated(var4);
-				var5.addNode(var6);
+	@Export("runComponentCloseListeners")
+	static final void runComponentCloseListeners(Widget[] var0, int var1) {
+		for (int var2 = 0; var2 < var0.length; ++var2) {
+			Widget var3 = var0[var2];
+			if (var3 != null) {
+				if (var3.type == 0) {
+					if (var3.children != null) {
+						runComponentCloseListeners(var3.children, var1);
+					}
+
+					InterfaceParent var4 = (InterfaceParent)Client.interfaceParents.get((long)var3.id);
+					if (var4 != null) {
+						class147.runIntfCloseListeners(var4.group, var1);
+					}
+				}
+
+				ScriptEvent var5;
+				if (var1 == 0 && var3.onDialogAbort != null) {
+					var5 = new ScriptEvent();
+					var5.widget = var3;
+					var5.args = var3.onDialogAbort;
+					WorldMapAreaData.runScriptEvent(var5);
+				}
+
+				if (var1 == 1 && var3.onSubChange != null) {
+					if (var3.childIndex >= 0) {
+						Widget var6 = class133.getWidget(var3.id);
+						if (var6 == null || var6.children == null || var3.childIndex >= var6.children.length || var3 != var6.children[var3.childIndex]) {
+							continue;
+						}
+					}
+
+					var5 = new ScriptEvent();
+					var5.widget = var3;
+					var5.args = var3.onSubChange;
+					WorldMapAreaData.runScriptEvent(var5);
+				}
 			}
 		}
+
 	}
 }

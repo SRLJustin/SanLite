@@ -1,77 +1,75 @@
-import java.security.SecureRandom;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hp")
+@ObfuscatedName("ij")
 @Implements("DecorativeObject")
-public final class DecorativeObject
-{
-	@ObfuscatedName("c")
+public final class DecorativeObject {
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -2023059781
+		intValue = 848620101
 	)
 	@Export("tileHeight")
 	int tileHeight;
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 2111603765
+		intValue = 2051663691
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -1656810997
+		intValue = 1383364191
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -1965519891
+		intValue = -620450551
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("t")
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = 278377977
+		intValue = 2006194271
 	)
 	@Export("orientation2")
 	int orientation2;
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 1314236601
+		intValue = 2110885147
 	)
 	@Export("xOffset")
 	int xOffset;
-	@ObfuscatedName("j")
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = -1594233985
+		intValue = 1599637189
 	)
 	@Export("yOffset")
 	int yOffset;
-	@ObfuscatedName("w")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lhd;"
 	)
 	@Export("renderable1")
 	public Renderable renderable1;
-	@ObfuscatedName("n")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lhd;"
 	)
 	@Export("renderable2")
 	public Renderable renderable2;
-	@ObfuscatedName("r")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		longValue = 6911018160892972427L
+		longValue = -7020316289370538733L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("o")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1066794937
+		intValue = -4966827
 	)
 	@Export("flags")
 	int flags;
@@ -81,14 +79,55 @@ public final class DecorativeObject
 		this.flags = 0;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/security/SecureRandom;",
-		garbageValue = "-121"
+		descriptor = "(II)Z",
+		garbageValue = "1258682815"
 	)
-	static SecureRandom method4340() {
-		SecureRandom var0 = new SecureRandom();
-		var0.nextInt();
-		return var0;
+	public static boolean method4865(int var0) {
+		return var0 >= WorldMapDecorationType.field3752.id && var0 <= WorldMapDecorationType.field3746.id || var0 == WorldMapDecorationType.field3751.id;
+	}
+
+	@ObfuscatedName("s")
+	public static int method4863(long var0) {
+		return (int)(var0 >>> 0 & 127L);
+	}
+
+	@ObfuscatedName("kr")
+	@ObfuscatedSignature(
+		descriptor = "(Lkz;I)Lkz;",
+		garbageValue = "1159720695"
+	)
+	static Widget method4864(Widget var0) {
+		Widget var2 = var0;
+		int var3 = ClanChannel.method3366(class173.getWidgetFlags(var0));
+		Widget var1;
+		if (var3 == 0) {
+			var1 = null;
+		} else {
+			int var4 = 0;
+
+			while (true) {
+				if (var4 >= var3) {
+					var1 = var2;
+					break;
+				}
+
+				var2 = class133.getWidget(var2.parentId);
+				if (var2 == null) {
+					var1 = null;
+					break;
+				}
+
+				++var4;
+			}
+		}
+
+		Widget var5 = var1;
+		if (var1 == null) {
+			var5 = var0.parent;
+		}
+
+		return var5;
 	}
 }

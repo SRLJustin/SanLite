@@ -1,96 +1,48 @@
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("np")
-public abstract class class373 implements class241 {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lod;"
+@ObfuscatedName("nu")
+public class class373 {
+	@ObfuscatedName("in")
+	@ObfuscatedGetter(
+		intValue = -569629553
 	)
-	class409 field4226;
+	static int field4406;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = 419940411
+	)
+	int field4407;
 
-	class373(int var1) {
+	@ObfuscatedSignature(
+		descriptor = "(IZ)V",
+		garbageValue = "1"
+	)
+	class373(int var1, boolean var2) {
+		this.field4407 = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;II)V",
-		garbageValue = "1616764501"
+		descriptor = "(B)I",
+		garbageValue = "-32"
 	)
-	abstract void vmethod6785(Buffer var1, int var2);
-
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "-107064225"
-	)
-	public void method6778(Buffer var1) {
-		while (true) {
-			int var2 = var1.readUnsignedByte();
-			if (var2 == 0) {
-				return;
-			}
-
-			class369 var3 = (class369)class130.findEnumerated(Strings.method5508(), var2);
-			if (var3 != null) {
-				switch(var3.field4218) {
-				case 1:
-					int var4 = var1.readUnsignedByte();
-					int var7 = class407.field4439[var4];
-					class409 var5;
-					if (var7 == 1) {
-						var5 = class409.field4445;
-					} else if (var7 == 2) {
-						var5 = class409.field4449;
-					} else if (var7 == 3) {
-						var5 = class409.field4442;
-					} else {
-						var5 = null;
-					}
-
-					this.field4226 = var5;
-					if (this.field4226 != null) {
-						break;
-					}
-
-					throw new IllegalStateException("Unknown ScriptVarType ID in VarType.decode: " + var4);
-				case 2:
-					class295[] var6 = new class295[]{class295.field3791, class295.field3790, class295.field3789, class295.field3793};
-					class130.findEnumerated(var6, var1.readUnsignedByte());
-					break;
-				case 3:
-					var1.readStringCp1252NullCircumfixed();
-					break;
-				default:
-					throw new IllegalStateException("Unrecognised VarTypeEncodingKey - " + var3);
-				}
-			} else {
-				this.vmethod6785(var1, var2);
-			}
-		}
+	public int method7186() {
+		return this.field4407;
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("fz")
 	@ObfuscatedSignature(
-		descriptor = "(S)Z",
-		garbageValue = "255"
+		descriptor = "(ZI)V",
+		garbageValue = "-1754373528"
 	)
-	boolean method6780() {
-		return this.field4226 != null;
-	}
-
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/lang/Object;",
-		garbageValue = "-56"
-	)
-	Object method6781() {
-		if (this.field4226 == class409.field4445) {
-			return 0;
-		} else if (this.field4226 == class409.field4442) {
-			return -1L;
+	static final void method7183(boolean var0) {
+		if (var0) {
+			Client.field535 = Login.field930 ? class135.field1623 : class135.field1625;
 		} else {
-			return this.field4226 == class409.field4449 ? "" : null;
+			Client.field535 = PacketWriter.clientPreferences.method2507(Login.Login_username) ? class135.field1626 : class135.field1624;
 		}
+
 	}
 }

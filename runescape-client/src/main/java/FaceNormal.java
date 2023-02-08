@@ -4,24 +4,24 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gh")
+@ObfuscatedName("hb")
 @Implements("FaceNormal")
 public class FaceNormal {
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -38617703
+		intValue = 831349189
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -1161789305
+		intValue = 1785902179
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1924631327
+		intValue = 328865225
 	)
 	@Export("z")
 	int z;
@@ -29,38 +29,67 @@ public class FaceNormal {
 	FaceNormal() {
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "37"
+		descriptor = "(I)V",
+		garbageValue = "65533"
 	)
-	public static int method4142(int var0, int var1) {
-		int var2 = var0 >>> 31;
-		return (var0 + var2) / var1 - var2;
+	public static void method4641() {
+		VarpDefinition.VarpDefinition_cached.clear();
 	}
 
-	@ObfuscatedName("hr")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "-2015271850"
+		descriptor = "(IB)I",
+		garbageValue = "-53"
 	)
-	@Export("getTileHeight")
-	static final int getTileHeight(int var0, int var1, int var2) {
-		int var3 = var0 >> 7;
-		int var4 = var1 >> 7;
-		if (var3 >= 0 && var4 >= 0 && var3 <= 103 && var4 <= 103) {
-			int var5 = var2;
-			if (var2 < 3 && (Tiles.Tiles_renderFlags[1][var3][var4] & 2) == 2) {
-				var5 = var2 + 1;
-			}
-
-			int var6 = var0 & 127;
-			int var7 = var1 & 127;
-			int var8 = (128 - var6) * Tiles.Tiles_heights[var5][var3][var4] + var6 * Tiles.Tiles_heights[var5][var3 + 1][var4] >> 7;
-			int var9 = var6 * Tiles.Tiles_heights[var5][var3 + 1][var4 + 1] + Tiles.Tiles_heights[var5][var3][var4 + 1] * (128 - var6) >> 7;
-			return var8 * (128 - var7) + var9 * var7 >> 7;
-		} else {
-			return 0;
+	@Export("iLog")
+	public static int iLog(int var0) {
+		int var1 = 0;
+		if (var0 < 0 || var0 >= 65536) {
+			var0 >>>= 16;
+			var1 += 16;
 		}
+
+		if (var0 >= 256) {
+			var0 >>>= 8;
+			var1 += 8;
+		}
+
+		if (var0 >= 16) {
+			var0 >>>= 4;
+			var1 += 4;
+		}
+
+		if (var0 >= 4) {
+			var0 >>>= 2;
+			var1 += 2;
+		}
+
+		if (var0 >= 1) {
+			var0 >>>= 1;
+			++var1;
+		}
+
+		return var0 + var1;
+	}
+
+	@ObfuscatedName("fc")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "110"
+	)
+	@Export("forceDisconnect")
+	static final void forceDisconnect(int var0) {
+		HealthBarDefinition.logOut();
+		switch(var0) {
+		case 1:
+			WorldMapArea.method5004();
+			break;
+		case 2:
+			ReflectionCheck.method696(24);
+			class70.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
+		}
+
 	}
 }

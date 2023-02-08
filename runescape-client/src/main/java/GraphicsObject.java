@@ -4,70 +4,64 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bs")
+@ObfuscatedName("bb")
 @Implements("GraphicsObject")
 public class GraphicsObject extends Renderable {
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "Lku;"
-	)
-	@Export("Widget_spritesArchive")
-	static AbstractArchive Widget_spritesArchive;
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -1199566727
+		intValue = -608870559
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -1643038475
+		intValue = 141932663
 	)
 	@Export("cycleStart")
 	int cycleStart;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 575956663
+		intValue = -524701443
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -1504982005
+		intValue = 2131894459
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("t")
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = -1721998219
-	)
-	@Export("y")
-	int y;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = 826937289
+		intValue = 971678563
 	)
 	@Export("height")
 	int height;
 	@ObfuscatedName("j")
+	@ObfuscatedGetter(
+		intValue = 1652348573
+	)
+	@Export("y")
+	int y;
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "Lgn;"
+		descriptor = "Lge;"
 	)
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
-	@ObfuscatedName("w")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -991958815
+		intValue = -1608511897
 	)
 	@Export("frame")
 	int frame;
-	@ObfuscatedName("n")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = 126754465
+		intValue = 97527713
 	)
 	@Export("frameCycle")
 	int frameCycle;
-	@ObfuscatedName("r")
+	@ObfuscatedName("k")
 	@Export("isFinished")
 	boolean isFinished;
 
@@ -81,26 +75,26 @@ public class GraphicsObject extends Renderable {
 		this.y = var4;
 		this.height = var5;
 		this.cycleStart = var7 + var6;
-		int var8 = AccessFile.SpotAnimationDefinition_get(this.id).sequence;
+		int var8 = MouseRecorder.SpotAnimationDefinition_get(this.id).sequence;
 		if (var8 != -1) {
 			this.isFinished = false;
-			this.sequenceDefinition = UserComparator5.SequenceDefinition_get(var8);
+			this.sequenceDefinition = class85.SequenceDefinition_get(var8);
 		} else {
 			this.isFinished = true;
 		}
 
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "-41"
+		descriptor = "(II)V",
+		garbageValue = "-1391547294"
 	)
 	@Export("advance")
 	final void advance(int var1) {
 		if (!this.isFinished) {
 			this.frameCycle += var1;
-			if (!this.sequenceDefinition.method3690()) {
+			if (!this.sequenceDefinition.method4070()) {
 				while (this.frameCycle > this.sequenceDefinition.frameLengths[this.frame]) {
 					this.frameCycle -= this.sequenceDefinition.frameLengths[this.frame];
 					++this.frame;
@@ -111,7 +105,7 @@ public class GraphicsObject extends Renderable {
 				}
 			} else {
 				this.frame += var1;
-				if (this.frame >= this.sequenceDefinition.method3647()) {
+				if (this.frame >= this.sequenceDefinition.method4055()) {
 					this.isFinished = true;
 				}
 			}
@@ -119,14 +113,14 @@ public class GraphicsObject extends Renderable {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lgo;",
-		garbageValue = "202861607"
+		descriptor = "(I)Lhs;",
+		garbageValue = "922199662"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		SpotAnimationDefinition var1 = AccessFile.SpotAnimationDefinition_get(this.id);
+		SpotAnimationDefinition var1 = MouseRecorder.SpotAnimationDefinition_get(this.id);
 		Model var2;
 		if (!this.isFinished) {
 			var2 = var1.getModel(this.frame);
@@ -135,65 +129,6 @@ public class GraphicsObject extends Renderable {
 		}
 
 		return var2 == null ? null : var2;
-	}
-
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "1965398967"
-	)
-	@Export("itemContainerSetItem")
-	static void itemContainerSetItem(int var0, int var1, int var2, int var3) {
-		ItemContainer var4 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var4 == null) {
-			var4 = new ItemContainer();
-			ItemContainer.itemContainers.put(var4, (long)var0);
-		}
-
-		if (var4.ids.length <= var1) {
-			int[] var5 = new int[var1 + 1];
-			int[] var6 = new int[var1 + 1];
-
-			int var7;
-			for (var7 = 0; var7 < var4.ids.length; ++var7) {
-				var5[var7] = var4.ids[var7];
-				var6[var7] = var4.quantities[var7];
-			}
-
-			for (var7 = var4.ids.length; var7 < var1; ++var7) {
-				var5[var7] = -1;
-				var6[var7] = 0;
-			}
-
-			var4.ids = var5;
-			var4.quantities = var6;
-		}
-
-		var4.ids[var1] = var2;
-		var4.quantities[var1] = var3;
-	}
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-76"
-	)
-	public static void method1956() {
-		if (NetCache.NetCache_socket != null) {
-			NetCache.NetCache_socket.close();
-		}
-
-	}
-
-	@ObfuscatedName("kl")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "54739776"
-	)
-	static final void method1955(int var0) {
-		if (class242.loadInterface(var0)) {
-			class328.drawModelComponents(MouseRecorder.Widget_interfaceComponents[var0], -1);
-		}
 	}
 
 	public GraphicsObject() {

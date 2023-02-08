@@ -3,49 +3,59 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kt")
+@ObfuscatedName("kf")
 public class class288 {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lkt;"
-	)
-	static final class288 field3436;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Lkt;"
-	)
-	static final class288 field3438;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
+	static int[] field3340;
+	@ObfuscatedName("pz")
 	@ObfuscatedGetter(
-		intValue = 1235911729
+		intValue = 754592057
 	)
-	final int field3435;
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(
-		intValue = -901346455
+	static int field3342;
+	@ObfuscatedName("rs")
+	@ObfuscatedSignature(
+		descriptor = "Lra;"
 	)
-	final int field3437;
+	@Export("privateChatMode")
+	static PrivateChatMode privateChatMode;
 
 	static {
-		field3436 = new class288(51, 27, 800, 0, 16, 16);
-		field3438 = new class288(25, 28, 800, 656, 40, 40);
+		new Object();
+		field3340 = new int[33];
+		field3340[0] = 0;
+		int var0 = 2;
+
+		for (int var1 = 1; var1 < 33; ++var1) {
+			field3340[var1] = var0 - 1;
+			var0 += var0;
+		}
+
 	}
 
-	class288(int var1, int var2, int var3, int var4, int var5, int var6) {
-		this.field3435 = var5;
-		this.field3437 = var6;
-	}
-
-	@ObfuscatedName("is")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "1635698499"
+		descriptor = "(I)V",
+		garbageValue = "1844004108"
 	)
-	@Export("resumePauseWidget")
-	static void resumePauseWidget(int var0, int var1) {
-		PacketBufferNode var2 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2873, Client.packetWriter.isaacCipher);
-		var2.packetBuffer.method7349(var1);
-		var2.packetBuffer.method7407(var0);
-		Client.packetWriter.addNode(var2);
+	static void method5590() {
+		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_lock) {
+			if (ArchiveDiskActionHandler.field4199 == 0) {
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread = new Thread(new ArchiveDiskActionHandler());
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread.setDaemon(true);
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread.start();
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread.setPriority(5);
+			}
+
+			ArchiveDiskActionHandler.field4199 = 600;
+		}
+	}
+
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "-1985801344"
+	)
+	public static boolean method5596(int var0) {
+		return (var0 >> 31 & 1) != 0;
 	}
 }

@@ -1,143 +1,122 @@
-import java.awt.Image;
-import java.util.Comparator;
-import java.util.Map.Entry;
+import java.util.concurrent.Future;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("k")
-class class18 implements Comparator {
-	@ObfuscatedName("av")
-	static Image field97;
-	// $FF: synthetic field
+@ObfuscatedName("u")
+public class class18 {
+	@ObfuscatedName("t")
 	@ObfuscatedSignature(
-		descriptor = "Lo;"
+		descriptor = "[Lqp;"
 	)
-	final class10 this$0;
+	@Export("JagexCache_idxFiles")
+	public static BufferedFile[] JagexCache_idxFiles;
+	@ObfuscatedName("gl")
+	static int[] field99;
+	@ObfuscatedName("oq")
+	@ObfuscatedSignature(
+		descriptor = "Lkz;"
+	)
+	static Widget field102;
+	@ObfuscatedName("f")
+	Future field100;
+	@ObfuscatedName("w")
+	String field103;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lo;)V"
-	)
-	class18(class10 var1) {
-		this.this$0 = var1;
+	class18(Future var1) {
+		this.field100 = var1;
 	}
 
-	@ObfuscatedName("c")
+	class18(String var1) {
+		this.method276(var1);
+	}
+
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Map$Entry;Ljava/util/Map$Entry;I)I",
-		garbageValue = "661952074"
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "13"
 	)
-	int method294(Entry var1, Entry var2) {
-		return ((Float)var2.getValue()).compareTo((Float)var1.getValue());
+	void method276(String var1) {
+		if (var1 == null) {
+			var1 = "";
+		}
+
+		this.field103 = var1;
+		if (this.field100 != null) {
+			this.field100.cancel(true);
+			this.field100 = null;
+		}
+
 	}
 
-	public boolean equals(Object var1) {
-		return super.equals(var1);
-	}
-
-	public int compare(Object var1, Object var2) {
-		return this.method294((Entry)var1, (Entry)var2);
-	}
-
-	@ObfuscatedName("c")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lfw;",
-		garbageValue = "-1896200601"
+		descriptor = "(B)Ljava/lang/String;",
+		garbageValue = "17"
 	)
-	public static FloorOverlayDefinition method302(int var0) {
-		FloorOverlayDefinition var1 = (FloorOverlayDefinition)FloorOverlayDefinition.FloorOverlayDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
+	public final String method277() {
+		return this.field103;
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "125"
+	)
+	public boolean method282() {
+		return this.field103 != null || this.field100 == null;
+	}
+
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-2116375793"
+	)
+	public final boolean method279() {
+		return this.method282() ? true : this.field100.isDone();
+	}
+
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "(I)La;",
+		garbageValue = "-1250642886"
+	)
+	public final class20 method280() {
+		if (this.method282()) {
+			return new class20(this.field103);
+		} else if (!this.method279()) {
+			return null;
 		} else {
-			byte[] var2 = FloorOverlayDefinition.FloorOverlayDefinition_archive.takeFile(4, var0);
-			var1 = new FloorOverlayDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2), var0);
+			try {
+				return (class20)this.field100.get();
+			} catch (Exception var3) {
+				String var2 = "Error retrieving REST request reply";
+				System.err.println(var2 + "\r\n" + var3);
+				this.method276(var2);
+				return new class20(var2);
+			}
+		}
+	}
+
+	@ObfuscatedName("jy")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-2146984996"
+	)
+	@Export("Widget_runOnTargetLeave")
+	static void Widget_runOnTargetLeave() {
+		if (Client.isSpellSelected) {
+			Widget var0 = class135.getWidgetChild(class9.selectedSpellWidget, Client.selectedSpellChildIndex);
+			if (var0 != null && var0.onTargetLeave != null) {
+				ScriptEvent var1 = new ScriptEvent();
+				var1.widget = var0;
+				var1.args = var0.onTargetLeave;
+				WorldMapAreaData.runScriptEvent(var1);
 			}
 
-			var1.postDecode();
-			FloorOverlayDefinition.FloorOverlayDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Lfp;",
-		garbageValue = "28"
-	)
-	@Export("StructDefinition_getStructDefinition")
-	public static StructComposition StructDefinition_getStructDefinition(int var0) {
-		StructComposition var1 = (StructComposition)StructComposition.StructDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = class17.StructDefinition_archive.takeFile(34, var0);
-			var1 = new StructComposition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-
-			var1.postDecode();
-			StructComposition.StructDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("fn")
-	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "5"
-	)
-	@Export("playSong")
-	static void playSong(int var0) {
-		if (var0 == -1 && !Client.field743) {
-			StructComposition.method3444();
-		} else if (var0 != -1 && var0 != Client.currentTrackGroupId && SecureRandomFuture.clientPreferences.musicVolume != 0 && !Client.field743) {
-			Archive var1 = WorldMapScaleHandler.archive6;
-			int var2 = SecureRandomFuture.clientPreferences.musicVolume;
-			class260.musicPlayerStatus = 1;
-			class124.musicTrackArchive = var1;
-			VarcInt.musicTrackGroupId = var0;
-			class260.musicTrackFileId = 0;
-			ChatChannel.musicTrackVolume = var2;
-			DynamicObject.musicTrackBoolean = false;
-			class260.pcmSampleLength = 2;
-		}
-
-		Client.currentTrackGroupId = var0;
-	}
-
-	@ObfuscatedName("gb")
-	@ObfuscatedSignature(
-		descriptor = "(Lcy;I)V",
-		garbageValue = "-1637898710"
-	)
-	static final void method293(Actor var0) {
-		if (var0.field1157 == Client.cycle || var0.sequence == -1 || var0.sequenceDelay != 0 || var0.sequenceFrameCycle + 1 > UserComparator5.SequenceDefinition_get(var0.sequence).frameLengths[var0.sequenceFrame]) {
-			int var1 = var0.field1157 - var0.field1136;
-			int var2 = Client.cycle - var0.field1136;
-			int var3 = var0.field1132 * 128 + var0.field1120 * 64;
-			int var4 = var0.field1134 * 128 + var0.field1120 * 64;
-			int var5 = var0.field1133 * 128 + var0.field1120 * 64;
-			int var6 = var0.field1135 * 128 + var0.field1120 * 64;
-			var0.x = (var5 * var2 + var3 * (var1 - var2)) / var1;
-			var0.y = (var6 * var2 + var4 * (var1 - var2)) / var1;
-		}
-
-		var0.field1117 = 0;
-		var0.orientation = var0.field1138;
-		var0.rotation = var0.orientation;
-	}
-
-	@ObfuscatedName("jh")
-	@ObfuscatedSignature(
-		descriptor = "(IIIZI)V",
-		garbageValue = "-1056239746"
-	)
-	static final void method297(int var0, int var1, int var2, boolean var3) {
-		if (class242.loadInterface(var0)) {
-			class92.resizeInterface(MouseRecorder.Widget_interfaceComponents[var0], -1, var1, var2, var3);
+			Client.field514 = -1;
+			Client.isSpellSelected = false;
+			LoginScreenAnimation.method2477(var0);
 		}
 	}
 }

@@ -3,174 +3,171 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eh")
-public class class145 extends class126 {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = 802544023
+@ObfuscatedName("eo")
+public class class145 extends class155 {
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lln;"
 	)
-	int field1634;
+	public static AbstractArchive field1689;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = 462461389
+	)
+	int field1684;
+	@ObfuscatedName("w")
+	byte field1687;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(
+		intValue = 1636205357
+	)
+	int field1683;
+	@ObfuscatedName("s")
+	String field1686;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Lfn;"
 	)
-	final class129 this$0;
+	final class156 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "(Lfn;)V"
 	)
-	class145(class129 var1) {
+	class145(class156 var1) {
 		this.this$0 = var1;
-		this.field1634 = -1;
+		this.field1684 = -1;
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(Lrd;B)V",
+		garbageValue = "-123"
+	)
+	void vmethod3387(Buffer var1) {
+		this.field1684 = var1.readUnsignedShort();
+		this.field1687 = var1.readByte();
+		this.field1683 = var1.readUnsignedShort();
+		var1.readLong();
+		this.field1686 = var1.readStringCp1252NullTerminated();
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(Lfm;I)V",
+		garbageValue = "127147356"
+	)
+	void vmethod3388(ClanChannel var1) {
+		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1684);
+		var2.rank = this.field1687;
+		var2.world = this.field1683;
+		var2.username = new Username(this.field1686);
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(Lqu;ILjava/lang/String;S)Ljava/lang/String;",
+		garbageValue = "-3344"
+	)
+	static String method3192(IterableNodeHashTable var0, int var1, String var2) {
+		if (var0 == null) {
+			return var2;
+		} else {
+			ObjectNode var3 = (ObjectNode)var0.get((long)var1);
+			return var3 == null ? var2 : (String)var3.obj;
+		}
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)Lba;",
+		garbageValue = "-1454987791"
+	)
+	@Export("getWorldMapScript")
+	static Script getWorldMapScript(int var0, int var1, int var2) {
+		int var3 = (var1 << 8) + var0;
+		Script var6 = (Script)Script.Script_cached.get((long)(var3 << 16));
+		Script var5;
+		if (var6 != null) {
+			var5 = var6;
+		} else {
+			String var7 = String.valueOf(var3);
+			int var8 = class12.archive12.getGroupId(var7);
+			if (var8 == -1) {
+				var5 = null;
+			} else {
+				label58: {
+					byte[] var9 = class12.archive12.takeFileFlat(var8);
+					if (var9 != null) {
+						if (var9.length <= 1) {
+							var5 = null;
+							break label58;
+						}
+
+						var6 = WorldMapLabelSize.newScript(var9);
+						if (var6 != null) {
+							Script.Script_cached.put(var6, (long)(var3 << 16));
+							var5 = var6;
+							break label58;
+						}
+					}
+
+					var5 = null;
+				}
+			}
+		}
+
+		if (var5 != null) {
+			return var5;
+		} else {
+			int var4 = class208.method4221(var2, var0);
+			Script var12 = (Script)Script.Script_cached.get((long)(var4 << 16));
+			Script var13;
+			if (var12 != null) {
+				var13 = var12;
+			} else {
+				String var14 = String.valueOf(var4);
+				int var10 = class12.archive12.getGroupId(var14);
+				if (var10 == -1) {
+					var13 = null;
+				} else {
+					byte[] var11 = class12.archive12.takeFileFlat(var10);
+					if (var11 != null) {
+						if (var11.length <= 1) {
+							var13 = null;
+							return var13 != null ? var13 : null;
+						}
+
+						var12 = WorldMapLabelSize.newScript(var11);
+						if (var12 != null) {
+							Script.Script_cached.put(var12, (long)(var4 << 16));
+							var13 = var12;
+							return var13 != null ? var13 : null;
+						}
+					}
+
+					var13 = null;
+				}
+			}
+
+			return var13 != null ? var13 : null;
+		}
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lkz;IB)V",
+		garbageValue = "33"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1634 = var1.readUnsignedShort();
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
-	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2863(this.field1634);
-	}
-
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "([BI)Lbn;",
-		garbageValue = "1172830323"
-	)
-	@Export("newScript")
-	static Script newScript(byte[] var0) {
-		Script var1 = new Script();
-		Buffer var2 = new Buffer(var0);
-		var2.offset = var2.array.length - 2;
-		int var3 = var2.readUnsignedShort();
-		int var4 = var2.array.length - 2 - var3 - 12;
-		var2.offset = var4;
-		int var5 = var2.readInt();
-		var1.localIntCount = var2.readUnsignedShort();
-		var1.localStringCount = var2.readUnsignedShort();
-		var1.intArgumentCount = var2.readUnsignedShort();
-		var1.stringArgumentCount = var2.readUnsignedShort();
-		int var6 = var2.readUnsignedByte();
-		int var7;
-		int var8;
-		if (var6 > 0) {
-			var1.switches = var1.newIterableNodeHashTable(var6);
-
-			for (var7 = 0; var7 < var6; ++var7) {
-				var8 = var2.readUnsignedShort();
-				IterableNodeHashTable var9 = new IterableNodeHashTable(var8 > 0 ? SpotAnimationDefinition.method3362(var8) : 1);
-				var1.switches[var7] = var9;
-
-				while (var8-- > 0) {
-					int var10 = var2.readInt();
-					int var11 = var2.readInt();
-					var9.put(new IntegerNode(var11), (long)var10);
-				}
+	@Export("Widget_setKeyIgnoreHeld")
+	static final void Widget_setKeyIgnoreHeld(Widget var0, int var1) {
+		if (var0.field3632 == null) {
+			throw new RuntimeException();
+		} else {
+			if (var0.field3594 == null) {
+				var0.field3594 = new int[var0.field3632.length];
 			}
+
+			var0.field3594[var1] = Integer.MAX_VALUE;
 		}
-
-		var2.offset = 0;
-		var1.field937 = var2.readStringCp1252NullTerminatedOrNull();
-		var1.opcodes = new int[var5];
-		var1.intOperands = new int[var5];
-		var1.stringOperands = new String[var5];
-
-		for (var7 = 0; var2.offset < var4; var1.opcodes[var7++] = var8) {
-			var8 = var2.readUnsignedShort();
-			if (var8 == 3) {
-				var1.stringOperands[var7] = var2.readStringCp1252NullTerminated();
-			} else if (var8 < 100 && var8 != 21 && var8 != 38 && var8 != 39) {
-				var1.intOperands[var7] = var2.readInt();
-			} else {
-				var1.intOperands[var7] = var2.readUnsignedByte();
-			}
-		}
-
-		return var1;
-	}
-
-	@ObfuscatedName("gn")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "578120171"
-	)
-	static final void method2985() {
-		if (class20.Client_plane != Client.field570) {
-			Client.field570 = class20.Client_plane;
-			int var0 = class20.Client_plane;
-			int[] var1 = class29.sceneMinimapSprite.pixels;
-			int var2 = var1.length;
-
-			int var3;
-			for (var3 = 0; var3 < var2; ++var3) {
-				var1[var3] = 0;
-			}
-
-			int var4;
-			int var5;
-			for (var3 = 1; var3 < 103; ++var3) {
-				var4 = (103 - var3) * 2048 + 24628;
-
-				for (var5 = 1; var5 < 103; ++var5) {
-					if ((Tiles.Tiles_renderFlags[var0][var5][var3] & 24) == 0) {
-						class7.scene.drawTileMinimap(var1, var4, 512, var0, var5, var3);
-					}
-
-					if (var0 < 3 && (Tiles.Tiles_renderFlags[var0 + 1][var5][var3] & 8) != 0) {
-						class7.scene.drawTileMinimap(var1, var4, 512, var0 + 1, var5, var3);
-					}
-
-					var4 += 4;
-				}
-			}
-
-			var3 = (238 + (int)(Math.random() * 20.0D) - 10 << 16) + (238 + (int)(Math.random() * 20.0D) - 10 << 8) + (238 + (int)(Math.random() * 20.0D) - 10);
-			var4 = 238 + (int)(Math.random() * 20.0D) - 10 << 16;
-			class29.sceneMinimapSprite.setRaster();
-
-			int var6;
-			for (var5 = 1; var5 < 103; ++var5) {
-				for (var6 = 1; var6 < 103; ++var6) {
-					if ((Tiles.Tiles_renderFlags[var0][var6][var5] & 24) == 0) {
-						class33.drawObject(var0, var6, var5, var3, var4);
-					}
-
-					if (var0 < 3 && (Tiles.Tiles_renderFlags[var0 + 1][var6][var5] & 8) != 0) {
-						class33.drawObject(var0 + 1, var6, var5, var3, var4);
-					}
-				}
-			}
-
-			Client.mapIconCount = 0;
-
-			for (var5 = 0; var5 < 104; ++var5) {
-				for (var6 = 0; var6 < 104; ++var6) {
-					long var7 = class7.scene.getGroundObjectTag(class20.Client_plane, var5, var6);
-					if (var7 != 0L) {
-						int var9 = PacketWriter.Entity_unpackID(var7);
-						int var10 = class148.getObjectDefinition(var9).mapIconId;
-						if (var10 >= 0 && class78.WorldMapElement_get(var10).field1759) {
-							Client.mapIcons[Client.mapIconCount] = class78.WorldMapElement_get(var10).getSpriteBool(false);
-							Client.mapIconXs[Client.mapIconCount] = var5;
-							Client.mapIconYs[Client.mapIconCount] = var6;
-							++Client.mapIconCount;
-						}
-					}
-				}
-			}
-
-			class19.rasterProvider.apply();
-		}
-
 	}
 }

@@ -1,436 +1,512 @@
-import java.util.Arrays;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("no")
+@ObfuscatedName("ne")
 public final class class366 {
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "[Lno;"
-	)
-	public static class366[] field4191;
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
+	@Export("base37Table")
+	public static final char[] base37Table;
+	@ObfuscatedName("w")
+	static long[] field4373;
+	@ObfuscatedName("jv")
 	@ObfuscatedGetter(
-		intValue = -1036924523
+		intValue = -689139107
 	)
-	static int field4192;
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Lno;"
+	@Export("cameraZ")
+	static int cameraZ;
+	@ObfuscatedName("pi")
+	@ObfuscatedGetter(
+		intValue = 1745792545
 	)
-	public static final class366 field4194;
-	@ObfuscatedName("t")
-	public float[] field4196;
+	static int field4370;
 
 	static {
-		field4191 = new class366[0];
-		Client.method1623(100);
-		field4194 = new class366();
-	}
+		base37Table = new char[]{'_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+		field4373 = new long[12];
 
-	public class366() {
-		this.field4196 = new float[16];
-		this.method6652();
-	}
-
-	@ObfuscatedSignature(
-		descriptor = "(Lno;)V"
-	)
-	public class366(class366 var1) {
-		this.field4196 = new float[16];
-		this.method6654(var1);
-	}
-
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;Z)V"
-	)
-	public class366(Buffer var1, boolean var2) {
-		this.field4196 = new float[16];
-		this.method6649(var1, var2);
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "340941633"
-	)
-	public void method6656() {
-		synchronized(field4191) {
-			if (class149.field1663 < field4192 - 1) {
-				field4191[++class149.field1663 - 1] = this;
-			}
-
-		}
-	}
-
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;ZI)V",
-		garbageValue = "-1222867877"
-	)
-	void method6649(Buffer var1, boolean var2) {
-		if (var2) {
-			class367 var4 = new class367();
-			var4.method6732(class329.method6135(var1.readShort()));
-			var4.method6717(class329.method6135(var1.readShort()));
-			var4.method6718(class329.method6135(var1.readShort()));
-			var4.method6719((float)var1.readShort(), (float)var1.readShort(), (float)var1.readShort());
-			this.method6713(var4);
-		} else {
-			for (int var3 = 0; var3 < 16; ++var3) {
-				this.field4196[var3] = var1.method7369();
-			}
+		for (int var0 = 0; var0 < field4373.length; ++var0) {
+			field4373[var0] = (long)Math.pow(37.0D, (double)var0);
 		}
 
-	}
-
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(B)[F",
-		garbageValue = "42"
-	)
-	float[] method6650() {
-		float[] var1 = new float[3];
-		if ((double)this.field4196[2] < 0.999D && (double)this.field4196[2] > -0.999D) {
-			var1[1] = (float)(-Math.asin((double)this.field4196[2]));
-			double var2 = Math.cos((double)var1[1]);
-			var1[0] = (float)Math.atan2((double)this.field4196[6] / var2, (double)this.field4196[10] / var2);
-			var1[2] = (float)Math.atan2((double)this.field4196[1] / var2, (double)this.field4196[0] / var2);
-		} else {
-			var1[0] = 0.0F;
-			var1[1] = (float)Math.atan2((double)this.field4196[2], 0.0D);
-			var1[2] = (float)Math.atan2((double)(-this.field4196[9]), (double)this.field4196[5]);
-		}
-
-		return var1;
-	}
-
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(I)[F",
-		garbageValue = "-1676317150"
-	)
-	public float[] method6651() {
-		float[] var1 = new float[]{(float)(-Math.asin((double)this.field4196[6])), 0.0F, 0.0F};
-		double var2 = Math.cos((double)var1[0]);
-		double var4;
-		double var6;
-		if (Math.abs(var2) > 0.005D) {
-			var4 = (double)this.field4196[2];
-			var6 = (double)this.field4196[10];
-			double var8 = (double)this.field4196[4];
-			double var10 = (double)this.field4196[5];
-			var1[1] = (float)Math.atan2(var4, var6);
-			var1[2] = (float)Math.atan2(var8, var10);
-		} else {
-			var4 = (double)this.field4196[1];
-			var6 = (double)this.field4196[0];
-			if (this.field4196[6] < 0.0F) {
-				var1[1] = (float)Math.atan2(var4, var6);
-			} else {
-				var1[1] = (float)(-Math.atan2(var4, var6));
-			}
-
-			var1[2] = 0.0F;
-		}
-
-		return var1;
-	}
-
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "525334950"
-	)
-	public void method6652() {
-		this.field4196[0] = 1.0F;
-		this.field4196[1] = 0.0F;
-		this.field4196[2] = 0.0F;
-		this.field4196[3] = 0.0F;
-		this.field4196[4] = 0.0F;
-		this.field4196[5] = 1.0F;
-		this.field4196[6] = 0.0F;
-		this.field4196[7] = 0.0F;
-		this.field4196[8] = 0.0F;
-		this.field4196[9] = 0.0F;
-		this.field4196[10] = 1.0F;
-		this.field4196[11] = 0.0F;
-		this.field4196[12] = 0.0F;
-		this.field4196[13] = 0.0F;
-		this.field4196[14] = 0.0F;
-		this.field4196[15] = 1.0F;
-	}
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1795899803"
-	)
-	public void method6708() {
-		this.field4196[0] = 0.0F;
-		this.field4196[1] = 0.0F;
-		this.field4196[2] = 0.0F;
-		this.field4196[3] = 0.0F;
-		this.field4196[4] = 0.0F;
-		this.field4196[5] = 0.0F;
-		this.field4196[6] = 0.0F;
-		this.field4196[7] = 0.0F;
-		this.field4196[8] = 0.0F;
-		this.field4196[9] = 0.0F;
-		this.field4196[10] = 0.0F;
-		this.field4196[11] = 0.0F;
-		this.field4196[12] = 0.0F;
-		this.field4196[13] = 0.0F;
-		this.field4196[14] = 0.0F;
-		this.field4196[15] = 0.0F;
 	}
 
 	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Lno;I)V",
-		garbageValue = "-1679840989"
+		descriptor = "(IB)I",
+		garbageValue = "-77"
 	)
-	public void method6654(class366 var1) {
-		System.arraycopy(var1.field4196, 0, this.field4196, 0, 16);
+	public static int method7028(int var0) {
+		var0 = (var0 & 1431655765) + (var0 >>> 1 & 1431655765);
+		var0 = (var0 >>> 2 & 858993459) + (var0 & 858993459);
+		var0 = var0 + (var0 >>> 4) & 252645135;
+		var0 += var0 >>> 8;
+		var0 += var0 >>> 16;
+		return var0 & 255;
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("fw")
 	@ObfuscatedSignature(
-		descriptor = "(FB)V",
-		garbageValue = "-31"
+		descriptor = "(B)V",
+		garbageValue = "8"
 	)
-	public void method6655(float var1) {
-		this.method6667(var1, var1, var1);
-	}
+	@Export("load")
+	static void load() {
+		int var22;
+		if (Client.titleLoadingStage == 0) {
+			WorldMapAreaData.scene = new Scene(4, 104, 104, Tiles.Tiles_heights);
 
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(
-		descriptor = "(FFFI)V",
-		garbageValue = "1410403960"
-	)
-	public void method6667(float var1, float var2, float var3) {
-		this.method6652();
-		this.field4196[0] = var1;
-		this.field4196[5] = var2;
-		this.field4196[10] = var3;
-	}
+			for (var22 = 0; var22 < 4; ++var22) {
+				Client.collisionMaps[var22] = new CollisionMap(104, 104);
+			}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "(Lno;S)V",
-		garbageValue = "-15383"
-	)
-	public void method6657(class366 var1) {
-		for (int var2 = 0; var2 < this.field4196.length; ++var2) {
-			float[] var10000 = this.field4196;
-			var10000[var2] += var1.field4196[var2];
-		}
+			class31.sceneMinimapSprite = new SpritePixels(512, 512);
+			Login.Login_loadingText = "Starting game engine...";
+			Login.Login_loadingPercent = 5;
+			Client.titleLoadingStage = 20;
+		} else if (Client.titleLoadingStage == 20) {
+			Login.Login_loadingText = "Prepared visibility map";
+			Login.Login_loadingPercent = 10;
+			Client.titleLoadingStage = 30;
+		} else if (Client.titleLoadingStage == 30) {
+			class13.archive6 = ReflectionCheck.method698(0, false, true, true, false);
+			FriendsChatManager.archive7 = ReflectionCheck.method698(1, false, true, true, false);
+			class372.archive2 = ReflectionCheck.method698(2, true, false, true, false);
+			class144.archive3 = ReflectionCheck.method698(3, false, true, true, false);
+			DynamicObject.archive9 = ReflectionCheck.method698(4, false, true, true, false);
+			NetCache.archive10 = ReflectionCheck.method698(5, true, true, true, false);
+			class153.archive11 = ReflectionCheck.method698(6, true, true, true, false);
+			class151.field1750 = ReflectionCheck.method698(7, false, true, true, false);
+			WorldMapEvent.archive8 = ReflectionCheck.method698(8, false, true, true, false);
+			class148.field1704 = ReflectionCheck.method698(9, false, true, true, false);
+			ApproximateRouteStrategy.field490 = ReflectionCheck.method698(10, false, true, true, false);
+			MusicPatchNode.field3448 = ReflectionCheck.method698(11, false, true, true, false);
+			class12.archive12 = ReflectionCheck.method698(12, false, true, true, false);
+			PendingSpawn.archive13 = ReflectionCheck.method698(13, true, false, true, false);
+			class174.archive14 = ReflectionCheck.method698(14, false, true, true, false);
+			class286.archive15 = ReflectionCheck.method698(15, false, true, true, false);
+			CollisionMap.field2354 = ReflectionCheck.method698(17, true, true, true, false);
+			class419.archive18 = ReflectionCheck.method698(18, false, true, true, false);
+			GameEngine.archive19 = ReflectionCheck.method698(19, false, true, true, false);
+			class27.archive20 = ReflectionCheck.method698(20, false, true, true, false);
+			Canvas.field132 = ReflectionCheck.method698(21, false, true, true, true);
+			Login.Login_loadingText = "Connecting to update server";
+			Login.Login_loadingPercent = 20;
+			Client.titleLoadingStage = 40;
+		} else if (Client.titleLoadingStage == 40) {
+			byte var36 = 0;
+			var22 = var36 + class13.archive6.percentage() * 4 / 100;
+			var22 += FriendsChatManager.archive7.percentage() * 4 / 100;
+			var22 += class372.archive2.percentage() * 2 / 100;
+			var22 += class144.archive3.percentage() * 2 / 100;
+			var22 += DynamicObject.archive9.percentage() * 6 / 100;
+			var22 += NetCache.archive10.percentage() * 4 / 100;
+			var22 += class153.archive11.percentage() * 2 / 100;
+			var22 += class151.field1750.percentage() * 55 / 100;
+			var22 += WorldMapEvent.archive8.percentage() * 2 / 100;
+			var22 += class148.field1704.percentage() * 2 / 100;
+			var22 += ApproximateRouteStrategy.field490.percentage() * 2 / 100;
+			var22 += MusicPatchNode.field3448.percentage() * 2 / 100;
+			var22 += class12.archive12.percentage() * 2 / 100;
+			var22 += PendingSpawn.archive13.percentage() * 2 / 100;
+			var22 += class174.archive14.percentage() * 2 / 100;
+			var22 += class286.archive15.percentage() * 2 / 100;
+			var22 += GameEngine.archive19.percentage() / 100;
+			var22 += class419.archive18.percentage() / 100;
+			var22 += class27.archive20.percentage() / 100;
+			var22 += Canvas.field132.percentage() / 100;
+			var22 += CollisionMap.field2354.method6473() && CollisionMap.field2354.isFullyLoaded() ? 1 : 0;
+			if (var22 != 100) {
+				if (var22 != 0) {
+					Login.Login_loadingText = "Checking for updates - " + var22 + "%";
+				}
 
-	}
-
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(Lno;I)V",
-		garbageValue = "1087473268"
-	)
-	public void method6670(class366 var1) {
-		float var2 = this.field4196[1] * var1.field4196[4] + var1.field4196[0] * this.field4196[0] + this.field4196[2] * var1.field4196[8] + var1.field4196[12] * this.field4196[3];
-		float var3 = var1.field4196[5] * this.field4196[1] + var1.field4196[1] * this.field4196[0] + this.field4196[2] * var1.field4196[9] + var1.field4196[13] * this.field4196[3];
-		float var4 = var1.field4196[6] * this.field4196[1] + this.field4196[0] * var1.field4196[2] + var1.field4196[10] * this.field4196[2] + var1.field4196[14] * this.field4196[3];
-		float var5 = var1.field4196[15] * this.field4196[3] + this.field4196[2] * var1.field4196[11] + this.field4196[1] * var1.field4196[7] + var1.field4196[3] * this.field4196[0];
-		float var6 = this.field4196[4] * var1.field4196[0] + var1.field4196[4] * this.field4196[5] + this.field4196[6] * var1.field4196[8] + this.field4196[7] * var1.field4196[12];
-		float var7 = var1.field4196[9] * this.field4196[6] + var1.field4196[5] * this.field4196[5] + this.field4196[4] * var1.field4196[1] + this.field4196[7] * var1.field4196[13];
-		float var8 = this.field4196[7] * var1.field4196[14] + this.field4196[5] * var1.field4196[6] + var1.field4196[2] * this.field4196[4] + this.field4196[6] * var1.field4196[10];
-		float var9 = this.field4196[5] * var1.field4196[7] + this.field4196[4] * var1.field4196[3] + this.field4196[6] * var1.field4196[11] + this.field4196[7] * var1.field4196[15];
-		float var10 = var1.field4196[12] * this.field4196[11] + this.field4196[10] * var1.field4196[8] + var1.field4196[0] * this.field4196[8] + this.field4196[9] * var1.field4196[4];
-		float var11 = var1.field4196[5] * this.field4196[9] + this.field4196[8] * var1.field4196[1] + var1.field4196[9] * this.field4196[10] + this.field4196[11] * var1.field4196[13];
-		float var12 = var1.field4196[10] * this.field4196[10] + this.field4196[8] * var1.field4196[2] + this.field4196[9] * var1.field4196[6] + this.field4196[11] * var1.field4196[14];
-		float var13 = this.field4196[8] * var1.field4196[3] + this.field4196[9] * var1.field4196[7] + var1.field4196[11] * this.field4196[10] + this.field4196[11] * var1.field4196[15];
-		float var14 = var1.field4196[8] * this.field4196[14] + var1.field4196[4] * this.field4196[13] + this.field4196[12] * var1.field4196[0] + var1.field4196[12] * this.field4196[15];
-		float var15 = var1.field4196[13] * this.field4196[15] + this.field4196[12] * var1.field4196[1] + var1.field4196[5] * this.field4196[13] + this.field4196[14] * var1.field4196[9];
-		float var16 = this.field4196[14] * var1.field4196[10] + var1.field4196[6] * this.field4196[13] + this.field4196[12] * var1.field4196[2] + this.field4196[15] * var1.field4196[14];
-		float var17 = var1.field4196[15] * this.field4196[15] + var1.field4196[11] * this.field4196[14] + var1.field4196[7] * this.field4196[13] + this.field4196[12] * var1.field4196[3];
-		this.field4196[0] = var2;
-		this.field4196[1] = var3;
-		this.field4196[2] = var4;
-		this.field4196[3] = var5;
-		this.field4196[4] = var6;
-		this.field4196[5] = var7;
-		this.field4196[6] = var8;
-		this.field4196[7] = var9;
-		this.field4196[8] = var10;
-		this.field4196[9] = var11;
-		this.field4196[10] = var12;
-		this.field4196[11] = var13;
-		this.field4196[12] = var14;
-		this.field4196[13] = var15;
-		this.field4196[14] = var16;
-		this.field4196[15] = var17;
-	}
-
-	@ObfuscatedName("d")
-	@ObfuscatedSignature(
-		descriptor = "(Lns;B)V",
-		garbageValue = "-62"
-	)
-	public void method6711(class365 var1) {
-		float var2 = var1.field4183 * var1.field4183;
-		float var3 = var1.field4183 * var1.field4186;
-		float var4 = var1.field4188 * var1.field4183;
-		float var5 = var1.field4183 * var1.field4187;
-		float var6 = var1.field4186 * var1.field4186;
-		float var7 = var1.field4188 * var1.field4186;
-		float var8 = var1.field4186 * var1.field4187;
-		float var9 = var1.field4188 * var1.field4188;
-		float var10 = var1.field4188 * var1.field4187;
-		float var11 = var1.field4187 * var1.field4187;
-		this.field4196[0] = var6 + var2 - var11 - var9;
-		this.field4196[1] = var7 + var7 + var5 + var5;
-		this.field4196[2] = var8 - var4 - var4 + var8;
-		this.field4196[4] = var7 + (var7 - var5 - var5);
-		this.field4196[5] = var9 + var2 - var6 - var11;
-		this.field4196[6] = var3 + var10 + var3 + var10;
-		this.field4196[8] = var8 + var4 + var8 + var4;
-		this.field4196[9] = var10 + (var10 - var3 - var3);
-		this.field4196[10] = var11 + var2 - var9 - var6;
-	}
-
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(Lnu;B)V",
-		garbageValue = "-7"
-	)
-	void method6713(class367 var1) {
-		this.field4196[0] = var1.field4197;
-		this.field4196[1] = var1.field4198;
-		this.field4196[2] = var1.field4199;
-		this.field4196[3] = 0.0F;
-		this.field4196[4] = var1.field4200;
-		this.field4196[5] = var1.field4201;
-		this.field4196[6] = var1.field4202;
-		this.field4196[7] = 0.0F;
-		this.field4196[8] = var1.field4204;
-		this.field4196[9] = var1.field4203;
-		this.field4196[10] = var1.field4205;
-		this.field4196[11] = 0.0F;
-		this.field4196[12] = var1.field4206;
-		this.field4196[13] = var1.field4207;
-		this.field4196[14] = var1.field4208;
-		this.field4196[15] = 1.0F;
-	}
-
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(
-		descriptor = "(B)F",
-		garbageValue = "115"
-	)
-	float method6679() {
-		return this.field4196[8] * this.field4196[3] * this.field4196[5] * this.field4196[14] + this.field4196[13] * this.field4196[8] * this.field4196[2] * this.field4196[7] + this.field4196[12] * this.field4196[2] * this.field4196[5] * this.field4196[11] + (this.field4196[15] * this.field4196[9] * this.field4196[2] * this.field4196[4] + this.field4196[6] * this.field4196[0] * this.field4196[11] * this.field4196[13] + (this.field4196[5] * this.field4196[0] * this.field4196[10] * this.field4196[15] - this.field4196[14] * this.field4196[5] * this.field4196[0] * this.field4196[11] - this.field4196[9] * this.field4196[0] * this.field4196[6] * this.field4196[15]) + this.field4196[14] * this.field4196[9] * this.field4196[7] * this.field4196[0] - this.field4196[13] * this.field4196[7] * this.field4196[0] * this.field4196[10] - this.field4196[15] * this.field4196[10] * this.field4196[4] * this.field4196[1] + this.field4196[14] * this.field4196[11] * this.field4196[1] * this.field4196[4] + this.field4196[15] * this.field4196[8] * this.field4196[6] * this.field4196[1] - this.field4196[11] * this.field4196[6] * this.field4196[1] * this.field4196[12] - this.field4196[7] * this.field4196[1] * this.field4196[8] * this.field4196[14] + this.field4196[12] * this.field4196[10] * this.field4196[1] * this.field4196[7] - this.field4196[11] * this.field4196[4] * this.field4196[2] * this.field4196[13] - this.field4196[15] * this.field4196[5] * this.field4196[2] * this.field4196[8]) - this.field4196[2] * this.field4196[7] * this.field4196[9] * this.field4196[12] - this.field4196[3] * this.field4196[4] * this.field4196[9] * this.field4196[14] + this.field4196[10] * this.field4196[3] * this.field4196[4] * this.field4196[13] - this.field4196[10] * this.field4196[5] * this.field4196[3] * this.field4196[12] - this.field4196[3] * this.field4196[6] * this.field4196[8] * this.field4196[13] + this.field4196[3] * this.field4196[6] * this.field4196[9] * this.field4196[12];
-	}
-
-	@ObfuscatedName("e")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "817560716"
-	)
-	public void method6678() {
-		float var1 = 1.0F / this.method6679();
-		float var2 = var1 * (this.field4196[15] * this.field4196[5] * this.field4196[10] - this.field4196[14] * this.field4196[5] * this.field4196[11] - this.field4196[6] * this.field4196[9] * this.field4196[15] + this.field4196[13] * this.field4196[6] * this.field4196[11] + this.field4196[9] * this.field4196[7] * this.field4196[14] - this.field4196[10] * this.field4196[7] * this.field4196[13]);
-		float var3 = (this.field4196[9] * this.field4196[2] * this.field4196[15] + this.field4196[14] * this.field4196[11] * this.field4196[1] + -this.field4196[1] * this.field4196[10] * this.field4196[15] - this.field4196[13] * this.field4196[2] * this.field4196[11] - this.field4196[14] * this.field4196[9] * this.field4196[3] + this.field4196[13] * this.field4196[3] * this.field4196[10]) * var1;
-		float var4 = var1 * (this.field4196[15] * this.field4196[1] * this.field4196[6] - this.field4196[7] * this.field4196[1] * this.field4196[14] - this.field4196[2] * this.field4196[5] * this.field4196[15] + this.field4196[13] * this.field4196[7] * this.field4196[2] + this.field4196[14] * this.field4196[5] * this.field4196[3] - this.field4196[3] * this.field4196[6] * this.field4196[13]);
-		float var5 = (this.field4196[6] * this.field4196[3] * this.field4196[9] + (this.field4196[11] * this.field4196[2] * this.field4196[5] + this.field4196[10] * this.field4196[7] * this.field4196[1] + this.field4196[6] * -this.field4196[1] * this.field4196[11] - this.field4196[9] * this.field4196[7] * this.field4196[2] - this.field4196[5] * this.field4196[3] * this.field4196[10])) * var1;
-		float var6 = var1 * (this.field4196[8] * this.field4196[6] * this.field4196[15] + this.field4196[11] * this.field4196[4] * this.field4196[14] + -this.field4196[4] * this.field4196[10] * this.field4196[15] - this.field4196[6] * this.field4196[11] * this.field4196[12] - this.field4196[8] * this.field4196[7] * this.field4196[14] + this.field4196[12] * this.field4196[10] * this.field4196[7]);
-		float var7 = var1 * (this.field4196[15] * this.field4196[0] * this.field4196[10] - this.field4196[14] * this.field4196[11] * this.field4196[0] - this.field4196[15] * this.field4196[8] * this.field4196[2] + this.field4196[11] * this.field4196[2] * this.field4196[12] + this.field4196[14] * this.field4196[8] * this.field4196[3] - this.field4196[3] * this.field4196[10] * this.field4196[12]);
-		float var8 = var1 * (this.field4196[15] * this.field4196[4] * this.field4196[2] + this.field4196[0] * this.field4196[7] * this.field4196[14] + this.field4196[6] * -this.field4196[0] * this.field4196[15] - this.field4196[7] * this.field4196[2] * this.field4196[12] - this.field4196[4] * this.field4196[3] * this.field4196[14] + this.field4196[12] * this.field4196[3] * this.field4196[6]);
-		float var9 = (this.field4196[2] * this.field4196[7] * this.field4196[8] + (this.field4196[11] * this.field4196[0] * this.field4196[6] - this.field4196[10] * this.field4196[0] * this.field4196[7] - this.field4196[11] * this.field4196[2] * this.field4196[4]) + this.field4196[10] * this.field4196[4] * this.field4196[3] - this.field4196[3] * this.field4196[6] * this.field4196[8]) * var1;
-		float var10 = var1 * (this.field4196[4] * this.field4196[9] * this.field4196[15] - this.field4196[13] * this.field4196[4] * this.field4196[11] - this.field4196[15] * this.field4196[5] * this.field4196[8] + this.field4196[12] * this.field4196[5] * this.field4196[11] + this.field4196[13] * this.field4196[7] * this.field4196[8] - this.field4196[7] * this.field4196[9] * this.field4196[12]);
-		float var11 = var1 * (this.field4196[15] * this.field4196[1] * this.field4196[8] + this.field4196[13] * this.field4196[0] * this.field4196[11] + this.field4196[15] * this.field4196[9] * -this.field4196[0] - this.field4196[11] * this.field4196[1] * this.field4196[12] - this.field4196[3] * this.field4196[8] * this.field4196[13] + this.field4196[12] * this.field4196[9] * this.field4196[3]);
-		float var12 = var1 * (this.field4196[13] * this.field4196[3] * this.field4196[4] + this.field4196[0] * this.field4196[5] * this.field4196[15] - this.field4196[0] * this.field4196[7] * this.field4196[13] - this.field4196[15] * this.field4196[4] * this.field4196[1] + this.field4196[7] * this.field4196[1] * this.field4196[12] - this.field4196[12] * this.field4196[3] * this.field4196[5]);
-		float var13 = var1 * (this.field4196[11] * this.field4196[4] * this.field4196[1] + this.field4196[9] * this.field4196[0] * this.field4196[7] + this.field4196[11] * -this.field4196[0] * this.field4196[5] - this.field4196[8] * this.field4196[1] * this.field4196[7] - this.field4196[9] * this.field4196[3] * this.field4196[4] + this.field4196[8] * this.field4196[5] * this.field4196[3]);
-		float var14 = (this.field4196[12] * this.field4196[9] * this.field4196[6] + (this.field4196[5] * this.field4196[8] * this.field4196[14] + this.field4196[10] * this.field4196[4] * this.field4196[13] + this.field4196[9] * -this.field4196[4] * this.field4196[14] - this.field4196[5] * this.field4196[10] * this.field4196[12] - this.field4196[6] * this.field4196[8] * this.field4196[13])) * var1;
-		float var15 = (this.field4196[13] * this.field4196[8] * this.field4196[2] + this.field4196[12] * this.field4196[10] * this.field4196[1] + (this.field4196[9] * this.field4196[0] * this.field4196[14] - this.field4196[13] * this.field4196[0] * this.field4196[10] - this.field4196[8] * this.field4196[1] * this.field4196[14]) - this.field4196[12] * this.field4196[2] * this.field4196[9]) * var1;
-		float var16 = var1 * (this.field4196[5] * this.field4196[2] * this.field4196[12] + (this.field4196[4] * this.field4196[1] * this.field4196[14] + this.field4196[0] * this.field4196[6] * this.field4196[13] + this.field4196[5] * -this.field4196[0] * this.field4196[14] - this.field4196[12] * this.field4196[1] * this.field4196[6] - this.field4196[13] * this.field4196[4] * this.field4196[2]));
-		float var17 = (this.field4196[9] * this.field4196[2] * this.field4196[4] + this.field4196[8] * this.field4196[6] * this.field4196[1] + (this.field4196[0] * this.field4196[5] * this.field4196[10] - this.field4196[6] * this.field4196[0] * this.field4196[9] - this.field4196[10] * this.field4196[4] * this.field4196[1]) - this.field4196[8] * this.field4196[2] * this.field4196[5]) * var1;
-		this.field4196[0] = var2;
-		this.field4196[1] = var3;
-		this.field4196[2] = var4;
-		this.field4196[3] = var5;
-		this.field4196[4] = var6;
-		this.field4196[5] = var7;
-		this.field4196[6] = var8;
-		this.field4196[7] = var9;
-		this.field4196[8] = var10;
-		this.field4196[9] = var11;
-		this.field4196[10] = var12;
-		this.field4196[11] = var13;
-		this.field4196[12] = var14;
-		this.field4196[13] = var15;
-		this.field4196[14] = var16;
-		this.field4196[15] = var17;
-	}
-
-	@ObfuscatedName("a")
-	@ObfuscatedSignature(
-		descriptor = "(S)[F",
-		garbageValue = "768"
-	)
-	public float[] method6663() {
-		float[] var1 = new float[3];
-		class364 var2 = new class364(this.field4196[0], this.field4196[1], this.field4196[2]);
-		class364 var3 = new class364(this.field4196[4], this.field4196[5], this.field4196[6]);
-		class364 var4 = new class364(this.field4196[8], this.field4196[9], this.field4196[10]);
-		var1[0] = var2.method6618();
-		var1[1] = var3.method6618();
-		var1[2] = var4.method6618();
-		return var1;
-	}
-
-	public int hashCode() {
-		boolean var1 = true;
-		byte var2 = 1;
-		int var3 = 31 * var2 + Arrays.hashCode(this.field4196);
-		return var3;
-	}
-
-	public boolean equals(Object var1) {
-		if (!(var1 instanceof class366)) {
-			return false;
+				Login.Login_loadingPercent = 30;
+			} else {
+				WorldMapSprite.method5337(class13.archive6, "Animations");
+				WorldMapSprite.method5337(FriendsChatManager.archive7, "Skeletons");
+				WorldMapSprite.method5337(DynamicObject.archive9, "Sound FX");
+				WorldMapSprite.method5337(NetCache.archive10, "Maps");
+				WorldMapSprite.method5337(class153.archive11, "Music Tracks");
+				WorldMapSprite.method5337(class151.field1750, "Models");
+				WorldMapSprite.method5337(WorldMapEvent.archive8, "Sprites");
+				WorldMapSprite.method5337(MusicPatchNode.field3448, "Music Jingles");
+				WorldMapSprite.method5337(class174.archive14, "Music Samples");
+				WorldMapSprite.method5337(class286.archive15, "Music Patches");
+				WorldMapSprite.method5337(GameEngine.archive19, "World Map");
+				WorldMapSprite.method5337(class419.archive18, "World Map Geography");
+				WorldMapSprite.method5337(class27.archive20, "World Map Ground");
+				ScriptFrame.field474 = new GraphicsDefaults();
+				ScriptFrame.field474.decode(CollisionMap.field2354);
+				Login.Login_loadingText = "Loaded update list";
+				Login.Login_loadingPercent = 30;
+				Client.titleLoadingStage = 45;
+			}
 		} else {
-			class366 var2 = (class366)var1;
+			Archive var2;
+			Archive var26;
+			Archive var31;
+			if (Client.titleLoadingStage == 45) {
+				class348.method6767(22050, !Client.isLowDetail, 2);
+				MidiPcmStream var30 = new MidiPcmStream();
+				var30.method5622(9, 128);
+				SoundSystem.pcmPlayer0 = ObjectSound.method1911(GameEngine.taskHandler, 0, 22050);
+				SoundSystem.pcmPlayer0.setStream(var30);
+				var31 = class286.archive15;
+				var2 = class174.archive14;
+				var26 = DynamicObject.archive9;
+				class290.musicPatchesArchive = var31;
+				class290.musicSamplesArchive = var2;
+				class290.soundEffectsArchive = var26;
+				class290.midiPcmStream = var30;
+				WorldMapSectionType.pcmPlayer1 = ObjectSound.method1911(GameEngine.taskHandler, 1, 2048);
+				class209.pcmStreamMixer = new PcmStreamMixer();
+				WorldMapSectionType.pcmPlayer1.setStream(class209.pcmStreamMixer);
+				class257.field2997 = new Decimator(22050, class284.field3321);
+				Login.Login_loadingText = "Prepared sound engine";
+				Login.Login_loadingPercent = 35;
+				Client.titleLoadingStage = 50;
+				class165.WorldMapElement_fonts = new Fonts(WorldMapEvent.archive8, PendingSpawn.archive13);
+			} else if (Client.titleLoadingStage == 50) {
+				var22 = FontName.method8319().length;
+				Client.fontsMap = class165.WorldMapElement_fonts.createMap(FontName.method8319());
+				if (Client.fontsMap.size() < var22) {
+					Login.Login_loadingText = "Loading fonts - " + Client.fontsMap.size() * 100 / var22 + "%";
+					Login.Login_loadingPercent = 40;
+				} else {
+					class276.fontPlain11 = (Font)Client.fontsMap.get(FontName.FontName_plain11);
+					MenuAction.fontPlain12 = (Font)Client.fontsMap.get(FontName.FontName_plain12);
+					class19.fontBold12 = (Font)Client.fontsMap.get(FontName.FontName_bold12);
+					UserComparator9.platformInfo = Client.platformInfoProvider.get();
+					Login.Login_loadingText = "Loaded fonts";
+					Login.Login_loadingPercent = 40;
+					Client.titleLoadingStage = 60;
+				}
+			} else {
+				int var3;
+				if (Client.titleLoadingStage == 60) {
+					var22 = WorldMapSectionType.method5295(ApproximateRouteStrategy.field490, WorldMapEvent.archive8);
+					var2 = WorldMapEvent.archive8;
+					var3 = Login.field941.length + Login.field942.length;
+					String[] var32 = Login.field902;
 
-			for (int var3 = 0; var3 < 16; ++var3) {
-				if (this.field4196[var3] != var2.field4196[var3]) {
-					return false;
+					for (int var34 = 0; var34 < var32.length; ++var34) {
+						String var35 = var32[var34];
+						if (var2.getGroupId(var35) != -1) {
+							++var3;
+						}
+					}
+
+					if (var22 < var3) {
+						Login.Login_loadingText = "Loading title screen - " + var22 * 100 / var3 + "%";
+						Login.Login_loadingPercent = 50;
+					} else {
+						Login.Login_loadingText = "Loaded title screen";
+						Login.Login_loadingPercent = 50;
+						class246.method5251(5);
+						Client.titleLoadingStage = 70;
+					}
+				} else if (Client.titleLoadingStage == 70) {
+					if (!class372.archive2.isFullyLoaded()) {
+						Login.Login_loadingText = "Loading config - " + class372.archive2.loadPercent() + "%";
+						Login.Login_loadingPercent = 60;
+					} else if (!Canvas.field132.isFullyLoaded()) {
+						Login.Login_loadingText = "Loading config - " + (80 + class12.archive12.loadPercent() / 6) + "%";
+						Login.Login_loadingPercent = 60;
+					} else {
+						class88.method2412(class372.archive2);
+						Archive var29 = class372.archive2;
+						FloorUnderlayDefinition.FloorUnderlayDefinition_archive = var29;
+						var31 = class372.archive2;
+						var2 = class151.field1750;
+						KitDefinition.KitDefinition_archive = var31;
+						KitDefinition.KitDefinition_modelsArchive = var2;
+						KitDefinition.KitDefinition_fileCount = KitDefinition.KitDefinition_archive.getGroupFileCount(3);
+						var26 = class372.archive2;
+						Archive var4 = class151.field1750;
+						boolean var27 = Client.isLowDetail;
+						ObjectComposition.ObjectDefinition_archive = var26;
+						ObjectComposition.ObjectDefinition_modelsArchive = var4;
+						ObjectComposition.ObjectDefinition_isLowDetail = var27;
+						WorldMapSprite.method5338(class372.archive2, class151.field1750);
+						Archive var28 = class372.archive2;
+						StructComposition.StructDefinition_archive = var28;
+						Archive var33 = class372.archive2;
+						Archive var8 = class151.field1750;
+						boolean var9 = Client.isMembersWorld;
+						Font var10 = class276.fontPlain11;
+						class4.ItemDefinition_archive = var33;
+						ItemComposition.ItemDefinition_modelArchive = var8;
+						ItemComposition.ItemDefinition_inMembersWorld = var9;
+						ItemComposition.ItemDefinition_fileCount = class4.ItemDefinition_archive.getGroupFileCount(10);
+						class138.ItemDefinition_fontPlain11 = var10;
+						class6.method50(class372.archive2, class13.archive6, FriendsChatManager.archive7);
+						Archive var11 = class372.archive2;
+						Archive var12 = class151.field1750;
+						SpotAnimationDefinition.SpotAnimationDefinition_archive = var11;
+						SpotAnimationDefinition.SpotAnimationDefinition_modelArchive = var12;
+						class9.method81(class372.archive2);
+						WorldMapIcon_0.method5264(class372.archive2);
+						Archive var13 = class144.archive3;
+						Archive var14 = class151.field1750;
+						Archive var15 = WorldMapEvent.archive8;
+						Archive var16 = PendingSpawn.archive13;
+						UserComparator8.Widget_archive = var13;
+						class145.field1689 = var14;
+						World.Widget_spritesArchive = var15;
+						Script.Widget_fontsArchive = var16;
+						WorldMapLabel.Widget_interfaceComponents = new Widget[UserComparator8.Widget_archive.getGroupCount()][];
+						class431.Widget_loadedInterfaces = new boolean[UserComparator8.Widget_archive.getGroupCount()];
+						Archive var17 = class372.archive2;
+						InvDefinition.InvDefinition_archive = var17;
+						class81.method2307(class372.archive2);
+						class68.method2074(class372.archive2);
+						class153.method3315(class372.archive2);
+						Archive var18 = class372.archive2;
+						ParamComposition.ParamDefinition_archive = var18;
+						DevicePcmPlayerProvider.method324(class372.archive2);
+						ObjectComposition.method3949(class372.archive2);
+						class491.HitSplatDefinition_cachedSprites = new class458(class134.field1606, 54, class36.clientLanguage, class372.archive2);
+						class208.Ignored_cached = new class458(class134.field1606, 47, class36.clientLanguage, class372.archive2);
+						class9.varcs = new Varcs();
+						Archive var19 = class372.archive2;
+						Archive var20 = WorldMapEvent.archive8;
+						Archive var21 = PendingSpawn.archive13;
+						class498.HitSplatDefinition_archive = var19;
+						HitSplatDefinition.field2136 = var20;
+						HitSplatDefinition.HitSplatDefinition_fontsArchive = var21;
+						Login.method2166(class372.archive2, WorldMapEvent.archive8);
+						class85.method2337(class372.archive2, WorldMapEvent.archive8);
+						Login.Login_loadingText = "Loaded config";
+						Login.Login_loadingPercent = 60;
+						Client.titleLoadingStage = 80;
+					}
+				} else if (Client.titleLoadingStage == 80) {
+					var22 = 0;
+					if (SoundSystem.compass == null) {
+						SoundSystem.compass = BZip2State.SpriteBuffer_getSprite(WorldMapEvent.archive8, ScriptFrame.field474.compass, 0);
+					} else {
+						++var22;
+					}
+
+					if (PacketBufferNode.redHintArrowSprite == null) {
+						PacketBufferNode.redHintArrowSprite = BZip2State.SpriteBuffer_getSprite(WorldMapEvent.archive8, ScriptFrame.field474.field4621, 0);
+					} else {
+						++var22;
+					}
+
+					IndexedSprite[] var1;
+					IndexedSprite[] var5;
+					int var6;
+					IndexedSprite var7;
+					if (VarpDefinition.mapSceneSprites == null) {
+						var2 = WorldMapEvent.archive8;
+						var3 = ScriptFrame.field474.mapScenes;
+						if (!Buffer.SpriteBuffer_loadSpritesFromArchive(var2, var3, 0)) {
+							var1 = null;
+						} else {
+							var5 = new IndexedSprite[class488.SpriteBuffer_spriteCount];
+
+							for (var6 = 0; var6 < class488.SpriteBuffer_spriteCount; ++var6) {
+								var7 = var5[var6] = new IndexedSprite();
+								var7.width = class488.SpriteBuffer_spriteWidth;
+								var7.height = class488.SpriteBuffer_spriteHeight;
+								var7.xOffset = class488.SpriteBuffer_xOffsets[var6];
+								var7.yOffset = ApproximateRouteStrategy.SpriteBuffer_yOffsets[var6];
+								var7.subWidth = FriendsList.SpriteBuffer_spriteWidths[var6];
+								var7.subHeight = class132.SpriteBuffer_spriteHeights[var6];
+								var7.palette = class100.SpriteBuffer_spritePalette;
+								var7.pixels = class140.SpriteBuffer_pixels[var6];
+							}
+
+							class100.method2724();
+							var1 = var5;
+						}
+
+						VarpDefinition.mapSceneSprites = var1;
+					} else {
+						++var22;
+					}
+
+					if (ClanChannel.headIconPkSprites == null) {
+						ClanChannel.headIconPkSprites = class220.method4629(WorldMapEvent.archive8, ScriptFrame.field474.headIconsPk, 0);
+					} else {
+						++var22;
+					}
+
+					if (class367.headIconPrayerSprites == null) {
+						class367.headIconPrayerSprites = class220.method4629(WorldMapEvent.archive8, ScriptFrame.field474.field4616, 0);
+					} else {
+						++var22;
+					}
+
+					if (WorldMapSectionType.headIconHintSprites == null) {
+						WorldMapSectionType.headIconHintSprites = class220.method4629(WorldMapEvent.archive8, ScriptFrame.field474.field4617, 0);
+					} else {
+						++var22;
+					}
+
+					if (UserComparator6.mapMarkerSprites == null) {
+						UserComparator6.mapMarkerSprites = class220.method4629(WorldMapEvent.archive8, ScriptFrame.field474.field4620, 0);
+					} else {
+						++var22;
+					}
+
+					if (Calendar.crossSprites == null) {
+						Calendar.crossSprites = class220.method4629(WorldMapEvent.archive8, ScriptFrame.field474.field4619, 0);
+					} else {
+						++var22;
+					}
+
+					if (UrlRequest.mapDotSprites == null) {
+						UrlRequest.mapDotSprites = class220.method4629(WorldMapEvent.archive8, ScriptFrame.field474.field4622, 0);
+					} else {
+						++var22;
+					}
+
+					if (InvDefinition.scrollBarSprites == null) {
+						var2 = WorldMapEvent.archive8;
+						var3 = ScriptFrame.field474.field4613;
+						if (!Buffer.SpriteBuffer_loadSpritesFromArchive(var2, var3, 0)) {
+							var1 = null;
+						} else {
+							var5 = new IndexedSprite[class488.SpriteBuffer_spriteCount];
+
+							for (var6 = 0; var6 < class488.SpriteBuffer_spriteCount; ++var6) {
+								var7 = var5[var6] = new IndexedSprite();
+								var7.width = class488.SpriteBuffer_spriteWidth;
+								var7.height = class488.SpriteBuffer_spriteHeight;
+								var7.xOffset = class488.SpriteBuffer_xOffsets[var6];
+								var7.yOffset = ApproximateRouteStrategy.SpriteBuffer_yOffsets[var6];
+								var7.subWidth = FriendsList.SpriteBuffer_spriteWidths[var6];
+								var7.subHeight = class132.SpriteBuffer_spriteHeights[var6];
+								var7.palette = class100.SpriteBuffer_spritePalette;
+								var7.pixels = class140.SpriteBuffer_pixels[var6];
+							}
+
+							class100.method2724();
+							var1 = var5;
+						}
+
+						InvDefinition.scrollBarSprites = var1;
+					} else {
+						++var22;
+					}
+
+					if (PlayerType.modIconSprites == null) {
+						var2 = WorldMapEvent.archive8;
+						var3 = ScriptFrame.field474.field4624;
+						if (!Buffer.SpriteBuffer_loadSpritesFromArchive(var2, var3, 0)) {
+							var1 = null;
+						} else {
+							var5 = new IndexedSprite[class488.SpriteBuffer_spriteCount];
+
+							for (var6 = 0; var6 < class488.SpriteBuffer_spriteCount; ++var6) {
+								var7 = var5[var6] = new IndexedSprite();
+								var7.width = class488.SpriteBuffer_spriteWidth;
+								var7.height = class488.SpriteBuffer_spriteHeight;
+								var7.xOffset = class488.SpriteBuffer_xOffsets[var6];
+								var7.yOffset = ApproximateRouteStrategy.SpriteBuffer_yOffsets[var6];
+								var7.subWidth = FriendsList.SpriteBuffer_spriteWidths[var6];
+								var7.subHeight = class132.SpriteBuffer_spriteHeights[var6];
+								var7.palette = class100.SpriteBuffer_spritePalette;
+								var7.pixels = class140.SpriteBuffer_pixels[var6];
+							}
+
+							class100.method2724();
+							var1 = var5;
+						}
+
+						PlayerType.modIconSprites = var1;
+					} else {
+						++var22;
+					}
+
+					if (var22 < 11) {
+						Login.Login_loadingText = "Loading sprites - " + var22 * 100 / 12 + "%";
+						Login.Login_loadingPercent = 70;
+					} else {
+						AbstractFont.AbstractFont_modIconSprites = PlayerType.modIconSprites;
+						PacketBufferNode.redHintArrowSprite.normalize();
+						int var23 = (int)(Math.random() * 21.0D) - 10;
+						int var24 = (int)(Math.random() * 21.0D) - 10;
+						var3 = (int)(Math.random() * 21.0D) - 10;
+						int var25 = (int)(Math.random() * 41.0D) - 20;
+						VarpDefinition.mapSceneSprites[0].shiftColors(var25 + var23, var25 + var24, var3 + var25);
+						Login.Login_loadingText = "Loaded sprites";
+						Login.Login_loadingPercent = 70;
+						Client.titleLoadingStage = 90;
+					}
+				} else if (Client.titleLoadingStage == 90) {
+					if (!class148.field1704.isFullyLoaded()) {
+						Login.Login_loadingText = "Loading textures - " + "0%";
+						Login.Login_loadingPercent = 90;
+					} else {
+						GameBuild.textureProvider = new TextureProvider(class148.field1704, WorldMapEvent.archive8, 20, PacketWriter.clientPreferences.method2557(), Client.isLowDetail ? 64 : 128);
+						Rasterizer3D.method4330(GameBuild.textureProvider);
+						Rasterizer3D.method4414(PacketWriter.clientPreferences.method2557());
+						Client.titleLoadingStage = 100;
+					}
+				} else if (Client.titleLoadingStage == 100) {
+					var22 = GameBuild.textureProvider.getLoadedPercentage();
+					if (var22 < 100) {
+						Login.Login_loadingText = "Loading textures - " + var22 + "%";
+						Login.Login_loadingPercent = 90;
+					} else {
+						Login.Login_loadingText = "Loaded textures";
+						Login.Login_loadingPercent = 90;
+						Client.titleLoadingStage = 110;
+					}
+				} else if (Client.titleLoadingStage == 110) {
+					class36.mouseRecorder = new MouseRecorder();
+					GameEngine.taskHandler.newThreadTask(class36.mouseRecorder, 10);
+					Login.Login_loadingText = "Loaded input handler";
+					Login.Login_loadingPercent = 92;
+					Client.titleLoadingStage = 120;
+				} else if (Client.titleLoadingStage == 120) {
+					if (!ApproximateRouteStrategy.field490.tryLoadFileByNames("huffman", "")) {
+						Login.Login_loadingText = "Loading wordpack - " + 0 + "%";
+						Login.Login_loadingPercent = 94;
+					} else {
+						Huffman var0 = new Huffman(ApproximateRouteStrategy.field490.takeFileByNames("huffman", ""));
+						class312.huffman = var0;
+						Login.Login_loadingText = "Loaded wordpack";
+						Login.Login_loadingPercent = 94;
+						Client.titleLoadingStage = 130;
+					}
+				} else if (Client.titleLoadingStage == 130) {
+					if (!class144.archive3.isFullyLoaded()) {
+						Login.Login_loadingText = "Loading interfaces - " + class144.archive3.loadPercent() * 4 / 5 + "%";
+						Login.Login_loadingPercent = 96;
+					} else if (!class12.archive12.isFullyLoaded()) {
+						Login.Login_loadingText = "Loading interfaces - " + (80 + class12.archive12.loadPercent() / 6) + "%";
+						Login.Login_loadingPercent = 96;
+					} else if (!PendingSpawn.archive13.isFullyLoaded()) {
+						Login.Login_loadingText = "Loading interfaces - " + (96 + PendingSpawn.archive13.loadPercent() / 50) + "%";
+						Login.Login_loadingPercent = 96;
+					} else {
+						Login.Login_loadingText = "Loaded interfaces";
+						Login.Login_loadingPercent = 98;
+						Client.titleLoadingStage = 140;
+					}
+				} else if (Client.titleLoadingStage == 140) {
+					Login.Login_loadingPercent = 100;
+					if (!GameEngine.archive19.tryLoadGroupByName(WorldMapCacheName.field3013.name)) {
+						Login.Login_loadingText = "Loading world map - " + GameEngine.archive19.groupLoadPercentByName(WorldMapCacheName.field3013.name) / 10 + "%";
+					} else {
+						if (GrandExchangeOfferUnitPriceComparator.worldMap == null) {
+							GrandExchangeOfferUnitPriceComparator.worldMap = new WorldMap();
+							GrandExchangeOfferUnitPriceComparator.worldMap.init(GameEngine.archive19, class419.archive18, class27.archive20, class19.fontBold12, Client.fontsMap, VarpDefinition.mapSceneSprites);
+						}
+
+						Login.Login_loadingText = "Loaded world map";
+						Client.titleLoadingStage = 150;
+					}
+				} else if (Client.titleLoadingStage == 150) {
+					class246.method5251(10);
 				}
 			}
-
-			return true;
 		}
-	}
-
-	public String toString() {
-		StringBuilder var1 = new StringBuilder();
-		this.method6651();
-		this.method6650();
-
-		for (int var2 = 0; var2 < 4; ++var2) {
-			for (int var3 = 0; var3 < 4; ++var3) {
-				if (var3 > 0) {
-					var1.append("\t");
-				}
-
-				float var4 = this.field4196[var3 + var2 * 4];
-				if (Math.sqrt((double)(var4 * var4)) < 9.999999747378752E-5D) {
-					var4 = 0.0F;
-				}
-
-				var1.append(var4);
-			}
-
-			var1.append("\n");
-		}
-
-		return var1.toString();
 	}
 }
