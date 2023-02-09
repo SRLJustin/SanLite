@@ -6,28 +6,32 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ip")
+@ObfuscatedName("je")
 @Implements("WorldMapAreaData")
 public class WorldMapAreaData extends WorldMapArea {
-	@ObfuscatedName("fh")
-	static String field2772;
-	@ObfuscatedName("d")
+	@ObfuscatedName("is")
+	@ObfuscatedSignature(
+		descriptor = "Lhn;"
+	)
+	@Export("scene")
+	static Scene scene;
+	@ObfuscatedName("b")
 	@Export("worldMapData0Set")
 	HashSet worldMapData0Set;
-	@ObfuscatedName("h")
+	@ObfuscatedName("m")
 	@Export("worldMapData1Set")
 	HashSet worldMapData1Set;
-	@ObfuscatedName("g")
+	@ObfuscatedName("t")
 	@Export("iconList")
 	List iconList;
 
 	WorldMapAreaData() {
 	}
 
-	@ObfuscatedName("bo")
+	@ObfuscatedName("cq")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;Lpi;IZI)V",
-		garbageValue = "-1001525208"
+		descriptor = "(Lrd;Lrd;IZI)V",
+		garbageValue = "-1685416357"
 	)
 	@Export("init")
 	void init(Buffer var1, Buffer var2, int var3, boolean var4) {
@@ -66,10 +70,10 @@ public class WorldMapAreaData extends WorldMapArea {
 		this.initIconsList(var2, var4);
 	}
 
-	@ObfuscatedName("bf")
+	@ObfuscatedName("cd")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;ZB)V",
-		garbageValue = "16"
+		descriptor = "(Lrd;ZI)V",
+		garbageValue = "-1057034559"
 	)
 	@Export("initIconsList")
 	void initIconsList(Buffer var1, boolean var2) {
@@ -77,7 +81,7 @@ public class WorldMapAreaData extends WorldMapArea {
 		int var3 = var1.readUnsignedShort();
 
 		for (int var4 = 0; var4 < var3; ++var4) {
-			int var5 = var1.method7400();
+			int var5 = var1.method8709();
 			Coord var6 = new Coord(var1.readInt());
 			boolean var7 = var1.readUnsignedByte() == 1;
 			if (var2 || !var7) {
@@ -87,12 +91,55 @@ public class WorldMapAreaData extends WorldMapArea {
 
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lko;",
-		garbageValue = "1226375978"
+		descriptor = "(Lcd;I)V",
+		garbageValue = "-1936200764"
 	)
-	public static StudioGame[] method4894() {
-		return new StudioGame[]{StudioGame.oldscape, StudioGame.stellardawn, StudioGame.game4, StudioGame.game5, StudioGame.runescape, StudioGame.game3};
+	@Export("runScriptEvent")
+	public static void runScriptEvent(ScriptEvent var0) {
+		ItemLayer.runScript(var0, 500000, 475000);
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "44"
+	)
+	static void method5426() {
+		Login.Login_username = Login.Login_username.trim();
+		if (Login.Login_username.length() == 0) {
+			class70.setLoginResponseString("Please enter your username.", "If you created your account after November", "2010, this will be the creation email address.");
+		} else {
+			long var1 = class70.method2085();
+			int var0;
+			if (0L == var1) {
+				var0 = 5;
+			} else {
+				var0 = Ignored.method7741(var1, Login.Login_username);
+			}
+
+			switch(var0) {
+			case 2:
+				class70.setLoginResponseString(Strings.field3943, Strings.field4118, Strings.field4119);
+				ReflectionCheck.method696(6);
+				break;
+			case 3:
+				class70.setLoginResponseString("", "Error connecting to server.", "");
+				break;
+			case 4:
+				class70.setLoginResponseString("The part of the website you are trying", "to connect to is offline at the moment.", "Please try again later.");
+				break;
+			case 5:
+				class70.setLoginResponseString("Sorry, there was an error trying to", "log you in to this part of the website.", "Please try again later.");
+				break;
+			case 6:
+				class70.setLoginResponseString("", "Error connecting to server.", "");
+				break;
+			case 7:
+				class70.setLoginResponseString("You must enter a valid login to proceed. For accounts", "created after 24th November 2010, please use your", "email address. Otherwise please use your username.");
+			}
+
+		}
 	}
 }

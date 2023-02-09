@@ -4,71 +4,95 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bp")
+@ObfuscatedName("br")
 @Implements("Decimator")
 public class Decimator {
-	@ObfuscatedName("m")
+	@ObfuscatedName("ao")
+	@Export("client")
+	@ObfuscatedSignature(
+		descriptor = "Lclient;"
+	)
+	static Client client;
+	@ObfuscatedName("es")
+	@ObfuscatedSignature(
+		descriptor = "Lov;"
+	)
+	@Export("js5Socket")
+	static AbstractSocket js5Socket;
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -188292449
+		intValue = 87402149
 	)
 	@Export("inputRate")
 	int inputRate;
-	@ObfuscatedName("t")
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = -559769321
+		intValue = -1896922469
 	)
 	@Export("outputRate")
 	int outputRate;
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@Export("table")
 	int[][] table;
 
 	public Decimator(int var1, int var2) {
 		if (var2 != var1) {
-			int var3 = WorldMapCacheName.method4865(var1, var2);
-			var1 /= var3;
-			var2 /= var3;
+			int var4 = var1;
+			int var5 = var2;
+			if (var2 > var1) {
+				var4 = var2;
+				var5 = var1;
+			}
+
+			while (var5 != 0) {
+				int var6 = var4 % var5;
+				var4 = var5;
+				var5 = var6;
+			}
+
+			var1 /= var4;
+			var2 /= var4;
 			this.inputRate = var1;
 			this.outputRate = var2;
 			this.table = new int[var1][14];
 
-			for (int var4 = 0; var4 < var1; ++var4) {
-				int[] var5 = this.table[var4];
-				double var6 = (double)var4 / (double)var1 + 6.0D;
-				int var8 = (int)Math.floor(1.0D + (var6 - 7.0D));
-				if (var8 < 0) {
-					var8 = 0;
+			for (int var7 = 0; var7 < var1; ++var7) {
+				int[] var8 = this.table[var7];
+				double var9 = (double)var7 / (double)var1 + 6.0D;
+				int var11 = (int)Math.floor(1.0D + (var9 - 7.0D));
+				if (var11 < 0) {
+					var11 = 0;
 				}
 
-				int var9 = (int)Math.ceil(7.0D + var6);
-				if (var9 > 14) {
-					var9 = 14;
+				int var12 = (int)Math.ceil(var9 + 7.0D);
+				if (var12 > 14) {
+					var12 = 14;
 				}
 
-				for (double var10 = (double)var2 / (double)var1; var8 < var9; ++var8) {
-					double var12 = ((double)var8 - var6) * 3.141592653589793D;
-					double var14 = var10;
-					if (var12 < -1.0E-4D || var12 > 1.0E-4D) {
-						var14 = var10 * (Math.sin(var12) / var12);
+				for (double var13 = (double)var2 / (double)var1; var11 < var12; ++var11) {
+					double var15 = ((double)var11 - var9) * 3.141592653589793D;
+					double var17 = var13;
+					if (var15 < -1.0E-4D || var15 > 1.0E-4D) {
+						var17 = var13 * (Math.sin(var15) / var15);
 					}
 
-					var14 *= 0.54D + 0.46D * Math.cos(0.2243994752564138D * ((double)var8 - var6));
-					var5[var8] = (int)Math.floor(65536.0D * var14 + 0.5D);
+					var17 *= 0.54D + 0.46D * Math.cos(((double)var11 - var9) * 0.2243994752564138D);
+					var8[var11] = (int)Math.floor(0.5D + var17 * 65536.0D);
 				}
 			}
 
 		}
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "([BB)[B",
-		garbageValue = "71"
+		garbageValue = "29"
 	)
 	@Export("resample")
 	byte[] resample(byte[] var1) {
 		if (this.table != null) {
-			int var2 = (int)((long)var1.length * (long)this.outputRate / (long)this.inputRate) + 14;
+			int var2 = (int)((long)this.outputRate * (long)var1.length / (long)this.inputRate) + 14;
 			int[] var3 = new int[var2];
 			int var4 = 0;
 			int var5 = 0;
@@ -80,7 +104,7 @@ public class Decimator {
 
 				int var9;
 				for (var9 = 0; var9 < 14; ++var9) {
-					var3[var4 + var9] += var7 * var8[var9];
+					var3[var9 + var4] += var8[var9] * var7;
 				}
 
 				var5 += this.outputRate;
@@ -106,10 +130,10 @@ public class Decimator {
 		return var1;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "679122393"
+		descriptor = "(IB)I",
+		garbageValue = "-23"
 	)
 	@Export("scaleRate")
 	int scaleRate(int var1) {
@@ -120,10 +144,10 @@ public class Decimator {
 		return var1;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "-100"
+		descriptor = "(II)I",
+		garbageValue = "-61929497"
 	)
 	@Export("scalePosition")
 	int scalePosition(int var1) {
@@ -134,899 +158,479 @@ public class Decimator {
 		return var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1433736231"
+		descriptor = "(Ljava/lang/CharSequence;I)J",
+		garbageValue = "-1891594649"
 	)
-	static void method1073(int var0) {
-	}
+	public static long method1122(CharSequence var0) {
+		long var1 = 0L;
+		int var3 = var0.length();
 
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(Lpj;IB)Z",
-		garbageValue = "1"
-	)
-	@Export("updateExternalPlayer")
-	static boolean updateExternalPlayer(PacketBuffer var0, int var1) {
-		int var2 = var0.readBits(2);
-		int var3;
-		int var4;
-		int var7;
-		int var8;
-		int var9;
-		int var10;
-		if (var2 == 0) {
-			if (var0.readBits(1) != 0) {
-				updateExternalPlayer(var0, var1);
+		for (int var4 = 0; var4 < var3; ++var4) {
+			var1 *= 37L;
+			char var5 = var0.charAt(var4);
+			if (var5 >= 'A' && var5 <= 'Z') {
+				var1 += (long)(var5 + 1 - 65);
+			} else if (var5 >= 'a' && var5 <= 'z') {
+				var1 += (long)(var5 + 1 - 97);
+			} else if (var5 >= '0' && var5 <= '9') {
+				var1 += (long)(var5 + 27 - 48);
 			}
 
-			var3 = var0.readBits(13);
-			var4 = var0.readBits(13);
-			boolean var12 = var0.readBits(1) == 1;
-			if (var12) {
-				Players.Players_pendingUpdateIndices[++Players.Players_pendingUpdateCount - 1] = var1;
-			}
-
-			if (Client.players[var1] != null) {
-				throw new RuntimeException();
-			} else {
-				Player var11 = Client.players[var1] = new Player();
-				var11.index = var1;
-				if (Players.field1248[var1] != null) {
-					var11.read(Players.field1248[var1]);
-				}
-
-				var11.orientation = Players.Players_orientations[var1];
-				var11.targetIndex = Players.Players_targetIndices[var1];
-				var7 = Players.Players_regions[var1];
-				var8 = var7 >> 28;
-				var9 = var7 >> 14 & 255;
-				var10 = var7 & 255;
-				var11.pathTraversed[0] = Players.field1246[var1];
-				var11.plane = (byte)var8;
-				var11.resetPath((var9 << 13) + var3 - class131.baseX * 64, (var10 << 13) + var4 - TileItem.baseY * 64);
-				var11.field1055 = false;
-				return true;
-			}
-		} else if (var2 == 1) {
-			var3 = var0.readBits(2);
-			var4 = Players.Players_regions[var1];
-			Players.Players_regions[var1] = (var4 & 268435455) + (((var4 >> 28) + var3 & 3) << 28);
-			return false;
-		} else {
-			int var5;
-			int var6;
-			if (var2 == 2) {
-				var3 = var0.readBits(5);
-				var4 = var3 >> 3;
-				var5 = var3 & 7;
-				var6 = Players.Players_regions[var1];
-				var7 = (var6 >> 28) + var4 & 3;
-				var8 = var6 >> 14 & 255;
-				var9 = var6 & 255;
-				if (var5 == 0) {
-					--var8;
-					--var9;
-				}
-
-				if (var5 == 1) {
-					--var9;
-				}
-
-				if (var5 == 2) {
-					++var8;
-					--var9;
-				}
-
-				if (var5 == 3) {
-					--var8;
-				}
-
-				if (var5 == 4) {
-					++var8;
-				}
-
-				if (var5 == 5) {
-					--var8;
-					++var9;
-				}
-
-				if (var5 == 6) {
-					++var9;
-				}
-
-				if (var5 == 7) {
-					++var8;
-					++var9;
-				}
-
-				Players.Players_regions[var1] = (var8 << 14) + var9 + (var7 << 28);
-				return false;
-			} else {
-				var3 = var0.readBits(18);
-				var4 = var3 >> 16;
-				var5 = var3 >> 8 & 255;
-				var6 = var3 & 255;
-				var7 = Players.Players_regions[var1];
-				var8 = (var7 >> 28) + var4 & 3;
-				var9 = var5 + (var7 >> 14) & 255;
-				var10 = var6 + var7 & 255;
-				Players.Players_regions[var1] = (var9 << 14) + var10 + (var8 << 28);
-				return false;
+			if (var1 >= 177917621779460413L) {
+				break;
 			}
 		}
-	}
 
-	@ObfuscatedName("io")
-	@ObfuscatedSignature(
-		descriptor = "(IIIILjava/lang/String;Ljava/lang/String;III)V",
-		garbageValue = "-646384904"
-	)
-	@Export("menuAction")
-	static final void menuAction(int var0, int var1, int var2, int var3, String var4, String var5, int var6, int var7) {
-		if (var2 >= 2000) {
-			var2 -= 2000;
+		while (0L == var1 % 37L && 0L != var1) {
+			var1 /= 37L;
 		}
 
-		PacketBufferNode var8;
-		if (var2 == 1) {
-			Client.mouseCrossX = var6;
-			Client.mouseCrossY = var7;
-			Client.mouseCrossColor = 2;
-			Client.mouseCrossState = 0;
-			Client.destinationX = var0;
-			Client.destinationY = var1;
-			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2831, Client.packetWriter.isaacCipher);
-			var8.packetBuffer.method7390(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-			var8.packetBuffer.writeShort(var3);
-			var8.packetBuffer.writeShort(class139.selectedItemId);
-			var8.packetBuffer.method7398(TileItem.baseY * 64 + var1);
-			var8.packetBuffer.method7407(MidiPcmStream.selectedItemWidget);
-			var8.packetBuffer.method7349(Calendar.selectedItemSlot);
-			var8.packetBuffer.method7349(class131.baseX * 64 + var0);
-			Client.packetWriter.addNode(var8);
-		} else if (var2 == 2) {
-			Client.mouseCrossX = var6;
-			Client.mouseCrossY = var7;
-			Client.mouseCrossColor = 2;
-			Client.mouseCrossState = 0;
-			Client.destinationX = var0;
-			Client.destinationY = var1;
-			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2850, Client.packetWriter.isaacCipher);
-			var8.packetBuffer.method7493(Client.selectedSpellChildIndex);
-			var8.packetBuffer.method7390(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-			var8.packetBuffer.method7527(class20.selectedSpellWidget);
-			var8.packetBuffer.method7398(Client.field633);
-			var8.packetBuffer.method7493(class131.baseX * 64 + var0);
-			var8.packetBuffer.method7493(var3);
-			var8.packetBuffer.method7493(TileItem.baseY * 64 + var1);
-			Client.packetWriter.addNode(var8);
-		} else if (var2 == 3) {
-			Client.mouseCrossX = var6;
-			Client.mouseCrossY = var7;
-			Client.mouseCrossColor = 2;
-			Client.mouseCrossState = 0;
-			Client.destinationX = var0;
-			Client.destinationY = var1;
-			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2883, Client.packetWriter.isaacCipher);
-			var8.packetBuffer.method7398(class131.baseX * 64 + var0);
-			var8.packetBuffer.writeShort(var3);
-			var8.packetBuffer.method7493(TileItem.baseY * 64 + var1);
-			var8.packetBuffer.method7390(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-			Client.packetWriter.addNode(var8);
-		} else if (var2 == 4) {
-			Client.mouseCrossX = var6;
-			Client.mouseCrossY = var7;
-			Client.mouseCrossColor = 2;
-			Client.mouseCrossState = 0;
-			Client.destinationX = var0;
-			Client.destinationY = var1;
-			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2896, Client.packetWriter.isaacCipher);
-			var8.packetBuffer.method7398(TileItem.baseY * 64 + var1);
-			var8.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-			var8.packetBuffer.method7349(class131.baseX * 64 + var0);
-			var8.packetBuffer.method7398(var3);
-			Client.packetWriter.addNode(var8);
-		} else if (var2 == 5) {
-			Client.mouseCrossX = var6;
-			Client.mouseCrossY = var7;
-			Client.mouseCrossColor = 2;
-			Client.mouseCrossState = 0;
-			Client.destinationX = var0;
-			Client.destinationY = var1;
-			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2856, Client.packetWriter.isaacCipher);
-			var8.packetBuffer.method7493(var3);
-			var8.packetBuffer.method7493(TileItem.baseY * 64 + var1);
-			var8.packetBuffer.writeShort(class131.baseX * 64 + var0);
-			var8.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-			Client.packetWriter.addNode(var8);
-		} else if (var2 == 6) {
-			Client.mouseCrossX = var6;
-			Client.mouseCrossY = var7;
-			Client.mouseCrossColor = 2;
-			Client.mouseCrossState = 0;
-			Client.destinationX = var0;
-			Client.destinationY = var1;
-			var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2870, Client.packetWriter.isaacCipher);
-			var8.packetBuffer.method7493(var3);
-			var8.packetBuffer.method7390(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-			var8.packetBuffer.method7493(TileItem.baseY * 64 + var1);
-			var8.packetBuffer.method7493(class131.baseX * 64 + var0);
-			Client.packetWriter.addNode(var8);
-		} else {
-			PacketBufferNode var9;
-			NPC var13;
-			if (var2 == 7) {
-				var13 = Client.npcs[var3];
-				if (var13 != null) {
-					Client.mouseCrossX = var6;
-					Client.mouseCrossY = var7;
-					Client.mouseCrossColor = 2;
-					Client.mouseCrossState = 0;
-					Client.destinationX = var0;
-					Client.destinationY = var1;
-					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2840, Client.packetWriter.isaacCipher);
-					var9.packetBuffer.method7398(class139.selectedItemId);
-					var9.packetBuffer.method7362(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					var9.packetBuffer.method7398(var3);
-					var9.packetBuffer.method7527(MidiPcmStream.selectedItemWidget);
-					var9.packetBuffer.method7398(Calendar.selectedItemSlot);
-					Client.packetWriter.addNode(var9);
-				}
-			} else if (var2 == 8) {
-				var13 = Client.npcs[var3];
-				if (var13 != null) {
-					Client.mouseCrossX = var6;
-					Client.mouseCrossY = var7;
-					Client.mouseCrossColor = 2;
-					Client.mouseCrossState = 0;
-					Client.destinationX = var0;
-					Client.destinationY = var1;
-					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2901, Client.packetWriter.isaacCipher);
-					var9.packetBuffer.method7407(class20.selectedSpellWidget);
-					var9.packetBuffer.method7398(Client.field633);
-					var9.packetBuffer.writeShort(Client.selectedSpellChildIndex);
-					var9.packetBuffer.method7390(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					var9.packetBuffer.writeShort(var3);
-					Client.packetWriter.addNode(var9);
-				}
-			} else if (var2 == 9) {
-				var13 = Client.npcs[var3];
-				if (var13 != null) {
-					Client.mouseCrossX = var6;
-					Client.mouseCrossY = var7;
-					Client.mouseCrossColor = 2;
-					Client.mouseCrossState = 0;
-					Client.destinationX = var0;
-					Client.destinationY = var1;
-					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2839, Client.packetWriter.isaacCipher);
-					var9.packetBuffer.method7349(var3);
-					var9.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					Client.packetWriter.addNode(var9);
-				}
-			} else if (var2 == 10) {
-				var13 = Client.npcs[var3];
-				if (var13 != null) {
-					Client.mouseCrossX = var6;
-					Client.mouseCrossY = var7;
-					Client.mouseCrossColor = 2;
-					Client.mouseCrossState = 0;
-					Client.destinationX = var0;
-					Client.destinationY = var1;
-					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2865, Client.packetWriter.isaacCipher);
-					var9.packetBuffer.method7362(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					var9.packetBuffer.method7398(var3);
-					Client.packetWriter.addNode(var9);
-				}
-			} else if (var2 == 11) {
-				var13 = Client.npcs[var3];
-				if (var13 != null) {
-					Client.mouseCrossX = var6;
-					Client.mouseCrossY = var7;
-					Client.mouseCrossColor = 2;
-					Client.mouseCrossState = 0;
-					Client.destinationX = var0;
-					Client.destinationY = var1;
-					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2812, Client.packetWriter.isaacCipher);
-					var9.packetBuffer.method7493(var3);
-					var9.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					Client.packetWriter.addNode(var9);
-				}
-			} else if (var2 == 12) {
-				var13 = Client.npcs[var3];
-				if (var13 != null) {
-					Client.mouseCrossX = var6;
-					Client.mouseCrossY = var7;
-					Client.mouseCrossColor = 2;
-					Client.mouseCrossState = 0;
-					Client.destinationX = var0;
-					Client.destinationY = var1;
-					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2872, Client.packetWriter.isaacCipher);
-					var9.packetBuffer.writeShort(var3);
-					var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					Client.packetWriter.addNode(var9);
-				}
-			} else if (var2 == 13) {
-				var13 = Client.npcs[var3];
-				if (var13 != null) {
-					Client.mouseCrossX = var6;
-					Client.mouseCrossY = var7;
-					Client.mouseCrossColor = 2;
-					Client.mouseCrossState = 0;
-					Client.destinationX = var0;
-					Client.destinationY = var1;
-					var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2876, Client.packetWriter.isaacCipher);
-					var9.packetBuffer.method7398(var3);
-					var9.packetBuffer.method7362(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					Client.packetWriter.addNode(var9);
-				}
-			} else {
-				Player var15;
-				if (var2 == 14) {
-					var15 = Client.players[var3];
-					if (var15 != null) {
-						Client.mouseCrossX = var6;
-						Client.mouseCrossY = var7;
-						Client.mouseCrossColor = 2;
-						Client.mouseCrossState = 0;
-						Client.destinationX = var0;
-						Client.destinationY = var1;
-						var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2864, Client.packetWriter.isaacCipher);
-						var9.packetBuffer.method7398(class139.selectedItemId);
-						var9.packetBuffer.method7527(MidiPcmStream.selectedItemWidget);
-						var9.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-						var9.packetBuffer.method7493(Calendar.selectedItemSlot);
-						var9.packetBuffer.method7398(var3);
-						Client.packetWriter.addNode(var9);
-					}
-				} else if (var2 == 15) {
-					var15 = Client.players[var3];
-					if (var15 != null) {
-						Client.mouseCrossX = var6;
-						Client.mouseCrossY = var7;
-						Client.mouseCrossColor = 2;
-						Client.mouseCrossState = 0;
-						Client.destinationX = var0;
-						Client.destinationY = var1;
-						var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2820, Client.packetWriter.isaacCipher);
-						var9.packetBuffer.method7407(class20.selectedSpellWidget);
-						var9.packetBuffer.writeShort(Client.field633);
-						var9.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-						var9.packetBuffer.method7349(var3);
-						var9.packetBuffer.method7398(Client.selectedSpellChildIndex);
-						Client.packetWriter.addNode(var9);
-					}
-				} else if (var2 == 16) {
-					Client.mouseCrossX = var6;
-					Client.mouseCrossY = var7;
-					Client.mouseCrossColor = 2;
-					Client.mouseCrossState = 0;
-					Client.destinationX = var0;
-					Client.destinationY = var1;
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2882, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShort(class139.selectedItemId);
-					var8.packetBuffer.writeShort(Calendar.selectedItemSlot);
-					var8.packetBuffer.writeShort(TileItem.baseY * 64 + var1);
-					var8.packetBuffer.method7493(var3);
-					var8.packetBuffer.method7527(MidiPcmStream.selectedItemWidget);
-					var8.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					var8.packetBuffer.method7493(class131.baseX * 64 + var0);
-					Client.packetWriter.addNode(var8);
-				} else if (var2 == 17) {
-					Client.mouseCrossX = var6;
-					Client.mouseCrossY = var7;
-					Client.mouseCrossColor = 2;
-					Client.mouseCrossState = 0;
-					Client.destinationX = var0;
-					Client.destinationY = var1;
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2835, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.method7398(TileItem.baseY * 64 + var1);
-					var8.packetBuffer.writeShort(Client.selectedSpellChildIndex);
-					var8.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					var8.packetBuffer.writeInt(class20.selectedSpellWidget);
-					var8.packetBuffer.writeShort(class131.baseX * 64 + var0);
-					var8.packetBuffer.method7493(var3);
-					var8.packetBuffer.writeShort(Client.field633);
-					Client.packetWriter.addNode(var8);
-				} else if (var2 == 18) {
-					Client.mouseCrossX = var6;
-					Client.mouseCrossY = var7;
-					Client.mouseCrossColor = 2;
-					Client.mouseCrossState = 0;
-					Client.destinationX = var0;
-					Client.destinationY = var1;
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2836, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.method7398(class131.baseX * 64 + var0);
-					var8.packetBuffer.method7349(var3);
-					var8.packetBuffer.method7349(TileItem.baseY * 64 + var1);
-					var8.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					Client.packetWriter.addNode(var8);
-				} else if (var2 == 19) {
-					Client.mouseCrossX = var6;
-					Client.mouseCrossY = var7;
-					Client.mouseCrossColor = 2;
-					Client.mouseCrossState = 0;
-					Client.destinationX = var0;
-					Client.destinationY = var1;
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2838, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.method7362(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					var8.packetBuffer.method7493(TileItem.baseY * 64 + var1);
-					var8.packetBuffer.method7493(var3);
-					var8.packetBuffer.method7349(class131.baseX * 64 + var0);
-					Client.packetWriter.addNode(var8);
-				} else if (var2 == 20) {
-					Client.mouseCrossX = var6;
-					Client.mouseCrossY = var7;
-					Client.mouseCrossColor = 2;
-					Client.mouseCrossState = 0;
-					Client.destinationX = var0;
-					Client.destinationY = var1;
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2818, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.method7493(class131.baseX * 64 + var0);
-					var8.packetBuffer.writeShort(var3);
-					var8.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					var8.packetBuffer.method7349(TileItem.baseY * 64 + var1);
-					Client.packetWriter.addNode(var8);
-				} else if (var2 == 21) {
-					Client.mouseCrossX = var6;
-					Client.mouseCrossY = var7;
-					Client.mouseCrossColor = 2;
-					Client.mouseCrossState = 0;
-					Client.destinationX = var0;
-					Client.destinationY = var1;
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2823, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.method7349(TileItem.baseY * 64 + var1);
-					var8.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					var8.packetBuffer.writeShort(var3);
-					var8.packetBuffer.method7398(class131.baseX * 64 + var0);
-					Client.packetWriter.addNode(var8);
-				} else if (var2 == 22) {
-					Client.mouseCrossX = var6;
-					Client.mouseCrossY = var7;
-					Client.mouseCrossColor = 2;
-					Client.mouseCrossState = 0;
-					Client.destinationX = var0;
-					Client.destinationY = var1;
-					var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2868, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.method7398(class131.baseX * 64 + var0);
-					var8.packetBuffer.method7349(TileItem.baseY * 64 + var1);
-					var8.packetBuffer.method7398(var3);
-					var8.packetBuffer.method7362(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					Client.packetWriter.addNode(var8);
-				} else if (var2 == 23) {
-					if (Client.isMenuOpen) {
-						class7.scene.setViewportWalking();
-					} else {
-						class7.scene.menuOpen(class20.Client_plane, var0, var1, true);
-					}
+		return var1;
+	}
+
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "-383062820"
+	)
+	static final void method1115(String var0) {
+		class280.addGameMessage(30, "", var0);
+	}
+
+	@ObfuscatedName("he")
+	@ObfuscatedSignature(
+		descriptor = "(Lcl;ZI)V",
+		garbageValue = "-1568414212"
+	)
+	@Export("addPlayerToScene")
+	static void addPlayerToScene(Player var0, boolean var1) {
+		if (var0 != null && var0.isVisible() && !var0.isHidden) {
+			var0.isUnanimated = false;
+			if ((Client.isLowDetail && Players.Players_count > 50 || Players.Players_count > 200) && var1 && var0.idleSequence == var0.movementSequence) {
+				var0.isUnanimated = true;
+			}
+
+			int var2 = var0.x >> 7;
+			int var3 = var0.y >> 7;
+			if (var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
+				long var4 = ItemLayer.calculateTag(0, 0, 0, false, var0.index);
+				if (var0.model0 != null && Client.cycle >= var0.animationCycleStart && Client.cycle < var0.animationCycleEnd) {
+					var0.isUnanimated = false;
+					var0.tileHeight = GrandExchangeOfferNameComparator.getTileHeight(var0.x, var0.y, class103.Client_plane);
+					var0.playerCycle = Client.cycle;
+					WorldMapAreaData.scene.addNullableObject(class103.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.minX, var0.minY, var0.maxX, var0.maxY);
 				} else {
-					PacketBufferNode var12;
-					Widget var16;
-					if (var2 == 24) {
-						var16 = ChatChannel.getWidget(var1);
-						boolean var11 = true;
-						if (var16.contentType > 0) {
-							var11 = class19.method329(var16);
-						}
-
-						if (var11) {
-							var12 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2842, Client.packetWriter.isaacCipher);
-							var12.packetBuffer.writeInt(var1);
-							Client.packetWriter.addNode(var12);
-						}
-					} else {
-						if (var2 == 25) {
-							var16 = class126.getWidgetChild(var1, var0);
-							if (var16 != null) {
-								HealthBar.Widget_runOnTargetLeave();
-								UrlRequest.selectSpell(var1, var0, class404.Widget_unpackTargetMask(class363.getWidgetFlags(var16)), var16.itemId);
-								Client.isItemSelected = 0;
-								Client.selectedSpellActionName = SecureRandomFuture.Widget_getSpellActionName(var16);
-								if (Client.selectedSpellActionName == null) {
-									Client.selectedSpellActionName = "null";
-								}
-
-								if (var16.isIf3) {
-									Client.selectedSpellName = var16.dataText + UserComparator5.colorStartTag(16777215);
-								} else {
-									Client.selectedSpellName = UserComparator5.colorStartTag(65280) + var16.spellName + UserComparator5.colorStartTag(16777215);
-								}
-							}
-
+					if ((var0.x & 127) == 64 && (var0.y & 127) == 64) {
+						if (Client.tileLastDrawnActor[var2][var3] == Client.viewportDrawCount) {
 							return;
 						}
 
-						if (var2 == 26) {
-							class4.method28();
-						} else {
-							int var10;
-							Widget var14;
-							if (var2 == 28) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2842, Client.packetWriter.isaacCipher);
-								var8.packetBuffer.writeInt(var1);
-								Client.packetWriter.addNode(var8);
-								var14 = ChatChannel.getWidget(var1);
-								if (var14.cs1Instructions != null && var14.cs1Instructions[0][0] == 5) {
-									var10 = var14.cs1Instructions[0][1];
-									Varps.Varps_main[var10] = 1 - Varps.Varps_main[var10];
-									class281.changeGameOptions(var10);
-								}
-							} else if (var2 == 29) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2842, Client.packetWriter.isaacCipher);
-								var8.packetBuffer.writeInt(var1);
-								Client.packetWriter.addNode(var8);
-								var14 = ChatChannel.getWidget(var1);
-								if (var14.cs1Instructions != null && var14.cs1Instructions[0][0] == 5) {
-									var10 = var14.cs1Instructions[0][1];
-									if (Varps.Varps_main[var10] != var14.cs1ComparisonValues[0]) {
-										Varps.Varps_main[var10] = var14.cs1ComparisonValues[0];
-										class281.changeGameOptions(var10);
-									}
-								}
-							} else if (var2 == 30) {
-								if (Client.meslayerContinueWidget == null) {
-									class288.resumePauseWidget(var1, var0);
-									Client.meslayerContinueWidget = class126.getWidgetChild(var1, var0);
-									SecureRandomCallable.invalidateWidget(Client.meslayerContinueWidget);
-								}
-							} else if (var2 == 31) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2804, Client.packetWriter.isaacCipher);
-								var8.packetBuffer.method7349(var0);
-								var8.packetBuffer.writeShort(class139.selectedItemId);
-								var8.packetBuffer.method7349(var3);
-								var8.packetBuffer.writeInt(MidiPcmStream.selectedItemWidget);
-								var8.packetBuffer.writeIntME(var1);
-								var8.packetBuffer.method7398(Calendar.selectedItemSlot);
-								Client.packetWriter.addNode(var8);
-								Client.field582 = 0;
-								WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
-								Client.field599 = var0;
-							} else if (var2 == 32) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2886, Client.packetWriter.isaacCipher);
-								var8.packetBuffer.writeShort(var0);
-								var8.packetBuffer.writeIntME(var1);
-								var8.packetBuffer.method7493(Client.selectedSpellChildIndex);
-								var8.packetBuffer.writeShort(var3);
-								var8.packetBuffer.writeInt(class20.selectedSpellWidget);
-								Client.packetWriter.addNode(var8);
-								Client.field582 = 0;
-								WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
-								Client.field599 = var0;
-							} else if (var2 == 33) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2874, Client.packetWriter.isaacCipher);
-								var8.packetBuffer.writeInt(var1);
-								var8.packetBuffer.method7349(var0);
-								var8.packetBuffer.method7349(var3);
-								Client.packetWriter.addNode(var8);
-								Client.field582 = 0;
-								WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
-								Client.field599 = var0;
-							} else if (var2 == 34) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2833, Client.packetWriter.isaacCipher);
-								var8.packetBuffer.method7398(var3);
-								var8.packetBuffer.method7398(var0);
-								var8.packetBuffer.method7407(var1);
-								Client.packetWriter.addNode(var8);
-								Client.field582 = 0;
-								WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
-								Client.field599 = var0;
-							} else if (var2 == 35) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2817, Client.packetWriter.isaacCipher);
-								var8.packetBuffer.method7349(var0);
-								var8.packetBuffer.method7349(var3);
-								var8.packetBuffer.writeInt(var1);
-								Client.packetWriter.addNode(var8);
-								Client.field582 = 0;
-								WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
-								Client.field599 = var0;
-							} else if (var2 == 36) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2847, Client.packetWriter.isaacCipher);
-								var8.packetBuffer.method7527(var1);
-								var8.packetBuffer.method7349(var0);
-								var8.packetBuffer.method7398(var3);
-								Client.packetWriter.addNode(var8);
-								Client.field582 = 0;
-								WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
-								Client.field599 = var0;
-							} else if (var2 == 37) {
-								var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2802, Client.packetWriter.isaacCipher);
-								var8.packetBuffer.writeIntME(var1);
-								var8.packetBuffer.method7493(var0);
-								var8.packetBuffer.writeShort(var3);
-								Client.packetWriter.addNode(var8);
-								Client.field582 = 0;
-								WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
-								Client.field599 = var0;
-							} else {
-								if (var2 == 38) {
-									HealthBar.Widget_runOnTargetLeave();
-									var16 = ChatChannel.getWidget(var1);
-									Client.isItemSelected = 1;
-									Calendar.selectedItemSlot = var0;
-									MidiPcmStream.selectedItemWidget = var1;
-									class139.selectedItemId = var3;
-									SecureRandomCallable.invalidateWidget(var16);
-									Client.selectedItemName = UserComparator5.colorStartTag(16748608) + UserComparator6.ItemDefinition_get(var3).name + UserComparator5.colorStartTag(16777215);
-									if (Client.selectedItemName == null) {
-										Client.selectedItemName = "null";
-									}
-
-									return;
-								}
-
-								if (var2 == 39) {
-									var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2844, Client.packetWriter.isaacCipher);
-									var8.packetBuffer.writeIntME(var1);
-									var8.packetBuffer.method7493(var0);
-									var8.packetBuffer.writeShort(var3);
-									Client.packetWriter.addNode(var8);
-									Client.field582 = 0;
-									WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
-									Client.field599 = var0;
-								} else if (var2 == 40) {
-									var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2871, Client.packetWriter.isaacCipher);
-									var8.packetBuffer.writeInt(var1);
-									var8.packetBuffer.method7493(var3);
-									var8.packetBuffer.method7493(var0);
-									Client.packetWriter.addNode(var8);
-									Client.field582 = 0;
-									WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
-									Client.field599 = var0;
-								} else if (var2 == 41) {
-									var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2810, Client.packetWriter.isaacCipher);
-									var8.packetBuffer.method7398(var3);
-									var8.packetBuffer.writeInt(var1);
-									var8.packetBuffer.method7398(var0);
-									Client.packetWriter.addNode(var8);
-									Client.field582 = 0;
-									WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
-									Client.field599 = var0;
-								} else if (var2 == 42) {
-									var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2803, Client.packetWriter.isaacCipher);
-									var8.packetBuffer.method7493(var0);
-									var8.packetBuffer.writeIntME(var1);
-									var8.packetBuffer.method7398(var3);
-									Client.packetWriter.addNode(var8);
-									Client.field582 = 0;
-									WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
-									Client.field599 = var0;
-								} else if (var2 == 43) {
-									var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2843, Client.packetWriter.isaacCipher);
-									var8.packetBuffer.writeInt(var1);
-									var8.packetBuffer.writeShort(var0);
-									var8.packetBuffer.writeShort(var3);
-									Client.packetWriter.addNode(var8);
-									Client.field582 = 0;
-									WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
-									Client.field599 = var0;
-								} else if (var2 == 44) {
-									var15 = Client.players[var3];
-									if (var15 != null) {
-										Client.mouseCrossX = var6;
-										Client.mouseCrossY = var7;
-										Client.mouseCrossColor = 2;
-										Client.mouseCrossState = 0;
-										Client.destinationX = var0;
-										Client.destinationY = var1;
-										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2887, Client.packetWriter.isaacCipher);
-										var9.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-										var9.packetBuffer.method7398(var3);
-										Client.packetWriter.addNode(var9);
-									}
-								} else if (var2 == 45) {
-									var15 = Client.players[var3];
-									if (var15 != null) {
-										Client.mouseCrossX = var6;
-										Client.mouseCrossY = var7;
-										Client.mouseCrossColor = 2;
-										Client.mouseCrossState = 0;
-										Client.destinationX = var0;
-										Client.destinationY = var1;
-										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2813, Client.packetWriter.isaacCipher);
-										var9.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-										var9.packetBuffer.method7493(var3);
-										Client.packetWriter.addNode(var9);
-									}
-								} else if (var2 == 46) {
-									var15 = Client.players[var3];
-									if (var15 != null) {
-										Client.mouseCrossX = var6;
-										Client.mouseCrossY = var7;
-										Client.mouseCrossColor = 2;
-										Client.mouseCrossState = 0;
-										Client.destinationX = var0;
-										Client.destinationY = var1;
-										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2827, Client.packetWriter.isaacCipher);
-										var9.packetBuffer.method7398(var3);
-										var9.packetBuffer.method7343(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-										Client.packetWriter.addNode(var9);
-									}
-								} else if (var2 == 47) {
-									var15 = Client.players[var3];
-									if (var15 != null) {
-										Client.mouseCrossX = var6;
-										Client.mouseCrossY = var7;
-										Client.mouseCrossColor = 2;
-										Client.mouseCrossState = 0;
-										Client.destinationX = var0;
-										Client.destinationY = var1;
-										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2807, Client.packetWriter.isaacCipher);
-										var9.packetBuffer.method7349(var3);
-										var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-										Client.packetWriter.addNode(var9);
-									}
-								} else if (var2 == 48) {
-									var15 = Client.players[var3];
-									if (var15 != null) {
-										Client.mouseCrossX = var6;
-										Client.mouseCrossY = var7;
-										Client.mouseCrossColor = 2;
-										Client.mouseCrossState = 0;
-										Client.destinationX = var0;
-										Client.destinationY = var1;
-										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2892, Client.packetWriter.isaacCipher);
-										var9.packetBuffer.writeShort(var3);
-										var9.packetBuffer.method7362(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-										Client.packetWriter.addNode(var9);
-									}
-								} else if (var2 == 49) {
-									var15 = Client.players[var3];
-									if (var15 != null) {
-										Client.mouseCrossX = var6;
-										Client.mouseCrossY = var7;
-										Client.mouseCrossColor = 2;
-										Client.mouseCrossState = 0;
-										Client.destinationX = var0;
-										Client.destinationY = var1;
-										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2863, Client.packetWriter.isaacCipher);
-										var9.packetBuffer.method7390(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-										var9.packetBuffer.method7398(var3);
-										Client.packetWriter.addNode(var9);
-									}
-								} else if (var2 == 50) {
-									var15 = Client.players[var3];
-									if (var15 != null) {
-										Client.mouseCrossX = var6;
-										Client.mouseCrossY = var7;
-										Client.mouseCrossColor = 2;
-										Client.mouseCrossState = 0;
-										Client.destinationX = var0;
-										Client.destinationY = var1;
-										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2906, Client.packetWriter.isaacCipher);
-										var9.packetBuffer.method7362(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-										var9.packetBuffer.method7493(var3);
-										Client.packetWriter.addNode(var9);
-									}
-								} else if (var2 == 51) {
-									var15 = Client.players[var3];
-									if (var15 != null) {
-										Client.mouseCrossX = var6;
-										Client.mouseCrossY = var7;
-										Client.mouseCrossColor = 2;
-										Client.mouseCrossState = 0;
-										Client.destinationX = var0;
-										Client.destinationY = var1;
-										var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2885, Client.packetWriter.isaacCipher);
-										var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-										var9.packetBuffer.method7398(var3);
-										Client.packetWriter.addNode(var9);
-									}
-								} else if (var2 != 57 && var2 != 1007) {
-									if (var2 == 58) {
-										var16 = class126.getWidgetChild(var1, var0);
-										if (var16 != null) {
-											var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2809, Client.packetWriter.isaacCipher);
-											var9.packetBuffer.writeShort(var16.itemId);
-											var9.packetBuffer.method7527(var1);
-											var9.packetBuffer.method7493(Client.selectedSpellChildIndex);
-											var9.packetBuffer.method7398(var0);
-											var9.packetBuffer.writeIntME(class20.selectedSpellWidget);
-											var9.packetBuffer.writeShort(Client.field633);
-											Client.packetWriter.addNode(var9);
-										}
-									} else if (var2 == 1001) {
-										Client.mouseCrossX = var6;
-										Client.mouseCrossY = var7;
-										Client.mouseCrossColor = 2;
-										Client.mouseCrossState = 0;
-										Client.destinationX = var0;
-										Client.destinationY = var1;
-										var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2826, Client.packetWriter.isaacCipher);
-										var8.packetBuffer.method7398(TileItem.baseY * 64 + var1);
-										var8.packetBuffer.method7390(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-										var8.packetBuffer.method7493(class131.baseX * 64 + var0);
-										var8.packetBuffer.method7349(var3);
-										Client.packetWriter.addNode(var8);
-									} else if (var2 == 1002) {
-										Client.mouseCrossX = var6;
-										Client.mouseCrossY = var7;
-										Client.mouseCrossColor = 2;
-										Client.mouseCrossState = 0;
-										var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2815, Client.packetWriter.isaacCipher);
-										var8.packetBuffer.method7349(var3);
-										Client.packetWriter.addNode(var8);
-									} else if (var2 == 1003) {
-										Client.mouseCrossX = var6;
-										Client.mouseCrossY = var7;
-										Client.mouseCrossColor = 2;
-										Client.mouseCrossState = 0;
-										var13 = Client.npcs[var3];
-										if (var13 != null) {
-											NPCComposition var17 = var13.definition;
-											if (var17.transforms != null) {
-												var17 = var17.transform();
-											}
-
-											if (var17 != null) {
-												var12 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2829, Client.packetWriter.isaacCipher);
-												var12.packetBuffer.method7398(var17.id);
-												Client.packetWriter.addNode(var12);
-											}
-										}
-									} else if (var2 == 1004) {
-										Client.mouseCrossX = var6;
-										Client.mouseCrossY = var7;
-										Client.mouseCrossColor = 2;
-										Client.mouseCrossState = 0;
-										var8 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2902, Client.packetWriter.isaacCipher);
-										var8.packetBuffer.method7398(var3);
-										Client.packetWriter.addNode(var8);
-									} else if (var2 == 1005) {
-										var16 = ChatChannel.getWidget(var1);
-										if (var16 != null && var16.itemQuantities[var0] >= 100000) {
-											class194.addGameMessage(27, "", var16.itemQuantities[var0] + " x " + UserComparator6.ItemDefinition_get(var3).name);
-										} else {
-											var9 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2902, Client.packetWriter.isaacCipher);
-											var9.packetBuffer.method7398(var3);
-											Client.packetWriter.addNode(var9);
-										}
-
-										Client.field582 = 0;
-										WorldMapDecoration.field2722 = ChatChannel.getWidget(var1);
-										Client.field599 = var0;
-									} else if (var2 == 1012 || var2 == 1010 || var2 == 1011 || var2 == 1009 || var2 == 1008) {
-										Varcs.worldMap.worldMapMenuAction(var2, var3, new Coord(var0), new Coord(var1));
-									}
-								} else {
-									var16 = class126.getWidgetChild(var1, var0);
-									if (var16 != null) {
-										SoundCache.widgetDefaultMenuAction(var3, var1, var0, var16.itemId, var5);
-									}
-								}
-							}
-						}
+						Client.tileLastDrawnActor[var2][var3] = Client.viewportDrawCount;
 					}
+
+					var0.tileHeight = GrandExchangeOfferNameComparator.getTileHeight(var0.x, var0.y, class103.Client_plane);
+					var0.playerCycle = Client.cycle;
+					WorldMapAreaData.scene.drawEntity(class103.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.isWalking);
 				}
 			}
 		}
 
-		if (Client.isItemSelected != 0) {
-			Client.isItemSelected = 0;
-			SecureRandomCallable.invalidateWidget(ChatChannel.getWidget(MidiPcmStream.selectedItemWidget));
-		}
-
-		if (Client.isSpellSelected) {
-			HealthBar.Widget_runOnTargetLeave();
-		}
-
-		if (WorldMapDecoration.field2722 != null && Client.field582 == 0) {
-			SecureRandomCallable.invalidateWidget(WorldMapDecoration.field2722);
-		}
-
 	}
 
-	@ObfuscatedName("ly")
+	@ObfuscatedName("iu")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "-66"
+		descriptor = "(Ljs;B)V",
+		garbageValue = "0"
 	)
-	static void method1082(Buffer var0) {
-		if (Client.randomDatData != null) {
-			var0.writeBytes(Client.randomDatData, 0, Client.randomDatData.length);
+	static final void method1123(class280 var0) {
+		PacketBuffer var1 = Client.packetWriter.packetBuffer;
+		int var2;
+		int var3;
+		int var4;
+		int var5;
+		int var6;
+		int var7;
+		int var8;
+		int var9;
+		int var11;
+		if (class280.field3178 == var0) {
+			var2 = var1.method8730();
+			var3 = var1.readUnsignedByte();
+			var4 = var3 >> 2;
+			var5 = var3 & 3;
+			var6 = Client.field573[var4];
+			var7 = var1.readUnsignedByte();
+			var8 = (var7 >> 4 & 7) + class373.field4406;
+			var9 = (var7 & 7) + class25.field147;
+			if (var8 >= 0 && var9 >= 0 && var8 < 103 && var9 < 103) {
+				if (var6 == 0) {
+					WallObject var35 = WorldMapAreaData.scene.method4478(class103.Client_plane, var8, var9);
+					if (var35 != null) {
+						var11 = class124.Entity_unpackID(var35.tag);
+						if (var4 == 2) {
+							var35.renderable1 = new DynamicObject(var11, 2, var5 + 4, class103.Client_plane, var8, var9, var2, false, var35.renderable1);
+							var35.renderable2 = new DynamicObject(var11, 2, var5 + 1 & 3, class103.Client_plane, var8, var9, var2, false, var35.renderable2);
+						} else {
+							var35.renderable1 = new DynamicObject(var11, var4, var5, class103.Client_plane, var8, var9, var2, false, var35.renderable1);
+						}
+					}
+				}
+
+				if (var6 == 1) {
+					DecorativeObject var44 = WorldMapAreaData.scene.method4479(class103.Client_plane, var8, var9);
+					if (var44 != null) {
+						var11 = class124.Entity_unpackID(var44.tag);
+						if (var4 != 4 && var4 != 5) {
+							if (var4 == 6) {
+								var44.renderable1 = new DynamicObject(var11, 4, var5 + 4, class103.Client_plane, var8, var9, var2, false, var44.renderable1);
+							} else if (var4 == 7) {
+								var44.renderable1 = new DynamicObject(var11, 4, (var5 + 2 & 3) + 4, class103.Client_plane, var8, var9, var2, false, var44.renderable1);
+							} else if (var4 == 8) {
+								var44.renderable1 = new DynamicObject(var11, 4, var5 + 4, class103.Client_plane, var8, var9, var2, false, var44.renderable1);
+								var44.renderable2 = new DynamicObject(var11, 4, (var5 + 2 & 3) + 4, class103.Client_plane, var8, var9, var2, false, var44.renderable2);
+							}
+						} else {
+							var44.renderable1 = new DynamicObject(var11, 4, var5, class103.Client_plane, var8, var9, var2, false, var44.renderable1);
+						}
+					}
+				}
+
+				if (var6 == 2) {
+					GameObject var45 = WorldMapAreaData.scene.getGameObject(class103.Client_plane, var8, var9);
+					if (var4 == 11) {
+						var4 = 10;
+					}
+
+					if (var45 != null) {
+						var45.renderable = new DynamicObject(class124.Entity_unpackID(var45.tag), var4, var5, class103.Client_plane, var8, var9, var2, false, var45.renderable);
+					}
+				}
+
+				if (var6 == 3) {
+					GroundObject var46 = WorldMapAreaData.scene.getGroundObject(class103.Client_plane, var8, var9);
+					if (var46 != null) {
+						var46.renderable = new DynamicObject(class124.Entity_unpackID(var46.tag), 22, var5, class103.Client_plane, var8, var9, var2, false, var46.renderable);
+					}
+				}
+			}
+
 		} else {
-			byte[] var1 = class118.method2684();
-			var0.writeBytes(var1, 0, var1.length);
+			TileItem var43;
+			if (class280.field3181 == var0) {
+				var2 = var1.readUnsignedByte();
+				var3 = (var2 >> 4 & 7) + class373.field4406;
+				var4 = (var2 & 7) + class25.field147;
+				var5 = var1.method8676();
+				var1.method8676();
+				var1.method8714();
+				var6 = var1.method8730();
+				var7 = var1.readInt();
+				var1.method8676();
+				var1.method8730();
+				if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
+					var43 = new TileItem();
+					var43.id = var6;
+					var43.quantity = var7;
+					var43.method2723(var5);
+					if (Client.groundItems[class103.Client_plane][var3][var4] == null) {
+						Client.groundItems[class103.Client_plane][var3][var4] = new NodeDeque();
+					}
+
+					Client.groundItems[class103.Client_plane][var3][var4].addFirst(var43);
+					ClientPacket.updateItemPile(var3, var4);
+				}
+
+			} else {
+				int var10;
+				if (class280.field3182 == var0) {
+					var2 = var1.method8714();
+					var3 = var1.method8677();
+					var4 = var3 >> 4 & 15;
+					var5 = var3 & 7;
+					var6 = var1.method8676();
+					var7 = var1.method8676();
+					var8 = (var7 >> 4 & 7) + class373.field4406;
+					var9 = (var7 & 7) + class25.field147;
+					if (var8 >= 0 && var9 >= 0 && var8 < 104 && var9 < 104) {
+						var10 = var4 + 1;
+						if (class387.localPlayer.pathX[0] >= var8 - var10 && class387.localPlayer.pathX[0] <= var10 + var8 && class387.localPlayer.pathY[0] >= var9 - var10 && class387.localPlayer.pathY[0] <= var10 + var9 && PacketWriter.clientPreferences.method2499() != 0 && var5 > 0 && Client.soundEffectCount < 50) {
+							Client.soundEffectIds[Client.soundEffectCount] = var2;
+							Client.queuedSoundEffectLoops[Client.soundEffectCount] = var5;
+							Client.queuedSoundEffectDelays[Client.soundEffectCount] = var6;
+							Client.soundEffects[Client.soundEffectCount] = null;
+							Client.soundLocations[Client.soundEffectCount] = var4 + (var9 << 8) + (var8 << 16);
+							++Client.soundEffectCount;
+						}
+					}
+				}
+
+				NodeDeque var34;
+				if (class280.field3174 == var0) {
+					var2 = var1.method8676();
+					var3 = (var2 >> 4 & 7) + class373.field4406;
+					var4 = (var2 & 7) + class25.field147;
+					var5 = var1.method8714();
+					var6 = var1.method8699();
+					if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
+						var34 = Client.groundItems[class103.Client_plane][var3][var4];
+						if (var34 != null) {
+							for (var43 = (TileItem)var34.last(); var43 != null; var43 = (TileItem)var34.previous()) {
+								if ((var5 & 32767) == var43.id && var6 == var43.quantity) {
+									var43.remove();
+									break;
+								}
+							}
+
+							if (var34.last() == null) {
+								Client.groundItems[class103.Client_plane][var3][var4] = null;
+							}
+
+							ClientPacket.updateItemPile(var3, var4);
+						}
+					}
+
+				} else if (class280.field3171 == var0) {
+					var2 = var1.readUnsignedByte();
+					var3 = (var2 >> 4 & 7) + class373.field4406;
+					var4 = (var2 & 7) + class25.field147;
+					var5 = var1.method8678();
+					var6 = var5 >> 2;
+					var7 = var5 & 3;
+					var8 = Client.field573[var6];
+					if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
+						class179.method3571(class103.Client_plane, var3, var4, var8, -1, var6, var7, 31, 0, -1);
+					}
+
+				} else if (class280.field3176 == var0) {
+					var2 = var1.method8676();
+					var3 = var1.method8714();
+					var4 = var1.method8677();
+					var5 = (var4 >> 4 & 7) + class373.field4406;
+					var6 = (var4 & 7) + class25.field147;
+					var7 = var1.readUnsignedByte();
+					var8 = var7 >> 2;
+					var9 = var7 & 3;
+					var10 = Client.field573[var8];
+					if (var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104) {
+						class179.method3571(class103.Client_plane, var5, var6, var10, var3, var8, var9, var2, 0, -1);
+					}
+
+				} else {
+					NodeDeque var31;
+					TileItem var33;
+					if (class280.field3175 == var0) {
+						var2 = var1.method8714();
+						var3 = var1.method8719();
+						var4 = var1.method8719();
+						var5 = var1.method8676();
+						var6 = (var5 >> 4 & 7) + class373.field4406;
+						var7 = (var5 & 7) + class25.field147;
+						if (var6 >= 0 && var7 >= 0 && var6 < 104 && var7 < 104) {
+							var31 = Client.groundItems[class103.Client_plane][var6][var7];
+							if (var31 != null) {
+								for (var33 = (TileItem)var31.last(); var33 != null; var33 = (TileItem)var31.previous()) {
+									if ((var3 & 32767) == var33.id && var4 == var33.quantity) {
+										var33.quantity = var2;
+										break;
+									}
+								}
+
+								ClientPacket.updateItemPile(var6, var7);
+							}
+						}
+
+					} else if (class280.field3180 == var0) {
+						var2 = var1.readUnsignedByte();
+						var3 = (var2 >> 4 & 7) + class373.field4406;
+						var4 = (var2 & 7) + class25.field147;
+						var5 = var1.method8676();
+						var6 = var1.readUnsignedShort();
+						if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
+							var34 = Client.groundItems[class103.Client_plane][var3][var4];
+							if (var34 != null) {
+								for (var43 = (TileItem)var34.last(); var43 != null; var43 = (TileItem)var34.previous()) {
+									if ((var6 & 32767) == var43.id) {
+										var43.method2723(var5);
+										break;
+									}
+								}
+							}
+						}
+
+					} else {
+						int var12;
+						int var13;
+						int var14;
+						byte var39;
+						if (class280.field3172 == var0) {
+							var2 = var1.readUnsignedShort();
+							byte var36 = var1.readByte();
+							byte var37 = var1.method8786();
+							var5 = var1.method8730();
+							var6 = var1.method8676();
+							var7 = var6 >> 2;
+							var8 = var6 & 3;
+							var9 = Client.field573[var7];
+							var39 = var1.readByte();
+							var11 = var1.readUnsignedShort();
+							var12 = var1.method8678();
+							var13 = (var12 >> 4 & 7) + class373.field4406;
+							var14 = (var12 & 7) + class25.field147;
+							int var15 = var1.method8730();
+							byte var16 = var1.method8679();
+							Player var17;
+							if (var15 == Client.localPlayerIndex) {
+								var17 = class387.localPlayer;
+							} else {
+								var17 = Client.players[var15];
+							}
+
+							if (var17 != null) {
+								ObjectComposition var18 = class463.getObjectDefinition(var2);
+								int var19;
+								int var20;
+								if (var8 != 1 && var8 != 3) {
+									var19 = var18.sizeX;
+									var20 = var18.sizeY;
+								} else {
+									var19 = var18.sizeY;
+									var20 = var18.sizeX;
+								}
+
+								int var21 = var13 + (var19 >> 1);
+								int var22 = var13 + (var19 + 1 >> 1);
+								int var23 = var14 + (var20 >> 1);
+								int var24 = var14 + (var20 + 1 >> 1);
+								int[][] var25 = Tiles.Tiles_heights[class103.Client_plane];
+								int var26 = var25[var21][var23] + var25[var22][var23] + var25[var21][var24] + var25[var22][var24] >> 2;
+								int var27 = (var13 << 7) + (var19 << 6);
+								int var28 = (var14 << 7) + (var20 << 6);
+								Model var29 = var18.getModel(var7, var8, var25, var27, var26, var28);
+								if (var29 != null) {
+									class179.method3571(class103.Client_plane, var13, var14, var9, -1, 0, 0, 31, var5 + 1, var11 + 1);
+									var17.animationCycleStart = var5 + Client.cycle;
+									var17.animationCycleEnd = var11 + Client.cycle;
+									var17.model0 = var29;
+									var17.field1117 = var13 * 128 + var19 * 64;
+									var17.field1123 = var14 * 128 + var20 * 64;
+									var17.tileHeight2 = var26;
+									byte var30;
+									if (var39 > var16) {
+										var30 = var39;
+										var39 = var16;
+										var16 = var30;
+									}
+
+									if (var36 > var37) {
+										var30 = var36;
+										var36 = var37;
+										var37 = var30;
+									}
+
+									var17.minX = var39 + var13;
+									var17.maxX = var13 + var16;
+									var17.minY = var36 + var14;
+									var17.maxY = var37 + var14;
+								}
+							}
+						}
+
+						if (class280.field3177 != var0) {
+							Projectile var32;
+							if (class280.field3173 == var0) {
+								var2 = var1.method8719();
+								var3 = var1.readUnsignedByte();
+								var4 = var1.method8694();
+								var5 = var1.method8678();
+								var6 = var1.method8676() * 4;
+								var7 = var1.method8677() * 4;
+								var8 = var1.method8730();
+								var9 = var1.method8730();
+								var39 = var1.method8786();
+								byte var40 = var1.method8875();
+								var12 = var1.method8677();
+								var13 = (var12 >> 4 & 7) + class373.field4406;
+								var14 = (var12 & 7) + class25.field147;
+								var11 = var40 + var13;
+								var10 = var39 + var14;
+								if (var13 >= 0 && var14 >= 0 && var13 < 104 && var14 < 104 && var11 >= 0 && var10 >= 0 && var11 < 104 && var10 < 104 && var2 != 65535) {
+									var13 = var13 * 128 + 64;
+									var14 = var14 * 128 + 64;
+									var11 = var11 * 128 + 64;
+									var10 = var10 * 128 + 64;
+									var32 = new Projectile(var2, class103.Client_plane, var13, var14, GrandExchangeOfferNameComparator.getTileHeight(var13, var14, class103.Client_plane) - var7, var8 + Client.cycle, var9 + Client.cycle, var3, var5, var4, var6);
+									var32.setDestination(var11, var10, GrandExchangeOfferNameComparator.getTileHeight(var11, var10, class103.Client_plane) - var6, var8 + Client.cycle);
+									Client.projectiles.addFirst(var32);
+								}
+
+							} else if (class280.field3179 == var0) {
+								var2 = var1.readUnsignedByte();
+								var3 = var1.method8678();
+								var4 = (var3 >> 4 & 7) + class373.field4406;
+								var5 = (var3 & 7) + class25.field147;
+								var6 = var1.method8730();
+								var7 = var1.readUnsignedByte();
+								byte var38 = var1.method8679();
+								var9 = var1.method8719();
+								var10 = var1.method8677() * 4;
+								var11 = var1.method8689();
+								var12 = var1.method8676() * 4;
+								var13 = var1.method8714();
+								byte var41 = var1.method8875();
+								var14 = var41 + var4;
+								var8 = var38 + var5;
+								if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104 && var14 >= 0 && var8 >= 0 && var14 < 104 && var8 < 104 && var6 != 65535) {
+									var4 = var4 * 128 + 64;
+									var5 = var5 * 128 + 64;
+									var14 = var14 * 128 + 64;
+									var8 = var8 * 128 + 64;
+									var32 = new Projectile(var6, class103.Client_plane, var4, var5, GrandExchangeOfferNameComparator.getTileHeight(var4, var5, class103.Client_plane) - var12, var9 + Client.cycle, var13 + Client.cycle, var2, var7, var11, var10);
+									var32.setDestination(var14, var8, GrandExchangeOfferNameComparator.getTileHeight(var14, var8, class103.Client_plane) - var10, var9 + Client.cycle);
+									Client.projectiles.addFirst(var32);
+								}
+
+							} else if (class280.field3183 == var0) {
+								var2 = var1.method8677();
+								var3 = (var2 >> 4 & 7) + class373.field4406;
+								var4 = (var2 & 7) + class25.field147;
+								var5 = var1.method8719();
+								var6 = var1.method8678();
+								var7 = var1.readUnsignedShort();
+								if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
+									var3 = var3 * 128 + 64;
+									var4 = var4 * 128 + 64;
+									GraphicsObject var42 = new GraphicsObject(var7, class103.Client_plane, var3, var4, GrandExchangeOfferNameComparator.getTileHeight(var3, var4, class103.Client_plane) - var6, var5, Client.cycle);
+									Client.graphicsObjects.addFirst(var42);
+								}
+
+							}
+						} else {
+							var2 = var1.method8719();
+							var3 = var1.method8698();
+							var4 = var1.method8699();
+							var5 = var1.readUnsignedByte();
+							var6 = (var5 >> 4 & 7) + class373.field4406;
+							var7 = (var5 & 7) + class25.field147;
+							if (var6 >= 0 && var7 >= 0 && var6 < 104 && var7 < 104) {
+								var31 = Client.groundItems[class103.Client_plane][var6][var7];
+								if (var31 != null) {
+									for (var33 = (TileItem)var31.last(); var33 != null; var33 = (TileItem)var31.previous()) {
+										if ((var2 & 32767) == var33.id && var3 == var33.quantity) {
+											var33.quantity = var4;
+											break;
+										}
+									}
+
+									ClientPacket.updateItemPile(var6, var7);
+								}
+							}
+
+						}
+					}
+				}
+			}
 		}
 	}
 }

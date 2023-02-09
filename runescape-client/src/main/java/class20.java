@@ -1,73 +1,100 @@
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.concurrent.Callable;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.util.Map;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("l")
-public class class20 implements Callable {
-	@ObfuscatedName("kk")
+@ObfuscatedName("a")
+public class class20 {
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = -943773093
+		intValue = 720016323
 	)
-	@Export("Client_plane")
-	static int Client_plane;
-	@ObfuscatedName("no")
-	@ObfuscatedGetter(
-		intValue = -1799052417
-	)
-	@Export("selectedSpellWidget")
-	static int selectedSpellWidget;
+	@Export("musicTrackGroupId")
+	public static int musicTrackGroupId;
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lo;"
+	@ObfuscatedGetter(
+		intValue = 70424649
 	)
-	final class10 field110;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lg;"
+	@Export("Interpreter_stringStackSize")
+	static int Interpreter_stringStackSize;
+	@ObfuscatedName("t")
+	@ObfuscatedGetter(
+		intValue = -1209841967
 	)
-	final class14 this$0;
+	static int field117;
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "Ljd;"
+	)
+	@Export("worldMapEvent")
+	static WorldMapEvent worldMapEvent;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = -1330057679
+	)
+	final int field123;
+	@ObfuscatedName("w")
+	final Map field125;
+	@ObfuscatedName("v")
+	final String field115;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lg;Lo;)V"
-	)
-	class20(class14 var1, class10 var2) {
-		this.this$0 = var1;
-		this.field110 = var2;
+	class20(String var1) {
+		this.field123 = 400;
+		this.field125 = null;
+		this.field115 = "";
 	}
 
-	public Object call() throws Exception {
-		try {
-			while (this.field110.method105()) {
-				Bounds.method6608(10L);
+	class20(HttpURLConnection var1) throws IOException {
+		this.field123 = var1.getResponseCode();
+		var1.getResponseMessage();
+		this.field125 = var1.getHeaderFields();
+		StringBuilder var2 = new StringBuilder();
+		InputStream var3 = this.field123 >= 300 ? var1.getErrorStream() : var1.getInputStream();
+		if (var3 != null) {
+			InputStreamReader var4 = new InputStreamReader(var3);
+			BufferedReader var5 = new BufferedReader(var4);
+
+			String var6;
+			while ((var6 = var5.readLine()) != null) {
+				var2.append(var6);
 			}
-		} catch (IOException var2) {
-			return new class21("Error servicing REST query: " + var2.getMessage());
+
+			var3.close();
 		}
 
-		return this.field110.method106();
+		this.field115 = var2.toString();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-76614425"
+		descriptor = "(B)I",
+		garbageValue = "1"
 	)
-	public static boolean method332(int var0) {
-		return (var0 & 1) != 0;
+	public int method300() {
+		return this.field123;
 	}
 
-	@ObfuscatedName("ke")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-1917740045"
+		descriptor = "(B)Ljava/util/Map;",
+		garbageValue = "63"
 	)
-	@Export("updateSoundEffectVolume")
-	static final void updateSoundEffectVolume(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 127);
-		SecureRandomFuture.clientPreferences.soundEffectsVolume = var0;
-		class127.savePreferences();
+	public Map method297() {
+		return this.field125;
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(B)Ljava/lang/String;",
+		garbageValue = "-5"
+	)
+	public String method298() {
+		return this.field115;
 	}
 }

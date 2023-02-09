@@ -4,39 +4,39 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gz")
+@ObfuscatedName("hu")
 @Implements("ViewportMouse")
 public class ViewportMouse {
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@Export("ViewportMouse_isInViewport")
-	public static boolean ViewportMouse_isInViewport;
-	@ObfuscatedName("b")
+	static boolean ViewportMouse_isInViewport;
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 533460423
+		intValue = -2103357105
 	)
 	@Export("ViewportMouse_x")
-	public static int ViewportMouse_x;
-	@ObfuscatedName("p")
+	static int ViewportMouse_x;
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1696550227
+		intValue = 1057785079
 	)
 	@Export("ViewportMouse_y")
-	public static int ViewportMouse_y;
-	@ObfuscatedName("m")
+	static int ViewportMouse_y;
+	@ObfuscatedName("s")
 	@Export("ViewportMouse_false0")
-	public static boolean ViewportMouse_false0;
-	@ObfuscatedName("t")
+	static boolean ViewportMouse_false0;
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = -2019317565
+		intValue = 108829011
 	)
-	static int field2503;
-	@ObfuscatedName("h")
+	static int field2744;
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = 194867713
+		intValue = -1104628383
 	)
 	@Export("ViewportMouse_entityCount")
 	public static int ViewportMouse_entityCount;
-	@ObfuscatedName("g")
+	@ObfuscatedName("t")
 	@Export("ViewportMouse_entityTags")
 	public static long[] ViewportMouse_entityTags;
 
@@ -49,36 +49,27 @@ public class ViewportMouse {
 		ViewportMouse_entityTags = new long[1000];
 	}
 
-	@ObfuscatedName("bo")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "([BB)[B",
-		garbageValue = "14"
+		descriptor = "(II)Z",
+		garbageValue = "-1193422924"
 	)
-	@Export("decompressBytes")
-	static final byte[] decompressBytes(byte[] var0) {
-		Buffer var1 = new Buffer(var0);
-		int var2 = var1.readUnsignedByte();
-		int var3 = var1.readInt();
-		if (var3 < 0 || AbstractArchive.field3843 != 0 && var3 > AbstractArchive.field3843) {
-			throw new RuntimeException();
-		} else if (var2 == 0) {
-			byte[] var6 = new byte[var3];
-			var1.readBytes(var6, 0, var3);
-			return var6;
-		} else {
-			int var4 = var1.readInt();
-			if (var4 >= 0 && (AbstractArchive.field3843 == 0 || var4 <= AbstractArchive.field3843)) {
-				byte[] var5 = new byte[var4];
-				if (var2 == 1) {
-					BZip2Decompressor.BZip2Decompressor_decompress(var5, var4, var0, var3, 9);
-				} else {
-					AbstractArchive.gzipDecompressor.decompress(var1, var5);
-				}
+	public static boolean method4813(int var0) {
+		return (var0 >> 28 & 1) != 0;
+	}
 
-				return var5;
-			} else {
-				throw new RuntimeException();
-			}
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(Lkz;IIII)V",
+		garbageValue = "498385779"
+	)
+	@Export("Widget_setKeyRate")
+	static final void Widget_setKeyRate(Widget var0, int var1, int var2, int var3) {
+		if (var0.field3634 == null) {
+			throw new RuntimeException();
+		} else {
+			var0.field3634[var1] = var2;
+			var0.field3635[var1] = var3;
 		}
 	}
 }

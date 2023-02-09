@@ -1,42 +1,36 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cs")
+@ObfuscatedName("cv")
 @Implements("HealthBar")
 public class HealthBar extends Node {
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -1200843619
-	)
-	static int field1209;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lfd;"
+		descriptor = "Lgi;"
 	)
 	@Export("definition")
 	HealthBarDefinition definition;
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Lmt;"
 	)
 	@Export("updates")
 	IterableNodeDeque updates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfd;)V"
+		descriptor = "(Lgi;)V"
 	)
 	HealthBar(HealthBarDefinition var1) {
 		this.updates = new IterableNodeDeque();
 		this.definition = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(IIIII)V",
-		garbageValue = "2125258753"
+		garbageValue = "2137835977"
 	)
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
@@ -69,10 +63,10 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lcn;",
-		garbageValue = "849241629"
+		descriptor = "(II)Lcz;",
+		garbageValue = "1621839790"
 	)
 	@Export("get")
 	HealthBarUpdate get(int var1) {
@@ -83,7 +77,7 @@ public class HealthBar extends Node {
 				var2 = var3;
 			}
 
-			if (this.definition.int5 + var2.cycle + var2.cycleOffset > var1) {
+			if (this.definition.int5 + var2.cycleOffset + var2.cycle > var1) {
 				return var2;
 			} else {
 				var2.remove();
@@ -94,61 +88,123 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "80"
+		descriptor = "(I)Z",
+		garbageValue = "776562128"
 	)
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method5915();
+		return this.updates.method6900();
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "2114195084"
+		descriptor = "(IIII)Z",
+		garbageValue = "97534508"
 	)
-	static void method2311() {
-		if (Login.Login_username == null || Login.Login_username.length() <= 0) {
-			if (SecureRandomFuture.clientPreferences.rememberedUsername != null) {
-				Login.Login_username = SecureRandomFuture.clientPreferences.rememberedUsername;
-				Client.Login_isUsernameRemembered = true;
-			} else {
-				Client.Login_isUsernameRemembered = false;
+	static boolean method2611(int var0, int var1, int var2) {
+		return var0 >= 0 && var0 < 4 && var1 >= 0 && var1 < 104 && var2 >= 0 && var2 < 104;
+	}
+
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "-1489961954"
+	)
+	public static boolean method2609(int var0) {
+		return var0 == WorldMapDecorationType.field3765.id;
+	}
+
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "(Laj;I)V",
+		garbageValue = "-644486874"
+	)
+	static void method2610(GameEngine var0) {
+		class205 var1 = Client.field702;
+		class205 var2 = var1;
+
+		while (var2.method4141()) {
+			if (var2.field2339 == 13) {
+				class17.method270();
+				return;
 			}
 
+			if (var2.field2339 == 96) {
+				if (Login.worldSelectPage > 0 && StudioGame.worldSelectLeftSprite != null) {
+					--Login.worldSelectPage;
+				}
+			} else if (var2.field2339 == 97 && Login.worldSelectPage < Login.worldSelectPagesCount && class205.worldSelectRightSprite != null) {
+				++Login.worldSelectPage;
+			}
 		}
-	}
 
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "(CI)C",
-		garbageValue = "2115145690"
-	)
-	static char method2313(char var0) {
-		return var0 != 181 && var0 != 402 ? Character.toTitleCase(var0) : var0;
-	}
-
-	@ObfuscatedName("iq")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "517043711"
-	)
-	@Export("Widget_runOnTargetLeave")
-	static void Widget_runOnTargetLeave() {
-		if (Client.isSpellSelected) {
-			Widget var0 = class126.getWidgetChild(class20.selectedSpellWidget, Client.selectedSpellChildIndex);
-			if (var0 != null && var0.onTargetLeave != null) {
-				ScriptEvent var1 = new ScriptEvent();
-				var1.widget = var0;
-				var1.args = var0.onTargetLeave;
-				class285.runScriptEvent(var1);
+		if (MouseHandler.MouseHandler_lastButton == 1 || !FriendsChatMember.mouseCam && MouseHandler.MouseHandler_lastButton == 4) {
+			int var3 = Login.xPadding + 280;
+			if (MouseHandler.MouseHandler_lastPressedX >= var3 && MouseHandler.MouseHandler_lastPressedX <= var3 + 14 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
+				class369.changeWorldSelectSorting(0, 0);
+				return;
 			}
 
-			Client.field633 = -1;
-			Client.isSpellSelected = false;
-			SecureRandomCallable.invalidateWidget(var0);
+			if (MouseHandler.MouseHandler_lastPressedX >= var3 + 15 && MouseHandler.MouseHandler_lastPressedX <= var3 + 80 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
+				class369.changeWorldSelectSorting(0, 1);
+				return;
+			}
+
+			int var4 = Login.xPadding + 390;
+			if (MouseHandler.MouseHandler_lastPressedX >= var4 && MouseHandler.MouseHandler_lastPressedX <= var4 + 14 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
+				class369.changeWorldSelectSorting(1, 0);
+				return;
+			}
+
+			if (MouseHandler.MouseHandler_lastPressedX >= var4 + 15 && MouseHandler.MouseHandler_lastPressedX <= var4 + 80 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
+				class369.changeWorldSelectSorting(1, 1);
+				return;
+			}
+
+			int var5 = Login.xPadding + 500;
+			if (MouseHandler.MouseHandler_lastPressedX >= var5 && MouseHandler.MouseHandler_lastPressedX <= var5 + 14 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
+				class369.changeWorldSelectSorting(2, 0);
+				return;
+			}
+
+			if (MouseHandler.MouseHandler_lastPressedX >= var5 + 15 && MouseHandler.MouseHandler_lastPressedX <= var5 + 80 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
+				class369.changeWorldSelectSorting(2, 1);
+				return;
+			}
+
+			int var6 = Login.xPadding + 610;
+			if (MouseHandler.MouseHandler_lastPressedX >= var6 && MouseHandler.MouseHandler_lastPressedX <= var6 + 14 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
+				class369.changeWorldSelectSorting(3, 0);
+				return;
+			}
+
+			if (MouseHandler.MouseHandler_lastPressedX >= var6 + 15 && MouseHandler.MouseHandler_lastPressedX <= var6 + 80 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
+				class369.changeWorldSelectSorting(3, 1);
+				return;
+			}
+
+			if (MouseHandler.MouseHandler_lastPressedX >= Login.xPadding + 708 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedX <= Login.xPadding + 708 + 50 && MouseHandler.MouseHandler_lastPressedY <= 20) {
+				class17.method270();
+				return;
+			}
+
+			if (Login.hoveredWorldIndex != -1) {
+				World var7 = class88.World_worlds[Login.hoveredWorldIndex];
+				VarbitComposition.changeWorld(var7);
+				class17.method270();
+				return;
+			}
+
+			if (Login.worldSelectPage > 0 && StudioGame.worldSelectLeftSprite != null && MouseHandler.MouseHandler_lastPressedX >= 0 && MouseHandler.MouseHandler_lastPressedX <= StudioGame.worldSelectLeftSprite.subWidth && MouseHandler.MouseHandler_lastPressedY >= class127.canvasHeight / 2 - 50 && MouseHandler.MouseHandler_lastPressedY <= class127.canvasHeight / 2 + 50) {
+				--Login.worldSelectPage;
+			}
+
+			if (Login.worldSelectPage < Login.worldSelectPagesCount && class205.worldSelectRightSprite != null && MouseHandler.MouseHandler_lastPressedX >= GameEngine.canvasWidth - class205.worldSelectRightSprite.subWidth - 5 && MouseHandler.MouseHandler_lastPressedX <= GameEngine.canvasWidth && MouseHandler.MouseHandler_lastPressedY >= class127.canvasHeight / 2 - 50 && MouseHandler.MouseHandler_lastPressedY <= class127.canvasHeight / 2 + 50) {
+				++Login.worldSelectPage;
+			}
 		}
+
 	}
 }

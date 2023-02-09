@@ -1,25 +1,21 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("px")
+@ObfuscatedName("ph")
 public class class432 {
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(
-		intValue = -1165212437
-	)
-	@Export("SpriteBuffer_spriteWidth")
-	public static int SpriteBuffer_spriteWidth;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = 1642868971
-	)
-	@Export("SpriteBuffer_spriteHeight")
-	public static int SpriteBuffer_spriteHeight;
-	@ObfuscatedName("s")
-	@Export("SpriteBuffer_spriteWidths")
-	public static int[] SpriteBuffer_spriteWidths;
-	@ObfuscatedName("w")
-	@Export("SpriteBuffer_spritePalette")
-	public static int[] SpriteBuffer_spritePalette;
+	@ObfuscatedName("k")
+	static final int[] field4697;
+	@ObfuscatedName("c")
+	static final int[] field4698;
+
+	static {
+		field4697 = new int[2048];
+		field4698 = new int[2048];
+		double var0 = 0.0030679615757712823D;
+
+		for (int var2 = 0; var2 < 2048; ++var2) {
+			field4697[var2] = (int)(65536.0D * Math.sin((double)var2 * var0));
+			field4698[var2] = (int)(65536.0D * Math.cos(var0 * (double)var2));
+		}
+
+	}
 }

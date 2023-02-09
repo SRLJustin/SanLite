@@ -4,33 +4,15 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cm")
+@ObfuscatedName("df")
 @Implements("UserComparator7")
 public class UserComparator7 extends AbstractUserComparator {
-	@ObfuscatedName("p")
+	@ObfuscatedName("ty")
 	@ObfuscatedGetter(
-		longValue = 1289611995135137433L
+		intValue = -943480781
 	)
-	public static long field1319;
-	@ObfuscatedName("hx")
-	@ObfuscatedSignature(
-		descriptor = "[Lpl;"
-	)
-	@Export("mapMarkerSprites")
-	static SpritePixels[] mapMarkerSprites;
-	@ObfuscatedName("iq")
-	@ObfuscatedGetter(
-		intValue = -427505933
-	)
-	@Export("cameraX")
-	static int cameraX;
-	@ObfuscatedName("in")
-	@ObfuscatedGetter(
-		intValue = 1941000053
-	)
-	@Export("cameraPitch")
-	static int cameraPitch;
-	@ObfuscatedName("c")
+	static int field1444;
+	@ObfuscatedName("f")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -38,10 +20,10 @@ public class UserComparator7 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lmp;Lmp;I)I",
-		garbageValue = "742897399"
+		descriptor = "(Loa;Loa;I)I",
+		garbageValue = "-743510609"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -56,17 +38,32 @@ public class UserComparator7 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("hj")
+	@ObfuscatedName("la")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1366394197"
+		descriptor = "(I)V",
+		garbageValue = "-805212170"
 	)
-	static final int method2518() {
-		if (SecureRandomFuture.clientPreferences.roofsHidden) {
-			return class20.Client_plane;
-		} else {
-			int var0 = FaceNormal.getTileHeight(cameraX, UserComparator10.cameraZ, class20.Client_plane);
-			return var0 - AbstractByteArrayCopier.cameraY < 800 && (Tiles.Tiles_renderFlags[class20.Client_plane][cameraX >> 7][UserComparator10.cameraZ >> 7] & 4) != 0 ? class20.Client_plane : 3;
+	static final void method2926() {
+		Client.field709 = Client.cycleCntr;
+	}
+
+	@ObfuscatedName("lu")
+	@ObfuscatedSignature(
+		descriptor = "(IIZI)V",
+		garbageValue = "993311164"
+	)
+	static final void method2927(int var0, int var1, boolean var2) {
+		if (Client.currentClanChannels[var0] != null) {
+			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3359()) {
+				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
+				PacketBufferNode var4 = Renderable.getPacketBufferNode(ClientPacket.field3085, Client.packetWriter.isaacCipher);
+				var4.packetBuffer.writeByte(4 + class96.stringCp1252NullTerminatedByteSize(var3.username.getName()));
+				var4.packetBuffer.writeByte(var0);
+				var4.packetBuffer.writeShort(var1);
+				var4.packetBuffer.writeBoolean(var2);
+				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName());
+				Client.packetWriter.addNode(var4);
+			}
 		}
 	}
 }

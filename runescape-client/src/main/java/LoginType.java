@@ -4,95 +4,89 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ow")
+@ObfuscatedName("qj")
 @Implements("LoginType")
 public class LoginType {
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Low;"
+		descriptor = "Lqj;"
 	)
 	@Export("oldscape")
 	public static final LoginType oldscape;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Low;"
-	)
-	static final LoginType field4397;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Low;"
-	)
-	static final LoginType field4402;
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Low;"
-	)
-	static final LoginType field4399;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Low;"
-	)
-	static final LoginType field4401;
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Low;"
-	)
-	static final LoginType field4407;
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "Low;"
-	)
-	static final LoginType field4403;
 	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Low;"
+		descriptor = "Lqj;"
 	)
-	static final LoginType field4404;
+	static final LoginType field4853;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Lqj;"
+	)
+	static final LoginType field4852;
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "Lqj;"
+	)
+	static final LoginType field4857;
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "Lqj;"
+	)
+	static final LoginType field4854;
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "Lqj;"
+	)
+	static final LoginType field4855;
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "Lqj;"
+	)
+	static final LoginType field4860;
 	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Low;"
+		descriptor = "Lqj;"
 	)
-	public static final LoginType field4405;
-	@ObfuscatedName("g")
+	static final LoginType field4856;
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "Lpa;"
+		descriptor = "Lqj;"
 	)
-	@Export("options_buttons_2Sprite")
-	static IndexedSprite options_buttons_2Sprite;
-	@ObfuscatedName("r")
+	public static final LoginType field4858;
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 1619896025
+		intValue = -194931179
 	)
-	final int field4406;
-	@ObfuscatedName("o")
-	final String field4400;
+	public final int field4859;
+	@ObfuscatedName("c")
+	final String field4850;
 
 	static {
-		oldscape = new LoginType(6, 0, "", "");
-		field4397 = new LoginType(1, 1, "", "");
-		field4402 = new LoginType(8, 2, "", "");
-		field4399 = new LoginType(7, 3, "", "");
-		field4401 = new LoginType(4, 4, "", "");
-		field4407 = new LoginType(5, 5, "", "");
-		field4403 = new LoginType(2, 6, "", "");
-		field4404 = new LoginType(0, 7, "", "");
-		field4405 = new LoginType(3, -1, "", "", true, new LoginType[]{oldscape, field4397, field4402, field4401, field4399});
+		oldscape = new LoginType(7, 0, "", "");
+		field4853 = new LoginType(2, 1, "", "");
+		field4852 = new LoginType(4, 2, "", "");
+		field4857 = new LoginType(8, 3, "", "");
+		field4854 = new LoginType(3, 4, "", "");
+		field4855 = new LoginType(5, 5, "", "");
+		field4860 = new LoginType(1, 6, "", "");
+		field4856 = new LoginType(6, 7, "", "");
+		field4858 = new LoginType(0, -1, "", "", true, new LoginType[]{oldscape, field4853, field4852, field4854, field4857});
 	}
 
 	LoginType(int var1, int var2, String var3, String var4) {
-		this.field4406 = var1;
-		this.field4400 = var4;
+		this.field4859 = var1;
+		this.field4850 = var4;
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(IILjava/lang/String;Ljava/lang/String;Z[Low;)V"
+		descriptor = "(IILjava/lang/String;Ljava/lang/String;Z[Lqj;)V"
 	)
 	LoginType(int var1, int var2, String var3, String var4, boolean var5, LoginType[] var6) {
-		this.field4406 = var1;
-		this.field4400 = var4;
+		this.field4859 = var1;
+		this.field4850 = var4;
 	}
 
 	public String toString() {
-		return this.field4400;
+		return this.field4850;
 	}
 }
