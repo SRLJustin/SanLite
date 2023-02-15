@@ -2,16 +2,16 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("jg")
+@ObfuscatedName("ke")
 @Implements("Varps")
 public class Varps {
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@Export("Varps_masks")
 	static int[] Varps_masks;
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@Export("Varps_temp")
 	public static int[] Varps_temp;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@Export("Varps_main")
 	public static int[] Varps_main;
 

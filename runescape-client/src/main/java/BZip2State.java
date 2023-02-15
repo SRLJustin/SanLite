@@ -4,167 +4,167 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pk")
+@ObfuscatedName("ri")
 @Implements("BZip2State")
 public final class BZip2State {
-	@ObfuscatedName("c")
-	final int field4513;
-	@ObfuscatedName("b")
-	final int field4481;
-	@ObfuscatedName("p")
-	final int field4479;
-	@ObfuscatedName("m")
-	final int field4480;
-	@ObfuscatedName("t")
-	final int field4502;
+	@ObfuscatedName("f")
+	final int field4948;
+	@ObfuscatedName("w")
+	final int field4946;
+	@ObfuscatedName("v")
+	final int field4947;
 	@ObfuscatedName("s")
-	final int field4482;
+	final int field4976;
+	@ObfuscatedName("z")
+	final int field4949;
 	@ObfuscatedName("j")
+	final int field4967;
+	@ObfuscatedName("i")
 	@Export("inputArray")
 	byte[] inputArray;
-	@ObfuscatedName("w")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -629862431
+		intValue = 1271568777
 	)
 	@Export("nextByte")
 	int nextByte;
-	@ObfuscatedName("n")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = 1582268749
+		intValue = -175638631
 	)
 	@Export("nextBit_unused")
 	int nextBit_unused;
-	@ObfuscatedName("r")
+	@ObfuscatedName("k")
 	@Export("outputArray")
 	byte[] outputArray;
-	@ObfuscatedName("o")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1671473769
+		intValue = -1979788995
 	)
 	@Export("next_out")
 	int next_out;
-	@ObfuscatedName("v")
+	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = -428614875
+		intValue = 1615110047
 	)
 	@Export("outputLength")
 	int outputLength;
-	@ObfuscatedName("d")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = -982561829
+		intValue = -1445321817
 	)
-	int field4489;
-	@ObfuscatedName("h")
+	int field4957;
+	@ObfuscatedName("m")
 	@Export("out_char")
 	byte out_char;
-	@ObfuscatedName("g")
+	@ObfuscatedName("t")
 	@ObfuscatedGetter(
-		intValue = -1975911845
+		intValue = -562478711
 	)
 	@Export("su_rNToGo")
 	int su_rNToGo;
-	@ObfuscatedName("e")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -1278928369
+		intValue = 520529197
 	)
 	@Export("bsBuff")
 	int bsBuff;
-	@ObfuscatedName("a")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -1731678281
+		intValue = 1266025893
 	)
 	@Export("bsLive")
 	int bsLive;
-	@ObfuscatedName("u")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -447816704
+		intValue = -1685214208
 	)
 	@Export("blockSize100k")
 	int blockSize100k;
-	@ObfuscatedName("k")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -540078153
+		intValue = 301132855
 	)
 	@Export("originalPointer")
 	int originalPointer;
-	@ObfuscatedName("f")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = -235028951
+		intValue = 1436423459
 	)
-	int field4484;
-	@ObfuscatedName("l")
+	int field4964;
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = 85714323
+		intValue = -1684073131
 	)
 	@Export("su_ch2")
 	int su_ch2;
 	@ObfuscatedName("q")
 	@Export("unzftab")
 	int[] unzftab;
-	@ObfuscatedName("x")
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = -1684289539
+		intValue = 310629595
 	)
 	@Export("nblocks_used")
 	int nblocks_used;
-	@ObfuscatedName("z")
+	@ObfuscatedName("e")
 	@Export("cftab")
 	int[] cftab;
 	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = -620890433
+		intValue = 941465473
 	)
 	@Export("nInUse")
 	int nInUse;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("af")
 	@Export("inUse")
 	boolean[] inUse;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aa")
 	@Export("inUse16")
 	boolean[] inUse16;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ai")
 	@Export("seqToUnseq")
 	byte[] seqToUnseq;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@Export("ll8")
 	byte[] ll8;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aw")
 	@Export("getAndMoveToFrontDecode_yy")
 	int[] getAndMoveToFrontDecode_yy;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ar")
 	@Export("selector")
 	byte[] selector;
-	@ObfuscatedName("az")
+	@ObfuscatedName("al")
 	@Export("selectorMtf")
 	byte[] selectorMtf;
-	@ObfuscatedName("au")
+	@ObfuscatedName("at")
 	@Export("temp_charArray2d")
 	byte[][] temp_charArray2d;
-	@ObfuscatedName("av")
+	@ObfuscatedName("aj")
 	@Export("limit")
 	int[][] limit;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@Export("base")
 	int[][] base;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("az")
 	@Export("perm")
 	int[][] perm;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ap")
 	@Export("minLens")
 	int[] minLens;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = 1618540435
+		intValue = 1984167077
 	)
-	int field4478;
+	int field4982;
 
 	BZip2State() {
-		this.field4513 = 4096;
-		this.field4481 = 16;
-		this.field4479 = 258;
-		this.field4480 = 6;
-		this.field4502 = 50;
-		this.field4482 = 18002;
+		this.field4948 = 4096;
+		this.field4946 = 16;
+		this.field4947 = 258;
+		this.field4976 = 6;
+		this.field4949 = 50;
+		this.field4967 = 18002;
 		this.nextByte = 0;
 		this.next_out = 0;
 		this.unzftab = new int[256];
@@ -183,18 +183,33 @@ public final class BZip2State {
 		this.minLens = new int[6];
 	}
 
-	@ObfuscatedName("js")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-1894772144"
+		descriptor = "(Lln;III)Lrs;",
+		garbageValue = "-126642203"
 	)
-	static boolean method7571(int var0) {
-		for (int var1 = 0; var1 < Client.field701; ++var1) {
-			if (Client.field522[var1] == var0) {
-				return true;
-			}
-		}
+	@Export("SpriteBuffer_getSprite")
+	public static SpritePixels SpriteBuffer_getSprite(AbstractArchive var0, int var1, int var2) {
+		if (!Buffer.SpriteBuffer_loadSpritesFromArchive(var0, var1, var2)) {
+			return null;
+		} else {
+			SpritePixels var4 = new SpritePixels();
+			var4.width = class488.SpriteBuffer_spriteWidth;
+			var4.height = class488.SpriteBuffer_spriteHeight;
+			var4.xOffset = class488.SpriteBuffer_xOffsets[0];
+			var4.yOffset = ApproximateRouteStrategy.SpriteBuffer_yOffsets[0];
+			var4.subWidth = FriendsList.SpriteBuffer_spriteWidths[0];
+			var4.subHeight = class132.SpriteBuffer_spriteHeights[0];
+			int var5 = var4.subWidth * var4.subHeight;
+			byte[] var6 = class140.SpriteBuffer_pixels[0];
+			var4.pixels = new int[var5];
 
-		return false;
+			for (int var7 = 0; var7 < var5; ++var7) {
+				var4.pixels[var7] = class100.SpriteBuffer_spritePalette[var6[var7] & 255];
+			}
+
+			class100.method2724();
+			return var4;
+		}
 	}
 }

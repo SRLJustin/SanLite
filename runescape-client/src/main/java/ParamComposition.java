@@ -3,42 +3,41 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("fr")
+@ObfuscatedName("gy")
 @Implements("ParamComposition")
 public class ParamComposition extends DualNode {
-	@ObfuscatedName("ur")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lmy;"
-	)
-	@Export("masterDisk")
-	static ArchiveDisk masterDisk;
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Lln;"
 	)
 	@Export("ParamDefinition_archive")
-	static AbstractArchive ParamDefinition_archive;
-	@ObfuscatedName("b")
+	public static AbstractArchive ParamDefinition_archive;
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lja;"
 	)
 	@Export("ParamComposition_cached")
 	public static EvictingDualNodeHashTable ParamComposition_cached;
-	@ObfuscatedName("p")
+	@ObfuscatedName("hh")
+	@ObfuscatedGetter(
+		intValue = -1984383565
+	)
+	@Export("baseX")
+	static int baseX;
+	@ObfuscatedName("v")
 	@Export("type")
 	char type;
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -871462947
+		intValue = 1399796535
 	)
 	@Export("defaultInt")
 	public int defaultInt;
-	@ObfuscatedName("t")
+	@ObfuscatedName("z")
 	@Export("defaultStr")
 	public String defaultStr;
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@Export("autoDisable")
 	boolean autoDisable;
 
@@ -50,19 +49,19 @@ public class ParamComposition extends DualNode {
 		this.autoDisable = true;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "630650762"
+		garbageValue = "-406747783"
 	)
 	@Export("postDecode")
 	void postDecode() {
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "-46"
+		descriptor = "(Lrd;I)V",
+		garbageValue = "-540226117"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -76,15 +75,31 @@ public class ParamComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;II)V",
-		garbageValue = "-1961413058"
+		descriptor = "(Lrd;IB)V",
+		garbageValue = "76"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) {
-			this.type = class279.method5406(var1.readByte());
+			byte var4 = var1.readByte();
+			int var5 = var4 & 255;
+			if (var5 == 0) {
+				throw new IllegalArgumentException("" + Integer.toString(var5, 16));
+			}
+
+			if (var5 >= 128 && var5 < 160) {
+				char var6 = class362.cp1252AsciiExtension[var5 - 128];
+				if (var6 == 0) {
+					var6 = '?';
+				}
+
+				var5 = var6;
+			}
+
+			char var3 = (char)var5;
+			this.type = var3;
 		} else if (var2 == 2) {
 			this.defaultInt = var1.readInt();
 		} else if (var2 == 4) {
@@ -95,99 +110,97 @@ public class ParamComposition extends DualNode {
 
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "404236453"
+		descriptor = "(B)Z",
+		garbageValue = "1"
 	)
 	@Export("isString")
 	public boolean isString() {
 		return this.type == 's';
 	}
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "-893226045"
+		descriptor = "(IIII)J",
+		garbageValue = "2043821642"
 	)
-	static int method3397(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.SOUND_SYNTH) {
-			IsaacCipher.Interpreter_intStackSize -= 3;
-			LoginScreenAnimation.queueSoundEffect(Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize], Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1], Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 2]);
-			return 1;
-		} else if (var0 == ScriptOpcodes.SOUND_SONG) {
-			class18.playSong(Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize]);
-			return 1;
-		} else if (var0 == ScriptOpcodes.SOUND_JINGLE) {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			class315.method5822(Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize], Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1]);
-			return 1;
-		} else {
-			int var3;
-			int var4;
-			if (var0 != 3209 && var0 != 3181 && var0 != 3203 && var0 != 3205 && var0 != 3207) {
-				if (var0 != 3210 && var0 != 3182 && var0 != 3204 && var0 != 3206 && var0 != 3208) {
-					return var0 == 3211 ? 1 : 2;
+	static long method3840(int var0, int var1, int var2) {
+		return (long)(var2 << 16 | var0 << 8 | var1);
+	}
+
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "(IZI)Ljava/lang/String;",
+		garbageValue = "836612090"
+	)
+	@Export("intToString")
+	public static String intToString(int var0, boolean var1) {
+		return var1 && var0 >= 0 ? BuddyRankComparator.method2965(var0, 10, var1) : Integer.toString(var0);
+	}
+
+	@ObfuscatedName("b")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
+		garbageValue = "1155689918"
+	)
+	public static String method3842(String var0) {
+		int var1 = var0.length();
+		char[] var2 = new char[var1];
+		byte var3 = 2;
+
+		for (int var4 = 0; var4 < var1; ++var4) {
+			char var5 = var0.charAt(var4);
+			if (var3 == 0) {
+				var5 = Character.toLowerCase(var5);
+			} else if (var3 == 2 || Character.isUpperCase(var5)) {
+				var5 = class302.method5863(var5);
+			}
+
+			if (Character.isLetter(var5)) {
+				var3 = 0;
+			} else if (var5 != '.' && var5 != '?' && var5 != '!') {
+				if (Character.isSpaceChar(var5)) {
+					if (var3 != 2) {
+						var3 = 1;
+					}
 				} else {
-					var3 = 0;
-					var4 = 0;
-					if (var0 == 3210) {
-						var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-					} else if (var0 == 3182) {
-						var3 = 6;
-					} else if (var0 == 3204) {
-						var3 = 7;
-					} else if (var0 == 3206) {
-						var3 = 8;
-					} else if (var0 == 3208) {
-						var3 = 9;
-					}
-
-					if (var3 == 6) {
-						float var5 = 200.0F * ((float)SecureRandomFuture.clientPreferences.brightness - 0.5F);
-						var4 = 100 - Math.round(var5);
-					} else if (var3 == 7) {
-						var4 = Math.round((float)SecureRandomFuture.clientPreferences.musicVolume / 2.55F);
-					} else if (var3 == 8) {
-						var4 = Math.round((float)SecureRandomFuture.clientPreferences.soundEffectsVolume / 1.27F);
-					} else if (var3 == 9) {
-						var4 = Math.round((float)SecureRandomFuture.clientPreferences.areaSoundEffectsVolume / 1.27F);
-					}
-
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var4;
-					return 1;
+					var3 = 1;
 				}
 			} else {
-				var3 = 0;
-				var4 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				if (var0 == 3209) {
-					var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				} else if (var0 == 3181) {
-					var3 = 6;
-				} else if (var0 == 3203) {
-					var3 = 7;
-				} else if (var0 == 3205) {
-					var3 = 8;
-				} else if (var0 == 3207) {
-					var3 = 9;
-				}
-
-				if (var3 == 6) {
-					var4 = 100 - Math.min(Math.max(var4, 0), 100);
-					InterfaceParent.method2142((double)(0.5F + (float)var4 / 200.0F));
-				} else if (var3 == 7) {
-					var4 = Math.min(Math.max(var4, 0), 100);
-					Varcs.method2426(Math.round((float)var4 * 2.55F));
-				} else if (var3 == 8) {
-					var4 = Math.min(Math.max(var4, 0), 100);
-					class20.updateSoundEffectVolume(Math.round((float)var4 * 1.27F));
-				} else if (var3 == 9) {
-					var4 = Math.min(Math.max(var4, 0), 100);
-					Players.method2383(Math.round(1.27F * (float)var4));
-				}
-
-				return 1;
+				var3 = 2;
 			}
+
+			var2[var4] = var5;
 		}
+
+		return new String(var2);
+	}
+
+	@ObfuscatedName("jx")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIII)V",
+		garbageValue = "-366230260"
+	)
+	@Export("drawScrollBar")
+	static final void drawScrollBar(int var0, int var1, int var2, int var3, int var4) {
+		InvDefinition.scrollBarSprites[0].drawAt(var0, var1);
+		InvDefinition.scrollBarSprites[1].drawAt(var0, var3 + var1 - 16);
+		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1 + 16, 16, var3 - 32, Client.field575);
+		int var5 = var3 * (var3 - 32) / var4;
+		if (var5 < 8) {
+			var5 = 8;
+		}
+
+		int var6 = (var3 - 32 - var5) * var2 / (var4 - var3);
+		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var6 + var1 + 16, 16, var5, Client.field576);
+		Rasterizer2D.method8990(var0, var6 + var1 + 16, var5, Client.field636);
+		Rasterizer2D.method8990(var0 + 1, var6 + var1 + 16, var5, Client.field636);
+		Rasterizer2D.method9014(var0, var6 + var1 + 16, 16, Client.field636);
+		Rasterizer2D.method9014(var0, var6 + var1 + 17, 16, Client.field636);
+		Rasterizer2D.method8990(var0 + 15, var6 + var1 + 16, var5, Client.field656);
+		Rasterizer2D.method8990(var0 + 14, var6 + var1 + 17, var5 - 1, Client.field656);
+		Rasterizer2D.method9014(var0, var6 + var5 + var1 + 15, 16, Client.field656);
+		Rasterizer2D.method9014(var0 + 1, var5 + var6 + var1 + 14, 15, Client.field656);
 	}
 }

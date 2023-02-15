@@ -1,50 +1,49 @@
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mr")
+@ObfuscatedName("ox")
 @Implements("BufferedSource")
 public class BufferedSource implements Runnable {
-	@ObfuscatedName("u")
-	@Export("cacheSubPaths")
-	public static String[] cacheSubPaths;
-	@ObfuscatedName("bv")
-	@Export("otp")
-	static String otp;
-	@ObfuscatedName("c")
+	@ObfuscatedName("hn")
+	@ObfuscatedSignature(
+		descriptor = "Lff;"
+	)
+	@Export("socketTask")
+	static Task socketTask;
+	@ObfuscatedName("f")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@Export("inputStream")
 	InputStream inputStream;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -1854638595
+		intValue = -1210810773
 	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@Export("buffer")
 	byte[] buffer;
-	@ObfuscatedName("t")
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = 1353886439
+		intValue = -1989146679
 	)
 	@Export("position")
 	int position;
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 980101141
+		intValue = 1590838683
 	)
 	@Export("limit")
 	int limit;
-	@ObfuscatedName("j")
+	@ObfuscatedName("i")
 	@Export("exception")
 	IOException exception;
 
@@ -59,10 +58,10 @@ public class BufferedSource implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "1211615101"
+		garbageValue = "2119015398"
 	)
 	@Export("isAvailable")
 	boolean isAvailable(int var1) throws IOException {
@@ -93,10 +92,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-146970254"
+		garbageValue = "-2130271953"
 	)
 	@Export("available")
 	int available() throws IOException {
@@ -117,10 +116,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "52"
+		garbageValue = "-114"
 	)
 	@Export("readUnsignedByte")
 	int readUnsignedByte() throws IOException {
@@ -140,10 +139,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "([BIIB)I",
-		garbageValue = "126"
+		descriptor = "([BIII)I",
+		garbageValue = "583878445"
 	)
 	@Export("read")
 	int read(byte[] var1, int var2, int var3) throws IOException {
@@ -181,10 +180,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1858620597"
+		descriptor = "(S)V",
+		garbageValue = "-3422"
 	)
 	@Export("close")
 	void close() {
@@ -251,153 +250,96 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("jh")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Llf;II)Liw;",
-		garbageValue = "821161285"
+		descriptor = "(Lcl;IIII)V",
+		garbageValue = "-405303371"
 	)
-	public static PacketBufferNode method6527(int var0, String var1, Language var2, int var3) {
-		PacketBufferNode var4 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2897, Client.packetWriter.isaacCipher);
-		var4.packetBuffer.writeByte(0);
-		int var5 = var4.packetBuffer.offset;
-		var4.packetBuffer.writeByte(var0);
-		String var6 = var1.toLowerCase();
-		byte var7 = 0;
-		if (var6.startsWith("yellow:")) {
-			var7 = 0;
-			var1 = var1.substring("yellow:".length());
-		} else if (var6.startsWith("red:")) {
-			var7 = 1;
-			var1 = var1.substring("red:".length());
-		} else if (var6.startsWith("green:")) {
-			var7 = 2;
-			var1 = var1.substring("green:".length());
-		} else if (var6.startsWith("cyan:")) {
-			var7 = 3;
-			var1 = var1.substring("cyan:".length());
-		} else if (var6.startsWith("purple:")) {
-			var7 = 4;
-			var1 = var1.substring("purple:".length());
-		} else if (var6.startsWith("white:")) {
-			var7 = 5;
-			var1 = var1.substring("white:".length());
-		} else if (var6.startsWith("flash1:")) {
-			var7 = 6;
-			var1 = var1.substring("flash1:".length());
-		} else if (var6.startsWith("flash2:")) {
-			var7 = 7;
-			var1 = var1.substring("flash2:".length());
-		} else if (var6.startsWith("flash3:")) {
-			var7 = 8;
-			var1 = var1.substring("flash3:".length());
-		} else if (var6.startsWith("glow1:")) {
-			var7 = 9;
-			var1 = var1.substring("glow1:".length());
-		} else if (var6.startsWith("glow2:")) {
-			var7 = 10;
-			var1 = var1.substring("glow2:".length());
-		} else if (var6.startsWith("glow3:")) {
-			var7 = 11;
-			var1 = var1.substring("glow3:".length());
-		} else if (var2 != Language.Language_EN) {
-			if (var6.startsWith("yellow:")) {
-				var7 = 0;
-				var1 = var1.substring("yellow:".length());
-			} else if (var6.startsWith("red:")) {
-				var7 = 1;
-				var1 = var1.substring("red:".length());
-			} else if (var6.startsWith("green:")) {
-				var7 = 2;
-				var1 = var1.substring("green:".length());
-			} else if (var6.startsWith("cyan:")) {
-				var7 = 3;
-				var1 = var1.substring("cyan:".length());
-			} else if (var6.startsWith("purple:")) {
-				var7 = 4;
-				var1 = var1.substring("purple:".length());
-			} else if (var6.startsWith("white:")) {
-				var7 = 5;
-				var1 = var1.substring("white:".length());
-			} else if (var6.startsWith("flash1:")) {
-				var7 = 6;
-				var1 = var1.substring("flash1:".length());
-			} else if (var6.startsWith("flash2:")) {
-				var7 = 7;
-				var1 = var1.substring("flash2:".length());
-			} else if (var6.startsWith("flash3:")) {
-				var7 = 8;
-				var1 = var1.substring("flash3:".length());
-			} else if (var6.startsWith("glow1:")) {
-				var7 = 9;
-				var1 = var1.substring("glow1:".length());
-			} else if (var6.startsWith("glow2:")) {
-				var7 = 10;
-				var1 = var1.substring("glow2:".length());
-			} else if (var6.startsWith("glow3:")) {
-				var7 = 11;
-				var1 = var1.substring("glow3:".length());
+	@Export("addPlayerToMenu")
+	static final void addPlayerToMenu(Player var0, int var1, int var2, int var3) {
+		if (class387.localPlayer != var0) {
+			if (Client.menuOptionsCount < 400) {
+				String var4;
+				int var7;
+				if (var0.skillLevel == 0) {
+					String var5 = var0.actions[0] + var0.username + var0.actions[1];
+					var7 = var0.combatLevel;
+					int var8 = class387.localPlayer.combatLevel;
+					int var9 = var8 - var7;
+					String var6;
+					if (var9 < -9) {
+						var6 = class149.colorStartTag(16711680);
+					} else if (var9 < -6) {
+						var6 = class149.colorStartTag(16723968);
+					} else if (var9 < -3) {
+						var6 = class149.colorStartTag(16740352);
+					} else if (var9 < 0) {
+						var6 = class149.colorStartTag(16756736);
+					} else if (var9 > 9) {
+						var6 = class149.colorStartTag(65280);
+					} else if (var9 > 6) {
+						var6 = class149.colorStartTag(4259584);
+					} else if (var9 > 3) {
+						var6 = class149.colorStartTag(8453888);
+					} else if (var9 > 0) {
+						var6 = class149.colorStartTag(12648192);
+					} else {
+						var6 = class149.colorStartTag(16776960);
+					}
+
+					var4 = var5 + var6 + " " + " (" + "level-" + var0.combatLevel + ")" + var0.actions[2];
+				} else {
+					var4 = var0.actions[0] + var0.username + var0.actions[1] + " " + " (" + "skill-" + var0.skillLevel + ")" + var0.actions[2];
+				}
+
+				int var10;
+				if (Client.isItemSelected == 1) {
+					WorldMapManager.insertMenuItemNoShift("Use", Client.selectedItemName + " " + "->" + " " + class149.colorStartTag(16777215) + var4, 14, var1, var2, var3);
+				} else if (Client.isSpellSelected) {
+					if ((class149.selectedSpellFlags & 8) == 8) {
+						WorldMapManager.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + class149.colorStartTag(16777215) + var4, 15, var1, var2, var3);
+					}
+				} else {
+					for (var10 = 7; var10 >= 0; --var10) {
+						if (Client.playerMenuActions[var10] != null) {
+							short var11 = 0;
+							if (Client.playerMenuActions[var10].equalsIgnoreCase("Attack")) {
+								if (Client.playerAttackOption == AttackOption.AttackOption_hidden) {
+									continue;
+								}
+
+								if (Client.playerAttackOption == AttackOption.AttackOption_alwaysRightClick || Client.playerAttackOption == AttackOption.AttackOption_dependsOnCombatLevels && var0.combatLevel > class387.localPlayer.combatLevel) {
+									var11 = 2000;
+								}
+
+								if (class387.localPlayer.team != 0 && var0.team != 0) {
+									if (var0.team == class387.localPlayer.team) {
+										var11 = 2000;
+									} else {
+										var11 = 0;
+									}
+								} else if (Client.playerAttackOption == AttackOption.field1318 && var0.isClanMember()) {
+									var11 = 2000;
+								}
+							} else if (Client.playerOptionsPriorities[var10]) {
+								var11 = 2000;
+							}
+
+							boolean var12 = false;
+							var7 = Client.playerMenuOpcodes[var10] + var11;
+							WorldMapManager.insertMenuItemNoShift(Client.playerMenuActions[var10], class149.colorStartTag(16777215) + var4, var7, var1, var2, var3);
+						}
+					}
+				}
+
+				for (var10 = 0; var10 < Client.menuOptionsCount; ++var10) {
+					if (Client.menuOpcodes[var10] == 23) {
+						Client.menuTargets[var10] = class149.colorStartTag(16777215) + var4;
+						break;
+					}
+				}
+
 			}
 		}
-
-		var6 = var1.toLowerCase();
-		byte var8 = 0;
-		if (var6.startsWith("wave:")) {
-			var8 = 1;
-			var1 = var1.substring("wave:".length());
-		} else if (var6.startsWith("wave2:")) {
-			var8 = 2;
-			var1 = var1.substring("wave2:".length());
-		} else if (var6.startsWith("shake:")) {
-			var8 = 3;
-			var1 = var1.substring("shake:".length());
-		} else if (var6.startsWith("scroll:")) {
-			var8 = 4;
-			var1 = var1.substring("scroll:".length());
-		} else if (var6.startsWith("slide:")) {
-			var8 = 5;
-			var1 = var1.substring("slide:".length());
-		} else if (var2 != Language.Language_EN) {
-			if (var6.startsWith("wave:")) {
-				var8 = 1;
-				var1 = var1.substring("wave:".length());
-			} else if (var6.startsWith("wave2:")) {
-				var8 = 2;
-				var1 = var1.substring("wave2:".length());
-			} else if (var6.startsWith("shake:")) {
-				var8 = 3;
-				var1 = var1.substring("shake:".length());
-			} else if (var6.startsWith("scroll:")) {
-				var8 = 4;
-				var1 = var1.substring("scroll:".length());
-			} else if (var6.startsWith("slide:")) {
-				var8 = 5;
-				var1 = var1.substring("slide:".length());
-			}
-		}
-
-		var4.packetBuffer.writeByte(var7);
-		var4.packetBuffer.writeByte(var8);
-		class370.method6755(var4.packetBuffer, var1);
-		if (var0 == class282.field3379.rsOrdinal()) {
-			var4.packetBuffer.writeByte(var3);
-		}
-
-		var4.packetBuffer.method7357(var4.packetBuffer.offset - var5);
-		return var4;
-	}
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "843929154"
-	)
-	static void method6516() {
-		Iterator var0 = Messages.Messages_hashTable.iterator();
-
-		while (var0.hasNext()) {
-			Message var1 = (Message)var0.next();
-			var1.clearIsFromIgnored();
-		}
-
 	}
 }

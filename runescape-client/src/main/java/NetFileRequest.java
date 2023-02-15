@@ -3,68 +3,134 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("kx")
+@ObfuscatedName("ld")
 @Implements("NetFileRequest")
 public class NetFileRequest extends DualNode {
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
+		descriptor = "Llm;"
 	)
 	@Export("archive")
 	Archive archive;
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -341474055
+		intValue = 279436127
 	)
 	@Export("crc")
 	int crc;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@Export("padding")
 	byte padding;
 
 	NetFileRequest() {
 	}
 
-	@ObfuscatedName("d")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZB)I",
-		garbageValue = "-77"
+		descriptor = "([BIII)Z",
+		garbageValue = "-2058830969"
 	)
-	static int method5588(int var0, Script var1, boolean var2) {
-		Widget var3 = var2 ? WorldMapArea.scriptDotWidget : Messages.scriptActiveWidget;
-		if (var0 == ScriptOpcodes.CC_GETX) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.x;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETY) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.y;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETWIDTH) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.width;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETHEIGHT) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.height;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETHIDE) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.isHidden ? 1 : 0;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETLAYER) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3.parentId;
-			return 1;
-		} else {
-			return 2;
+	static final boolean method6516(byte[] var0, int var1, int var2) {
+		boolean var3 = true;
+		Buffer var4 = new Buffer(var0);
+		int var5 = -1;
+
+		label69:
+		while (true) {
+			int var6 = var4.method8809();
+			if (var6 == 0) {
+				return var3;
+			}
+
+			var5 += var6;
+			int var7 = 0;
+			boolean var8 = false;
+
+			while (true) {
+				int var9;
+				while (!var8) {
+					var9 = var4.readUShortSmart();
+					if (var9 == 0) {
+						continue label69;
+					}
+
+					var7 += var9 - 1;
+					int var10 = var7 & 63;
+					int var11 = var7 >> 6 & 63;
+					int var12 = var4.readUnsignedByte() >> 2;
+					int var13 = var11 + var1;
+					int var14 = var10 + var2;
+					if (var13 > 0 && var14 > 0 && var13 < 103 && var14 < 103) {
+						ObjectComposition var15 = class463.getObjectDefinition(var5);
+						if (var12 != 22 || !Client.isLowDetail || var15.int1 != 0 || var15.interactType == 1 || var15.boolean2) {
+							if (!var15.needsModelFiles()) {
+								++Client.field567;
+								var3 = false;
+							}
+
+							var8 = true;
+						}
+					}
+				}
+
+				var9 = var4.readUShortSmart();
+				if (var9 == 0) {
+					break;
+				}
+
+				var4.readUnsignedByte();
+			}
 		}
 	}
 
-	@ObfuscatedName("fv")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "(Lkz;Ljava/lang/String;I)V",
-		garbageValue = "-1653414496"
+		descriptor = "([BIILhn;[Lgv;B)V",
+		garbageValue = "-47"
 	)
-	static void method5587(Archive var0, String var1) {
-		ArchiveLoader var2 = new ArchiveLoader(var0, var1);
-		Client.archiveLoaders.add(var2);
-		Client.field753 += var2.groupCount;
+	static final void method6517(byte[] var0, int var1, int var2, Scene var3, CollisionMap[] var4) {
+		Buffer var5 = new Buffer(var0);
+		int var6 = -1;
+
+		while (true) {
+			int var7 = var5.method8809();
+			if (var7 == 0) {
+				return;
+			}
+
+			var6 += var7;
+			int var8 = 0;
+
+			while (true) {
+				int var9 = var5.readUShortSmart();
+				if (var9 == 0) {
+					break;
+				}
+
+				var8 += var9 - 1;
+				int var10 = var8 & 63;
+				int var11 = var8 >> 6 & 63;
+				int var12 = var8 >> 12;
+				int var13 = var5.readUnsignedByte();
+				int var14 = var13 >> 2;
+				int var15 = var13 & 3;
+				int var16 = var11 + var1;
+				int var17 = var10 + var2;
+				if (var16 > 0 && var17 > 0 && var16 < 103 && var17 < 103) {
+					int var18 = var12;
+					if ((Tiles.Tiles_renderFlags[1][var16][var17] & 2) == 2) {
+						var18 = var12 - 1;
+					}
+
+					CollisionMap var19 = null;
+					if (var18 >= 0) {
+						var19 = var4[var18];
+					}
+
+					NameableContainer.method7728(var12, var16, var17, var6, var15, var14, var3, var19);
+				}
+			}
+		}
 	}
 }

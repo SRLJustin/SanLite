@@ -4,99 +4,85 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bb")
+@ObfuscatedName("bs")
 @Implements("MenuAction")
 public class MenuAction {
-	@ObfuscatedName("c")
+	@ObfuscatedName("hu")
+	@ObfuscatedSignature(
+		descriptor = "Lnv;"
+	)
+	@Export("fontPlain12")
+	static Font fontPlain12;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 120335157
+		intValue = 1800513627
 	)
 	@Export("param0")
 	int param0;
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 175747701
+		intValue = 1545642217
 	)
 	@Export("param1")
 	int param1;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1628688501
+		intValue = 612439209
 	)
 	@Export("opcode")
 	int opcode;
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 1421448927
+		intValue = -123568167
 	)
 	@Export("identifier")
 	int identifier;
-	@ObfuscatedName("t")
-	@Export("action")
-	String action;
+	@ObfuscatedName("z")
+	@ObfuscatedGetter(
+		intValue = 280536773
+	)
+	int field890;
+	@ObfuscatedName("j")
+	String field893;
+	@ObfuscatedName("i")
+	String field892;
 
 	MenuAction() {
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(CI)Z",
+		garbageValue = "-1320413975"
+	)
+	public static final boolean method2084(char var0) {
+		return var0 == 160 || var0 == ' ' || var0 == '_' || var0 == '-';
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "42"
+	)
+	@Export("Widget_unpackTargetMask")
+	public static int Widget_unpackTargetMask(int var0) {
+		return var0 >> 11 & 63;
+	}
+
+	@ObfuscatedName("gn")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1427914294"
+		garbageValue = "-358398577"
 	)
-	public static void method1961() {
-		synchronized(MouseHandler.MouseHandler_instance) {
-			MouseHandler.MouseHandler_currentButton = MouseHandler.MouseHandler_currentButtonVolatile;
-			MouseHandler.MouseHandler_x = MouseHandler.MouseHandler_xVolatile;
-			MouseHandler.MouseHandler_y = MouseHandler.MouseHandler_yVolatile;
-			MouseHandler.MouseHandler_millis = MouseHandler.MouseHandler_lastMovedVolatile;
-			MouseHandler.MouseHandler_lastButton = MouseHandler.MouseHandler_lastButtonVolatile;
-			MouseHandler.MouseHandler_lastPressedX = MouseHandler.MouseHandler_lastPressedXVolatile;
-			MouseHandler.MouseHandler_lastPressedY = MouseHandler.MouseHandler_lastPressedYVolatile;
-			MouseHandler.MouseHandler_lastPressedTimeMillis = MouseHandler.MouseHandler_lastPressedTimeMillisVolatile;
-			MouseHandler.MouseHandler_lastButtonVolatile = 0;
-		}
-	}
+	static final void method2082() {
+		int var0 = Players.Players_count;
+		int[] var1 = Players.Players_indices;
 
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(IB)J",
-		garbageValue = "33"
-	)
-	public static long method1960(int var0) {
-		return ViewportMouse.ViewportMouse_entityTags[var0];
-	}
-
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)V",
-		garbageValue = "-1808275608"
-	)
-	static final void method1959(int var0, int var1, int var2) {
-		int var3;
-		for (var3 = 0; var3 < 8; ++var3) {
-			for (int var4 = 0; var4 < 8; ++var4) {
-				Tiles.Tiles_heights[var0][var3 + var1][var4 + var2] = 0;
+		for (int var2 = 0; var2 < var0; ++var2) {
+			Player var3 = Client.players[var1[var2]];
+			if (var3 != null) {
+				PcmPlayer.updateActorSequence(var3, 1);
 			}
-		}
-
-		if (var1 > 0) {
-			for (var3 = 1; var3 < 8; ++var3) {
-				Tiles.Tiles_heights[var0][var1][var3 + var2] = Tiles.Tiles_heights[var0][var1 - 1][var3 + var2];
-			}
-		}
-
-		if (var2 > 0) {
-			for (var3 = 1; var3 < 8; ++var3) {
-				Tiles.Tiles_heights[var0][var3 + var1][var2] = Tiles.Tiles_heights[var0][var3 + var1][var2 - 1];
-			}
-		}
-
-		if (var1 > 0 && Tiles.Tiles_heights[var0][var1 - 1][var2] != 0) {
-			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1 - 1][var2];
-		} else if (var2 > 0 && Tiles.Tiles_heights[var0][var1][var2 - 1] != 0) {
-			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1][var2 - 1];
-		} else if (var1 > 0 && var2 > 0 && Tiles.Tiles_heights[var0][var1 - 1][var2 - 1] != 0) {
-			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1 - 1][var2 - 1];
 		}
 
 	}

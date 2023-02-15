@@ -1,67 +1,176 @@
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("a")
+@ObfuscatedName("p")
 public class class16 implements ThreadFactory {
-	@ObfuscatedName("c")
-	final ThreadGroup field87;
-	@ObfuscatedName("b")
+	@ObfuscatedName("ui")
+	@ObfuscatedGetter(
+		intValue = -57356017
+	)
+	static int field88;
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "Lln;"
+	)
+	@Export("SequenceDefinition_skeletonsArchive")
+	static AbstractArchive SequenceDefinition_skeletonsArchive;
+	@ObfuscatedName("f")
+	final ThreadGroup field90;
+	@ObfuscatedName("w")
 	final AtomicInteger field86;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lg;"
+		descriptor = "Lt;"
 	)
 	final class14 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lg;)V"
+		descriptor = "(Lt;)V"
 	)
 	class16(class14 var1) {
 		this.this$0 = var1;
 		this.field86 = new AtomicInteger(1);
 		SecurityManager var2 = System.getSecurityManager();
-		this.field87 = var2 != null ? var2.getThreadGroup() : Thread.currentThread().getThreadGroup();
+		this.field90 = var2 != null ? var2.getThreadGroup() : Thread.currentThread().getThreadGroup();
 	}
 
 	public Thread newThread(Runnable var1) {
-		Thread var2 = new Thread(this.field87, var1, this.this$0.field79 + "-rest-request-" + this.field86.getAndIncrement(), 0L);
+		Thread var2 = new Thread(this.field90, var1, this.this$0.field73 + "-rest-request-" + this.field86.getAndIncrement(), 0L);
 		var2.setDaemon(true);
 		var2.setPriority(5);
 		return var2;
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "(Ljm;II)V",
-		garbageValue = "-158278735"
+		descriptor = "(II)Z",
+		garbageValue = "370941901"
 	)
-	@Export("Widget_setKeyIgnoreHeld")
-	static final void Widget_setKeyIgnoreHeld(Widget var0, int var1) {
-		if (var0.field3300 == null) {
-			throw new RuntimeException();
-		} else {
-			if (var0.field3368 == null) {
-				var0.field3368 = new int[var0.field3300.length];
-			}
-
-			var0.field3368[var1] = Integer.MAX_VALUE;
-		}
+	public static boolean method216(int var0) {
+		return (var0 >> 29 & 1) != 0;
 	}
 
-	@ObfuscatedName("ko")
+	@ObfuscatedName("y")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "74"
+		descriptor = "(B)I",
+		garbageValue = "33"
 	)
-	static void method239(int var0) {
-		class87.tempMenuAction = new MenuAction();
-		class87.tempMenuAction.param0 = Client.menuArguments1[var0];
-		class87.tempMenuAction.param1 = Client.menuArguments2[var0];
-		class87.tempMenuAction.opcode = Client.menuOpcodes[var0];
-		class87.tempMenuAction.identifier = Client.menuIdentifiers[var0];
-		class87.tempMenuAction.action = Client.menuActions[var0];
+	static int method218() {
+		return Login.loginIndex;
+	}
+
+	@ObfuscatedName("jl")
+	@ObfuscatedSignature(
+		descriptor = "(IIIILjava/lang/String;I)V",
+		garbageValue = "-1439250814"
+	)
+	@Export("widgetDefaultMenuAction")
+	static void widgetDefaultMenuAction(int var0, int var1, int var2, int var3, String var4) {
+		Widget var5 = class135.getWidgetChild(var1, var2);
+		if (var5 != null) {
+			if (var5.onOp != null) {
+				ScriptEvent var6 = new ScriptEvent();
+				var6.widget = var5;
+				var6.opIndex = var0;
+				var6.targetName = var4;
+				var6.args = var5.onOp;
+				WorldMapAreaData.runScriptEvent(var6);
+			}
+
+			boolean var8 = true;
+			if (var5.contentType > 0) {
+				var8 = class276.method5534(var5);
+			}
+
+			if (var8) {
+				if (ItemLayer.method4229(class173.getWidgetFlags(var5), var0 - 1)) {
+					PacketBufferNode var7;
+					if (var0 == 1) {
+						var7 = Renderable.getPacketBufferNode(ClientPacket.field3123, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 2) {
+						var7 = Renderable.getPacketBufferNode(ClientPacket.field3116, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 3) {
+						var7 = Renderable.getPacketBufferNode(ClientPacket.field3079, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 4) {
+						var7 = Renderable.getPacketBufferNode(ClientPacket.field3083, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 5) {
+						var7 = Renderable.getPacketBufferNode(ClientPacket.field3150, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 6) {
+						var7 = Renderable.getPacketBufferNode(ClientPacket.field3136, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 7) {
+						var7 = Renderable.getPacketBufferNode(ClientPacket.field3139, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 8) {
+						var7 = Renderable.getPacketBufferNode(ClientPacket.field3118, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 9) {
+						var7 = Renderable.getPacketBufferNode(ClientPacket.field3112, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 10) {
+						var7 = Renderable.getPacketBufferNode(ClientPacket.field3141, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+				}
+			}
+		}
 	}
 }

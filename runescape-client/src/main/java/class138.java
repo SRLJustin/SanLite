@@ -1,66 +1,96 @@
+import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("er")
-public class class138 extends class142 {
-	@ObfuscatedName("x")
-	@ObfuscatedGetter(
-		intValue = -539577351
-	)
-	@Export("loginBoxCenter")
-	static int loginBoxCenter;
-	@ObfuscatedName("c")
-	String field1589;
+@ObfuscatedName("ew")
+public class class138 extends class139 {
 	@ObfuscatedName("b")
-	@ObfuscatedGetter(
-		intValue = -318281505
+	@ObfuscatedSignature(
+		descriptor = "Lnv;"
 	)
-	int field1588;
-	@ObfuscatedName("p")
-	byte field1590;
+	@Export("ItemDefinition_fontPlain11")
+	public static Font ItemDefinition_fontPlain11;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = 362693273
+	)
+	int field1645;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Len;"
+		descriptor = "Lex;"
 	)
-	final class143 this$0;
+	final class142 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Len;)V"
+		descriptor = "(Lex;)V"
 	)
-	class138(class143 var1) {
+	class138(class142 var1) {
 		this.this$0 = var1;
-		this.field1589 = null;
+		this.field1645 = -1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "4"
+		descriptor = "(Lrd;S)V",
+		garbageValue = "-5782"
 	)
-	void vmethod3022(Buffer var1) {
-		if (var1.readUnsignedByte() != 255) {
-			--var1.offset;
-			var1.readLong();
+	void vmethod3394(Buffer var1) {
+		this.field1645 = var1.readUnsignedShort();
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(Leb;B)V",
+		garbageValue = "-26"
+	)
+	void vmethod3393(ClanSettings var1) {
+		var1.method3231(this.field1645);
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(S)Lcy;",
+		garbageValue = "190"
+	)
+	static ClientPreferences method3150() {
+		AccessFile var0 = null;
+		ClientPreferences var1 = new ClientPreferences();
+
+		try {
+			var0 = UrlRequester.getPreferencesFile("", class134.field1606.name, false);
+			byte[] var2 = new byte[(int)var0.length()];
+
+			int var4;
+			for (int var3 = 0; var3 < var2.length; var3 += var4) {
+				var4 = var0.read(var2, var3, var2.length - var3);
+				if (var4 == -1) {
+					throw new IOException();
+				}
+			}
+
+			var1 = new ClientPreferences(new Buffer(var2));
+		} catch (Exception var6) {
 		}
 
-		this.field1589 = var1.readStringCp1252NullTerminatedOrNull();
-		this.field1588 = var1.readUnsignedShort();
-		this.field1590 = var1.readByte();
-		var1.readLong();
+		try {
+			if (var0 != null) {
+				var0.close();
+			}
+		} catch (Exception var5) {
+		}
+
+		return var1;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("lp")
 	@ObfuscatedSignature(
-		descriptor = "(Lei;B)V",
-		garbageValue = "40"
+		descriptor = "(I)V",
+		garbageValue = "1273374954"
 	)
-	void vmethod3021(ClanChannel var1) {
-		ClanChannelMember var2 = new ClanChannelMember();
-		var2.username = new Username(this.field1589);
-		var2.world = this.field1588;
-		var2.rank = this.field1590;
-		var1.addMember(var2);
+	static final void method3149() {
+		Client.field637 = Client.cycleCntr;
+		WorldMapSectionType.FriendsChatManager_inFriendsChat = true;
 	}
 }

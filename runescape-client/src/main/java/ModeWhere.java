@@ -6,159 +6,182 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lq")
+@ObfuscatedName("mm")
 @Implements("ModeWhere")
-public enum ModeWhere implements MouseWheel {
-	@ObfuscatedName("c")
+public enum ModeWhere implements class349 {
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Llq;"
+		descriptor = "Lmm;"
 	)
-	field3948("", 0, new class313[]{class313.field3915}),
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3940("", 1, new class313[]{class313.field3917, class313.field3915}),
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3938("", 2, new class313[]{class313.field3917, class313.field3916, class313.field3915}),
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3939("", 3, new class313[]{class313.field3917}),
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3955("", 4),
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3941("", 5, new class313[]{class313.field3917, class313.field3915}),
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3943("", 6, new class313[]{class313.field3915}),
+	field4334("", 0, new class348[]{class348.field4308}),
 	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Llq;"
+		descriptor = "Lmm;"
 	)
-	field3937("", 8, new class313[]{class313.field3917, class313.field3915}),
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3944("", 9, new class313[]{class313.field3917, class313.field3916}),
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3945("", 10, new class313[]{class313.field3917}),
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "Llq;"
-	)
-	field3947("", 11, new class313[]{class313.field3917}),
+	field4326("", 1, new class348[]{class348.field4309, class348.field4308}),
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Llq;"
+		descriptor = "Lmm;"
 	)
-	field3942("", 12, new class313[]{class313.field3917, class313.field3915}),
-	@ObfuscatedName("d")
+	field4327("", 2, new class348[]{class348.field4309, class348.field4310, class348.field4308}),
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Llq;"
+		descriptor = "Lmm;"
 	)
-	field3936("", 13, new class313[]{class313.field3917});
+	field4328("", 3, new class348[]{class348.field4309}),
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "Lmm;"
+	)
+	field4341("", 4),
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "Lmm;"
+	)
+	field4338("", 5, new class348[]{class348.field4309, class348.field4308}),
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "Lmm;"
+	)
+	field4329("", 6, new class348[]{class348.field4308}),
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "Lmm;"
+	)
+	field4332("", 8, new class348[]{class348.field4309, class348.field4308}),
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "Lmm;"
+	)
+	field4333("", 9, new class348[]{class348.field4309, class348.field4310}),
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "Lmm;"
+	)
+	field4325("", 10, new class348[]{class348.field4309}),
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "Lmm;"
+	)
+	field4337("", 11, new class348[]{class348.field4309}),
+	@ObfuscatedName("r")
+	@ObfuscatedSignature(
+		descriptor = "Lmm;"
+	)
+	field4336("", 12, new class348[]{class348.field4309, class348.field4308}),
+	@ObfuscatedName("b")
+	@ObfuscatedSignature(
+		descriptor = "Lmm;"
+	)
+	field4330("", 13, new class348[]{class348.field4309});
 
-	@ObfuscatedName("sl")
+	@ObfuscatedName("tk")
 	@ObfuscatedGetter(
-		intValue = -1096965871
+		intValue = -1632213005
 	)
-	static int field3951;
-	@ObfuscatedName("cr")
-	public static char field3954;
-	@ObfuscatedName("ms")
+	static int field4340;
+	@ObfuscatedName("nf")
 	@ObfuscatedGetter(
-		intValue = -936877643
+		intValue = 794865233
 	)
-	@Export("menuX")
-	static int menuX;
-	@ObfuscatedName("h")
+	@Export("menuY")
+	static int menuY;
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -91884081
+		intValue = -1835634285
 	)
 	@Export("id")
 	final int id;
-	@ObfuscatedName("g")
-	final Set field3950;
+	@ObfuscatedName("t")
+	final Set field4339;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I[Llp;)V"
+		descriptor = "(Ljava/lang/String;I[Lmd;)V"
 	)
-	ModeWhere(String var3, int var4, class313[] var5) {
-		this.field3950 = new HashSet();
+	ModeWhere(String var3, int var4, class348[] var5) {
+		this.field4339 = new HashSet();
 		this.id = var4;
-		class313[] var6 = var5;
+		class348[] var6 = var5;
 
 		for (int var7 = 0; var7 < var6.length; ++var7) {
-			class313 var8 = var6[var7];
-			this.field3950.add(var8);
+			class348 var8 = var6[var7];
+			this.field4339.add(var8);
 		}
 
 	}
 
 	ModeWhere(String var3, int var4) {
-		this.field3950 = new HashSet();
+		this.field4339 = new HashSet();
 		this.id = var4;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "48"
+		garbageValue = "3"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("ht")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(IIIB)V",
-		garbageValue = "14"
+		descriptor = "(ILkz;IIIII[FI)Lkz;",
+		garbageValue = "2073812484"
 	)
-	@Export("worldToScreen")
-	static final void worldToScreen(int var0, int var1, int var2) {
-		if (var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
-			int var3 = FaceNormal.getTileHeight(var0, var1, class20.Client_plane) - var2;
-			var0 -= UserComparator7.cameraX;
-			var3 -= AbstractByteArrayCopier.cameraY;
-			var1 -= UserComparator10.cameraZ;
-			int var4 = Rasterizer3D.Rasterizer3D_sine[UserComparator7.cameraPitch];
-			int var5 = Rasterizer3D.Rasterizer3D_cosine[UserComparator7.cameraPitch];
-			int var6 = Rasterizer3D.Rasterizer3D_sine[class379.cameraYaw];
-			int var7 = Rasterizer3D.Rasterizer3D_cosine[class379.cameraYaw];
-			int var8 = var6 * var1 + var0 * var7 >> 16;
-			var1 = var7 * var1 - var0 * var6 >> 16;
-			var0 = var8;
-			var8 = var5 * var3 - var4 * var1 >> 16;
-			var1 = var5 * var1 + var4 * var3 >> 16;
-			if (var1 >= 50) {
-				Client.viewportTempX = var0 * Client.viewportZoom / var1 + Client.viewportWidth / 2;
-				Client.viewportTempY = var8 * Client.viewportZoom / var1 + Client.viewportHeight / 2;
-			} else {
-				Client.viewportTempX = -1;
-				Client.viewportTempY = -1;
-			}
+	static Widget method6784(int var0, Widget var1, int var2, int var3, int var4, int var5, int var6, float[] var7) {
+		Widget var8 = new Widget();
+		var8.type = var0;
+		var8.parentId = var1.id;
+		var8.childIndex = var2;
+		var8.isIf3 = true;
+		var8.xAlignment = var3;
+		var8.yAlignment = var4;
+		var8.widthAlignment = var5;
+		var8.heightAlignment = var6;
+		var8.rawX = (int)(var7[0] * (float)var1.width);
+		var8.rawY = (int)((float)var1.height * var7[1]);
+		var8.rawWidth = (int)(var7[2] * (float)var1.width);
+		var8.rawHeight = (int)((float)var1.height * var7[3]);
+		return var8;
+	}
 
-		} else {
-			Client.viewportTempX = -1;
-			Client.viewportTempY = -1;
+	@ObfuscatedName("lc")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)Lcq;",
+		garbageValue = "-837606466"
+	)
+	static final InterfaceParent method6788(int var0, int var1, int var2) {
+		InterfaceParent var3 = new InterfaceParent();
+		var3.group = var1;
+		var3.type = var2;
+		Client.interfaceParents.put(var3, (long)var0);
+		class155.Widget_resetModelFrames(var1);
+		Widget var4 = class133.getWidget(var0);
+		LoginScreenAnimation.method2477(var4);
+		if (Client.meslayerContinueWidget != null) {
+			LoginScreenAnimation.method2477(Client.meslayerContinueWidget);
+			Client.meslayerContinueWidget = null;
+		}
+
+		AbstractWorldMapData.revalidateWidgetScroll(WorldMapLabel.Widget_interfaceComponents[var0 >> 16], var4, false);
+		SoundCache.runWidgetOnLoadListener(var1);
+		if (Client.rootInterface != -1) {
+			class147.runIntfCloseListeners(Client.rootInterface, 1);
+		}
+
+		return var3;
+	}
+
+	@ObfuscatedName("mq")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "0"
+	)
+	static void method6787(int var0) {
+		if (var0 != Client.loginState) {
+			Client.loginState = var0;
 		}
 	}
 }
