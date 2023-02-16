@@ -4,61 +4,66 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mm")
+@ObfuscatedName("oe")
 @Implements("FriendsList")
 public class FriendsList extends NameableContainer {
-	@ObfuscatedName("p")
+	@ObfuscatedName("j")
+	@Export("SpriteBuffer_spriteWidths")
+	public static int[] SpriteBuffer_spriteWidths;
+	@ObfuscatedName("ac")
+	protected static String field4540;
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Low;"
+		descriptor = "Lqj;"
 	)
 	@Export("loginType")
 	final LoginType loginType;
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -2043730647
+		intValue = -893041511
 	)
-	int field4081;
-	@ObfuscatedName("t")
+	int field4541;
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
-		descriptor = "Llc;"
+		descriptor = "Lme;"
 	)
 	@Export("friendLoginUpdates")
 	public LinkDeque friendLoginUpdates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Low;)V"
+		descriptor = "(Lqj;)V"
 	)
 	public FriendsList(LoginType var1) {
 		super(400);
-		this.field4081 = 1;
+		this.field4541 = 1;
 		this.friendLoginUpdates = new LinkDeque();
 		this.loginType = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lmv;",
-		garbageValue = "2"
+		descriptor = "(I)Low;",
+		garbageValue = "-2146736820"
 	)
 	@Export("newInstance")
 	Nameable newInstance() {
 		return new Friend();
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Lmv;",
-		garbageValue = "-813912346"
+		descriptor = "(II)[Low;",
+		garbageValue = "1411048209"
 	)
 	@Export("newTypedArray")
 	Nameable[] newTypedArray(int var1) {
 		return new Friend[var1];
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;ZI)Z",
-		garbageValue = "-611613577"
+		descriptor = "(Lsi;ZI)Z",
+		garbageValue = "-890591527"
 	)
 	@Export("isFriended")
 	public boolean isFriended(Username var1, boolean var2) {
@@ -70,10 +75,10 @@ public class FriendsList extends NameableContainer {
 		}
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;II)V",
-		garbageValue = "2023217222"
+		descriptor = "(Lrd;II)V",
+		garbageValue = "-1435809245"
 	)
 	@Export("read")
 	public void read(Buffer var1, int var2) {
@@ -137,17 +142,17 @@ public class FriendsList extends NameableContainer {
 					}
 
 					if (var6 != var11.world) {
-						var11.int2 = ++this.field4081 - 1;
+						var11.int2 = ++this.field4541 - 1;
 						if (var11.world == -1 && var6 == 0) {
-							var11.int2 = -(var11.int2 * -818070345) * -79798009;
+							var11.int2 = -(var11.int2 * -801801849) * 143588407;
 						}
 
 						var11.world = var6;
 					}
 
 					var11.rank = var7;
-					var11.field4085 = var9;
-					var11.field4086 = var10;
+					var11.field4553 = var9;
+					var11.field4552 = var10;
 					continue;
 				}
 
@@ -156,6 +161,26 @@ public class FriendsList extends NameableContainer {
 
 			this.sort();
 			return;
+		}
+	}
+
+	@ObfuscatedName("br")
+	@ObfuscatedSignature(
+		descriptor = "(Lqn;I)Ljava/lang/Object;",
+		garbageValue = "2113318877"
+	)
+	static Object method7543(class463 var0) {
+		if (var0 == null) {
+			throw new IllegalStateException("popValueOfType() failure - null baseVarType");
+		} else {
+			switch(var0.field4899) {
+			case 1:
+				return Interpreter.Interpreter_stringStack[--class20.Interpreter_stringStackSize];
+			case 2:
+				return Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize];
+			default:
+				throw new IllegalStateException("popValueOfType() failure - unsupported type");
+			}
 		}
 	}
 }

@@ -1,95 +1,94 @@
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.Reflection;
 
-@ObfuscatedName("bz")
+@ObfuscatedName("bd")
 @Implements("ObjectSound")
 public final class ObjectSound extends Node {
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Llh;"
+		descriptor = "Lmo;"
 	)
 	@Export("objectSounds")
 	static NodeDeque objectSounds;
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -1128926491
+		intValue = 1507744253
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -655443333
+		intValue = -1259750272
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 1430356399
+		intValue = 384654351
 	)
-	@Export("y")
-	int y;
-	@ObfuscatedName("t")
+	int field845;
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = 1572120169
+		intValue = 279135104
 	)
 	@Export("maxX")
 	int maxX;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -1560179665
-	)
-	int field796;
 	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -1764781377
+		intValue = 1185830528
+	)
+	@Export("y")
+	int y;
+	@ObfuscatedName("i")
+	@ObfuscatedGetter(
+		intValue = 1742067623
 	)
 	@Export("maxY")
 	int maxY;
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = 947571377
-	)
-	int field793;
 	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 209394291
+		intValue = 2111223021
+	)
+	int field837;
+	@ObfuscatedName("l")
+	@ObfuscatedGetter(
+		intValue = -139276523
 	)
 	@Export("soundEffectId")
 	int soundEffectId;
-	@ObfuscatedName("r")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "Lfm;"
-	)
-	@Export("obj")
-	ObjectComposition obj;
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "Lat;"
+		descriptor = "Lab;"
 	)
 	@Export("stream1")
 	RawPcmStream stream1;
-	@ObfuscatedName("v")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 739694569
+		intValue = -387748741
 	)
-	int field797;
-	@ObfuscatedName("d")
+	int field841;
+	@ObfuscatedName("r")
+	@ObfuscatedSignature(
+		descriptor = "Lgp;"
+	)
+	@Export("obj")
+	ObjectComposition obj;
+	@ObfuscatedName("b")
 	@Export("soundEffectIds")
 	int[] soundEffectIds;
-	@ObfuscatedName("h")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -785584779
+		intValue = -1523032859
 	)
-	int field789;
-	@ObfuscatedName("g")
+	int field843;
+	@ObfuscatedName("t")
 	@ObfuscatedSignature(
-		descriptor = "Lat;"
+		descriptor = "Lab;"
 	)
 	@Export("stream2")
 	RawPcmStream stream2;
@@ -101,10 +100,10 @@ public final class ObjectSound extends Node {
 	ObjectSound() {
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "20"
+		descriptor = "(I)V",
+		garbageValue = "1406631425"
 	)
 	@Export("set")
 	void set() {
@@ -112,158 +111,124 @@ public final class ObjectSound extends Node {
 		ObjectComposition var2 = this.obj.transform();
 		if (var2 != null) {
 			this.soundEffectId = var2.ambientSoundId;
-			this.field793 = var2.int7 * 128;
-			this.field796 = var2.int5;
-			this.field797 = var2.int6;
+			this.field837 = var2.int7 * 128;
+			this.field845 = var2.int5;
+			this.field841 = var2.int6;
 			this.soundEffectIds = var2.soundEffectIds;
 		} else {
 			this.soundEffectId = -1;
-			this.field793 = 0;
-			this.field796 = 0;
-			this.field797 = 0;
+			this.field837 = 0;
+			this.field845 = 0;
+			this.field841 = 0;
 			this.soundEffectIds = null;
 		}
 
 		if (var1 != this.soundEffectId && this.stream1 != null) {
-			class281.pcmStreamMixer.removeSubStream(this.stream1);
+			class209.pcmStreamMixer.removeSubStream(this.stream1);
 			this.stream1 = null;
 		}
 
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;Lku;B)V",
-		garbageValue = "-45"
+		descriptor = "(IB)Ljava/lang/String;",
+		garbageValue = "1"
 	)
-	public static void method1803(AbstractArchive var0, AbstractArchive var1) {
-		GrandExchangeOfferAgeComparator.HealthBarDefinition_archive = var0;
-		HealthBarDefinition.field1802 = var1;
+	static String method1919(int var0) {
+		return "<img=" + var0 + ">";
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;II)V",
-		garbageValue = "-88245414"
+		descriptor = "(Lkz;I[B[BB)V",
+		garbageValue = "8"
 	)
-	@Export("readReflectionCheck")
-	public static void readReflectionCheck(Buffer var0, int var1) {
-		ReflectionCheck var2 = new ReflectionCheck();
-		var2.size = var0.readUnsignedByte();
-		var2.id = var0.readInt();
-		var2.operations = new int[var2.size];
-		var2.creationErrors = new int[var2.size];
-		var2.fields = new Field[var2.size];
-		var2.intReplaceValues = new int[var2.size];
-		var2.methods = new Method[var2.size];
-		var2.arguments = new byte[var2.size][][];
+	@Export("Widget_setKey")
+	static final void Widget_setKey(Widget var0, int var1, byte[] var2, byte[] var3) {
+		if (var0.field3632 == null) {
+			if (var2 == null) {
+				return;
+			}
 
-		for (int var3 = 0; var3 < var2.size; ++var3) {
-			try {
-				int var4 = var0.readUnsignedByte();
-				String var5;
-				String var6;
-				int var7;
-				if (var4 != 0 && var4 != 1 && var4 != 2) {
-					if (var4 == 3 || var4 == 4) {
-						var5 = var0.readStringCp1252NullTerminated();
-						var6 = var0.readStringCp1252NullTerminated();
-						var7 = var0.readUnsignedByte();
-						String[] var8 = new String[var7];
+			var0.field3632 = new byte[11][];
+			var0.field3633 = new byte[11][];
+			var0.field3634 = new int[11];
+			var0.field3635 = new int[11];
+		}
 
-						for (int var9 = 0; var9 < var7; ++var9) {
-							var8[var9] = var0.readStringCp1252NullTerminated();
-						}
+		var0.field3632[var1] = var2;
+		if (var2 != null) {
+			var0.field3631 = true;
+		} else {
+			var0.field3631 = false;
 
-						String var20 = var0.readStringCp1252NullTerminated();
-						byte[][] var10 = new byte[var7][];
-						int var12;
-						if (var4 == 3) {
-							for (int var11 = 0; var11 < var7; ++var11) {
-								var12 = var0.readInt();
-								var10[var11] = new byte[var12];
-								var0.readBytes(var10[var11], 0, var12);
-							}
-						}
-
-						var2.operations[var3] = var4;
-						Class[] var21 = new Class[var7];
-
-						for (var12 = 0; var12 < var7; ++var12) {
-							var21[var12] = class4.loadClassFromDescriptor(var8[var12]);
-						}
-
-						Class var22 = class4.loadClassFromDescriptor(var20);
-						if (class4.loadClassFromDescriptor(var5).getClassLoader() == null) {
-							throw new SecurityException();
-						}
-
-						Method[] var13 = class4.loadClassFromDescriptor(var5).getDeclaredMethods();
-						Method[] var14 = var13;
-
-						for (int var15 = 0; var15 < var14.length; ++var15) {
-							Method var16 = var14[var15];
-							if (Reflection.getMethodName(var16).equals(var6)) {
-								Class[] var17 = Reflection.getParameterTypes(var16);
-								if (var17.length == var21.length) {
-									boolean var18 = true;
-
-									for (int var19 = 0; var19 < var21.length; ++var19) {
-										if (var17[var19] != var21[var19]) {
-											var18 = false;
-											break;
-										}
-									}
-
-									if (var18 && var22 == var16.getReturnType()) {
-										var2.methods[var3] = var16;
-									}
-								}
-							}
-						}
-
-						var2.arguments[var3] = var10;
-					}
-				} else {
-					var5 = var0.readStringCp1252NullTerminated();
-					var6 = var0.readStringCp1252NullTerminated();
-					var7 = 0;
-					if (var4 == 1) {
-						var7 = var0.readInt();
-					}
-
-					var2.operations[var3] = var4;
-					var2.intReplaceValues[var3] = var7;
-					if (class4.loadClassFromDescriptor(var5).getClassLoader() == null) {
-						throw new SecurityException();
-					}
-
-					var2.fields[var3] = Reflection.findField(class4.loadClassFromDescriptor(var5), var6);
+			for (int var4 = 0; var4 < var0.field3632.length; ++var4) {
+				if (var0.field3632[var4] != null) {
+					var0.field3631 = true;
+					break;
 				}
-			} catch (ClassNotFoundException var24) {
-				var2.creationErrors[var3] = -1;
-			} catch (SecurityException var25) {
-				var2.creationErrors[var3] = -2;
-			} catch (NullPointerException var26) {
-				var2.creationErrors[var3] = -3;
-			} catch (Exception var27) {
-				var2.creationErrors[var3] = -4;
-			} catch (Throwable var28) {
-				var2.creationErrors[var3] = -5;
 			}
 		}
 
-		class33.reflectionChecks.addFirst(var2);
+		var0.field3633[var1] = var3;
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "30466"
+		descriptor = "(I)V",
+		garbageValue = "-1223653382"
 	)
-	public static void method1796() {
-		HitSplatDefinition.HitSplatDefinition_cached.clear();
-		HitSplatDefinition.HitSplatDefinition_cachedSprites.clear();
-		HitSplatDefinition.HitSplatDefinition_cachedFonts.clear();
+	public static void method1920() {
+		SequenceDefinition.SequenceDefinition_cached.clear();
+		SequenceDefinition.SequenceDefinition_cachedFrames.clear();
+		SequenceDefinition.SequenceDefinition_cachedModel.clear();
+	}
+
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "(Lfg;III)Lak;",
+		garbageValue = "-613295096"
+	)
+	public static final PcmPlayer method1911(TaskHandler var0, int var1, int var2) {
+		if (class284.field3321 == 0) {
+			throw new IllegalStateException();
+		} else if (var1 >= 0 && var1 < 2) {
+			if (var2 < 256) {
+				var2 = 256;
+			}
+
+			try {
+				PcmPlayer var3 = class157.pcmPlayerProvider.player();
+				var3.samples = new int[256 * (PcmPlayer.PcmPlayer_stereo ? 2 : 1)];
+				var3.field313 = var2;
+				var3.init();
+				var3.capacity = (var2 & -1024) + 1024;
+				if (var3.capacity > 16384) {
+					var3.capacity = 16384;
+				}
+
+				var3.open(var3.capacity);
+				if (WorldMapCacheName.field3010 > 0 && class266.soundSystem == null) {
+					class266.soundSystem = new SoundSystem();
+					PcmPlayer.soundSystemExecutor = Executors.newScheduledThreadPool(1);
+					PcmPlayer.soundSystemExecutor.scheduleAtFixedRate(class266.soundSystem, 0L, 10L, TimeUnit.MILLISECONDS);
+				}
+
+				if (class266.soundSystem != null) {
+					if (class266.soundSystem.players[var1] != null) {
+						throw new IllegalArgumentException();
+					}
+
+					class266.soundSystem.players[var1] = var3;
+				}
+
+				return var3;
+			} catch (Throwable var4) {
+				return new PcmPlayer();
+			}
+		} else {
+			throw new IllegalArgumentException();
+		}
 	}
 }

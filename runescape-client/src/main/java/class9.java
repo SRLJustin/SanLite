@@ -3,112 +3,137 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("r")
-public class class9 implements MouseWheel {
-	@ObfuscatedName("c")
+@ObfuscatedName("k")
+public class class9 implements class349 {
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lr;"
+		descriptor = "Lk;"
 	)
-	static final class9 field37;
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "Lr;"
-	)
-	public static final class9 field36;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lr;"
-	)
-	static final class9 field44;
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "Lr;"
-	)
-	static final class9 field38;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Lr;"
-	)
-	static final class9 field39;
-	@ObfuscatedName("eu")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive1")
-	static Archive archive1;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -171712909
-	)
-	int field45;
-	@ObfuscatedName("j")
-	String field35;
+	public static final class9 field31;
 	@ObfuscatedName("w")
-	boolean field42;
+	@ObfuscatedSignature(
+		descriptor = "Lk;"
+	)
+	public static final class9 field32;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Lk;"
+	)
+	static final class9 field33;
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "Lk;"
+	)
+	static final class9 field42;
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "Lk;"
+	)
+	static final class9 field35;
+	@ObfuscatedName("u")
+	@Export("ByteArrayPool_arrays")
+	public static byte[][][] ByteArrayPool_arrays;
+	@ObfuscatedName("on")
+	@ObfuscatedGetter(
+		intValue = -1648378979
+	)
+	@Export("selectedSpellWidget")
+	static int selectedSpellWidget;
+	@ObfuscatedName("qa")
+	@ObfuscatedSignature(
+		descriptor = "Ldw;"
+	)
+	@Export("varcs")
+	static Varcs varcs;
+	@ObfuscatedName("j")
+	@ObfuscatedGetter(
+		intValue = 294665859
+	)
+	int field36;
+	@ObfuscatedName("i")
+	String field37;
 	@ObfuscatedName("n")
-	boolean field43;
+	boolean field38;
+	@ObfuscatedName("l")
+	boolean field39;
 
 	static {
-		field37 = new class9(0, "POST", true, true);
-		field36 = new class9(1, "GET", true, false);
-		field44 = new class9(2, "PUT", false, true);
-		field38 = new class9(3, "PATCH", false, true);
-		field39 = new class9(4, "DELETE", false, true);
+		field31 = new class9(0, "POST", true, true);
+		field32 = new class9(1, "GET", true, false);
+		field33 = new class9(2, "PUT", false, true);
+		field42 = new class9(3, "PATCH", false, true);
+		field35 = new class9(4, "DELETE", false, true);
 	}
 
 	class9(int var1, String var2, boolean var3, boolean var4) {
-		this.field45 = var1;
-		this.field35 = var2;
-		this.field42 = var3;
-		this.field43 = var4;
+		this.field36 = var1;
+		this.field37 = var2;
+		this.field38 = var3;
+		this.field39 = var4;
 	}
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "17"
-	)
-	boolean method85() {
-		return this.field42;
-	}
-
-	@ObfuscatedName("b")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "48"
+		garbageValue = "3"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field45;
+		return this.field36;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "1278274271"
+		descriptor = "(B)Z",
+		garbageValue = "119"
 	)
-	String method100() {
-		return this.field35;
+	boolean method92() {
+		return this.field38;
+	}
+
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(B)Ljava/lang/String;",
+		garbageValue = "-39"
+	)
+	public String method80() {
+		return this.field37;
+	}
+
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "-16"
+	)
+	boolean method84() {
+		return this.field39;
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(Lln;B)V",
+		garbageValue = "0"
+	)
+	public static void method81(AbstractArchive var0) {
+		DevicePcmPlayerProvider.VarbitDefinition_archive = var0;
 	}
 
 	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1849660708"
-	)
-	boolean method86() {
-		return this.field43;
-	}
-
-	@ObfuscatedName("gz")
-	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "29"
+		garbageValue = "-38"
 	)
-	static void method88() {
-		if (Client.renderSelf) {
-			Buddy.addPlayerToScene(class340.localPlayer, false);
+	public static void method93() {
+		synchronized(MouseHandler.MouseHandler_instance) {
+			MouseHandler.MouseHandler_currentButton = MouseHandler.MouseHandler_currentButtonVolatile;
+			MouseHandler.MouseHandler_x = MouseHandler.MouseHandler_xVolatile;
+			MouseHandler.MouseHandler_y = MouseHandler.MouseHandler_yVolatile;
+			MouseHandler.MouseHandler_millis = MouseHandler.MouseHandler_lastMovedVolatile;
+			MouseHandler.MouseHandler_lastButton = MouseHandler.MouseHandler_lastButtonVolatile;
+			MouseHandler.MouseHandler_lastPressedX = MouseHandler.MouseHandler_lastPressedXVolatile;
+			MouseHandler.MouseHandler_lastPressedY = MouseHandler.MouseHandler_lastPressedYVolatile;
+			MouseHandler.MouseHandler_lastPressedTimeMillis = MouseHandler.MouseHandler_lastPressedTimeMillisVolatile;
+			MouseHandler.MouseHandler_lastButtonVolatile = 0;
 		}
-
 	}
 }

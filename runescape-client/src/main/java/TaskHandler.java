@@ -7,34 +7,31 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eb")
+@ObfuscatedName("fg")
 @Implements("TaskHandler")
 public class TaskHandler implements Runnable {
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@Export("javaVendor")
 	public static String javaVendor;
-	@ObfuscatedName("eo")
+	@ObfuscatedName("w")
+	@Export("javaVersion")
+	public static String javaVersion;
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive12")
-	static Archive archive12;
-	@ObfuscatedName("p")
-	@ObfuscatedSignature(
-		descriptor = "Lfk;"
+		descriptor = "Lff;"
 	)
 	@Export("current")
 	Task current;
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lfk;"
+		descriptor = "Lff;"
 	)
 	@Export("task")
 	Task task;
-	@ObfuscatedName("t")
+	@ObfuscatedName("z")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@Export("isClosed")
 	boolean isClosed;
 
@@ -43,11 +40,11 @@ public class TaskHandler implements Runnable {
 		this.task = null;
 		this.isClosed = false;
 		javaVendor = "Unknown";
-		NPC.javaVersion = "1.6";
+		javaVersion = "1.6";
 
 		try {
 			javaVendor = System.getProperty("java.vendor");
-			NPC.javaVersion = System.getProperty("java.version");
+			javaVersion = System.getProperty("java.version");
 		} catch (Exception var2) {
 		}
 
@@ -58,10 +55,10 @@ public class TaskHandler implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "-23939"
+		descriptor = "(B)V",
+		garbageValue = "28"
 	)
 	@Export("close")
 	public final void close() {
@@ -77,10 +74,10 @@ public class TaskHandler implements Runnable {
 
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(IIILjava/lang/Object;I)Lfk;",
-		garbageValue = "838873650"
+		descriptor = "(IIILjava/lang/Object;B)Lff;",
+		garbageValue = "110"
 	)
 	@Export("newTask")
 	final Task newTask(int var1, int var2, int var3, Object var4) {
@@ -101,20 +98,20 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;II)Lfk;",
-		garbageValue = "1945864892"
+		descriptor = "(Ljava/lang/String;IB)Lff;",
+		garbageValue = "1"
 	)
 	@Export("newSocketTask")
 	public final Task newSocketTask(String var1, int var2) {
 		return this.newTask(1, var2, 0, var1);
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Runnable;II)Lfk;",
-		garbageValue = "-1633812322"
+		descriptor = "(Ljava/lang/Runnable;II)Lff;",
+		garbageValue = "-245767136"
 	)
 	@Export("newThreadTask")
 	public final Task newThreadTask(Runnable var1, int var2) {
@@ -169,15 +166,36 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "([BI)[B",
-		garbageValue = "-1643511224"
+		descriptor = "(II)Lfp;",
+		garbageValue = "513935047"
 	)
-	public static byte[] method3047(byte[] var0) {
-		int var1 = var0.length;
-		byte[] var2 = new byte[var1];
-		System.arraycopy(var0, 0, var2, 0, var1);
-		return var2;
+	@Export("VarpDefinition_get")
+	public static VarpDefinition VarpDefinition_get(int var0) {
+		VarpDefinition var1 = (VarpDefinition)VarpDefinition.VarpDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = VarpDefinition.VarpDefinition_archive.takeFile(16, var0);
+			var1 = new VarpDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			VarpDefinition.VarpDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1182255807"
+	)
+	public static void method3475() {
+		ItemComposition.ItemDefinition_cached.clear();
+		ItemComposition.ItemDefinition_cachedModels.clear();
+		ItemComposition.ItemDefinition_cachedSprites.clear();
 	}
 }

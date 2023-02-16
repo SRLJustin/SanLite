@@ -1,102 +1,146 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ef")
-public class class134 extends class142 {
+@ObfuscatedName("el")
+public enum class134 implements class349 {
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Lel;"
+	)
+	field1621(0, 0),
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "Lel;"
+	)
+	field1607(1, 1),
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Lel;"
+	)
+	field1608(2, 2),
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "Lel;"
+	)
+	field1609(3, 3),
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "Lel;"
+	)
+	field1610(4, 4),
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "Lel;"
+	)
+	field1617(5, 5),
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "Lel;"
+	)
+	field1612(6, 6),
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "Lel;"
+	)
+	field1611(7, 7),
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "Lel;"
+	)
+	field1614(8, 8);
+
+	@ObfuscatedName("be")
+	@ObfuscatedSignature(
+		descriptor = "Lle;"
+	)
+	static StudioGame field1606;
+	@ObfuscatedName("bu")
+	@ObfuscatedGetter(
+		intValue = -2047759423
+	)
+	static int field1613;
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(
+		intValue = -1695238653
+	)
+	final int field1615;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 642006289
+		intValue = -1557384537
 	)
-	int field1552;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Len;"
-	)
-	final class143 this$0;
+	final int field1616;
 
-	@ObfuscatedSignature(
-		descriptor = "(Len;)V"
-	)
-	class134(class143 var1) {
-		this.this$0 = var1;
-		this.field1552 = -1;
+	class134(int var3, int var4) {
+		this.field1615 = var3;
+		this.field1616 = var4;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "4"
+		descriptor = "(B)I",
+		garbageValue = "3"
 	)
-	void vmethod3022(Buffer var1) {
-		this.field1552 = var1.readUnsignedShort();
-		var1.readUnsignedByte();
-		if (var1.readUnsignedByte() != 255) {
-			--var1.offset;
-			var1.readLong();
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field1616;
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
+		garbageValue = "-116"
+	)
+	@Export("addChatMessage")
+	static void addChatMessage(int var0, String var1, String var2, String var3) {
+		ChatChannel var4 = (ChatChannel)Messages.Messages_channels.get(var0);
+		if (var4 == null) {
+			var4 = new ChatChannel();
+			Messages.Messages_channels.put(var0, var4);
 		}
 
+		Message var5 = var4.addMessage(var0, var1, var2, var3);
+		Messages.Messages_hashTable.put(var5, (long)var5.count);
+		Messages.Messages_queue.add(var5);
+		Client.chatCycle = Client.cycleCntr;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(Lei;B)V",
-		garbageValue = "40"
+		descriptor = "(I)V",
+		garbageValue = "328947468"
 	)
-	void vmethod3021(ClanChannel var1) {
-		var1.removeMember(this.field1552);
+	public static void method3124() {
+		KitDefinition.KitDefinition_cached.clear();
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZB)I",
-		garbageValue = "1"
+		descriptor = "(ILba;ZB)I",
+		garbageValue = "-33"
 	)
-	static int method2824(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.GETWINDOWMODE) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = class143.getWindowedMode();
+	static int method3126(int var0, Script var1, boolean var2) {
+		if (var0 == 6754) {
+			int var5 = Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize];
+			NPCComposition var6 = class137.getNpcDefinition(var5);
+			Interpreter.Interpreter_stringStack[++class20.Interpreter_stringStackSize - 1] = var6 != null ? var6.name : "";
 			return 1;
 		} else {
-			int var3;
-			if (var0 == ScriptOpcodes.SETWINDOWMODE) {
-				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				if (var3 == 1 || var3 == 2) {
-					Occluder.setWindowedMode(var3);
-				}
-
+			NPCComposition var3;
+			if (var0 == 6764) {
+				class302.Interpreter_intStackSize -= 2;
+				var3 = class137.getNpcDefinition(Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize]);
+				int var4 = Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize + 1];
+				Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.method3751(var4);
+				Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.method3734(var4);
 				return 1;
-			} else if (var0 == ScriptOpcodes.GETDEFAULTWINDOWMODE) {
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = SecureRandomFuture.clientPreferences.windowMode;
+			} else if (var0 == 6765) {
+				var3 = class137.getNpcDefinition(Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize]);
+				Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3 != null ? var3.combatLevel : 0;
 				return 1;
-			} else if (var0 != ScriptOpcodes.SETDEFAULTWINDOWMODE) {
-				if (var0 == 5310) {
-					--IsaacCipher.Interpreter_intStackSize;
-					return 1;
-				} else if (var0 == 5311) {
-					IsaacCipher.Interpreter_intStackSize -= 2;
-					return 1;
-				} else if (var0 == 5312) {
-					--IsaacCipher.Interpreter_intStackSize;
-					return 1;
-				} else if (var0 == 5350) {
-					class13.Interpreter_stringStackSize -= 2;
-					--IsaacCipher.Interpreter_intStackSize;
-					return 1;
-				} else if (var0 == 5351) {
-					--class13.Interpreter_stringStackSize;
-					return 1;
-				} else {
-					return 2;
-				}
 			} else {
-				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				if (var3 == 1 || var3 == 2) {
-					SecureRandomFuture.clientPreferences.windowMode = var3;
-					class127.savePreferences();
-				}
-
-				return 1;
+				return 2;
 			}
 		}
 	}

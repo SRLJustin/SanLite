@@ -3,50 +3,57 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("fz")
+@ObfuscatedName("gq")
 @Implements("EnumComposition")
 public class EnumComposition extends DualNode {
-	@ObfuscatedName("c")
+	@ObfuscatedName("vc")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Lmk;"
+	)
+	@Export("grandExchangeEvents")
+	static GrandExchangeEvents grandExchangeEvents;
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Lln;"
 	)
 	@Export("EnumDefinition_archive")
-	public static AbstractArchive EnumDefinition_archive;
-	@ObfuscatedName("b")
+	static AbstractArchive EnumDefinition_archive;
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lja;"
 	)
 	@Export("EnumDefinition_cached")
 	static EvictingDualNodeHashTable EnumDefinition_cached;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@Export("inputType")
 	public char inputType;
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@Export("outputType")
 	public char outputType;
-	@ObfuscatedName("t")
+	@ObfuscatedName("z")
 	@Export("defaultStr")
 	public String defaultStr;
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -129402643
+		intValue = 1053984563
 	)
 	@Export("defaultInt")
 	public int defaultInt;
-	@ObfuscatedName("j")
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = -988434495
+		intValue = -1265657645
 	)
 	@Export("outputCount")
 	public int outputCount;
-	@ObfuscatedName("w")
+	@ObfuscatedName("n")
 	@Export("keys")
 	public int[] keys;
-	@ObfuscatedName("n")
+	@ObfuscatedName("l")
 	@Export("intVals")
 	public int[] intVals;
-	@ObfuscatedName("r")
+	@ObfuscatedName("k")
 	@Export("strVals")
 	public String[] strVals;
 
@@ -59,10 +66,10 @@ public class EnumComposition extends DualNode {
 		this.outputCount = 0;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1550875336"
+		descriptor = "(Lrd;I)V",
+		garbageValue = "-2126248770"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -76,10 +83,10 @@ public class EnumComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;IB)V",
-		garbageValue = "-68"
+		descriptor = "(Lrd;II)V",
+		garbageValue = "-225365971"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -116,145 +123,172 @@ public class EnumComposition extends DualNode {
 
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-2125042449"
+		descriptor = "(B)I",
+		garbageValue = "59"
 	)
 	@Export("size")
 	public int size() {
 		return this.outputCount;
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIZI)Lpl;",
-		garbageValue = "1794851975"
+		descriptor = "(ILba;ZI)I",
+		garbageValue = "1103882701"
 	)
-	@Export("getItemSprite")
-	public static final SpritePixels getItemSprite(int var0, int var1, int var2, int var3, int var4, boolean var5) {
-		if (var1 == -1) {
-			var4 = 0;
-		} else if (var4 == 2 && var1 != 1) {
-			var4 = 1;
-		}
-
-		long var6 = ((long)var4 << 40) + ((long)var2 << 38) + ((long)var1 << 16) + (long)var0 + ((long)var3 << 42);
-		SpritePixels var8;
-		if (!var5) {
-			var8 = (SpritePixels)ItemComposition.ItemDefinition_cachedSprites.get(var6);
-			if (var8 != null) {
-				return var8;
-			}
-		}
-
-		ItemComposition var9 = UserComparator6.ItemDefinition_get(var0);
-		if (var1 > 1 && var9.countobj != null) {
-			int var10 = -1;
-
-			for (int var11 = 0; var11 < 10; ++var11) {
-				if (var1 >= var9.countco[var11] && var9.countco[var11] != 0) {
-					var10 = var9.countobj[var11];
-				}
-			}
-
-			if (var10 != -1) {
-				var9 = UserComparator6.ItemDefinition_get(var10);
-			}
-		}
-
-		Model var21 = var9.getModel(1);
-		if (var21 == null) {
-			return null;
+	static int method3711(int var0, Script var1, boolean var2) {
+		Widget var3 = class133.getWidget(Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize]);
+		if (var0 == ScriptOpcodes.IF_GETSCROLLX) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.scrollX;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETSCROLLY) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.scrollY;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETTEXT) {
+			Interpreter.Interpreter_stringStack[++class20.Interpreter_stringStackSize - 1] = var3.text;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETSCROLLWIDTH) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.scrollWidth;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETSCROLLHEIGHT) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.scrollHeight;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETMODELZOOM) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.modelZoom;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_X) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.modelAngleX;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Z) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.modelAngleZ;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Y) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.modelAngleY;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETTRANS) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.transparencyTop;
+			return 1;
+		} else if (var0 == 2610) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.transparencyBot;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETCOLOUR) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.color;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETFILLCOLOUR) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.color2;
+			return 1;
+		} else if (var0 == 2613) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.fillMode.rsOrdinal();
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETMODELTRANSPARENT) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.modelTransparency ? 1 : 0;
+			return 1;
 		} else {
-			SpritePixels var22 = null;
-			if (var9.noteTemplate != -1) {
-				var22 = getItemSprite(var9.note, 10, 1, 0, 0, true);
-				if (var22 == null) {
-					return null;
-				}
-			} else if (var9.notedId != -1) {
-				var22 = getItemSprite(var9.unnotedId, var1, var2, var3, 0, false);
-				if (var22 == null) {
-					return null;
-				}
-			} else if (var9.placeholderTemplate != -1) {
-				var22 = getItemSprite(var9.placeholder, var1, 0, 0, 0, false);
-				if (var22 == null) {
-					return null;
-				}
+			class302 var4;
+			if (var0 == 2617) {
+				var4 = var3.method6226();
+				Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var4 != null ? var4.field3465 : 0;
 			}
 
-			int[] var12 = Rasterizer2D.Rasterizer2D_pixels;
-			int var13 = Rasterizer2D.Rasterizer2D_width;
-			int var14 = Rasterizer2D.Rasterizer2D_height;
-			int[] var15 = new int[4];
-			Rasterizer2D.Rasterizer2D_getClipArray(var15);
-			var8 = new SpritePixels(36, 32);
-			Rasterizer2D.Rasterizer2D_replace(var8.pixels, 36, 32);
-			Rasterizer2D.Rasterizer2D_clear();
-			Rasterizer3D.Rasterizer3D_setClipFromRasterizer2D();
-			Rasterizer3D.method3913(16, 16);
-			Rasterizer3D.field2276 = false;
-			if (var9.placeholderTemplate != -1) {
-				var22.drawTransBgAt(0, 0);
-			}
-
-			int var16 = var9.zoom2d;
-			if (var5) {
-				var16 = (int)(1.5D * (double)var16);
-			} else if (var2 == 2) {
-				var16 = (int)((double)var16 * 1.04D);
-			}
-
-			int var17 = var16 * Rasterizer3D.Rasterizer3D_sine[var9.xan2d] >> 16;
-			int var18 = var16 * Rasterizer3D.Rasterizer3D_cosine[var9.xan2d] >> 16;
-			var21.calculateBoundsCylinder();
-			var21.method4241(0, var9.yan2d, var9.zan2d, var9.xan2d, var9.offsetX2d, var21.height / 2 + var17 + var9.offsetY2d, var18 + var9.offsetY2d);
-			if (var9.notedId != -1) {
-				var22.drawTransBgAt(0, 0);
-			}
-
-			if (var2 >= 1) {
-				var8.outline(1);
-			}
-
-			if (var2 >= 2) {
-				var8.outline(16777215);
-			}
-
-			if (var3 != 0) {
-				var8.shadow(var3);
-			}
-
-			Rasterizer2D.Rasterizer2D_replace(var8.pixels, 36, 32);
-			if (var9.noteTemplate != -1) {
-				var22.drawTransBgAt(0, 0);
-			}
-
-			if (var4 == 1 || var4 == 2 && var9.isStackable == 1) {
-				Font var19 = ItemComposition.ItemDefinition_fontPlain11;
-				String var20;
-				if (var1 < 100000) {
-					var20 = "<col=ffff00>" + var1 + "</col>";
-				} else if (var1 < 10000000) {
-					var20 = "<col=ffffff>" + var1 / 1000 + "K" + "</col>";
+			if (var0 == 2618) {
+				var4 = var3.method6226();
+				Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var4 != null ? var4.field3470 : 0;
+				return 1;
+			} else {
+				class307 var7;
+				if (var0 == 2619) {
+					var7 = var3.method6235();
+					Interpreter.Interpreter_stringStack[++class20.Interpreter_stringStackSize - 1] = var7 != null ? var7.method6128().method7078() : "";
+					return 1;
+				} else if (var0 == 2620) {
+					var4 = var3.method6226();
+					Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var4 != null ? var4.field3467 : 0;
+					return 1;
+				} else if (var0 == 2621) {
+					var7 = var3.method6235();
+					Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5950() : 0;
+					return 1;
+				} else if (var0 == 2622) {
+					var7 = var3.method6235();
+					Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5983() : 0;
+					return 1;
+				} else if (var0 == 2623) {
+					var7 = var3.method6235();
+					Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5984() : 0;
+					return 1;
+				} else if (var0 == 2624) {
+					var7 = var3.method6235();
+					Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null && var7.method5974() ? 1 : 0;
+					return 1;
+				} else if (var0 != 2625) {
+					if (var0 == 2626) {
+						var7 = var3.method6235();
+						Interpreter.Interpreter_stringStack[++class20.Interpreter_stringStackSize - 1] = var7 != null ? var7.method5973().method7307() : "";
+						return 1;
+					} else if (var0 == 2627) {
+						var7 = var3.method6235();
+						int var5 = var7 != null ? var7.method5978() : 0;
+						int var6 = var7 != null ? var7.method6145() : 0;
+						Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = Math.min(var5, var6);
+						Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = Math.max(var5, var6);
+						return 1;
+					} else if (var0 == 2628) {
+						var7 = var3.method6235();
+						Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method6145() : 0;
+						return 1;
+					} else if (var0 == 2629) {
+						var7 = var3.method6235();
+						Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5985() : 0;
+						return 1;
+					} else if (var0 == 2630) {
+						var7 = var3.method6235();
+						Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5948() : 0;
+						return 1;
+					} else if (var0 == 2631) {
+						var7 = var3.method6235();
+						Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method6058() : 0;
+						return 1;
+					} else if (var0 == 2632) {
+						var7 = var3.method6235();
+						Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null ? var7.method5987() : 0;
+						return 1;
+					} else {
+						class27 var8;
+						if (var0 == 2633) {
+							var8 = var3.method6227();
+							Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize - 1] = var8 != null ? var8.method393(Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize - 1]) : 0;
+							return 1;
+						} else if (var0 == 2634) {
+							var8 = var3.method6227();
+							Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize - 1] = var8 != null ? var8.method394((char)Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize - 1]) : 0;
+							return 1;
+						} else {
+							return 2;
+						}
+					}
 				} else {
-					var20 = "<col=00ff80>" + var1 / 1000000 + "M" + "</col>";
+					var7 = var3.method6235();
+					Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var7 != null && var7.method5954() ? 1 : 0;
+					return 1;
 				}
-
-				var19.draw(var20, 0, 9, 16776960, 1);
 			}
-
-			if (!var5) {
-				ItemComposition.ItemDefinition_cachedSprites.put(var8, var6);
-			}
-
-			Rasterizer2D.Rasterizer2D_replace(var12, var13, var14);
-			Rasterizer2D.Rasterizer2D_setClipArray(var15);
-			Rasterizer3D.Rasterizer3D_setClipFromRasterizer2D();
-			Rasterizer3D.field2276 = true;
-			return var8;
 		}
+	}
+
+	@ObfuscatedName("kk")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "1234070189"
+	)
+	static boolean method3710(int var0) {
+		for (int var1 = 0; var1 < Client.field759; ++var1) {
+			if (Client.field745[var1] == var0) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

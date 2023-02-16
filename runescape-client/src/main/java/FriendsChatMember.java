@@ -3,18 +3,21 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mx")
+@ObfuscatedName("og")
 @Implements("FriendsChatMember")
 public class FriendsChatMember extends Buddy {
-	@ObfuscatedName("c")
+	@ObfuscatedName("dc")
+	@Export("mouseCam")
+	static boolean mouseCam;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lmu;"
+		descriptor = "Lot;"
 	)
 	@Export("friend")
 	TriBool friend;
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Lmu;"
+		descriptor = "Lot;"
 	)
 	@Export("ignored")
 	TriBool ignored;
@@ -24,20 +27,20 @@ public class FriendsChatMember extends Buddy {
 		this.ignored = TriBool.TriBool_unknown;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-39"
+		descriptor = "(I)V",
+		garbageValue = "-393311077"
 	)
 	@Export("clearIsFriend")
 	void clearIsFriend() {
 		this.friend = TriBool.TriBool_unknown;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(S)Z",
-		garbageValue = "-2883"
+		descriptor = "(B)Z",
+		garbageValue = "-25"
 	)
 	@Export("isFriend")
 	public final boolean isFriend() {
@@ -48,20 +51,20 @@ public class FriendsChatMember extends Buddy {
 		return this.friend == TriBool.TriBool_true;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "935555842"
+		descriptor = "(B)V",
+		garbageValue = "16"
 	)
 	@Export("fillIsFriend")
 	void fillIsFriend() {
-		this.friend = GameEngine.friendSystem.friendsList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
+		this.friend = WorldMapElement.friendSystem.friendsList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
 	}
 
 	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1459328233"
+		descriptor = "(B)V",
+		garbageValue = "102"
 	)
 	@Export("clearIsIgnored")
 	void clearIsIgnored() {
@@ -71,7 +74,7 @@ public class FriendsChatMember extends Buddy {
 	@ObfuscatedName("r")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-463248448"
+		garbageValue = "1204193663"
 	)
 	@Export("isIgnored")
 	public final boolean isIgnored() {
@@ -82,23 +85,13 @@ public class FriendsChatMember extends Buddy {
 		return this.ignored == TriBool.TriBool_true;
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "-115"
+		garbageValue = "-67"
 	)
 	@Export("fillIsIgnored")
 	void fillIsIgnored() {
-		this.ignored = GameEngine.friendSystem.ignoreList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-714139435"
-	)
-	@Export("isWorldMapEvent")
-	public static boolean isWorldMapEvent(int var0) {
-		return var0 == 10 || var0 == 11 || var0 == 12 || var0 == 13 || var0 == 14 || var0 == 15 || var0 == 16 || var0 == 17;
+		this.ignored = WorldMapElement.friendSystem.ignoreList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
 	}
 }

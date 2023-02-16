@@ -1,3 +1,4 @@
+import java.awt.datatransfer.Clipboard;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -8,21 +9,26 @@ import javax.net.ssl.SSLSocket;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
 
-@ObfuscatedName("d")
+@ObfuscatedName("b")
 class class12 extends SSLSocket {
-	@ObfuscatedName("i")
-	@Export("BZip2Decompressor_block")
-	static int[] BZip2Decompressor_block;
-	@ObfuscatedName("dj")
-	static boolean field72;
-	@ObfuscatedName("c")
-	Certificate[] field67;
+	@ObfuscatedName("vg")
+	@ObfuscatedSignature(
+		descriptor = "Loi;"
+	)
+	static ArchiveDisk field64;
+	@ObfuscatedName("ez")
+	@ObfuscatedSignature(
+		descriptor = "Llm;"
+	)
+	@Export("archive12")
+	static Archive archive12;
+	@ObfuscatedName("f")
+	Certificate[] field68;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Le;"
+		descriptor = "Lh;"
 	)
 	final class15 this$0;
 	// $FF: synthetic field
@@ -31,7 +37,7 @@ class class12 extends SSLSocket {
 	final String val$host;
 
 	@ObfuscatedSignature(
-		descriptor = "(Le;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;Ljava/lang/String;)V"
+		descriptor = "(Lh;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;Ljava/lang/String;)V"
 	)
 	class12(class15 var1, TlsClientProtocol var2, String var3) {
 		this.this$0 = var1;
@@ -39,10 +45,19 @@ class class12 extends SSLSocket {
 		this.val$host = var3;
 	}
 
-	public void removeHandshakeCompletedListener(HandshakeCompletedListener var1) {
+	public InputStream getInputStream() throws IOException {
+		return this.val$tlsClientProtocol.getInputStream();
 	}
 
-	public String[] getSupportedCipherSuites() {
+	public synchronized void close() throws IOException {
+		this.val$tlsClientProtocol.close();
+	}
+
+	public OutputStream getOutputStream() throws IOException {
+		return this.val$tlsClientProtocol.getOutputStream();
+	}
+
+	public String[] getEnabledCipherSuites() {
 		return null;
 	}
 
@@ -54,276 +69,199 @@ class class12 extends SSLSocket {
 		return false;
 	}
 
-	public SSLSession getSession() {
-		return new class17(this);
+	public void addHandshakeCompletedListener(HandshakeCompletedListener var1) {
 	}
 
 	public String[] getSupportedProtocols() {
 		return null;
 	}
 
-	public void setEnabledCipherSuites(String[] var1) {
+	public boolean getEnableSessionCreation() {
+		return false;
 	}
 
 	public boolean getWantClientAuth() {
 		return false;
 	}
 
-	public void setWantClientAuth(boolean var1) {
+	public void removeHandshakeCompletedListener(HandshakeCompletedListener var1) {
+	}
+
+	public void setEnableSessionCreation(boolean var1) {
+	}
+
+	public void setEnabledCipherSuites(String[] var1) {
+	}
+
+	public void setEnabledProtocols(String[] var1) {
+	}
+
+	public void setNeedClientAuth(boolean var1) {
+	}
+
+	public void setUseClientMode(boolean var1) {
 	}
 
 	public void startHandshake() throws IOException {
 		this.val$tlsClientProtocol.connect(new class13(this));
 	}
 
-	public void setNeedClientAuth(boolean var1) {
-	}
-
-	public InputStream getInputStream() throws IOException {
-		return this.val$tlsClientProtocol.getInputStream();
-	}
-
-	public void setEnabledProtocols(String[] var1) {
-	}
-
-	public OutputStream getOutputStream() throws IOException {
-		return this.val$tlsClientProtocol.getOutputStream();
-	}
-
-	public boolean getEnableSessionCreation() {
-		return false;
-	}
-
-	public void addHandshakeCompletedListener(HandshakeCompletedListener var1) {
-	}
-
-	public String[] getEnabledCipherSuites() {
+	public String[] getSupportedCipherSuites() {
 		return null;
-	}
-
-	public void setEnableSessionCreation(boolean var1) {
 	}
 
 	public boolean getUseClientMode() {
 		return false;
 	}
 
-	public synchronized void close() throws IOException {
-		this.val$tlsClientProtocol.close();
+	public void setWantClientAuth(boolean var1) {
 	}
 
-	public void setUseClientMode(boolean var1) {
+	public SSLSession getSession() {
+		return new class17(this);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "392889295"
+		descriptor = "(IIIIB)V",
+		garbageValue = "89"
 	)
-	static int method189(int var0, int var1) {
-		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var2 == null) {
-			return -1;
-		} else {
-			return var1 >= 0 && var1 < var2.ids.length ? var2.ids[var1] : -1;
-		}
-	}
+	static void method172(int var0, int var1, int var2, int var3) {
+		for (ObjectSound var4 = (ObjectSound)ObjectSound.objectSounds.last(); var4 != null; var4 = (ObjectSound)ObjectSound.objectSounds.previous()) {
+			if (var4.soundEffectId != -1 || var4.soundEffectIds != null) {
+				int var5 = 0;
+				if (var1 > var4.maxX * 128) {
+					var5 += var1 - var4.maxX * 128;
+				} else if (var1 < var4.x * 128) {
+					var5 += var4.x * 128 - var1;
+				}
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(Loz;III)I",
-		garbageValue = "-1062038297"
-	)
-	static int method158(IterableNodeHashTable var0, int var1, int var2) {
-		if (var0 == null) {
-			return var2;
-		} else {
-			IntegerNode var3 = (IntegerNode)var0.get((long)var1);
-			return var3 == null ? var2 : var3.integer;
-		}
-	}
+				if (var2 > var4.maxY * 16384) {
+					var5 += var2 - var4.maxY * 16384;
+				} else if (var2 < var4.y * 128) {
+					var5 += var4.y * 128 - var2;
+				}
 
-	@ObfuscatedName("w")
-	static boolean method188(long var0) {
-		return (int)(var0 >>> 16 & 1L) == 1;
-	}
-
-	@ObfuscatedName("z")
-	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZB)I",
-		garbageValue = "122"
-	)
-	static int method190(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.CLIENTCLOCK) {
-			Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.cycle;
-			return 1;
-		} else {
-			int var3;
-			int var4;
-			if (var0 == ScriptOpcodes.INV_GETOBJ) {
-				IsaacCipher.Interpreter_intStackSize -= 2;
-				var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-				var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = method189(var3, var4);
-				return 1;
-			} else if (var0 == ScriptOpcodes.INV_GETNUM) {
-				IsaacCipher.Interpreter_intStackSize -= 2;
-				var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-				var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = ReflectionCheck.ItemContainer_getCount(var3, var4);
-				return 1;
-			} else if (var0 == ScriptOpcodes.INV_TOTAL) {
-				IsaacCipher.Interpreter_intStackSize -= 2;
-				var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-				var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = MouseRecorder.method2160(var3, var4);
-				return 1;
-			} else if (var0 == ScriptOpcodes.INV_SIZE) {
-				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = class78.getInvDefinition(var3).size;
-				return 1;
-			} else if (var0 == ScriptOpcodes.STAT) {
-				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.currentLevels[var3];
-				return 1;
-			} else if (var0 == ScriptOpcodes.STAT_BASE) {
-				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.levels[var3];
-				return 1;
-			} else if (var0 == ScriptOpcodes.STAT_XP) {
-				var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-				Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.experience[var3];
-				return 1;
-			} else {
-				int var5;
-				if (var0 == ScriptOpcodes.COORD) {
-					var3 = class20.Client_plane;
-					var4 = class131.baseX * 64 + (class340.localPlayer.x >> 7);
-					var5 = TileItem.baseY * 64 + (class340.localPlayer.y >> 7);
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = (var4 << 14) + var5 + (var3 << 28);
-					return 1;
-				} else if (var0 == ScriptOpcodes.COORDX) {
-					var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3 >> 14 & 16383;
-					return 1;
-				} else if (var0 == ScriptOpcodes.COORDZ) {
-					var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3 >> 28;
-					return 1;
-				} else if (var0 == ScriptOpcodes.COORDY) {
-					var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3 & 16383;
-					return 1;
-				} else if (var0 == ScriptOpcodes.MAP_MEMBERS) {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.isMembersWorld ? 1 : 0;
-					return 1;
-				} else if (var0 == ScriptOpcodes.INVOTHER_GETOBJ) {
-					IsaacCipher.Interpreter_intStackSize -= 2;
-					var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize] + 32768;
-					var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = method189(var3, var4);
-					return 1;
-				} else if (var0 == ScriptOpcodes.INVOTHER_GETNUM) {
-					IsaacCipher.Interpreter_intStackSize -= 2;
-					var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize] + 32768;
-					var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = ReflectionCheck.ItemContainer_getCount(var3, var4);
-					return 1;
-				} else if (var0 == ScriptOpcodes.INVOTHER_TOTAL) {
-					IsaacCipher.Interpreter_intStackSize -= 2;
-					var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize] + 32768;
-					var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = MouseRecorder.method2160(var3, var4);
-					return 1;
-				} else if (var0 == ScriptOpcodes.STAFFMODLEVEL) {
-					if (Client.staffModLevel >= 2) {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.staffModLevel;
-					} else {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
+				if (var5 - 64 <= var4.field837 && PacketWriter.clientPreferences.method2499() != 0 && var0 == var4.plane) {
+					var5 -= 64;
+					if (var5 < 0) {
+						var5 = 0;
 					}
 
-					return 1;
-				} else if (var0 == ScriptOpcodes.REBOOTTIMER) {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.rebootTimer;
-					return 1;
-				} else if (var0 == ScriptOpcodes.MAP_WORLD) {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.worldId;
-					return 1;
-				} else if (var0 == ScriptOpcodes.RUNENERGY_VISIBLE) {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.runEnergy;
-					return 1;
-				} else if (var0 == ScriptOpcodes.RUNWEIGHT_VISIBLE) {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.weight;
-					return 1;
-				} else if (var0 == ScriptOpcodes.PLAYERMOD) {
-					if (Client.playerMod) {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 1;
+					int var6 = (var4.field837 - var5) * PacketWriter.clientPreferences.method2499() / var4.field837;
+					if (var4.stream1 == null) {
+						if (var4.soundEffectId >= 0) {
+							SoundEffect var7 = SoundEffect.readSoundEffect(DynamicObject.archive9, var4.soundEffectId, 0);
+							if (var7 != null) {
+								RawSound var8 = var7.toRawSound().resample(class257.field2997);
+								RawPcmStream var9 = RawPcmStream.createRawPcmStream(var8, 100, var6);
+								var9.setNumLoops(-1);
+								class209.pcmStreamMixer.addSubStream(var9);
+								var4.stream1 = var9;
+							}
+						}
 					} else {
-						Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = 0;
+						var4.stream1.method885(var6);
 					}
 
-					return 1;
-				} else if (var0 == ScriptOpcodes.WORLDFLAGS) {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.worldProperties;
-					return 1;
-				} else if (var0 == ScriptOpcodes.MOVECOORD) {
-					IsaacCipher.Interpreter_intStackSize -= 4;
-					var3 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize];
-					var4 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 1];
-					var5 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 2];
-					int var6 = Interpreter.Interpreter_intStack[IsaacCipher.Interpreter_intStackSize + 3];
-					var3 += var4 << 14;
-					var3 += var5 << 28;
-					var3 += var6;
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = var3;
-					return 1;
-				} else if (var0 == 3326) {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.field483;
-					return 1;
-				} else if (var0 == 3327) {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = Client.field746;
-					return 1;
+					if (var4.stream2 == null) {
+						if (var4.soundEffectIds != null && (var4.field843 -= var3) <= 0) {
+							int var11 = (int)(Math.random() * (double)var4.soundEffectIds.length);
+							SoundEffect var12 = SoundEffect.readSoundEffect(DynamicObject.archive9, var4.soundEffectIds[var11], 0);
+							if (var12 != null) {
+								RawSound var13 = var12.toRawSound().resample(class257.field2997);
+								RawPcmStream var10 = RawPcmStream.createRawPcmStream(var13, 100, var6);
+								var10.setNumLoops(0);
+								class209.pcmStreamMixer.addSubStream(var10);
+								var4.stream2 = var10;
+								var4.field843 = var4.field845 + (int)(Math.random() * (double)(var4.field841 - var4.field845));
+							}
+						}
+					} else {
+						var4.stream2.method885(var6);
+						if (!var4.stream2.hasNext()) {
+							var4.stream2 = null;
+						}
+					}
 				} else {
-					return 2;
+					if (var4.stream1 != null) {
+						class209.pcmStreamMixer.removeSubStream(var4.stream1);
+						var4.stream1 = null;
+					}
+
+					if (var4.stream2 != null) {
+						class209.pcmStreamMixer.removeSubStream(var4.stream2);
+						var4.stream2 = null;
+					}
 				}
 			}
 		}
+
 	}
 
-	@ObfuscatedName("jp")
+	@ObfuscatedName("fa")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIIB)V",
-		garbageValue = "60"
+		descriptor = "(I)V",
+		garbageValue = "-1608124150"
 	)
-	@Export("drawWidgets")
-	static final void drawWidgets(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-		if (class242.loadInterface(var0)) {
-			BufferedFile.field4430 = null;
-			class118.drawInterface(MouseRecorder.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6, var7);
-			if (BufferedFile.field4430 != null) {
-				class118.drawInterface(BufferedFile.field4430, -1412584499, var1, var2, var3, var4, HitSplatDefinition.field1945, class78.field1000, var7);
-				BufferedFile.field4430 = null;
-			}
+	static void method169() {
+		Client.packetWriter.clearBuffer();
+		Client.packetWriter.packetBuffer.offset = 0;
+		Client.packetWriter.serverPacket = null;
+		Client.packetWriter.field1405 = null;
+		Client.packetWriter.field1401 = null;
+		Client.packetWriter.field1402 = null;
+		Client.packetWriter.serverPacketLength = 0;
+		Client.packetWriter.field1398 = 0;
+		Client.rebootTimer = 0;
+		ScriptFrame.method1156();
+		Client.minimapState = 0;
+		Client.destinationX = 0;
 
-		} else {
-			if (var7 != -1) {
-				Client.field504[var7] = true;
-			} else {
-				for (int var8 = 0; var8 < 100; ++var8) {
-					Client.field504[var8] = true;
-				}
-			}
-
+		int var0;
+		for (var0 = 0; var0 < 2048; ++var0) {
+			Client.players[var0] = null;
 		}
+
+		class387.localPlayer = null;
+
+		for (var0 = 0; var0 < Client.npcs.length; ++var0) {
+			NPC var1 = Client.npcs[var0];
+			if (var1 != null) {
+				var1.targetIndex = -1;
+				var1.false0 = false;
+			}
+		}
+
+		class320.method6429();
+		class246.method5251(30);
+
+		for (var0 = 0; var0 < 100; ++var0) {
+			Client.field725[var0] = true;
+		}
+
+		PacketBufferNode var2 = Renderable.getPacketBufferNode(ClientPacket.field3126, Client.packetWriter.isaacCipher);
+		var2.packetBuffer.writeByte(Message.getWindowedMode());
+		var2.packetBuffer.writeShort(GameEngine.canvasWidth);
+		var2.packetBuffer.writeShort(class127.canvasHeight);
+		Client.packetWriter.addNode(var2);
 	}
 
-	@ObfuscatedName("jm")
+	@ObfuscatedName("hr")
 	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "1583315903"
+		descriptor = "(I)Lmo;",
+		garbageValue = "1067755495"
 	)
-	@Export("setTapToDrop")
-	static void setTapToDrop(boolean var0) {
-		Client.tapToDrop = var0;
+	public static NodeDeque method171() {
+		return Client.scriptEvents;
+	}
+
+	@ObfuscatedName("my")
+	@ObfuscatedSignature(
+		descriptor = "(B)Ljava/awt/datatransfer/Clipboard;",
+		garbageValue = "17"
+	)
+	public static Clipboard method170() {
+		return Decimator.client.method502();
 	}
 }

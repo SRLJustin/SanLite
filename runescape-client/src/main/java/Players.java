@@ -4,84 +4,72 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cw")
+@ObfuscatedName("cn")
 @Implements("Players")
 public class Players {
-	@ObfuscatedName("qa")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	@Export("friendsChatManager")
-	static FriendsChatManager friendsChatManager;
-	@ObfuscatedName("p")
-	static byte[] field1243;
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "[Lgj;"
-	)
-	static class185[] field1246;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "[Lpi;"
-	)
-	static Buffer[] field1248;
-	@ObfuscatedName("s")
+	@ObfuscatedName("tt")
 	@ObfuscatedGetter(
-		intValue = 60233761
+		intValue = 994098816
+	)
+	static int field1352;
+	@ObfuscatedName("v")
+	static byte[] field1353;
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "[Lhz;"
+	)
+	static class208[] field1340;
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "[Lrd;"
+	)
+	static Buffer[] field1341;
+	@ObfuscatedName("j")
+	@ObfuscatedGetter(
+		intValue = -1794629455
 	)
 	@Export("Players_count")
 	static int Players_count;
-	@ObfuscatedName("j")
+	@ObfuscatedName("i")
 	@Export("Players_indices")
 	static int[] Players_indices;
-	@ObfuscatedName("w")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -1857354621
+		intValue = 417558415
 	)
 	@Export("Players_emptyIdxCount")
 	static int Players_emptyIdxCount;
-	@ObfuscatedName("n")
+	@ObfuscatedName("l")
 	@Export("Players_emptyIndices")
 	static int[] Players_emptyIndices;
-	@ObfuscatedName("r")
+	@ObfuscatedName("k")
 	@Export("Players_regions")
 	static int[] Players_regions;
-	@ObfuscatedName("o")
+	@ObfuscatedName("c")
 	@Export("Players_orientations")
 	static int[] Players_orientations;
-	@ObfuscatedName("v")
+	@ObfuscatedName("r")
 	@Export("Players_targetIndices")
 	static int[] Players_targetIndices;
-	@ObfuscatedName("d")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = 1591161311
+		intValue = -542142145
 	)
 	@Export("Players_pendingUpdateCount")
 	static int Players_pendingUpdateCount;
-	@ObfuscatedName("h")
+	@ObfuscatedName("m")
 	@Export("Players_pendingUpdateIndices")
 	static int[] Players_pendingUpdateIndices;
-	@ObfuscatedName("g")
+	@ObfuscatedName("t")
 	@ObfuscatedSignature(
-		descriptor = "Lpi;"
+		descriptor = "Lrd;"
 	)
-	static Buffer field1257;
-	@ObfuscatedName("cb")
-	@ObfuscatedGetter(
-		intValue = 1838137179
-	)
-	public static int field1247;
-	@ObfuscatedName("el")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive11")
-	static Archive archive11;
+	static Buffer field1351;
 
 	static {
-		field1243 = new byte[2048];
-		field1246 = new class185[2048];
-		field1248 = new Buffer[2048];
+		field1353 = new byte[2048];
+		field1340 = new class208[2048];
+		field1341 = new Buffer[2048];
 		Players_count = 0;
 		Players_indices = new int[2048];
 		Players_emptyIdxCount = 0;
@@ -91,28 +79,101 @@ public class Players {
 		Players_targetIndices = new int[2048];
 		Players_pendingUpdateCount = 0;
 		Players_pendingUpdateIndices = new int[2048];
-		field1257 = new Buffer(new byte[5000]);
+		field1351 = new Buffer(new byte[5000]);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Lku;Ljava/lang/String;Ljava/lang/String;IZI)V",
-		garbageValue = "2062230724"
+		descriptor = "(ILoi;Llm;I)V",
+		garbageValue = "-1261818676"
 	)
-	public static void method2382(AbstractArchive var0, String var1, String var2, int var3, boolean var4) {
-		int var5 = var0.getGroupId(var1);
-		int var6 = var0.getFileId(var5, var2);
-		NetSocket.method3118(var0, var5, var6, var3, var4);
+	static void method2749(int var0, ArchiveDisk var1, Archive var2) {
+		ArchiveDiskAction var3 = new ArchiveDiskAction();
+		var3.type = 1;
+		var3.key = (long)var0;
+		var3.archiveDisk = var1;
+		var3.archive = var2;
+		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
+			ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.addFirst(var3);
+		}
+
+		class288.method5590();
 	}
 
-	@ObfuscatedName("kz")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-733179789"
+		descriptor = "(IB)I",
+		garbageValue = "4"
 	)
-	static final void method2383(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 127);
-		SecureRandomFuture.clientPreferences.areaSoundEffectsVolume = var0;
-		class127.savePreferences();
+	public static int method2734(int var0) {
+		return DecorativeObject.method4863(ViewportMouse.ViewportMouse_entityTags[var0]);
+	}
+
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "(Lbw;Lbw;IZI)I",
+		garbageValue = "1916884447"
+	)
+	@Export("compareWorlds")
+	static int compareWorlds(World var0, World var1, int var2, boolean var3) {
+		if (var2 == 1) {
+			int var4 = var0.population;
+			int var5 = var1.population;
+			if (!var3) {
+				if (var4 == -1) {
+					var4 = 2001;
+				}
+
+				if (var5 == -1) {
+					var5 = 2001;
+				}
+			}
+
+			return var4 - var5;
+		} else if (var2 == 2) {
+			return var0.location - var1.location;
+		} else if (var2 == 3) {
+			if (var0.activity.equals("-")) {
+				if (var1.activity.equals("-")) {
+					return 0;
+				} else {
+					return var3 ? -1 : 1;
+				}
+			} else if (var1.activity.equals("-")) {
+				return var3 ? 1 : -1;
+			} else {
+				return var0.activity.compareTo(var1.activity);
+			}
+		} else if (var2 == 4) {
+			return var0.method1789() ? (var1.method1789() ? 0 : 1) : (var1.method1789() ? -1 : 0);
+		} else if (var2 == 5) {
+			return var0.method1823() ? (var1.method1823() ? 0 : 1) : (var1.method1823() ? -1 : 0);
+		} else if (var2 == 6) {
+			return var0.isPvp() ? (var1.isPvp() ? 0 : 1) : (var1.isPvp() ? -1 : 0);
+		} else if (var2 == 7) {
+			return var0.isMembersOnly() ? (var1.isMembersOnly() ? 0 : 1) : (var1.isMembersOnly() ? -1 : 0);
+		} else {
+			return var0.id - var1.id;
+		}
+	}
+
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(III)I",
+		garbageValue = "-1515481571"
+	)
+	static final int method2742(int var0, int var1) {
+		if (var0 == -1) {
+			return 12345678;
+		} else {
+			var1 = (var0 & 127) * var1 / 128;
+			if (var1 < 2) {
+				var1 = 2;
+			} else if (var1 > 126) {
+				var1 = 126;
+			}
+
+			return (var0 & 65408) + var1;
+		}
 	}
 }
