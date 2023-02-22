@@ -1,190 +1,114 @@
+import java.lang.management.GarbageCollectorMXBean;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("g")
+@ObfuscatedName("t")
 public class class14 {
-	@ObfuscatedName("c")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -691857245
+		intValue = -396632509
 	)
-	final int field80;
-	@ObfuscatedName("b")
-	final String field79;
-	@ObfuscatedName("p")
-	final ThreadFactory field81;
-	@ObfuscatedName("m")
-	final ThreadPoolExecutor field82;
+	static int field79;
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "Lrd;"
+	)
+	@Export("NetCache_responseArchiveBuffer")
+	public static Buffer NetCache_responseArchiveBuffer;
+	@ObfuscatedName("ab")
+	@Export("garbageCollector")
+	static GarbageCollectorMXBean garbageCollector;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = -2124628423
+	)
+	final int field82;
+	@ObfuscatedName("w")
+	final String field73;
+	@ObfuscatedName("v")
+	final ThreadFactory field74;
+	@ObfuscatedName("s")
+	final ThreadPoolExecutor field76;
 
 	public class14(String var1, int var2, int var3) {
-		this.field79 = var1;
-		this.field80 = var2;
-		this.field81 = new class16(this);
-		this.field82 = this.method203(var3);
+		this.field73 = var1;
+		this.field82 = var2;
+		this.field74 = new class16(this);
+		this.field76 = this.method181(var3);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/util/concurrent/ThreadPoolExecutor;",
-		garbageValue = "-1684515517"
+		descriptor = "(IB)Ljava/util/concurrent/ThreadPoolExecutor;",
+		garbageValue = "-101"
 	)
-	final ThreadPoolExecutor method203(int var1) {
-		return new ThreadPoolExecutor(var1, var1, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue(this.field80), this.field81);
+	final ThreadPoolExecutor method181(int var1) {
+		return new ThreadPoolExecutor(var1, var1, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue(this.field82), this.field74);
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Lo;I)Lf;",
-		garbageValue = "-977382928"
+		descriptor = "(Lc;B)Lu;",
+		garbageValue = "51"
 	)
-	public class19 method213(class10 var1) {
-		if (this.field82.getQueue().remainingCapacity() <= 0) {
-			System.err.println("REST thread pool queue is empty\r\nThread pool size " + this.field82.getCorePoolSize() + " Queue capacity " + this.field80);
-			return new class19("Queue full");
+	public class18 method187(class10 var1) {
+		if (this.field76.getQueue().remainingCapacity() <= 0) {
+			System.err.println("REST thread pool queue is empty\r\nThread pool size " + this.field76.getCorePoolSize() + " Queue capacity " + this.field82);
+			return new class18("Queue full");
 		} else {
-			class19 var2 = new class19(this.field82.submit(new class20(this, var1)));
+			class18 var2 = new class18(this.field76.submit(new class19(this, var1)));
 			return var2;
 		}
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1972637620"
+		garbageValue = "-2009487114"
 	)
-	public final void method206() {
+	public final void method183() {
 		try {
-			this.field82.shutdown();
+			this.field76.shutdown();
 		} catch (Exception var2) {
 			System.err.println("Error shutting down RestRequestService\r\n" + var2);
 		}
 
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Ldn;FB)F",
-		garbageValue = "1"
+		descriptor = "(IIIII)V",
+		garbageValue = "157315254"
 	)
-	static float method210(class115 var0, float var1) {
-		if (var0 != null && var0.method2637() != 0) {
-			if (var1 < (float)var0.field1393[0].field1359) {
-				return var0.field1410 == class114.field1390 ? var0.field1393[0].field1349 : class213.method4354(var0, var1, true);
-			} else if (var1 > (float)var0.field1393[var0.method2637() - 1].field1359) {
-				return var0.field1396 == class114.field1390 ? var0.field1393[var0.method2637() - 1].field1349 : class213.method4354(var0, var1, false);
-			} else if (var0.field1408) {
-				return var0.field1393[0].field1349;
-			} else {
-				class111 var2 = var0.method2631(var1);
-				boolean var3 = false;
-				boolean var4 = false;
-				if (var2 == null) {
-					return 0.0F;
-				} else {
-					if (0.0D == (double)var2.field1352 && (double)var2.field1357 == 0.0D) {
-						var3 = true;
-					} else if (Float.MAX_VALUE == var2.field1352 && var2.field1357 == Float.MAX_VALUE) {
-						var4 = true;
-					} else if (var2.field1354 != null) {
-						if (var0.field1403) {
-							float[] var5 = new float[4];
-							float[] var6 = new float[4];
-							var5[0] = (float)var2.field1359;
-							var6[0] = var2.field1349;
-							var5[1] = var5[0] + var2.field1352 * 0.33333334F;
-							var6[1] = var6[0] + 0.33333334F * var2.field1357;
-							var5[3] = (float)var2.field1354.field1359;
-							var6[3] = var2.field1354.field1349;
-							var5[2] = var5[3] - var2.field1354.field1350 * 0.33333334F;
-							var6[2] = var6[3] - var2.field1354.field1351 * 0.33333334F;
-							if (var0.field1397) {
-								class13.method202(var0, var5, var6);
-							} else {
-								UserComparator4.method2504(var0, var5, var6);
-							}
-
-							var0.field1403 = false;
-						}
-					} else {
-						var3 = true;
+	static final void method182(int var0, int var1, int var2, int var3) {
+		for (int var4 = var1; var4 <= var3 + var1; ++var4) {
+			for (int var5 = var0; var5 <= var0 + var2; ++var5) {
+				if (var5 >= 0 && var5 < 104 && var4 >= 0 && var4 < 104) {
+					Tiles.field1013[0][var5][var4] = 127;
+					if (var0 == var5 && var5 > 0) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 - 1][var4];
 					}
 
-					if (var3) {
-						return var2.field1349;
-					} else if (var4) {
-						return (float)var2.field1359 != var1 && var2.field1354 != null ? var2.field1354.field1349 : var2.field1349;
-					} else {
-						float var11;
-						float var12;
-						if (var0.field1397) {
-							if (var0 == null) {
-								var12 = 0.0F;
-							} else {
-								if (var1 == var0.field1406) {
-									var11 = 0.0F;
-								} else if (var1 == var0.field1394) {
-									var11 = 1.0F;
-								} else {
-									var11 = (var1 - var0.field1406) / (var0.field1394 - var0.field1406);
-								}
+					if (var0 + var2 == var5 && var5 < 103) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 + 1][var4];
+					}
 
-								float var7;
-								if (var0.field1398) {
-									var7 = var11;
-								} else {
-									float[] var8 = new float[]{var0.field1401[0] - var11, var0.field1401[1], var0.field1401[2], var0.field1401[3]};
-									float[] var9 = new float[5];
-									int var10 = class144.method2971(var8, 3, 0.0F, true, 1.0F, true, var9);
-									if (var10 == 1) {
-										var7 = var9[0];
-									} else {
-										var7 = 0.0F;
-									}
-								}
+					if (var4 == var1 && var4 > 0) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 - 1];
+					}
 
-								var12 = var0.field1402[0] + var7 * (var0.field1402[1] + var7 * (var0.field1402[2] + var7 * var0.field1402[3]));
-							}
-
-							return var12;
-						} else {
-							if (var0 == null) {
-								var12 = 0.0F;
-							} else {
-								var11 = var1 - var0.field1406;
-								var12 = (var11 * (var11 * var0.field1401[0] + var0.field1401[1]) + var0.field1401[2]) * var11 + var0.field1401[3];
-							}
-
-							return var12;
-						}
+					if (var3 + var1 == var4 && var4 < 103) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 + 1];
 					}
 				}
 			}
-		} else {
-			return 0.0F;
 		}
-	}
 
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "(ZZI)I",
-		garbageValue = "-1522814517"
-	)
-	public static int method214(boolean var0, boolean var1) {
-		byte var2 = 0;
-		int var3 = var2 + NetCache.NetCache_pendingPriorityResponsesCount + NetCache.NetCache_pendingPriorityWritesCount;
-		return var3;
-	}
-
-	@ObfuscatedName("id")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "724384814"
-	)
-	static final boolean method204() {
-		return Client.isMenuOpen;
 	}
 }

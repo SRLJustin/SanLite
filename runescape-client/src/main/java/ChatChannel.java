@@ -4,35 +4,23 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("by")
+@ObfuscatedName("bx")
 @Implements("ChatChannel")
 public class ChatChannel {
-	@ObfuscatedName("sm")
-	@ObfuscatedGetter(
-		intValue = 1987554027
-	)
-	static int field956;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = -764291983
-	)
-	@Export("musicTrackVolume")
-	public static int musicTrackVolume;
-	@ObfuscatedName("en")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
+		descriptor = "Lrg;"
 	)
-	@Export("archive14")
-	static Archive archive14;
-	@ObfuscatedName("b")
+	static IndexedSprite field1005;
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "[Lbr;"
+		descriptor = "[Lbq;"
 	)
 	@Export("messages")
 	Message[] messages;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 587145695
+		intValue = 1540858731
 	)
 	@Export("count")
 	int count;
@@ -41,10 +29,10 @@ public class ChatChannel {
 		this.messages = new Message[100];
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lbr;",
-		garbageValue = "358093741"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lbq;",
+		garbageValue = "-1653728872"
 	)
 	@Export("addMessage")
 	Message addMessage(int var1, String var2, String var3, String var4) {
@@ -72,102 +60,53 @@ public class ChatChannel {
 		return var5;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lbr;",
-		garbageValue = "-91"
+		descriptor = "(II)Lbq;",
+		garbageValue = "1684263002"
 	)
 	@Export("getMessage")
 	Message getMessage(int var1) {
 		return var1 >= 0 && var1 < this.count ? this.messages[var1] : null;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1262269232"
+		descriptor = "(B)I",
+		garbageValue = "-61"
 	)
 	@Export("size")
 	int size() {
 		return this.count;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;B)J",
-		garbageValue = "-84"
+		descriptor = "(IB)Lgb;",
+		garbageValue = "45"
 	)
-	static long method2054(CharSequence var0) {
-		long var1 = 0L;
-		int var3 = var0.length();
-
-		for (int var4 = 0; var4 < var3; ++var4) {
-			var1 *= 37L;
-			char var5 = var0.charAt(var4);
-			if (var5 >= 'A' && var5 <= 'Z') {
-				var1 += (long)(var5 + 1 - 65);
-			} else if (var5 >= 'a' && var5 <= 'z') {
-				var1 += (long)(var5 + 1 - 97);
-			} else if (var5 >= '0' && var5 <= '9') {
-				var1 += (long)(var5 + 27 - 48);
+	public static HitSplatDefinition method2224(int var0) {
+		HitSplatDefinition var1 = (HitSplatDefinition)HitSplatDefinition.HitSplatDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = class498.HitSplatDefinition_archive.takeFile(32, var0);
+			var1 = new HitSplatDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
 			}
 
-			if (var1 >= 177917621779460413L) {
-				break;
-			}
+			HitSplatDefinition.HitSplatDefinition_cached.put(var1, (long)var0);
+			return var1;
 		}
-
-		while (var1 % 37L == 0L && 0L != var1) {
-			var1 /= 37L;
-		}
-
-		return var1;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ljm;",
-		garbageValue = "1761147769"
+		descriptor = "(B)V",
+		garbageValue = "30"
 	)
-	@Export("getWidget")
-	public static Widget getWidget(int var0) {
-		int var1 = var0 >> 16;
-		int var2 = var0 & 65535;
-		if (MouseRecorder.Widget_interfaceComponents[var1] == null || MouseRecorder.Widget_interfaceComponents[var1][var2] == null) {
-			boolean var3 = class242.loadInterface(var1);
-			if (!var3) {
-				return null;
-			}
-		}
-
-		return MouseRecorder.Widget_interfaceComponents[var1][var2];
-	}
-
-	@ObfuscatedName("ka")
-	@ObfuscatedSignature(
-		descriptor = "(IIIB)Lcl;",
-		garbageValue = "3"
-	)
-	static final InterfaceParent method2058(int var0, int var1, int var2) {
-		InterfaceParent var3 = new InterfaceParent();
-		var3.group = var1;
-		var3.type = var2;
-		Client.interfaceParents.put(var3, (long)var0);
-		class140.Widget_resetModelFrames(var1);
-		Widget var4 = getWidget(var0);
-		SecureRandomCallable.invalidateWidget(var4);
-		if (Client.meslayerContinueWidget != null) {
-			SecureRandomCallable.invalidateWidget(Client.meslayerContinueWidget);
-			Client.meslayerContinueWidget = null;
-		}
-
-		FileSystem.decrementMenuEntries();
-		class115.revalidateWidgetScroll(MouseRecorder.Widget_interfaceComponents[var0 >> 16], var4, false);
-		class33.runWidgetOnLoadListener(var1);
-		if (Client.rootInterface != -1) {
-			Message.runIntfCloseListeners(Client.rootInterface, 1);
-		}
-
-		return var3;
+	static final void method2213() {
+		Decimator.method1115("You can't add yourself to your own ignore list");
 	}
 }

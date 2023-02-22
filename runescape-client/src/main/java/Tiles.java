@@ -3,112 +3,215 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("bk")
+@ObfuscatedName("bv")
 @Implements("Tiles")
 public final class Tiles {
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@Export("Tiles_heights")
 	static int[][][] Tiles_heights;
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@Export("Tiles_renderFlags")
 	static byte[][][] Tiles_renderFlags;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -197978705
+		intValue = 2029245625
 	)
 	@Export("Tiles_minPlane")
 	static int Tiles_minPlane;
-	@ObfuscatedName("m")
-	@Export("Tiles_underlays")
-	static byte[][][] Tiles_underlays;
-	@ObfuscatedName("t")
-	@Export("Tiles_overlays")
-	static byte[][][] Tiles_overlays;
 	@ObfuscatedName("s")
-	@Export("Tiles_shapes")
-	static byte[][][] Tiles_shapes;
-	@ObfuscatedName("r")
-	@Export("Tiles_hue")
-	static int[] Tiles_hue;
-	@ObfuscatedName("v")
-	@Export("Tiles_lightness")
-	static int[] Tiles_lightness;
-	@ObfuscatedName("k")
-	static final int[] field969;
-	@ObfuscatedName("f")
-	static final int[] field970;
-	@ObfuscatedName("l")
-	static final int[] field976;
-	@ObfuscatedName("q")
-	static final int[] field966;
-	@ObfuscatedName("x")
-	static final int[] field973;
-	@ObfuscatedName("z")
-	static final int[] field974;
+	static short[][][] field1010;
+	@ObfuscatedName("j")
+	static byte[][][] field1011;
 	@ObfuscatedName("i")
+	static byte[][][] field1012;
+	@ObfuscatedName("n")
+	static byte[][][] field1013;
+	@ObfuscatedName("r")
+	static int[] field1024;
+	@ObfuscatedName("u")
+	static final int[] field1015;
+	@ObfuscatedName("x")
+	static final int[] field1016;
+	@ObfuscatedName("a")
+	static final int[] field1017;
+	@ObfuscatedName("q")
+	static final int[] field1007;
+	@ObfuscatedName("d")
+	static final int[] field1019;
+	@ObfuscatedName("e")
+	static final int[] field1020;
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = -870044793
+		intValue = 1002490687
 	)
 	@Export("rndHue")
 	static int rndHue;
 	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = 1761339733
+		intValue = 1127262765
 	)
 	@Export("rndLightness")
 	static int rndLightness;
-	@ObfuscatedName("ho")
-	@Export("regionMapArchiveIds")
-	static int[] regionMapArchiveIds;
 
 	static {
 		Tiles_heights = new int[4][105][105];
 		Tiles_renderFlags = new byte[4][104][104];
 		Tiles_minPlane = 99;
-		field969 = new int[]{1, 2, 4, 8};
-		field970 = new int[]{16, 32, 64, 128};
-		field976 = new int[]{1, 0, -1, 0};
-		field966 = new int[]{0, -1, 0, 1};
-		field973 = new int[]{1, -1, -1, 1};
-		field974 = new int[]{-1, -1, 1, 1};
+		field1015 = new int[]{1, 2, 4, 8};
+		field1016 = new int[]{16, 32, 64, 128};
+		field1017 = new int[]{1, 0, -1, 0};
+		field1007 = new int[]{0, -1, 0, 1};
+		field1019 = new int[]{1, -1, -1, 1};
+		field1020 = new int[]{-1, -1, 1, 1};
 		rndHue = (int)(Math.random() * 17.0D) - 8;
 		rndLightness = (int)(Math.random() * 33.0D) - 16;
 	}
 
-	@ObfuscatedName("jd")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(III)Ljava/lang/String;",
-		garbageValue = "1455768075"
+		descriptor = "([BIIIIIIILhn;[Lgv;)V"
 	)
-	static final String method2108(int var0, int var1) {
-		int var2 = var1 - var0;
-		if (var2 < -9) {
-			return UserComparator5.colorStartTag(16711680);
-		} else if (var2 < -6) {
-			return UserComparator5.colorStartTag(16723968);
-		} else if (var2 < -3) {
-			return UserComparator5.colorStartTag(16740352);
-		} else if (var2 < 0) {
-			return UserComparator5.colorStartTag(16756736);
-		} else if (var2 > 9) {
-			return UserComparator5.colorStartTag(65280);
-		} else if (var2 > 6) {
-			return UserComparator5.colorStartTag(4259584);
-		} else if (var2 > 3) {
-			return UserComparator5.colorStartTag(8453888);
-		} else {
-			return var2 > 0 ? UserComparator5.colorStartTag(12648192) : UserComparator5.colorStartTag(16776960);
+	static final void method2274(byte[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, Scene var8, CollisionMap[] var9) {
+		Buffer var10 = new Buffer(var0);
+		int var11 = -1;
+
+		while (true) {
+			int var12 = var10.method8809();
+			if (var12 == 0) {
+				return;
+			}
+
+			var11 += var12;
+			int var13 = 0;
+
+			while (true) {
+				int var14 = var10.readUShortSmart();
+				if (var14 == 0) {
+					break;
+				}
+
+				var13 += var14 - 1;
+				int var15 = var13 & 63;
+				int var16 = var13 >> 6 & 63;
+				int var17 = var13 >> 12;
+				int var18 = var10.readUnsignedByte();
+				int var19 = var18 >> 2;
+				int var20 = var18 & 3;
+				if (var17 == var4 && var16 >= var5 && var16 < var5 + 8 && var15 >= var6 && var15 < var6 + 8) {
+					ObjectComposition var21 = class463.getObjectDefinition(var11);
+					int var22 = var2 + WorldMapRegion.method5148(var16 & 7, var15 & 7, var7, var21.sizeX, var21.sizeY, var20);
+					int var25 = var16 & 7;
+					int var26 = var15 & 7;
+					int var28 = var21.sizeX;
+					int var29 = var21.sizeY;
+					int var30;
+					if ((var20 & 1) == 1) {
+						var30 = var28;
+						var28 = var29;
+						var29 = var30;
+					}
+
+					int var27 = var7 & 3;
+					int var24;
+					if (var27 == 0) {
+						var24 = var26;
+					} else if (var27 == 1) {
+						var24 = 7 - var25 - (var28 - 1);
+					} else if (var27 == 2) {
+						var24 = 7 - var26 - (var29 - 1);
+					} else {
+						var24 = var25;
+					}
+
+					var30 = var3 + var24;
+					if (var22 > 0 && var30 > 0 && var22 < 103 && var30 < 103) {
+						int var31 = var1;
+						if ((Tiles_renderFlags[1][var22][var30] & 2) == 2) {
+							var31 = var1 - 1;
+						}
+
+						CollisionMap var32 = null;
+						if (var31 >= 0) {
+							var32 = var9[var31];
+						}
+
+						NameableContainer.method7728(var1, var22, var30, var11, var20 + var7 & 3, var19, var8, var32);
+					}
+				}
+			}
 		}
 	}
 
-	@ObfuscatedName("je")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1582084757"
+		descriptor = "(ILba;ZI)I",
+		garbageValue = "1451168135"
 	)
-	@Export("getTapToDrop")
-	static boolean getTapToDrop() {
-		return Client.tapToDrop;
+	static int method2277(int var0, Script var1, boolean var2) {
+		Widget var7;
+		if (var0 != ScriptOpcodes.CC_CALLONRESIZE && var0 != ScriptOpcodes.IF_CALLONRESIZE) {
+			int var4;
+			if (var0 == ScriptOpcodes.CC_TRIGGEROP) {
+				var7 = var2 ? Interpreter.scriptDotWidget : class85.field1091;
+				var4 = Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize];
+				if (var4 >= 1 && var4 <= 10) {
+					class97 var8 = new class97(var4, var7.id, var7.childIndex, var7.itemId);
+					Interpreter.field864.add(var8);
+					return 1;
+				} else {
+					throw new RuntimeException();
+				}
+			} else if (var0 == ScriptOpcodes.IF_TRIGGEROP) {
+				class302.Interpreter_intStackSize -= 3;
+				int var3 = Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize + 1];
+				int var5 = Interpreter.Interpreter_intStack[class302.Interpreter_intStackSize + 2];
+				if (var5 >= 1 && var5 <= 10) {
+					class97 var6 = new class97(var5, var3, var4, class133.getWidget(var3).itemId);
+					Interpreter.field864.add(var6);
+					return 1;
+				} else {
+					throw new RuntimeException();
+				}
+			} else {
+				return 2;
+			}
+		} else if (Interpreter.field861 >= 10) {
+			throw new RuntimeException();
+		} else {
+			if (var0 >= 2000) {
+				var7 = class133.getWidget(Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize]);
+			} else {
+				var7 = var2 ? Interpreter.scriptDotWidget : class85.field1091;
+			}
+
+			if (var7.onResize == null) {
+				return 0;
+			} else {
+				ScriptEvent var9 = new ScriptEvent();
+				var9.widget = var7;
+				var9.args = var7.onResize;
+				var9.field1071 = Interpreter.field861 + 1;
+				Client.scriptEvents.addFirst(var9);
+				return 1;
+			}
+		}
+	}
+
+	@ObfuscatedName("mm")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lqc;",
+		garbageValue = "-124"
+	)
+	static class467 method2276(int var0) {
+		class467 var1 = (class467)Client.Widget_cachedModels.get((long)var0);
+		if (var1 == null) {
+			var1 = new class467(Canvas.field132, WorldMapLabelSize.method4893(var0), MidiPcmStream.method5728(var0));
+			Client.Widget_cachedModels.put(var1, (long)var0);
+		}
+
+		return var1;
 	}
 }

@@ -3,15 +3,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("do")
+@ObfuscatedName("dl")
 @Implements("BuddyRankComparator")
 public class BuddyRankComparator extends AbstractUserComparator {
-	@ObfuscatedName("pw")
-	@ObfuscatedSignature(
-		descriptor = "Lnq;"
-	)
-	static class370 field1342;
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -19,10 +14,10 @@ public class BuddyRankComparator extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lmp;Lmp;I)I",
-		garbageValue = "-1364999182"
+		descriptor = "(Loa;Loa;I)I",
+		garbageValue = "-556514740"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -37,17 +32,49 @@ public class BuddyRankComparator extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ld")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "(IIIZI)V",
-		garbageValue = "1683360444"
+		descriptor = "(IIZB)Ljava/lang/String;",
+		garbageValue = "-19"
 	)
-	public static void method2547(int var0, int var1, int var2, boolean var3) {
-		PacketBufferNode var4 = HitSplatDefinition.getPacketBufferNode(ClientPacket.field2819, Client.packetWriter.isaacCipher);
-		var4.packetBuffer.method7527(var3 ? Client.field607 : 0);
-		var4.packetBuffer.method7349(var0);
-		var4.packetBuffer.method7343(var2);
-		var4.packetBuffer.writeShort(var1);
-		Client.packetWriter.addNode(var4);
+	static String method2965(int var0, int var1, boolean var2) {
+		if (var1 >= 2 && var1 <= 36) {
+			if (var2 && var0 >= 0) {
+				int var3 = 2;
+
+				for (int var4 = var0 / var1; var4 != 0; ++var3) {
+					var4 /= var1;
+				}
+
+				char[] var5 = new char[var3];
+				var5[0] = '+';
+
+				for (int var6 = var3 - 1; var6 > 0; --var6) {
+					int var7 = var0;
+					var0 /= var1;
+					int var8 = var7 - var0 * var1;
+					if (var8 >= 10) {
+						var5[var6] = (char)(var8 + 87);
+					} else {
+						var5[var6] = (char)(var8 + 48);
+					}
+				}
+
+				return new String(var5);
+			} else {
+				return Integer.toString(var0, var1);
+			}
+		} else {
+			throw new IllegalArgumentException("" + var1);
+		}
+	}
+
+	@ObfuscatedName("hn")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-910910666"
+	)
+	static boolean method2958() {
+		return (Client.drawPlayerNames & 8) != 0;
 	}
 }

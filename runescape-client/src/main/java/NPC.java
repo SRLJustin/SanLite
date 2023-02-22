@@ -1,45 +1,166 @@
-import java.applet.Applet;
-import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import netscape.javascript.JSObject;
 
-@ObfuscatedName("cr")
+@ObfuscatedName("cf")
 @Implements("NPC")
 public final class NPC extends Actor {
-	@ObfuscatedName("b")
-	@Export("javaVersion")
-	public static String javaVersion;
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(
-		descriptor = "Lpl;"
+	@ObfuscatedName("i")
+	@ObfuscatedGetter(
+		intValue = -274576993
 	)
-	@Export("rightTitleSprite")
-	static SpritePixels rightTitleSprite;
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "Lku;"
+	static int field1295;
+	@ObfuscatedName("l")
+	@ObfuscatedGetter(
+		intValue = 1747239789
 	)
-	@Export("Widget_fontsArchive")
-	static AbstractArchive Widget_fontsArchive;
-	@ObfuscatedName("c")
+	static int field1296;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lfi;"
+		descriptor = "Lgo;"
 	)
 	@Export("definition")
 	NPCComposition definition;
+	@ObfuscatedName("w")
+	String field1293;
+	@ObfuscatedName("s")
+	@ObfuscatedGetter(
+		intValue = 908915155
+	)
+	int field1291;
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "Lrx;"
+	)
+	class474 field1292;
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "Lgj;"
+	)
+	class189 field1290;
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "Lgj;"
+	)
+	class189 field1289;
+
+	static {
+		field1295 = 1;
+		field1296 = 1;
+	}
 
 	NPC() {
+		this.field1293 = "";
+		this.field1291 = 31;
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "-549866424"
+	)
+	void method2613(String var1) {
+		this.field1293 = var1 == null ? "" : var1;
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lhs;",
+		garbageValue = "922199662"
+	)
+	@Export("getModel")
+	protected final Model getModel() {
+		if (this.definition == null) {
+			return null;
+		} else {
+			SequenceDefinition var1 = super.sequence != -1 && super.sequenceDelay == 0 ? class85.SequenceDefinition_get(super.sequence) : null;
+			SequenceDefinition var2 = super.movementSequence == -1 || super.idleSequence == super.movementSequence && var1 != null ? null : class85.SequenceDefinition_get(super.movementSequence);
+			Model var3 = this.definition.method3723(var1, super.sequenceFrame, var2, super.movementFrame, this.field1290);
+			if (var3 == null) {
+				return null;
+			} else {
+				var3.calculateBoundsCylinder();
+				super.defaultHeight = var3.height;
+				int var4 = var3.indicesCount;
+				if (super.spotAnimation != -1 && super.spotAnimationFrame != -1) {
+					Model var5 = MouseRecorder.SpotAnimationDefinition_get(super.spotAnimation).getModel(super.spotAnimationFrame);
+					if (var5 != null) {
+						var5.offsetBy(0, -super.field1210, 0);
+						Model[] var6 = new Model[]{var3, var5};
+						var3 = new Model(var6, 2);
+					}
+				}
+
+				if (this.definition.size == 1) {
+					var3.isSingleTile = true;
+				}
+
+				if (super.field1225 != 0 && Client.cycle >= super.field1176 && Client.cycle < super.field1221) {
+					var3.overrideHue = super.field1180;
+					var3.overrideSaturation = super.field1227;
+					var3.overrideLuminance = super.field1224;
+					var3.overrideAmount = super.field1225;
+					var3.field2743 = (short)var4;
+				} else {
+					var3.overrideAmount = 0;
+				}
+
+				return var3;
+			}
+		}
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "-92"
+	)
+	void method2614(int var1) {
+		this.field1291 = var1;
+	}
+
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "2024396637"
+	)
+	boolean method2615(int var1) {
+		if (var1 >= 0 && var1 <= 4) {
+			return (this.field1291 & 1 << var1) != 0;
+		} else {
+			return true;
+		}
+	}
+
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "2101442521"
+	)
+	final String method2616() {
+		if (!this.field1293.isEmpty()) {
+			return this.field1293;
+		} else {
+			NPCComposition var1 = this.definition;
+			if (var1.transforms != null) {
+				var1 = var1.transform();
+				if (var1 == null) {
+					var1 = this.definition;
+				}
+			}
+
+			return var1.name;
+		}
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(ILgj;I)V",
-		garbageValue = "1330012132"
+		descriptor = "(ILhz;I)V",
+		garbageValue = "-565213758"
 	)
-	final void method2319(int var1, class185 var2) {
+	final void method2624(int var1, class208 var2) {
 		int var3 = super.pathX[0];
 		int var4 = super.pathY[0];
 		if (var1 == 0) {
@@ -78,7 +199,7 @@ public final class NPC extends Actor {
 			--var4;
 		}
 
-		if (super.sequence != -1 && UserComparator5.SequenceDefinition_get(super.sequence).field2097 == 1) {
+		if (super.sequence != -1 && class85.SequenceDefinition_get(super.sequence).field2301 == 1) {
 			super.sequence = -1;
 		}
 
@@ -97,58 +218,13 @@ public final class NPC extends Actor {
 		super.pathTraversed[0] = var2;
 	}
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lgo;",
-		garbageValue = "202861607"
-	)
-	@Export("getModel")
-	protected final Model getModel() {
-		if (this.definition == null) {
-			return null;
-		} else {
-			SequenceDefinition var1 = super.sequence != -1 && super.sequenceDelay == 0 ? UserComparator5.SequenceDefinition_get(super.sequence) : null;
-			SequenceDefinition var2 = super.movementSequence == -1 || super.idleSequence == super.movementSequence && var1 != null ? null : UserComparator5.SequenceDefinition_get(super.movementSequence);
-			Model var3 = this.definition.getModel(var1, super.sequenceFrame, var2, super.movementFrame);
-			if (var3 == null) {
-				return null;
-			} else {
-				var3.calculateBoundsCylinder();
-				super.defaultHeight = var3.height;
-				if (super.spotAnimation != -1 && super.spotAnimationFrame != -1) {
-					Model var4 = AccessFile.SpotAnimationDefinition_get(super.spotAnimation).getModel(super.spotAnimationFrame);
-					if (var4 != null) {
-						var4.offsetBy(0, -super.field1131, 0);
-						Model[] var5 = new Model[]{var3, var4};
-						var3 = new Model(var5, 2);
-					}
-				}
-
-				if (this.definition.size == 1) {
-					var3.isSingleTile = true;
-				}
-
-				if (super.field1146 != 0 && Client.cycle >= super.field1141 && Client.cycle < super.field1140) {
-					var3.overrideHue = super.field1143;
-					var3.overrideSaturation = super.field1144;
-					var3.overrideLuminance = super.field1095;
-					var3.overrideAmount = super.field1146;
-				} else {
-					var3.overrideAmount = 0;
-				}
-
-				return var3;
-			}
-		}
-	}
-
-	@ObfuscatedName("p")
+	@ObfuscatedName("r")
 	@ObfuscatedSignature(
 		descriptor = "(IIZI)V",
-		garbageValue = "-2138088750"
+		garbageValue = "-1025885682"
 	)
-	final void method2315(int var1, int var2, boolean var3) {
-		if (super.sequence != -1 && UserComparator5.SequenceDefinition_get(super.sequence).field2097 == 1) {
+	final void method2618(int var1, int var2, boolean var3) {
+		if (super.sequence != -1 && class85.SequenceDefinition_get(super.sequence).field2301 == 1) {
 			super.sequence = -1;
 		}
 
@@ -168,86 +244,144 @@ public final class NPC extends Actor {
 
 				super.pathX[0] = var1;
 				super.pathY[0] = var2;
-				super.pathTraversed[0] = class185.field2123;
+				super.pathTraversed[0] = class208.field2360;
 				return;
 			}
 		}
 
 		super.pathLength = 0;
-		super.field1098 = 0;
-		super.field1117 = 0;
+		super.field1230 = 0;
+		super.field1175 = 0;
 		super.pathX[0] = var1;
 		super.pathY[0] = var2;
-		super.x = super.field1120 * 64 + super.pathX[0] * 128;
-		super.y = super.field1120 * 64 + super.pathY[0] * 128;
+		super.x = super.field1163 * 64 + super.pathX[0] * 128;
+		super.y = super.field1163 * 64 + super.pathY[0] * 128;
 	}
 
-	@ObfuscatedName("f")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "1"
+		descriptor = "(I)[I",
+		garbageValue = "1225308448"
+	)
+	int[] method2655() {
+		return this.field1292 != null ? this.field1292.method8894() : this.definition.method3757();
+	}
+
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "(S)[S",
+		garbageValue = "4096"
+	)
+	short[] method2643() {
+		return this.field1292 != null ? this.field1292.method8895() : this.definition.method3749();
+	}
+
+	@ObfuscatedName("t")
+	@ObfuscatedSignature(
+		descriptor = "(IISB)V",
+		garbageValue = "-45"
+	)
+	void method2623(int var1, int var2, short var3) {
+		if (this.field1292 == null) {
+			this.field1292 = new class474(this.definition);
+		}
+
+		this.field1292.method8896(var1, var2, var3);
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "([I[SI)V",
+		garbageValue = "-1227705445"
+	)
+	void method2612(int[] var1, short[] var2) {
+		if (this.field1292 == null) {
+			this.field1292 = new class474(this.definition);
+		}
+
+		this.field1292.method8899(var1, var2);
+	}
+
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-431556971"
+	)
+	void method2628() {
+		this.field1292 = null;
+	}
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(Lgj;B)V",
+		garbageValue = "103"
+	)
+	void method2626(class189 var1) {
+		this.field1289 = var1;
+	}
+
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(
+		descriptor = "(B)Lgj;",
+		garbageValue = "47"
+	)
+	class189 method2633() {
+		return this.field1289;
+	}
+
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "(Lgj;I)V",
+		garbageValue = "49596576"
+	)
+	void method2639(class189 var1) {
+		this.field1290 = var1;
+	}
+
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1591490422"
 	)
 	@Export("isVisible")
 	final boolean isVisible() {
 		return this.definition != null;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ILjava/lang/String;B)Z",
-		garbageValue = "68"
+		descriptor = "(I)V",
+		garbageValue = "-1330268400"
 	)
-	static boolean method2314(String var0, int var1, String var2) {
-		if (var1 == 0) {
-			try {
-				if (!class29.field177.startsWith("win")) {
-					throw new Exception();
-				} else if (!var0.startsWith("http://") && !var0.startsWith("https://")) {
-					throw new Exception();
-				} else {
-					String var11 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?&=,.%+-_#:/*";
+	void method2674() {
+		this.field1289 = null;
+	}
 
-					for (int var4 = 0; var4 < var0.length(); ++var4) {
-						if (var11.indexOf(var0.charAt(var4)) == -1) {
-							throw new Exception();
-						}
-					}
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1759648321"
+	)
+	void method2630() {
+		this.field1290 = null;
+	}
 
-					Runtime.getRuntime().exec("cmd /c start \"j\" \"" + var0 + "\"");
-					return true;
-				}
-			} catch (Throwable var5) {
-				return false;
-			}
-		} else if (var1 == 1) {
-			try {
-				Object var10 = class27.method433(class29.field172, var2, new Object[]{(new URL(class29.field172.getCodeBase(), var0)).toString()});
-				return var10 != null;
-			} catch (Throwable var6) {
-				return false;
-			}
-		} else if (var1 == 2) {
-			try {
-				class29.field172.getAppletContext().showDocument(new URL(class29.field172.getCodeBase(), var0), "_blank");
-				return true;
-			} catch (Exception var7) {
-				return false;
-			}
-		} else if (var1 == 3) {
-			try {
-				Applet var3 = class29.field172;
-				JSObject.getWindow(var3).call("loggedout", (Object[])null);
-			} catch (Throwable var9) {
-			}
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "384292747"
+	)
+	public static int method2679(int var0) {
+		return class431.field4688[var0 & 16383];
+	}
 
-			try {
-				class29.field172.getAppletContext().showDocument(new URL(class29.field172.getCodeBase(), var0), "_top");
-				return true;
-			} catch (Exception var8) {
-				return false;
-			}
-		} else {
-			throw new IllegalArgumentException();
-		}
+	@ObfuscatedName("kw")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "-1446356611"
+	)
+	static final void method2678(int var0) {
+		var0 = Math.min(Math.max(var0, 0), 127);
+		PacketWriter.clientPreferences.method2481(var0);
 	}
 }

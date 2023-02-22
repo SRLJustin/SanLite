@@ -4,39 +4,45 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hm")
+@ObfuscatedName("il")
 @Implements("WorldMapLabel")
 public class WorldMapLabel {
-	@ObfuscatedName("f")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lpi;"
+		descriptor = "[[Lkz;"
 	)
-	@Export("NetCache_reference")
-	static Buffer NetCache_reference;
-	@ObfuscatedName("c")
+	@Export("Widget_interfaceComponents")
+	public static Widget[][] Widget_interfaceComponents;
+	@ObfuscatedName("ix")
+	@ObfuscatedGetter(
+		intValue = 1971001137
+	)
+	@Export("selectedItemWidget")
+	static int selectedItemWidget;
+	@ObfuscatedName("f")
 	@Export("text")
 	String text;
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -353724483
+		intValue = -1718779497
 	)
 	@Export("width")
 	int width;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1345453381
+		intValue = 1498015633
 	)
 	@Export("height")
 	int height;
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lhh;"
+		descriptor = "Lip;"
 	)
 	@Export("size")
 	WorldMapLabelSize size;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;IILhh;)V"
+		descriptor = "(Ljava/lang/String;IILip;)V"
 	)
 	WorldMapLabel(String var1, int var2, int var3, WorldMapLabelSize var4) {
 		this.text = var1;

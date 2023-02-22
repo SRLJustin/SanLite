@@ -3,69 +3,65 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("el")
-public class class140 extends class126 {
-	@ObfuscatedName("ef")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive5")
-	static Archive archive5;
-	@ObfuscatedName("c")
+@ObfuscatedName("ed")
+public class class140 extends class139 {
+	@ObfuscatedName("l")
+	@Export("SpriteBuffer_pixels")
+	public static byte[][] SpriteBuffer_pixels;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 471941729
+		intValue = -539019319
 	)
-	int field1603;
+	int field1652;
+	@ObfuscatedName("w")
+	boolean field1651;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Lex;"
 	)
-	final class129 this$0;
+	final class142 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "(Lex;)V"
 	)
-	class140(class129 var1) {
+	class140(class142 var1) {
 		this.this$0 = var1;
-		this.field1603 = -1;
+		this.field1652 = -1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "(Lrd;S)V",
+		garbageValue = "-5782"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1603 = var1.readUnsignedShort();
+	void vmethod3394(Buffer var1) {
+		this.field1652 = var1.readUnsignedShort();
+		this.field1651 = var1.readUnsignedByte() == 1;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
+		descriptor = "(Leb;B)V",
+		garbageValue = "-26"
 	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2854(this.field1603);
+	void vmethod3393(ClanSettings var1) {
+		var1.method3237(this.field1652, this.field1651);
 	}
 
-	@ObfuscatedName("kn")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "4"
+		descriptor = "(I)V",
+		garbageValue = "1251147466"
 	)
-	@Export("Widget_resetModelFrames")
-	static final void Widget_resetModelFrames(int var0) {
-		if (class242.loadInterface(var0)) {
-			Widget[] var1 = MouseRecorder.Widget_interfaceComponents[var0];
+	static void method3164() {
+		Messages.Messages_channels.clear();
+		Messages.Messages_hashTable.clear();
+		Messages.Messages_queue.clear();
+		Messages.Messages_count = 0;
+	}
 
-			for (int var2 = 0; var2 < var1.length; ++var2) {
-				Widget var3 = var1[var2];
-				if (var3 != null) {
-					var3.modelFrame = 0;
-					var3.modelFrameCycle = 0;
-				}
-			}
-
-		}
+	@ObfuscatedName("j")
+	public static int method3158(long var0) {
+		return (int)(var0 >>> 7 & 127L);
 	}
 }

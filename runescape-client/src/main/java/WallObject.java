@@ -1,5 +1,3 @@
-import java.io.File;
-import java.io.RandomAccessFile;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
@@ -8,71 +6,60 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("hg")
 @Implements("WallObject")
-public final class WallObject
-{
-	@ObfuscatedName("sv")
-	@ObfuscatedSignature(
-		descriptor = "Lbp;"
-	)
-	@Export("decimator")
-	static Decimator decimator;
-	@ObfuscatedName("z")
+public final class WallObject {
+	@ObfuscatedName("an")
+	static String field2768;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1063429417
-	)
-	@Export("canvasHeight")
-	public static int canvasHeight;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = 1211283293
+		intValue = 1225941573
 	)
 	@Export("tileHeight")
 	int tileHeight;
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 392897309
+		intValue = -962187195
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1130231369
+		intValue = -834568319
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 1078743455
+		intValue = -453008145
 	)
 	@Export("orientationA")
 	int orientationA;
-	@ObfuscatedName("t")
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = -1456059729
+		intValue = -1304759669
 	)
 	@Export("orientationB")
 	int orientationB;
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lhd;"
 	)
 	@Export("renderable1")
 	public Renderable renderable1;
-	@ObfuscatedName("j")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lhd;"
 	)
 	@Export("renderable2")
 	public Renderable renderable2;
-	@ObfuscatedName("w")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		longValue = 7825076594130185971L
+		longValue = -7566933810645434605L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("n")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = -1681276427
+		intValue = -596388311
 	)
 	@Export("flags")
 	int flags;
@@ -82,58 +69,28 @@ public final class WallObject
 		this.flags = 0;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("gs")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/io/File;ZB)Z",
-		garbageValue = "15"
+		descriptor = "(I)V",
+		garbageValue = "-1120121316"
 	)
-	public static boolean method4321(File var0, boolean var1) {
-		try {
-			RandomAccessFile var2 = new RandomAccessFile(var0, "rw");
-			int var3 = var2.read();
-			var2.seek(0L);
-			var2.write(var3);
-			var2.seek(0L);
-			var2.close();
-			if (var1) {
-				var0.delete();
-			}
-
-			return true;
-		} catch (Exception var4) {
-			return false;
-		}
-	}
-
-	@ObfuscatedName("d")
-	@ObfuscatedSignature(
-		descriptor = "(Lbw;B)V",
-		garbageValue = "2"
-	)
-	@Export("changeWorld")
-	static void changeWorld(World var0) {
-		if (var0.isMembersOnly() != Client.isMembersWorld) {
-			Client.isMembersWorld = var0.isMembersOnly();
-			UserComparator6.method2552(var0.isMembersOnly());
+	static final void method4846() {
+		class275.method5532(WorldMapRegion.field2874, PacketWriter.field1404, WorldMapDecoration.field2970);
+		FloorOverlayDefinition.method4027(class135.field1629, class16.field88);
+		if (ClanSettings.cameraX == WorldMapRegion.field2874 && UserComparator10.cameraY == PacketWriter.field1404 && WorldMapDecoration.field2970 == class366.cameraZ && class135.field1629 == class103.cameraPitch && class16.field88 == class285.cameraYaw) {
+			Client.field767 = false;
+			Client.isCameraLocked = false;
+			WorldMapData_0.field2806 = 0;
+			Players.field1352 = 0;
+			FloorOverlayDefinition.field2266 = 0;
+			Message.field485 = 0;
+			AttackOption.field1320 = 0;
+			UserComparator7.field1444 = 0;
+			ModeWhere.field4340 = 0;
+			Occluder.field2636 = 0;
+			class108.field1416 = 0;
+			class10.field55 = 0;
 		}
 
-		if (var0.properties != Client.worldProperties) {
-			Archive var1 = UserComparator6.archive8;
-			int var2 = var0.properties;
-			if ((var2 & 536870912) != 0) {
-				Login.logoSprite = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "logo_deadman_mode", "");
-			} else if ((var2 & 1073741824) != 0) {
-				Login.logoSprite = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "logo_seasonal_mode", "");
-			} else {
-				Login.logoSprite = ClientPreferences.SpriteBuffer_getIndexedSpriteByName(var1, "logo", "");
-			}
-		}
-
-		class185.worldHost = var0.host;
-		Client.worldId = var0.id;
-		Client.worldProperties = var0.properties;
-		GameObject.worldPort = Client.gameBuild == 0 ? 43594 : var0.id + 40000;
-		class133.js5Port = Client.gameBuild == 0 ? 443 : var0.id + 50000;
-		class129.currentPort = GameObject.worldPort;
 	}
 }

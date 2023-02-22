@@ -3,15 +3,24 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("al")
+@ObfuscatedName("ae")
 @Implements("SoundSystem")
 public class SoundSystem implements Runnable {
-	@ObfuscatedName("qt")
-	@Export("FriendsChatManager_inFriendsChat")
-	static boolean FriendsChatManager_inFriendsChat;
-	@ObfuscatedName("c")
+	@ObfuscatedName("tq")
 	@ObfuscatedSignature(
-		descriptor = "[Lar;"
+		descriptor = "Lak;"
+	)
+	@Export("pcmPlayer0")
+	static PcmPlayer pcmPlayer0;
+	@ObfuscatedName("im")
+	@ObfuscatedSignature(
+		descriptor = "Lrs;"
+	)
+	@Export("compass")
+	static SpritePixels compass;
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "[Lak;"
 	)
 	@Export("players")
 	volatile PcmPlayer[] players;
@@ -29,7 +38,44 @@ public class SoundSystem implements Runnable {
 				}
 			}
 		} catch (Exception var4) {
-			AccessFile.RunException_sendStackTrace((String)null, var4);
+			class121.RunException_sendStackTrace((String)null, var4);
+		}
+
+	}
+
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-2099365505"
+	)
+	@Export("savePreferences")
+	static void savePreferences() {
+		AccessFile var0 = null;
+
+		try {
+			var0 = UrlRequester.getPreferencesFile("", class134.field1606.name, true);
+			Buffer var1 = PacketWriter.clientPreferences.toBuffer();
+			var0.write(var1.array, 0, var1.offset);
+		} catch (Exception var3) {
+		}
+
+		try {
+			if (var0 != null) {
+				var0.closeSync(true);
+			}
+		} catch (Exception var2) {
+		}
+
+	}
+
+	@ObfuscatedName("mv")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1599179239"
+	)
+	static void method850() {
+		if (Client.oculusOrbState == 1) {
+			Client.field595 = true;
 		}
 
 	}

@@ -1,102 +1,114 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("du")
-public class class123 extends class126 {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = -601293693
-	)
-	int field1481;
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(
-		intValue = -1319645239
-	)
-	int field1479;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = 6552211
-	)
-	int field1480;
-	@ObfuscatedName("m")
-	@ObfuscatedGetter(
-		intValue = -223756011
-	)
-	int field1482;
-	// $FF: synthetic field
+@ObfuscatedName("de")
+public enum class123 implements class349 {
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Lde;"
 	)
-	final class129 this$0;
-
+	field1502(0, 0),
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
+		descriptor = "Lde;"
 	)
-	class123(class129 var1) {
-		this.this$0 = var1;
-		this.field1481 = -1;
-	}
-
-	@ObfuscatedName("c")
+	field1504(1, 1),
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
+		descriptor = "Lde;"
 	)
-	void vmethod3029(Buffer var1) {
-		this.field1481 = var1.readUnsignedShort();
-		this.field1479 = var1.readInt();
-		this.field1480 = var1.readUnsignedByte();
-		this.field1482 = var1.readUnsignedByte();
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
-	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2858(this.field1481, this.field1479, this.field1480, this.field1482);
-	}
-
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "-84"
-	)
-	public static int method2744(int var0, int var1) {
-		return (int)Math.round(Math.atan2((double)var0, (double)var1) * 2607.5945876176133D) & 16383;
-	}
-
-	@ObfuscatedName("m")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "-1895069117"
-	)
-	public static int method2737(int var0, int var1, int var2) {
-		int var3 = WorldMapEvent.method4942(var2 - var1 + 1);
-		var3 <<= var1;
-		return var0 & ~var3;
-	}
-
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "1"
-	)
-	public static void method2746(int var0) {
-		MouseHandler.MouseHandler_idleCycles = var0;
-	}
-
+	field1503(2, 2),
 	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1478303214"
+		descriptor = "Lde;"
 	)
-	static void method2745() {
-		Messages.Messages_channels.clear();
-		Messages.Messages_hashTable.clear();
-		Messages.Messages_queue.clear();
-		Messages.Messages_count = 0;
+	field1506(3, 3),
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "Lde;"
+	)
+	field1505(4, 4);
+
+	@ObfuscatedName("j")
+	@ObfuscatedGetter(
+		intValue = -677297709
+	)
+	final int field1508;
+	@ObfuscatedName("i")
+	@ObfuscatedGetter(
+		intValue = 1512847447
+	)
+	final int field1507;
+
+	class123(int var3, int var4) {
+		this.field1508 = var3;
+		this.field1507 = var4;
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "3"
+	)
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field1507;
+	}
+
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "-1543055552"
+	)
+	public static final void method3031(int var0, int var1) {
+		ViewportMouse.ViewportMouse_x = var0;
+		ViewportMouse.ViewportMouse_y = var1;
+		ViewportMouse.ViewportMouse_isInViewport = true;
+		ViewportMouse.ViewportMouse_entityCount = 0;
+		ViewportMouse.ViewportMouse_false0 = false;
+	}
+
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)I",
+		garbageValue = "-1240645994"
+	)
+	static final int method3037(int var0, int var1, int var2, int var3) {
+		int var4 = 65536 - Rasterizer3D.Rasterizer3D_cosine[var2 * 1024 / var3] >> 1;
+		return ((65536 - var4) * var0 >> 16) + (var4 * var1 >> 16);
+	}
+
+	@ObfuscatedName("km")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-636311920"
+	)
+	static void method3032() {
+		for (InterfaceParent var0 = (InterfaceParent)Client.interfaceParents.first(); var0 != null; var0 = (InterfaceParent)Client.interfaceParents.next()) {
+			int var1 = var0.group;
+			if (class153.loadInterface(var1)) {
+				boolean var2 = true;
+				Widget[] var3 = WorldMapLabel.Widget_interfaceComponents[var1];
+
+				int var4;
+				for (var4 = 0; var4 < var3.length; ++var4) {
+					if (var3[var4] != null) {
+						var2 = var3[var4].isIf3;
+						break;
+					}
+				}
+
+				if (!var2) {
+					var4 = (int)var0.key;
+					Widget var5 = class133.getWidget(var4);
+					if (var5 != null) {
+						LoginScreenAnimation.method2477(var5);
+					}
+				}
+			}
+		}
+
 	}
 }

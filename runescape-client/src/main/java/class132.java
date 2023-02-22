@@ -1,97 +1,71 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.concurrent.Callable;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("eg")
-public class class132 extends class142 {
+@ObfuscatedName("er")
+class class132 implements Callable {
+	@ObfuscatedName("i")
+	@Export("SpriteBuffer_spriteHeights")
+	public static int[] SpriteBuffer_spriteHeights;
 	@ObfuscatedName("o")
-	public static short[] field1540;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = 1971211247
-	)
-	int field1535;
-	@ObfuscatedName("b")
-	byte field1541;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = 2049940809
-	)
-	int field1536;
-	@ObfuscatedName("m")
-	String field1538;
+	@Export("ByteArrayPool_altSizeArrayCounts")
+	public static int[] ByteArrayPool_altSizeArrayCounts;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Len;"
+		descriptor = "Lei;"
 	)
-	final class143 this$0;
+	final class133 this$0;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lrd;"
+	)
+	final Buffer val$p;
+	// $FF: synthetic field
+	final int val$version;
 
 	@ObfuscatedSignature(
-		descriptor = "(Len;)V"
+		descriptor = "(Lei;Lrd;I)V"
 	)
-	class132(class143 var1) {
+	class132(class133 var1, Buffer var2, int var3) {
 		this.this$0 = var1;
-		this.field1535 = -1;
+		this.val$p = var2;
+		this.val$version = var3;
 	}
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "4"
-	)
-	void vmethod3022(Buffer var1) {
-		this.field1535 = var1.readUnsignedShort();
-		this.field1541 = var1.readByte();
-		this.field1536 = var1.readUnsignedShort();
-		var1.readLong();
-		this.field1538 = var1.readStringCp1252NullTerminated();
+	public Object call() {
+		this.this$0.method3114(this.val$p, this.val$version);
+		return null;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(Lei;B)V",
-		garbageValue = "40"
+		descriptor = "(ILba;ZI)I",
+		garbageValue = "-1917361698"
 	)
-	void vmethod3021(ClanChannel var1) {
-		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1535);
-		var2.rank = this.field1541;
-		var2.world = this.field1536;
-		var2.username = new Username(this.field1538);
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "420472721"
-	)
-	static void method2810() {
-		if (TaskHandler.javaVendor.toLowerCase().indexOf("microsoft") != -1) {
-			KeyHandler.KeyHandler_keyCodes[186] = 57;
-			KeyHandler.KeyHandler_keyCodes[187] = 27;
-			KeyHandler.KeyHandler_keyCodes[188] = 71;
-			KeyHandler.KeyHandler_keyCodes[189] = 26;
-			KeyHandler.KeyHandler_keyCodes[190] = 72;
-			KeyHandler.KeyHandler_keyCodes[191] = 73;
-			KeyHandler.KeyHandler_keyCodes[192] = 58;
-			KeyHandler.KeyHandler_keyCodes[219] = 42;
-			KeyHandler.KeyHandler_keyCodes[220] = 74;
-			KeyHandler.KeyHandler_keyCodes[221] = 43;
-			KeyHandler.KeyHandler_keyCodes[222] = 59;
-			KeyHandler.KeyHandler_keyCodes[223] = 28;
+	static int method3090(int var0, Script var1, boolean var2) {
+		Widget var3 = class133.getWidget(Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize]);
+		if (var0 == ScriptOpcodes.IF_GETX) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.x;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETY) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.y;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETWIDTH) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.width;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETHEIGHT) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.height;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETHIDE) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.isHidden ? 1 : 0;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETLAYER) {
+			Interpreter.Interpreter_intStack[++class302.Interpreter_intStackSize - 1] = var3.parentId;
+			return 1;
 		} else {
-			KeyHandler.KeyHandler_keyCodes[44] = 71;
-			KeyHandler.KeyHandler_keyCodes[45] = 26;
-			KeyHandler.KeyHandler_keyCodes[46] = 72;
-			KeyHandler.KeyHandler_keyCodes[47] = 73;
-			KeyHandler.KeyHandler_keyCodes[59] = 57;
-			KeyHandler.KeyHandler_keyCodes[61] = 27;
-			KeyHandler.KeyHandler_keyCodes[91] = 42;
-			KeyHandler.KeyHandler_keyCodes[92] = 74;
-			KeyHandler.KeyHandler_keyCodes[93] = 43;
-			KeyHandler.KeyHandler_keyCodes[192] = 28;
-			KeyHandler.KeyHandler_keyCodes[222] = 58;
-			KeyHandler.KeyHandler_keyCodes[520] = 59;
+			return 2;
 		}
-
 	}
 }

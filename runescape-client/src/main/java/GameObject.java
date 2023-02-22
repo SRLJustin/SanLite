@@ -4,101 +4,89 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hl")
+@ObfuscatedName("iu")
 @Implements("GameObject")
 public final class GameObject {
-	@ObfuscatedName("fk")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -1234198713
-	)
-	@Export("worldPort")
-	static int worldPort;
-	@ObfuscatedName("ma")
-	@ObfuscatedGetter(
-		intValue = -1786079239
-	)
-	@Export("menuWidth")
-	static int menuWidth;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = -1089622701
+		intValue = -1692376787
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -465774691
+		intValue = 1487795535
 	)
 	@Export("height")
 	int height;
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1923590497
+		intValue = -85158661
 	)
 	@Export("centerX")
 	int centerX;
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 1996180969
-	)
-	@Export("orientation")
-	int orientation;
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		intValue = 1051509529
+		intValue = -1653532281
 	)
 	@Export("centerY")
 	int centerY;
-	@ObfuscatedName("s")
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lhd;"
 	)
 	@Export("renderable")
 	public Renderable renderable;
 	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 1723330507
+		intValue = 1532913499
+	)
+	@Export("orientation")
+	int orientation;
+	@ObfuscatedName("i")
+	@ObfuscatedGetter(
+		intValue = 2094223063
 	)
 	@Export("startX")
 	int startX;
-	@ObfuscatedName("w")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -621074209
+		intValue = 1521710851
 	)
 	@Export("endX")
 	int endX;
-	@ObfuscatedName("n")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = -178409117
+		intValue = -277724547
 	)
 	@Export("startY")
 	int startY;
-	@ObfuscatedName("r")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 144998379
+		intValue = -1740988579
 	)
 	@Export("endY")
 	int endY;
-	@ObfuscatedName("o")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1469340071
+		intValue = 1657816971
 	)
-	int field2548;
-	@ObfuscatedName("v")
+	int field2801;
+	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = 800381971
+		intValue = -809829645
 	)
 	@Export("lastDrawn")
 	int lastDrawn;
-	@ObfuscatedName("d")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		longValue = -3336818157473405963L
+		longValue = 4495018918080100601L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("h")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -1622989155
+		intValue = 16792299
 	)
 	@Export("flags")
 	int flags;
@@ -108,38 +96,98 @@ public final class GameObject {
 		this.flags = 0;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(ILbn;ZI)I",
-		garbageValue = "210014678"
+		descriptor = "(Ljava/lang/CharSequence;B)Ljava/lang/String;",
+		garbageValue = "71"
 	)
-	static int method4341(int var0, Script var1, boolean var2) {
-		if (var0 != 6700 && var0 != 6702 && var0 != 6704 && var0 != 6706 && var0 != 6708) {
-			if (var0 != 6701 && var0 != 6703 && var0 != 6705 && var0 != 6707 && var0 != 6709) {
-				if (var0 == 6750) {
-					Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = "";
-					return 1;
-				} else if (var0 != 6751 && var0 != 6752 && var0 != 6753) {
-					if (var0 == 6754) {
-						int var3 = Interpreter.Interpreter_intStack[--IsaacCipher.Interpreter_intStackSize];
-						NPCComposition var4 = WorldMapLabelSize.getNpcDefinition(var3);
-						Interpreter.Interpreter_stringStack[++class13.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
-						return 1;
-					} else {
-						return 2;
-					}
+	public static String method4868(CharSequence var0) {
+		int var1 = var0.length();
+		StringBuilder var2 = new StringBuilder(var1);
+
+		for (int var3 = 0; var3 < var1; ++var3) {
+			char var4 = var0.charAt(var3);
+			if ((var4 < 'a' || var4 > 'z') && (var4 < 'A' || var4 > 'Z') && (var4 < '0' || var4 > '9') && var4 != '.' && var4 != '-' && var4 != '*' && var4 != '_') {
+				if (var4 == ' ') {
+					var2.append('+');
 				} else {
-					Interpreter.Interpreter_intStack[++IsaacCipher.Interpreter_intStackSize - 1] = -1;
-					return 1;
+					byte var5 = class31.charToByteCp1252(var4);
+					var2.append('%');
+					int var6 = var5 >> 4 & 15;
+					if (var6 >= 10) {
+						var2.append((char)(var6 + 55));
+					} else {
+						var2.append((char)(var6 + 48));
+					}
+
+					var6 = var5 & 15;
+					if (var6 >= 10) {
+						var2.append((char)(var6 + 55));
+					} else {
+						var2.append((char)(var6 + 48));
+					}
 				}
 			} else {
-				--IsaacCipher.Interpreter_intStackSize;
-				return 1;
+				var2.append(var4);
 			}
-		} else {
-			IsaacCipher.Interpreter_intStackSize -= 2;
-			--class13.Interpreter_stringStackSize;
-			return 1;
 		}
+
+		return var2.toString();
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/String;[IIII)V",
+		garbageValue = "988147954"
+	)
+	public static void method4867(String[] var0, int[] var1, int var2, int var3) {
+		if (var2 < var3) {
+			int var4 = (var3 + var2) / 2;
+			int var5 = var2;
+			String var6 = var0[var4];
+			var0[var4] = var0[var3];
+			var0[var3] = var6;
+			int var7 = var1[var4];
+			var1[var4] = var1[var3];
+			var1[var3] = var7;
+
+			for (int var8 = var2; var8 < var3; ++var8) {
+				if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
+					String var9 = var0[var8];
+					var0[var8] = var0[var5];
+					var0[var5] = var9;
+					int var10 = var1[var8];
+					var1[var8] = var1[var5];
+					var1[var5++] = var10;
+				}
+			}
+
+			var0[var3] = var0[var5];
+			var0[var5] = var6;
+			var1[var3] = var1[var5];
+			var1[var5] = var7;
+			method4867(var0, var1, var2, var5 - 1);
+			method4867(var0, var1, var5 + 1, var3);
+		}
+
+	}
+
+	@ObfuscatedName("mu")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "24"
+	)
+	static void method4866() {
+		if (class136.field1633 != null) {
+			Client.field796 = Client.cycle;
+			class136.field1633.method6759();
+
+			for (int var0 = 0; var0 < Client.players.length; ++var0) {
+				if (Client.players[var0] != null) {
+					class136.field1633.method6744(ParamComposition.baseX * 64 + (Client.players[var0].x >> 7), Client.baseY * 64 + (Client.players[var0].y >> 7));
+				}
+			}
+		}
+
 	}
 }

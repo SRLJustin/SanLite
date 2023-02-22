@@ -3,84 +3,60 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("et")
-public class class131 extends class126 {
-	@ObfuscatedName("an")
-	@Export("fontHelvetica13")
-	static java.awt.Font fontHelvetica13;
-	@ObfuscatedName("et")
-	@ObfuscatedSignature(
-		descriptor = "Lkz;"
-	)
-	@Export("archive2")
-	static Archive archive2;
-	@ObfuscatedName("ga")
+@ObfuscatedName("en")
+public class class131 {
+	@ObfuscatedName("iz")
 	@ObfuscatedGetter(
-		intValue = -366800695
+		intValue = -1316992101
 	)
-	@Export("baseX")
-	static int baseX;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = -564677501
-	)
-	int field1526;
-	@ObfuscatedName("b")
-	@ObfuscatedGetter(
-		intValue = 165982009
-	)
-	int field1525;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = 1640415355
-	)
-	int field1528;
+	@Export("selectedItemId")
+	static int selectedItemId;
+
 	@ObfuscatedName("m")
-	@ObfuscatedGetter(
-		intValue = 1105926385
-	)
-	int field1533;
-	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "(II)Lhw;",
+		garbageValue = "-1224453305"
 	)
-	final class129 this$0;
+	@Export("getFrames")
+	static Frames getFrames(int var0) {
+		Frames var1 = (Frames)SequenceDefinition.SequenceDefinition_cachedFrames.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			AbstractArchive var3 = SequenceDefinition.SequenceDefinition_animationsArchive;
+			AbstractArchive var4 = class16.SequenceDefinition_skeletonsArchive;
+			boolean var5 = true;
+			int[] var6 = var3.getGroupFileIds(var0);
 
-	@ObfuscatedSignature(
-		descriptor = "(Lda;)V"
-	)
-	class131(class129 var1) {
-		this.this$0 = var1;
-	}
+			for (int var7 = 0; var7 < var6.length; ++var7) {
+				byte[] var8 = var3.getFile(var0, var6[var7]);
+				if (var8 == null) {
+					var5 = false;
+				} else {
+					int var9 = (var8[0] & 255) << 8 | var8[1] & 255;
+					byte[] var10 = var4.getFile(var9, 0);
+					if (var10 == null) {
+						var5 = false;
+					}
+				}
+			}
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "1416770155"
-	)
-	void vmethod3029(Buffer var1) {
-		this.field1526 = var1.readInt();
-		this.field1533 = var1.readInt();
-		this.field1525 = var1.readUnsignedByte();
-		this.field1528 = var1.readUnsignedByte();
-	}
+			Frames var2;
+			if (!var5) {
+				var2 = null;
+			} else {
+				try {
+					var2 = new Frames(var3, var4, var0, false);
+				} catch (Exception var12) {
+					var2 = null;
+				}
+			}
 
-	@ObfuscatedName("b")
-	@ObfuscatedSignature(
-		descriptor = "(Lej;I)V",
-		garbageValue = "-1531735008"
-	)
-	void vmethod3028(ClanSettings var1) {
-		var1.method2860(this.field1526, this.field1533, this.field1525, this.field1528);
-	}
+			if (var2 != null) {
+				SequenceDefinition.SequenceDefinition_cachedFrames.put(var2, (long)var0);
+			}
 
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIB)I",
-		garbageValue = "-37"
-	)
-	static final int method2802(int var0, int var1, int var2, int var3) {
-		int var4 = 65536 - Rasterizer3D.Rasterizer3D_cosine[var2 * 1024 / var3] >> 1;
-		return ((65536 - var4) * var0 >> 16) + (var4 * var1 >> 16);
+			return var2;
+		}
 	}
 }

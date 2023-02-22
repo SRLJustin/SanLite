@@ -1,3 +1,12 @@
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InvalidClassException;
+import java.io.ObjectInputStream;
+import java.io.OptionalDataException;
+import java.io.StreamCorruptedException;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.List;
@@ -6,50 +15,63 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.Reflection;
 
-@ObfuscatedName("ei")
+@ObfuscatedName("fm")
 @Implements("ClanChannel")
 public class ClanChannel extends Node {
-	@ObfuscatedName("c")
-	boolean field1637;
-	@ObfuscatedName("b")
-	boolean field1642;
-	@ObfuscatedName("p")
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "Ldg;"
+	)
+	@Export("World_request")
+	static UrlRequest World_request;
+	@ObfuscatedName("jy")
+	@ObfuscatedSignature(
+		descriptor = "[Lrs;"
+	)
+	@Export("headIconPkSprites")
+	static SpritePixels[] headIconPkSprites;
+	@ObfuscatedName("f")
+	boolean field1789;
+	@ObfuscatedName("w")
+	boolean field1790;
+	@ObfuscatedName("v")
 	@Export("members")
 	public List members;
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@Export("sortedMembers")
 	int[] sortedMembers;
-	@ObfuscatedName("t")
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		longValue = -6629358270265648135L
+		longValue = 5364181956474599071L
 	)
-	long field1640;
-	@ObfuscatedName("s")
+	long field1792;
+	@ObfuscatedName("j")
 	@Export("name")
 	public String name;
-	@ObfuscatedName("j")
-	public byte field1636;
-	@ObfuscatedName("w")
-	public byte field1643;
+	@ObfuscatedName("i")
+	public byte field1794;
+	@ObfuscatedName("n")
+	public byte field1795;
 
 	static {
 		new BitSet(65536);
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;)V"
+		descriptor = "(Lrd;)V"
 	)
 	public ClanChannel(Buffer var1) {
-		this.field1642 = true;
+		this.field1790 = true;
 		this.name = null;
-		this.method2992(var1);
+		this.method3358(var1);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(I)[I",
-		garbageValue = "1790223696"
+		garbageValue = "1723200754"
 	)
 	@Export("getSortedMembers")
 	public int[] getSortedMembers() {
@@ -58,20 +80,20 @@ public class ClanChannel extends Node {
 			this.sortedMembers = new int[this.members.size()];
 
 			for (int var2 = 0; var2 < this.members.size(); this.sortedMembers[var2] = var2++) {
-				var1[var2] = ((ClanChannelMember)this.members.get(var2)).username.method7914();
+				var1[var2] = ((ClanChannelMember)this.members.get(var2)).username.method9270();
 			}
 
 			int[] var3 = this.sortedMembers;
-			class292.method5504(var1, var3, 0, var1.length - 1);
+			GameObject.method4867(var1, var3, 0, var1.length - 1);
 		}
 
 		return this.sortedMembers;
 	}
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Ldz;B)V",
-		garbageValue = "-47"
+		descriptor = "(Leu;I)V",
+		garbageValue = "-758878496"
 	)
 	@Export("addMember")
 	void addMember(ClanChannelMember var1) {
@@ -79,10 +101,10 @@ public class ClanChannel extends Node {
 		this.sortedMembers = null;
 	}
 
-	@ObfuscatedName("p")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "1232070979"
+		garbageValue = "555394235"
 	)
 	@Export("removeMember")
 	void removeMember(int var1) {
@@ -90,22 +112,22 @@ public class ClanChannel extends Node {
 		this.sortedMembers = null;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "1"
+		descriptor = "(I)I",
+		garbageValue = "1410246446"
 	)
-	public int method2990() {
+	public int method3359() {
 		return this.members.size();
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("z")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)I",
-		garbageValue = "2014586653"
+		garbageValue = "-1403435535"
 	)
-	public int method2991(String var1) {
-		if (!this.field1642) {
+	public int method3357(String var1) {
+		if (!this.field1790) {
 			throw new RuntimeException("Displaynames not available");
 		} else {
 			for (int var2 = 0; var2 < this.members.size(); ++var2) {
@@ -118,19 +140,19 @@ public class ClanChannel extends Node {
 		}
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;I)V",
-		garbageValue = "-517363636"
+		descriptor = "(Lrd;I)V",
+		garbageValue = "188484319"
 	)
-	void method2992(Buffer var1) {
+	void method3358(Buffer var1) {
 		int var2 = var1.readUnsignedByte();
 		if ((var2 & 1) != 0) {
-			this.field1637 = true;
+			this.field1789 = true;
 		}
 
 		if ((var2 & 2) != 0) {
-			this.field1642 = true;
+			this.field1790 = true;
 		}
 
 		int var3 = 2;
@@ -139,22 +161,22 @@ public class ClanChannel extends Node {
 		}
 
 		super.key = var1.readLong();
-		this.field1640 = var1.readLong();
+		this.field1792 = var1.readLong();
 		this.name = var1.readStringCp1252NullTerminated();
 		var1.readBoolean();
-		this.field1643 = var1.readByte();
-		this.field1636 = var1.readByte();
+		this.field1795 = var1.readByte();
+		this.field1794 = var1.readByte();
 		int var4 = var1.readUnsignedShort();
 		if (var4 > 0) {
 			this.members = new ArrayList(var4);
 
 			for (int var5 = 0; var5 < var4; ++var5) {
 				ClanChannelMember var6 = new ClanChannelMember();
-				if (this.field1637) {
+				if (this.field1789) {
 					var1.readLong();
 				}
 
-				if (this.field1642) {
+				if (this.field1790) {
 					var6.username = new Username(var1.readStringCp1252NullTerminated());
 				}
 
@@ -170,392 +192,135 @@ public class ClanChannel extends Node {
 
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIILgy;Lgf;B)V",
-		garbageValue = "-30"
+		descriptor = "(Lru;I)V",
+		garbageValue = "-573182363"
 	)
-	static final void method2996(int var0, int var1, int var2, int var3, int var4, int var5, Scene var6, CollisionMap var7) {
-		if (!Client.isLowDetail || (Tiles.Tiles_renderFlags[0][var1][var2] & 2) != 0 || (Tiles.Tiles_renderFlags[var0][var1][var2] & 16) == 0) {
-			if (var0 < Tiles.Tiles_minPlane) {
-				Tiles.Tiles_minPlane = var0;
-			}
+	@Export("performReflectionCheck")
+	public static void performReflectionCheck(PacketBuffer var0) {
+		ReflectionCheck var1 = (ReflectionCheck)class36.reflectionChecks.last();
+		if (var1 != null) {
+			int var2 = var0.offset;
+			var0.writeInt(var1.id);
 
-			ObjectComposition var8 = class148.getObjectDefinition(var3);
-			int var9;
-			int var10;
-			if (var4 != 1 && var4 != 3) {
-				var9 = var8.sizeX;
-				var10 = var8.sizeY;
-			} else {
-				var9 = var8.sizeY;
-				var10 = var8.sizeX;
-			}
-
-			int var11;
-			int var12;
-			if (var9 + var1 <= 104) {
-				var11 = (var9 >> 1) + var1;
-				var12 = (var9 + 1 >> 1) + var1;
-			} else {
-				var11 = var1;
-				var12 = var1 + 1;
-			}
-
-			int var13;
-			int var14;
-			if (var10 + var2 <= 104) {
-				var13 = (var10 >> 1) + var2;
-				var14 = var2 + (var10 + 1 >> 1);
-			} else {
-				var13 = var2;
-				var14 = var2 + 1;
-			}
-
-			int[][] var15 = Tiles.Tiles_heights[var0];
-			int var16 = var15[var11][var13] + var15[var12][var13] + var15[var11][var14] + var15[var12][var14] >> 2;
-			int var17 = (var1 << 7) + (var9 << 6);
-			int var18 = (var2 << 7) + (var10 << 6);
-			long var19 = SecureRandomFuture.calculateTag(var1, var2, 2, var8.int1 == 0, var3);
-			int var21 = var5 + (var4 << 6);
-			if (var8.int3 == 1) {
-				var21 += 256;
-			}
-
-			int var23;
-			int var24;
-			if (var8.hasSound()) {
-				ObjectSound var22 = new ObjectSound();
-				var22.plane = var0;
-				var22.x = var1 * 128;
-				var22.y = var2 * 128;
-				var23 = var8.sizeX;
-				var24 = var8.sizeY;
-				if (var4 == 1 || var4 == 3) {
-					var23 = var8.sizeY;
-					var24 = var8.sizeX;
-				}
-
-				var22.maxX = (var23 + var1) * 128;
-				var22.maxY = (var24 + var2) * 128;
-				var22.soundEffectId = var8.ambientSoundId;
-				var22.field793 = var8.int7 * 128;
-				var22.field796 = var8.int5;
-				var22.field797 = var8.int6;
-				var22.soundEffectIds = var8.soundEffectIds;
-				if (var8.transforms != null) {
-					var22.obj = var8;
-					var22.set();
-				}
-
-				ObjectSound.objectSounds.addFirst(var22);
-				if (var22.soundEffectIds != null) {
-					var22.field789 = var22.field796 + (int)(Math.random() * (double)(var22.field797 - var22.field796));
-				}
-			}
-
-			Object var34;
-			if (var5 == 22) {
-				if (!Client.isLowDetail || var8.int1 != 0 || var8.interactType == 1 || var8.boolean2) {
-					if (var8.animationId == -1 && var8.transforms == null) {
-						var34 = var8.getEntity(22, var4, var15, var17, var16, var18);
-					} else {
-						var34 = new DynamicObject(var3, 22, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-					}
-
-					var6.newGroundObject(var0, var1, var2, var16, (Renderable)var34, var19, var21);
-					if (var8.interactType == 1 && var7 != null) {
-						var7.setBlockedByFloorDec(var1, var2);
-					}
-
-				}
-			} else if (var5 != 10 && var5 != 11) {
-				int[] var10000;
-				if (var5 >= 12) {
-					if (var8.animationId == -1 && var8.transforms == null) {
-						var34 = var8.getEntity(var5, var4, var15, var17, var16, var18);
-					} else {
-						var34 = new DynamicObject(var3, var5, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-					}
-
-					var6.method3960(var0, var1, var2, var16, 1, 1, (Renderable)var34, 0, var19, var21);
-					if (var5 >= 12 && var5 <= 17 && var5 != 13 && var0 > 0) {
-						var10000 = ClanChannelMember.field1504[var0][var1];
-						var10000[var2] |= 2340;
-					}
-
-					if (var8.interactType != 0 && var7 != null) {
-						var7.addGameObject(var1, var2, var9, var10, var8.boolean1);
-					}
-
-				} else if (var5 == 0) {
-					if (var8.animationId == -1 && var8.transforms == null) {
-						var34 = var8.getEntity(0, var4, var15, var17, var16, var18);
-					} else {
-						var34 = new DynamicObject(var3, 0, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-					}
-
-					var6.newWallObject(var0, var1, var2, var16, (Renderable)var34, (Renderable)null, Tiles.field969[var4], 0, var19, var21);
-					if (var4 == 0) {
-						if (var8.clipped) {
-							SoundCache.field321[var0][var1][var2] = 50;
-							SoundCache.field321[var0][var1][var2 + 1] = 50;
-						}
-
-						if (var8.modelClipped) {
-							var10000 = ClanChannelMember.field1504[var0][var1];
-							var10000[var2] |= 585;
-						}
-					} else if (var4 == 1) {
-						if (var8.clipped) {
-							SoundCache.field321[var0][var1][var2 + 1] = 50;
-							SoundCache.field321[var0][var1 + 1][var2 + 1] = 50;
-						}
-
-						if (var8.modelClipped) {
-							var10000 = ClanChannelMember.field1504[var0][var1];
-							var10000[1 + var2] |= 1170;
-						}
-					} else if (var4 == 2) {
-						if (var8.clipped) {
-							SoundCache.field321[var0][var1 + 1][var2] = 50;
-							SoundCache.field321[var0][var1 + 1][var2 + 1] = 50;
-						}
-
-						if (var8.modelClipped) {
-							var10000 = ClanChannelMember.field1504[var0][var1 + 1];
-							var10000[var2] |= 585;
-						}
-					} else if (var4 == 3) {
-						if (var8.clipped) {
-							SoundCache.field321[var0][var1][var2] = 50;
-							SoundCache.field321[var0][var1 + 1][var2] = 50;
-						}
-
-						if (var8.modelClipped) {
-							var10000 = ClanChannelMember.field1504[var0][var1];
-							var10000[var2] |= 1170;
-						}
-					}
-
-					if (var8.interactType != 0 && var7 != null) {
-						var7.method3721(var1, var2, var5, var4, var8.boolean1);
-					}
-
-					if (var8.int2 != 16) {
-						var6.method3966(var0, var1, var2, var8.int2);
-					}
-
-				} else if (var5 == 1) {
-					if (var8.animationId == -1 && var8.transforms == null) {
-						var34 = var8.getEntity(1, var4, var15, var17, var16, var18);
-					} else {
-						var34 = new DynamicObject(var3, 1, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-					}
-
-					var6.newWallObject(var0, var1, var2, var16, (Renderable)var34, (Renderable)null, Tiles.field970[var4], 0, var19, var21);
-					if (var8.clipped) {
+			for (int var3 = 0; var3 < var1.size; ++var3) {
+				if (var1.creationErrors[var3] != 0) {
+					var0.writeByte(var1.creationErrors[var3]);
+				} else {
+					try {
+						int var4 = var1.operations[var3];
+						Field var5;
+						int var6;
 						if (var4 == 0) {
-							SoundCache.field321[var0][var1][var2 + 1] = 50;
+							var5 = var1.fields[var3];
+							var6 = Reflection.getInt(var5, (Object)null);
+							var0.writeByte(0);
+							var0.writeInt(var6);
 						} else if (var4 == 1) {
-							SoundCache.field321[var0][var1 + 1][var2 + 1] = 50;
+							var5 = var1.fields[var3];
+							Reflection.setInt(var5, (Object)null, var1.intReplaceValues[var3]);
+							var0.writeByte(0);
 						} else if (var4 == 2) {
-							SoundCache.field321[var0][var1 + 1][var2] = 50;
-						} else if (var4 == 3) {
-							SoundCache.field321[var0][var1][var2] = 50;
+							var5 = var1.fields[var3];
+							var6 = var5.getModifiers();
+							var0.writeByte(0);
+							var0.writeInt(var6);
 						}
-					}
 
-					if (var8.interactType != 0 && var7 != null) {
-						var7.method3721(var1, var2, var5, var4, var8.boolean1);
-					}
-
-				} else {
-					int var28;
-					if (var5 == 2) {
-						var28 = var4 + 1 & 3;
-						Object var31;
-						Object var32;
-						if (var8.animationId == -1 && var8.transforms == null) {
-							var31 = var8.getEntity(2, var4 + 4, var15, var17, var16, var18);
-							var32 = var8.getEntity(2, var28, var15, var17, var16, var18);
+						Method var25;
+						if (var4 != 3) {
+							if (var4 == 4) {
+								var25 = var1.methods[var3];
+								var6 = var25.getModifiers();
+								var0.writeByte(0);
+								var0.writeInt(var6);
+							}
 						} else {
-							var31 = new DynamicObject(var3, 2, var4 + 4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-							var32 = new DynamicObject(var3, 2, var28, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-						}
+							var25 = var1.methods[var3];
+							byte[][] var10 = var1.arguments[var3];
+							Object[] var7 = new Object[var10.length];
 
-						var6.newWallObject(var0, var1, var2, var16, (Renderable)var31, (Renderable)var32, Tiles.field969[var4], Tiles.field969[var28], var19, var21);
-						if (var8.modelClipped) {
-							if (var4 == 0) {
-								var10000 = ClanChannelMember.field1504[var0][var1];
-								var10000[var2] |= 585;
-								var10000 = ClanChannelMember.field1504[var0][var1];
-								var10000[var2 + 1] |= 1170;
-							} else if (var4 == 1) {
-								var10000 = ClanChannelMember.field1504[var0][var1];
-								var10000[var2 + 1] |= 1170;
-								var10000 = ClanChannelMember.field1504[var0][var1 + 1];
-								var10000[var2] |= 585;
-							} else if (var4 == 2) {
-								var10000 = ClanChannelMember.field1504[var0][var1 + 1];
-								var10000[var2] |= 585;
-								var10000 = ClanChannelMember.field1504[var0][var1];
-								var10000[var2] |= 1170;
-							} else if (var4 == 3) {
-								var10000 = ClanChannelMember.field1504[var0][var1];
-								var10000[var2] |= 1170;
-								var10000 = ClanChannelMember.field1504[var0][var1];
-								var10000[var2] |= 585;
-							}
-						}
-
-						if (var8.interactType != 0 && var7 != null) {
-							var7.method3721(var1, var2, var5, var4, var8.boolean1);
-						}
-
-						if (var8.int2 != 16) {
-							var6.method3966(var0, var1, var2, var8.int2);
-						}
-
-					} else if (var5 == 3) {
-						if (var8.animationId == -1 && var8.transforms == null) {
-							var34 = var8.getEntity(3, var4, var15, var17, var16, var18);
-						} else {
-							var34 = new DynamicObject(var3, 3, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-						}
-
-						var6.newWallObject(var0, var1, var2, var16, (Renderable)var34, (Renderable)null, Tiles.field970[var4], 0, var19, var21);
-						if (var8.clipped) {
-							if (var4 == 0) {
-								SoundCache.field321[var0][var1][var2 + 1] = 50;
-							} else if (var4 == 1) {
-								SoundCache.field321[var0][var1 + 1][var2 + 1] = 50;
-							} else if (var4 == 2) {
-								SoundCache.field321[var0][var1 + 1][var2] = 50;
-							} else if (var4 == 3) {
-								SoundCache.field321[var0][var1][var2] = 50;
-							}
-						}
-
-						if (var8.interactType != 0 && var7 != null) {
-							var7.method3721(var1, var2, var5, var4, var8.boolean1);
-						}
-
-					} else if (var5 == 9) {
-						if (var8.animationId == -1 && var8.transforms == null) {
-							var34 = var8.getEntity(var5, var4, var15, var17, var16, var18);
-						} else {
-							var34 = new DynamicObject(var3, var5, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-						}
-
-						var6.method3960(var0, var1, var2, var16, 1, 1, (Renderable)var34, 0, var19, var21);
-						if (var8.interactType != 0 && var7 != null) {
-							var7.addGameObject(var1, var2, var9, var10, var8.boolean1);
-						}
-
-						if (var8.int2 != 16) {
-							var6.method3966(var0, var1, var2, var8.int2);
-						}
-
-					} else if (var5 == 4) {
-						if (var8.animationId == -1 && var8.transforms == null) {
-							var34 = var8.getEntity(4, var4, var15, var17, var16, var18);
-						} else {
-							var34 = new DynamicObject(var3, 4, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-						}
-
-						var6.newDecorativeObject(var0, var1, var2, var16, (Renderable)var34, (Renderable)null, Tiles.field969[var4], 0, 0, 0, var19, var21);
-					} else {
-						Object var25;
-						long var29;
-						if (var5 == 5) {
-							var28 = 16;
-							var29 = var6.getWallObjectTag(var0, var1, var2);
-							if (0L != var29) {
-								var28 = class148.getObjectDefinition(PacketWriter.Entity_unpackID(var29)).int2;
+							for (int var8 = 0; var8 < var10.length; ++var8) {
+								ObjectInputStream var9 = new ObjectInputStream(new ByteArrayInputStream(var10[var8]));
+								var7[var8] = var9.readObject();
 							}
 
-							if (var8.animationId == -1 && var8.transforms == null) {
-								var25 = var8.getEntity(4, var4, var15, var17, var16, var18);
+							Object var11 = Reflection.invoke(var25, (Object)null, var7);
+							if (var11 == null) {
+								var0.writeByte(0);
+							} else if (var11 instanceof Number) {
+								var0.writeByte(1);
+								var0.writeLong(((Number)var11).longValue());
+							} else if (var11 instanceof String) {
+								var0.writeByte(2);
+								var0.writeStringCp1252NullTerminated((String)var11);
 							} else {
-								var25 = new DynamicObject(var3, 4, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
+								var0.writeByte(4);
 							}
-
-							var6.newDecorativeObject(var0, var1, var2, var16, (Renderable)var25, (Renderable)null, Tiles.field969[var4], 0, var28 * Tiles.field976[var4], var28 * Tiles.field966[var4], var19, var21);
-						} else if (var5 == 6) {
-							var28 = 8;
-							var29 = var6.getWallObjectTag(var0, var1, var2);
-							if (0L != var29) {
-								var28 = class148.getObjectDefinition(PacketWriter.Entity_unpackID(var29)).int2 / 2;
-							}
-
-							if (var8.animationId == -1 && var8.transforms == null) {
-								var25 = var8.getEntity(4, var4 + 4, var15, var17, var16, var18);
-							} else {
-								var25 = new DynamicObject(var3, 4, var4 + 4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-							}
-
-							var6.newDecorativeObject(var0, var1, var2, var16, (Renderable)var25, (Renderable)null, 256, var4, var28 * Tiles.field973[var4], var28 * Tiles.field974[var4], var19, var21);
-						} else if (var5 == 7) {
-							var23 = var4 + 2 & 3;
-							if (var8.animationId == -1 && var8.transforms == null) {
-								var34 = var8.getEntity(4, var23 + 4, var15, var17, var16, var18);
-							} else {
-								var34 = new DynamicObject(var3, 4, var23 + 4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-							}
-
-							var6.newDecorativeObject(var0, var1, var2, var16, (Renderable)var34, (Renderable)null, 256, var23, 0, 0, var19, var21);
-						} else if (var5 == 8) {
-							var28 = 8;
-							var29 = var6.getWallObjectTag(var0, var1, var2);
-							if (var29 != 0L) {
-								var28 = class148.getObjectDefinition(PacketWriter.Entity_unpackID(var29)).int2 / 2;
-							}
-
-							int var27 = var4 + 2 & 3;
-							Object var26;
-							if (var8.animationId == -1 && var8.transforms == null) {
-								var25 = var8.getEntity(4, var4 + 4, var15, var17, var16, var18);
-								var26 = var8.getEntity(4, var27 + 4, var15, var17, var16, var18);
-							} else {
-								var25 = new DynamicObject(var3, 4, var4 + 4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-								var26 = new DynamicObject(var3, 4, var27 + 4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-							}
-
-							var6.newDecorativeObject(var0, var1, var2, var16, (Renderable)var25, (Renderable)var26, 256, var4, var28 * Tiles.field973[var4], var28 * Tiles.field974[var4], var19, var21);
 						}
+					} catch (ClassNotFoundException var13) {
+						var0.writeByte(-10);
+					} catch (InvalidClassException var14) {
+						var0.writeByte(-11);
+					} catch (StreamCorruptedException var15) {
+						var0.writeByte(-12);
+					} catch (OptionalDataException var16) {
+						var0.writeByte(-13);
+					} catch (IllegalAccessException var17) {
+						var0.writeByte(-14);
+					} catch (IllegalArgumentException var18) {
+						var0.writeByte(-15);
+					} catch (InvocationTargetException var19) {
+						var0.writeByte(-16);
+					} catch (SecurityException var20) {
+						var0.writeByte(-17);
+					} catch (IOException var21) {
+						var0.writeByte(-18);
+					} catch (NullPointerException var22) {
+						var0.writeByte(-19);
+					} catch (Exception var23) {
+						var0.writeByte(-20);
+					} catch (Throwable var24) {
+						var0.writeByte(-21);
 					}
 				}
-			} else {
-				if (var8.animationId == -1 && var8.transforms == null) {
-					var34 = var8.getEntity(10, var4, var15, var17, var16, var18);
-				} else {
-					var34 = new DynamicObject(var3, 10, var4, var0, var1, var2, var8.animationId, var8.boolean3, (Renderable)null);
-				}
-
-				if (var34 != null && var6.method3960(var0, var1, var2, var16, var9, var10, (Renderable)var34, var5 == 11 ? 256 : 0, var19, var21) && var8.clipped) {
-					var23 = 15;
-					if (var34 instanceof Model) {
-						var23 = ((Model)var34).method4222() / 4;
-						if (var23 > 30) {
-							var23 = 30;
-						}
-					}
-
-					for (var24 = 0; var24 <= var9; ++var24) {
-						for (int var33 = 0; var33 <= var10; ++var33) {
-							if (var23 > SoundCache.field321[var0][var24 + var1][var33 + var2]) {
-								SoundCache.field321[var0][var24 + var1][var33 + var2] = (byte)var23;
-							}
-						}
-					}
-				}
-
-				if (var8.interactType != 0 && var7 != null) {
-					var7.addGameObject(var1, var2, var9, var10, var8.boolean1);
-				}
-
 			}
+
+			var0.writeCrc(var2);
+			var1.remove();
 		}
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "249976305"
+	)
+	public static int method3366(int var0) {
+		return var0 >> 17 & 7;
+	}
+
+	@ObfuscatedName("jt")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIB)V",
+		garbageValue = "25"
+	)
+	@Export("selectSpell")
+	static void selectSpell(int var0, int var1, int var2, int var3) {
+		Widget var4 = class135.getWidgetChild(var0, var1);
+		if (var4 != null && var4.onTargetEnter != null) {
+			ScriptEvent var5 = new ScriptEvent();
+			var5.widget = var4;
+			var5.args = var4.onTargetEnter;
+			WorldMapAreaData.runScriptEvent(var5);
+		}
+
+		Client.field514 = var3;
+		Client.isSpellSelected = true;
+		class9.selectedSpellWidget = var0;
+		Client.selectedSpellChildIndex = var1;
+		class149.selectedSpellFlags = var2;
+		LoginScreenAnimation.method2477(var4);
 	}
 }

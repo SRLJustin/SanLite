@@ -1,116 +1,185 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("em")
-public class class139 extends class142 {
-	@ObfuscatedName("iz")
-	@ObfuscatedGetter(
-		intValue = -723386135
-	)
-	@Export("selectedItemId")
-	static int selectedItemId;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = 1906943517
-	)
-	int field1595;
-	@ObfuscatedName("b")
-	byte field1594;
-	@ObfuscatedName("p")
-	@ObfuscatedGetter(
-		intValue = -1562134813
-	)
-	int field1593;
-	@ObfuscatedName("m")
-	String field1596;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Len;"
-	)
-	final class143 this$0;
-
-	@ObfuscatedSignature(
-		descriptor = "(Len;)V"
-	)
-	class139(class143 var1) {
-		this.this$0 = var1;
-		this.field1595 = -1;
+@ObfuscatedName("ej")
+public abstract class class139 extends Node {
+	class139() {
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lpi;B)V",
-		garbageValue = "4"
+		descriptor = "(Lrd;S)V",
+		garbageValue = "-5782"
 	)
-	void vmethod3022(Buffer var1) {
-		var1.readUnsignedByte();
-		this.field1595 = var1.readUnsignedShort();
-		this.field1594 = var1.readByte();
-		this.field1593 = var1.readUnsignedShort();
-		var1.readLong();
-		this.field1596 = var1.readStringCp1252NullTerminated();
-		var1.readUnsignedByte();
-	}
+	abstract void vmethod3394(Buffer var1);
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Lei;B)V",
-		garbageValue = "40"
+		descriptor = "(Leb;B)V",
+		garbageValue = "-26"
 	)
-	void vmethod3021(ClanChannel var1) {
-		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1595);
-		var2.rank = this.field1594;
-		var2.world = this.field1593;
-		var2.username = new Username(this.field1596);
-	}
+	abstract void vmethod3393(ClanSettings var1);
 
-	@ObfuscatedName("b")
+	@ObfuscatedName("r")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Throwable;Ljava/lang/String;)Lqg;"
+		descriptor = "(ILba;ZI)I",
+		garbageValue = "1744506320"
 	)
-	@Export("newRunException")
-	public static RunException newRunException(Throwable var0, String var1) {
-		RunException var2;
-		if (var0 instanceof RunException) {
-			var2 = (RunException)var0;
-			var2.message = var2.message + ' ' + var1;
+	static int method3157(int var0, Script var1, boolean var2) {
+		Widget var3;
+		if (var0 >= 2000) {
+			var0 -= 1000;
+			var3 = class133.getWidget(Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize]);
 		} else {
-			var2 = new RunException(var0, var1);
+			var3 = var2 ? Interpreter.scriptDotWidget : class85.field1091;
 		}
 
-		return var2;
+		String var4 = Interpreter.Interpreter_stringStack[--class20.Interpreter_stringStackSize];
+		int[] var5 = null;
+		if (var4.length() > 0 && var4.charAt(var4.length() - 1) == 'Y') {
+			int var6 = Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize];
+			if (var6 > 0) {
+				for (var5 = new int[var6]; var6-- > 0; var5[var6] = Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize]) {
+				}
+			}
+
+			var4 = var4.substring(0, var4.length() - 1);
+		}
+
+		Object[] var9 = new Object[var4.length() + 1];
+
+		int var7;
+		for (var7 = var9.length - 1; var7 >= 1; --var7) {
+			if (var4.charAt(var7 - 1) == 's') {
+				var9[var7] = Interpreter.Interpreter_stringStack[--class20.Interpreter_stringStackSize];
+			} else {
+				var9[var7] = new Integer(Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize]);
+			}
+		}
+
+		var7 = Interpreter.Interpreter_intStack[--class302.Interpreter_intStackSize];
+		if (var7 != -1) {
+			var9[0] = new Integer(var7);
+		} else {
+			var9 = null;
+		}
+
+		if (var0 == ScriptOpcodes.CC_SETONCLICK) {
+			var3.onClick = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONHOLD) {
+			var3.onHold = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONRELEASE) {
+			var3.onRelease = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONMOUSEOVER) {
+			var3.onMouseOver = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONMOUSELEAVE) {
+			var3.onMouseLeave = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONDRAG) {
+			var3.onDrag = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONTARGETLEAVE) {
+			var3.onTargetLeave = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONVARTRANSMIT) {
+			var3.onVarTransmit = var9;
+			var3.varTransmitTriggers = var5;
+		} else if (var0 == ScriptOpcodes.CC_SETONTIMER) {
+			var3.onTimer = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONOP) {
+			var3.onOp = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONDRAGCOMPLETE) {
+			var3.onDragComplete = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONCLICKREPEAT) {
+			var3.onClickRepeat = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONMOUSEREPEAT) {
+			var3.onMouseRepeat = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONINVTRANSMIT) {
+			var3.onInvTransmit = var9;
+			var3.invTransmitTriggers = var5;
+		} else if (var0 == ScriptOpcodes.CC_SETONSTATTRANSMIT) {
+			var3.onStatTransmit = var9;
+			var3.statTransmitTriggers = var5;
+		} else if (var0 == ScriptOpcodes.CC_SETONTARGETENTER) {
+			var3.onTargetEnter = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONSCROLLWHEEL) {
+			var3.onScroll = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONCHATTRANSMIT) {
+			var3.onChatTransmit = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONKEY) {
+			var3.onKey = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONFRIENDTRANSMIT) {
+			var3.onFriendTransmit = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONCLANTRANSMIT) {
+			var3.onClanTransmit = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONMISCTRANSMIT) {
+			var3.onMiscTransmit = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONDIALOGABORT) {
+			var3.onDialogAbort = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONSUBCHANGE) {
+			var3.onSubChange = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONSTOCKTRANSMIT) {
+			var3.onStockTransmit = var9;
+		} else if (var0 == 1426) {
+			var3.field3679 = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONRESIZE) {
+			var3.onResize = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONCLANSETTINGSTRANSMIT) {
+			var3.field3672 = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONCLANCHANNELTRANSMIT) {
+			var3.field3673 = var9;
+		} else if (var0 == 1430) {
+			var3.field3604 = var9;
+		} else if (var0 == 1431) {
+			var3.field3669 = var9;
+		} else if (var0 == 1434) {
+			var3.field3680 = var9;
+		} else if (var0 == 1435) {
+			var3.field3664 = var9;
+		} else {
+			if (var0 < 1436 || var0 > 1439) {
+				return 2;
+			}
+
+			class305 var8 = var3.method6228();
+			if (var8 != null) {
+				if (var0 == 1436) {
+					var8.field3480 = var9;
+				} else if (var0 == 1437) {
+					var8.field3479 = var9;
+				} else if (var0 == 1438) {
+					var8.field3482 = var9;
+				} else if (var0 == 1439) {
+					var8.field3481 = var9;
+				}
+			}
+		}
+
+		var3.hasListener = true;
+		return 1;
 	}
 
-	@ObfuscatedName("m")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lbr;",
-		garbageValue = "-1096898317"
+		descriptor = "(IIIB)I",
+		garbageValue = "32"
 	)
-	@Export("Messages_getMessage")
-	static Message Messages_getMessage(int var0) {
-		return (Message)Messages.Messages_hashTable.get((long)var0);
-	}
+	static final int method3151(int var0, int var1, int var2) {
+		if (var2 > 179) {
+			var1 /= 2;
+		}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "1312744051"
-	)
-	static final int method2932(int var0, int var1) {
-		int var2 = KeyHandler.method367(var0 - 1, var1 - 1) + KeyHandler.method367(var0 + 1, var1 - 1) + KeyHandler.method367(var0 - 1, 1 + var1) + KeyHandler.method367(var0 + 1, var1 + 1);
-		int var3 = KeyHandler.method367(var0 - 1, var1) + KeyHandler.method367(var0 + 1, var1) + KeyHandler.method367(var0, var1 - 1) + KeyHandler.method367(var0, 1 + var1);
-		int var4 = KeyHandler.method367(var0, var1);
-		return var2 / 16 + var3 / 8 + var4 / 4;
-	}
+		if (var2 > 192) {
+			var1 /= 2;
+		}
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "341496897"
-	)
-	static final boolean method2931() {
-		return ViewportMouse.ViewportMouse_isInViewport;
+		if (var2 > 217) {
+			var1 /= 2;
+		}
+
+		if (var2 > 243) {
+			var1 /= 2;
+		}
+
+		int var3 = (var1 / 32 << 7) + (var0 / 4 << 10) + var2 / 2;
+		return var3;
 	}
 }
